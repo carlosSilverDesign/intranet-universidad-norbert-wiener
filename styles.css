@@ -115,6 +115,16 @@ i svg {
 
 .btn-full-width {
   width: 100%;
+  height: 52px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+.btn-add {
+  margin-right: auto;
+  font-weight: 500;
+  letter-spacing: 0.1px;
 }
 
 .link-action {
@@ -438,7 +448,7 @@ i svg {
 
 .class-location {
   color: #5B6E80;
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -500,7 +510,7 @@ i svg {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 16px;
-  border-bottom: 1px solid #F4F6F8;
+  border-bottom: 1px solid #C6CFD7;
 }
 
 .procedure-item:last-child {
@@ -542,6 +552,92 @@ i svg {
   background-color: #FFEBEE;
 }
 
+
+/* Tarjeta: Obligaciones */
+
+.card-obligations {
+  gap: 16px;
+}
+
+.card-obligations .card-header-flex {
+  margin-bottom: 16px ;
+}
+
+.deuda-pendiente {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.last-payment {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 1px solid #95DADB;
+  background: #F0FAFA;
+  padding: 10px;
+  gap: 4px;
+}
+
+.payment-info {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.payment-amount {
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  color: #5B6E80;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.1px;
+}
+
+.payment-desc {
+  color: #5B6E80;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+
+.pending-debt {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.circle-warning {
+  width: 8px;
+  height: 8px;
+  background-color: #D32F2F;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.debt-warning {
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  color: #E22731;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+
+.debt-amount {
+  font-family: Roboto;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: 0.1px;
+  color: #222;
+  }
+
 /* Tarjeta: Progreso Académico */
 .card-progress {
   grid-column: span 2;
@@ -562,7 +658,7 @@ i svg {
 
 .progress-percentage {
   color: #222222;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 .progress-track {
@@ -588,14 +684,45 @@ i svg {
 }
 
 .stat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   border: 1px solid #C6CFD7;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 24px;
 }
 
 .stat-label {
   color: #5B6E80;
   font-weight: 700;
+}
+
+.stat-value {
+  color: #222;
+  font-family: Roboto;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0.35px;
+}
+
+.stat-trend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #16A34A;
+  font-weight: 500;
+}
+
+.stat-total {
+  color: #708599;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.35px;
 }
 
 .card-announcements {
@@ -605,7 +732,7 @@ i svg {
 
 
 /* =========================================
-   RESPONSIVE (Tablet y Mobile)
+  RESPONSIVE (Tablet y Mobile)
 ========================================= */
 
 /* --- TABLET (Pantallas menores a 1024px) --- */
