@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Intranet - Universidad Norbert Wiener</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+	<main class="main-content">
+
+		<header class="topbar">
+			<div class="search-container">
+				<i class="icon-search">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M9.5193 15.6152C7.81164 15.6152 6.36547 15.023 5.1808 13.8385C3.9963 12.6538 3.40405 11.2077 3.40405 9.5C3.40405 7.79233 3.9963 6.34617 5.1808 5.1615C6.36547 3.977 7.81164 3.38475 9.5193 3.38475C11.227 3.38475 12.6731 3.977 13.8578 5.1615C15.0423 6.34617 15.6346 7.79233 15.6346 9.5C15.6346 10.2142 15.5147 10.8963 15.2751 11.5463C15.0352 12.1962 14.7153 12.7616 14.3153 13.2423L20.0693 18.9962C20.2078 19.1346 20.2786 19.3086 20.2818 19.5182C20.285 19.7279 20.2141 19.9052 20.0693 20.05C19.9245 20.1948 19.7488 20.2673 19.5423 20.2673C19.336 20.2673 19.1604 20.1948 19.0156 20.05L13.2616 14.296C12.7616 14.7088 12.1866 15.0319 11.5366 15.2653C10.8866 15.4986 10.2141 15.6152 9.5193 15.6152ZM9.5193 14.1155C10.8078 14.1155 11.8991 13.6683 12.7933 12.774C13.6876 11.8798 14.1348 10.7885 14.1348 9.5C14.1348 8.2115 13.6876 7.12017 12.7933 6.226C11.8991 5.33167 10.8078 4.8845 9.5193 4.8845C8.2308 4.8845 7.13947 5.33167 6.2453 6.226C5.35097 7.12017 4.9038 8.2115 4.9038 9.5C4.9038 10.7885 5.35097 11.8798 6.2453 12.774C7.13947 13.6683 8.2308 14.1155 9.5193 14.1155Z"
+							fill="#465462" />
+					</svg>
+				</i>
+				<input type="text" class="search-input" placeholder="Busca cursos, trámites o documentos...">
+			</div>
+
+			<div class="topbar-actions">
+				<button class="action-btn">
+					<i class="icon-mail">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M4.30775 19.5C3.80258 19.5 3.375 19.325 3.025 18.975C2.675 18.625 2.5 18.1974 2.5 17.6923V6.30775C2.5 5.80258 2.675 5.375 3.025 5.025C3.375 4.675 3.80258 4.5 4.30775 4.5H19.6923C20.1974 4.5 20.625 4.675 20.975 5.025C21.325 5.375 21.5 5.80258 21.5 6.30775V17.6923C21.5 18.1974 21.325 18.625 20.975 18.975C20.625 19.325 20.1974 19.5 19.6923 19.5H4.30775ZM20 7.44225L12.4865 12.252C12.4097 12.2955 12.3302 12.3298 12.248 12.3548C12.166 12.3798 12.0833 12.3923 12 12.3923C11.9167 12.3923 11.834 12.3798 11.752 12.3548C11.6698 12.3298 11.5903 12.2955 11.5135 12.252L4 7.44225V17.6923C4 17.7821 4.02883 17.8558 4.0865 17.9135C4.14417 17.9712 4.21792 18 4.30775 18H19.6923C19.7821 18 19.8558 17.9712 19.9135 17.9135C19.9712 17.8558 20 17.7821 20 17.6923V7.44225ZM12 11L19.8463 6H4.15375L12 11ZM4 7.673V6.52975V6.5595V6.52775V7.673Z"
+								fill="#465462" />
+						</svg>
+					</i>
+				</button>
+
+				<button class="action-btn notification-btn">
+					<i class="icon-bell">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M20.7936 16.4944C20.2733 15.5981 19.4999 13.0622 19.4999 9.75C19.4999 7.76088 18.7097 5.85322 17.3032 4.4467C15.8967 3.04018 13.989 2.25 11.9999 2.25C10.0108 2.25 8.10311 3.04018 6.69659 4.4467C5.29007 5.85322 4.49989 7.76088 4.49989 9.75C4.49989 13.0631 3.72551 15.5981 3.2052 16.4944C3.07233 16.7222 3.00189 16.9811 3.00099 17.2449C3.00008 17.5086 3.06874 17.768 3.20005 17.9967C3.33135 18.2255 3.52065 18.4156 3.74886 18.5478C3.97708 18.6801 4.23613 18.7498 4.49989 18.75H8.32583C8.49886 19.5967 8.95904 20.3577 9.62852 20.9042C10.298 21.4507 11.1357 21.7492 11.9999 21.7492C12.8641 21.7492 13.7018 21.4507 14.3713 20.9042C15.0407 20.3577 15.5009 19.5967 15.674 18.75H19.4999C19.7636 18.7496 20.0225 18.6798 20.2506 18.5475C20.4787 18.4151 20.6678 18.225 20.799 17.9963C20.9302 17.7676 20.9988 17.5083 20.9979 17.2446C20.9969 16.9809 20.9265 16.7222 20.7936 16.4944ZM4.49989 17.25C5.22177 16.0087 5.99989 13.1325 5.99989 9.75C5.99989 8.1587 6.63203 6.63258 7.75725 5.50736C8.88247 4.38214 10.4086 3.75 11.9999 3.75C13.5912 3.75 15.1173 4.38214 16.2425 5.50736C17.3678 6.63258 17.9999 8.1587 17.9999 9.75C17.9999 13.1297 18.7761 16.0059 19.4999 17.25H4.49989Z"
+								fill="#465462" />
+						</svg>
+					</i>
+					<span class="notification-badge">2</span>
+				</button>
+
+				<span class="campus-tag">
+					<div class="tag-circle"></div>
+					Campus Lima Centro
+				</span>
+			</div>
+		</header>
+
+		<section class="profile-header">
+			<div class="profile-info">
+				<img src="/img/avatar.jpg" alt="Avatar Stephanie" class="user-avatar-large">
+				<div class="user-details">
+					<h1 class="user-greeting">Hola, Stephanie 👋</h1>
+					<p class="user-career">Medicina General</p>
+				</div>
+			</div>
+			<div class="profile-actions">
+				<a href="#" class="btn-outline-pill">Actualización de datos</a>
+				<a href="#" class="btn-outline-pill">Encuesta a Docentes</a>
+				<a href="#" class="btn-outline-pill">Ruta de nuevos alumnos</a>
+			</div>
+		</section>
+
+		<section class="hero-banner">
+			<div class="hero-content">
+				<div class="hero-tags">
+					<span class="tag-period">2026-1</span>
+					<span class="tag-status">Proceso Activo</span>
+				</div>
+				<h2 class="hero-title">Matrícula Regular 2026-2</h2>
+				<p class="hero-description">El proceso de matrícula ya está disponible. Asegura tus horarios y cursos favoritos
+					antes del cierre.</p>
+			</div>
+			<div class="hero-action">
+				<button class="btn btn-white">
+					Matricularme ahora
+					<i class="icon-arrow-right">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M16.627 12.75H5.25C5.03717 12.75 4.859 12.6782 4.7155 12.5345C4.57183 12.391 4.5 12.2128 4.5 12C4.5 11.7872 4.57183 11.609 4.7155 11.4655C4.859 11.3218 5.03717 11.25 5.25 11.25H16.627L11.4577 6.08076C11.3091 5.93209 11.2357 5.75809 11.2375 5.55876C11.2395 5.35942 11.318 5.18217 11.473 5.02701C11.6282 4.88217 11.8038 4.80717 12 4.80201C12.1962 4.79684 12.3718 4.87184 12.527 5.02701L18.8673 11.3673C18.9609 11.4609 19.0269 11.5597 19.0652 11.6635C19.1038 11.7673 19.123 11.8795 19.123 12C19.123 12.1205 19.1038 12.2327 19.0652 12.3365C19.0269 12.4403 18.9609 12.5391 18.8673 12.6328L12.527 18.973C12.3885 19.1115 12.217 19.1823 12.0125 19.1855C11.808 19.1887 11.6282 19.1178 11.473 18.973C11.318 18.8178 11.2405 18.6397 11.2405 18.4385C11.2405 18.2372 11.318 18.0589 11.473 17.9038L16.627 12.75Z"
+								fill="#0F848F" />
+						</svg>
+					</i>
+				</button>
+			</div>
+		</section>
+
+		<div class="dashboard-grid">
+
+			<article class="card card-next-class">
+				<p class="card-subtitle">PRÓXIMA CLASE</p>
+				<div class="class-time">
+					<span class="time-big">10:00</span>
+					<span class="time-ampm">AM</span>
+				</div>
+				<h3 class="class-name">Estructura y Función del Cuerpo Humano</h3>
+				<p class="class-location">
+					<i class="icon-pin">[SVG Pin Mapa]</i>
+					Aula T101, P.4 - Local 1 <span class="text-light">(Presencial)</span>
+				</p>
+				<button class="btn btn-outline-full">
+					Ver Horario Completo
+					<i class="icon-arrow-right">[SVG Flecha]</i>
+				</button>
+			</article>
+
+			<article class="card card-quick-access">
+				<h3 class="card-title">Accesos Rápidos</h3>
+				<div class="quick-access-grid">
+					<a href="#" class="access-item">
+						<div class="access-icon"><i class="icon-book">[SVG Biblioteca]</i></div>
+						<span>Biblioteca</span>
+					</a>
+					<a href="#" class="access-item">
+						<div class="access-icon"><i class="icon-canvas">[SVG Canvas]</i></div>
+						<span>Canvas</span>
+					</a>
+					<a href="#" class="access-item">
+						<div class="access-icon"><i class="icon-heart">[SVG Bienestar]</i></div>
+						<span>Bienestar</span>
+					</a>
+					<a href="#" class="access-item">
+						<div class="access-icon"><i class="icon-briefcase">[SVG Empleabilidad]</i></div>
+						<span>Empleabilidad</span>
+					</a>
+					<a href="#" class="access-item">
+						<div class="access-icon"><i class="icon-headset">[SVG Contacto]</i></div>
+						<span>Contacto</span>
+					</a>
+				</div>
+			</article>
+
+			<article class="card card-procedures">
+				<div class="card-header-flex">
+					<h3 class="card-title">
+						<i class="icon-document">[SVG Documento]</i> Trámites en curso
+					</h3>
+					<a href="#" class="link-action">Ver más</a>
+				</div>
+				<div class="procedures-list">
+					<div class="procedure-item">
+						<span class="procedure-name">Rectificación de Notas</span>
+						<span class="badge badge-review">Por revisar</span>
+					</div>
+					<div class="procedure-item">
+						<span class="procedure-name">Constancia de Ingreso</span>
+						<span class="badge badge-completed">Completado</span>
+					</div>
+					<div class="procedure-item">
+						<span class="procedure-name">Cambio de modalidad</span>
+						<span class="badge badge-cancelled">Anulado</span>
+					</div>
+				</div>
+				<button class="btn btn-primary btn-add">
+					<i class="icon-plus">[SVG Más]</i> Nuevo
+				</button>
+			</article>
+
+			<article class="card card-progress">
+				<h3 class="card-title">Progreso Académico</h3>
+				<div class="progress-bar-container">
+					<div class="progress-header">
+						<span>Avance de carrera</span>
+						<span class="progress-percentage">62%</span>
+					</div>
+					<div class="progress-track">
+						<div class="progress-fill" style="width: 62%;"></div>
+					</div>
+				</div>
+				<div class="progress-stats-grid">
+					<div class="stat-box">
+						<p class="stat-label">Promedio Ponderado</p>
+						<p class="stat-value">16.45</p>
+						<p class="stat-trend trend-up">
+							<i class="icon-trend-up">[SVG Flecha Arriba]</i> +0.5 vs ciclo anterior
+						</p>
+					</div>
+					<div class="stat-box">
+						<p class="stat-label">Créditos Aprobados</p>
+						<p class="stat-value">114 <span class="stat-total">/198</span></p>
+						<p class="stat-note">Total acumulado hasta 2025-2</p>
+					</div>
+				</div>
+			</article>
+
+			<article class="card card-obligations">
+				<div class="card-header-flex">
+					<h3 class="card-title">Obligaciones</h3>
+					<a href="#" class="link-action">Ver detalle <i class="icon-arrow-right">[SVG Flecha]</i></a>
+				</div>
+				<div class="last-payment">
+					<div class="payment-info">
+						<span class="payment-amount">Pago anterior: S/ 1,250.00</span>
+						<i class="icon-check-circle">[SVG Check]</i>
+					</div>
+					<p class="payment-desc">CUOTA-3-PRE GRADO 2026-1</p>
+				</div>
+				<div class="pending-debt">
+					<p class="debt-label">Deuda pendiente <span class="debt-warning"><i class="icon-dot-red">[SVG Punto Rojo]</i>
+							Próximo a vencer</span></p>
+					<p class="debt-amount">S/1,250</p>
+				</div>
+				<button class="btn btn-black btn-full-width">Pagar ahora</button>
+			</article>
+
+			<article class="card card-announcements">
+				<div class="card-header-flex">
+					<h3 class="card-title">Últimos anuncios</h3>
+					<a href="#" class="link-action">Ver todos <i class="icon-arrow-right">[SVG Flecha]</i></a>
+				</div>
+				<div class="announcements-grid">
+					<div class="news-item">
+						<img src="news1.jpg" alt="Noticia 1" class="news-img">
+						<div class="news-content">
+							<h4 class="news-title">Carreras para gente que trabaja: ¿cuáles son los requisitos para postular?</h4>
+							<p class="news-time">Hace 31 min</p>
+						</div>
+					</div>
+					<div class="news-item">
+						<img src="news2.jpg" alt="Noticia 2" class="news-img">
+						<div class="news-content">
+							<h4 class="news-title">Estas son las carreras de ingeniería en el nuevo campus Lima Norte</h4>
+							<p class="news-time">Hace 6 h</p>
+						</div>
+					</div>
+					<div class="news-item">
+						<img src="news3.jpg" alt="Noticia 3" class="news-img">
+						<div class="news-content">
+							<h4 class="news-title">Esta es la tasa de empleabilidad de Medicina Humana en el Perú: una carrera
+								asegurada</h4>
+							<p class="news-time">Hace 1 día</p>
+						</div>
+					</div>
+				</div>
+			</article>
+
+		</div>
+		<footer class="main-footer">
+			<p>© 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
+		</footer>
+
+	</main>
+
+</body>
+
+</html>
