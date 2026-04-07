@@ -46,8 +46,8 @@ i svg {
   border: none;
   border-radius: 6px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -116,21 +116,21 @@ i svg {
 .btn-full-width {
   width: 100%;
   height: 52px;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 400;
   letter-spacing: 0.1px;
 }
 
 .btn-add {
   margin-right: auto;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.1px;
 }
 
 .link-action {
   color: #0F848F;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 15px;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -140,9 +140,7 @@ i svg {
   color: #222222;
 }
 
-/* =========================================
-  LAYOUT PRINCIPAL
-========================================= */
+/* LAYOUT PRINCIPAL */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -153,9 +151,7 @@ i svg {
   width: 100%;
 }
 
-/* =========================================
-  TOPBAR
-========================================= */
+/* TOPBAR */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -277,9 +273,7 @@ i svg {
   border-radius: 50%;
 }
 
-/* =========================================
-  CABECERA DE PERFIL
-========================================= */
+/* CABECERA DE PERFIL */
 .profile-header {
   display: flex;
   justify-content: space-between;
@@ -316,9 +310,7 @@ i svg {
   gap: 12px;
 }
 
-/* =========================================
-  HERO BANNER (Matrícula)
-========================================= */
+/* HERO BANNER (Matrícula) */
 .hero-banner {
   display: flex;
   justify-content: space-between;
@@ -367,14 +359,31 @@ i svg {
   opacity: 0.9;
 }
 
-/* =========================================
-  GRID DASHBOARD Y TARJETAS
-========================================= */
+/* GRID DASHBOARD Y TARJETAS */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  /* Rellena los huecos vacíos automáticamente */
+  grid-auto-flow: dense;
 }
+
+/* Clases para la interacción D&D */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card.dragging {
+  opacity: 0.4;
+  border: 2px dashed #0F848F;
+  transform: scale(0.98);
+}
+
+.card.drag-over {
+  border-top: 4px solid #0F848F;
+  /* Indicador visual de dónde va a caer */
+}
+/* Fin clases drag & drop */
 
 .card {
   background-color: #FFFFFF;
@@ -404,12 +413,11 @@ i svg {
   margin-bottom: 0;
 }
 
-/* Tarjetas de 1fr (1 columna) */
-.card-next-class, 
-.card-quick-access, 
-.card-procedures, 
+.card-next-class,
+.card-quick-access,
+.card-procedures,
 .card-obligations {
-    grid-column: span 1; 
+  grid-column: span 1;
 }
 
 .card-subtitle {
@@ -430,14 +438,14 @@ i svg {
 .time-big {
   font-family: 'Lato', sans-serif;
   font-size: 48px;
-  font-weight: 900;
+  font-weight: 700;
   color: #222222;
   line-height: 1;
 }
 
 .time-ampm {
-  font-weight: 700;
-  color: #5B6E80;
+  font-weight: 400;
+  color: #222;
   font-size: 20px;
 }
 
@@ -456,7 +464,7 @@ i svg {
 }
 
 .text-light {
-  color: #C6CFD7;
+  color: #0F848F;
 }
 
 .quick-access-grid {
@@ -498,6 +506,7 @@ i svg {
 .access-item:hover {
   color: #0F848F;
 }
+
 .procedures-list {
   display: flex;
   flex-direction: column;
@@ -528,7 +537,7 @@ i svg {
   padding: 4px 12px;
   border-radius: 16px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   border: 1px solid transparent;
 }
 
@@ -540,14 +549,12 @@ i svg {
 
 .badge-completed {
   color: #2E7D32;
-  /* Verde éxito genérico */
   border-color: #2E7D32;
   background-color: #E8F5E9;
 }
 
 .badge-cancelled {
   color: #D32F2F;
-  /* Rojo error genérico */
   border-color: #D32F2F;
   background-color: #FFEBEE;
 }
@@ -560,7 +567,7 @@ i svg {
 }
 
 .card-obligations .card-header-flex {
-  margin-bottom: 16px ;
+  margin-bottom: 16px;
 }
 
 .deuda-pendiente {
@@ -592,7 +599,8 @@ i svg {
   font-style: normal;
   font-weight: 500;
   color: #5B6E80;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
+  /* 150% */
   letter-spacing: 0.1px;
 }
 
@@ -636,7 +644,7 @@ i svg {
   line-height: 48px;
   letter-spacing: 0.1px;
   color: #222;
-  }
+}
 
 /* Tarjeta: Progreso Académico */
 .card-progress {
@@ -665,7 +673,6 @@ i svg {
   width: 100%;
   height: 12px;
   background-color: #E6F3F4;
-  /* Track con color marca claro */
   border-radius: 16px;
   overflow: hidden;
 }
@@ -727,69 +734,64 @@ i svg {
 
 .card-announcements {
   grid-column: span 3;
-  order: 99;
 }
 
-/* Contenedor Grid Desktop (3 columnas) */
+/* Contenedor Anuncios (3 columnas) */
 .announcements-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-/* Cada noticia: Layout horizontal (imagen a la izq, texto a la der) */
 .news-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    cursor: pointer;
-    padding: 8px; /* Espacio para que el hover respire */
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
 .news-item:hover {
-    background-color: #F4F6F8;
+  background-color: #F4F6F8;
 }
 
 /* Imagen de la noticia */
 .news-img {
-    width: 120px; /* Ancho fijo para mantener la proporción de la grilla */
-    height: 80px; /* Alto fijo para uniformidad */
-    object-fit: cover; /* Evita que la imagen se deforme */
-    border-radius: 8px;
-    flex-shrink: 0; /* Crítico: evita que flexbox aplaste la imagen si el texto es muy largo */
-    border: 1px solid #C6CFD7;
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid #C6CFD7;
 }
 
-/* Contenedor del texto */
 .news-content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* Título */
 .news-title {
-    font-family: 'Lato', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #222222;
-    line-height: 1.4;
-    transition: color 0.3s ease;
-    margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #222222;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+  margin: 0;
 }
 
 .news-item:hover .news-title {
-    color: #0F848F; /* El verde de marca en hover */
+  color: #0F848F;
 }
 
-/* Tiempo de publicación */
 .news-time {
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    color: #5B6E80;
-    margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #5B6E80;
+  margin: 0;
 }
 
 
@@ -799,96 +801,95 @@ i svg {
 
 /* --- TABLET (Pantallas menores a 1024px) --- */
 @media (max-width: 1024px) {
-    .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr); /* Pasamos a 2 columnas */
-    }
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    /* Redistribución en Tablet */
-    .card-next-class, 
-    .card-quick-access, 
-    .card-procedures, 
-    .card-obligations {
-        grid-column: span 1;
-    }
+  /* Redistribución en Tablet */
+  .card-next-class,
+  .card-quick-access,
+  .card-procedures,
+  .card-obligations {
+    grid-column: span 1;
+  }
 
-    .card-progress {
-        grid-column: span 2; /* Ocupa las 2 columnas disponibles */
-    }
+  .card-progress {
+    grid-column: span 2;
+  }
 
-    .card-announcements {
-        grid-column: span 2; /* Ocupa las 2 columnas */
-    }
+  .card-announcements {
+    grid-column: span 2;
+  }
 
-    .announcements-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 noticias por fila en lugar de 3 */
-    }
-    
+  .announcements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
 }
 
 /* --- MOBILE (Pantallas menores a 768px) --- */
 @media (max-width: 768px) {
-    .main-content {
-        padding: 16px; /* Menos espacio en los bordes para móvil */
-    }
+  .main-content {
+    padding: 16px;
+  }
 
-    .dashboard-grid {
-        grid-template-columns: 1fr; /* Una sola columna para móvil */
-    }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
 
-    /* Todas las tarjetas ocupan el ancho total */
-    .card-next-class, 
-    .card-quick-access, 
-    .card-procedures, 
-    .card-progress, 
-    .card-obligations, 
-    .card-announcements {
-        grid-column: span 1;
-    }
+  .card-next-class,
+  .card-quick-access,
+  .card-procedures,
+  .card-progress,
+  .card-obligations,
+  .card-announcements {
+    grid-column: span 1;
+  }
 
-    .topbar {
-        flex-direction: column;
-        gap: 16px;
-    }
+  .topbar {
+    flex-direction: column;
+    gap: 16px;
+  }
 
-    .topbar-actions {
-        width: 100%;
-        justify-content: space-between;
-    }
+  .topbar-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
 
-    .profile-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 
-    .profile-actions {
-        flex-wrap: wrap;
-    }
+  .profile-actions {
+    flex-wrap: wrap;
+  }
 
-    .hero-banner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-        padding: 24px;
-        min-height: auto; /* Quitamos el alto fijo en móvil para que fluya con el texto */
-    }
+  .hero-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px;
+    min-height: auto;
+  }
 
-    .progress-stats-grid {
-        grid-template-columns: 1fr; /* Estadísticas una debajo de otra */
-    }
+  .progress-stats-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .announcements-grid {
-        grid-template-columns: 1fr; /* Noticias una debajo de otra */
-        gap: 16px;
-    }
+  .announcements-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 
-    .news-item {
-        align-items: center; /* Alinea verticalmente al centro en móvil para mejor lectura */
-        padding: 0; /* Quitamos el padding extra en móvil para ahorrar espacio */
-    }
+  .news-item {
+    align-items: center;
+    padding: 0;
+  }
 
-    .news-img {
-        width: 100px; /* Hacemos la imagen un poquito más pequeña en móvil */
-        height: 72px;
-    }
+  .news-img {
+    width: 100px;
+    height: 72px;
+  }
 }

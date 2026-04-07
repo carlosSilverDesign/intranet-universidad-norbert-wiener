@@ -17,7 +17,7 @@
 
 	<main class="main-content">
 
-		<header class="topbar">
+		<!-- <header class="topbar">
 			<div class="search-container">
 				<i class="icon-search">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -56,7 +56,7 @@
 					Campus Lima Centro
 				</span>
 			</div>
-		</header>
+		</header> -->
 
 		<section class="profile-header">
 			<div class="profile-info">
@@ -96,6 +96,18 @@
 				</button>
 			</div>
 		</section>
+
+
+		<!-- Inicio de { D A S H B O A R D } editable 🤙 -->
+
+		<div style="display: flex; justify-content: space-between; align-items: center;">
+			<h2 style="font-family: 'Lato', sans-serif; color: #222; font-size: 20px;">Mi Dashboard</h2>
+			<button id="toggleDragBtn" class="btn-outline-pill" style="cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 10px 20px;">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+				<span id="toggleDragText">Modo Edición: Inactivo</span>
+			</button>
+		</div>
+
 
 		<div class="dashboard-grid">
 
@@ -370,7 +382,7 @@
 				</div>
 				<button class="btn btn-black btn-full-width">Pagar ahora</button>
 			</article>
-			
+
 			<article class="card card-announcements">
 				<div class="card-header-flex">
 					<h3 class="card-title">Últimos anuncios</h3>
@@ -416,6 +428,9 @@
 		</footer>
 
 	</main>
+
+	<script src="sortable.min.js"></script>
+	<script src="scripts.js"></script>
 
 </body>
 
