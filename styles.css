@@ -86,12 +86,12 @@ i svg {
 .btn-outline-pill {
   display: inline-block;
   padding: 8px 16px;
-  border: 1px solid #0F848F;
+  border: 1px solid #09A5B1;
   border-radius: 64px;
   color: #0F848F;
   font-weight: 500;
   font-size: 12px;
-  background-color: transparent;
+  background-color: #fff;
   transition: all 0.3s ease;
 }
 
@@ -260,19 +260,19 @@ i svg {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   color: #278B52;
   background-color: #E7F8EF;
-  /* Fondo verde muy claro */
-  padding: 8px 16px;
+  padding: 8px 12px;
   border-radius: 64px;
   border: 1px solid rgba(51, 181, 107, 0.30);
+  line-height: 16px;
 }
 
 .tag-circle {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background-color: #33B56B;
   border-radius: 50%;
 }
@@ -730,6 +730,68 @@ i svg {
   order: 99;
 }
 
+/* Contenedor Grid Desktop (3 columnas) */
+.announcements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* Cada noticia: Layout horizontal (imagen a la izq, texto a la der) */
+.news-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    cursor: pointer;
+    padding: 8px; /* Espacio para que el hover respire */
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.news-item:hover {
+    background-color: #F4F6F8;
+}
+
+/* Imagen de la noticia */
+.news-img {
+    width: 120px; /* Ancho fijo para mantener la proporción de la grilla */
+    height: 80px; /* Alto fijo para uniformidad */
+    object-fit: cover; /* Evita que la imagen se deforme */
+    border-radius: 8px;
+    flex-shrink: 0; /* Crítico: evita que flexbox aplaste la imagen si el texto es muy largo */
+    border: 1px solid #C6CFD7;
+}
+
+/* Contenedor del texto */
+.news-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Título */
+.news-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #222222;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+    margin: 0;
+}
+
+.news-item:hover .news-title {
+    color: #0F848F; /* El verde de marca en hover */
+}
+
+/* Tiempo de publicación */
+.news-time {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #5B6E80;
+    margin: 0;
+}
+
 
 /* =========================================
   RESPONSIVE (Tablet y Mobile)
@@ -760,6 +822,7 @@ i svg {
     .announcements-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 noticias por fila en lugar de 3 */
     }
+    
 }
 
 /* --- MOBILE (Pantallas menores a 768px) --- */
@@ -816,5 +879,16 @@ i svg {
 
     .announcements-grid {
         grid-template-columns: 1fr; /* Noticias una debajo de otra */
+        gap: 16px;
+    }
+
+    .news-item {
+        align-items: center; /* Alinea verticalmente al centro en móvil para mejor lectura */
+        padding: 0; /* Quitamos el padding extra en móvil para ahorrar espacio */
+    }
+
+    .news-img {
+        width: 100px; /* Hacemos la imagen un poquito más pequeña en móvil */
+        height: 72px;
     }
 }
