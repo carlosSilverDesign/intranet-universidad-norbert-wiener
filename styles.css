@@ -315,7 +315,7 @@ i svg {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #0F848F;
+  background-color: #167474;
   border-radius: 16px;
   padding: 32px 40px;
   color: #FFFFFF;
@@ -863,7 +863,20 @@ i svg {
   }
 
   .profile-actions {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 8px; /* Para acomodar el scrollbar si es visible temporalmente */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+  }
+
+  .profile-actions::-webkit-scrollbar {
+    display: none; /* Ocultar scrollbar en Chrome/Safari/Edge */
+  }
+
+  .profile-actions > * {
+    flex-shrink: 0; /* Evita que los botones se encojan */
   }
 
   .hero-banner {
