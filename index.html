@@ -102,8 +102,15 @@
 
 		<div style="display: flex; justify-content: space-between; align-items: center;">
 			<h2 style="font-family: 'Lato', sans-serif; color: #222; font-size: 20px;">Mi Dashboard</h2>
-			<button id="toggleDragBtn" class="btn-outline-pill" style="cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 10px 20px;">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+			<button id="toggleDragBtn" class="btn-outline-pill"
+				style="cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 10px 20px;">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<rect x="3" y="3" width="7" height="7"></rect>
+					<rect x="14" y="3" width="7" height="7"></rect>
+					<rect x="14" y="14" width="7" height="7"></rect>
+					<rect x="3" y="14" width="7" height="7"></rect>
+				</svg>
 				<span id="toggleDragText">Modo Edición: Inactivo</span>
 			</button>
 		</div>
@@ -313,7 +320,9 @@
 			</article>
 
 			<article class="card card-progress">
-				<h3 class="card-title">Progreso Académico</h3>
+					<h3 class="card-title">Progreso Académico</h3>
+					<div class="welcome-image" id="lottie-welcome-container">
+				</div>
 				<div class="progress-bar-container">
 					<div class="progress-header">
 						<span>Avance de carrera</span>
@@ -429,6 +438,7 @@
 
 	</main>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 	<script src="sortable.min.js"></script>
 	<script src="scripts.js"></script>
 

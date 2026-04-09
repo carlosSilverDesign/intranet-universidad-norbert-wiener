@@ -90,6 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Inicialización de Lottie
+    const lottieContainer = document.getElementById('lottie-welcome-container');
+
+    if (lottieContainer) {
+        lottie.loadAnimation({
+            container: lottieContainer, // El div donde se va a renderizar
+            renderer: 'svg',            // Renderizado en SVG para máxima calidad
+            loop: true,                 // ¿Se repite infinitamente?
+            autoplay: true,             // ¿Inicia automáticamente?
+            path: '/json/eye-progress.json'      // La ruta a tu archivo JSON exportado
+        });
+    }
+
 
 });
 
