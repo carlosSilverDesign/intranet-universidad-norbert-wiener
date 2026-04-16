@@ -15,55 +15,44 @@
 
   <main class="main-container">
 
-    <section class="student-info-card">
-      <div class="student-profile-side">
-        <div class="avatar-container">
-          <img src="https://via.placeholder.com/100" alt="Foto del estudiante" class="student-avatar">
-        </div>
-        <button type="button" class="btn-update-photo">
-          <i class="icon-camera">[SVG]</i> Actualizar foto
-        </button>
-      </div>
-
-      <div class="student-data-grid">
-        <div class="data-item">
-          <span class="data-label">Código</span>
-          <strong class="data-value">2023200270</strong>
-        </div>
-        <div class="data-item">
-          <span class="data-label">Facultad</span>
-          <strong class="data-value">Ciencias de la Salud</strong>
-        </div>
-        <div class="data-item">
-          <span class="data-label">Carrera</span>
-          <strong class="data-value">Medicina Humana</strong>
-        </div>
-        <div class="data-item">
-          <span class="data-label">Modalidad</span>
-          <strong class="data-value">Presencial</strong>
-        </div>
-      </div>
-    </section>
+    
 
     <section class="form-main-card">
+
+      <div class="student-header-wrapper">
+        <div class="student-profile-side">
+          <div class="avatar-container">
+            <img src="https://via.placeholder.com/128" alt="Foto del estudiante" class="student-avatar">
+          </div>
+          <button type="button" class="btn-outline-primary">Actualizar foto</button>
+        </div>
+
+        <div class="student-data-column">
+          <h2 class="student-name"><strong>Stephanie Sofia</strong> Yucra Llanos</h2>
+          <span class="student-info-item">Código: 2023200270</span>
+          <span class="student-info-item">Carrera: Medicina Humana</span>
+          <span class="student-info-item">Modalidad: Presencial</span>
+        </div>
+      </div>
+
+      <hr class="divider">
 
       <header class="form-header">
         <div class="header-titles">
           <h1 class="main-title">Actualización de datos</h1>
-          <p class="main-description">Mantén tus datos actualizados para recibir información importante sobre tu
-            carrera.</p>
+          <p class="main-description">Mantén tus datos actualizados para recibir información importante.</p>
         </div>
         <div class="header-meta">
           <span class="last-update">Última actualización: 12/04/2026</span>
         </div>
       </header>
 
-      <hr class="divider">
+
 
       <div class="update-form">
 
-        <fieldset class="form-section">
-          <legend class="section-title">Datos de Contacto</legend>
+        <div class="form-section">
+          <h2 class="section-title">Datos de Contacto</h2>
           <div class="input-grid-3">
 
             <div class="inline-field" data-state="view">
@@ -109,10 +98,10 @@
             </div>
 
           </div>
-        </fieldset>
+        </div>
 
-        <fieldset class="form-section">
-          <legend class="section-title">Datos Personales</legend>
+        <div class="form-section">
+          <h2 class="section-title">Datos Personales</h2>
 
           <div class="alert-box">
             <i class="icon-info">[i]</i>
@@ -137,9 +126,9 @@
               <input type="date" class="form-control locked" value="2002-05-15" readonly disabled>
             </div>
           </div>
-        </fieldset>
+        </div>
 
-        <fieldset class="form-section">
+        <div class="form-section">
           <div class="input-grid-2">
 
             <div class="inline-field" data-state="view">
@@ -193,10 +182,10 @@
             </div>
 
           </div>
-        </fieldset>
+        </div>
 
-        <fieldset class="form-section">
-          <legend class="section-title">Variable étnica y doble nacionalidad</legend>
+        <div class="form-section">
+          <h2 class="section-title">Variable étnica y doble nacionalidad</h2>
           <div class="input-grid-3">
 
             <div class="inline-field" data-state="view">
@@ -254,9 +243,9 @@
             </div>
 
           </div>
-        </fieldset>
+        </div>
 
-        <fieldset class="form-section">
+        <div class="form-section">
           <div class="inline-field span-full" data-state="view">
             <div class="inline-header">
               <div class="inline-info w-50">
@@ -275,10 +264,10 @@
               <button type="button" class="btn btn-primary btn-save">Guardar</button>
             </div>
           </div>
-        </fieldset>
+        </div>
 
-        <fieldset class="form-section">
-          <legend class="section-title">Registro de discapacidad</legend>
+        <div class="form-section">
+          <h2 class="section-title">Registro de discapacidad</h2>
           <div class="input-grid-2">
 
             <div class="inline-field" data-state="view">
@@ -314,7 +303,7 @@
             </div>
 
           </div>
-        </fieldset>
+        </div>
 
       </div>
     </section>

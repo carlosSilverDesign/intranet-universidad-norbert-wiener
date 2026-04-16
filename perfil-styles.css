@@ -65,14 +65,35 @@ h6 {
   width: 100%;
 }
 
-.student-info-card {
-  background-color: #FFFFFF;
-  border: 1px solid #C6CFD7;
-  border-radius: 16px;
-  padding: 32px;
+.student-header-wrapper {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 32px;
+  margin-bottom: 1.5rem;
+}
+
+.student-data-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.student-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  color: #222222;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.student-name strong {
+  font-weight: 700;
+}
+
+.student-info-item {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #404040;
 }
 
 .form-main-card {
@@ -94,8 +115,8 @@ h6 {
 }
 
 .avatar-container {
-  width: 100px;
-  height: 100px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
   border: 1px solid #C6CFD7;
   overflow: hidden;
@@ -107,41 +128,25 @@ h6 {
   object-fit: cover;
 }
 
-.btn-update-photo {
-  background: transparent;
-  border: none;
+.btn-outline-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
   color: #0F848F;
-  font-weight: 700;
+  border: 1px solid #0F848F;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
   font-size: 14px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  transition: all 0.3s ease;
   margin-top: 16px;
 }
 
-.student-data-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  width: 100%;
-}
-
-.data-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.data-label {
-  font-size: 14px;
-  color: #5B6E80;
-}
-
-.data-value {
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  color: #222222;
+.btn-outline-primary:hover {
+  background-color: #E6F3F4;
 }
 
 /* Cabecera del form */
@@ -150,7 +155,7 @@ h6 {
   justify-content: space-between;
   align-items: flex-start;
   gap: 24px;
-  margin-bottom: 24px;
+  padding-bottom: 1rem;
 }
 
 .header-titles {
@@ -175,6 +180,7 @@ h6 {
   padding: 8px 16px;
   border-radius: 16px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .divider {
@@ -187,12 +193,13 @@ h6 {
 .update-form {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 1.5rem;
 }
 
 .form-section {
-  border: none;
-  padding: 0;
+  border: 1px solid #C6CFD7;
+  padding: 24px;
+  border-radius: 8px;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -200,27 +207,35 @@ h6 {
 }
 
 .section-title {
-  font-family: 'Lato', sans-serif;
-  font-size: 20px;
-  color: #222222;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #5B6E80;
   font-weight: 700;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   width: 100%;
   display: block;
 }
 
-.input-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  align-items: start;
+.input-grid-3,
+.input-grid-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: stretch;
 }
 
-.input-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  align-items: start;
+.input-grid-3>*,
+.input-grid-2>* {
+  border-bottom: 1px solid #E6E6E6;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.input-grid-3>*:last-child,
+.input-grid-2>*:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .span-2 {
@@ -388,7 +403,7 @@ h6 {
    RESPONSIVE
 ========================================= */
 @media (max-width: 1024px) {
-  .student-info-card {
+  .student-header-wrapper {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
@@ -397,10 +412,6 @@ h6 {
   .student-profile-side {
     flex-direction: row;
     gap: 24px;
-  }
-
-  .student-data-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .w-50 {
@@ -415,7 +426,6 @@ h6 {
     padding: 16px;
   }
 
-  .student-info-card,
   .form-main-card {
     padding: 24px 16px;
   }
@@ -424,10 +434,6 @@ h6 {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-  }
-
-  .student-data-grid {
-    grid-template-columns: 1fr;
   }
 
   .form-header {
@@ -439,10 +445,7 @@ h6 {
     align-self: flex-start;
   }
 
-  .input-grid-3,
-  .input-grid-2 {
-    grid-template-columns: 1fr;
-  }
+  /* Eliminados .input-grid-3 y .input-grid-2 de grid-template-columns porque ya son flex-column */
 
   /* Todo apilado */
   .span-2,
