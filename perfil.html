@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualización de Datos - Universidad Norbert Wiener</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="perfil-styles.css">
+</head>
+
+<body>
+
+  <main class="main-container">
+
+    <section class="student-info-card">
+      <div class="student-profile-side">
+        <div class="avatar-container">
+          <img src="https://via.placeholder.com/100" alt="Foto del estudiante" class="student-avatar">
+        </div>
+        <button type="button" class="btn-update-photo">
+          <i class="icon-camera">[SVG]</i> Actualizar foto
+        </button>
+      </div>
+
+      <div class="student-data-grid">
+        <div class="data-item">
+          <span class="data-label">Código</span>
+          <strong class="data-value">2023200270</strong>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Facultad</span>
+          <strong class="data-value">Ciencias de la Salud</strong>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Carrera</span>
+          <strong class="data-value">Medicina Humana</strong>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Modalidad</span>
+          <strong class="data-value">Presencial</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-main-card">
+
+      <header class="form-header">
+        <div class="header-titles">
+          <h1 class="main-title">Actualización de datos</h1>
+          <p class="main-description">Mantén tus datos actualizados para recibir información importante sobre tu
+            carrera.</p>
+        </div>
+        <div class="header-meta">
+          <span class="last-update">Última actualización: 12/04/2026</span>
+        </div>
+      </header>
+
+      <hr class="divider">
+
+      <div class="update-form">
+
+        <fieldset class="form-section">
+          <legend class="section-title">Datos de Contacto</legend>
+          <div class="input-grid-3">
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">Celular</label>
+                  <span class="field-value">987654321</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <input type="tel" class="form-control field-input" value="987654321">
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">Correo Electrónico</label>
+                  <span class="field-value">stephanie.jordano@gmail.com</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <input type="email" class="form-control field-input" value="stephanie.jordano@gmail.com">
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">Contacto de emergencia</label>
+                  <span class="field-value text-muted">Ingresar número</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <input type="tel" class="form-control field-input" placeholder="Número de celular">
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend class="section-title">Datos Personales</legend>
+
+          <div class="alert-box">
+            <i class="icon-info">[i]</i>
+            <p>Los datos sombreados no se pueden modificar, si necesitas cambiarlos debes acercarte a SAE.</p>
+          </div>
+
+          <div class="input-grid-2">
+            <div class="form-group">
+              <label class="form-label">Nombres</label>
+              <input type="text" class="form-control locked" value="Stephanie Jessenia" readonly disabled>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Apellidos</label>
+              <input type="text" class="form-control locked" value="Jordano Sancho" readonly disabled>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Documento de identidad</label>
+              <input type="text" class="form-control locked" value="76543210" readonly disabled>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Fecha de Nacimiento</label>
+              <input type="date" class="form-control locked" value="2002-05-15" readonly disabled>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <div class="input-grid-2">
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">Sexo</label>
+                  <span class="field-value">Femenino</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <select class="form-control select-control field-input">
+                  <option value="" disabled>Seleccionar</option>
+                  <option value="femenino" selected>Femenino</option>
+                  <option value="masculino">Masculino</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">Estado Civil</label>
+                  <span class="field-value">Soltera(o)</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <select class="form-control select-control field-input">
+                  <option value="" disabled>Seleccionar</option>
+                  <option value="soltero" selected>Soltera(o)</option>
+                  <option value="casado">Casada(o)</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+            <div class="inline-field span-2" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">Dirección</label>
+                  <span class="field-value">Av. Arequipa 440, Lima</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <input type="text" class="form-control field-input" value="Av. Arequipa 440, Lima">
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend class="section-title">Variable étnica y doble nacionalidad</legend>
+          <div class="input-grid-3">
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">Origen étnico</label>
+                  <span class="field-value text-muted">Seleccionar</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <select class="form-control select-control field-input">
+                  <option value="" disabled selected>Seleccionar</option>
+                  <option value="mestizo">Mestizo</option>
+                  <option value="quechua">Quechua</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">Lengua materna</label>
+                  <span class="field-value text-muted">Seleccionar</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <select class="form-control select-control field-input">
+                  <option value="" disabled selected>Seleccionar</option>
+                  <option value="castellano">Castellano</option>
+                  <option value="quechua">Quechua</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">¿Tienes doble Nacionalidad?</label>
+                  <span class="field-value text-muted">Seleccionar</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <select class="form-control select-control field-input">
+                  <option value="" disabled selected>Seleccionar</option>
+                  <option value="si">Sí</option>
+                  <option value="no">No</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <div class="inline-field span-full" data-state="view">
+            <div class="inline-header">
+              <div class="inline-info w-50">
+                <label class="form-label">¿Eres la primera persona de tu familia en cursar estudios superiores (técnicos
+                  o universitarios)?</label>
+                <span class="field-value text-muted">Seleccionar</span>
+              </div>
+              <button type="button" class="btn-toggle-edit">Editar</button>
+            </div>
+            <div class="inline-body w-50">
+              <select class="form-control select-control field-input">
+                <option value="" disabled selected>Seleccionar</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+              </select>
+              <button type="button" class="btn btn-primary btn-save">Guardar</button>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend class="section-title">Registro de discapacidad</legend>
+          <div class="input-grid-2">
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">¿Cuenta con alguna discapacidad?</label>
+                  <span class="field-value text-muted">Seleccionar</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <select class="form-control select-control field-input">
+                  <option value="" disabled selected>Seleccionar</option>
+                  <option value="si">Sí</option>
+                  <option value="no">No</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+            <div class="inline-field" data-state="view">
+              <div class="inline-header">
+                <div class="inline-info">
+                  <label class="form-label">Registro CONADIS</label>
+                  <span class="field-value text-muted">Ingresar registro</span>
+                </div>
+                <button type="button" class="btn-toggle-edit">Editar</button>
+              </div>
+              <div class="inline-body">
+                <input type="text" class="form-control field-input" placeholder="N° de registro">
+                <button type="button" class="btn btn-primary btn-save">Guardar</button>
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="perfil-scripts.js"></script>
+</body>
+
+</html>
