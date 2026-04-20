@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualización de foto</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="photo-update-styles.css">
+</head>
+
+<body>
+
+
+  <div class="photo-update-outer">
+    <!-- Header con flecha de regreso -->
+    <div class="photo-update-header">
+      <span class="back-icon">
+        <!-- SVG flecha aquí -->
+      </span>
+      <span class="back-text">Atrás</span>
+    </div>
+
+    <!-- Título y subtítulo -->
+    <div class="photo-update-title">Actualizar Foto</div>
+    <div class="photo-update-subtitle">Carga tu foto para validar si cumple con todos los requisitos</div>
+
+    <!-- Toolbar con botón desplegable -->
+    <div class="photo-update-toolbar">
+      <button id="toggle-req-btn" type="button">
+        Ver requisitos
+        <span class="dropdown-arrow">
+          <!-- SVG flecha abajo aquí -->
+        </span>
+      </button>
+    </div>
+
+    <!-- Bloque de requisitos (no flotante, empuja el contenido) -->
+    <div class="requirements-block" id="requirements-block" style="display:none;">
+      <h4>Requisitos</h4>
+      <div>Para que tu foto sea válida, debe tener las siguientes especificaciones requeridas por SUNEDU:</div>
+      <ul>
+        <li>Formato de la foto: jpg.</li>
+        <li>Peso de la foto: 30 a 50 kb.</li>
+        <li>Altura: 288 pixeles.</li>
+        <li>Ancho: 240 pixeles.</li>
+        <li>Resolución: 300 dpi.</li>
+        <li>Fondo de color blanco e imagen sin filtros.</li>
+        <li>Posición del rostro y hombros centrados.</li>
+      </ul>
+      <h4>¿Cómo debo tomarme la foto?</h4>
+      <ul>
+        <li>Sin accesorios: bufanda, gorras, lentes, entre otros.</li>
+        <li>Tipo DNI: rostro centrado a partir de los hombros.</li>
+        <li>Vestimenta formal y sin prendas blancas
+          <ul>
+            <li>Mujer: blusa y sastre</li>
+            <li>Hombre: camisa, corbata y saco</li>
+          </ul>
+        </li>
+      </ul>
+      <h4>Consideraciones</h4>
+      <div>La foto registrada o actualizada sirve para el trámite de emisión de carné universitario, certificado de estudios y fotocheck digital.</div>
+      <h4>Pasos a seguir:</h4>
+      <ol>
+        <li>Sube y validaremos automáticamente que tu foto cumpla con todas las especificaciones.</li>
+        <li>Recibe la conformidad u observaciones, una vez finalizada tu solicitud.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="photo-update-container">
+
+    <!-- Info superior -->
+    <div class="photo-update-info">
+      <div>Tamaño total: 0 kb / 50 kb</div>
+      <div class="right">Última Actualización: <strong>18/09/2025 - 18:30:17</strong></div>
+    </div>
+
+    <!-- Imagen y botón -->
+    <div class="photo-update-image-section">
+      <img class="photo-update-image" src="img/foto-ejemplo.jpg" alt="Foto de perfil">
+      <button type="button">Cambiar foto</button>
+    </div>
+
+    <!-- Mensaje informativo -->
+    <div class="photo-update-alert">
+      <span class="alert-icon">
+        <!-- SVG info aquí -->
+      </span>
+      Esta actualización será evaluada y aprobada por el departamento de Registros Académicos.
+    </div>
+  </div>
+
+  <script>
+    // Mostrar/ocultar requisitos (empuja el contenido)
+    const btn = document.getElementById('toggle-req-btn');
+    const block = document.getElementById('requirements-block');
+    const arrow = btn.querySelector('.dropdown-arrow');
+    let open = false;
+    btn.addEventListener('click', function() {
+      open = !open;
+      block.style.display = open ? 'block' : 'none';
+      btn.childNodes[0].nodeValue = open ? 'Ver menos' : 'Ver requisitos';
+      btn.appendChild(arrow);
+    });
+    // Por defecto oculto
+    block.style.display = 'none';
+  </script>
+</body>
+
+</html>

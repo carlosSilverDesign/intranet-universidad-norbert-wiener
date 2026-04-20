@@ -15,14 +15,14 @@
 
   <main class="main-container">
 
-    
+
 
     <section class="form-main-card">
 
       <div class="student-header-wrapper">
         <div class="student-profile-side">
           <div class="avatar-container">
-            <img src="https://via.placeholder.com/128" alt="Foto del estudiante" class="student-avatar">
+            <img src="/img/imagen-perfil.png" alt="Foto del estudiante" class="student-avatar">
           </div>
           <button type="button" class="btn-outline-primary">Actualizar foto</button>
         </div>
@@ -33,6 +33,7 @@
           <span class="student-info-item">Carrera: Medicina Humana</span>
           <span class="student-info-item">Modalidad: Presencial</span>
         </div>
+
       </div>
 
       <hr class="divider">
@@ -40,14 +41,23 @@
       <header class="form-header">
         <div class="header-titles">
           <h1 class="main-title">Actualización de datos</h1>
-          <p class="main-description">Mantén tus datos actualizados para recibir información importante.</p>
+          <p class="main-description">Edita y gestiona tus datos personales.</p>
         </div>
         <div class="header-meta">
           <span class="last-update">Última actualización: 12/04/2026</span>
         </div>
       </header>
 
-
+      <div class="tc-box">
+        <p>Para editar, necesitamos que primero revises los <b>Términos de Tratamientos de Datos Personales</b>.</p>
+        <i class="icon-info">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M14.9497 12.0001C14.9497 11.8668 14.9289 11.7418 14.8872 11.6251C14.8456 11.5084 14.7747 11.4001 14.6747 11.3001L10.0747 6.70011C9.89139 6.51678 9.66222 6.42094 9.38722 6.41261C9.11222 6.40428 8.87472 6.50011 8.67472 6.70011C8.49139 6.88344 8.39972 7.11678 8.39972 7.40011C8.39972 7.68344 8.49139 7.91678 8.67472 8.10011L12.5497 12.0001L8.67472 15.9001C8.49139 16.0834 8.39555 16.3126 8.38722 16.5876C8.37889 16.8626 8.47472 17.1001 8.67472 17.3001C8.85805 17.4834 9.09139 17.5751 9.37472 17.5751C9.65805 17.5751 9.89139 17.4834 10.0747 17.3001L14.6747 12.7001C14.7747 12.6001 14.8456 12.4918 14.8872 12.3751C14.9289 12.2584 14.9497 12.1334 14.9497 12.0001Z"
+              fill="#222222" />
+          </svg>
+        </i>
+      </div>
 
       <div class="update-form">
 
@@ -74,6 +84,8 @@
                 <div class="inline-info">
                   <label class="form-label">Correo Electrónico</label>
                   <span class="field-value">stephanie.jordano@gmail.com</span>
+                  <!-- <span class="field-value">supercalifragilísticoespialigoso@gmail.com</span> -->
+
                 </div>
                 <button type="button" class="btn-toggle-edit">Editar</button>
               </div>
@@ -103,28 +115,34 @@
         <div class="form-section">
           <h2 class="section-title">Datos Personales</h2>
 
-          <div class="alert-box">
-            <i class="icon-info">[i]</i>
-            <p>Los datos sombreados no se pueden modificar, si necesitas cambiarlos debes acercarte a SAE.</p>
-          </div>
-
           <div class="input-grid-2">
-            <div class="form-group">
+            <div class="form-group" style="border-bottom:none; margin-bottom: 0;">
               <label class="form-label">Nombres</label>
               <input type="text" class="form-control locked" value="Stephanie Jessenia" readonly disabled>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="border-bottom:none;margin-bottom: 0;">
               <label class="form-label">Apellidos</label>
               <input type="text" class="form-control locked" value="Jordano Sancho" readonly disabled>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="border-bottom:none;margin-bottom: 0;">
               <label class="form-label">Documento de identidad</label>
               <input type="text" class="form-control locked" value="76543210" readonly disabled>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="border-bottom:none;">
               <label class="form-label">Fecha de Nacimiento</label>
               <input type="date" class="form-control locked" value="2002-05-15" readonly disabled>
             </div>
+          </div>
+
+          <div class="alert-box">
+            <i class="icon-info">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                <path
+                  d="M8.33334 0C6.68516 0 5.07399 0.488742 3.70358 1.40442C2.33318 2.3201 1.26507 3.62159 0.634341 5.1443C0.00361067 6.66702 -0.161417 8.34258 0.160126 9.95909C0.48167 11.5756 1.27534 13.0605 2.44078 14.2259C3.60622 15.3913 5.09108 16.185 6.70758 16.5065C8.32409 16.8281 9.99965 16.6631 11.5224 16.0323C13.0451 15.4016 14.3466 14.3335 15.2622 12.9631C16.1779 11.5927 16.6667 9.98151 16.6667 8.33333C16.6642 6.12394 15.7855 4.00573 14.2232 2.44346C12.6609 0.881179 10.5427 0.00242633 8.33334 0ZM8.33334 15C7.01479 15 5.72586 14.609 4.62954 13.8765C3.53321 13.1439 2.67872 12.1027 2.17414 10.8846C1.66956 9.66638 1.53753 8.32594 1.79477 7.03273C2.052 5.73952 2.68694 4.55164 3.61929 3.61929C4.55164 2.68694 5.73953 2.052 7.03274 1.79477C8.32594 1.53753 9.66639 1.66955 10.8846 2.17414C12.1027 2.67872 13.1439 3.5332 13.8765 4.62953C14.609 5.72586 15 7.01479 15 8.33333C14.9978 10.1008 14.2947 11.7952 13.0449 13.0449C11.7952 14.2947 10.1008 14.9978 8.33334 15ZM8.33334 7.91667C8.11232 7.91667 7.90036 8.00446 7.74408 8.16074C7.5878 8.31703 7.5 8.52899 7.5 8.75V11.25C7.5 11.471 7.5878 11.683 7.74408 11.8393C7.90036 11.9955 8.11232 12.0833 8.33334 12.0833C8.55435 12.0833 8.76631 11.9955 8.92259 11.8393C9.07887 11.683 9.16667 11.471 9.16667 11.25V8.75C9.16667 8.52899 9.07887 8.31703 8.92259 8.16074C8.76631 8.00446 8.55435 7.91667 8.33334 7.91667ZM8.33334 4.58333C8.12731 4.58333 7.92592 4.64443 7.75462 4.75889C7.58332 4.87335 7.4498 5.03603 7.37096 5.22637C7.29212 5.41671 7.27149 5.62616 7.31169 5.82822C7.35188 6.03028 7.45109 6.21589 7.59677 6.36157C7.74245 6.50725 7.92805 6.60646 8.13012 6.64665C8.33218 6.68684 8.54163 6.66622 8.73197 6.58737C8.92231 6.50853 9.08499 6.37502 9.19945 6.20372C9.31391 6.03242 9.375 5.83102 9.375 5.625C9.375 5.34873 9.26526 5.08378 9.06991 4.88843C8.87456 4.69308 8.6096 4.58333 8.33334 4.58333Z"
+                  fill="#0F848F" />
+              </svg>
+            </i>
+            <p>Si los datos mostrados contienen errores, registra una <b style="color: #0F848F; text-decoration: underline;">solicitud de PAE</b>.</p>
           </div>
         </div>
 

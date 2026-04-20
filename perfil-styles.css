@@ -41,6 +41,11 @@ h6 {
   border: none;
 }
 
+i svg {
+  display: flex;
+  align-items: center;
+}
+
 .btn:active {
   transform: scale(0.98);
 }
@@ -153,7 +158,7 @@ h6 {
 .form-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 24px;
   padding-bottom: 1rem;
 }
@@ -209,7 +214,7 @@ h6 {
 .section-title {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  color: #5B6E80;
+  color: #8E9EAE;
   font-weight: 700;
   margin-bottom: 0;
   width: 100%;
@@ -296,15 +301,31 @@ h6 {
   cursor: not-allowed;
 }
 
+.tc-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background-color: #F0FAFF;
+  border: 1.6px solid #0F848F;
+  border-radius: 8px;
+  padding: 20px;
+  color: #222;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
 .alert-box {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
-  background-color: #E6F3F4;
-  border: 1px solid #0F848F;
+  background-color: #FFFBEB;
+  border: 1px solid #C6CFD7;
   border-radius: 8px;
   padding: 16px;
-  color: #0F848F;
+  color: #222;
   font-size: 14px;
 }
 
@@ -423,11 +444,15 @@ h6 {
 
 @media (max-width: 768px) {
   .main-container {
-    padding: 16px;
+    padding: 10px;
   }
 
   .form-main-card {
     padding: 24px 16px;
+  }
+
+  .form-section {
+    padding: 16px;
   }
 
   .student-profile-side {
@@ -439,13 +464,16 @@ h6 {
   .form-header {
     flex-direction: column;
     gap: 16px;
+    align-items: flex-start;
   }
 
   .last-update {
     align-self: flex-start;
   }
 
-  /* Eliminados .input-grid-3 y .input-grid-2 de grid-template-columns porque ya son flex-column */
+  .field-value {
+    font-size: 14px;
+  }
 
   /* Todo apilado */
   .span-2,
