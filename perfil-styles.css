@@ -1,6 +1,4 @@
-/* =========================================
-   1. RESET Y BASE (Igual que antes)
-========================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -68,6 +66,58 @@ i svg {
   max-width: 1082px;
   margin: 0 auto;
   width: 100%;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.title-section {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.title-section h1 {
+  font-size: 24px;
+}
+
+.title-section p {
+  color: #5B6E80;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.1px;
+}
+
+.main-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.button-id {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff;
+  color: #222;
+  border: 1px solid #C6CFD7;
+  border-radius: 6px;
+  padding: 4px 6px 4px 12px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  box-shadow: 0 1px 1px 0 rgba(22, 88, 99, 0.25);
+  cursor: pointer;
 }
 
 .student-header-wrapper {
@@ -329,9 +379,9 @@ i svg {
   font-size: 14px;
 }
 
-/* =========================================
-   NUEVO: COMPONENTE INLINE EDIT
-========================================= */
+/* 
+  NUEVO: COMPONENTE INLINE EDIT
+ */
 .inline-field {
   display: flex;
   flex-direction: column;
@@ -357,7 +407,6 @@ i svg {
   font-size: 16px;
   color: #222222;
   min-height: 24px;
-  /* Evita saltos raros si está vacío */
 }
 
 .text-muted {
@@ -412,7 +461,6 @@ i svg {
 /* Manejo de Estados con CSS */
 .inline-field[data-state="edit"] .field-value {
   display: none;
-  /* Ocultamos el texto plano */
 }
 
 .inline-field[data-state="edit"] .inline-body {
@@ -420,9 +468,9 @@ i svg {
   /* Mostramos el input y el botón guardar */
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* 
+  RESPONSIVE
+*/
 @media (max-width: 1024px) {
   .student-header-wrapper {
     flex-direction: column;
@@ -438,13 +486,35 @@ i svg {
   .w-50 {
     width: 100%;
   }
-
-  /* Select de familia a 100% en tablet */
 }
 
 @media (max-width: 768px) {
   .main-container {
     padding: 10px;
+  }
+
+  .header-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 0 8px;
+  }
+  .title-section {
+    gap: 4px;
+    align-items: flex-start;
+  }
+  .title-section h1 {
+    font-size: 20px;
+  }
+  .title-section p {
+    font-size: 14px;
+  }
+  .button-id {
+    width: 100%;
+    justify-content: center;
+    font-size: 15px;
+    padding: 8px 0;
+    margin-top: 4px;
   }
 
   .form-main-card {
@@ -455,12 +525,16 @@ i svg {
     padding: 16px;
   }
 
-  .student-profile-side {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+  .student-header-wrapper {
+    align-items: center;
   }
 
+  .student-profile-side {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
   .form-header {
     flex-direction: column;
     gap: 16px;
@@ -469,6 +543,15 @@ i svg {
 
   .last-update {
     align-self: flex-start;
+  }
+
+  .tc-box {
+    padding: 12px;
+  }
+
+  .alert-box {
+    padding: 10px;
+    gap: 8px;
   }
 
   .field-value {
@@ -483,5 +566,9 @@ i svg {
 
   .inline-header {
     align-items: center;
+  }
+
+  .btn-outline-primary {
+    margin-top: 0;
   }
 }
