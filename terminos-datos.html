@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos de tratamiento de datos - Universidad Norbert Wiener</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="terminos-datos.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <div class="content-container">
+      <header class="page-header">
+        <a href="perfil.html" class="btn-back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Atrás
+        </a>
+      </header>
+
+      <main class="terms-card">
+        <h1 class="terms-title">Lee y acepta los términos de tratamiento de datos</h1>
+        <p class="terms-description">
+          En cumplimiento de lo dispuesto en la ley N° 27444 y N° 29733, Ley de Protección de Datos Personales, la Universidad podrá verificar la veracidad de la información registrada y tratar sus datos personales conforme a la normativa vigente.
+        </p>
+
+        <div class="checkbox-group">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="check-1">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">Acepto el <strong>Tratamiento de mis datos personales</strong>.</span>
+          </label>
+
+          <label class="custom-checkbox">
+            <input type="checkbox" id="check-2">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">Declaro que la información registrada en mi perfil de estudiante es verídica y completa.</span>
+          </label>
+        </div>
+
+        <hr class="divider">
+
+        <div class="card-footer">
+          <button id="btn-guardar" class="btn btn-primary" disabled>Guardar</button>
+        </div>
+      </main>
+
+      <!-- <footer class="page-footer">
+        <p>© 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
+      </footer> -->
+    </div>
+  </div>
+
+  <script>
+    const check1 = document.getElementById('check-1');
+    const check2 = document.getElementById('check-2');
+    const btnGuardar = document.getElementById('btn-guardar');
+
+    function updateButtonState() {
+      if (check1.checked && check2.checked) {
+        btnGuardar.disabled = false;
+      } else {
+        btnGuardar.disabled = true;
+      }
+    }
+
+    check1.addEventListener('change', updateButtonState);
+    check2.addEventListener('change', updateButtonState);
+
+    btnGuardar.addEventListener('click', () => {
+      // Change state to Guardado with animated check
+      btnGuardar.classList.add('success');
+      btnGuardar.innerHTML = `
+        <svg class="checkmark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+        Guardado
+      `;
+      btnGuardar.disabled = true;
+
+      setTimeout(() => {
+        // Redirigir de nuevo al perfil y pasar un parametro para simular que ya se aceptaron
+        window.location.href = 'perfil.html?terms_accepted=true';
+      }, 1800); 
+    });
+  </script>
+</body>
+</html>
