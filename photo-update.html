@@ -16,7 +16,11 @@
     <!-- Header con flecha de regreso -->
     <div class="photo-update-header">
       <span class="back-icon">
-        <!-- SVG flecha aquí -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M2.825 12L10.7 19.875C10.8833 20.0583 10.975 20.2875 10.975 20.5625C10.975 20.8375 10.8833 21.075 10.7 21.275C10.5 21.475 10.2625 21.575 9.9875 21.575C9.7125 21.575 9.475 21.475 9.275 21.275L1.05 13.05C0.9 12.9 0.791667 12.7333 0.725 12.55C0.658333 12.3667 0.625 12.1833 0.625 12C0.625 11.8167 0.658333 11.6333 0.725 11.45C0.791667 11.2667 0.9 11.1 1.05 10.95L9.3 2.69999C9.5 2.49999 9.73333 2.40415 10 2.41249C10.2667 2.42082 10.5 2.52499 10.7 2.72499C10.8833 2.92499 10.9792 3.15832 10.9875 3.42499C10.9958 3.69165 10.9 3.92499 10.7 4.12499L2.825 12Z"
+            fill="#0F848F" />
+        </svg>
       </span>
       <span class="back-text">Atrás</span>
     </div>
@@ -30,7 +34,11 @@
       <button id="toggle-req-btn" type="button">
         Ver requisitos
         <span class="dropdown-arrow">
-          <!-- SVG flecha abajo aquí -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M11.9995 12.9463L16.0725 8.87301C16.211 8.73468 16.3851 8.66385 16.5947 8.66051C16.8042 8.65735 16.9815 8.72818 17.1265 8.87301C17.2713 9.01801 17.3438 9.19368 17.3438 9.40001C17.3438 9.60634 17.2713 9.78201 17.1265 9.92701L12.6322 14.4213C12.5386 14.5148 12.4398 14.5808 12.336 14.6193C12.2322 14.6578 12.12 14.677 11.9995 14.677C11.879 14.677 11.7668 14.6578 11.663 14.6193C11.5592 14.5808 11.4604 14.5148 11.3667 14.4213L6.8725 9.92701C6.73417 9.78851 6.66333 9.61443 6.66 9.40476C6.65683 9.19526 6.72767 9.01801 6.8725 8.87301C7.0175 8.72818 7.19317 8.65576 7.3995 8.65576C7.60583 8.65576 7.7815 8.72818 7.9265 8.87301L11.9995 12.9463Z"
+              fill="#404040" />
+          </svg>
         </span>
       </button>
     </div>
@@ -60,7 +68,8 @@
         </li>
       </ul>
       <h4>Consideraciones</h4>
-      <div>La foto registrada o actualizada sirve para el trámite de emisión de carné universitario, certificado de estudios y fotocheck digital.</div>
+      <div>La foto registrada o actualizada sirve para el trámite de emisión de carné universitario, certificado de
+        estudios y fotocheck digital.</div>
       <h4>Pasos a seguir:</h4>
       <ol>
         <li>Sube y validaremos automáticamente que tu foto cumpla con todas las especificaciones.</li>
@@ -79,18 +88,32 @@
 
     <!-- Imagen y botón -->
     <div class="photo-update-image-section">
-      <img class="photo-update-image" src="img/foto-ejemplo.jpg" alt="Foto de perfil">
-      <button type="button">Cambiar foto</button>
+      <img class="photo-update-image" src="./img/actualizar-foto.png" alt="Foto de perfil">
+      <button type="button">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5.75 12.05C5.75 12.3423 5.76983 12.6337 5.8095 12.924C5.84933 13.2145 5.91733 13.5008 6.0135 13.7828C6.0775 13.9956 6.07075 14.1991 5.99325 14.3933C5.91575 14.5874 5.784 14.7268 5.598 14.8115C5.40183 14.9063 5.20667 14.914 5.0125 14.8345C4.81833 14.755 4.68917 14.6089 4.625 14.3963C4.49167 14.0193 4.39583 13.6323 4.3375 13.2355C4.27917 12.8388 4.25 12.4437 4.25 12.05C4.25 9.88718 5.00258 8.04651 6.50775 6.52801C8.01292 5.00935 9.84367 4.25001 12 4.25001H12.7808L11.4577 2.92701C11.3193 2.78851 11.2484 2.61443 11.2453 2.40476C11.2421 2.19526 11.3129 2.01801 11.4577 1.87301C11.6026 1.72818 11.7782 1.65576 11.9845 1.65576C12.191 1.65576 12.3667 1.72818 12.5115 1.87301L15.0057 4.36726C15.1866 4.5481 15.277 4.75901 15.277 5.00001C15.277 5.24101 15.1866 5.45193 15.0057 5.63276L12.5115 8.12701C12.373 8.26535 12.199 8.33618 11.9895 8.33951C11.7798 8.34268 11.6026 8.27185 11.4577 8.12701C11.3129 7.98201 11.2405 7.80635 11.2405 7.60001C11.2405 7.39368 11.3129 7.21801 11.4577 7.07301L12.7808 5.75001H12C10.2628 5.75001 8.78683 6.36151 7.572 7.58451C6.35733 8.80768 5.75 10.2962 5.75 12.05ZM18.25 11.95C18.25 11.6577 18.2302 11.3663 18.1905 11.076C18.1507 10.7855 18.0827 10.4993 17.9865 10.2173C17.9225 10.0044 17.9293 9.80093 18.0068 9.60676C18.0843 9.4126 18.216 9.27318 18.402 9.18851C18.5982 9.09368 18.7917 9.08601 18.9827 9.16551C19.1737 9.24501 19.3012 9.3911 19.3652 9.60376C19.4986 9.98076 19.5961 10.3677 19.6578 10.7645C19.7192 11.1612 19.75 11.5563 19.75 11.95C19.75 14.1128 18.9974 15.9535 17.4923 17.472C15.9871 18.9907 14.1563 19.75 12 19.75H11.2192L12.5423 21.073C12.6807 21.2115 12.7516 21.3856 12.7548 21.5953C12.7579 21.8048 12.6871 21.982 12.5423 22.127C12.3974 22.2718 12.2218 22.3443 12.0155 22.3443C11.809 22.3443 11.6333 22.2718 11.4885 22.127L8.99425 19.6328C8.81342 19.4519 8.723 19.241 8.723 19C8.723 18.759 8.81342 18.5481 8.99425 18.3673L11.4885 15.873C11.627 15.7347 11.801 15.6638 12.0105 15.6605C12.2202 15.6573 12.3974 15.7282 12.5423 15.873C12.6871 16.018 12.7595 16.1937 12.7595 16.4C12.7595 16.6063 12.6871 16.782 12.5423 16.927L11.2192 18.25H12C13.7372 18.25 15.2132 17.6385 16.428 16.4155C17.6427 15.1923 18.25 13.7038 18.25 11.95Z"
+              fill="#0F848F" />
+          </svg>
+        </span> Cambiar foto</button>
     </div>
 
     <!-- Mensaje informativo -->
     <div class="photo-update-alert">
       <span class="alert-icon">
-        <!-- SVG info aquí -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+          <path
+            d="M8.33334 0C6.68516 0 5.07399 0.488742 3.70358 1.40442C2.33318 2.3201 1.26507 3.62159 0.634341 5.1443C0.00361067 6.66702 -0.161417 8.34258 0.160126 9.95909C0.48167 11.5756 1.27534 13.0605 2.44078 14.2259C3.60622 15.3913 5.09108 16.185 6.70758 16.5065C8.32409 16.8281 9.99965 16.6631 11.5224 16.0323C13.0451 15.4016 14.3466 14.3335 15.2622 12.9631C16.1779 11.5927 16.6667 9.98151 16.6667 8.33333C16.6642 6.12394 15.7855 4.00573 14.2232 2.44346C12.6609 0.881179 10.5427 0.00242633 8.33334 0ZM8.33334 15C7.01479 15 5.72586 14.609 4.62954 13.8765C3.53321 13.1439 2.67872 12.1027 2.17414 10.8846C1.66956 9.66638 1.53753 8.32594 1.79477 7.03273C2.052 5.73952 2.68694 4.55164 3.61929 3.61929C4.55164 2.68694 5.73953 2.052 7.03274 1.79477C8.32594 1.53753 9.66639 1.66955 10.8846 2.17414C12.1027 2.67872 13.1439 3.5332 13.8765 4.62953C14.609 5.72586 15 7.01479 15 8.33333C14.9978 10.1008 14.2947 11.7952 13.0449 13.0449C11.7952 14.2947 10.1008 14.9978 8.33334 15ZM8.33334 7.91667C8.11232 7.91667 7.90036 8.00446 7.74408 8.16074C7.5878 8.31703 7.5 8.52899 7.5 8.75V11.25C7.5 11.471 7.5878 11.683 7.74408 11.8393C7.90036 11.9955 8.11232 12.0833 8.33334 12.0833C8.55435 12.0833 8.76631 11.9955 8.92259 11.8393C9.07887 11.683 9.16667 11.471 9.16667 11.25V8.75C9.16667 8.52899 9.07887 8.31703 8.92259 8.16074C8.76631 8.00446 8.55435 7.91667 8.33334 7.91667ZM8.33334 4.58333C8.12731 4.58333 7.92592 4.64443 7.75462 4.75889C7.58332 4.87335 7.4498 5.03603 7.37096 5.22637C7.29212 5.41671 7.27149 5.62616 7.31169 5.82822C7.35188 6.03028 7.45109 6.21589 7.59677 6.36157C7.74245 6.50725 7.92805 6.60646 8.13012 6.64665C8.33218 6.68684 8.54163 6.66622 8.73197 6.58737C8.92231 6.50853 9.08499 6.37502 9.19945 6.20372C9.31391 6.03242 9.375 5.83102 9.375 5.625C9.375 5.34873 9.26526 5.08378 9.06991 4.88843C8.87456 4.69308 8.6096 4.58333 8.33334 4.58333Z"
+            fill="#0F848F" />
+        </svg>
       </span>
       Esta actualización será evaluada y aprobada por el departamento de Registros Académicos.
     </div>
   </div>
+
+  <!-- Input oculto para cargar nueva imagen -->
+  <input type="file" id="photo-input" accept="image/*" style="display: none;" />
 
   <script>
     // Mostrar/ocultar requisitos (empuja el contenido)
@@ -98,14 +121,40 @@
     const block = document.getElementById('requirements-block');
     const arrow = btn.querySelector('.dropdown-arrow');
     let open = false;
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
       open = !open;
       block.style.display = open ? 'block' : 'none';
       btn.childNodes[0].nodeValue = open ? 'Ver menos' : 'Ver requisitos';
       btn.appendChild(arrow);
+      if (open) {
+        arrow.classList.add('rotated');
+      } else {
+        arrow.classList.remove('rotated');
+      }
     });
     // Por defecto oculto
     block.style.display = 'none';
+
+    // Abrir el selector de archivos al hacer clic en el botón "Cambiar foto"
+    const changePhotoButton = document.querySelector('.photo-update-image-section button');
+    changePhotoButton.addEventListener('click', () => {
+      document.getElementById('photo-input').click();
+    });
+
+    // Actualizar la imagen al seleccionar un archivo
+    const photoInput = document.getElementById('photo-input');
+    photoInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          document.querySelector('.photo-update-image').src = e.target.result;
+          // Mostrar el pop-up de éxito
+          window.open('popup.html', '_blank', 'width=400,height=300');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
   </script>
 </body>
 

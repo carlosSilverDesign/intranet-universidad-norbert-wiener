@@ -1,15 +1,10 @@
-/* Wrapper externo para mantener el mismo ancho que el contenedor principal */
+
 .photo-update-outer {
-  max-width: 700px;
+  max-width: 800px;
   margin: 40px auto 0 auto;
   padding-left: 0;
   padding-right: 0;
 }
-/*
-  photo-update-styles.css
-  Estilos exclusivos para la vista de Actualizar Foto.
-  Reutiliza colores, tipografía y espaciados de styles.css para mantener coherencia visual.
-*/
 
 body {
   background: #f4f6f8;
@@ -18,13 +13,18 @@ body {
   margin: 0;
 }
 
+span svg {
+  display: flex;
+  align-items: center;
+}
+
 .photo-update-container {
-  max-width: 700px;
-  margin: 40px auto 0 auto;
+  max-width: 800px;
+  margin: 32px auto 32px auto;
   background: #fff;
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  padding: 40px 32px 32px 32px;
+  padding: 1.5rem;
   position: relative;
 }
 
@@ -33,18 +33,27 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
+  cursor: pointer;
 }
 
 .photo-update-header .back-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 
+.back-text {
+  color: #0F848F;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  }
+
 .photo-update-title {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 2px;
 }
@@ -67,16 +76,29 @@ body {
 
 .photo-update-toolbar button {
   background: #fff;
-  border: 1px solid #cfd8dc;
-  border-radius: 8px;
+  border: 1px solid #222;
+  border-radius: 6px;
   padding: 8px 18px 8px 14px;
-  font-size: 1rem;
-  color: #222;
+  font-size: 15px;
+  color: #404040;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
   transition: border 0.2s;
+
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+
+/* Animación de la flecha del botón de requisitos */
+.photo-update-toolbar .dropdown-arrow svg {
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.photo-update-toolbar .dropdown-arrow.rotated svg {
+  transform: rotate(180deg);
 }
 
 .photo-update-toolbar button:active,
@@ -129,6 +151,61 @@ body {
   font-weight: 700;
 }
 
+
+.requirements-block {
+  background: #fff;
+  border: 1px solid #cfd8dc;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 28px 32px 18px 32px;
+  margin-bottom: 28px;
+  margin-top: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.requirements-block h4 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #222;
+}
+
+.requirements-block ul,
+.requirements-block ol {
+  margin: 0 0 12px 18px;
+  padding: 0;
+}
+
+.requirements-block li {
+  margin-bottom: 3px;
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #222;
+}
+
+.requirements-block > div,
+.requirements-block > ol,
+.requirements-block > ul {
+  margin-bottom: 12px;
+}
+
+.requirements-block strong {
+  font-weight: 700;
+}
+
+.requirements-block ul ul {
+  margin-left: 18px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .requirements-block {
+    padding: 18px 4vw 12px 4vw;
+    border-radius: 12px;
+  }
+}
+
 .photo-update-info {
   display: flex;
   justify-content: space-between;
@@ -139,6 +216,7 @@ body {
 }
 
 .photo-update-info .right {
+  font-size: 0.875rem;
   text-align: right;
 }
 
@@ -150,8 +228,8 @@ body {
 }
 
 .photo-update-image {
-  width: 180px;
-  height: 220px;
+  width: 240px;
+  height: 288px;
   object-fit: cover;
   border-radius: 12px;
   border: 1.5px solid #cfd8dc;
@@ -160,36 +238,55 @@ body {
 }
 
 .photo-update-image-section button {
+  width: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   background: #fff;
-  border: 1.5px solid #1976d2;
-  color: #1976d2;
-  border-radius: 8px;
+  border: 1.5px solid #0F848F;
+  color: #0F848F;
+  border-radius: 6px;
   padding: 8px 22px;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 
+.photo-update-image-section button svg {
+  transition: fill 0.2s, color 0.2s;
+  fill: #0F848F;
+}
+
+.photo-update-image-section button:hover svg path{
+  fill: #fff;
+}
+
 .photo-update-image-section button:hover {
-  background: #1976d2;
+  background: #0F848F;
   color: #fff;
 }
 
+
 .photo-update-alert {
   background: #fffbe6;
-  border: 1px solid #ffe58f;
-  color: #856404;
-  border-radius: 8px;
-  padding: 12px 18px;
+  border: 1px solid #C6CFD7;
+  color: #222;
+  border-radius: 6px;
+  padding: 12px;
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1rem;
+  font-size: 0.938rem;
   margin-top: 18px;
 }
 
 @media (max-width: 800px) {
+  body {
+    padding: 0 4vw;
+  }
+
   .photo-update-container {
     padding: 18px 4vw 18px 4vw;
   }
