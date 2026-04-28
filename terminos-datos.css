@@ -101,8 +101,8 @@ body {
   position: relative;
   top: 0;
   left: 2px;
-  height: 24px;
-  width: 24px;
+  height: 22px;
+  width: 22px;
   background-color: #fff;
   border: 2px solid #C6CFD7;
   border-radius: 4px;
@@ -130,10 +130,10 @@ body {
 }
 
 .custom-checkbox .checkmark:after {
-  left: 5px;
-  top: 1px;
-  width: 6px;
-  height: 12px;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 10px;
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
@@ -251,4 +251,48 @@ body {
 .page-footer p {
   color: #9AA6B2;
   font-size: 13px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 24px 16px;
+  }
+
+  .terms-card {
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .terms-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .terms-description {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .checkbox-group {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .checkbox-text {
+    font-size: 14px;
+  }
+
+  .custom-checkbox {
+    gap: 10px;
+  }
+
+  .card-footer {
+    justify-content: center;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px 24px;
+  }
 }
