@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos - Intranet Universidad Norbert Wiener</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cursos.css">
+</head>
+<body>
+
+  <main class="main-content">
+    
+    <!-- HEADER -->
+    <header class="page-header-flex">
+      <div class="header-left">
+        <div class="header-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="header-titles">
+          <h1>Cursos</h1>
+          <p>Lorem ipsum is the text for designers</p>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <label for="period">Elige el periodo</label>
+        <div class="select-wrapper">
+          <select id="period" class="period-select">
+            <option value="2025-2">2025 - II</option>
+            <option value="2025-1">2025 - I</option>
+          </select>
+          <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <hr class="header-divider">
+
+    <!-- TABS -->
+    <div class="tabs-container">
+      <ul class="tabs">
+        <li class="tab active">Matriculados</li>
+        <li class="tab">Progreso académico</li>
+      </ul>
+    </div>
+
+    <!-- GRID DE CURSOS -->
+    <div class="courses-grid">
+      
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-presencial">Presencial</span>
+        <h3 class="course-name">Bases de la Terapéutica Farmacológica</h3>
+        <p class="course-teacher">Jorge Rosendo Navarro</p>
+      </a>
+
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-presencial">Presencial</span>
+        <h3 class="course-name">Procesos Celulares y Moleculares II</h3>
+        <p class="course-teacher">Jorge Rosendo Navarro</p>
+      </a>
+
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-en-vivo">Virtual en vivo</span>
+        <h3 class="course-name">Estructura y Función del Cuerpo Humano</h3>
+        <p class="course-teacher">Jorge Rosendo Navarro</p>
+      </a>
+
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-presencial">Presencial</span>
+        <h3 class="course-name">Desarrollo Humano y Social</h3>
+        <p class="course-teacher">Jorge Rosendo Navarro</p>
+      </a>
+
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-24-7">Virtual 24/7</span>
+        <h3 class="course-name">Ingles II</h3>
+      </a>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
