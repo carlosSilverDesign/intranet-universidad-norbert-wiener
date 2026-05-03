@@ -1,18 +1,18 @@
 /* LAYOUT PRINCIPAL */
 .main-content-detail {
+  width: 1082px;
   display: flex;
+  align: center;
   flex-direction: column;
   padding: 32px 24px;
   gap: 24px;
-  max-width: 840px;
   margin: 0 auto;
-  width: 100%;
 }
 
 /* Estilos específicos para Detalle de Curso (Hereda de styles.css y cursos.css) */
 
 .back-nav {
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
 .btn-back-nav {
@@ -32,11 +32,14 @@
 }
 
 .course-detail-card {
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
   border-radius: 16px;
   padding: 40px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
 .course-header {
@@ -144,7 +147,8 @@
 .location-address {
   font-size: 14px;
   color: #5B6E80;
-  padding-left: 26px; /* Alinear texto debajo del título */
+  padding-left: 26px;
+  /* Alinear texto debajo del título */
 }
 
 .btn-map {
@@ -183,8 +187,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 16px;
-  gap: 8px;
+  padding: 12px 16px;
+  gap: 4px;
   border-right: 1px solid #C6CFD7;
 }
 
@@ -202,6 +206,7 @@
   font-size: 20px;
   font-weight: 700;
   color: #222222;
+  line-height: 1.5rem;
 }
 
 .detail-section {
@@ -253,8 +258,13 @@
   width: 100%;
 }
 
-.segment-teal { background-color: #0F848F; }
-.segment-yellow { background-color: #FBBF24; }
+.segment-teal {
+  background-color: #0F848F;
+}
+
+.segment-yellow {
+  background-color: #FBBF24;
+}
 
 .progress-legend {
   display: flex;
@@ -276,8 +286,13 @@
   border-radius: 50%;
 }
 
-.dot-teal { background-color: #0F848F; }
-.dot-yellow { background-color: #FBBF24; }
+.dot-teal {
+  background-color: #0F848F;
+}
+
+.dot-yellow {
+  background-color: #FBBF24;
+}
 
 .asistencia-summary-flex {
   display: flex;
@@ -452,44 +467,56 @@
   .course-detail-card {
     padding: 24px;
   }
+
   .teachers-grid {
     flex-direction: column;
     gap: 24px;
   }
+
   .location-box {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
+
   .location-divider {
     display: none;
   }
+
   .location-address {
     padding-left: 0;
   }
+
   .btn-map {
     width: 100%;
   }
+
   .stats-grid {
     flex-direction: column;
   }
+
   .stat-item {
     border-right: none;
     border-bottom: 1px solid #C6CFD7;
   }
+
   .stat-item:last-child {
     border-bottom: none;
   }
+
   .asistencia-summary-flex {
     flex-direction: column;
   }
+
   .btn-calendar {
     width: 100%;
     padding: 12px;
   }
+
   .fases-grid {
     flex-direction: column;
   }
+
   .nota-cell {
     flex-direction: column;
     align-items: flex-start;
