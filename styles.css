@@ -149,7 +149,7 @@ i svg {
 .main-content {
   display: flex;
   flex-direction: column;
-  padding: 32px 24px;
+  padding: 1.5rem 1rem;
   gap: 24px;
   max-width: 1082px;
   margin: 0 auto;

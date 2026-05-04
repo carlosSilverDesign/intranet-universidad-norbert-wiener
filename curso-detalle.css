@@ -483,7 +483,11 @@ html {
     padding: 24px 16px;
     gap: 16px;
   }
-  
+  .page-header-flex{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
   .course-detail-card {
     padding: 28px;
     max-width: 98vw;
