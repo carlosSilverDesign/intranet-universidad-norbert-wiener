@@ -1,3 +1,8 @@
+html {
+  scrollbar-gutter: stable;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -149,6 +154,32 @@ i svg {
   max-width: 1082px;
   margin: 0 auto;
   width: 100%;
+}
+
+.main-content-detail {
+  width: 100%;
+  max-width: 1082px;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px;
+  gap: 24px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .main-content,
+  .main-content-detail {
+    padding: 24px 16px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content,
+  .main-content-detail {
+    padding: 12px 2vw;
+    gap: 10px;
+  }
 }
 
 /* TOPBAR */
@@ -845,7 +876,7 @@ i svg {
 /* --- MOBILE (Pantallas menores a 768px) --- */
 @media (max-width: 768px) {
   .main-content {
-    padding: 16px;
+    padding: 1.5rem 1rem;
   }
 
   .dashboard-grid {

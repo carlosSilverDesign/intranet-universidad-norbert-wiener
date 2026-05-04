@@ -1,8 +1,12 @@
+html {
+  scrollbar-gutter: stable;
+}
+
 /* LAYOUT PRINCIPAL */
 .main-content-detail {
-  width: 1082px;
+  width: 100%;
+  max-width: 1082px;
   display: flex;
-  align: center;
   flex-direction: column;
   padding: 32px 24px;
   gap: 24px;
@@ -12,7 +16,7 @@
 /* Estilos específicos para Detalle de Curso (Hereda de styles.css y cursos.css) */
 
 .back-nav {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .btn-back-nav {
@@ -48,7 +52,7 @@
 
 .course-title-large {
   font-family: 'Lato', sans-serif;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   color: #222222;
   margin-bottom: 12px;
@@ -91,6 +95,12 @@
 
 .teacher-email:hover {
   text-decoration: underline;
+}
+
+.location-info-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }
 
 .location-box {
@@ -394,10 +404,10 @@
 }
 
 .fase-body {
-  padding: 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1rem;
 }
 
 .nota-row {
@@ -434,6 +444,9 @@
 
 .nota-final {
   justify-content: space-between;
+  background-color: #F1f3f5;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
 }
 
 .nota-final .nota-label {
@@ -444,7 +457,7 @@
 .avance-ponderado {
   border: 2px solid #222222;
   border-radius: 12px;
-  padding: 20px 24px;
+  padding: 16px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -463,63 +476,108 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .course-detail-card {
-    padding: 24px;
-  }
 
-  .teachers-grid {
+@media (max-width: 1024px) {
+  .main-content-detail {
     flex-direction: column;
+    padding: 24px 16px;
+    gap: 16px;
+  }
+  
+  .course-detail-card {
+    padding: 28px;
+    max-width: 98vw;
+  }
+  .teachers-grid {
     gap: 24px;
   }
+}
 
+@media (max-width: 767px) {
+  .main-content-detail {
+    padding: 1.5rem 1rem;
+    gap: 10px;
+  }
+  .course-detail-card {
+    padding: 12px;
+    max-width: 100vw;
+  }
+  .page-header-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .header-left {
+    width: 100%;
+    gap: 10px;
+  }
+  .header-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+  .header-titles h1 {
+    font-size: 18px;
+  }
+  .header-titles p {
+    font-size: 12px;
+  }
+  .header-right {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .teachers-grid {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .location-info-flex {
+    display: flex;
+    gap: 16px;
+  }
   .location-box {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 12px;
+    padding: 12px;
   }
-
-  .location-divider {
+  /* .location-divider {
     display: none;
-  }
-
+  } */
   .location-address {
     padding-left: 0;
   }
-
   .btn-map {
     width: 100%;
+    padding: 10px;
   }
-
-  .stats-grid {
-    flex-direction: column;
-  }
-
   .stat-item {
     border-right: none;
-    border-bottom: 1px solid #C6CFD7;
+    border-right: 1px solid #C6CFD7;
+    padding: 10px 8px;
   }
-
   .stat-item:last-child {
     border-bottom: none;
   }
-
   .asistencia-summary-flex {
     flex-direction: column;
+    gap: 8px;
   }
-
   .btn-calendar {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
   }
-
   .fases-grid {
     flex-direction: column;
+    gap: 12px;
   }
-
   .nota-cell {
-    flex-direction: column;
     align-items: flex-start;
     gap: 4px;
+  }
+  .avance-ponderado {
+    gap: 8px;
+    padding: 12px 16px;
   }
 }
