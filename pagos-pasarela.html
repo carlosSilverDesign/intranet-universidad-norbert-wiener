@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <title>Pasarela Grupo Wiener</title>
+  <link rel="stylesheet" href="./style-pagos.css">
+</head>
+
+<body>
+  <div class="main-container">
+
+    <!-- HEADER -->
+    <header class="page-header-flex">
+      <div class="header-left">
+        <div class="header-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path
+              d="M22.9167 21.1858C21.7523 21.1858 20.7667 20.7825 19.9601 19.9758C19.1534 19.1692 18.7501 18.1836 18.7501 17.0192C18.7501 15.8547 19.1534 14.8692 19.9601 14.0625C20.7667 13.2558 21.7523 12.8525 22.9167 12.8525C24.0812 12.8525 25.0667 13.2558 25.8734 14.0625C26.6801 14.8692 27.0834 15.8547 27.0834 17.0192C27.0834 18.1836 26.6801 19.1692 25.8734 19.9758C25.0667 20.7825 24.0812 21.1858 22.9167 21.1858ZM11.923 26.3462C11.0946 26.3462 10.3855 26.0512 9.79548 25.4612C9.20548 24.8712 8.91048 24.1619 8.91048 23.3333V10.705C8.91048 9.87666 9.20548 9.1675 9.79548 8.5775C10.3855 7.9875 11.0946 7.6925 11.923 7.6925H33.9101C34.7387 7.6925 35.448 7.9875 36.038 8.5775C36.628 9.1675 36.923 9.87666 36.923 10.705V23.3333C36.923 24.1619 36.628 24.8712 36.038 25.4612C35.448 26.0512 34.7387 26.3462 33.9101 26.3462H11.923ZM14.423 23.8462H31.4105C31.4105 23.0151 31.7055 22.3051 32.2955 21.7162C32.8855 21.1276 33.5946 20.8333 34.423 20.8333V13.205C33.5919 13.205 32.882 12.91 32.2934 12.32C31.7048 11.73 31.4105 11.0208 31.4105 10.1925H14.423C14.423 11.0236 14.128 11.7335 13.538 12.3221C12.948 12.9107 12.2388 13.205 11.4105 13.205V20.8333C12.2416 20.8333 12.9515 21.1283 13.5401 21.7183C14.1287 22.3083 14.423 23.0176 14.423 23.8462ZM30.7051 32.1796H6.09007C5.26145 32.1796 4.55215 31.8846 3.96215 31.2946C3.37215 30.7046 3.07715 29.9953 3.07715 29.1667V13.9104C3.07715 13.5562 3.19701 13.2593 3.43673 13.0196C3.67645 12.7801 3.9734 12.6604 4.32757 12.6604C4.68201 12.6604 4.97882 12.7801 5.21798 13.0196C5.45743 13.2593 5.57715 13.5562 5.57715 13.9104V29.1667C5.57715 29.2947 5.63048 29.4122 5.73715 29.5192C5.84409 29.6261 5.96173 29.6796 6.09007 29.6796H30.7051C31.0592 29.6796 31.3562 29.7994 31.5959 30.0392C31.8353 30.2786 31.9551 30.5756 31.9551 30.93C31.9551 31.2844 31.8353 31.5812 31.5959 31.8204C31.3562 32.0599 31.0592 32.1796 30.7051 32.1796ZM11.923 23.8462H11.4105V10.1925H11.923C11.7841 10.1925 11.664 10.2432 11.5626 10.3446C11.4612 10.446 11.4105 10.5661 11.4105 10.705V23.3333C11.4105 23.4722 11.4612 23.5924 11.5626 23.6937C11.664 23.7954 11.7841 23.8462 11.923 23.8462Z"
+              fill="#222222" />
+          </svg>
+        </div>
+        <div class="header-titles">
+          <h1>Pagos</h1>
+          <p>Listado de obligaciones</p>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <label for="period">Elige el periodo</label>
+        <div class="select-wrapper">
+          <select id="period" class="period-select">
+            <option value="2025-2">2025 - II</option>
+            <option value="2025-1">2025 - I</option>
+          </select>
+          <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+            fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <hr class="header-divider">
+
+    <!-- TABS -->
+    <div class="tabs-container">
+      <ul class="tabs">
+        <li class="tab active" data-target="pendientes-tab">Pendientes</li>
+        <li class="tab" data-target="pagados-tab">Pagados</li>
+      </ul>
+    </div>
+
+
+    <div class="summary-bar">
+      <div class="summary-content">
+        <div class="acumuladores">
+          <div class="summary-info">
+            <img src="./img-pagos/icon-payment.png" alt="Pago">
+            <span id="selected-count">0 pagos seleccionados</span>
+          </div>
+          <div class="summary-total">
+            <span>Total:</span>
+            <strong id="total-amount">S/ 0.00</strong>
+          </div>
+        </div>
+        <button class="next-button" onclick="window.location.href='medio-pago.html'">
+          Siguiente
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+            <path
+              d="M13.625 10.7501H5.24958C5.03722 10.7501 4.85917 10.6786 4.71542 10.5357C4.57181 10.3928 4.5 10.2157 4.5 10.0045C4.5 9.79321 4.57181 9.61467 4.71542 9.46883C4.85917 9.323 5.03722 9.25008 5.24958 9.25008H13.625L9.95396 5.57904C9.8041 5.42918 9.72917 5.25355 9.72917 5.05216C9.72917 4.85078 9.80556 4.67036 9.95833 4.51092C10.1111 4.3648 10.2882 4.29175 10.4896 4.29175C10.691 4.29175 10.8667 4.36689 11.0169 4.51716L15.9708 9.47737C16.0458 9.55251 16.1007 9.6339 16.1354 9.72154C16.1701 9.80918 16.1875 9.90314 16.1875 10.0034C16.1875 10.1036 16.1701 10.1975 16.1354 10.2853C16.1007 10.3729 16.0486 10.4515 15.9792 10.5209L11.0208 15.4792C10.8681 15.632 10.6944 15.7049 10.5 15.698C10.3056 15.6911 10.1319 15.6145 9.97917 15.4684C9.82639 15.309 9.75 15.1274 9.75 14.9236C9.75 14.72 9.82639 14.5441 9.97917 14.3959L13.625 10.7501Z"
+              fill="white" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Aquí termina el Floating Summary Bar -->
+
+    <!-- Aquí va la TABLA PENDIENTES -->
+    <section class="table-container" id="pendientes-tab">
+
+      <div class="table-header">
+        <div class="table-row-tb">
+          <div class="input-row select">
+            <input class="checkbox header-checkbox" type="checkbox" name="checkbox" id="checkbox">
+          </div>
+          <div class="data-row-tb">
+            <div class="doc-detail-tb">
+              <span class="documento-headerTb">Documento</span>
+              <span class="documento-headerTb hidden">Marcar todo</span>
+              <p class="label-headerTb">Detalle</p>
+            </div>
+            <div class="Monto-venc-Tb">
+              <div class="monto-tb">
+                <span class="price-tb">Monto</span>
+              </div>
+              <div class="vence-tb">
+                <span class="date-tb">Vencimiento</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-list">
+
+        <div class="table-row">
+          <div class="input-row">
+            <input class="checkbox row-checkbox" type="checkbox" name="checkbox" id="checkbox">
+          </div>
+          <div class="data-row">
+            <div class="doc-detail">
+              <span class="documento">PPREGRA0000000534314</span>
+              <p class="detalle">Cuota 1 - PRE GRADO - MATRÍCULA - 2025 - I</p>
+            </div>
+            <div class="Monto-venc">
+              <div class="monto">
+                <div class="label-row">Monto S/</div>
+                <span class="price">795.00</span>
+              </div>
+              <div class="vence estado-pendiente">
+                <div class="label-row">Vence:</div>
+                <span class="date">05/30/25</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-row">
+          <div class="input-row">
+            <input class="checkbox row-checkbox" type="checkbox" name="checkbox" id="checkbox">
+          </div>
+
+          <div class="data-row">
+            <div class="doc-detail">
+              <span class="documento">PPREGRA0000000534314</span>
+              <p class="detalle">Cuota 2 - PRE GRADO 2025 - I</p>
+            </div>
+            <div class="Monto-venc">
+              <div class="monto">
+                <div class="label-row">Monto S/</div>
+                <span class="price">670.00</span>
+              </div>
+              <div class="vence estado-pendiente">
+                <div class="label-row">Vence:</div>
+                <span class="date">06/30/25</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-row">
+          <div class="input-row">
+            <input class="checkbox row-checkbox" type="checkbox" name="checkbox" id="checkbox">
+          </div>
+
+          <div class="data-row">
+            <div class="doc-detail">
+              <span class="documento">PPREGRA0000000534314</span>
+              <p class="detalle">Cuota 3 - PRE GRADO 2025 - I</p>
+            </div>
+            <div class="Monto-venc">
+              <div class="monto">
+                <div class="label-row">Monto S/</div>
+                <span class="price">670.00</span>
+              </div>
+              <div class="vence estado-pendiente">
+                <div class="label-row">Vence:</div>
+                <span class="date">07/30/25</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-row">
+          <div class="input-row">
+            <input class="checkbox row-checkbox" type="checkbox" name="checkbox" id="checkbox">
+          </div>
+          <div class="data-row">
+            <div class="doc-detail">
+              <span class="documento">PPREGRA0000000534314</span>
+              <p class="detalle">Cuota 4 - PRE GRADO 2025 - I</p>
+            </div>
+            <div class="Monto-venc">
+              <div class="monto">
+                <div class="label-row">Monto S/</div>
+                <span class="price">670.00</span>
+              </div>
+              <div class="vence estado-pendiente">
+                <div class="label-row">Vence:</div>
+                <span class="date">08/30/25</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-row">
+          <div class="input-row">
+            <input class="checkbox row-checkbox" type="checkbox" name="checkbox" id="checkbox">
+          </div>
+          <div class="data-row">
+            <div class="doc-detail">
+              <span class="documento">PPREGRA0000000534314</span>
+              <p class="detalle">Cuota 5 - PRE GRADO 2025 - I</p>
+            </div>
+            <div class="Monto-venc">
+              <div class="monto">
+                <div class="label-row">Monto S/</div>
+                <span class="price">670.00</span>
+              </div>
+              <div class="vence estado-pendiente">
+                <div class="label-row">Vence:</div>
+                <span class="date">09/30/25</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Aquí va la TABLA PAGADOS -->
+    <section class="table-container" id="pagados-tab" style="display: none;">
+
+      <div class="table-header">
+        <div class="table-row-tb">
+          <div class="data-row-tb">
+            <div class="doc-detail-tb">
+              <span class="documento-headerTb">Documento</span>
+              <p class="label-headerTb">Detalle</p>
+            </div>
+            <div class="Monto-venc-Tb">
+              <div class="monto-tb">
+                <span class="price-tb">Monto</span>
+              </div>
+              <div class="vence-tb">
+                <span class="date-tb">Vencimiento</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-list">
+
+        <div class="table-row pagados-row">
+          <div class="data-row">
+            <div class="doc-detail">
+              <span class="documento">PPREGRA0000000534314</span>
+              <p class="detalle">Cuota 1 - PRE GRADO - MATRÍCULA - 2025 - I</p>
+            </div>
+            <div class="Monto-venc">
+              <div class="monto">
+                <div class="label-row">Monto S/</div>
+                <span class="price">795.00</span>
+              </div>
+              <div class="vence estado-pagado">
+                <div class="label-row">Estado:</div>
+                <span class="date">PAGADO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-row pagados-row">
+          <div class="data-row">
+            <div class="doc-detail">
+              <span class="documento">PPREGRA0000000534315</span>
+              <p class="detalle">Cuota 2 - PRE GRADO 2025 - I</p>
+            </div>
+            <div class="Monto-venc">
+              <div class="monto">
+                <div class="label-row">Monto S/</div>
+                <span class="price">670.00</span>
+              </div>
+              <div class="vence estado-pagado">
+                <div class="label-row">Estado:</div>
+                <span class="date">PAGADO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+  <script src="./script-pagos.js"></script>
+</body>
+
+</html>
