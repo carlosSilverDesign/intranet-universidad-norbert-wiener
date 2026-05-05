@@ -47,10 +47,37 @@ Se usan para identificar la modalidad de un curso, con un border-radius tipo pil
 - `.btn-outline`: Borde `#C6CFD7`, Fondo transparente, Texto `#0F848F`
 
 ## 5. Espaciado y Estructura
-- **Contenedor Principal (`.main-content`)**: `max-width: 1082px`, margin auto.
+- **Contenedor Principal (`.main-content`, `.main-container`)**: `max-width: 1082px` (o similar según vista), margin auto.
 - **Tarjetas (`.card`)**: 
   - `background-color: #FFFFFF;`
   - `border: 1px solid #C6CFD7;`
   - `border-radius: 8px` (o `16px` para contenedores más grandes)
   - `padding: 24px` o `32px`
 - **Sombras**: Las interacciones (hover) suelen tener un `box-shadow: 0 4px 12px rgba(0,0,0,0.05);` y un leve `transform: translateY(-2px);`.
+
+## 6. Pestañas de Navegación (Tabs)
+- Contenedor `.tabs-container` con lista `ul.tabs` y elementos `li.tab`.
+- **Estado inactivo**: Fondo gris claro (`#F4F6F8`), texto gris (`#5B6E80`).
+- **Estado activo (`.active`)**: Fondo blanco, texto color primario (`#0F848F`), con un borde inferior destacado de `3px solid #0F848F`.
+- **Interacción**: Alternancia de contenedores mediante atributos `data-target` e inyección de clases por JavaScript.
+
+## 7. Tablas Estructuradas (Basadas en Flexbox)
+- En lugar de usar `<table>` tradicional, se emplean contenedores flexibles (`.table-header`, `.table-list`, `.table-row-tb`, `.table-row`).
+- **Cabeceras (`.table-row-tb`)**: Fondo gris distintivo (`#E4E8EC`), con `border-radius: 8px` y separación visual de `margin-bottom: 0.5rem`.
+- **Comportamiento Mobile**: Los elementos que originalmente están en fila se reestructuran (a menudo omitiendo cabeceras repetitivas o usando `flex-direction: column`) para optimizar el ancho disponible, retirando el padding horizontal exterior.
+
+## 8. Estados Específicos de Pago
+Aplicados a celdas clave (como `.vence`):
+- **Pendiente (`.estado-pendiente`)**: Fondo `#FFF3F0`, Borde `#FFD0C1`.
+- **Pagado (`.estado-pagado`)**: Fondo `#E6F6ED`, Borde `#C4EBD4`.
+
+## 9. Resumen Flotante (Floating Summary Bar)
+- **Uso**: Barra anclada a la parte inferior de la pantalla (`position: fixed; bottom: 0;`), útil para mostrar acciones globales y acumuladores (como totales a pagar).
+- **Estilos**: Fondo blanco, sombra superior invertida (`box-shadow: 0px -4px 8px 0px rgba(0, 0, 0, 0.12);`).
+- **Animación**: Oculta por defecto con `transform: translateY(100%);` y aparece deslizando hacia arriba al agregar la clase `.visible` (`transform: translateY(0);`).
+- **Consideración Mobile**: Al aparecer la barra, el contenedor principal (`.table-container` o `.main-container`) debe compensar con un `padding-bottom` generoso (ej. `12rem`) para permitir que el scroll revele por completo el último registro de la vista sin quedar tapado.
+
+## 10. Cabeceras de Página (`.page-header-flex`)
+- **Estructura**: `display: flex` separando el contexto (izquierda) de las acciones (derecha).
+- **Contexto**: Un ícono SVG (`40x40px`) junto al bloque de textos (`h1` de 24px y `p` descriptivo de 16px).
+- **Acciones**: Botones de utilidades o estado en la parte derecha (ej. Botón Imprimir, Botón Descargar), usando layout secundario o outline. Borde inferior demarcado por un divisor `.header-divider`.
