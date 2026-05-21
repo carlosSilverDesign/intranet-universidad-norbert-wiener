@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "intranet-universidad-norbert-wiener",
+			"path": "."
+		},
+		{
+			"name": "img-pagos",
+			"path": "../../Pasarela Wiener Update/img-pagos"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "intranet-universidad-norbert-wiener"
+	}
+}

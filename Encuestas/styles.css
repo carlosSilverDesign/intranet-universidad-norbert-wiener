@@ -1,0 +1,841 @@
+/* Custom variables for isolated styles */
+:root {
+  --encuesta-dark-teal: #0D3A40;
+  --encuesta-accent-teal: #0F848F;
+  --encuesta-accent-teal-hover: #0b6770;
+  --encuesta-light-cyan-bg: #E6F8F9;
+  --encuesta-warning-yellow: #FFC72C;
+  --encuesta-warning-yellow-hover: #e0ad1f;
+  --encuesta-warning-bg: #FFF7EC;
+  --encuesta-warning-border: #FBE1C4;
+  --encuesta-warning-text: #A66E2E;
+  --encuesta-border: #E1E8ED;
+  --encuesta-body-bg: #FFFFFF;
+  --encuesta-text-muted: #5B6E80;
+  --encuesta-text-dark: #222222;
+}
+
+/* 1. INDICATOR BANNER */
+.encuesta-indicator-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--encuesta-dark-teal);
+  color: #FFFFFF;
+  padding: 14px 24px;
+  border-radius: 16px;
+  margin-bottom: 8px; /* sits right above the profile-header spacing */
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 4px 12px rgba(13, 58, 64, 0.15);
+  animation: slideDownFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.encuesta-indicator-banner .banner-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.encuesta-indicator-banner .dot-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: var(--encuesta-warning-yellow);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+.encuesta-indicator-banner .banner-text {
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.1px;
+}
+
+.encuesta-indicator-banner .banner-text strong {
+  font-weight: 700;
+}
+
+.encuesta-indicator-banner .btn-pending-count {
+  background-color: var(--encuesta-warning-yellow);
+  color: var(--encuesta-dark-teal);
+  border: none;
+  border-radius: 64px;
+  padding: 8px 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.encuesta-indicator-banner .btn-pending-count:hover {
+  background-color: var(--encuesta-warning-yellow-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 199, 44, 0.2);
+}
+
+.encuesta-indicator-banner .btn-pending-count:active {
+  transform: translateY(0);
+}
+
+/* 2. FLOATING CARD CONTAINER */
+.encuesta-floating-card {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 360px;
+  background: var(--encuesta-body-bg);
+  border: 1px solid var(--encuesta-border);
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  transform: translateY(120px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, visibility 0.4s;
+}
+
+.encuesta-floating-card.visible {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* CARD HEADER */
+.encuesta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--encuesta-dark-teal);
+  color: #FFFFFF;
+  padding: 16px 20px;
+}
+
+.encuesta-header-title-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.encuesta-header-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.encuesta-header-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.encuesta-header-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.encuesta-header-close {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  opacity: 0.8;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, transform 0.2s, background-color 0.2s;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+}
+
+.encuesta-header-close:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.encuesta-header-close svg {
+  width: 18px;
+  height: 18px;
+  stroke: #FFFFFF;
+  stroke-width: 2.2;
+  fill: none;
+}
+
+/* CARD BODY (STATE 1) */
+.encuesta-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.4s ease;
+}
+
+.encuesta-body-desc {
+  font-size: 13.5px;
+  color: var(--encuesta-text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Inner course card */
+.encuesta-inner-card {
+  border: 1px solid var(--encuesta-border);
+  background-color: #F8FAFC;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.encuesta-course-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--encuesta-text-dark);
+  margin: 0;
+}
+
+.encuesta-course-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.encuesta-course-section {
+  font-size: 12.5px;
+  color: var(--encuesta-text-muted);
+  font-weight: 500;
+}
+
+.encuesta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.encuesta-tag-teoria {
+  background-color: var(--encuesta-light-cyan-bg);
+  color: var(--encuesta-accent-teal);
+}
+
+.encuesta-tag-teoria svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--encuesta-accent-teal);
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Card/Modal Footer */
+.encuesta-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.encuesta-questions-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: var(--encuesta-light-cyan-bg);
+  color: var(--encuesta-accent-teal);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 100px;
+}
+
+.encuesta-btn-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--encuesta-accent-teal);
+  font-weight: 700;
+  font-size: 14.5px;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: all 0.2s ease;
+}
+
+.encuesta-btn-start:hover {
+  color: var(--encuesta-accent-teal-hover);
+}
+
+.encuesta-btn-start:hover svg {
+  transform: translateX(3px);
+}
+
+.encuesta-btn-start svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+  transition: transform 0.2s ease;
+}
+
+/* CARD BODY (STATE 2 - OMITTED) */
+.encuesta-card-body-omitted {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.4s ease;
+  text-align: left;
+}
+
+.encuesta-omitted-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--encuesta-text-dark);
+  margin: 0;
+}
+
+.encuesta-omitted-desc {
+  font-size: 14px;
+  color: var(--encuesta-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.encuesta-omitted-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.encuesta-btn-entendido {
+  background: none;
+  border: none;
+  color: var(--encuesta-accent-teal);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.encuesta-btn-entendido:hover {
+  background-color: var(--encuesta-light-cyan-bg);
+  color: var(--encuesta-accent-teal-hover);
+}
+
+/* 3. MANDATORY MODAL (STATE 3) */
+.encuesta-dialog {
+  border: none;
+  border-radius: 20px;
+  padding: 0;
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--encuesta-body-bg);
+  box-shadow: 0 24px 64px rgba(0, 30, 35, 0.25);
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+/* Show dialog entry animation */
+.encuesta-dialog[open] {
+  animation: modalScaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Style the dialog backdrop with glassmorphic blur and teal tint */
+.encuesta-dialog::backdrop {
+  background: rgba(11, 53, 58, 0.45);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: fadeInBackdrop 0.3s ease both;
+}
+
+/* Modal specific body spacing */
+.encuesta-dialog .encuesta-card-body {
+  padding: 24px;
+  gap: 20px;
+}
+
+/* Warning Banner in Modal */
+.encuesta-warning-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--encuesta-warning-bg);
+  border: 1px solid var(--encuesta-warning-border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.encuesta-warning-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.encuesta-warning-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--encuesta-warning-text);
+  stroke-width: 2.2;
+  fill: none;
+}
+
+.encuesta-warning-text {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--encuesta-warning-text);
+  margin: 0;
+  letter-spacing: 0.1px;
+}
+
+/* Modal Inner card adjustment */
+.encuesta-dialog .encuesta-inner-card {
+  padding: 16px 20px;
+}
+
+.encuesta-dialog .encuesta-course-name {
+  font-size: 16px;
+}
+
+/* ANIMATIONS */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(255, 193, 7, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes fadeInBackdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* CSS Shake effect when attempting to bypass the mandatory modal */
+.encuesta-dialog.shake {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+  20%, 60% { transform: translate(-50%, -50%) translateX(-8px); }
+  40%, 80% { transform: translate(-50%, -50%) translateX(8px); }
+}
+
+/* Responsive adjustment for Mobile screens */
+@media (max-width: 540px) {
+  .encuesta-floating-card {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
+  }
+  .encuesta-dialog {
+    width: calc(100% - 32px);
+    max-width: none;
+    left: 16px;
+    right: 16px;
+    transform: translate(0, -50%);
+    margin: 0;
+  }
+  .encuesta-dialog .encuesta-card-body {
+    padding: 16px;
+    gap: 16px;
+  }
+}
+
+/* 4. FULLSCREEN SURVEY PORTAL OVERLAY */
+.encuesta-portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F4F6F9; /* Light grey backdrop matches visual mockup */
+  z-index: 2000;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  transform: translateY(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, visibility 0.4s;
+}
+
+.encuesta-portal.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* PORTAL HEADER */
+.encuesta-portal-header {
+  background-color: var(--encuesta-dark-teal);
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  min-height: 70px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.btn-portal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-portal-back:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(-2px);
+}
+
+.btn-portal-back svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.portal-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.portal-logo-svg {
+  height: 36px;
+  fill: #FFFFFF;
+}
+
+.portal-title-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: 'Lato', sans-serif;
+}
+
+.portal-title-right svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* PORTAL MAIN CONTENT */
+.encuesta-portal-main {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+.portal-intro-section {
+  text-align: left;
+  margin-bottom: 36px;
+}
+
+.portal-main-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--encuesta-dark-teal);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.3px;
+}
+
+.portal-main-desc {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--encuesta-text-muted);
+  margin: 0;
+  max-width: 960px;
+}
+
+/* CARDS GRID */
+.encuesta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+/* PORTAL CARD SPECIFICS */
+.portal-card {
+  background: #FFFFFF;
+  border: 1px solid var(--encuesta-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(13, 58, 64, 0.03);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+  width: 100%;
+  max-width: 358px;
+  box-sizing: border-box;
+}
+
+.portal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13, 58, 64, 0.08);
+}
+
+.portal-card .encuesta-header {
+  background-color: var(--encuesta-accent-teal); /* Different header color, no close btn */
+}
+
+/* Pending tags and answered layout */
+.encuesta-questions-pending {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: #FFF7EC;
+  border: 1px solid var(--encuesta-warning-border);
+  color: #C07C2B;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 100px;
+}
+
+/* Lab or Group style tags */
+.encuesta-tag-lab {
+  background-color: #F1F5F9;
+  color: #475569;
+  font-weight: 500;
+}
+
+.encuesta-tag-lab svg {
+  width: 12px;
+  height: 12px;
+  stroke: #475569;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Portal Card: Answered state */
+.portal-card.answered {
+  border-color: #C2EAD9;
+}
+
+.portal-card.answered .encuesta-header {
+  background-color: #1E828A; /* Slightly lighter teal */
+}
+
+/* Centered content inside answered portal card */
+.portal-card .answered-body-template,
+.portal-card.answered .portal-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 36px 24px;
+  gap: 12px;
+  background-color: #FCFDFD;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.portal-card .success-icon-container {
+  width: 44px;
+  height: 44px;
+  background-color: #E6F8F0;
+  color: #10B981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.portal-card .success-icon-container svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 3;
+  fill: none;
+}
+
+.portal-card .success-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--encuesta-text-dark);
+  margin: 0;
+}
+
+.portal-card .success-desc {
+  font-size: 13px;
+  color: var(--encuesta-text-muted);
+  margin: 0;
+}
+
+/* PORTAL FOOTER */
+.encuesta-portal-footer {
+  text-align: center;
+  padding: 24px;
+  border-top: 1px solid var(--encuesta-border);
+  color: var(--encuesta-text-muted);
+  font-size: 12px;
+  margin-top: auto;
+  background-color: #FFFFFF;
+}
+
+/* Disable homepage scroll when portal is open */
+body.portal-active-scroll {
+  overflow: hidden;
+}
+
+/* 5. RESPONSIVE / MOBILE STYLES FOR ALL COMPONENT PARTS */
+@media (max-width: 768px) {
+  /* Banner adjustments */
+  .encuesta-indicator-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .encuesta-indicator-banner .btn-pending-count {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  /* Grid adjustments */
+  .encuesta-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Portal Header adjustments */
+  .encuesta-portal-header {
+    padding: 0 16px;
+    min-height: 60px;
+  }
+  
+  .portal-title-right {
+    display: none; /* Hide for cleaner layout on narrow screens */
+  }
+
+  .portal-logo-svg {
+    height: 28px;
+  }
+  
+  .btn-portal-back {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* Main container adjustments */
+  .encuesta-portal-main {
+    padding: 24px 16px;
+  }
+
+  .portal-intro-section {
+    margin-bottom: 24px;
+  }
+
+  .portal-main-title {
+    font-size: 20px;
+  }
+
+  .portal-main-desc {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+}
+
