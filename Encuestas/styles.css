@@ -1,4 +1,4 @@
-/* Custom variables for isolated styles */
+/* Variables personalizadas - probando */
 :root {
   --encuesta-dark-teal: #0D3A40;
   --encuesta-accent-teal: #0F848F;
@@ -9,7 +9,7 @@
   --encuesta-warning-bg: #FFF7EC;
   --encuesta-warning-border: #FBE1C4;
   --encuesta-warning-text: #A66E2E;
-  --encuesta-border: #E1E8ED;
+  --encuesta-border: #C6CFD7;
   --encuesta-body-bg: #FFFFFF;
   --encuesta-text-muted: #5B6E80;
   --encuesta-text-dark: #222222;
@@ -24,7 +24,7 @@
   color: #FFFFFF;
   padding: 14px 24px;
   border-radius: 16px;
-  margin-bottom: 8px; /* sits right above the profile-header spacing */
+  margin-bottom: 8px;
   font-family: 'Roboto', sans-serif;
   box-shadow: 0 4px 12px rgba(13, 58, 64, 0.15);
   animation: slideDownFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -88,7 +88,7 @@
   background: var(--encuesta-body-bg);
   border: 1px solid var(--encuesta-border);
   border-radius: 16px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.24  );
   z-index: 1000;
   overflow: hidden;
   font-family: 'Roboto', sans-serif;
@@ -388,7 +388,7 @@
   align-items: center;
   gap: 12px;
   background-color: var(--encuesta-warning-bg);
-  border: 1px solid var(--encuesta-warning-border);
+  border: 1px solid #FAC93D;
   border-radius: 12px;
   padding: 12px 16px;
   text-align: left;
@@ -402,10 +402,10 @@
 }
 
 .encuesta-warning-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: var(--encuesta-warning-text);
-  stroke-width: 2.2;
+  width: 24px;
+  height: 24px;
+  /* stroke: var(--encuesta-warning-text); */
+  /* stroke-width: 2.2; */
   fill: none;
 }
 
@@ -493,7 +493,7 @@
   40%, 80% { transform: translate(-50%, -50%) translateX(8px); }
 }
 
-/* Responsive adjustment for Mobile screens */
+/* Estilos responsive - mobile */
 @media (max-width: 540px) {
   .encuesta-floating-card {
     right: 12px;
@@ -515,14 +515,14 @@
   }
 }
 
-/* 4. FULLSCREEN SURVEY PORTAL OVERLAY */
+/* 4. FULLSCREEN ENCUESTAS OVERLAY */
 .encuesta-portal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #F4F6F9; /* Light grey backdrop matches visual mockup */
+  background-color: #F4F6F9;
   z-index: 2000;
   overflow-y: auto;
   display: flex;
@@ -600,18 +600,18 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14.5px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
   font-family: 'Lato', sans-serif;
 }
 
 .portal-title-right svg {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
+  /* stroke: currentColor; */
+  /* stroke-width: 2; */
 }
 
 /* PORTAL MAIN CONTENT */
@@ -625,31 +625,34 @@
 
 .portal-intro-section {
   text-align: left;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
 }
 
 .portal-main-title {
   font-family: 'Lato', sans-serif;
   font-size: 24px;
-  font-weight: 900;
+  font-weight: 700;
   color: var(--encuesta-dark-teal);
   margin: 0 0 12px 0;
   letter-spacing: -0.3px;
 }
 
 .portal-main-desc {
-  font-size: 14.5px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--encuesta-text-muted);
   margin: 0;
-  max-width: 960px;
+  /* max-width: 960px; */
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #a4a4b4;
 }
 
 /* CARDS GRID */
 .encuesta-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 360px);
   justify-items: center;
+  justify-content: center;
   gap: 28px;
   margin-bottom: 24px;
 }
