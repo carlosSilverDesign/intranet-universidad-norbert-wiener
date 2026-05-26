@@ -695,7 +695,7 @@
       <div class="encuesta-grid">
 
         <!-- CARD 1: Anatomía Humana II (Active) -->
-        <div class="portal-card">
+        <div class="portal-card" data-survey-type="nps" data-card-id="card-1">
           <header class="encuesta-header">
             <div class="encuesta-header-title-container">
               <div class="encuesta-header-icon">
@@ -804,8 +804,8 @@
           </div>
         </div>
 
-        <!-- CARD 3: Microbiología Médica (Active - 3 Pending questions) -->
-        <div class="portal-card">
+        <!-- CARD 3: Fundamentos de Administración de Empresas (Active - 8 Pending questions) -->
+        <div class="portal-card" data-survey-type="satisfaction" data-card-id="card-3">
           <header class="encuesta-header">
             <div class="encuesta-header-title-container">
               <div class="encuesta-header-icon">
@@ -824,7 +824,7 @@
           <div class="encuesta-card-body">
             <p class="encuesta-body-desc">Evaluación centrada en competencias pedagógicas y acompañamiento.</p>
             <div class="encuesta-inner-card">
-              <h4 class="encuesta-course-name">Microbiología Médica</h4>
+              <h4 class="encuesta-course-name">Fundamentos de Administración de Empresas</h4>
               <div class="encuesta-course-info">
                 <span class="encuesta-course-section">Sección AC1N3</span>
                 <span class="encuesta-tag encuesta-tag-teoria">
@@ -837,7 +837,7 @@
               </div>
             </div>
             <div class="encuesta-footer">
-              <span class="encuesta-questions-pending">3 preguntas pendientes</span>
+              <span class="encuesta-questions-pending">8 preguntas pendientes</span>
               <button class="encuesta-btn-start">
                 Comenzar
                 <svg viewBox="0 0 24 24">
@@ -1143,6 +1143,519 @@
       <p>© 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
     </footer>
   </div>
+
+  <!-- POPUP 1: NPS Survey Modal -->
+  <dialog id="modalNpsSurvey" class="survey-dialog-form">
+    <div class="survey-modal-wrapper">
+      <header class="survey-modal-header">
+        <div class="header-info">
+          <div class="header-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="header-course">Anatomía Humana II</h3>
+            <p class="header-professor">Dr. Carlos Méndez Paredes</p>
+          </div>
+        </div>
+        <button class="survey-modal-close" onclick="closeSurveyModal('modalNpsSurvey')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+      
+      <!-- Progress Bar Subheader -->
+      <div class="survey-progress-container">
+        <div class="progress-info">
+          <span class="progress-type">EVALUACIÓN DOCENTE • PREGRADO</span>
+          <span class="progress-count" id="npsProgressCount">0/1</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="npsProgressFill" style="width: 0%;"></div>
+        </div>
+      </div>
+      
+      <!-- Content Area -->
+      <div class="survey-modal-content">
+        <div class="survey-section-title">VALORACIÓN GLOBAL</div>
+        <h4 class="survey-question-text">En general, ¿cómo calificarías el desempeño docente en esta asignatura?</h4>
+        
+        <!-- Score Bar 0 to 10 -->
+        <div class="nps-scale-container">
+          <div class="nps-options">
+            <button type="button" class="nps-btn" data-value="0">0</button>
+            <button type="button" class="nps-btn" data-value="1">1</button>
+            <button type="button" class="nps-btn" data-value="2">2</button>
+            <button type="button" class="nps-btn" data-value="3">3</button>
+            <button type="button" class="nps-btn" data-value="4">4</button>
+            <button type="button" class="nps-btn" data-value="5">5</button>
+            <button type="button" class="nps-btn" data-value="6">6</button>
+            <button type="button" class="nps-btn" data-value="7">7</button>
+            <button type="button" class="nps-btn" data-value="8">8</button>
+            <button type="button" class="nps-btn" data-value="9">9</button>
+            <button type="button" class="nps-btn" data-value="10">10</button>
+          </div>
+          <div class="nps-labels">
+            <span>0 — Definitivamente NO</span>
+            <span>10 — Definitivamente SÍ</span>
+          </div>
+        </div>
+        
+        <!-- Conditional Question Area (hidden by default) -->
+        <div id="npsConditionalArea" class="conditional-question-area" style="display: none;">
+          <h4 class="survey-question-text" id="npsConditionalQuestionText">¿En qué podemos mejorar?</h4>
+          <textarea class="survey-textarea conditional-textarea" placeholder="Escribe aquí tus comentarios, sugerencias o aspectos que te gustaría que el docente mejore..."></textarea>
+        </div>
+        
+        <!-- Comments suggestions (always present and optional) -->
+        <div class="survey-optional-comments">
+          <h4 class="survey-question-text optional-label">Comentarios, sugerencias o aspectos a mejorar (opcional)</h4>
+          <textarea class="survey-textarea optional-textarea" placeholder="Escribe aquí tus comentarios, sugerencias o aspectos que te gustaría que el docente mejore..."></textarea>
+        </div>
+      </div>
+      
+      <!-- Footer -->
+      <footer class="survey-modal-footer">
+        <span class="survey-unanswered-counter" id="npsUnansweredText">1 pregunta sin responder</span>
+        <button type="button" class="survey-btn-submit" id="btnNpsSubmit" disabled>
+          Enviar encuesta
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; margin-left: 2px;">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </footer>
+    </div>
+  </dialog>
+
+  <!-- POPUP 2: Satisfaction Emoji Survey Modal -->
+  <dialog id="modalEmojiSurvey" class="survey-dialog-form satisfaction-survey-dialog">
+    <div class="survey-modal-wrapper">
+      <header class="survey-modal-header">
+        <div class="header-info">
+          <div class="header-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="header-course">Fundamentos de Administración de Empresas</h3>
+            <p class="header-professor">Dr. Carlos Méndez Paredes</p>
+          </div>
+        </div>
+        <button class="survey-modal-close" onclick="closeSurveyModal('modalEmojiSurvey')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+      
+      <!-- Progress Bar Subheader -->
+      <div class="survey-progress-container">
+        <div class="progress-info">
+          <span class="progress-type">EVALUACIÓN DOCENTE • PREGRADO</span>
+          <span class="progress-count" id="emojiProgressCount">0/8</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="emojiProgressFill" style="width: 0%;"></div>
+        </div>
+      </div>
+      
+      <!-- Content Area (Scrollable) -->
+      <div class="survey-modal-content scrollable-survey-content">
+        
+        <!-- Category 1 -->
+        <div class="survey-category-block">
+          <div class="survey-category-title">GESTIÓN Y CUMPLIMIENTO DEL CURSO</div>
+          
+          <!-- Q1 -->
+          <div class="survey-question-item" data-q-index="1">
+            <div class="question-row-header">
+              <span class="question-number-badge">1/8</span>
+              <p class="question-description">El docente cumple con los plazos establecidos para calificar tareas y entregar notas.</p>
+            </div>
+            <div class="emoji-options-row">
+              <button type="button" class="emoji-option-btn" data-score="1">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="2">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="3">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line></svg>
+                </div>
+                <span class="emoji-label">Algunas veces</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="4">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi siempre</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="5">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Siempre</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Q2 -->
+          <div class="survey-question-item" data-q-index="2">
+            <div class="question-row-header">
+              <span class="question-number-badge">2/8</span>
+              <p class="question-description">El docente responde oportunamente mis consultas e inquietudes a través de los canales institucionales.</p>
+            </div>
+            <div class="emoji-options-row">
+              <button type="button" class="emoji-option-btn" data-score="1">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="2">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="3">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line></svg>
+                </div>
+                <span class="emoji-label">Algunas veces</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="4">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi siempre</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="5">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Siempre</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Q3 -->
+          <div class="survey-question-item" data-q-index="3">
+            <div class="question-row-header">
+              <span class="question-number-badge">3/8</span>
+              <p class="question-description">El docente muestra dominio en el curso, evidenciando preparación en cada sesión de clase.</p>
+            </div>
+            <div class="emoji-options-row">
+              <button type="button" class="emoji-option-btn" data-score="1">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="2">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="3">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line></svg>
+                </div>
+                <span class="emoji-label">Algunas veces</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="4">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi siempre</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="5">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Siempre</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="survey-category-block">
+          <div class="survey-category-title">METODOLOGÍA DOCENTE</div>
+          
+          <!-- Q4 -->
+          <div class="survey-question-item" data-q-index="4">
+            <div class="question-row-header">
+              <span class="question-number-badge">4/8</span>
+              <p class="question-description">El docente utiliza estrategias y recursos que facilitan mi aprendizaje.</p>
+            </div>
+            <div class="emoji-options-row">
+              <button type="button" class="emoji-option-btn" data-score="1">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="2">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="3">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line></svg>
+                </div>
+                <span class="emoji-label">Algunas veces</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="4">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi siempre</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="5">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Siempre</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Q5 -->
+          <div class="survey-question-item" data-q-index="5">
+            <div class="question-row-header">
+              <span class="question-number-badge">5/8</span>
+              <p class="question-description">El docente fomenta el uso de diversas fuentes de información confiables para potenciar mi aprendizaje.</p>
+            </div>
+            <div class="emoji-options-row">
+              <button type="button" class="emoji-option-btn" data-score="1">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="2">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="3">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line></svg>
+                </div>
+                <span class="emoji-label">Algunas veces</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="4">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi siempre</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="5">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Siempre</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Q6 -->
+          <div class="survey-question-item" data-q-index="6">
+            <div class="question-row-header">
+              <span class="question-number-badge">6/8</span>
+              <p class="question-description">El docente me impulsa a trasladar lo aprendido a situaciones reales, favoreciendo el desarrollo de mis competencias.</p>
+            </div>
+            <div class="emoji-options-row">
+              <button type="button" class="emoji-option-btn" data-score="1">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="2">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="3">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line></svg>
+                </div>
+                <span class="emoji-label">Algunas veces</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="4">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi siempre</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="5">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Siempre</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="survey-category-block">
+          <div class="survey-category-title">VINCULACIÓN CON LOS ESTUDIANTES Y EVALUACIÓN DEL APRENDIZAJE</div>
+          
+          <!-- Q7 -->
+          <div class="survey-question-item" data-q-index="7">
+            <div class="question-row-header">
+              <span class="question-number-badge">7/8</span>
+              <p class="question-description">El docente mantiene una comunicación respetuosa y propicia un ambiente de diálogo e interacción empática en las sesiones de clase.</p>
+            </div>
+            <div class="emoji-options-row">
+              <button type="button" class="emoji-option-btn" data-score="1">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="2">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="3">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line></svg>
+                </div>
+                <span class="emoji-label">Algunas veces</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="4">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi siempre</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="5">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Siempre</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Q8 -->
+          <div class="survey-question-item" data-q-index="8">
+            <div class="question-row-header">
+              <span class="question-number-badge">8/8</span>
+              <p class="question-description">El docente brinda retroalimentación útil y oportuna que me ayuda a mejorar mi desempeño.</p>
+            </div>
+            <div class="emoji-options-row">
+              <button type="button" class="emoji-option-btn" data-score="1">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="2">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi nunca</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="3">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line></svg>
+                </div>
+                <span class="emoji-label">Algunas veces</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="4">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Casi siempre</span>
+              </button>
+              <button type="button" class="emoji-option-btn" data-score="5">
+                <div class="emoji-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle><path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"></path></svg>
+                </div>
+                <span class="emoji-label">Siempre</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggestions Section -->
+        <div class="survey-optional-comments">
+          <h4 class="survey-question-text optional-label">Comentarios, sugerencias o aspectos a mejorar (opcional)</h4>
+          <textarea class="survey-textarea optional-textarea" placeholder="Escribe aquí tus comentarios, sugerencias o aspectos que te gustaría que el docente mejore..."></textarea>
+        </div>
+      </div>
+      
+      <!-- Footer -->
+      <footer class="survey-modal-footer">
+        <span class="survey-unanswered-counter" id="emojiUnansweredText">8 preguntas sin responder</span>
+        <button type="button" class="survey-btn-submit" id="btnEmojiSubmit" disabled>Guardar</button>
+      </footer>
+    </div>
+  </dialog>
+
+  <!-- POPUP 3: Success Confirmation Modal -->
+  <dialog id="modalSurveySuccess" class="survey-success-dialog">
+    <div class="success-dialog-wrapper">
+      <header class="success-dialog-header">
+        <div class="header-info">
+          <div class="header-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="success-header-title">¡Gracias por tu tiempo!</h3>
+            <p class="success-header-subtitle">Encuesta completada</p>
+          </div>
+        </div>
+        <button class="success-dialog-close" onclick="closeSuccessModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+      
+      <div class="success-dialog-body">
+        <div class="success-checkmark-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h4 class="success-body-title">Tu evaluación fue enviada</h4>
+        <p class="success-body-desc">Tu opinión contribuye a mejorar la calidad educativa de la universidad. Tus respuestas son completamente anónimas.</p>
+        
+        <button class="success-btn-close" onclick="closeSuccessModal()">Cerrar</button>
+      </div>
+    </div>
+  </dialog>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
   <script src="sortable.min.js"></script>
