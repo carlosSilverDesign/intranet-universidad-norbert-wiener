@@ -1,0 +1,652 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F4F6F8;
+  color: #222222;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+.main-content-layout {
+  margin-left: 220px;
+  margin-top: 64px;
+  padding: 32px;
+  min-height: calc(100vh - 64px);
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   COMPONENTE NAVBAR / SIDEBAR (Barra Lateral - Listo para Blazor)
+   ========================================================================== */
+
+.sidebar-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #FFFFFF;
+  border-right: 1px solid #E2E8F0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-header {
+  height: 140px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: none;
+  flex-shrink: 0;
+}
+
+.sidebar-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.sidebar-logo-desktop {
+  display: block;
+  width: 178px;
+  height: 104px;
+}
+
+.sidebar-logo-mobile {
+  display: none;
+}
+
+.sidebar-close-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #404040;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.sidebar-close-btn:hover {
+  background-color: #F1F5F9;
+}
+
+.sidebar-close-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+/* Contenedor con scroll para los enlaces centrales */
+.sidebar-nav-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+}
+
+/* Personalización del scrollbar en el Navbar */
+.sidebar-nav-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-nav-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav-container::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+.sidebar-nav-container::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.sidebar-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-category-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8E9EAE;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 20px 8px 8px 8px;
+}
+
+.sidebar-menu-item {
+  margin-bottom: 4px;
+}
+
+.sidebar-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px;
+  text-decoration: none;
+  color: #5B6E80;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.sidebar-menu-link:hover {
+  background-color: #F6F6F6;
+  color: #0F848F;
+}
+
+.sidebar-menu-link.active {
+  border-color: #95DADB;
+  background-color: #F0FAFA;
+  color: #166A74;
+}
+
+.sidebar-menu-link svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  fill: none;
+  color: inherit;
+}
+
+.sidebar-menu-link svg path {
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+.sidebar-menu-link svg path:not([fill="none"]) {
+  fill: currentColor;
+}
+
+.sidebar-menu-link svg path[stroke]:not([stroke="none"]) {
+  stroke: currentColor;
+}
+
+/* Sección de perfil de usuario fija en la parte inferior */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid #F1F5F9;
+  flex-shrink: 0;
+  background-color: #FFFFFF;
+}
+
+.sidebar-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 4px 0;
+}
+
+.sidebar-user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #E4E8EC;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #5B6E80;
+}
+
+.sidebar-user-avatar svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #5B6E80;
+  stroke-width: 1.8;
+}
+
+.sidebar-user-info {
+  overflow: hidden;
+}
+
+.sidebar-user-role {
+  font-size: 9px;
+  font-weight: 700;
+  color: #727272;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.sidebar-user-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+  line-height: 1.35;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.sidebar-user-code {
+  font-size: 12px;
+  color: #727272;
+  margin: 2px 0 0 0;
+}
+
+.sidebar-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FF5454;
+  text-align: left;
+  border-radius: 6px;
+  transition: background-color 0.2s, transform 0.1s;
+  text-decoration: none;
+}
+
+.sidebar-logout-btn:hover {
+  background-color: #FFF5F5;
+}
+
+.sidebar-logout-btn:active {
+  transform: scale(0.98);
+}
+
+.sidebar-logout-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* ==========================================================================
+   COMPONENTE BARRA DE BÚSQUEDA / TOP BAR (Buscador superior - Listo para Blazor)
+   ========================================================================== */
+
+.top-search-bar {
+  position: fixed;
+  top: 0;
+  left: 220px;
+  right: 0;
+  height: 64px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 90;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Elementos izquierdos en móviles */
+.top-bar-left-mobile {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-bar-burger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: #222222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  transition: background-color 0.2s;
+}
+
+.top-bar-burger-btn:hover {
+  background-color: #F1F5F9;
+}
+
+.top-bar-burger-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+.top-bar-logo-img {
+  height: 34px;
+  width: auto;
+}
+
+/* Buscador en versión de escritorio */
+.top-bar-search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+}
+
+.top-bar-search-input {
+  width: 100%;
+  height: 40px;
+  padding: 8px 16px 8px 42px;
+  border: 1px solid #CBD5E1;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #222222;
+  outline: none;
+  background-color: #F8FAFC;
+  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.top-bar-search-input:focus {
+  border-color: #0F848F;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.1);
+}
+
+.top-bar-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  color: #94A3B8;
+  pointer-events: none;
+}
+
+.top-bar-search-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+}
+
+/* Indicador de Campus en la barra superior */
+.top-bar-campus-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #E7F8EF;
+  border: 1px solid rgba(51, 181, 107, 0.30);
+  color: #278B52;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.top-bar-campus-badge svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: #278B52;
+  stroke-width: 2;
+}
+
+/* Acciones en la parte derecha */
+.top-bar-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-bar-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5B6E80;
+  position: relative;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.top-bar-action-btn:hover {
+  background-color: #F1F5F9;
+  color: #0F848F;
+}
+
+.top-bar-action-btn:active {
+  transform: scale(0.95);
+}
+
+.top-bar-action-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+.top-bar-action-btn.mobile-search-btn {
+  display: none;
+}
+
+.top-bar-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 16px;
+  background-color: #EF4444;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+}
+
+/* Overlay de búsqueda para móviles */
+.mobile-search-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: #FFFFFF;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
+}
+
+.mobile-search-overlay.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-search-input-wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.mobile-search-input-wrapper svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #94A3B8;
+  pointer-events: none;
+}
+
+.mobile-search-input-wrapper svg stroke {
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.mobile-search-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #CBD5E1;
+  border-radius: 20px;
+  padding: 8px 16px 8px 40px;
+  outline: none;
+  font-size: 14px;
+  background-color: #F8FAFC;
+}
+
+.mobile-search-input:focus {
+  border-color: #0F848F;
+  background-color: #FFFFFF;
+}
+
+.mobile-search-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+  color: #404040;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.mobile-search-close-btn:hover {
+  background-color: #F1F5F9;
+}
+
+.mobile-search-close-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+/* Fondo oscuro difuminado (capa de blur) al activar el drawer móvil */
+.navbar-blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(11, 53, 58, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 150;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.navbar-blur-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================================================
+   ADAPTACIÓN MÓVIL NATIVA (Responsividad real por tamaño de pantalla)
+   ========================================================================== */
+
+@media screen and (max-width: 992px) {
+  .top-search-bar {
+    left: 0;
+    padding: 0 16px;
+  }
+
+  .top-bar-left-mobile {
+    display: flex;
+  }
+
+  /* Ocultar el indicador de campus en móvil para dejar espacio al logo y acciones */
+  .top-bar-campus-badge {
+    display: none;
+  }
+
+  /* Ocultar el botón de correo en la barra superior en versión móvil */
+  #mailBtn {
+    display: none;
+  }
+
+  .top-bar-search-container {
+    display: none;
+  }
+
+  .top-bar-action-btn.mobile-search-btn {
+    display: flex;
+  }
+
+  /* Ocultar el Navbar por defecto a la izquierda */
+  .sidebar-navbar {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 200;
+  }
+
+  /* Mostrar al añadir clase activa */
+  .sidebar-navbar.active {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Ajustar cabecera del sidebar en móviles */
+  .sidebar-header {
+    height: 64px;
+    padding: 0 16px;
+    justify-content: space-between;
+    border-bottom: 1px solid #F1F5F9;
+  }
+
+  .sidebar-logo-desktop {
+    display: none;
+  }
+
+  .sidebar-logo-mobile {
+    display: block;
+    height: 24px;
+    width: auto;
+  }
+
+  .sidebar-close-btn {
+    display: flex;
+  }
+
+  /* El contenido central ocupa todo el ancho */
+  .main-content-layout {
+    margin-left: 0;
+    padding: 20px 16px;
+  }
+}
