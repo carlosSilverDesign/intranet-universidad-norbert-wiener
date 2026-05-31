@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -648,5 +647,333 @@ body {
   .main-content-layout {
     margin-left: 0;
     padding: 20px 16px;
+  }
+}
+
+/* ==========================================================================
+   PANEL DE NOTIFICACIONES (Drawer deslizable - Listo para Blazor)
+   ========================================================================== */
+
+.notifications-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background-color: #FFFFFF;
+  border-left: 1px solid #E2E8F0;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08);
+  z-index: 210;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notifications-drawer.active {
+  transform: translateX(0);
+}
+
+.notifications-header {
+  height: 64px;
+  padding: 0 20px;
+  border-bottom: 1px solid #F1F5F9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.notifications-title-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notifications-title-area h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+}
+
+.notifications-count {
+  background-color: #EF4444;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.notifications-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #404040;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.notifications-close-btn:hover {
+  background-color: #F1F5F9;
+}
+
+.notifications-close-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Cuerpo con scroll */
+.notifications-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background-color: #F8FAFC;
+}
+
+/* Personalización del scrollbar en Notificaciones */
+.notifications-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notifications-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.notifications-body::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+.notifications-body::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Tarjetas de Notificaciones */
+.notification-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notification-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.notification-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notification-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #5B6E80;
+  flex-shrink: 0;
+}
+
+.notification-card-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+}
+
+.notification-card-time {
+  font-size: 11.5px;
+  color: #94A3B8;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.notification-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notification-card-text {
+  font-size: 13.5px;
+  color: #465462;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.notification-card-text strong {
+  font-weight: 700;
+  color: #222222;
+}
+
+/* Botones de acción dentro de la tarjeta */
+.notification-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  font-family: inherit;
+}
+
+.notification-action-btn.teal-btn {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  border: none;
+  width: fit-content;
+}
+
+.notification-action-btn.teal-btn:hover {
+  background-color: #0C6E77;
+}
+
+.notification-action-btn.outline-full-btn {
+  background-color: #FFFFFF;
+  color: #222222;
+  border: 1px solid #CBD5E1;
+  width: 100%;
+  justify-content: space-between;
+  /* Flecha al extremo derecho */
+  padding: 0 16px;
+}
+
+.notification-action-btn.outline-full-btn:hover {
+  background-color: #F8FAFC;
+  border-color: #94A3B8;
+}
+
+/* Chips e Indicadores */
+.notification-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.notification-badge-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #F0FAFA;
+  border: 1px solid #BCEAEB;
+  color: #166A74;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.notification-badge-chip svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+/* Chips de horario (borde gris) */
+.notification-schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notification-schedule-item {
+  display: flex;
+  align-items: center;
+}
+
+.notification-time-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  color: #465462;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.notification-day-text {
+  font-size: 12.5px;
+  color: #5B6E80;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+/* Imágenes de eventos */
+.notification-card-image-wrapper {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+}
+
+.notification-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tag NUEVO en rojo */
+.notification-tag-new {
+  background-color: #EF4444;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* Título de anuncio en tarjeta expandida */
+.notification-announcement-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #222222;
+  line-height: 1.4;
+  margin: 4px 0 0 0;
+}
+
+.notification-card-text.secondary-text {
+  color: #727272;
+  font-size: 13px;
+}
+
+/* Responsive nativo para móviles */
+@media screen and (max-width: 576px) {
+  .notifications-drawer {
+    max-width: 100%;
   }
 }

@@ -13,17 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const notificationBtn = document.getElementById('notificationBtn');
   const notificationBadge = document.getElementById('notificationBadge');
+  const notificationsDrawer = document.getElementById('notificationsDrawer');
+  const notificationsCloseBtn = document.getElementById('notificationsCloseBtn');
   const mailBtn = document.getElementById('mailBtn');
 
-  // 1. Controladores del Menú Lateral Móvil (Drawer)
+  // 1. Controladores del Menú Lateral Móvil (Drawer izquierdo)
   function openMobileMenu() {
+    closeNotifications(); // Prevenir colisión
     if (sidebar) sidebar.classList.add('active');
     if (blurOverlay) blurOverlay.classList.add('active');
   }
 
   function closeMobileMenu() {
     if (sidebar) sidebar.classList.remove('active');
-    if (blurOverlay) blurOverlay.classList.remove('active');
+    // Quitar la capa de blur solo si el panel de notificaciones tampoco está activo
+    if (!notificationsDrawer || !notificationsDrawer.classList.contains('active')) {
+      if (blurOverlay) blurOverlay.classList.remove('active');
+    }
   }
 
   if (burgerBtn) {
@@ -35,7 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (blurOverlay) {
-    blurOverlay.addEventListener('click', closeMobileMenu);
+    blurOverlay.addEventListener('click', () => {
+      closeMobileMenu();
+      closeNotifications();
+    });
   }
 
   // 2. Controladores del Buscador Desplegable en Móviles
@@ -76,14 +85,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Simulación de notificaciones
+  // 4. Controladores del Panel de Notificaciones (Drawer derecho)
+  function openNotifications() {
+    closeMobileMenu(); // Prevenir colisión
+    if (notificationsDrawer) notificationsDrawer.classList.add('active');
+    if (blurOverlay) blurOverlay.classList.add('active');
+    if (notificationBadge) {
+      notificationBadge.style.display = 'none'; // Limpia el indicador visual
+    }
+  }
+
+  function closeNotifications() {
+    if (notificationsDrawer) notificationsDrawer.classList.remove('active');
+    // Quitar la capa de blur solo si el menú lateral izquierdo tampoco está activo
+    if (!sidebar || !sidebar.classList.contains('active')) {
+      if (blurOverlay) blurOverlay.classList.remove('active');
+    }
+  }
+
   if (notificationBtn) {
-    notificationBtn.addEventListener('click', () => {
-      alert('Tienes 2 notificaciones académicas pendientes.');
-      if (notificationBadge) {
-        notificationBadge.style.display = 'none'; // Limpia el indicador
-      }
-    });
+    notificationBtn.addEventListener('click', openNotifications);
+  }
+
+  if (notificationsCloseBtn) {
+    notificationsCloseBtn.addEventListener('click', closeNotifications);
   }
 
   // 5. Simulación de clic en correo institucional
@@ -125,3 +150,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+

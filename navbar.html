@@ -167,7 +167,7 @@
             d="M20.7936 16.4944C20.2733 15.5981 19.4999 13.0622 19.4999 9.75C19.4999 7.76088 18.7097 5.85322 17.3032 4.4467C15.8967 3.04018 13.989 2.25 11.9999 2.25C10.0108 2.25 8.10311 3.04018 6.69659 4.4467C5.29007 5.85322 4.49989 7.76088 4.49989 9.75C4.49989 13.0631 3.72551 15.5981 3.2052 16.4944C3.07233 16.7222 3.00189 16.9811 3.00099 17.2449C3.00008 17.5086 3.06874 17.768 3.20005 17.9967C3.33135 18.2255 3.52065 18.4156 3.74886 18.5478C3.97708 18.6801 4.23613 18.7498 4.49989 18.75H8.32583C8.49886 19.5967 8.95904 20.3577 9.62852 20.9042C10.298 21.4507 11.1357 21.7492 11.9999 21.7492C12.8641 21.7492 13.7018 21.4507 14.3713 20.9042C15.0407 20.3577 15.5009 19.5967 15.674 18.75H19.4999C19.7636 18.7496 20.0225 18.6798 20.2506 18.5475C20.4787 18.4151 20.6678 18.225 20.799 17.9963C20.9302 17.7676 20.9988 17.5083 20.9979 17.2446C20.9969 16.9809 20.9265 16.7222 20.7936 16.4944ZM4.49989 17.25C5.22177 16.0088 5.99989 13.1325 5.99989 9.75C5.99989 8.1587 6.63203 6.63258 7.75725 5.50736C8.88247 4.38214 10.4086 3.75 11.9999 3.75C13.5912 3.75 15.1173 4.38214 16.2425 5.50736C17.3677 6.63258 17.9999 8.1587 17.9999 9.75C17.9999 13.1297 18.7761 16.0059 19.4999 17.25H4.49989Z"
             fill="#465462" />
         </svg>
-        <span class="top-bar-badge" id="notificationBadge">2</span>
+        <span class="top-bar-badge" id="notificationBadge">7</span>
       </button>
     </div>
 
@@ -520,6 +520,242 @@
         </svg>
         <span class="text">Salir</span>
       </a>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       PANEL DE NOTIFICACIONES DESLIZABLE (Drawer - Ancho max: 420px)
+       ========================================================================== -->
+  <aside class="notifications-drawer" id="notificationsDrawer">
+    <!-- Cabecera del Panel -->
+    <div class="notifications-header">
+      <div class="notifications-title-area">
+        <h2>Notificaciones</h2>
+        <span class="notifications-count">7</span>
+      </div>
+      <button type="button" class="notifications-close-btn" id="notificationsCloseBtn" aria-label="Cerrar Notificaciones">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Cuerpo del Panel (Contenedor de tarjetas) -->
+    <div class="notifications-body">
+
+      <!-- Tarjeta 1: Inicio de matrícula -->
+      <div class="notification-card">
+        <div class="notification-card-header">
+          <div class="notification-card-header-left">
+            <h3 class="notification-card-title">Inicio de matr&iacute;cula</h3>
+          </div>
+          <span class="notification-card-time">Hace 3 min</span>
+        </div>
+        <div class="notification-card-body">
+          <p class="notification-card-text">¡Tu horario de matr&iacute;cula ya est&aacute; disponible! dale click al siguiente bot&oacute;n para comenzar.</p>
+          <button type="button" class="notification-action-btn teal-btn">
+            <span>Matric&uacute;late</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Cambio de horario -->
+      <div class="notification-card">
+        <div class="notification-card-header">
+          <div class="notification-card-header-left">
+            <span class="notification-card-icon">
+              <!-- Calendar Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5B6E80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </span>
+            <h3 class="notification-card-title">Cambio de horario</h3>
+          </div>
+          <span class="notification-card-time">Hace 15 min</span>
+        </div>
+        <div class="notification-card-body">
+          <p class="notification-card-text">El curso <strong>Procesos Celulares y Moleculares II</strong> tiene un nuevo horario:</p>
+          <div class="notification-schedule-list">
+            <div class="notification-schedule-item">
+              <span class="notification-time-chip">07:00 - 11:30</span>
+              <span class="notification-day-text">Martes y jueves</span>
+            </div>
+            <div class="notification-schedule-item">
+              <span class="notification-time-chip">11:30 - 13:00</span>
+              <span class="notification-day-text">S&aacute;bado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3: Eventos Wiener (Vive Wiener) -->
+      <div class="notification-card">
+        <div class="notification-card-header">
+          <div class="notification-card-header-left">
+            <h3 class="notification-card-title">Eventos Wiener</h3>
+          </div>
+          <span class="notification-card-time">Hace 30 min</span>
+        </div>
+        <div class="notification-card-body">
+          <div class="notification-card-image-wrapper">
+            <img src="img/vive_wiener_banner.png" alt="Vive Wiener Evento" class="notification-card-image">
+          </div>
+          <p class="notification-card-text">¡Descubre tu vocaci&oacute;n en nuestro Vive Wiener y convierte tu pasi&oacute;n en tu profesi&oacute;n🎓!</p>
+        </div>
+      </div>
+
+      <!-- Tarjeta 4: Reserva de ambiente -->
+      <div class="notification-card">
+        <div class="notification-card-header">
+          <div class="notification-card-header-left">
+            <span class="notification-card-icon">
+              <!-- Laptop icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5B6E80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="2" y1="20" x2="22" y2="20"></line>
+                <line x1="12" y1="17" x2="12" y2="20"></line>
+              </svg>
+            </span>
+            <h3 class="notification-card-title">Reserva de ambiente</h3>
+          </div>
+          <span class="notification-card-time">Hace 1d</span>
+        </div>
+        <div class="notification-card-body">
+          <p class="notification-card-text">Se reserv&oacute; el aula <strong>T104</strong> en el <strong>piso 5</strong> del <strong>Local 2</strong> en el rango de horario:</p>
+          <div class="notification-chips-row">
+            <span class="notification-badge-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Mi&eacute;rcoles 15 oct.
+            </span>
+            <span class="notification-badge-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              14:00 - 15:00
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 5: Eventos Wiener (Wiener Fest) -->
+      <div class="notification-card">
+        <div class="notification-card-header">
+          <div class="notification-card-header-left">
+            <h3 class="notification-card-title">Eventos Wiener</h3>
+          </div>
+          <span class="notification-card-time">Hace 3d</span>
+        </div>
+        <div class="notification-card-body">
+          <div class="notification-card-image-wrapper">
+            <img src="img/wiener_fest_banner.png" alt="Wiener Fest" class="notification-card-image">
+          </div>
+          <p class="notification-card-text">¡Empieza el 2026 descubriendo tu vocaci&oacute;n en el Wiener Fest!</p>
+          <div class="notification-chips-row">
+            <span class="notification-badge-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              S&aacute;bado 11 oct.
+            </span>
+            <span class="notification-badge-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Todo el d&iacute;a
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 6: Saldo pendiente -->
+      <div class="notification-card">
+        <div class="notification-card-header">
+          <div class="notification-card-header-left">
+            <span class="notification-card-icon">
+              <!-- Wallet icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5B6E80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                <line x1="12" y1="4" x2="12" y2="20"></line>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+              </svg>
+            </span>
+            <h3 class="notification-card-title">Saldo pendiente 💰</h3>
+          </div>
+          <span class="notification-card-time">Hace 4d</span>
+        </div>
+        <div class="notification-card-body">
+          <p class="notification-card-text">A&uacute;n tienes un monto pendiente. Realiza el pago a tiempo para evitar atrasos.</p>
+          <button type="button" class="notification-action-btn teal-btn">
+            <span>Pagar ahora</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tarjeta 7: Eventos Wiener (Nuevo / Expandido) -->
+      <div class="notification-card">
+        <div class="notification-card-header">
+          <div class="notification-card-header-left">
+            <h3 class="notification-card-title">Eventos Wiener</h3>
+          </div>
+          <span class="notification-card-time">Hace 5d</span>
+        </div>
+        <div class="notification-card-body">
+          <div class="notification-card-image-wrapper">
+            <img src="img/wiener_fest_banner.png" alt="Wiener Fest" class="notification-card-image">
+          </div>
+          <span class="notification-tag-new">Nuevo</span>
+          <h4 class="notification-announcement-title">¡Empieza el 2026 descubriendo tu vocaci&oacute;n en el Wiener Fest!</h4>
+          <p class="notification-card-text secondary-text">Vive la experiencia universitaria explorando nuestras instalaciones y conociendo todo lo que la Universidad Norbert Wiener tiene preparado para ti.</p>
+          <div class="notification-chips-row">
+            <span class="notification-badge-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              S&aacute;bado 11 oct.
+            </span>
+            <span class="notification-badge-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Todo el d&iacute;a
+            </span>
+          </div>
+          <button type="button" class="notification-action-btn outline-full-btn">
+            <span>Ver evento</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
     </div>
   </aside>
 
