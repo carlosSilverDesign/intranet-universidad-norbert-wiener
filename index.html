@@ -59,8 +59,121 @@
 			</div>
 		</header> -->
 
-    <!-- Banner Indicador de Encuestas Pendientes -->
-    <div class="encuesta-indicator-banner">
+    <!-- PANTALLA DE CARGA (Skeleton Loader animado) -->
+    <div id="skeletonLoader" class="skeleton-loader-container">
+
+      <!-- Cabecera de perfil skeleton -->
+      <div class="skeleton-profile">
+        <div class="skeleton-profile-left">
+          <div class="skeleton-avatar skeleton-item"></div>
+          <div class="skeleton-profile-texts">
+            <div class="skeleton-text-title skeleton-item"></div>
+            <div class="skeleton-text-subtitle skeleton-item"></div>
+          </div>
+        </div>
+        <div class="skeleton-profile-actions">
+          <div class="skeleton-pill-btn skeleton-item"></div>
+          <div class="skeleton-pill-btn skeleton-item"></div>
+          <div class="skeleton-pill-btn skeleton-item"></div>
+        </div>
+      </div>
+
+      <!-- Banner de matricula (Hero) skeleton -->
+      <div class="skeleton-hero skeleton-item"></div>
+
+      <!-- Titulo de dashboard skeleton -->
+      <div class="skeleton-title-row">
+        <div class="skeleton-section-title skeleton-item"></div>
+        <div class="skeleton-edit-btn skeleton-item"></div>
+      </div>
+
+      <!-- Cuadrícula de tarjetas skeleton -->
+      <div class="skeleton-grid">
+        <!-- Tarjeta 1 (Próxima Clase) -->
+        <div class="skeleton-card">
+          <div class="skeleton-card-subtitle skeleton-item"></div>
+          <div class="skeleton-card-middle skeleton-item"></div>
+          <div class="skeleton-card-title skeleton-item"></div>
+          <div class="skeleton-card-desc skeleton-item"></div>
+        </div>
+        <!-- Tarjeta 2 (Accesos Rápidos) -->
+        <div class="skeleton-card">
+          <div class="skeleton-card-subtitle skeleton-item"></div>
+          <div class="skeleton-card-middle skeleton-item" style="width: 80px;"></div>
+          <div class="skeleton-card-title skeleton-item"></div>
+          <div class="skeleton-card-desc skeleton-item"></div>
+        </div>
+        <!-- Tarjeta 3 (Trámites) -->
+        <div class="skeleton-card">
+          <div class="skeleton-card-subtitle skeleton-item"></div>
+          <div class="skeleton-card-title skeleton-item" style="width: 60%;"></div>
+          <div class="skeleton-card-desc skeleton-item"></div>
+          <div class="skeleton-card-line skeleton-item"></div>
+        </div>
+        <!-- Tarjeta 4 (Progreso Académico) - Toma dos columnas (span 2) -->
+        <div class="skeleton-card skeleton-card-span-2">
+          <div class="skeleton-card-title skeleton-item" style="width: 200px;"></div>
+          <!-- Barra de progreso skeleton -->
+          <div style="margin-top: 16px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between;">
+              <div class="skeleton-item" style="height: 14px; width: 120px;"></div>
+              <div class="skeleton-item" style="height: 14px; width: 40px;"></div>
+            </div>
+            <div class="skeleton-item" style="height: 12px; width: 100%; border-radius: 6px;"></div>
+          </div>
+          <!-- Grid de estadísticas skeleton -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: auto;">
+            <div class="skeleton-item" style="height: 80px; border-radius: 12px;"></div>
+            <div class="skeleton-item" style="height: 80px; border-radius: 12px;"></div>
+          </div>
+        </div>
+        <!-- Tarjeta 5 (Obligaciones / Finanzas) -->
+        <div class="skeleton-card">
+          <div class="skeleton-card-subtitle skeleton-item"></div>
+          <div class="skeleton-card-middle skeleton-item" style="width: 140px;"></div>
+          <div class="skeleton-card-title skeleton-item"></div>
+          <div class="skeleton-card-desc skeleton-item"></div>
+        </div>
+        <!-- Tarjeta 6 (Anuncios) - Toma tres columnas (span 3) -->
+        <div class="skeleton-card skeleton-card-span-3">
+          <div class="skeleton-card-title skeleton-item" style="width: 150px;"></div>
+          <div class="skeleton-announcements-grid">
+            <!-- Anuncio 1 -->
+            <div class="skeleton-news-item">
+              <div class="skeleton-item skeleton-news-img"></div>
+              <div class="skeleton-news-content">
+                <div class="skeleton-item" style="height: 14px; width: 90%;"></div>
+                <div class="skeleton-item" style="height: 14px; width: 75%;"></div>
+                <div class="skeleton-item" style="height: 10px; width: 40%; margin-top: auto;"></div>
+              </div>
+            </div>
+            <!-- Anuncio 2 -->
+            <div class="skeleton-news-item">
+              <div class="skeleton-item skeleton-news-img"></div>
+              <div class="skeleton-news-content">
+                <div class="skeleton-item" style="height: 14px; width: 90%;"></div>
+                <div class="skeleton-item" style="height: 14px; width: 75%;"></div>
+                <div class="skeleton-item" style="height: 10px; width: 40%; margin-top: auto;"></div>
+              </div>
+            </div>
+            <!-- Anuncio 3 -->
+            <div class="skeleton-news-item">
+              <div class="skeleton-item skeleton-news-img"></div>
+              <div class="skeleton-news-content">
+                <div class="skeleton-item" style="height: 14px; width: 90%;"></div>
+                <div class="skeleton-item" style="height: 14px; width: 75%;"></div>
+                <div class="skeleton-item" style="height: 10px; width: 40%; margin-top: auto;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO REAL DEL DASHBOARD (Inicialmente oculto) -->
+    <div id="dashboardContent" class="dashboard-content-wrapper" style="display: none;">
+      <!-- Banner Indicador de Encuestas Pendientes -->
+      <div class="encuesta-indicator-banner">
       <div class="banner-left">
         <span class="dot-indicator"></span>
         <span class="banner-text">Tienes encuestas docentes pendientes - <strong>Metodología de la investigación y 4
@@ -448,6 +561,7 @@
     <footer class="main-footer">
       <p>© 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
     </footer>
+    </div> <!-- Fin de dashboardContent -->
 
   </main>
 

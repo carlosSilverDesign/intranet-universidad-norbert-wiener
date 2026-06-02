@@ -46,13 +46,13 @@
     <!-- TABS -->
     <div class="tabs-container">
       <ul class="tabs">
-        <li class="tab active">Matriculados</li>
-        <li class="tab">Progreso académico</li>
+        <li class="tab active" id="tabMatriculados">Matriculados</li>
+        <li class="tab" id="tabProgreso">Progreso académico</li>
       </ul>
     </div>
 
     <!-- GRID DE CURSOS -->
-    <div class="courses-grid">
+    <div class="courses-grid" id="coursesGrid">
       
       <a href="curso-detalle.html" class="course-card">
         <span class="tag tag-presencial">Presencial</span>
@@ -85,7 +85,115 @@
 
     </div>
 
+    <!-- SECCIÓN DE PROGRESO ACADÉMICO -->
+    <div id="progresoContainer" class="progreso-container" style="display: none;">
+      
+      <!-- Mis datos académicos -->
+      <div class="progreso-section">
+        <h2 class="progreso-section-title">Mis datos acad&eacute;micos</h2>
+        <div class="progreso-card info-card">
+          <div class="info-row">
+            <span class="info-label">Carrera:</span>
+            <span class="info-value">Medicina General</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">C&oacute;digo:</span>
+            <span class="info-value">MG2022</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Campus:</span>
+            <span class="info-value">Lima Centro</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Modalidad de carrera:</span>
+            <span class="info-value">Presencial</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cursos obligatorios -->
+      <div class="progreso-section">
+        <h2 class="progreso-section-title">Cursos obligatorios</h2>
+        <div class="progreso-card stats-card">
+          <div class="stats-row">
+            <div class="stat-col">
+              <span class="stat-label">Requeridos</span>
+              <span class="stat-value">64</span>
+            </div>
+            <div class="stat-col">
+              <span class="stat-label">Aprobados</span>
+              <span class="stat-value">29</span>
+            </div>
+            <div class="stat-col">
+              <span class="stat-label">Pendientes</span>
+              <span class="stat-value">35</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Créditos (Adaptativo Desktop vs Mobile) -->
+      <div class="progreso-credits-container">
+        <!-- Título visible solo en mobile -->
+        <h2 class="progreso-section-title mobile-only-title">Cr&eacute;ditos</h2>
+        
+        <div class="credits-wrapper-card">
+          
+          <!-- Sección Obligatorios -->
+          <div class="credits-section obligatorios">
+            <h2 class="progreso-section-title desktop-only-title">Cr&eacute;ditos Obligatorios</h2>
+            <h4 class="mobile-credits-header">Obligatorios</h4>
+            <div class="progreso-card stats-card">
+              <div class="stats-row">
+                <div class="stat-col">
+                  <span class="stat-label">Requeridos</span>
+                  <span class="stat-value">197</span>
+                </div>
+                <div class="stat-col">
+                  <span class="stat-label">Aprobados</span>
+                  <span class="stat-value">90</span>
+                </div>
+                <div class="stat-col">
+                  <span class="stat-label">Pendientes</span>
+                  <span class="stat-value">107</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="credits-mobile-divider">
+
+          <!-- Sección Electivos -->
+          <div class="credits-section electivos">
+            <h2 class="progreso-section-title desktop-only-title">Cr&eacute;ditos Electivos</h2>
+            <h4 class="mobile-credits-header">Electivos</h4>
+            <div class="progreso-card stats-card">
+              <div class="stats-row">
+                <div class="stat-col">
+                  <span class="stat-label">Requeridos</span>
+                  <span class="stat-value">3</span>
+                </div>
+                <div class="stat-col">
+                  <span class="stat-label">Aprobados</span>
+                  <span class="stat-value">4</span>
+                </div>
+                <div class="stat-col">
+                  <span class="stat-label">Pendientes</span>
+                  <span class="stat-value">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
   </main>
+
+  <!-- Script interactivo de pestañas -->
+  <script src="cursos.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Simulación de carga con Skeleton Loader
+  const skeletonLoader = document.getElementById('skeletonLoader');
+  const dashboardContent = document.getElementById('dashboardContent');
+
+  if (skeletonLoader && dashboardContent) {
+    setTimeout(() => {
+      skeletonLoader.style.display = 'none';
+      dashboardContent.style.display = 'flex';
+      console.log('Skeleton ocultado y Dashboard real visible.');
+    }, 2000); // Carga simulada de 2 segundos
+  }
+
   const userDropdownTrigger = document.getElementById('userDropdownTrigger');
   const dropdownMenu = document.getElementById('dropdownMenu');
 

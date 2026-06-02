@@ -85,6 +85,7 @@
   bottom: 24px;
   right: 24px;
   width: 360px;
+  max-width: calc(100vw - 48px);
   background: var(--encuesta-body-bg);
   border: 1px solid var(--encuesta-border);
   border-radius: 16px;
@@ -518,14 +519,15 @@
     left: 12px;
     bottom: 12px;
     width: auto;
+    max-width: calc(100vw - 24px);
   }
 
   .encuesta-dialog {
     width: calc(100% - 32px);
-    max-width: none;
-    left: 16px;
-    right: 16px;
-    transform: translate(0, -50%);
+    max-width: 440px;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
     margin: 0;
   }
 

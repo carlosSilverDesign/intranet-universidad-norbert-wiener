@@ -952,3 +952,283 @@ i svg {
     height: 72px;
   }
 }
+
+.dashboard-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-content-wrapper {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-content-wrapper {
+    gap: 10px;
+  }
+}
+
+/* ==========================================================================
+   6. SKELETON SCREEN LOADING STATE
+   ========================================================================== */
+
+.skeleton-loader-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Base de elemento skeleton con animación shimmer */
+.skeleton-item {
+  background: #DCE1E6;
+  background: linear-gradient(90deg, #DCE1E6 25%, #E9ECEF 50%, #DCE1E6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Distribución del esqueleto */
+.skeleton-banner {
+  height: 52px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.skeleton-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+  background-color: #EAECEF;
+  border: none;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.skeleton-profile-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.skeleton-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeleton-profile-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-text-title {
+  height: 20px;
+  width: 160px;
+}
+
+.skeleton-text-subtitle {
+  height: 14px;
+  width: 110px;
+}
+
+.skeleton-profile-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.skeleton-pill-btn {
+  height: 34px;
+  width: 130px;
+  border-radius: 64px;
+}
+
+.skeleton-hero {
+  height: 160px;
+  border-radius: 16px;
+  width: 100%;
+}
+
+.skeleton-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.skeleton-section-title {
+  height: 24px;
+  width: 140px;
+}
+
+.skeleton-edit-btn {
+  height: 38px;
+  width: 180px;
+  border-radius: 64px;
+}
+
+/* Grilla de widgets skeleton */
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.skeleton-card {
+  background-color: #EAECEF;
+  border: none;
+  border-radius: 16px;
+  padding: 24px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: none;
+}
+
+.skeleton-card-span-2 {
+  grid-column: span 2;
+}
+
+.skeleton-card-span-3 {
+  grid-column: span 3;
+}
+
+.skeleton-announcements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.skeleton-news-item {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.skeleton-news-img {
+  width: 120px;
+  height: 80px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.skeleton-news-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.skeleton-card-subtitle {
+  height: 12px;
+  width: 80px;
+}
+
+.skeleton-card-middle {
+  height: 32px;
+  width: 120px;
+  margin-top: 8px;
+}
+
+.skeleton-card-title {
+  height: 18px;
+  width: 80%;
+  margin-top: auto;
+}
+
+.skeleton-card-desc {
+  height: 14px;
+  width: 90%;
+}
+
+.skeleton-card-line {
+  height: 10px;
+  width: 60%;
+}
+
+/* Responsividad para skeleton */
+@media (max-width: 1024px) {
+  .skeleton-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skeleton-card-span-3 {
+    grid-column: span 2;
+  }
+  .skeleton-announcements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skeleton-profile {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .skeleton-profile-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .skeleton-pill-btn {
+    flex-grow: 1;
+    width: auto;
+  }
+  
+  .skeleton-hero {
+    height: 200px;
+  }
+  
+  .skeleton-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .skeleton-card {
+    padding: 16px;
+    min-height: 320px;
+  }
+
+  .skeleton-card-span-2 {
+    grid-column: span 1;
+  }
+
+  .skeleton-card-span-3 {
+    grid-column: span 1;
+  }
+
+  .skeleton-announcements-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skeleton-news-img {
+    width: 100px;
+    height: 72px;
+  }
+}
