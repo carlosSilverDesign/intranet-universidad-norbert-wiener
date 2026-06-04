@@ -1,5 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Simulación de carga con Skeleton Loader
+    const skeletonLoader = document.getElementById('skeletonLoader');
+    const profileContent = document.getElementById('profileContent');
+
+    if (skeletonLoader && profileContent) {
+        setTimeout(() => {
+            skeletonLoader.style.display = 'none';
+            profileContent.style.display = 'flex';
+            console.log('Skeleton ocultado y Perfil real visible.');
+        }, 2000); // Carga simulada de 2 segundos
+    }
+
     // Seleccionamos todos los contenedores de edición en línea
     const inlineFields = document.querySelectorAll('.inline-field');
 

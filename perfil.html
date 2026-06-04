@@ -12,270 +12,396 @@
 </head>
 
 <body>
-
   <main class="main-container">
 
-    <div class="header-section">
-      <div class="title-section">
-        <i>
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <path
-              d="M20 19.487C18.3958 19.487 17.0226 18.9159 15.8804 17.7736C14.7379 16.6311 14.1667 15.2578 14.1667 13.6536C14.1667 12.0495 14.7379 10.6763 15.8804 9.53406C17.0226 8.39156 18.3958 7.82031 20 7.82031C21.6042 7.82031 22.9774 8.39156 24.1196 9.53406C25.2621 10.6763 25.8333 12.0495 25.8333 13.6536C25.8333 15.2578 25.2621 16.6311 24.1196 17.7736C22.9774 18.9159 21.6042 19.487 20 19.487ZM7.5 29.6474V28.4741C7.5 27.658 7.72167 26.9021 8.165 26.2066C8.60833 25.511 9.20083 24.9763 9.9425 24.6024C11.5897 23.7949 13.2515 23.1892 14.9279 22.7853C16.6043 22.3814 18.295 22.1795 20 22.1795C21.705 22.1795 23.3957 22.3814 25.0721 22.7853C26.7485 23.1892 28.4103 23.7949 30.0575 24.6024C30.7992 24.9763 31.3917 25.511 31.835 26.2066C32.2783 26.9021 32.5 27.658 32.5 28.4741V29.6474C32.5 30.3502 32.2538 30.948 31.7613 31.4407C31.2688 31.9332 30.671 32.1795 29.9679 32.1795H10.0321C9.32903 32.1795 8.73125 31.9332 8.23875 31.4407C7.74625 30.948 7.5 30.3502 7.5 29.6474ZM10 29.6795H30V28.4741C30 28.1366 29.9022 27.8241 29.7067 27.5366C29.5111 27.2493 29.2457 27.0149 28.9104 26.8332C27.4743 26.126 26.0101 25.5902 24.5179 25.2257C23.0254 24.8616 21.5194 24.6795 20 24.6795C18.4806 24.6795 16.9746 24.8616 15.4821 25.2257C13.9899 25.5902 12.5257 26.126 11.0896 26.8332C10.7543 27.0149 10.4889 27.2493 10.2933 27.5366C10.0978 27.8241 10 28.1366 10 28.4741V29.6795ZM20 16.987C20.9167 16.987 21.7014 16.6606 22.3542 16.0078C23.0069 15.355 23.3333 14.5703 23.3333 13.6536C23.3333 12.737 23.0069 11.9523 22.3542 11.2995C21.7014 10.6467 20.9167 10.3203 20 10.3203C19.0833 10.3203 18.2986 10.6467 17.6458 11.2995C16.9931 11.9523 16.6667 12.737 16.6667 13.6536C16.6667 14.5703 16.9931 15.355 17.6458 16.0078C18.2986 16.6606 19.0833 16.987 20 16.987Z"
-              fill="#222222" />
-          </svg>
-        </i>
-        <div class="main-title">
-          <h1>Mi perfil</h1>
-          <p>Gestiona tu información personal y mantén tus datos actualizados.</p>
+    <!-- PANTALLA DE CARGA (Skeleton Loader animado - Grayscale) -->
+    <div id="skeletonLoader" class="skeleton-loader-container">
+      
+      <!-- Cabecera de perfil skeleton -->
+      <div class="skeleton-header-section">
+        <div class="skeleton-title-section">
+          <div class="skeleton-title-icon skeleton-item"></div>
+          <div class="skeleton-title-text">
+            <div class="skeleton-title-h1 skeleton-item"></div>
+            <div class="skeleton-title-p skeleton-item"></div>
+          </div>
         </div>
+        <div class="skeleton-button-id skeleton-item"></div>
       </div>
 
-      <div class="button-id">Ver Fotocheck
-        <i>
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path
-              d="M25 3H7C6.46957 3 5.96086 3.21071 5.58579 3.58579C5.21071 3.96086 5 4.46957 5 5V27C5 27.5304 5.21071 28.0391 5.58579 28.4142C5.96086 28.7893 6.46957 29 7 29H25C25.5304 29 26.0391 28.7893 26.4142 28.4142C26.7893 28.0391 27 27.5304 27 27V5C27 4.46957 26.7893 3.96086 26.4142 3.58579C26.0391 3.21071 25.5304 3 25 3ZM12 6H20C20.2652 6 20.5196 6.10536 20.7071 6.29289C20.8946 6.48043 21 6.73478 21 7C21 7.26522 20.8946 7.51957 20.7071 7.70711C20.5196 7.89464 20.2652 8 20 8H12C11.7348 8 11.4804 7.89464 11.2929 7.70711C11.1054 7.51957 11 7.26522 11 7C11 6.73478 11.1054 6.48043 11.2929 6.29289C11.4804 6.10536 11.7348 6 12 6ZM22.6012 24.8C22.4962 24.879 22.3765 24.9365 22.2492 24.9692C22.1218 25.0019 21.9893 25.0091 21.8592 24.9906C21.729 24.972 21.6038 24.9279 21.4907 24.8609C21.3776 24.7939 21.2788 24.7052 21.2 24.6C20.5945 23.7927 19.8094 23.1375 18.9069 22.6862C18.0043 22.2349 17.0091 22 16 22C14.9909 22 13.9957 22.2349 13.0931 22.6862C12.1906 23.1375 11.4055 23.7927 10.8 24.6C10.7212 24.7051 10.6225 24.7936 10.5095 24.8605C10.3965 24.9274 10.2714 24.9714 10.1414 24.99C10.0114 25.0085 9.87903 25.0013 9.75182 24.9687C9.62461 24.9361 9.50506 24.8788 9.4 24.8C9.29494 24.7212 9.20643 24.6225 9.13953 24.5095C9.07262 24.3965 9.02862 24.2714 9.01005 24.1414C8.99148 24.0114 8.99869 23.879 9.03129 23.7518C9.06388 23.6246 9.12121 23.5051 9.2 23.4C10.0855 22.2128 11.2663 21.2781 12.625 20.6887C11.8804 20.0089 11.3587 19.1199 11.1284 18.1382C10.8981 17.1566 10.97 16.1283 11.3346 15.1883C11.6991 14.2482 12.3394 13.4404 13.1713 12.8707C14.0033 12.3011 14.988 11.9962 15.9963 11.9962C17.0045 11.9962 17.9892 12.3011 18.8212 12.8707C19.6531 13.4404 20.2934 14.2482 20.6579 15.1883C21.0225 16.1283 21.0944 17.1566 20.8641 18.1382C20.6338 19.1199 20.1121 20.0089 19.3675 20.6887C20.729 21.277 21.9124 22.2118 22.8 23.4C22.9593 23.612 23.0278 23.8786 22.9905 24.1412C22.9533 24.4037 22.8132 24.6407 22.6012 24.8ZM19 17C19 17.5933 18.8241 18.1734 18.4944 18.6667C18.1648 19.1601 17.6962 19.5446 17.1481 19.7716C16.5999 19.9987 15.9967 20.0581 15.4147 19.9424C14.8328 19.8266 14.2982 19.5409 13.8787 19.1213C13.4591 18.7018 13.1734 18.1672 13.0576 17.5853C12.9419 17.0033 13.0013 16.4001 13.2284 15.8519C13.4554 15.3038 13.8399 14.8352 14.3333 14.5056C14.8266 14.1759 15.4067 14 16 14C16.7956 14 17.5587 14.3161 18.1213 14.8787C18.6839 15.4413 19 16.2044 19 17Z"
-              fill="#222222" />
-          </svg>
-        </i>
+      <!-- Tarjeta del formulario skeleton -->
+      <div class="skeleton-form-card">
+        
+        <!-- Info Alumno Superior skeleton -->
+        <div class="skeleton-student-header">
+          <div class="skeleton-student-avatar-side">
+            <div class="skeleton-student-avatar skeleton-item"></div>
+            <div class="skeleton-student-btn skeleton-item"></div>
+          </div>
+          <div class="skeleton-student-info">
+            <div class="skeleton-student-name skeleton-item"></div>
+            <div class="skeleton-student-line skeleton-item"></div>
+            <div class="skeleton-student-line skeleton-item" style="width: 140px;"></div>
+            <div class="skeleton-student-line skeleton-item" style="width: 160px;"></div>
+          </div>
+        </div>
+
+        <div class="skeleton-divider"></div>
+
+        <!-- Cabecera del formulario skeleton -->
+        <div class="skeleton-form-header">
+          <div class="skeleton-form-title">
+            <div class="skeleton-form-h1 skeleton-item"></div>
+            <div class="skeleton-form-p skeleton-item"></div>
+          </div>
+          <div class="skeleton-form-meta skeleton-item"></div>
+        </div>
+
+        <!-- Términos y condiciones skeleton -->
+        <div class="skeleton-tc-box skeleton-item"></div>
+
+        <!-- Sección de Datos: Contacto skeleton -->
+        <div class="skeleton-form-section">
+          <div class="skeleton-section-title skeleton-item"></div>
+          
+          <div class="skeleton-field-row">
+            <div class="skeleton-field-info">
+              <div class="skeleton-field-label skeleton-item"></div>
+              <div class="skeleton-field-value skeleton-item"></div>
+            </div>
+            <div class="skeleton-field-btn skeleton-item"></div>
+          </div>
+
+          <div class="skeleton-field-row">
+            <div class="skeleton-field-info">
+              <div class="skeleton-field-label skeleton-item"></div>
+              <div class="skeleton-field-value skeleton-item" style="width: 260px;"></div>
+            </div>
+            <div class="skeleton-field-btn skeleton-item"></div>
+          </div>
+
+          <div class="skeleton-field-row">
+            <div class="skeleton-field-info">
+              <div class="skeleton-field-label skeleton-item"></div>
+              <div class="skeleton-field-value skeleton-item" style="width: 150px;"></div>
+            </div>
+            <div class="skeleton-field-btn skeleton-item"></div>
+          </div>
+        </div>
+
+        <!-- Sección de Datos: Datos Personales skeleton -->
+        <div class="skeleton-form-section">
+          <div class="skeleton-section-title skeleton-item"></div>
+          
+          <div class="skeleton-field-row">
+            <div class="skeleton-field-info">
+              <div class="skeleton-field-label skeleton-item"></div>
+              <div class="skeleton-field-value skeleton-item"></div>
+            </div>
+          </div>
+
+          <div class="skeleton-field-row">
+            <div class="skeleton-field-info">
+              <div class="skeleton-field-label skeleton-item"></div>
+              <div class="skeleton-field-value skeleton-item"></div>
+            </div>
+          </div>
+
+          <!-- Alerta de PAE skeleton -->
+          <div class="skeleton-alert-box skeleton-item"></div>
+        </div>
+
       </div>
+
     </div>
 
-    <section class="form-main-card">
+    <!-- CONTENIDO REAL DE PERFIL (Inicialmente oculto) -->
+    <div id="profileContent" style="display: none; flex-direction: column; gap: 24px; width: 100%;">
 
-      <div class="student-header-wrapper">
-        <div class="student-profile-side">
-          <div class="avatar-container">
-            <img src="/img/imagen-perfil.png" alt="Foto del estudiante" class="student-avatar">
+      <div class="header-section">
+        <div class="title-section">
+          <i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path
+                d="M20 19.487C18.3958 19.487 17.0226 18.9159 15.8804 17.7736C14.7379 16.6311 14.1667 15.2578 14.1667 13.6536C14.1667 12.0495 14.7379 10.6763 15.8804 9.53406C17.0226 8.39156 18.3958 7.82031 20 7.82031C21.6042 7.82031 22.9774 8.39156 24.1196 9.53406C25.2621 10.6763 25.8333 12.0495 25.8333 13.6536C25.8333 15.2578 25.2621 16.6311 24.1196 17.7736C22.9774 18.9159 21.6042 19.487 20 19.487ZM7.5 29.6474V28.4741C7.5 27.658 7.72167 26.9021 8.165 26.2066C8.60833 25.511 9.20083 24.9763 9.9425 24.6024C11.5897 23.7949 13.2515 23.1892 14.9279 22.7853C16.6043 22.3814 18.295 22.1795 20 22.1795C21.705 22.1795 23.3957 22.3814 25.0721 22.7853C26.7485 23.1892 28.4103 23.7949 30.0575 24.6024C30.7992 24.9763 31.3917 25.511 31.835 26.2066C32.2783 26.9021 32.5 27.658 32.5 28.4741V29.6474C32.5 30.3502 32.2538 30.948 31.7613 31.4407C31.2688 31.9332 30.671 32.1795 29.9679 32.1795H10.0321C9.32903 32.1795 8.73125 31.9332 8.23875 31.4407C7.74625 30.948 7.5 30.3502 7.5 29.6474ZM10 29.6795H30V28.4741C30 28.1366 29.9022 27.8241 29.7067 27.5366C29.5111 27.2493 29.2457 27.0149 28.9104 26.8332C27.4743 26.126 26.0101 25.5902 24.5179 25.2257C23.0254 24.8616 21.5194 24.6795 20 24.6795C18.4806 24.6795 16.9746 24.8616 15.4821 25.2257C13.9899 25.5902 12.5257 26.126 11.0896 26.8332C10.7543 27.0149 10.4889 27.2493 10.2933 27.5366C10.0978 27.8241 10 28.1366 10 28.4741V29.6795ZM20 16.987C20.9167 16.987 21.7014 16.6606 22.3542 16.0078C23.0069 15.355 23.3333 14.5703 23.3333 13.6536C23.3333 12.737 23.0069 11.9523 22.3542 11.2995C21.7014 10.6467 20.9167 10.3203 20 10.3203C19.0833 10.3203 18.2986 10.6467 17.6458 11.2995C16.9931 11.9523 16.6667 12.737 16.6667 13.6536C16.6667 14.5703 16.9931 15.355 17.6458 16.0078C18.2986 16.6606 19.0833 16.987 20 16.987Z"
+                fill="#222222" />
+            </svg>
+          </i>
+          <div class="main-title">
+            <h1>Mi perfil</h1>
+            <p>Gestiona tu información personal y mantén tus datos actualizados.</p>
           </div>
-          <button type="button" class="btn-outline-primary">Actualizar foto</button>
         </div>
 
-        <div class="student-data-column">
-          <h2 class="student-name"><strong>Stephanie Sofia</strong> Yucra Llanos</h2>
-          <span class="student-info-item">Código: 2023200270</span>
-          <span class="student-info-item">Carrera: Medicina Humana</span>
-          <span class="student-info-item">Modalidad: Presencial</span>
+        <div class="button-id">Ver Fotocheck
+          <i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path
+                d="M25 3H7C6.46957 3 5.96086 3.21071 5.58579 3.58579C5.21071 3.96086 5 4.46957 5 5V27C5 27.5304 5.21071 28.0391 5.58579 28.4142C5.96086 28.7893 6.46957 29 7 29H25C25.5304 29 26.0391 28.7893 26.4142 28.4142C26.7893 28.0391 27 27.5304 27 27V5C27 4.46957 26.7893 3.96086 26.4142 3.58579C26.0391 3.21071 25.5304 3 25 3ZM12 6H20C20.2652 6 20.5196 6.10536 20.7071 6.29289C20.8946 6.48043 21 6.73478 21 7C21 7.26522 20.8946 7.51957 20.7071 7.70711C20.5196 7.89464 20.2652 8 20 8H12C11.7348 8 11.4804 7.89464 11.2929 7.70711C11.1054 7.51957 11 7.26522 11 7C11 6.73478 11.1054 6.48043 11.2929 6.29289C11.4804 6.10536 11.7348 6 12 6ZM22.6012 24.8C22.4962 24.879 22.3765 24.9365 22.2492 24.9692C22.1218 25.0019 21.9893 25.0091 21.8592 24.9906C21.729 24.972 21.6038 24.9279 21.4907 24.8609C21.3776 24.7939 21.2788 24.7052 21.2 24.6C20.5945 23.7927 19.8094 23.1375 18.9069 22.6862C18.0043 22.2349 17.0091 22 16 22C14.9909 22 13.9957 22.2349 13.0931 22.6862C12.1906 23.1375 11.4055 23.7927 10.8 24.6C10.7212 24.7051 10.6225 24.7936 10.5095 24.8605C10.3965 24.9274 10.2714 24.9714 10.1414 24.99C10.0114 25.0085 9.87903 25.0013 9.75182 24.9687C9.62461 24.9361 9.50506 24.8788 9.4 24.8C9.29494 24.7212 9.20643 24.6225 9.13953 24.5095C9.07262 24.3965 9.02862 24.2714 9.01005 24.1414C8.99148 24.0114 8.99869 23.879 9.03129 23.7518C9.06388 23.6246 9.12121 23.5051 9.2 23.4C10.0855 22.2128 11.2663 21.2781 12.625 20.6887C11.8804 20.0089 11.3587 19.1199 11.1284 18.1382C10.8981 17.1566 10.97 16.1283 11.3346 15.1883C11.6991 14.2482 12.3394 13.4404 13.1713 12.8707C14.0033 12.3011 14.988 11.9962 15.9963 11.9962C17.0045 11.9962 17.9892 12.3011 18.8212 12.8707C19.6531 13.4404 20.2934 14.2482 20.6579 15.1883C21.0225 16.1283 21.0944 17.1566 20.8641 18.1382C20.6338 19.1199 20.1121 20.0089 19.3675 20.6887C20.729 21.277 21.9124 22.2118 22.8 23.4C22.9593 23.612 23.0278 23.8786 22.9905 24.1412C22.9533 24.4037 22.8132 24.6407 22.6012 24.8ZM19 17C19 17.5933 18.8241 18.1734 18.4944 18.6667C18.1648 19.1601 17.6962 19.5446 17.1481 19.7716C16.5999 19.9987 15.9967 20.0581 15.4147 19.9424C14.8328 19.8266 14.2982 19.5409 13.8787 19.1213C13.4591 18.7018 13.1734 18.1672 13.0576 17.5853C12.9419 17.0033 13.0013 16.4001 13.2284 15.8519C13.4554 15.3038 13.8399 14.8352 14.3333 14.5056C14.8266 14.1759 15.4067 14 16 14C16.7956 14 17.5587 14.3161 18.1213 14.8787C18.6839 15.4413 19 16.2044 19 17Z"
+                fill="#222222" />
+            </svg>
+          </i>
         </div>
-
       </div>
 
-      <hr class="divider">
+      <section class="form-main-card">
 
-      <header class="form-header">
-        <div class="header-titles">
-          <h1 class="main-title">Actualización de datos</h1>
-          <p class="main-description">Edita y gestiona tus datos personales.</p>
-        </div>
-        <div class="header-meta">
-          <span class="last-update">Última actualización: 12/04/2026</span>
-        </div>
-      </header>
-
-      <a href="terminos-datos.html" class="tc-box" style="text-decoration: none; display: flex; color: inherit;">
-        <p>Para editar, necesitamos que primero revises los <b>Términos de Tratamientos de Datos Personales</b>.</p>
-        <i class="icon-info">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M14.9497 12.0001C14.9497 11.8668 14.9289 11.7418 14.8872 11.6251C14.8456 11.5084 14.7747 11.4001 14.6747 11.3001L10.0747 6.70011C9.89139 6.51678 9.66222 6.42094 9.38722 6.41261C9.11222 6.40428 8.87472 6.50011 8.67472 6.70011C8.49139 6.88344 8.39972 7.11678 8.39972 7.40011C8.39972 7.68344 8.49139 7.91678 8.67472 8.10011L12.5497 12.0001L8.67472 15.9001C8.49139 16.0834 8.39555 16.3126 8.38722 16.5876C8.37889 16.8626 8.47472 17.1001 8.67472 17.3001C8.85805 17.4834 9.09139 17.5751 9.37472 17.5751C9.65805 17.5751 9.89139 17.4834 10.0747 17.3001L14.6747 12.7001C14.7747 12.6001 14.8456 12.4918 14.8872 12.3751C14.9289 12.2584 14.9497 12.1334 14.9497 12.0001Z"
-              fill="#222222" />
-          </svg>
-        </i>
-      </a>
-
-      <div class="update-form">
-
-        <div class="form-section">
-          <h2 class="section-title">Datos de Contacto</h2>
-          <div class="input-grid-3">
-
-            <div class="inline-field" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">Celular</label>
-                  <span class="field-value">987654321</span>
-                </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
-              </div>
-              <div class="inline-body">
-                <input type="tel" class="form-control field-input" value="987654321">
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
+        <div class="student-header-wrapper">
+          <div class="student-profile-side">
+            <div class="avatar-container">
+              <img src="/img/imagen-perfil.png" alt="Foto del estudiante" class="student-avatar">
             </div>
-
-            <div class="inline-field" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">Correo Electrónico</label>
-                  <span class="field-value">stephanie.jordano@gmail.com</span>
-                  <!-- <span class="field-value">supercalifragilísticoespialigoso@gmail.com</span> -->
-
-                </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
-              </div>
-              <div class="inline-body">
-                <input type="email" class="form-control field-input" value="stephanie.jordano@gmail.com">
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
-            </div>
-
-            <div class="inline-field" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">Contacto de emergencia</label>
-                  <span class="field-value text-muted">Ingresar número</span>
-                </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
-              </div>
-              <div class="inline-body">
-                <input type="tel" class="form-control field-input" placeholder="Número de celular">
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
-            </div>
-
+            <button type="button" class="btn-outline-primary">Actualizar foto</button>
           </div>
+
+          <div class="student-data-column">
+            <h2 class="student-name"><strong>Stephanie Sofia</strong> Yucra Llanos</h2>
+            <span class="student-info-item">Código: 2023200270</span>
+            <span class="student-info-item">Carrera: Medicina Humana</span>
+            <span class="student-info-item">Modalidad: Presencial</span>
+          </div>
+
         </div>
 
-        <div class="form-section">
-          <h2 class="section-title">Datos Personales</h2>
+        <hr class="divider">
 
-          <div class="input-grid-2">
-            <div class="form-group" style="border-bottom:none; margin-bottom: 0;">
-              <label class="form-label">Nombres</label>
-              <input type="text" class="form-control locked" value="Stephanie Jessenia" readonly disabled>
-            </div>
-            <div class="form-group" style="border-bottom:none;margin-bottom: 0;">
-              <label class="form-label">Apellidos</label>
-              <input type="text" class="form-control locked" value="Jordano Sancho" readonly disabled>
-            </div>
-            <div class="form-group" style="border-bottom:none;margin-bottom: 0;">
-              <label class="form-label">Documento de identidad</label>
-              <input type="text" class="form-control locked" value="76543210" readonly disabled>
-            </div>
-            <div class="form-group" style="border-bottom:none;">
-              <label class="form-label">Fecha de Nacimiento</label>
-              <input type="date" class="form-control locked" value="2002-05-15" readonly disabled>
+        <header class="form-header">
+          <div class="header-titles">
+            <h1 class="main-title">Actualización de datos</h1>
+            <p class="main-description">Edita y gestiona tus datos personales.</p>
+          </div>
+          <div class="header-meta">
+            <span class="last-update">Última actualización: 12/04/2026</span>
+          </div>
+        </header>
+
+        <a href="terminos-datos.html" class="tc-box" style="text-decoration: none; display: flex; color: inherit;">
+          <p>Para editar, necesitamos que primero revises los <b>Términos de Tratamientos de Datos Personales</b>.</p>
+          <i class="icon-info">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M14.9497 12.0001C14.9497 11.8668 14.9289 11.7418 14.8872 11.6251C14.8456 11.5084 14.7747 11.4001 14.6747 11.3001L10.0747 6.70011C9.89139 6.51678 9.66222 6.42094 9.38722 6.41261C9.11222 6.40428 8.87472 6.50011 8.67472 6.70011C8.49139 6.88344 8.39972 7.11678 8.39972 7.40011C8.39972 7.68344 8.49139 7.91678 8.67472 8.10011L12.5497 12.0001L8.67472 15.9001C8.49139 16.0834 8.39555 16.3126 8.38722 16.5876C8.37889 16.8626 8.47472 17.1001 8.67472 17.3001C8.85805 17.4834 9.09139 17.5751 9.37472 17.5751C9.65805 17.5751 9.89139 17.4834 10.0747 17.3001L14.6747 12.7001C14.7747 12.6001 14.8456 12.4918 14.8872 12.3751C14.9289 12.2584 14.9497 12.1334 14.9497 12.0001Z"
+                fill="#222222" />
+            </svg>
+          </i>
+        </a>
+
+        <div class="update-form">
+
+          <div class="form-section">
+            <h2 class="section-title">Datos de Contacto</h2>
+            <div class="input-grid-3">
+
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">Celular</label>
+                    <span class="field-value">987654321</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
+                </div>
+                <div class="inline-body">
+                  <input type="tel" class="form-control field-input" value="987654321">
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
+                </div>
+              </div>
+
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">Correo Electrónico</label>
+                    <span class="field-value">stephanie.jordano@gmail.com</span>
+                    <!-- <span class="field-value">supercalifragilísticoespialigoso@gmail.com</span> -->
+
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
+                </div>
+                <div class="inline-body">
+                  <input type="email" class="form-control field-input" value="stephanie.jordano@gmail.com">
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
+                </div>
+              </div>
+
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">Contacto de emergencia</label>
+                    <span class="field-value text-muted">Ingresar número</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
+                </div>
+                <div class="inline-body">
+                  <input type="tel" class="form-control field-input" placeholder="Número de celular">
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
+                </div>
+              </div>
+
             </div>
           </div>
 
-          <div class="alert-box">
-            <i class="icon-info">
-              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-                <path
-                  d="M8.33334 0C6.68516 0 5.07399 0.488742 3.70358 1.40442C2.33318 2.3201 1.26507 3.62159 0.634341 5.1443C0.00361067 6.66702 -0.161417 8.34258 0.160126 9.95909C0.48167 11.5756 1.27534 13.0605 2.44078 14.2259C3.60622 15.3913 5.09108 16.185 6.70758 16.5065C8.32409 16.8281 9.99965 16.6631 11.5224 16.0323C13.0451 15.4016 14.3466 14.3335 15.2622 12.9631C16.1779 11.5927 16.6667 9.98151 16.6667 8.33333C16.6642 6.12394 15.7855 4.00573 14.2232 2.44346C12.6609 0.881179 10.5427 0.00242633 8.33334 0ZM8.33334 15C7.01479 15 5.72586 14.609 4.62954 13.8765C3.53321 13.1439 2.67872 12.1027 2.17414 10.8846C1.66956 9.66638 1.53753 8.32594 1.79477 7.03273C2.052 5.73952 2.68694 4.55164 3.61929 3.61929C4.55164 2.68694 5.73953 2.052 7.03274 1.79477C8.32594 1.53753 9.66639 1.66955 10.8846 2.17414C12.1027 2.67872 13.1439 3.5332 13.8765 4.62953C14.609 5.72586 15 7.01479 15 8.33333C14.9978 10.1008 14.2947 11.7952 13.0449 13.0449C11.7952 14.2947 10.1008 14.9978 8.33334 15ZM8.33334 7.91667C8.11232 7.91667 7.90036 8.00446 7.74408 8.16074C7.5878 8.31703 7.5 8.52899 7.5 8.75V11.25C7.5 11.471 7.5878 11.683 7.74408 11.8393C7.90036 11.9955 8.11232 12.0833 8.33334 12.0833C8.55435 12.0833 8.76631 11.9955 8.92259 11.8393C9.07887 11.683 9.16667 11.471 9.16667 11.25V8.75C9.16667 8.52899 9.07887 8.31703 8.92259 8.16074C8.76631 8.00446 8.55435 7.91667 8.33334 7.91667ZM8.33334 4.58333C8.12731 4.58333 7.92592 4.64443 7.75462 4.75889C7.58332 4.87335 7.4498 5.03603 7.37096 5.22637C7.29212 5.41671 7.27149 5.62616 7.31169 5.82822C7.35188 6.03028 7.45109 6.21589 7.59677 6.36157C7.74245 6.50725 7.92805 6.60646 8.13012 6.64665C8.33218 6.68684 8.54163 6.66622 8.73197 6.58737C8.92231 6.50853 9.08499 6.37502 9.19945 6.20372C9.31391 6.03242 9.375 5.83102 9.375 5.625C9.375 5.34873 9.26526 5.08378 9.06991 4.88843C8.87456 4.69308 8.6096 4.58333 8.33334 4.58333Z"
-                  fill="#0F848F" />
-              </svg>
-            </i>
-            <p>Si los datos mostrados contienen errores, registra una <b
-                style="color: #0F848F; text-decoration: underline;">solicitud de PAE</b>.</p>
+          <div class="form-section">
+            <h2 class="section-title">Datos Personales</h2>
+
+            <div class="input-grid-2">
+              <div class="form-group" style="border-bottom:none; margin-bottom: 0;">
+                <label class="form-label">Nombres</label>
+                <input type="text" class="form-control locked" value="Stephanie Jessenia" readonly disabled>
+              </div>
+              <div class="form-group" style="border-bottom:none;margin-bottom: 0;">
+                <label class="form-label">Apellidos</label>
+                <input type="text" class="form-control locked" value="Jordano Sancho" readonly disabled>
+              </div>
+              <div class="form-group" style="border-bottom:none;margin-bottom: 0;">
+                <label class="form-label">Documento de identidad</label>
+                <input type="text" class="form-control locked" value="76543210" readonly disabled>
+              </div>
+              <div class="form-group" style="border-bottom:none;">
+                <label class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control locked" value="2002-05-15" readonly disabled>
+              </div>
+            </div>
+
+            <div class="alert-box">
+              <i class="icon-info">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                  <path
+                    d="M8.33334 0C6.68516 0 5.07399 0.488742 3.70358 1.40442C2.33318 2.3201 1.26507 3.62159 0.634341 5.1443C0.00361067 6.66702 -0.161417 8.34258 0.160126 9.95909C0.48167 11.5756 1.27534 13.0605 2.44078 14.2259C3.60622 15.3913 5.09108 16.185 6.70758 16.5065C8.32409 16.8281 9.99965 16.6631 11.5224 16.0323C13.0451 15.4016 14.3466 14.3335 15.2622 12.9631C16.1779 11.5927 16.6667 9.98151 16.6667 8.33333C16.642 6.12394 15.7855 4.00573 14.2232 2.44346C12.6609 0.881179 10.5427 0.00242633 8.33334 0ZM8.33334 15C7.01479 15 5.72586 14.609 4.62954 13.8765C3.53321 13.1439 2.67872 12.1027 2.17414 10.8846C1.66956 9.66638 1.53753 8.32594 1.79477 7.03273C2.052 5.73952 2.68694 4.55164 3.61929 3.61929C4.55164 2.68694 5.73953 2.052 7.03274 1.79477C8.32594 1.53753 9.66639 1.66955 10.8846 2.17414C12.1027 2.67872 13.1439 3.5332 13.8765 4.62953C14.609 5.72586 15 7.01479 15 8.33333C14.9978 10.1008 14.2947 11.7952 13.0449 13.0449C11.7952 14.2947 10.1008 14.9978 8.33334 15ZM8.33334 7.91667C8.11232 7.91667 7.90036 8.00446 7.74408 8.16074C7.5878 8.31703 7.5 8.52899 7.5 8.75V11.25C7.5 11.471 7.5878 11.683 7.74408 11.8393C7.90036 11.9955 8.11232 12.0833 8.33334 12.0833C8.55435 12.0833 8.76631 11.9955 8.92259 11.8393C9.07887 11.683 9.16667 11.471 9.16667 11.25V8.75C9.16667 8.52899 9.07887 8.31703 8.92259 8.16074C8.76631 8.00446 8.55435 7.91667 8.33334 7.91667ZM8.33334 4.58333C8.12731 4.58333 7.92592 4.64443 7.75462 4.75889C7.58332 4.87335 7.4498 5.03603 7.37096 5.22637C7.29212 5.41671 7.27149 5.62616 7.31169 5.82822C7.35188 6.03028 7.45109 6.21589 7.59677 6.36157C7.74245 6.50725 7.92805 6.60646 8.13012 6.64665C8.33218 6.68684 8.54163 6.66622 8.73197 6.58737C8.92231 6.50853 9.08499 6.37502 9.19945 6.20372C9.31391 6.03242 9.375 5.83102 9.375 5.625C9.375 5.34873 9.26526 5.08378 9.06991 4.88843C8.87456 4.69308 8.6096 4.58333 8.33334 4.58333Z"
+                    fill="#0F848F" />
+                </svg>
+              </i>
+              <p>Si los datos mostrados contienen errores, registra una <b
+                  style="color: #0F848F; text-decoration: underline;">solicitud de PAE</b>.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="form-section">
-          <div class="input-grid-2">
+          <div class="form-section">
+            <div class="input-grid-2">
 
-            <div class="inline-field" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">Sexo</label>
-                  <span class="field-value">Femenino</span>
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">Sexo</label>
+                    <span class="field-value">Femenino</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
                 </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
-              </div>
-              <div class="inline-body">
-                <select class="form-control select-control field-input">
-                  <option value="" disabled>Seleccionar</option>
-                  <option value="femenino" selected>Femenino</option>
-                  <option value="masculino">Masculino</option>
-                </select>
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
-            </div>
-
-            <div class="inline-field" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">Estado Civil</label>
-                  <span class="field-value">Soltera(o)</span>
+                <div class="inline-body">
+                  <select class="form-control select-control field-input">
+                    <option value="" disabled>Seleccionar</option>
+                    <option value="femenino" selected>Femenino</option>
+                    <option value="masculino">Masculino</option>
+                  </select>
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
                 </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
               </div>
-              <div class="inline-body">
-                <select class="form-control select-control field-input">
-                  <option value="" disabled>Seleccionar</option>
-                  <option value="soltero" selected>Soltera(o)</option>
-                  <option value="casado">Casada(o)</option>
-                </select>
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
-            </div>
 
-            <div class="inline-field span-2" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">Dirección</label>
-                  <span class="field-value">Av. Arequipa 440, Lima</span>
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">Estado Civil</label>
+                    <span class="field-value">Soltera(o)</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
                 </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
+                <div class="inline-body">
+                  <select class="form-control select-control field-input">
+                    <option value="" disabled>Seleccionar</option>
+                    <option value="soltero" selected>Soltera(o)</option>
+                    <option value="casado">Casada(o)</option>
+                  </select>
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
+                </div>
               </div>
-              <div class="inline-body">
-                <input type="text" class="form-control field-input" value="Av. Arequipa 440, Lima">
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
-            </div>
 
+              <div class="inline-field span-2" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">Dirección</label>
+                    <span class="field-value">Av. Arequipa 440, Lima</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
+                </div>
+                <div class="inline-body">
+                  <input type="text" class="form-control field-input" value="Av. Arequipa 440, Lima">
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
+                </div>
+              </div>
+
+            </div>
           </div>
-        </div>
 
-        <div class="form-section">
-          <h2 class="section-title">Variable étnica y doble nacionalidad</h2>
-          <div class="input-grid-3">
+          <div class="form-section">
+            <h2 class="section-title">Variable étnica y doble nacionalidad</h2>
+            <div class="input-grid-3">
 
-            <div class="inline-field" data-state="view">
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">Origen étnico</label>
+                    <span class="field-value text-muted">Seleccionar</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
+                </div>
+                <div class="inline-body">
+                  <select class="form-control select-control field-input">
+                    <option value="" disabled selected>Seleccionar</option>
+                    <option value="mestizo">Mestizo</option>
+                    <option value="quechua">Quechua</option>
+                  </select>
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
+                </div>
+              </div>
+
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">Lengua materna</label>
+                    <span class="field-value text-muted">Seleccionar</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
+                </div>
+                <div class="inline-body">
+                  <select class="form-control select-control field-input">
+                    <option value="" disabled selected>Seleccionar</option>
+                    <option value="castellano">Castellano</option>
+                    <option value="quechua">Quechua</option>
+                  </select>
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
+                </div>
+              </div>
+
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">¿Tienes doble Nacionalidad?</label>
+                    <span class="field-value text-muted">Seleccionar</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
+                </div>
+                <div class="inline-body">
+                  <select class="form-control select-control field-input">
+                    <option value="" disabled selected>Seleccionar</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                  </select>
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="inline-field span-full" data-state="view">
               <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">Origen étnico</label>
+                <div class="inline-info w-50">
+                  <label class="form-label">¿Eres la primera persona de tu familia en cursar estudios superiores (técnicos
+                    o universitarios)?</label>
                   <span class="field-value text-muted">Seleccionar</span>
                 </div>
                 <button type="button" class="btn-toggle-edit">Editar</button>
               </div>
-              <div class="inline-body">
-                <select class="form-control select-control field-input">
-                  <option value="" disabled selected>Seleccionar</option>
-                  <option value="mestizo">Mestizo</option>
-                  <option value="quechua">Quechua</option>
-                </select>
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
-            </div>
-
-            <div class="inline-field" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">Lengua materna</label>
-                  <span class="field-value text-muted">Seleccionar</span>
-                </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
-              </div>
-              <div class="inline-body">
-                <select class="form-control select-control field-input">
-                  <option value="" disabled selected>Seleccionar</option>
-                  <option value="castellano">Castellano</option>
-                  <option value="quechua">Quechua</option>
-                </select>
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
-            </div>
-
-            <div class="inline-field" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">¿Tienes doble Nacionalidad?</label>
-                  <span class="field-value text-muted">Seleccionar</span>
-                </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
-              </div>
-              <div class="inline-body">
+              <div class="inline-body w-50">
                 <select class="form-control select-control field-input">
                   <option value="" disabled selected>Seleccionar</option>
                   <option value="si">Sí</option>
@@ -284,72 +410,52 @@
                 <button type="button" class="btn btn-primary btn-save">Guardar</button>
               </div>
             </div>
-
           </div>
-        </div>
 
-        <div class="form-section">
-          <div class="inline-field span-full" data-state="view">
-            <div class="inline-header">
-              <div class="inline-info w-50">
-                <label class="form-label">¿Eres la primera persona de tu familia en cursar estudios superiores (técnicos
-                  o universitarios)?</label>
-                <span class="field-value text-muted">Seleccionar</span>
-              </div>
-              <button type="button" class="btn-toggle-edit">Editar</button>
-            </div>
-            <div class="inline-body w-50">
-              <select class="form-control select-control field-input">
-                <option value="" disabled selected>Seleccionar</option>
-                <option value="si">Sí</option>
-                <option value="no">No</option>
-              </select>
-              <button type="button" class="btn btn-primary btn-save">Guardar</button>
-            </div>
-          </div>
-        </div>
+          <div class="form-section">
+            <h2 class="section-title">Registro de discapacidad</h2>
+            <div class="input-grid-2">
 
-        <div class="form-section">
-          <h2 class="section-title">Registro de discapacidad</h2>
-          <div class="input-grid-2">
-
-            <div class="inline-field" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">¿Cuenta con alguna discapacidad?</label>
-                  <span class="field-value text-muted">Seleccionar</span>
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">¿Cuenta con alguna discapacidad?</label>
+                    <span class="field-value text-muted">Seleccionar</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
                 </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
-              </div>
-              <div class="inline-body">
-                <select class="form-control select-control field-input">
-                  <option value="" disabled selected>Seleccionar</option>
-                  <option value="si">Sí</option>
-                  <option value="no">No</option>
-                </select>
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
-            </div>
-
-            <div class="inline-field" data-state="view">
-              <div class="inline-header">
-                <div class="inline-info">
-                  <label class="form-label">Registro CONADIS</label>
-                  <span class="field-value text-muted">Ingresar registro</span>
+                <div class="inline-body">
+                  <select class="form-control select-control field-input">
+                    <option value="" disabled selected>Seleccionar</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                  </select>
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
                 </div>
-                <button type="button" class="btn-toggle-edit">Editar</button>
               </div>
-              <div class="inline-body">
-                <input type="text" class="form-control field-input" placeholder="N° de registro">
-                <button type="button" class="btn btn-primary btn-save">Guardar</button>
-              </div>
-            </div>
 
+              <div class="inline-field" data-state="view">
+                <div class="inline-header">
+                  <div class="inline-info">
+                    <label class="form-label">Registro CONADIS</label>
+                    <span class="field-value text-muted">Ingresar registro</span>
+                  </div>
+                  <button type="button" class="btn-toggle-edit">Editar</button>
+                </div>
+                <div class="inline-body">
+                  <input type="text" class="form-control field-input" placeholder="N° de registro">
+                  <button type="button" class="btn btn-primary btn-save">Guardar</button>
+                </div>
+              </div>
+
+            </div>
           </div>
+
         </div>
 
-      </div>
-    </section>
+      </section>
+
+    </div>
   </main>
 
   <script src="perfil-scripts.js"></script>
