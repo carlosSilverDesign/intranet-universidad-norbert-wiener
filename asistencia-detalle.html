@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Asistencia - Intranet Universidad Norbert Wiener</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="asistencias.css?v=4">
+  <link rel="stylesheet" href="asistencia-detalle.css?v=1">
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       CONTENIDO PRINCIPAL (Layout con ancho máximo centrado a 1082px)
+       ========================================================================== -->
+  <main class="main-content-layout">
+
+    <!-- SECCIÓN DE CABECERA (page-header-flex) -->
+    <header class="page-header-flex">
+      <div class="header-left">
+        <div class="header-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="header-titles">
+          <h1>Detalle de asistencia</h1>
+          <p>Visualiza el detalle de tus asistencias categorizado</p>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <label for="period">Elige el periodo</label>
+        <div class="select-wrapper">
+          <select id="period" class="period-select">
+            <option value="2025-2" selected>2025 - II</option>
+            <option value="2025-1">2025 - I</option>
+          </select>
+          <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+            fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <hr class="header-divider">
+
+    <!-- NAVEGACIÓN ATRÁS -->
+    <div class="back-nav">
+      <a href="asistencias.html" class="btn-back-nav">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12L15 6" stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Atrás
+      </a>
+    </div>
+
+    <!-- TARJETA RESUMEN GLOBAL -->
+    <section class="resumen-card">
+      <div class="resumen-percentage-box">
+        <div class="resumen-percentage">11.11%</div>
+        <div class="resumen-sub">de asistencia</div>
+      </div>
+      <div class="resumen-info-box">
+        <div class="resumen-top-row">
+          <!-- Barra de progreso -->
+          <div class="resumen-progress-bar-container">
+            <div class="resumen-progress-bar-fill" style="width: 11.11%;"></div>
+          </div>
+          <!-- Estadísticas en formato texto plano -->
+          <div class="resumen-stats-row">
+            <span class="resumen-stat-item"><strong>4</strong> clases asistidas</span>
+            <span class="resumen-stat-item"><strong>36</strong> clases en el semestre</span>
+            <span class="resumen-stat-item"><strong>1</strong> curso</span>
+          </div>
+        </div>
+        <!-- Alerta de asistencia -->
+        <div class="resumen-alert">
+          <span class="alert-icon">⚠️</span>
+          <span class="alert-text">Asistencia por debajo del mínimo requerido (70%). Comunícate con tu asesor
+            académico.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENEDOR DETALLE CURSO -->
+    <section class="course-detail-tables-card">
+      
+      <!-- Cabecera del Curso (Información resumida) -->
+      <div class="detail-course-header">
+        <div class="header-left-course">
+          <span class="course-number-badge">1</span>
+          <div class="course-details">
+            <div class="tag-row">
+              <span class="tag-seccion">AD3N1</span>
+              <span class="tag-codigo">AD8031</span>
+              <span class="tag-tipo teoria">Teoría</span>
+            </div>
+            <h3 class="course-title-text-detail">Bases de la Terapéutica Farmacológica</h3>
+            <p class="course-teacher-text">Zevallos Cordova Paola Rossana</p>
+          </div>
+        </div>
+        <div class="header-right-course">
+          <span class="course-stats-label">4/36 clases asistidas</span>
+          <div class="course-percentage-badge badge-yellow">
+            11.11%
+            <span>asistencia</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filtros interactivos tipo checks -->
+      <div class="interactive-filters-row">
+        <label class="filter-pill pill-attended">
+          <input type="checkbox" id="filter-attended" checked>
+          <span class="filter-custom-box"></span>
+          <span class="filter-pill-label">Asistió</span>
+        </label>
+        <label class="filter-pill pill-absent">
+          <input type="checkbox" id="filter-absent" checked>
+          <span class="filter-custom-box"></span>
+          <span class="filter-pill-label">Faltó</span>
+        </label>
+        <label class="filter-pill pill-justified">
+          <input type="checkbox" id="filter-justified" checked>
+          <span class="filter-custom-box"></span>
+          <span class="filter-pill-label">Justificado</span>
+        </label>
+        <label class="filter-pill pill-pending">
+          <input type="checkbox" id="filter-pending" checked>
+          <span class="filter-custom-box"></span>
+          <span class="filter-pill-label">Pendiente</span>
+        </label>
+      </div>
+
+      <!-- TABLA 1: TEORÍA -->
+      <div class="table-section-block">
+        <div class="table-title-header header-teoria">
+          <span class="table-badge">TEORÍA</span>
+          <h4>CLASES DE TEORÍA</h4>
+        </div>
+        <div class="table-scroll-container">
+          <table class="detail-table" id="table-teoria">
+            <tbody>
+              <!-- Fila Fecha -->
+              <tr class="row-fecha">
+                <td class="col-sticky">Fecha</td>
+                <td data-status="absent">17 Mar</td>
+                <td data-status="attended">19 Mar</td>
+                <td data-status="absent">24 Mar</td>
+                <td data-status="justified">26 Mar</td>
+                <td data-status="absent">31 Mar</td>
+                <td data-status="absent">02 Abr</td>
+                <td data-status="absent">07 Abr</td>
+                <td data-status="absent">09 Abr</td>
+                <td data-status="attended">14 Abr</td>
+                <td data-status="absent">16 Abr</td>
+                <td data-status="absent">21 Abr</td>
+                <td data-status="absent">23 Abr</td>
+                <td data-status="absent">28 Abr</td>
+                <td data-status="absent">30 Abr</td>
+                <td data-status="absent">05 May</td>
+                <td data-status="absent">07 May</td>
+                <td data-status="absent">12 May</td>
+                <td data-status="attended">14 May</td>
+                <td data-status="absent">19 May</td>
+                <td data-status="pending">21 May</td>
+                <td data-status="pending">26 May</td>
+                <td data-status="pending">28 May</td>
+                <td data-status="pending">02 Jun</td>
+                <td data-status="pending">04 Jun</td>
+                <td data-status="pending">09 Jun</td>
+              </tr>
+              <!-- Fila Semana -->
+              <tr class="row-semana">
+                <td class="col-sticky">Semana</td>
+                <td data-status="absent"><span class="week-pill">S1</span></td>
+                <td data-status="attended"><span class="week-pill">S1</span></td>
+                <td data-status="absent"><span class="week-pill">S2</span></td>
+                <td data-status="justified"><span class="week-pill">S2</span></td>
+                <td data-status="absent"><span class="week-pill">S3</span></td>
+                <td data-status="absent"><span class="week-pill">S3</span></td>
+                <td data-status="absent"><span class="week-pill">S4</span></td>
+                <td data-status="absent"><span class="week-pill">S4</span></td>
+                <td data-status="attended"><span class="week-pill">S5</span></td>
+                <td data-status="absent"><span class="week-pill">S5</span></td>
+                <td data-status="absent"><span class="week-pill">S6</span></td>
+                <td data-status="absent"><span class="week-pill">S6</span></td>
+                <td data-status="absent"><span class="week-pill">S7</span></td>
+                <td data-status="absent"><span class="week-pill">S7</span></td>
+                <td data-status="absent"><span class="week-pill">S8</span></td>
+                <td data-status="absent"><span class="week-pill">S8</span></td>
+                <td data-status="absent"><span class="week-pill">S9</span></td>
+                <td data-status="attended"><span class="week-pill">S9</span></td>
+                <td data-status="absent"><span class="week-pill">S10</span></td>
+                <td data-status="pending"><span class="week-pill">S10</span></td>
+                <td data-status="pending"><span class="week-pill">S11</span></td>
+                <td data-status="pending"><span class="week-pill">S11</span></td>
+                <td data-status="pending"><span class="week-pill">S12</span></td>
+                <td data-status="pending"><span class="week-pill">S12</span></td>
+                <td data-status="pending"><span class="week-pill">S13</span></td>
+              </tr>
+              <!-- Fila Asistencia -->
+              <tr class="row-asistencia">
+                <td class="col-sticky">Asistencia</td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="attended"><span class="attendance-indicator indicator-attended">✓</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="justified"><span class="attendance-indicator indicator-justified">J</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="attended"><span class="attendance-indicator indicator-attended">✓</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="attended"><span class="attendance-indicator indicator-attended">✓</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+              </tr>
+              <!-- Fila Resumen/Footer -->
+              <tr class="row-summary-footer">
+                <td colspan="26" class="table-summary-cell">
+                  <div class="summary-sticky-text">
+                    Total Asistido: <strong class="text-dark">3 / 19</strong>
+                    <span class="divider-vertical">|</span>
+                    Total Justificado: <strong class="text-dark">1</strong>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TABLA 2: LABORATORIO -->
+      <div class="table-section-block">
+        <div class="table-title-header header-laboratorio">
+          <span class="table-badge">LAB</span>
+          <h4>LABORATORIO</h4>
+        </div>
+        <div class="table-scroll-container">
+          <table class="detail-table" id="table-laboratorio">
+            <tbody>
+              <!-- Fila Fecha -->
+              <tr class="row-fecha">
+                <td class="col-sticky">Fecha</td>
+                <td data-status="absent">20 Mar</td>
+                <td data-status="attended">03 Abr</td>
+                <td data-status="absent">17 Abr</td>
+                <td data-status="justified">24 Abr</td>
+                <td data-status="absent">08 May</td>
+                <td data-status="absent">15 May</td>
+                <td data-status="pending">22 May</td>
+                <td data-status="pending">29 May</td>
+              </tr>
+              <!-- Fila Semana -->
+              <tr class="row-semana">
+                <td class="col-sticky">Semana</td>
+                <td data-status="absent"><span class="week-pill">S1</span></td>
+                <td data-status="attended"><span class="week-pill">S3</span></td>
+                <td data-status="absent"><span class="week-pill">S5</span></td>
+                <td data-status="justified"><span class="week-pill">S6</span></td>
+                <td data-status="absent"><span class="week-pill">S8</span></td>
+                <td data-status="absent"><span class="week-pill">S9</span></td>
+                <td data-status="pending"><span class="week-pill">S10</span></td>
+                <td data-status="pending"><span class="week-pill">S11</span></td>
+              </tr>
+              <!-- Fila Asistencia -->
+              <tr class="row-asistencia">
+                <td class="col-sticky">Asistencia</td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="attended"><span class="attendance-indicator indicator-attended">✓</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="justified"><span class="attendance-indicator indicator-justified">J</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+              </tr>
+              <!-- Fila Resumen/Footer -->
+              <tr class="row-summary-footer">
+                <td colspan="9" class="table-summary-cell">
+                  <div class="summary-sticky-text">
+                    Total Asistido: <strong class="text-dark">1 / 6</strong>
+                    <span class="divider-vertical">|</span>
+                    Total Justificado: <strong class="text-dark">1</strong>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TABLA 3: EVALUACIONES -->
+      <div class="table-section-block">
+        <div class="table-title-header header-evaluaciones">
+          <span class="table-badge">EXÁMENES</span>
+          <h4>EVALUACIONES</h4>
+        </div>
+        <div class="table-scroll-container">
+          <table class="detail-table" id="table-evaluaciones">
+            <tbody>
+              <!-- Fila Evaluación (Nombre) -->
+              <tr class="row-fecha">
+                <td class="col-sticky">Evaluación</td>
+                <td data-status="absent">Parcial</td>
+                <td data-status="pending">Final</td>
+                <td data-status="pending">Sustitutorio</td>
+              </tr>
+              <!-- Fila Fecha -->
+              <tr class="row-semana">
+                <td class="col-sticky">Fecha</td>
+                <td data-status="absent">25 Abr</td>
+                <td data-status="pending">27 Jun</td>
+                <td data-status="pending">-</td>
+              </tr>
+              <!-- Fila Asistencia -->
+              <tr class="row-asistencia">
+                <td class="col-sticky">Asistencia</td>
+                <td data-status="absent"><span class="attendance-indicator indicator-absent">F</span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+                <td data-status="pending"><span class="attendance-indicator indicator-pending"></span></td>
+              </tr>
+              <!-- Fila Resumen/Footer -->
+              <tr class="row-summary-footer">
+                <td colspan="4" class="table-summary-cell">
+                  <div class="summary-sticky-text">
+                    Total Asistido: <strong class="text-dark">0 / 1</strong>
+                    <span class="divider-vertical">|</span>
+                    Total Justificado: <strong class="text-dark">0</strong>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="detail-footer">
+      <p>&copy; 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
+    </footer>
+
+  </main>
+
+  <script src="asistencia-detalle.js?v=1"></script>
+
+</body>
+
+</html>

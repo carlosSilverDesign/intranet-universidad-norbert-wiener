@@ -338,29 +338,36 @@ html {
 }
 
 .btn-calendar {
-  width: 54px;
-  flex-shrink: 0;
-  background-color: #FFFFFF;
-  border: 1px solid #C6CFD7;
+  height: 54px;
+  background-color: #222222;
   border-radius: 8px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
+  padding: 0 24px;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
 }
 
 .btn-calendar:hover {
-  background-color: #F4F6F8;
-  border-color: #0F848F;
+  background-color: #404040;
 }
 
 .btn-calendar svg {
-  transition: stroke 0.2s ease;
+  stroke: #FFFFFF;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 
-.btn-calendar:hover svg {
-  stroke: #0F848F;
+.btn-calendar:hover svg.icon-arrow {
+  transform: translateX(4px);
 }
 
 .notas-header {
@@ -570,7 +577,9 @@ html {
   }
   .btn-calendar {
     width: 100%;
-    padding: 10px;
+    padding: 0 20px;
+    height: 54px;
+    justify-content: center;
   }
   .fases-grid {
     flex-direction: column;
