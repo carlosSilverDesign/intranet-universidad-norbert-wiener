@@ -782,3 +782,412 @@ body {
     max-height: 30px;
   }
 }
+
+/* ==========================================================================
+   SKELETON LOADER
+   ========================================================================== */
+
+.skeleton-loader-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Base de elemento skeleton con animación shimmer */
+.skeleton-item {
+  background: #DCE1E6;
+  background: linear-gradient(90deg, #DCE1E6 25%, #E9ECEF 50%, #DCE1E6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+.skeleton-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.skeleton-header-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.skeleton-header-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-header-title {
+  height: 24px;
+  width: 220px;
+}
+
+.skeleton-header-subtitle {
+  height: 14px;
+  width: 380px;
+}
+
+.skeleton-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.skeleton-header-label {
+  height: 16px;
+  width: 100px;
+}
+
+.skeleton-header-select {
+  height: 38px;
+  width: 120px;
+  border-radius: 6px;
+}
+
+.skeleton-resumen-card {
+  background-color: #EAECEF;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.skeleton-resumen-percentage-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  border-right: 1px solid #DCE1E6;
+  padding-right: 24px;
+  min-width: 160px;
+  box-sizing: border-box;
+}
+
+.skeleton-resumen-percentage {
+  height: 40px;
+  width: 100px;
+}
+
+.skeleton-resumen-sub {
+  height: 14px;
+  width: 120px;
+}
+
+.skeleton-resumen-info-box {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+.skeleton-resumen-top-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.skeleton-resumen-progress-bar {
+  height: 12px;
+  flex: 1;
+}
+
+.skeleton-resumen-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.skeleton-resumen-stat {
+  height: 16px;
+  width: 110px;
+}
+
+.skeleton-resumen-alert {
+  height: 45px;
+  width: 100%;
+}
+
+.skeleton-filters-legend-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.skeleton-legend-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.skeleton-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skeleton-legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.skeleton-legend-label {
+  height: 14px;
+  width: 90px;
+}
+
+.skeleton-filters-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.skeleton-filter-btn {
+  height: 34px;
+  width: 60px;
+  border-radius: 64px;
+}
+
+.skeleton-attendance-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.skeleton-course-card {
+  background-color: #EAECEF;
+  border-radius: 16px;
+  padding: 20px 16px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton-card-header-attendance {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.skeleton-header-left-course {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.skeleton-course-number-badge {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 8px;
+}
+
+.skeleton-course-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skeleton-course-tag-row {
+  display: flex;
+  gap: 8px;
+}
+
+.skeleton-course-tag {
+  height: 20px;
+  border-radius: 4px;
+}
+
+.skeleton-course-title-text {
+  height: 20px;
+  width: 240px;
+}
+
+.skeleton-course-teacher-text {
+  height: 14px;
+  width: 180px;
+}
+
+.skeleton-header-right-course {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.skeleton-course-stats-label {
+  height: 16px;
+  width: 130px;
+}
+
+.skeleton-course-percentage-badge {
+  height: 52px;
+  width: 90px;
+  border-radius: 8px;
+}
+
+.skeleton-calendar-table-container {
+  width: 100%;
+  overflow-x: hidden;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.skeleton-calendar-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.skeleton-calendar-row {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.skeleton-calendar-cell {
+  height: 27px;
+  flex: 1;
+  border-radius: 4px;
+}
+
+.skeleton-calendar-cell.first-col {
+  width: 56px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 56px;
+}
+
+.attendance-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+/* Responsividad para Skeleton Loader en Asistencias */
+@media (max-width: 1024px) {
+  .skeleton-resumen-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+  }
+  .skeleton-resumen-percentage-box {
+    border-right: none;
+    border-bottom: 1px solid #DCE1E6;
+    padding-right: 0;
+    padding-bottom: 16px;
+    width: 100%;
+    align-items: center;
+  }
+  .skeleton-resumen-top-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .skeleton-resumen-progress-bar {
+    width: 100%;
+    height: 12px;
+  }
+  .skeleton-resumen-stats {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .skeleton-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .skeleton-header-subtitle {
+    width: 250px;
+  }
+  .skeleton-header-right {
+    width: 100%;
+  }
+  .skeleton-filters-legend-row {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .skeleton-legend-container {
+    width: 100%;
+  }
+  .skeleton-filters-container {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .skeleton-card-header-attendance {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .skeleton-header-left-course {
+    width: 100%;
+  }
+  .skeleton-header-right-course {
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px dashed #DCE1E6;
+    padding-top: 12px;
+  }
+  .skeleton-calendar-table-container {
+    overflow-x: auto;
+  }
+  .skeleton-calendar-table {
+    width: max-content;
+  }
+  .skeleton-calendar-cell {
+    width: 30px;
+    height: 30px;
+    flex: none;
+  }
+  .skeleton-calendar-cell.first-col {
+    width: 56px;
+  }
+}

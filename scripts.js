@@ -115,6 +115,116 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+  // ==========================================================
+  // NUEVO: LÓGICA DEL CAROUSEL / SLIDER DEL HERO BANNER
+  // ==========================================================
+  const heroSlider = document.getElementById('heroSlider');
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const sliderDots = document.querySelectorAll('.slider-dots-container .dot');
+  const btnSliderPrev = document.getElementById('btnSliderPrev');
+  const btnSliderNext = document.getElementById('btnSliderNext');
+
+  if (heroSlider && sliderWrapper && heroSlides.length > 0) {
+    let currentSlideIndex = 0;
+    const totalSlides = heroSlides.length;
+    let autoSlideInterval;
+    const autoSlideSpeed = 5000; // 5 segundos por slide
+
+    // Función principal para mover el slider al slide activo
+    function goToSlide(index) {
+      currentSlideIndex = index;
+      
+      // Mueve horizontalmente el wrapper
+      sliderWrapper.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+      
+      // Actualiza el indicador de puntos (dots) activo
+      sliderDots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlideIndex);
+      });
+    }
+
+    // Funciones de navegación
+    function nextSlide() {
+      const nextIndex = (currentSlideIndex + 1) % totalSlides;
+      goToSlide(nextIndex);
+    }
+
+    function prevSlide() {
+      const prevIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+      goToSlide(prevIndex);
+    }
+
+    // Temporizadores de reproducción automática
+    function startAutoPlay() {
+      stopAutoPlay(); // Asegura no tener múltiples intervalos duplicados
+      autoSlideInterval = setInterval(nextSlide, autoSlideSpeed);
+    }
+
+    function stopAutoPlay() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+      }
+    }
+
+    // Navegación con flechas (Anterior / Siguiente)
+    if (btnSliderNext) {
+      btnSliderNext.addEventListener('click', () => {
+        nextSlide();
+        startAutoPlay(); // Reinicia el temporizador
+      });
+    }
+
+    if (btnSliderPrev) {
+      btnSliderPrev.addEventListener('click', () => {
+        prevSlide();
+        startAutoPlay(); // Reinicia el temporizador
+      });
+    }
+
+    // Navegación por clic en los puntos (dots)
+    sliderDots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        const slideIndex = parseInt(e.target.getAttribute('data-slide'), 10);
+        if (!isNaN(slideIndex)) {
+          goToSlide(slideIndex);
+          startAutoPlay(); // Reinicia el temporizador
+        }
+      });
+    });
+
+    // Pausar el auto-slide al pasar el mouse y resumir al salir
+    heroSlider.addEventListener('mouseenter', stopAutoPlay);
+    heroSlider.addEventListener('mouseleave', startAutoPlay);
+
+    // Soporte táctil básico (Swipe) para mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    heroSlider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    }, { passive: true });
+
+    heroSlider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoPlay();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeThreshold = 50; // Umbral de píxeles mínimos
+      if (touchStartX - touchEndX > swipeThreshold) {
+        nextSlide(); // Deslizó hacia la izquierda -> Siguiente
+      } else if (touchEndX - touchStartX > swipeThreshold) {
+        prevSlide(); // Deslizó hacia la derecha -> Anterior
+      }
+    }
+
+    // Iniciar el auto-desplazamiento inicial
+    startAutoPlay();
+  }
+  // ==========================================================
 
 });
 

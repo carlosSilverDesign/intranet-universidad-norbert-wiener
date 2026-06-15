@@ -18,444 +18,686 @@
        ========================================================================== -->
   <main class="main-content-layout">
 
-    <!-- SECCIÓN DE CABECERA (page-header-flex) -->
-    <header class="page-header-flex">
-      <div class="header-left">
-        <div class="header-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <path
-              d="M6.65074 32.1796C5.94768 32.1796 5.3499 31.9333 4.8574 31.4408C4.3649 30.9481 4.11865 30.3503 4.11865 29.6475V28.4742C4.11865 27.5897 4.34143 26.8168 4.78699 26.1554C5.23226 25.494 5.82351 24.9764 6.56074 24.6025C7.9774 23.8803 9.4731 23.296 11.0478 22.8496C12.6228 22.4029 14.4798 22.1796 16.6187 22.1796C16.8728 22.1796 17.1468 22.1839 17.4407 22.1925C17.7343 22.2008 18.0084 22.2243 18.2628 22.2629C18.5898 22.3076 18.8643 22.4679 19.0866 22.7438C19.3088 23.0193 19.3974 23.3224 19.3524 23.6529C19.3077 23.9421 19.1784 24.1935 18.9645 24.4071C18.7509 24.6207 18.4614 24.7222 18.0962 24.7117C17.9081 24.7008 17.6778 24.6928 17.4053 24.6875C17.1328 24.6822 16.8706 24.6796 16.6187 24.6796C14.6464 24.6796 12.9182 24.8996 11.4341 25.3396C9.95018 25.7799 8.70824 26.2778 7.70824 26.8333C7.3299 27.0364 7.05379 27.2736 6.8799 27.545C6.70574 27.8164 6.61865 28.1261 6.61865 28.4742V29.6796H18.0928C18.447 29.6796 18.7439 29.7994 18.9837 30.0392C19.2231 30.2786 19.3428 30.5756 19.3428 30.93C19.3428 31.2844 19.2231 31.5813 18.9837 31.8204C18.7439 32.0599 18.447 32.1796 18.0928 32.1796H6.65074ZM25.7082 29.9104L33.2466 22.3717C33.4774 22.1411 33.7675 22.0231 34.117 22.0175C34.4662 22.0122 34.7616 22.1303 35.0032 22.3717C35.2446 22.6133 35.3653 22.9061 35.3653 23.25C35.3653 23.5939 35.2446 23.8867 35.0032 24.1283L26.7628 32.3688C26.4614 32.6699 26.1099 32.8204 25.7082 32.8204C25.3066 32.8204 24.955 32.6699 24.6537 32.3688L21.4132 29.1283C21.1827 28.8975 21.0646 28.6074 21.0591 28.2579C21.0538 27.9088 21.1718 27.6133 21.4132 27.3717C21.6549 27.1303 21.9477 27.0096 22.2916 27.0096C22.6355 27.0096 22.9282 27.1303 23.1699 27.3717L25.7082 29.9104ZM12.4953 17.7771C11.3553 16.6374 10.7853 15.2629 10.7853 13.6538C10.7853 12.0449 11.3553 10.6704 12.4953 9.53042C13.635 8.39042 15.0095 7.82042 16.6187 7.82042C18.2275 7.82042 19.602 8.39042 20.742 9.53042C21.8817 10.6704 22.4516 12.0449 22.4516 13.6538C22.4516 15.2629 21.8817 16.6374 20.742 17.7771C19.602 18.9171 18.2275 19.4871 16.6187 19.4871C15.0095 19.4871 13.635 18.9171 12.4953 17.7771ZM18.9728 16.0079C19.6256 15.3551 19.952 14.5704 19.952 13.6538C19.952 12.7371 19.6256 11.9524 18.9728 11.2996C18.32 10.6468 17.5353 10.3204 16.6187 10.3204C15.702 10.3204 14.9173 10.6468 14.2645 11.2996C13.6117 11.9524 13.2853 12.7371 13.2853 13.6538C13.2853 14.5704 13.6117 15.3551 14.2645 16.0079C14.9173 16.6607 15.702 16.9871 16.6187 16.9871C17.5353 16.9871 18.32 16.6607 18.9728 16.0079Z"
-              fill="#222222" />
-          </svg>
-        </div>
-        <div class="header-titles">
-          <h1>Reporte de asistencia</h1>
-          <p>Visualiza tu historial de asistencia por curso y periodo académico</p>
-        </div>
-      </div>
-
-      <div class="header-right">
-        <label for="period">Elige el periodo</label>
-        <div class="select-wrapper">
-          <select id="period" class="period-select">
-            <option value="2025-2" selected>2025 - II</option>
-            <option value="2025-1">2025 - I</option>
-          </select>
-          <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-            fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </div>
-      </div>
-    </header>
-
-    <hr class="header-divider">
-
-    <!-- RESUMEN GLOBAL -->
-    <section class="resumen-card">
-      <div class="resumen-percentage-box">
-        <div class="resumen-percentage">9.74%</div>
-        <div class="resumen-sub">de asistencia global</div>
-      </div>
-      <div class="resumen-info-box">
-        <div class="resumen-top-row">
-          <!-- Barra de progreso -->
-          <div class="resumen-progress-bar-container">
-            <div class="resumen-progress-bar-fill" style="width: 9.74%;"></div>
-          </div>
-          <!-- Estadísticas en formato texto plano -->
-          <div class="resumen-stats-row">
-            <span class="resumen-stat-item"><strong>19</strong> clases asistidas</span>
-            <span class="resumen-stat-item"><strong>195</strong> clases en el semestre</span>
-            <span class="resumen-stat-item"><strong>7</strong> cursos</span>
+    <!-- PANTALLA DE CARGA (Skeleton Loader animado) -->
+    <div id="skeletonLoader" class="skeleton-loader-container">
+      
+      <!-- Cabecera skeleton -->
+      <div class="skeleton-header-row">
+        <div class="skeleton-header-left">
+          <div class="skeleton-header-icon skeleton-item"></div>
+          <div class="skeleton-header-texts">
+            <div class="skeleton-header-title skeleton-item"></div>
+            <div class="skeleton-header-subtitle skeleton-item"></div>
           </div>
         </div>
-        <!-- Alerta de asistencia -->
-        <div class="resumen-alert">
-          <span class="alert-icon">⚠️</span>
-          <span class="alert-text">Asistencia por debajo del mínimo requerido (70%). Comunícate con tu asesor
-            académico.</span>
+        <div class="skeleton-header-right">
+          <div class="skeleton-header-label skeleton-item"></div>
+          <div class="skeleton-header-select skeleton-item"></div>
         </div>
       </div>
-    </section>
 
+      <hr class="header-divider" style="margin-top: 0.25rem; margin-bottom: 1.5rem; width: 100%; border: none; height: 1px; background-color: #C6CFD7;">
 
-    <!-- FILTROS Y LEYENDA -->
-    <section class="filters-legend-row">
-      <!-- Leyenda -->
-      <div class="legend-container">
-        <div class="legend-item">
-          <span class="legend-color cell-outside"></span>
-          <span class="legend-label">Fuera del semestre</span>
+      <!-- Resumen global skeleton -->
+      <div class="skeleton-resumen-card">
+        <div class="skeleton-resumen-percentage-box">
+          <div class="skeleton-resumen-percentage skeleton-item"></div>
+          <div class="skeleton-resumen-sub skeleton-item"></div>
         </div>
-        <div class="legend-item">
-          <span class="legend-color cell-none"></span>
-          <span class="legend-label">Sin clase</span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-color cell-attended">✓</span>
-          <span class="legend-label">Asistió (✓)</span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-color cell-absent">F</span>
-          <span class="legend-label">Faltó (F)</span>
+        <div class="skeleton-resumen-info-box">
+          <div class="skeleton-resumen-top-row">
+            <div class="skeleton-resumen-progress-bar skeleton-item"></div>
+            <div class="skeleton-resumen-stats">
+              <div class="skeleton-resumen-stat skeleton-item"></div>
+              <div class="skeleton-resumen-stat skeleton-item"></div>
+              <div class="skeleton-resumen-stat skeleton-item"></div>
+            </div>
+          </div>
+          <div class="skeleton-resumen-alert skeleton-item"></div>
         </div>
       </div>
-      <!-- Filtro por Mes -->
-      <div class="filters-container">
-        <button type="button" class="filter-btn active" data-month="all">Todos</button>
-        <button type="button" class="filter-btn" data-month="mar">Mar</button>
-        <button type="button" class="filter-btn" data-month="abr">Abr</button>
-        <button type="button" class="filter-btn" data-month="may">May</button>
-        <button type="button" class="filter-btn" data-month="jun">Jun</button>
-        <button type="button" class="filter-btn" data-month="jul">Jul</button>
+
+      <!-- Filtros y leyenda skeleton -->
+      <div class="skeleton-filters-legend-row">
+        <div class="skeleton-legend-container">
+          <div class="skeleton-legend-item">
+            <div class="skeleton-legend-color skeleton-item"></div>
+            <div class="skeleton-legend-label skeleton-item"></div>
+          </div>
+          <div class="skeleton-legend-item">
+            <div class="skeleton-legend-color skeleton-item"></div>
+            <div class="skeleton-legend-label skeleton-item"></div>
+          </div>
+          <div class="skeleton-legend-item">
+            <div class="skeleton-legend-color skeleton-item"></div>
+            <div class="skeleton-legend-label skeleton-item"></div>
+          </div>
+          <div class="skeleton-legend-item">
+            <div class="skeleton-legend-color skeleton-item"></div>
+            <div class="skeleton-legend-label skeleton-item"></div>
+          </div>
+        </div>
+        <div class="skeleton-filters-container">
+          <div class="skeleton-filter-btn skeleton-item"></div>
+          <div class="skeleton-filter-btn skeleton-item"></div>
+          <div class="skeleton-filter-btn skeleton-item"></div>
+          <div class="skeleton-filter-btn skeleton-item"></div>
+          <div class="skeleton-filter-btn skeleton-item"></div>
+          <div class="skeleton-filter-btn skeleton-item"></div>
+        </div>
       </div>
-    </section>
 
-    <!-- LISTADO DE CURSOS Y SUS CALENDARIOS -->
-    <section class="attendance-cards-list">
-
-      <!-- Curso 1 -->
-      <article class="course-attendance-card">
-        <div class="card-header-attendance">
-          <div class="header-left-course">
-            <span class="course-number-badge">1</span>
-            <div class="course-details">
-              <div class="tag-row">
-                <span class="tag-seccion">AD3N1</span>
-                <span class="tag-codigo">AD8031</span>
-                <span class="tag-tipo teoria">Teoría</span>
+      <!-- Listado de cursos skeleton -->
+      <div class="skeleton-attendance-cards-list">
+        <!-- Curso Skeleton 1 -->
+        <div class="skeleton-course-card">
+          <div class="skeleton-card-header-attendance">
+            <div class="skeleton-header-left-course">
+              <div class="skeleton-course-number-badge skeleton-item"></div>
+              <div class="skeleton-course-details">
+                <div class="skeleton-course-tag-row">
+                  <div class="skeleton-course-tag skeleton-item" style="width: 50px;"></div>
+                  <div class="skeleton-course-tag skeleton-item" style="width: 60px;"></div>
+                  <div class="skeleton-course-tag skeleton-item" style="width: 50px;"></div>
+                </div>
+                <div class="skeleton-course-title-text skeleton-item"></div>
+                <div class="skeleton-course-teacher-text skeleton-item"></div>
               </div>
-              <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Comportamiento Organizacional</a></h3>
-              <p class="course-teacher-text">Zevallos Cordova Paola Rossana</p>
+            </div>
+            <div class="skeleton-header-right-course">
+              <div class="skeleton-course-stats-label skeleton-item"></div>
+              <div class="skeleton-course-percentage-badge skeleton-item"></div>
             </div>
           </div>
-          <div class="header-right-course">
-            <span class="course-stats-label">4/8 clases asistidas</span>
-            <div class="course-percentage-badge">
-              12.12%
-              <span>asistencia</span>
-            </div>
-          </div>
-        </div>
-        <div class="calendar-table-container">
-          <table class="calendar-table" data-course-calendar="1">
-            <thead>
-              <tr>
-                <th class="col-mes">Mes</th>
-                <th class="calendar-header-cell">01</th>
-                <th class="calendar-header-cell">02</th>
-                <th class="calendar-header-cell">03</th>
-                <th class="calendar-header-cell">04</th>
-                <th class="calendar-header-cell">05</th>
-                <th class="calendar-header-cell">06</th>
-                <th class="calendar-header-cell">07</th>
-                <th class="calendar-header-cell">08</th>
-                <th class="calendar-header-cell">09</th>
-                <th class="calendar-header-cell">10</th>
-                <th class="calendar-header-cell">11</th>
-                <th class="calendar-header-cell">12</th>
-                <th class="calendar-header-cell">13</th>
-                <th class="calendar-header-cell">14</th>
-                <th class="calendar-header-cell">15</th>
-                <th class="calendar-header-cell">16</th>
-                <th class="calendar-header-cell">17</th>
-                <th class="calendar-header-cell">18</th>
-                <th class="calendar-header-cell">19</th>
-                <th class="calendar-header-cell">20</th>
-                <th class="calendar-header-cell">21</th>
-                <th class="calendar-header-cell">22</th>
-                <th class="calendar-header-cell">23</th>
-                <th class="calendar-header-cell">24</th>
-                <th class="calendar-header-cell">25</th>
-                <th class="calendar-header-cell">26</th>
-                <th class="calendar-header-cell">27</th>
-                <th class="calendar-header-cell">28</th>
-                <th class="calendar-header-cell">29</th>
-                <th class="calendar-header-cell">30</th>
-                <th class="calendar-header-cell">31</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Se autogenera con JavaScript -->
-            </tbody>
-          </table>
-        </div>
-      </article>
-
-      <!-- Curso 2 -->
-      <article class="course-attendance-card">
-        <div class="card-header-attendance">
-          <div class="header-left-course">
-            <span class="course-number-badge">2</span>
-            <div class="course-details">
-              <div class="tag-row">
-                <span class="tag-seccion">AC4M9</span>
-                <span class="tag-codigo">AC4042</span>
-                <span class="tag-tipo teoria">Teoría</span>
-                <span class="tag-tipo practica">Práctica</span>
+          <div class="skeleton-calendar-table-container">
+            <div class="skeleton-calendar-table">
+              <div class="skeleton-calendar-row header-row">
+                <div class="skeleton-calendar-cell first-col skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
               </div>
-              <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Comunicación de Alto Impacto</a></h3>
-              <p class="course-teacher-text">Bravo Guevara Babi Rosa</p>
-            </div>
-          </div>
-          <div class="header-right-course">
-            <span class="course-stats-label">4/7 clases asistidas</span>
-            <div class="course-percentage-badge">
-              12.50%
-              <span>asistencia</span>
-            </div>
-          </div>
-        </div>
-        <div class="calendar-table-container">
-          <table class="calendar-table" data-course-calendar="2">
-            <thead>
-              <tr>
-                <th class="col-mes">Mes</th>
-                <th class="calendar-header-cell">01</th>
-                <th class="calendar-header-cell">02</th>
-                <th class="calendar-header-cell">03</th>
-                <th class="calendar-header-cell">04</th>
-                <th class="calendar-header-cell">05</th>
-                <th class="calendar-header-cell">06</th>
-                <th class="calendar-header-cell">07</th>
-                <th class="calendar-header-cell">08</th>
-                <th class="calendar-header-cell">09</th>
-                <th class="calendar-header-cell">10</th>
-                <th class="calendar-header-cell">11</th>
-                <th class="calendar-header-cell">12</th>
-                <th class="calendar-header-cell">13</th>
-                <th class="calendar-header-cell">14</th>
-                <th class="calendar-header-cell">15</th>
-                <th class="calendar-header-cell">16</th>
-                <th class="calendar-header-cell">17</th>
-                <th class="calendar-header-cell">18</th>
-                <th class="calendar-header-cell">19</th>
-                <th class="calendar-header-cell">20</th>
-                <th class="calendar-header-cell">21</th>
-                <th class="calendar-header-cell">22</th>
-                <th class="calendar-header-cell">23</th>
-                <th class="calendar-header-cell">24</th>
-                <th class="calendar-header-cell">25</th>
-                <th class="calendar-header-cell">26</th>
-                <th class="calendar-header-cell">27</th>
-                <th class="calendar-header-cell">28</th>
-                <th class="calendar-header-cell">29</th>
-                <th class="calendar-header-cell">30</th>
-                <th class="calendar-header-cell">31</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Se autogenera con JavaScript -->
-            </tbody>
-          </table>
-        </div>
-      </article>
-
-      <!-- Curso 3 -->
-      <article class="course-attendance-card">
-        <div class="card-header-attendance">
-          <div class="header-left-course">
-            <span class="course-number-badge">3</span>
-            <div class="course-details">
-              <div class="tag-row">
-                <span class="tag-seccion">AD2M1</span>
-                <span class="tag-codigo">AD8022</span>
-                <span class="tag-tipo teoria">Teoría</span>
+              <div class="skeleton-calendar-row">
+                <div class="skeleton-calendar-cell first-col skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
               </div>
-              <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Elementos de Comunicación Intercultural</a></h3>
-              <p class="course-teacher-text">Ferradas Martinez Maria Cristina</p>
-            </div>
-          </div>
-          <div class="header-right-course">
-            <span class="course-stats-label">2/8 clases asistidas</span>
-            <div class="course-percentage-badge">
-              6.06%
-              <span>asistencia</span>
-            </div>
-          </div>
-        </div>
-        <div class="calendar-table-container">
-          <table class="calendar-table" data-course-calendar="3">
-            <thead>
-              <tr>
-                <th class="col-mes">Mes</th>
-                <th class="calendar-header-cell">01</th>
-                <th class="calendar-header-cell">02</th>
-                <th class="calendar-header-cell">03</th>
-                <th class="calendar-header-cell">04</th>
-                <th class="calendar-header-cell">05</th>
-                <th class="calendar-header-cell">06</th>
-                <th class="calendar-header-cell">07</th>
-                <th class="calendar-header-cell">08</th>
-                <th class="calendar-header-cell">09</th>
-                <th class="calendar-header-cell">10</th>
-                <th class="calendar-header-cell">11</th>
-                <th class="calendar-header-cell">12</th>
-                <th class="calendar-header-cell">13</th>
-                <th class="calendar-header-cell">14</th>
-                <th class="calendar-header-cell">15</th>
-                <th class="calendar-header-cell">16</th>
-                <th class="calendar-header-cell">17</th>
-                <th class="calendar-header-cell">18</th>
-                <th class="calendar-header-cell">19</th>
-                <th class="calendar-header-cell">20</th>
-                <th class="calendar-header-cell">21</th>
-                <th class="calendar-header-cell">22</th>
-                <th class="calendar-header-cell">23</th>
-                <th class="calendar-header-cell">24</th>
-                <th class="calendar-header-cell">25</th>
-                <th class="calendar-header-cell">26</th>
-                <th class="calendar-header-cell">27</th>
-                <th class="calendar-header-cell">28</th>
-                <th class="calendar-header-cell">29</th>
-                <th class="calendar-header-cell">30</th>
-                <th class="calendar-header-cell">31</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Se autogenera con JavaScript -->
-            </tbody>
-          </table>
-        </div>
-      </article>
-
-      <!-- Curso 4 -->
-      <article class="course-attendance-card">
-        <div class="card-header-attendance">
-          <div class="header-left-course">
-            <span class="course-number-badge">4</span>
-            <div class="course-details">
-              <div class="tag-row">
-                <span class="tag-seccion">AC3N3</span>
-                <span class="tag-codigo">AC4037</span>
-                <span class="tag-tipo teoria">Teoría</span>
-                <span class="tag-tipo practica">Práctica</span>
+              <div class="skeleton-calendar-row">
+                <div class="skeleton-calendar-cell first-col skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
               </div>
-              <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Ingles III</a></h3>
-              <p class="course-teacher-text">Rodriguez Delgado de Horna Verónica Paola</p>
-            </div>
-          </div>
-          <div class="header-right-course">
-            <span class="course-stats-label">2/8 clases asistidas</span>
-            <div class="course-percentage-badge">
-              6.25%
-              <span>asistencia</span>
             </div>
           </div>
         </div>
-        <div class="calendar-table-container">
-          <table class="calendar-table" data-course-calendar="4">
-            <thead>
-              <tr>
-                <th class="col-mes">Mes</th>
-                <th class="calendar-header-cell">01</th>
-                <th class="calendar-header-cell">02</th>
-                <th class="calendar-header-cell">03</th>
-                <th class="calendar-header-cell">04</th>
-                <th class="calendar-header-cell">05</th>
-                <th class="calendar-header-cell">06</th>
-                <th class="calendar-header-cell">07</th>
-                <th class="calendar-header-cell">08</th>
-                <th class="calendar-header-cell">09</th>
-                <th class="calendar-header-cell">10</th>
-                <th class="calendar-header-cell">11</th>
-                <th class="calendar-header-cell">12</th>
-                <th class="calendar-header-cell">13</th>
-                <th class="calendar-header-cell">14</th>
-                <th class="calendar-header-cell">15</th>
-                <th class="calendar-header-cell">16</th>
-                <th class="calendar-header-cell">17</th>
-                <th class="calendar-header-cell">18</th>
-                <th class="calendar-header-cell">19</th>
-                <th class="calendar-header-cell">20</th>
-                <th class="calendar-header-cell">21</th>
-                <th class="calendar-header-cell">22</th>
-                <th class="calendar-header-cell">23</th>
-                <th class="calendar-header-cell">24</th>
-                <th class="calendar-header-cell">25</th>
-                <th class="calendar-header-cell">26</th>
-                <th class="calendar-header-cell">27</th>
-                <th class="calendar-header-cell">28</th>
-                <th class="calendar-header-cell">29</th>
-                <th class="calendar-header-cell">30</th>
-                <th class="calendar-header-cell">31</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Se autogenera con JavaScript -->
-            </tbody>
-          </table>
-        </div>
-      </article>
-
-      <!-- Curso 5 -->
-      <article class="course-attendance-card">
-        <div class="card-header-attendance">
-          <div class="header-left-course">
-            <span class="course-number-badge">5</span>
-            <div class="course-details">
-              <div class="tag-row">
-                <span class="tag-seccion">AD3N3</span>
-                <span class="tag-codigo">AD8023</span>
-                <span class="tag-tipo teoria">Teoría</span>
+        <!-- Curso Skeleton 2 -->
+        <div class="skeleton-course-card">
+          <div class="skeleton-card-header-attendance">
+            <div class="skeleton-header-left-course">
+              <div class="skeleton-course-number-badge skeleton-item"></div>
+              <div class="skeleton-course-details">
+                <div class="skeleton-course-tag-row">
+                  <div class="skeleton-course-tag skeleton-item" style="width: 50px;"></div>
+                  <div class="skeleton-course-tag skeleton-item" style="width: 60px;"></div>
+                  <div class="skeleton-course-tag skeleton-item" style="width: 50px;"></div>
+                </div>
+                <div class="skeleton-course-title-text skeleton-item" style="width: 280px;"></div>
+                <div class="skeleton-course-teacher-text skeleton-item" style="width: 200px;"></div>
               </div>
-              <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Microeconomía</a></h3>
-              <p class="course-teacher-text">Sanchez Azang Valeria De Fátima</p>
+            </div>
+            <div class="skeleton-header-right-course">
+              <div class="skeleton-course-stats-label skeleton-item"></div>
+              <div class="skeleton-course-percentage-badge skeleton-item"></div>
             </div>
           </div>
-          <div class="header-right-course">
-            <span class="course-stats-label">4/8 clases asistidas</span>
-            <div class="course-percentage-badge">
-              12.12%
-              <span>asistencia</span>
+          <div class="skeleton-calendar-table-container">
+            <div class="skeleton-calendar-table">
+              <div class="skeleton-calendar-row header-row">
+                <div class="skeleton-calendar-cell first-col skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+              </div>
+              <div class="skeleton-calendar-row">
+                <div class="skeleton-calendar-cell first-col skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+              </div>
+              <div class="skeleton-calendar-row">
+                <div class="skeleton-calendar-cell first-col skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+                <div class="skeleton-calendar-cell skeleton-item"></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="calendar-table-container">
-          <table class="calendar-table" data-course-calendar="5">
-            <thead>
-              <tr>
-                <th class="col-mes">Mes</th>
-                <th class="calendar-header-cell">01</th>
-                <th class="calendar-header-cell">02</th>
-                <th class="calendar-header-cell">03</th>
-                <th class="calendar-header-cell">04</th>
-                <th class="calendar-header-cell">05</th>
-                <th class="calendar-header-cell">06</th>
-                <th class="calendar-header-cell">07</th>
-                <th class="calendar-header-cell">08</th>
-                <th class="calendar-header-cell">09</th>
-                <th class="calendar-header-cell">10</th>
-                <th class="calendar-header-cell">11</th>
-                <th class="calendar-header-cell">12</th>
-                <th class="calendar-header-cell">13</th>
-                <th class="calendar-header-cell">14</th>
-                <th class="calendar-header-cell">15</th>
-                <th class="calendar-header-cell">16</th>
-                <th class="calendar-header-cell">17</th>
-                <th class="calendar-header-cell">18</th>
-                <th class="calendar-header-cell">19</th>
-                <th class="calendar-header-cell">20</th>
-                <th class="calendar-header-cell">21</th>
-                <th class="calendar-header-cell">22</th>
-                <th class="calendar-header-cell">23</th>
-                <th class="calendar-header-cell">24</th>
-                <th class="calendar-header-cell">25</th>
-                <th class="calendar-header-cell">26</th>
-                <th class="calendar-header-cell">27</th>
-                <th class="calendar-header-cell">28</th>
-                <th class="calendar-header-cell">29</th>
-                <th class="calendar-header-cell">30</th>
-                <th class="calendar-header-cell">31</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Se autogenera con JavaScript -->
-            </tbody>
-          </table>
+      </div>
+
+    </div>
+
+    <!-- CONTENIDO REAL (Inicialmente oculto) -->
+    <div id="attendanceContent" class="attendance-content-wrapper" style="display: none;">
+
+      <!-- SECCIÓN DE CABECERA (page-header-flex) -->
+      <header class="page-header-flex">
+        <div class="header-left">
+          <div class="header-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path
+                d="M6.65074 32.1796C5.94768 32.1796 5.3499 31.9333 4.8574 31.4408C4.3649 30.9481 4.11865 30.3503 4.11865 29.6475V28.4742C4.11865 27.5897 4.34143 26.8168 4.78699 26.1554C5.23226 25.494 5.82351 24.9764 6.56074 24.6025C7.9774 23.8803 9.4731 23.296 11.0478 22.8496C12.6228 22.4029 14.4798 22.1796 16.6187 22.1796C16.8728 22.1796 17.1468 22.1839 17.4407 22.1925C17.7343 22.2008 18.0084 22.2243 18.2628 22.2629C18.5898 22.3076 18.8643 22.4679 19.0866 22.7438C19.3088 23.0193 19.3974 23.3224 19.3524 23.6529C19.3077 23.9421 19.1784 24.1935 18.9645 24.4071C18.7509 24.6207 18.4614 24.7222 18.0962 24.7117C17.9081 24.7008 17.6778 24.6928 17.4053 24.6875C17.1328 24.6822 16.8706 24.6796 16.6187 24.6796C14.6464 24.6796 12.9182 24.8996 11.4341 25.3396C9.95018 25.7799 8.70824 26.2778 7.70824 26.8333C7.3299 27.0364 7.05379 27.2736 6.8799 27.545C6.70574 27.8164 6.61865 28.1261 6.61865 28.4742V29.6796H18.0928C18.447 29.6796 18.7439 29.7994 18.9837 30.0392C19.2231 30.2786 19.3428 30.5756 19.3428 30.93C19.3428 31.2844 19.2231 31.5813 18.9837 31.8204C18.7439 32.0599 18.447 32.1796 18.0928 32.1796H6.65074ZM25.7082 29.9104L33.2466 22.3717C33.4774 22.1411 33.7675 22.0231 34.117 22.0175C34.4662 22.0122 34.7616 22.1303 35.0032 22.3717C35.2446 22.6133 35.3653 22.9061 35.3653 23.25C35.3653 23.5939 35.2446 23.8867 35.0032 24.1283L26.7628 32.3688C26.4614 32.6699 26.1099 32.8204 25.7082 32.8204C25.3066 32.8204 24.955 32.6699 24.6537 32.3688L21.4132 29.1283C21.1827 28.8975 21.0646 28.6074 21.0591 28.2579C21.0538 27.9088 21.1718 27.6133 21.4132 27.3717C21.6549 27.1303 21.9477 27.0096 22.2916 27.0096C22.6355 27.0096 22.9282 27.1303 23.1699 27.3717L25.7082 29.9104ZM12.4953 17.7771C11.3553 16.6374 10.7853 15.2629 10.7853 13.6538C10.7853 12.0449 11.3553 10.6704 12.4953 9.53042C13.635 8.39042 15.0095 7.82042 16.6187 7.82042C18.2275 7.82042 19.602 8.39042 20.742 9.53042C21.8817 10.6704 22.4516 12.0449 22.4516 13.6538C22.4516 15.2629 21.8817 16.6374 20.742 17.7771C19.602 18.9171 18.2275 19.4871 16.6187 19.4871C15.0095 19.4871 13.635 18.9171 12.4953 17.7771ZM18.9728 16.0079C19.6256 15.3551 19.952 14.5704 19.952 13.6538C19.952 12.7371 19.6256 11.9524 18.9728 11.2996C18.32 10.6468 17.5353 10.3204 16.6187 10.3204C15.702 10.3204 14.9173 10.6468 14.2645 11.2996C13.6117 11.9524 13.2853 12.7371 13.2853 13.6538C13.2853 14.5704 13.6117 15.3551 14.2645 16.0079C14.9173 16.6607 15.702 16.9871 16.6187 16.9871C17.5353 16.9871 18.32 16.6607 18.9728 16.0079Z"
+                fill="#222222" />
+            </svg>
+          </div>
+          <div class="header-titles">
+            <h1>Reporte de asistencia</h1>
+            <p>Visualiza tu historial de asistencia por curso y periodo académico</p>
+          </div>
         </div>
-      </article>
+
+        <div class="header-right">
+          <label for="period">Elige el periodo</label>
+          <div class="select-wrapper">
+            <select id="period" class="period-select">
+              <option value="2025-2" selected>2025 - II</option>
+              <option value="2025-1">2025 - I</option>
+            </select>
+            <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <hr class="header-divider">
+
+      <!-- RESUMEN GLOBAL -->
+      <section class="resumen-card">
+        <div class="resumen-percentage-box">
+          <div class="resumen-percentage">9.74%</div>
+          <div class="resumen-sub">de asistencia global</div>
+        </div>
+        <div class="resumen-info-box">
+          <div class="resumen-top-row">
+            <!-- Barra de progreso -->
+            <div class="resumen-progress-bar-container">
+              <div class="resumen-progress-bar-fill" style="width: 9.74%;"></div>
+            </div>
+            <!-- Estadísticas en formato texto plano -->
+            <div class="resumen-stats-row">
+              <span class="resumen-stat-item"><strong>19</strong> clases asistidas</span>
+              <span class="resumen-stat-item"><strong>195</strong> clases en el semestre</span>
+              <span class="resumen-stat-item"><strong>7</strong> cursos</span>
+            </div>
+          </div>
+          <!-- Alerta de asistencia -->
+          <div class="resumen-alert">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-text">Asistencia por debajo del mínimo requerido (70%). Comunícate con tu asesor
+              académico.</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- FILTROS Y LEYENDA -->
+      <section class="filters-legend-row">
+        <!-- Leyenda -->
+        <div class="legend-container">
+          <div class="legend-item">
+            <span class="legend-color cell-outside"></span>
+            <span class="legend-label">Fuera del semestre</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color cell-none"></span>
+            <span class="legend-label">Sin clase</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color cell-attended">✓</span>
+            <span class="legend-label">Asistió (✓)</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color cell-absent">F</span>
+            <span class="legend-label">Faltó (F)</span>
+          </div>
+        </div>
+        <!-- Filtro por Mes -->
+        <div class="filters-container">
+          <button type="button" class="filter-btn active" data-month="all">Todos</button>
+          <button type="button" class="filter-btn" data-month="mar">Mar</button>
+          <button type="button" class="filter-btn" data-month="abr">Abr</button>
+          <button type="button" class="filter-btn" data-month="may">May</button>
+          <button type="button" class="filter-btn" data-month="jun">Jun</button>
+          <button type="button" class="filter-btn" data-month="jul">Jul</button>
+        </div>
+      </section>
+
+      <!-- LISTADO DE CURSOS Y SUS CALENDARIOS -->
+      <section class="attendance-cards-list">
+
+        <!-- Curso 1 -->
+        <article class="course-attendance-card">
+          <div class="card-header-attendance">
+            <div class="header-left-course">
+              <span class="course-number-badge">1</span>
+              <div class="course-details">
+                <div class="tag-row">
+                  <span class="tag-seccion">AD3N1</span>
+                  <span class="tag-codigo">AD8031</span>
+                  <span class="tag-tipo teoria">Teoría</span>
+                </div>
+                <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Comportamiento Organizacional</a></h3>
+                <p class="course-teacher-text">Zevallos Cordova Paola Rossana</p>
+              </div>
+            </div>
+            <div class="header-right-course">
+              <span class="course-stats-label">4/8 clases asistidas</span>
+              <div class="course-percentage-badge">
+                12.12%
+                <span>asistencia</span>
+              </div>
+            </div>
+          </div>
+          <div class="calendar-table-container">
+            <table class="calendar-table" data-course-calendar="1">
+              <thead>
+                <tr>
+                  <th class="col-mes">Mes</th>
+                  <th class="calendar-header-cell">01</th>
+                  <th class="calendar-header-cell">02</th>
+                  <th class="calendar-header-cell">03</th>
+                  <th class="calendar-header-cell">04</th>
+                  <th class="calendar-header-cell">05</th>
+                  <th class="calendar-header-cell">06</th>
+                  <th class="calendar-header-cell">07</th>
+                  <th class="calendar-header-cell">08</th>
+                  <th class="calendar-header-cell">09</th>
+                  <th class="calendar-header-cell">10</th>
+                  <th class="calendar-header-cell">11</th>
+                  <th class="calendar-header-cell">12</th>
+                  <th class="calendar-header-cell">13</th>
+                  <th class="calendar-header-cell">14</th>
+                  <th class="calendar-header-cell">15</th>
+                  <th class="calendar-header-cell">16</th>
+                  <th class="calendar-header-cell">17</th>
+                  <th class="calendar-header-cell">18</th>
+                  <th class="calendar-header-cell">19</th>
+                  <th class="calendar-header-cell">20</th>
+                  <th class="calendar-header-cell">21</th>
+                  <th class="calendar-header-cell">22</th>
+                  <th class="calendar-header-cell">23</th>
+                  <th class="calendar-header-cell">24</th>
+                  <th class="calendar-header-cell">25</th>
+                  <th class="calendar-header-cell">26</th>
+                  <th class="calendar-header-cell">27</th>
+                  <th class="calendar-header-cell">28</th>
+                  <th class="calendar-header-cell">29</th>
+                  <th class="calendar-header-cell">30</th>
+                  <th class="calendar-header-cell">31</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Se autogenera con JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- Curso 2 -->
+        <article class="course-attendance-card">
+          <div class="card-header-attendance">
+            <div class="header-left-course">
+              <span class="course-number-badge">2</span>
+              <div class="course-details">
+                <div class="tag-row">
+                  <span class="tag-seccion">AC4M9</span>
+                  <span class="tag-codigo">AC4042</span>
+                  <span class="tag-tipo teoria">Teoría</span>
+                  <span class="tag-tipo practica">Práctica</span>
+                </div>
+                <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Comunicación de Alto Impacto</a></h3>
+                <p class="course-teacher-text">Bravo Guevara Babi Rosa</p>
+              </div>
+            </div>
+            <div class="header-right-course">
+              <span class="course-stats-label">4/7 clases asistidas</span>
+              <div class="course-percentage-badge">
+                12.50%
+                <span>asistencia</span>
+              </div>
+            </div>
+          </div>
+          <div class="calendar-table-container">
+            <table class="calendar-table" data-course-calendar="2">
+              <thead>
+                <tr>
+                  <th class="col-mes">Mes</th>
+                  <th class="calendar-header-cell">01</th>
+                  <th class="calendar-header-cell">02</th>
+                  <th class="calendar-header-cell">03</th>
+                  <th class="calendar-header-cell">04</th>
+                  <th class="calendar-header-cell">05</th>
+                  <th class="calendar-header-cell">06</th>
+                  <th class="calendar-header-cell">07</th>
+                  <th class="calendar-header-cell">08</th>
+                  <th class="calendar-header-cell">09</th>
+                  <th class="calendar-header-cell">10</th>
+                  <th class="calendar-header-cell">11</th>
+                  <th class="calendar-header-cell">12</th>
+                  <th class="calendar-header-cell">13</th>
+                  <th class="calendar-header-cell">14</th>
+                  <th class="calendar-header-cell">15</th>
+                  <th class="calendar-header-cell">16</th>
+                  <th class="calendar-header-cell">17</th>
+                  <th class="calendar-header-cell">18</th>
+                  <th class="calendar-header-cell">19</th>
+                  <th class="calendar-header-cell">20</th>
+                  <th class="calendar-header-cell">21</th>
+                  <th class="calendar-header-cell">22</th>
+                  <th class="calendar-header-cell">23</th>
+                  <th class="calendar-header-cell">24</th>
+                  <th class="calendar-header-cell">25</th>
+                  <th class="calendar-header-cell">26</th>
+                  <th class="calendar-header-cell">27</th>
+                  <th class="calendar-header-cell">28</th>
+                  <th class="calendar-header-cell">29</th>
+                  <th class="calendar-header-cell">30</th>
+                  <th class="calendar-header-cell">31</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Se autogenera con JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- Curso 3 -->
+        <article class="course-attendance-card">
+          <div class="card-header-attendance">
+            <div class="header-left-course">
+              <span class="course-number-badge">3</span>
+              <div class="course-details">
+                <div class="tag-row">
+                  <span class="tag-seccion">AD2M1</span>
+                  <span class="tag-codigo">AD8022</span>
+                  <span class="tag-tipo teoria">Teoría</span>
+                </div>
+                <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Elementos de Comunicación Intercultural</a></h3>
+                <p class="course-teacher-text">Ferradas Martinez Maria Cristina</p>
+              </div>
+            </div>
+            <div class="header-right-course">
+              <span class="course-stats-label">2/8 clases asistidas</span>
+              <div class="course-percentage-badge">
+                6.06%
+                <span>asistencia</span>
+              </div>
+            </div>
+          </div>
+          <div class="calendar-table-container">
+            <table class="calendar-table" data-course-calendar="3">
+              <thead>
+                <tr>
+                  <th class="col-mes">Mes</th>
+                  <th class="calendar-header-cell">01</th>
+                  <th class="calendar-header-cell">02</th>
+                  <th class="calendar-header-cell">03</th>
+                  <th class="calendar-header-cell">04</th>
+                  <th class="calendar-header-cell">05</th>
+                  <th class="calendar-header-cell">06</th>
+                  <th class="calendar-header-cell">07</th>
+                  <th class="calendar-header-cell">08</th>
+                  <th class="calendar-header-cell">09</th>
+                  <th class="calendar-header-cell">10</th>
+                  <th class="calendar-header-cell">11</th>
+                  <th class="calendar-header-cell">12</th>
+                  <th class="calendar-header-cell">13</th>
+                  <th class="calendar-header-cell">14</th>
+                  <th class="calendar-header-cell">15</th>
+                  <th class="calendar-header-cell">16</th>
+                  <th class="calendar-header-cell">17</th>
+                  <th class="calendar-header-cell">18</th>
+                  <th class="calendar-header-cell">19</th>
+                  <th class="calendar-header-cell">20</th>
+                  <th class="calendar-header-cell">21</th>
+                  <th class="calendar-header-cell">22</th>
+                  <th class="calendar-header-cell">23</th>
+                  <th class="calendar-header-cell">24</th>
+                  <th class="calendar-header-cell">25</th>
+                  <th class="calendar-header-cell">26</th>
+                  <th class="calendar-header-cell">27</th>
+                  <th class="calendar-header-cell">28</th>
+                  <th class="calendar-header-cell">29</th>
+                  <th class="calendar-header-cell">30</th>
+                  <th class="calendar-header-cell">31</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Se autogenera con JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- Curso 4 -->
+        <article class="course-attendance-card">
+          <div class="card-header-attendance">
+            <div class="header-left-course">
+              <span class="course-number-badge">4</span>
+              <div class="course-details">
+                <div class="tag-row">
+                  <span class="tag-seccion">AC3N3</span>
+                  <span class="tag-codigo">AC4037</span>
+                  <span class="tag-tipo teoria">Teoría</span>
+                  <span class="tag-tipo practica">Práctica</span>
+                </div>
+                <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Ingles III</a></h3>
+                <p class="course-teacher-text">Rodriguez Delgado de Horna Verónica Paola</p>
+              </div>
+            </div>
+            <div class="header-right-course">
+              <span class="course-stats-label">2/8 clases asistidas</span>
+              <div class="course-percentage-badge">
+                6.25%
+                <span>asistencia</span>
+              </div>
+            </div>
+          </div>
+          <div class="calendar-table-container">
+            <table class="calendar-table" data-course-calendar="4">
+              <thead>
+                <tr>
+                  <th class="col-mes">Mes</th>
+                  <th class="calendar-header-cell">01</th>
+                  <th class="calendar-header-cell">02</th>
+                  <th class="calendar-header-cell">03</th>
+                  <th class="calendar-header-cell">04</th>
+                  <th class="calendar-header-cell">05</th>
+                  <th class="calendar-header-cell">06</th>
+                  <th class="calendar-header-cell">07</th>
+                  <th class="calendar-header-cell">08</th>
+                  <th class="calendar-header-cell">09</th>
+                  <th class="calendar-header-cell">10</th>
+                  <th class="calendar-header-cell">11</th>
+                  <th class="calendar-header-cell">12</th>
+                  <th class="calendar-header-cell">13</th>
+                  <th class="calendar-header-cell">14</th>
+                  <th class="calendar-header-cell">15</th>
+                  <th class="calendar-header-cell">16</th>
+                  <th class="calendar-header-cell">17</th>
+                  <th class="calendar-header-cell">18</th>
+                  <th class="calendar-header-cell">19</th>
+                  <th class="calendar-header-cell">20</th>
+                  <th class="calendar-header-cell">21</th>
+                  <th class="calendar-header-cell">22</th>
+                  <th class="calendar-header-cell">23</th>
+                  <th class="calendar-header-cell">24</th>
+                  <th class="calendar-header-cell">25</th>
+                  <th class="calendar-header-cell">26</th>
+                  <th class="calendar-header-cell">27</th>
+                  <th class="calendar-header-cell">28</th>
+                  <th class="calendar-header-cell">29</th>
+                  <th class="calendar-header-cell">30</th>
+                  <th class="calendar-header-cell">31</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Se autogenera con JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- Curso 5 -->
+        <article class="course-attendance-card">
+          <div class="card-header-attendance">
+            <div class="header-left-course">
+              <span class="course-number-badge">5</span>
+              <div class="course-details">
+                <div class="tag-row">
+                  <span class="tag-seccion">AD3N3</span>
+                  <span class="tag-codigo">AD8023</span>
+                  <span class="tag-tipo teoria">Teoría</span>
+                </div>
+                <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Microeconomía</a></h3>
+                <p class="course-teacher-text">Sanchez Azang Valeria De Fátima</p>
+              </div>
+            </div>
+            <div class="header-right-course">
+              <span class="course-stats-label">4/8 clases asistidas</span>
+              <div class="course-percentage-badge">
+                12.12%
+                <span>asistencia</span>
+              </div>
+            </div>
+          </div>
+          <div class="calendar-table-container">
+            <table class="calendar-table" data-course-calendar="5">
+              <thead>
+                <tr>
+                  <th class="col-mes">Mes</th>
+                  <th class="calendar-header-cell">01</th>
+                  <th class="calendar-header-cell">02</th>
+                  <th class="calendar-header-cell">03</th>
+                  <th class="calendar-header-cell">04</th>
+                  <th class="calendar-header-cell">05</th>
+                  <th class="calendar-header-cell">06</th>
+                  <th class="calendar-header-cell">07</th>
+                  <th class="calendar-header-cell">08</th>
+                  <th class="calendar-header-cell">09</th>
+                  <th class="calendar-header-cell">10</th>
+                  <th class="calendar-header-cell">11</th>
+                  <th class="calendar-header-cell">12</th>
+                  <th class="calendar-header-cell">13</th>
+                  <th class="calendar-header-cell">14</th>
+                  <th class="calendar-header-cell">15</th>
+                  <th class="calendar-header-cell">16</th>
+                  <th class="calendar-header-cell">17</th>
+                  <th class="calendar-header-cell">18</th>
+                  <th class="calendar-header-cell">19</th>
+                  <th class="calendar-header-cell">20</th>
+                  <th class="calendar-header-cell">21</th>
+                  <th class="calendar-header-cell">22</th>
+                  <th class="calendar-header-cell">23</th>
+                  <th class="calendar-header-cell">24</th>
+                  <th class="calendar-header-cell">25</th>
+                  <th class="calendar-header-cell">26</th>
+                  <th class="calendar-header-cell">27</th>
+                  <th class="calendar-header-cell">28</th>
+                  <th class="calendar-header-cell">29</th>
+                  <th class="calendar-header-cell">30</th>
+                  <th class="calendar-header-cell">31</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Se autogenera con JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+      </section>
+
+    </div>
+
+  </main>>
 
     </section>
 

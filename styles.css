@@ -167,6 +167,7 @@ i svg {
 }
 
 @media (max-width: 1024px) {
+
   .main-content,
   .main-content-detail {
     padding: 24px 16px;
@@ -175,6 +176,7 @@ i svg {
 }
 
 @media (max-width: 768px) {
+
   .main-content,
   .main-content-detail {
     padding: 12px 2vw;
@@ -341,22 +343,109 @@ i svg {
   gap: 12px;
 }
 
-/* HERO BANNER (Matrícula) */
-.hero-banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #167474;
-  border-radius: 16px;
-  padding: 32px 40px;
-  color: #FFFFFF;
-
+/* =========================================
+  NUEVO: ESTRUCTURA Y ESTILOS DEL SLIDER (HERO BANNER)
+========================================= */
+.hero-slider {
+  position: relative;
   width: 100%;
   max-width: 980px;
   min-height: 180px;
   margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
+.slider-wrapper {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  min-height: 180px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 40px;
+  color: #FFFFFF;
+  position: relative;
+}
+
+/* Slide Tipo 1: Contenido estructurado HTML (Fondo verde original) */
+.hero-slide.slide-html {
+  background-color: #167474;
+}
+
+/* Slide Tipo 2: Banner de imagen */
+.hero-slide.slide-image {
+  padding: 0;
+  background-color: #0c4e54;
+}
+
+/* Contenedor o elemento de imagen en el banner de imagen */
+.slide-bg-placeholder {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estilo para cuando coloquen una imagen real (<img>) */
+.slide-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Capa de gradiente oscuro sobre la imagen para legibilidad y estética */
+.slide-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: 2;
+}
+
+/* Texto del placeholder */
+.placeholder-text {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  padding: 20px;
+  z-index: 3;
+}
+
+.placeholder-text h3 {
+  color: #FFFFFF;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.placeholder-text p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+/* Contenedor del CTA sobre el slide de imagen */
+.hero-action-overlay {
+  position: absolute;
+  right: 40px;
+  z-index: 4;
+}
+
+/* Clases comunes compartidas del contenido del hero */
 .hero-tags {
   display: flex;
   gap: 12px;
@@ -390,6 +479,74 @@ i svg {
   opacity: 0.9;
 }
 
+/* Controles de navegación manual (Flechas laterales) */
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 10;
+}
+
+.slider-arrow {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.slider-arrow:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.slider-arrow svg {
+  stroke: #FFFFFF;
+}
+
+/* Contenedor de puntos indicadores */
+.slider-dots-container {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.slider-dots-container .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dots-container .dot.active {
+  background: #FFFFFF;
+  width: 20px;
+  border-radius: 4px;
+}
+
+/* Fin Slider */
+
 /* GRID DASHBOARD Y TARJETAS */
 .dashboard-grid {
   display: grid;
@@ -414,6 +571,7 @@ i svg {
   border-top: 4px solid #0F848F;
   /* Indicador visual de dónde va a caer */
 }
+
 /* Fin clases drag & drop */
 
 .card {
@@ -912,25 +1070,62 @@ i svg {
     flex-wrap: nowrap;
     overflow-x: auto;
     width: 100%;
-    padding-bottom: 8px; /* Para acomodar el scrollbar si es visible temporalmente */
+    padding-bottom: 8px;
+    /* Para acomodar el scrollbar si es visible temporalmente */
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+    scrollbar-width: none;
+    /* Ocultar scrollbar en Firefox */
   }
 
   .profile-actions::-webkit-scrollbar {
-    display: none; /* Ocultar scrollbar en Chrome/Safari/Edge */
+    display: none;
+    /* Ocultar scrollbar en Chrome/Safari/Edge */
   }
 
-  .profile-actions > * {
-    flex-shrink: 0; /* Evita que los botones se encojan */
+  .profile-actions>* {
+    flex-shrink: 0;
+    /* Evita que los botones se encojan */
   }
 
-  .hero-banner {
+  /* NUEVO: Adaptación Responsiva del Slider en Mobile */
+  .hero-slider {
+    min-height: auto;
+  }
+
+  .hero-slide {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
     padding: 24px;
     min-height: auto;
+  }
+
+  .hero-slide.slide-image {
+    min-height: 200px;
+    padding: 0;
+  }
+
+  .slide-bg-placeholder {
+    height: 200px;
+  }
+
+  .hero-action-overlay {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 16px 24px 24px 24px;
+    width: calc(100% - 48px);
+    text-align: left;
+    z-index: 5;
+  }
+
+  .hero-action-overlay .btn {
+    width: 100%;
+  }
+
+  .slider-controls {
+    display: none;
+    /* Se ocultan las flechas laterales en pantallas táctiles pequeñas */
   }
 
   .progress-stats-grid {
@@ -996,6 +1191,7 @@ i svg {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -1174,9 +1370,11 @@ i svg {
   .skeleton-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .skeleton-card-span-3 {
     grid-column: span 2;
   }
+
   .skeleton-announcements-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1189,26 +1387,26 @@ i svg {
     padding: 16px;
     gap: 16px;
   }
-  
+
   .skeleton-profile-actions {
     width: 100%;
     justify-content: flex-start;
   }
-  
+
   .skeleton-pill-btn {
     flex-grow: 1;
     width: auto;
   }
-  
+
   .skeleton-hero {
     height: 200px;
   }
-  
+
   .skeleton-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .skeleton-card {
     padding: 16px;
     min-height: 320px;

@@ -5,6 +5,18 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Simulación de carga con Skeleton Loader
+  const skeletonLoader = document.getElementById('skeletonLoader');
+  const attendanceContent = document.getElementById('attendanceContent');
+
+  if (skeletonLoader && attendanceContent) {
+    setTimeout(() => {
+      skeletonLoader.style.display = 'none';
+      attendanceContent.style.display = 'flex';
+      console.log('Skeleton ocultado y Asistencias real visible.');
+    }, 2000); // Carga simulada de 2 segundos
+  }
+
   // ==========================================
   // 1. DATASET DE ASISTENCIA POR CURSO (Alta Fidelidad)
   // Define las clases asistidas (✓) y faltas (F) para cada curso
