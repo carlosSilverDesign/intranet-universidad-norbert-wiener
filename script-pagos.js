@@ -122,8 +122,115 @@ document.addEventListener("DOMContentLoaded", function () {
       updateSummary();
     });
   });
-});
 
+  // --- NUEVO: Control del tag 'En proceso' y checkboxes de las obligaciones ---
+  const tagProceso = document.querySelector('.tag-proceso');
+  if (tagProceso) {
+    const docCol = tagProceso.closest('.documento-col');
+    if (docCol) {
+      // Si no venimos de medio-pago.html, empezamos limpio sin la etiqueta activa
+      const cameFromMedioPago = document.referrer.includes('medio-pago.html');
+      if (!cameFromMedioPago) {
+        localStorage.removeItem('tagProcesoActive');
+        localStorage.removeItem('selectedPaymentMethod');
+      }
+
+      const updateTagState = () => {
+        const isProcesoActive = localStorage.getItem('tagProcesoActive') === 'true';
+        if (isProcesoActive) {
+          tagProceso.classList.add('active');
+        } else {
+          tagProceso.classList.remove('active');
+        }
+
+        // Habilitar/deshabilitar los checkboxes según el estado del tag 'En proceso'
+        rowCheckboxes.forEach((checkbox, index) => {
+          if (isProcesoActive) {
+            if (index === 0) {
+              checkbox.disabled = true;
+              checkbox.checked = false;
+            } else if (index === 1) {
+              // Si la primera cuota está en proceso, habilitamos la segunda para continuar
+              checkbox.disabled = false;
+            } else {
+              checkbox.disabled = true;
+              checkbox.checked = false;
+            }
+          } else {
+            checkbox.disabled = (index !== 0);
+            if (index !== 0) {
+              checkbox.checked = false;
+            }
+          }
+          const row = checkbox.closest('.table-row');
+          if (row) {
+            if (checkbox.disabled) {
+              row.classList.add('disabled');
+            } else {
+              row.classList.remove('disabled');
+            }
+            if (!checkbox.checked) {
+              row.classList.remove('selected');
+            }
+          }
+        });
+
+        // Habilitar/deshabilitar el checkbox de cabecera
+        if (headerCheckbox) {
+          headerCheckbox.checked = false;
+          headerCheckbox.disabled = isProcesoActive;
+        }
+
+        updateSummary();
+      };
+
+      // Inicializar el estado de la etiqueta y checkboxes al cargar la página
+      updateTagState();
+
+      // Permitir activar/desactivar haciendo click en la columna (el código del documento o el tag)
+      docCol.style.cursor = 'pointer';
+      docCol.addEventListener('click', function () {
+        const isCurrentlyActive = tagProceso.classList.contains('active');
+        const newState = !isCurrentlyActive;
+        localStorage.setItem('tagProcesoActive', newState ? 'true' : 'false');
+        if (newState) {
+          localStorage.setItem('selectedPaymentMethod', 'flywire');
+        } else {
+          localStorage.removeItem('selectedPaymentMethod');
+        }
+        updateTagState();
+      });
+    }
+  }
+
+  // --- NUEVO: Control del botón Siguiente en medio-pago.html ---
+  const isMedioPagoPage = document.querySelector('.payment-methods-list') !== null;
+  if (isMedioPagoPage) {
+    const nextButton = document.querySelector('.next-button');
+    if (nextButton) {
+      nextButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        const selectedRadio = document.querySelector('.payment-method input[type="radio"]:checked');
+        if (selectedRadio) {
+          const method = selectedRadio.value;
+          localStorage.setItem('selectedPaymentMethod', method);
+          
+          if (method === 'flywire') {
+            // Flywire: Activar el tag 'En proceso' y volver al listado de obligaciones
+            localStorage.setItem('tagProcesoActive', 'true');
+            window.location.href = 'pagos-pasarela.html';
+          } else {
+            // Niubiz: Desactivar el tag (o pago inmediato) e ir a la constancia
+            localStorage.setItem('tagProcesoActive', 'false');
+            window.location.href = 'summary-pasarela.html';
+          }
+        } else {
+          alert('Por favor, selecciona un medio de pago.');
+        }
+      });
+    }
+  }
+});
 
 // --- NUEVO: Estilo seleccionado para métodos de pago ---
 const paymentRadios = document.querySelectorAll('.payment-method input[type="radio"]');
