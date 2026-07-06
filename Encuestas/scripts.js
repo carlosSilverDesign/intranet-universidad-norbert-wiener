@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('encuestaModal');
   const modalCloseBtn = document.getElementById('encuestaModalClose');
   const comenzarHomeBtns = document.querySelectorAll('#encuestaFloatingCard .encuesta-btn-start, #encuestaModal .encuesta-btn-start');
-  
+
   // New Portal Elements
   const portal = document.getElementById('encuestaPortal');
   const portalBackBtn = document.getElementById('btnPortalBack');
@@ -109,9 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. Open Survey Portal Overlay Triggers
   function openPortal() {
     if (portal) {
+      // Agregar clase loading para activar el skeleton loader
+      portal.classList.add('loading');
       portal.classList.add('active');
       document.body.classList.add('portal-active-scroll');
-      
+
       // Auto close/dismiss home widgets once the survey view is open
       if (floatingCard) {
         floatingCard.classList.remove('visible');
@@ -120,6 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (modal && modal.open) {
         modal.close();
       }
+
+      // Carga simulada de 1.2 segundos para mostrar el skeleton en acción
+      setTimeout(() => {
+        portal.classList.remove('loading');
+      }, 1200);
     }
   }
 
@@ -173,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const val = parseInt(btn.getAttribute('data-value'));
       npsScore = val;
-      
+
       // Update NPS scale button highlight selection
       npsButtons.forEach(b => {
         const bVal = parseInt(b.getAttribute('data-value'));
@@ -236,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!questionItem) return;
       const qIndex = questionItem.getAttribute('data-q-index');
       const score = btn.getAttribute('data-score');
-      
+
       // Store value in temporary local state
       emojiAnswers[qIndex] = score;
 
@@ -283,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnEmojiSubmit) {
     btnEmojiSubmit.addEventListener('click', () => {
       const answeredCount = Object.keys(emojiAnswers).length;
-      
+
       if (answeredCount === 8) {
         closeSurveyModal('modalEmojiSurvey');
         const successModal = document.getElementById('modalSurveySuccess');
@@ -298,19 +305,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Expose global closing functions on window to support inline onclick hooks
-  window.closeSurveyModal = function(modalId) {
+  window.closeSurveyModal = function (modalId) {
     const dialog = document.getElementById(modalId);
     if (dialog) {
       dialog.close();
     }
   };
 
-  window.closeSuccessModal = function() {
+  window.closeSuccessModal = function () {
     const successDialog = document.getElementById('modalSurveySuccess');
     if (successDialog) {
       successDialog.close();
     }
-    
+
     // Transition the grid card that triggered this survey
     if (activeSurveyCardId) {
       transitionCardToAnswered(activeSurveyCardId);
@@ -325,21 +332,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const activeBody = card.querySelector('.encuesta-card-body');
     const answeredBody = card.querySelector('.answered-body-template');
-    
+
     if (activeBody && answeredBody) {
       // Transition: Fade out first
       activeBody.style.transition = 'opacity 0.25s ease';
       activeBody.style.opacity = '0';
-      
+
       setTimeout(() => {
         activeBody.style.display = 'none';
-        
+
         // Switch body elements
         answeredBody.style.display = 'flex';
         answeredBody.style.opacity = '0';
         // Add card answered styles
         card.classList.add('answered');
-        
+
         // Force reflow and fade in
         void answeredBody.offsetWidth;
         answeredBody.style.transition = 'opacity 0.25s ease';
@@ -362,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (card) {
         const surveyType = card.getAttribute('data-survey-type');
         const cardId = card.getAttribute('data-card-id');
-        
+
         if (surveyType === 'nps') {
           activeSurveyCardId = cardId;
           const npsModal = document.getElementById('modalNpsSurvey');
@@ -379,11 +386,11 @@ document.addEventListener('DOMContentLoaded', () => {
           // Fallback simulation for cards without detailed popup implementations
           const activeBody = card.querySelector('.encuesta-card-body');
           const answeredBody = card.querySelector('.answered-body-template');
-          
+
           if (activeBody && answeredBody) {
             activeBody.style.transition = 'opacity 0.25s ease';
             activeBody.style.opacity = '0';
-            
+
             setTimeout(() => {
               activeBody.style.display = 'none';
               answeredBody.style.display = 'flex';

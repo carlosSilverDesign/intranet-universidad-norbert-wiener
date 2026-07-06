@@ -1,0 +1,556 @@
+/* --- CABECERA DE PÁGINA REUTILIZABLE (page-header-flex) --- */
+.page-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-titles h1 {
+  font-size: 24px;
+  margin-bottom: 4px;
+  font-family: 'Lato', sans-serif;
+  color: #222222;
+  font-weight: 700;
+}
+
+.header-titles p {
+  color: #5B6E80;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header-divider {
+  display: block;
+  height: 1px;
+  border: none;
+  background-color: #C6CFD7;
+  margin-top: 0.25rem;
+  margin-bottom: 16px;
+  /* Distancia máxima de 32px hasta la primera fila de tarjetas */
+  width: 100%;
+}
+
+/* Estilos específicos para la sección Servicios */
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 0;
+  /* Removido el margen superior para respetar el límite de 32px */
+}
+
+.servicios-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 8px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 112px;
+}
+
+.servicios-card:hover {
+  box-shadow: 0 6px 16px rgba(15, 132, 143, 0.08);
+  transform: translateY(-2px);
+  border-color: #0F848F;
+}
+
+.card-circular-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  margin-left: 16px;
+}
+
+.servicio-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.servicios-card:hover .servicio-title {
+  color: #0F848F;
+}
+
+.servicio-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #5B6E80;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-left: 12px;
+  transition: transform 0.2s ease;
+}
+
+.servicios-card:hover .card-action-icon {
+  transform: translateX(3px);
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+  .servicios-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-header-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .header-left {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .header-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header-titles h1 {
+    font-size: 18px;
+  }
+
+  .header-titles p {
+    font-size: 12px;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 0;
+  }
+
+  .servicios-card {
+    padding: 14px 16px;
+    min-height: auto;
+  }
+
+  .card-circular-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .card-text {
+    margin-left: 12px;
+    gap: 2px;
+  }
+
+  .servicio-title {
+    font-size: 14.5px;
+  }
+
+  .servicio-desc {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}
+
+/* --- ESTILOS DE PANEL LATERAL (DRAWER) - LIMA NORTE --- */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(34, 34, 34, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.drawer-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer-container {
+  position: fixed;
+  top: 0;
+  right: -460px;
+  width: 460px;
+  max-width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  box-shadow: -4px 0 24px rgba(34, 34, 34, 0.15);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drawer-container.active {
+  right: 0;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #C6CFD7;
+}
+
+.drawer-header-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.drawer-header-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.drawer-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+}
+
+.drawer-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+  background-color: #F0F4F8;
+}
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.drawer-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.drawer-sub-card {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.drawer-sub-card:hover {
+  border-color: #0F848F;
+  box-shadow: 0 4px 12px rgba(15, 132, 143, 0.05);
+}
+
+.sub-card-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+}
+
+.sub-card-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #5B6E80;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.drawer-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.drawer-action-btn:hover {
+  background-color: #0B6169;
+}
+
+.drawer-action-btn:active {
+  transform: scale(0.98);
+}
+
+/* --- ESTILOS DE TABS DENTRO DE DRAWER (BVU) --- */
+.drawer-tabs-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.drawer-tabs-header {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  border-bottom: 2px solid #E2E8F0;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.drawer-tabs-header::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #5B6E80;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.tab-nav-btn:hover {
+  background-color: #F1F5F9;
+  color: #222222;
+}
+
+.tab-nav-btn.active {
+  background-color: #E6F3F4;
+  color: #0F848F;
+  border-color: rgba(15, 130, 143, 0.2);
+}
+
+.tab-btn-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.drawer-tabs-content-wrapper {
+  flex: 1;
+}
+
+.tab-content-pane {
+  display: none;
+}
+
+.tab-content-pane.active {
+  display: block;
+  animation: drawerFadeIn 0.3s ease;
+}
+
+@keyframes drawerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bvu-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: #222222;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.bvu-intro {
+  margin: 0;
+  font-weight: 500;
+  color: #222222;
+}
+
+.bvu-list {
+  margin: 0;
+  padding-left: 20px;
+  color: #5B6E80;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bvu-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bvu-info-block h4 {
+  font-family: 'Lato', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+  border-left: 3px solid #0F848F;
+  padding-left: 8px;
+}
+
+.bvu-info-block p {
+  margin: 0;
+  color: #5B6E80;
+}
+
+.bvu-contact-box {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.bvu-contact-box h4 {
+  font-family: 'Lato', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+}
+
+.bvu-contact-box p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #5B6E80;
+}
+
+.bvu-contact-box a {
+  color: #0F848F;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.bvu-contact-box a:hover {
+  text-decoration: underline;
+}
+
+/* --- AJUSTES MOBILE PARA EL DRAWER --- */
+@media (max-width: 767px) {
+  .drawer-container {
+    width: 100%;
+    right: -100%;
+    height: 100%;
+  }
+
+  .drawer-container.active {
+    right: 0;
+  }
+  
+  .drawer-header {
+    padding: 16px;
+  }
+  
+  .drawer-body {
+    padding: 16px;
+  }
+  
+  .drawer-title {
+    font-size: 17px;
+  }
+  
+  .tab-nav-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .drawer-sub-card {
+    padding: 12px;
+  }
+  
+  .sub-card-title {
+    font-size: 14px;
+  }
+}
