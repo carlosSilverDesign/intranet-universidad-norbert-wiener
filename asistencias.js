@@ -1,7 +1,3 @@
-/* ==========================================================================
-   INTERACTIVIDAD Y GENERACIÓN DE CALENDARIOS - SECCIÓN ASISTENCIAS
-   Norbert Wiener Intranet - Wieners Brand Redesign
-   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 

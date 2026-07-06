@@ -1,6 +1,6 @@
 /* ==========================================================================
    ESTILOS ESPECÍFICOS - SECCIÓN ASISTENCIAS
-   Norbert Wiener Intranet - Wieners Brand Redesign
+   Norbert Wiener Intranet
    ========================================================================== */
 
 /* --- ESTILOS GENERALES Y CENTRADO DE LA PÁGINA --- */
@@ -25,7 +25,7 @@ body {
   flex-direction: column;
 }
 
-/* --- CABECERA DE PÁGINA REUTILIZABLE (page-header-flex) --- */
+/* --- CABECERA DE PÁGINA REUTILIZABLE */
 .page-header-flex {
   display: flex;
   justify-content: space-between;
