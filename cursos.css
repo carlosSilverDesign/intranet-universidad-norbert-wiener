@@ -492,3 +492,515 @@ html {
     font-size: 12px;
   }
 }
+
+/* ==========================================================================
+   Estilos específicos para cursos-lc.html (Progreso Académico Rediseñado)
+   ========================================================================== */
+
+.progreso-container-lc {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.lc-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 12px;
+  padding: 18px 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* NIVEL 1: Card Datos del Alumno */
+.lc-student-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lc-student-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.lc-student-row-secondary {
+  border-top: 1px dashed #E2E8F0;
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.lc-student-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #5B6E80;
+  font-family: 'Roboto', sans-serif;
+}
+
+.lc-label {
+  color: #5B6E80;
+  font-weight: 500;
+}
+
+.lc-value {
+  color: #222222;
+  font-weight: 700;
+}
+
+.lc-code-highlight {
+  color: #0F848F;
+  font-weight: 700;
+}
+
+.lc-bold-dark {
+  color: #222222;
+  font-weight: 700;
+}
+
+.lc-text-muted {
+  color: #5B6E80;
+  font-weight: 400;
+}
+
+/* NIVEL 2: Cards de Créditos */
+.lc-credits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.lc-credit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lc-credit-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #0F848F;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+}
+
+.lc-credit-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lc-credit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #404040;
+}
+
+.lc-credit-label {
+  font-weight: 500;
+}
+
+.lc-credit-num {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.lc-teal-text {
+  color: #0F848F;
+  font-weight: 700;
+}
+
+.lc-slash-text {
+  color: #9AA6B2;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.lc-credit-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.lc-credit-footer-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F848F;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+}
+
+.lc-pill-badge {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  padding: 4px 16px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  min-width: 60px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.lc-white-num {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.lc-pill-slash {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+/* Progress Bar */
+.lc-progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.lc-progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background-color: #E2E8F0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lc-progress-bar-fill {
+  height: 100%;
+  background-color: #0F848F;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.lc-progress-text {
+  font-size: 11.5px;
+  color: #727272;
+  font-weight: 400;
+  text-align: left;
+}
+
+/* NIVEL 3: Accordions & Tablas */
+.lc-section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 16px 0 8px 0;
+  position: relative;
+}
+
+.lc-section-divider::before,
+.lc-section-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #C6CFD7;
+}
+
+.lc-section-divider span {
+  padding: 0 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #727272;
+  letter-spacing: 0.5px;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+}
+
+.lc-accordions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.lc-accordion {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #0F848F;
+  background-color: #FFFFFF;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.lc-accordion-header {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.lc-accordion-header:hover {
+  background-color: #0b6770;
+}
+
+.lc-accordion-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lc-accordion-icon {
+  width: 18px;
+  height: 18px;
+  stroke: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.lc-accordion-title h3 {
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lc-sub-title {
+  font-weight: 400;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.lc-accordion-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lc-count-pill {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.lc-arrow-icon {
+  width: 18px;
+  height: 18px;
+  stroke: #FFFFFF;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.lc-accordion.expanded .lc-arrow-icon {
+  transform: rotate(180deg);
+}
+
+.lc-accordion:not(.expanded) .lc-arrow-icon {
+  transform: rotate(0deg);
+}
+
+.lc-accordion-content {
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
+.lc-table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lc-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.lc-table thead tr {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.lc-table th {
+  padding: 12px 16px;
+  color: #5B6E80;
+  font-weight: 500;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.lc-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #F1F5F9;
+  color: #222222;
+  vertical-align: middle;
+}
+
+.lc-table tbody tr:hover {
+  background-color: #F8FAFC;
+}
+
+.lc-col-center {
+  text-align: center !important;
+}
+
+.lc-credit-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #E2E8F0;
+  color: #404040;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.lc-course-code {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #E6F3F4;
+  color: #0F848F;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.lc-course-name {
+  font-weight: 500;
+}
+
+.lc-status-pill.status-aprobado {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid #33B56B;
+  background-color: #E7F8EF;
+  color: #278B52;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.lc-grade-val {
+  font-weight: 700;
+  color: #222222;
+}
+
+.lc-period-link {
+  color: #0F848F;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.lc-period-link:hover {
+  text-decoration: underline;
+}
+
+.lc-table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background-color: #F4F6F8;
+  border-top: 1px solid #E2E8F0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.lc-footer-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F848F;
+  font-family: 'Lato', sans-serif;
+}
+
+.lc-footer-pill {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+}
+
+.lc-footer {
+  text-align: center;
+  padding: 24px 0;
+  color: #727272;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 20px;
+}
+
+/* Responsividad Mobile para cursos-lc */
+@media (max-width: 767px) {
+  .lc-credits-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .lc-card {
+    padding: 16px;
+  }
+
+  .lc-student-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .lc-student-row-secondary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .lc-accordion-header {
+    padding: 10px 14px;
+  }
+
+  .lc-accordion-title h3 {
+    font-size: 13.5px;
+    flex-wrap: wrap;
+  }
+
+  .lc-sub-title {
+    font-size: 12px;
+  }
+
+  .lc-table-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
