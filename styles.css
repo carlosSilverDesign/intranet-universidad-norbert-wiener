@@ -998,6 +998,39 @@ i svg {
   align-items: center;
 }
 
+/* --- FOOTER GENERAL --- */
+.main-footer {
+  background-color: #ffffff;
+  padding: 20px 24px;
+  border-top: 1px solid #e2e8f0;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.main-footer p {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.main-footer a {
+  color: #0f848f;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.main-footer a:hover {
+  color: #0b6770;
+  border-bottom-color: #0b6770;
+}
+
 
 /* =========================================
   RESPONSIVE (Tablet y Mobile)
