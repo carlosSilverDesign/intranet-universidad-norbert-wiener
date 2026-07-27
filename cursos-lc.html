@@ -5,97 +5,107 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cursos - Intranet Universidad Norbert Wiener</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="cursos.css">
 </head>
 
 <body>
 
-  <main class="main-content">
+  <!-- Enlace de salto al contenido principal para lectores de pantalla y navegación por teclado -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-    <!-- HEADER -->
+  <!-- Zona de anuncios accesibles en vivo (Live Region) para lectores de pantalla -->
+  <div id="a11y-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <main class="main-content" id="main-content" tabindex="-1">
+
+    <!-- HEADER DE PÁGINA -->
     <header class="page-header-flex">
       <div class="header-left">
-        <div class="header-icon">
+        <div class="header-icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-            stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
             <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
             <path d="M6 12v5c3 3 9 3 12 0v-5" />
           </svg>
         </div>
         <div class="header-titles">
           <h1>Cursos</h1>
-          <p>Lorem ipsum is the text for designers</p>
+          <p>Gestión de cursos matriculados y seguimiento de progreso académico</p>
         </div>
       </div>
 
       <div class="header-right">
         <label for="period">Elige el periodo</label>
         <div class="select-wrapper">
-          <select id="period" class="period-select">
+          <select id="period" class="period-select" aria-label="Seleccionar periodo académico">
             <option value="2025-2">2025 - II</option>
             <option value="2025-1">2025 - I</option>
           </select>
           <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-            fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </div>
       </div>
     </header>
 
-    <hr class="header-divider">
+    <hr class="header-divider" aria-hidden="true">
 
-    <!-- TABS -->
-    <div class="tabs-container">
-      <ul class="tabs">
-        <li class="tab" id="tabMatriculados">Matriculados</li>
-        <li class="tab active" id="tabProgreso">Progreso académico</li>
+    <!-- NAVEGACIÓN DE PESTAÑAS (TABS) -->
+    <nav class="tabs-container" aria-label="Secciones de cursos">
+      <ul class="tabs" role="tablist">
+        <li class="tab" id="tabMatriculados" role="tab" aria-selected="false" aria-controls="coursesGrid" tabindex="-1">
+          Matriculados
+        </li>
+        <li class="tab active" id="tabProgreso" role="tab" aria-selected="true" aria-controls="progresoContainer" tabindex="0">
+          Progreso académico
+        </li>
       </ul>
-    </div>
+    </nav>
 
     <!-- GRID DE CURSOS (Matriculados) -->
-    <div class="courses-grid" id="coursesGrid" style="display: none;">
-
+    <section class="courses-grid" id="coursesGrid" role="tabpanel" aria-labelledby="tabMatriculados" style="display: none;">
+      <h2 class="sr-only">Cursos actualmente matriculados</h2>
+      
       <a href="curso-detalle.html" class="course-card">
         <span class="tag tag-presencial">Presencial</span>
         <h3 class="course-name">Bases de la Terapéutica Farmacológica</h3>
-        <p class="course-teacher">Jorge Rosendo Navarro</p>
+        <p class="course-teacher">Docente: Jorge Rosendo Navarro</p>
       </a>
 
       <a href="curso-detalle.html" class="course-card">
         <span class="tag tag-presencial">Presencial</span>
         <h3 class="course-name">Procesos Celulares y Moleculares II</h3>
-        <p class="course-teacher">Jorge Rosendo Navarro</p>
+        <p class="course-teacher">Docente: Jorge Rosendo Navarro</p>
       </a>
 
       <a href="curso-detalle.html" class="course-card">
         <span class="tag tag-en-vivo">Virtual en vivo</span>
         <h3 class="course-name">Estructura y Función del Cuerpo Humano</h3>
-        <p class="course-teacher">Jorge Rosendo Navarro</p>
+        <p class="course-teacher">Docente: Jorge Rosendo Navarro</p>
       </a>
 
       <a href="curso-detalle.html" class="course-card">
         <span class="tag tag-presencial">Presencial</span>
         <h3 class="course-name">Desarrollo Humano y Social</h3>
-        <p class="course-teacher">Jorge Rosendo Navarro</p>
+        <p class="course-teacher">Docente: Jorge Rosendo Navarro</p>
       </a>
 
       <a href="curso-detalle.html" class="course-card">
         <span class="tag tag-24-7">Virtual 24/7</span>
-        <h3 class="course-name">Ingles II</h3>
+        <h3 class="course-name">Inglés II</h3>
       </a>
-
-    </div>
+    </section>
 
     <!-- SECCIÓN DE PROGRESO ACADÉMICO -->
-    <div id="progresoContainer" class="progreso-container-lc" style="display: flex;">
-
+    <section id="progresoContainer" class="progreso-container-lc" role="tabpanel" aria-labelledby="tabProgreso" style="display: flex;">
+      
       <!-- NIVEL 1: Datos del alumno -->
-      <div class="lc-card lc-student-card">
+      <section class="lc-card lc-student-card" aria-labelledby="heading-datos-alumno">
+        <h2 id="heading-datos-alumno" class="sr-only">Datos académicos del alumno</h2>
+        
         <div class="lc-student-row">
           <div class="lc-student-item">
             <span class="lc-label">Alumno:</span>
@@ -111,200 +121,195 @@
           </div>
           <div class="lc-student-item lc-modality-item">
             <span class="lc-label">Modalidad:</span>
-            <span class="tag tag-presencial">Presencial</span>
+            <span class="tag tag-presencial" aria-label="Modalidad de estudio: Presencial">Presencial</span>
           </div>
         </div>
 
         <div class="lc-student-row lc-student-row-secondary">
           <div class="lc-student-item">
             <span class="lc-label">Orden de Mérito:</span>
-            <span class="lc-value"><strong class="lc-bold-dark">402</strong> <span class="lc-text-muted">- No alcanzó
-                medio superior</span></span>
+            <span class="lc-value"><strong class="lc-bold-dark">402</strong> <span class="lc-text-muted">- No alcanzó medio superior</span></span>
           </div>
           <div class="lc-student-item">
             <span class="lc-label">Promedio Ponderado Histórico/acumulado:</span>
             <span class="lc-value"><strong class="lc-bold-dark">15.7</strong></span>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- NIVEL 2: Créditos -->
-      <div class="lc-credits-grid">
-
+      <section class="lc-credits-grid" aria-labelledby="heading-resumen-creditos">
+        <h2 id="heading-resumen-creditos" class="sr-only">Resumen de créditos del plan de estudios y avance académico</h2>
+        
         <!-- Card 1: Según Plan de Estudios -->
-        <div class="lc-card lc-credit-card">
+        <article class="lc-card lc-credit-card">
           <div class="lc-credit-header">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
               <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
             </svg>
-            <span>SEGÚN PLAN DE ESTUDIOS</span>
+            <h3>SEGÚN PLAN DE ESTUDIOS</h3>
           </div>
 
           <div class="lc-credit-body">
             <div class="lc-credit-row">
               <span class="lc-credit-label">Créditos Obligatorios</span>
-              <span class="lc-credit-num">184</span>
+              <span class="lc-credit-num" aria-label="184 créditos obligatorios">184</span>
             </div>
             <div class="lc-credit-row">
               <span class="lc-credit-label">Créditos Electivos</span>
-              <span class="lc-credit-num">16</span>
+              <span class="lc-credit-num" aria-label="16 créditos electivos">16</span>
             </div>
             <div class="lc-credit-footer">
               <span class="lc-credit-footer-label">TOTAL DE CRÉDITOS</span>
-              <span class="lc-pill-badge">200</span>
+              <span class="lc-pill-badge" aria-label="Total de créditos: 200">200</span>
             </div>
           </div>
-        </div>
+        </article>
 
         <!-- Card 2: Según Avance Académico -->
-        <div class="lc-card lc-credit-card">
+        <article class="lc-card lc-credit-card">
           <div class="lc-credit-header">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
             </svg>
-            <span>SEGÚN AVANCE ACADÉMICO</span>
+            <h3>SEGÚN AVANCE ACADÉMICO</h3>
           </div>
 
           <div class="lc-credit-body">
             <div class="lc-credit-row">
               <span class="lc-credit-label">Créditos Obligatorios Aprobados</span>
-              <span class="lc-credit-num"><strong class="lc-teal-text">30</strong> <span class="lc-slash-text">/
-                  184</span></span>
+              <span class="lc-credit-num" aria-label="30 créditos obligatorios aprobados de 184"><strong class="lc-teal-text">30</strong> <span class="lc-slash-text">/ 184</span></span>
             </div>
             <div class="lc-credit-row">
               <span class="lc-credit-label">Créditos Electivos Aprobados</span>
-              <span class="lc-credit-num"><strong class="lc-teal-text">0</strong> <span class="lc-slash-text">/
-                  16</span></span>
+              <span class="lc-credit-num" aria-label="0 créditos electivos aprobados de 16"><strong class="lc-teal-text">0</strong> <span class="lc-slash-text">/ 16</span></span>
             </div>
             <div class="lc-credit-footer">
               <span class="lc-credit-footer-label">TOTAL CRÉDITOS APROBADOS</span>
-              <span class="lc-pill-badge"><strong class="lc-white-num">30</strong> <span class="lc-pill-slash">/
-                  200</span></span>
+              <span class="lc-pill-badge" aria-label="Total de créditos aprobados: 30 de 200"><strong class="lc-white-num">30</strong> <span class="lc-pill-slash">/ 200</span></span>
             </div>
 
-            <!-- Progress Bar -->
+            <!-- Progress Bar Accesible -->
             <div class="lc-progress-container">
-              <div class="lc-progress-bar-track">
+              <div class="lc-progress-bar-track" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="200" aria-valuetext="30 de 200 créditos aprobados, 15% completado">
                 <div class="lc-progress-bar-fill" style="width: 15%;"></div>
               </div>
               <span class="lc-progress-text">15% completado (30 de 200 créditos)</span>
             </div>
           </div>
-        </div>
+        </article>
 
-      </div>
+      </section>
 
       <!-- NIVEL 3: Tablas por ciclo -->
-
+      
       <!-- Separador 1 -->
-      <div class="lc-section-divider">
-        <span>CURSOS OBLIGATORIOS POR CICLO</span>
+      <div class="lc-section-divider" role="separator" aria-label="Cursos obligatorios por ciclo">
+        <h2>CURSOS OBLIGATORIOS POR CICLO</h2>
       </div>
 
       <div class="lc-accordions-group">
-
+        
         <!-- I CICLO (Desplegado) -->
-        <div class="lc-accordion expanded">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion expanded" id="accordion-ciclo-1">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-1" aria-expanded="true" aria-controls="accordion-panel-ciclo-1">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>I CICLO <span class="lc-sub-title">— Primer Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">7 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="7 cursos en este ciclo">7 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="18 15 12 9 6 15"></polyline>
               </svg>
             </div>
-          </div>
+          </button>
 
-          <div class="lc-accordion-content">
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-1" role="region" aria-labelledby="accordion-header-ciclo-1">
             <div class="lc-table-scroll-wrapper">
               <table class="lc-table">
+                <caption class="sr-only">Cursos y notas del I Ciclo - Primer Ciclo</caption>
                 <thead>
                   <tr>
-                    <th>Curso</th>
-                    <th>Nombre del Curso</th>
-                    <th class="lc-col-center">Créditos</th>
-                    <th>Prerrequisitos</th>
-                    <th>Estado</th>
-                    <th>Nota</th>
-                    <th>Periodo</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Nombre del Curso</th>
+                    <th scope="col" class="lc-col-center">Créditos</th>
+                    <th scope="col">Prerrequisitos</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Nota</th>
+                    <th scope="col">Periodo</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td><span class="lc-course-code">CB0101</span></td>
                     <td class="lc-course-name">Bases de la Terapéutica Farmacológica</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">4</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="4 créditos">4</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">13</td>
-                    <td><a href="#" class="lc-period-link">2023-1</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-1">2023-1</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">CB0102</span></td>
                     <td class="lc-course-name">Química General e Inorgánica</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">3</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="3 créditos">3</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">13</td>
-                    <td><a href="#" class="lc-period-link">2023-1</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-1">2023-1</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">FG0101</span></td>
                     <td class="lc-course-name">Comunicación y Redacción</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">3</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="3 créditos">3</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">15</td>
-                    <td><a href="#" class="lc-period-link">2023-1</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-1">2023-1</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">FG0102</span></td>
                     <td class="lc-course-name">Metodología del Aprendizaje Universitario</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">2</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="2 créditos">2</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">16</td>
-                    <td><a href="#" class="lc-period-link">2023-1</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-1">2023-1</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">FG0103</span></td>
                     <td class="lc-course-name">Matemática Básica</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">3</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="3 créditos">3</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">12</td>
-                    <td><a href="#" class="lc-period-link">2023-1</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-1">2023-1</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">MH0101</span></td>
                     <td class="lc-course-name">Introducción a la Medicina</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">3</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="3 créditos">3</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">14</td>
-                    <td><a href="#" class="lc-period-link">2023-1</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-1">2023-1</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">FG0104</span></td>
                     <td class="lc-course-name">Ética y Deontología Profesional</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">2</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="2 créditos">2</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">15</td>
-                    <td><a href="#" class="lc-period-link">2023-1</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-1">2023-1</a></td>
                   </tr>
                 </tbody>
               </table>
@@ -314,113 +319,112 @@
             <div class="lc-table-footer">
               <div class="lc-footer-stat">
                 <span>TOTAL DE CRÉDITOS DEL I CICLO:</span>
-                <span class="lc-footer-pill">20</span>
+                <span class="lc-footer-pill" aria-label="Total créditos del ciclo: 20">20</span>
               </div>
               <div class="lc-footer-stat">
                 <span>PONDERADO SEMESTRAL:</span>
-                <span class="lc-footer-pill">15</span>
+                <span class="lc-footer-pill" aria-label="Ponderado semestral: 15">15</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- II CICLO -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-ciclo-2">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-2" aria-expanded="false" aria-controls="accordion-panel-ciclo-2">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>II CICLO <span class="lc-sub-title">— Segundo Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">7 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="7 cursos en este ciclo">7 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-2" role="region" aria-labelledby="accordion-header-ciclo-2" style="display: none;">
             <div class="lc-table-scroll-wrapper">
               <table class="lc-table">
+                <caption class="sr-only">Cursos y notas del II Ciclo - Segundo Ciclo</caption>
                 <thead>
                   <tr>
-                    <th>Curso</th>
-                    <th>Nombre del Curso</th>
-                    <th class="lc-col-center">Créditos</th>
-                    <th>Prerrequisitos</th>
-                    <th>Estado</th>
-                    <th>Nota</th>
-                    <th>Periodo</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Nombre del Curso</th>
+                    <th scope="col" class="lc-col-center">Créditos</th>
+                    <th scope="col">Prerrequisitos</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Nota</th>
+                    <th scope="col">Periodo</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td><span class="lc-course-code">CB0201</span></td>
                     <td class="lc-course-name">Anatomía Humana I</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">4</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="4 créditos">4</span></td>
                     <td>CB0101</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">14</td>
-                    <td><a href="#" class="lc-period-link">2023-2</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-2">2023-2</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">CB0202</span></td>
                     <td class="lc-course-name">Histología Humana</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">3</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="3 créditos">3</span></td>
                     <td>CB0102</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">15</td>
-                    <td><a href="#" class="lc-period-link">2023-2</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-2">2023-2</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">CB0203</span></td>
                     <td class="lc-course-name">Bioquímica y Biología Molecular</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">4</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="4 créditos">4</span></td>
                     <td>CB0102</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">13</td>
-                    <td><a href="#" class="lc-period-link">2023-2</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-2">2023-2</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">FG0201</span></td>
                     <td class="lc-course-name">Realidad Nacional y Globalización</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">2</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="2 créditos">2</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">16</td>
-                    <td><a href="#" class="lc-period-link">2023-2</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-2">2023-2</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">FG0202</span></td>
                     <td class="lc-course-name">Psicología General</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">2</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="2 créditos">2</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">15</td>
-                    <td><a href="#" class="lc-period-link">2023-2</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-2">2023-2</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">MH0201</span></td>
                     <td class="lc-course-name">Salud Pública I</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">3</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="3 créditos">3</span></td>
                     <td>MH0101</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">14</td>
-                    <td><a href="#" class="lc-period-link">2023-2</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-2">2023-2</a></td>
                   </tr>
                   <tr>
                     <td><span class="lc-course-code">FG0203</span></td>
                     <td class="lc-course-name">Inglés Técnico I</td>
-                    <td class="lc-col-center"><span class="lc-credit-circle">2</span></td>
+                    <td class="lc-col-center"><span class="lc-credit-circle" aria-label="2 créditos">2</span></td>
                     <td>—</td>
                     <td><span class="lc-status-pill status-aprobado">Aprobado</span></td>
                     <td class="lc-grade-val">17</td>
-                    <td><a href="#" class="lc-period-link">2023-2</a></td>
+                    <td><a href="#" class="lc-period-link" aria-label="Periodo 2023-2">2023-2</a></td>
                   </tr>
                 </tbody>
               </table>
@@ -430,303 +434,267 @@
             <div class="lc-table-footer">
               <div class="lc-footer-stat">
                 <span>TOTAL DE CRÉDITOS DEL II CICLO:</span>
-                <span class="lc-footer-pill">20</span>
+                <span class="lc-footer-pill" aria-label="Total créditos del ciclo: 20">20</span>
               </div>
               <div class="lc-footer-stat">
                 <span>PONDERADO SEMESTRAL:</span>
-                <span class="lc-footer-pill">14.8</span>
+                <span class="lc-footer-pill" aria-label="Ponderado semestral: 14.8">14.8</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- III CICLO -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-ciclo-3">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-3" aria-expanded="false" aria-controls="accordion-panel-ciclo-3">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>III CICLO <span class="lc-sub-title">— Tercer Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">6 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="6 cursos en este ciclo">6 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-3" role="region" aria-labelledby="accordion-header-ciclo-3" style="display: none;">
           </div>
         </div>
 
         <!-- IV CICLO -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-ciclo-4">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-4" aria-expanded="false" aria-controls="accordion-panel-ciclo-4">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>IV CICLO <span class="lc-sub-title">— Cuarto Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">6 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="6 cursos en este ciclo">6 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-4" role="region" aria-labelledby="accordion-header-ciclo-4" style="display: none;">
           </div>
         </div>
 
         <!-- V CICLO -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-ciclo-5">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-5" aria-expanded="false" aria-controls="accordion-panel-ciclo-5">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>V CICLO <span class="lc-sub-title">— Quinto Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">6 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="6 cursos en este ciclo">6 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-5" role="region" aria-labelledby="accordion-header-ciclo-5" style="display: none;">
           </div>
         </div>
 
         <!-- VI CICLO -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-ciclo-6">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-6" aria-expanded="false" aria-controls="accordion-panel-ciclo-6">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>VI CICLO <span class="lc-sub-title">— Sexto Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">5 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="5 cursos en este ciclo">5 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-6" role="region" aria-labelledby="accordion-header-ciclo-6" style="display: none;">
           </div>
         </div>
 
         <!-- VII CICLO -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-ciclo-7">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-7" aria-expanded="false" aria-controls="accordion-panel-ciclo-7">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>VII CICLO <span class="lc-sub-title">— Séptimo Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">5 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="5 cursos en este ciclo">5 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-7" role="region" aria-labelledby="accordion-header-ciclo-7" style="display: none;">
           </div>
         </div>
 
         <!-- VIII CICLO -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-ciclo-8">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-8" aria-expanded="false" aria-controls="accordion-panel-ciclo-8">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>VIII CICLO <span class="lc-sub-title">— Octavo Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">6 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="6 cursos en este ciclo">6 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-8" role="region" aria-labelledby="accordion-header-ciclo-8" style="display: none;">
           </div>
         </div>
 
         <!-- IX CICLO -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-ciclo-9">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-9" aria-expanded="false" aria-controls="accordion-panel-ciclo-9">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>IX CICLO <span class="lc-sub-title">— Noveno Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">3 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="3 cursos en este ciclo">3 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-9" role="region" aria-labelledby="accordion-header-ciclo-9" style="display: none;">
           </div>
         </div>
 
         <!-- X CICLO -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-ciclo-10">
+          <button type="button" class="lc-accordion-header" id="accordion-header-ciclo-10" aria-expanded="false" aria-controls="accordion-panel-ciclo-10">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
               <h3>X CICLO <span class="lc-sub-title">— Décimo Ciclo</span></h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">3 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="3 cursos en este ciclo">3 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-ciclo-10" role="region" aria-labelledby="accordion-header-ciclo-10" style="display: none;">
           </div>
         </div>
 
       </div>
 
       <!-- Separador 2 -->
-      <div class="lc-section-divider">
-        <span>ELECTIVOS Y EXTRACURRICULARES</span>
+      <div class="lc-section-divider" role="separator" aria-label="Electivos y actividades extracurriculares">
+        <h2>ELECTIVOS Y EXTRACURRICULARES</h2>
       </div>
 
       <div class="lc-accordions-group">
-
+        
         <!-- CURSOS ELECTIVOS -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-electivos">
+          <button type="button" class="lc-accordion-header" id="accordion-header-electivos" aria-expanded="false" aria-controls="accordion-panel-electivos">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
               </svg>
               <h3>CURSOS ELECTIVOS</h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">8 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="8 cursos electivos">8 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-electivos" role="region" aria-labelledby="accordion-header-electivos" style="display: none;">
           </div>
         </div>
 
         <!-- ACTIVIDADES EXTRACURRICULARES -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-extracurriculares">
+          <button type="button" class="lc-accordion-header" id="accordion-header-extracurriculares" aria-expanded="false" aria-controls="accordion-panel-extracurriculares">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polygon
-                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                </polygon>
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
               <h3>ACTIVIDADES EXTRACURRICULARES</h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">3 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="3 actividades extracurriculares">3 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-extracurriculares" role="region" aria-labelledby="accordion-header-extracurriculares" style="display: none;">
           </div>
         </div>
 
         <!-- CURSOS ACTIVIDADES EXTRACURRICULARES -->
-        <div class="lc-accordion">
-          <div class="lc-accordion-header">
+        <div class="lc-accordion" id="accordion-cursos-extracurriculares">
+          <button type="button" class="lc-accordion-header" id="accordion-header-cursos-extracurriculares" aria-expanded="false" aria-controls="accordion-panel-cursos-extracurriculares">
             <div class="lc-accordion-title">
-              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
+              <svg class="lc-accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
               </svg>
               <h3>CURSOS ACTIVIDADES EXTRACURRICULARES</h3>
             </div>
             <div class="lc-accordion-meta">
-              <span class="lc-count-pill">2 cursos</span>
-              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <span class="lc-count-pill" aria-label="2 cursos de actividades extracurriculares">2 cursos</span>
+              <svg class="lc-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-          </div>
-          <div class="lc-accordion-content" style="display: none;">
+          </button>
+          <div class="lc-accordion-content" id="accordion-panel-cursos-extracurriculares" role="region" aria-labelledby="accordion-header-cursos-extracurriculares" style="display: none;">
           </div>
         </div>
 
       </div>
 
-    </div>
+    </section>
 
     <!-- FOOTER -->
     <footer class="lc-footer">
-      <p>© 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
+      <p>© 2026 Universidad Norbert Wiener. Todos los derechos reservados.</p>
     </footer>
 
   </main>
 
-  <!-- Script interactivo -->
+  <!-- Script interactivo accesible -->
   <script src="cursos.js"></script>
 
 </body>
-
 </html>

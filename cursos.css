@@ -497,6 +497,50 @@ html {
    Estilos específicos para cursos-lc.html (Progreso Académico Rediseñado)
    ========================================================================== */
 
+/* Clases de utilidad para Accesibilidad (WCAG 2.1) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: #0F848F;
+  color: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: 0 0 8px 8px;
+  z-index: 9999;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #222222;
+}
+
+/* Indicadores de foco de alto contraste para teclado */
+:focus-visible {
+  outline: 3px solid #0F848F !important;
+  outline-offset: 2px !important;
+}
+
+.lc-accordion-header:focus-visible {
+  outline: 3px solid #FFFFFF !important;
+  outline-offset: -4px !important;
+}
+
 .progreso-container-lc {
   display: flex;
   flex-direction: column;
@@ -586,12 +630,17 @@ html {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.lc-credit-header span,
+.lc-credit-header h3 {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: #0F848F;
   text-transform: uppercase;
   font-family: 'Lato', sans-serif;
+  margin: 0;
 }
 
 .lc-credit-body {
@@ -719,7 +768,8 @@ html {
   border-bottom: 1px solid #C6CFD7;
 }
 
-.lc-section-divider span {
+.lc-section-divider span,
+.lc-section-divider h2 {
   padding: 0 16px;
   font-size: 12px;
   font-weight: 700;
@@ -727,6 +777,7 @@ html {
   letter-spacing: 0.5px;
   font-family: 'Lato', sans-serif;
   text-transform: uppercase;
+  margin: 0;
 }
 
 .lc-accordions-group {
@@ -745,7 +796,11 @@ html {
   transition: all 0.2s ease;
 }
 
+button.lc-accordion-header,
 .lc-accordion-header {
+  width: 100%;
+  border: none;
+  outline: none;
   background-color: #0F848F;
   color: #FFFFFF;
   padding: 12px 18px;
@@ -755,6 +810,14 @@ html {
   cursor: pointer;
   user-select: none;
   transition: background-color 0.2s ease;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+  box-sizing: border-box;
+  margin: 0;
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .lc-accordion-header:hover {
