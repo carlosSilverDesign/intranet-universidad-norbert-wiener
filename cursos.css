@@ -6,7 +6,7 @@ html {
 
 
 .page-header-flex {
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -205,17 +205,21 @@ html {
     /* align-items: flex-start; */
     gap: 20px;
   }
+
   .header-left {
     width: 100%;
   }
+
   .header-right {
     width: 100%;
     justify-content: flex-end;
     gap: 16px;
   }
+
   .tabs {
     gap: 12px;
   }
+
   .tab {
     font-size: 15px;
     min-width: 100px;
@@ -230,31 +234,38 @@ html {
     align-items: stretch;
     gap: 16px;
   }
+
   .header-left {
     width: 100%;
     gap: 10px;
   }
+
   .header-icon {
     width: 40px;
     height: 40px;
     min-width: 32px;
     min-height: 32px;
   }
+
   .header-titles h1 {
     font-size: 18px;
   }
+
   .header-titles p {
     font-size: 12px;
   }
+
   .header-right {
     width: 100%;
     justify-content: flex-start;
     gap: 8px;
   }
+
   .tabs {
     gap: 8px;
     /* flex-wrap: wrap; */
   }
+
   .tab {
     width: 100%;
     min-width: 80px;
@@ -262,10 +273,12 @@ html {
     font-size: 13px;
     padding: 8px 8px;
   }
+
   .courses-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
+
   .course-card {
     padding: 12px;
     min-height: 100px;
@@ -1066,4 +1079,125 @@ button.lc-accordion-header,
     align-items: flex-start;
     gap: 8px;
   }
-}
+}
+
+/* --- ESTILOS PARA EL SKELETON LOADER (Progreso Académico) --- */
+.lc-skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.skeleton-card {
+  position: relative;
+  overflow: hidden;
+  background-color: #FFFFFF !important;
+  border: 1px solid #C6CFD7 !important;
+  border-radius: 12px !important;
+  min-height: auto !important;
+  box-shadow: none !important;
+}
+
+/* Animación Shimmer */
+.skeleton-item {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+  background-color: #E2E8F0;
+  border-radius: 4px;
+}
+
+.skeleton-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 20%,
+      rgba(255, 255, 255, 0.6) 60%,
+      rgba(255, 255, 255, 0) 100%);
+  animation: shimmer-effect 1.5s infinite;
+}
+
+@keyframes shimmer-effect {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-text {
+  height: 10px !important;
+  margin: 2px 0 !important;
+}
+
+.skeleton-icon {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #E2E8F0;
+}
+
+.skeleton-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #E2E8F0;
+  padding-bottom: 8px;
+}
+
+.skeleton-progress-bar {
+  height: 8px !important;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 6px !important;
+}
+
+.skeleton-divider-wrapper {
+  margin: 18px 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.skeleton-divider-wrapper::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: #E2E8F0;
+  margin-left: 12px;
+}
+
+.skeleton-accordion-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+
+  .lc-student-card-actual,
+  .lc-student-card-skeleton {
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
+  }
+
+  .lc-credit-card-actual,
+  .lc-credit-card-skeleton {
+    height: 240px !important;
+    min-height: 240px !important;
+    max-height: 240px !important;
+  }
+}

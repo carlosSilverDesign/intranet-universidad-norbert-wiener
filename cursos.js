@@ -21,6 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
   if (tabMatriculados && tabProgreso) {
     const tabs = [tabMatriculados, tabProgreso];
 
+    const progresoSkeleton = document.getElementById('progresoSkeleton');
+
+    function showProgresoWithSkeleton() {
+      if (!progresoContainer || !progresoSkeleton) return;
+      
+      progresoContainer.style.display = 'none';
+      progresoSkeleton.style.display = 'flex';
+      
+      setTimeout(() => {
+        if (tabProgreso && tabProgreso.classList.contains('active')) {
+          progresoSkeleton.style.display = 'none';
+          progresoContainer.style.display = 'flex';
+          announce('Datos de progreso académico cargados');
+        }
+      }, 800);
+    }
+
     function activateTab(selectedTab, targetPanel, hiddenPanel, tabName) {
       tabs.forEach(t => {
         t.classList.remove('active');
@@ -32,8 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
       selectedTab.setAttribute('aria-selected', 'true');
       selectedTab.setAttribute('tabindex', '0');
 
-      if (targetPanel) targetPanel.style.display = targetPanel.classList.contains('courses-grid') ? 'grid' : 'flex';
-      if (hiddenPanel) hiddenPanel.style.display = 'none';
+      if (tabName === 'Matriculados') {
+        if (coursesGrid) coursesGrid.style.display = 'grid';
+        if (progresoContainer) progresoContainer.style.display = 'none';
+        if (progresoSkeleton) progresoSkeleton.style.display = 'none';
+      } else if (tabName === 'Progreso académico') {
+        if (coursesGrid) coursesGrid.style.display = 'none';
+        showProgresoWithSkeleton();
+      }
 
       announce(`Pestaña ${tabName} seleccionada`);
     }
@@ -91,4 +114,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // --- Carga Inicial y Simulación de Periodo con Skeleton ---
+  const periodSelect = document.getElementById('period');
+  if (periodSelect) {
+    periodSelect.addEventListener('change', () => {
+      if (tabProgreso && tabProgreso.classList.contains('active')) {
+        showProgresoWithSkeleton();
+      } else if (tabMatriculados && tabMatriculados.classList.contains('active')) {
+        announce('Cargando cursos del periodo seleccionado...');
+        if (coursesGrid) {
+          coursesGrid.style.opacity = '0.5';
+          setTimeout(() => {
+            coursesGrid.style.opacity = '1';
+            announce('Cursos del periodo cargados');
+          }, 500);
+        }
+      }
+    });
+  }
+
+  // Carga inicial si la pestaña activa por defecto es progreso académico
+  if (tabProgreso && tabProgreso.classList.contains('active')) {
+    showProgresoWithSkeleton();
+  }
 });
