@@ -1,0 +1,794 @@
+
+/* Contenedor principal centrado */
+.main-content-layout {
+  max-width: 1082px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-titles h1 {
+  font-size: 24px;
+  margin-bottom: 4px;
+  font-family: 'Lato', sans-serif;
+  color: #222222;
+  font-weight: 700;
+}
+
+.header-titles p {
+  color: #5B6E80;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-right label {
+  color: #404040;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  white-space: nowrap;
+}
+
+/* Selector Periodo */
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.period-select {
+  appearance: none;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 6px;
+  padding: 8px 36px 8px 12px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: #222222;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.period-select:focus {
+  border-color: #0F848F;
+}
+
+.select-icon {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+}
+
+.header-divider {
+  border: none;
+  height: 1px;
+  background-color: #C6CFD7;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+/* Ficha informativa del alumno */
+.student-info-card {
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-label {
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  color: #5B6E80;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  color: #222222;
+  font-weight: 700;
+}
+
+.student-name {
+  color: #0F848F;
+}
+
+/* Tag de modalidad SEMIPRESENCIAL */
+.tag-modalidad-semipresencial {
+  display: inline-block;
+  background-color: #E6F3F4;
+  color: #0F848F;
+  padding: 4px 12px;
+  border-radius: 64px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid #C6CFD7;
+}
+
+/* Tabs container */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.tabs {
+  width: 100%;
+  list-style: none;
+  justify-content: center;
+  display: flex;
+  gap: 32px;
+  padding: 0;
+  margin: 0;
+}
+
+.tab {
+  min-width: 120px;
+  width: 100%;
+  max-width: 240px;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: #9AA6B2;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  color: #5B6E80;
+}
+
+.tab.active {
+  color: #222222;
+  border-bottom: 3px solid #0F848F;
+}
+
+/* Tab contents panels */
+.tab-content-panel {
+  display: block;
+}
+
+/* Table container styling */
+.table-container {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Cabeceras de tabla */
+.table-row-tb {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background-color: #E4E8EC;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+
+.col-tb {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #166A74;
+}
+
+/* Filas de datos */
+.table-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 8px;
+  border: 1px solid #C6CFD7;
+  background-color: #FFFFFF;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.table-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-color: #0F848F;
+}
+
+.col {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Column sizes (Desktop Proportions) */
+.col-dia-tb,
+.col-dia {
+  flex: 1.2;
+  padding-right: 12px;
+}
+
+.col-hora-tb,
+.col-hora {
+  flex: 1;
+  padding-right: 12px;
+}
+
+.col-curso-tb,
+.col-curso {
+  flex: 2.3;
+  padding-right: 12px;
+}
+
+.col-group-details-tb,
+.col-group-details {
+  display: flex;
+  flex: 2.2;
+  align-items: center;
+}
+
+.col-seccion-tb,
+.col-seccion {
+  flex: 0.8;
+  padding-right: 12px;
+}
+
+.col-aula-tb,
+.col-aula {
+  flex: 0.7;
+  padding-right: 12px;
+}
+
+.col-local-tb,
+.col-local {
+  flex: 0.7;
+  padding-right: 12px;
+}
+
+.col-docente-tb,
+.col-docente {
+  flex: 1.5;
+}
+
+/* Cell content custom styles */
+.cell-content {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #222222;
+}
+
+.mobile-label {
+  display: none;
+}
+
+/* Destacado de Fecha */
+.date-text {
+  font-weight: 700;
+  color: #A83232;
+}
+
+.bold-text {
+  font-weight: 500;
+  color: #222222;
+}
+
+.text-muted {
+  color: #9AA6B2;
+  font-style: italic;
+}
+
+.uppercase-badge {
+  font-weight: 500;
+  color: #404040;
+}
+
+.highlighted-room {
+  font-weight: 700;
+  color: #0F848F;
+}
+
+.bold-local {
+  font-weight: 700;
+  color: #404040;
+}
+
+/* Tag para locales virtuales (SVIR) */
+.tag-local-virtual {
+  display: inline-block;
+  background-color: #E0F2FE;
+  color: #0EA5E9;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid #BAE6FD;
+}
+
+/* Pie de página con leyenda */
+.legend-card {
+  margin-top: 1rem;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.legend-title {
+  font-size: 16px;
+  color: #222222;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #E6F3F4;
+  padding-bottom: 8px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.legend-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 28px;
+  min-width: 76px;
+  background-color: #E4E8EC;
+  color: #166A74;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  border: 1px solid #C6CFD7;
+}
+
+.legend-badge.virtual {
+  background-color: #E0F2FE;
+  color: #0EA5E9;
+  border-color: #BAE6FD;
+}
+
+.legend-address {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #5B6E80;
+}
+
+/* ==========================================================================
+   ESTILOS DEL SKELETON LOADER ANIMADO
+   ========================================================================== */
+.skeleton-loader-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-item {
+  background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%);
+  background-size: 200% 100%;
+  animation: loading-skeleton 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes loading-skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.skeleton-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.skeleton-header-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.skeleton-header-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-header-title {
+  width: 180px;
+  height: 24px;
+}
+
+.skeleton-header-subtitle {
+  width: 320px;
+  height: 14px;
+}
+
+.skeleton-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.skeleton-header-label {
+  width: 100px;
+  height: 14px;
+}
+
+.skeleton-header-select {
+  width: 120px;
+  height: 36px;
+  border-radius: 6px;
+}
+
+.skeleton-student-card {
+  width: 100%;
+  height: 90px;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.skeleton-tabs-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  border-bottom: 1px solid #C6CFD7;
+  padding-bottom: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.skeleton-tab-item {
+  width: 100%;
+  max-width: 240px;
+  height: 36px;
+  border-radius: 4px;
+}
+
+.skeleton-table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-table-header {
+  width: 100%;
+  height: 44px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+
+.skeleton-table-row {
+  width: 100%;
+  height: 56px;
+  border-radius: 8px;
+}
+
+/* ==========================================================================
+   DISEÑO ADAPTATIVO MÓVIL
+   ========================================================================== */
+@media (max-width: 992px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .legend-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .tabs {
+    gap: 12px;
+  }
+
+  .tab {
+    font-size: 15px;
+    min-width: 100px;
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .skeleton-tabs-row {
+    gap: 12px;
+  }
+
+  .skeleton-tab-item {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content-layout {
+    padding: 1.5rem 1rem;
+  }
+
+  .page-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .header-left {
+    gap: 12px;
+    width: 100%;
+  }
+
+  .header-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .header-titles h1 {
+    font-size: 20px;
+  }
+
+  .header-titles p {
+    font-size: 13px;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .period-select {
+    width: 100%;
+  }
+
+  .select-wrapper {
+    flex-grow: 1;
+    max-width: 200px;
+  }
+
+  /* Ocultar Cabeceras de la Tabla en Mobile */
+  .table-header {
+    display: none;
+  }
+
+  /* Reestructuración de la fila en una Tarjeta vertical */
+  .table-row {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+
+  .col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px dotted #E4E8EC;
+  }
+
+  .col:last-child {
+    border-bottom: none;
+    border-top: 1px dotted #E4E8EC;
+  }
+
+  /* Destacado especial para el Curso - Costado del label, centrado verticalmente */
+  .col-curso {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #E6F3F4;
+    padding-bottom: 10px;
+    margin-bottom: 4px;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .col-curso .mobile-label {
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: normal;
+    color: #5B6E80;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .col-curso .cell-content {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0F848F;
+    line-height: 1.3;
+    text-align: right;
+  }
+
+  /* Grupo de detalles (Sección, Aula y Local en una sola línea con división) */
+  .col-group-details {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* border: 1px solid #C6CFD7; */
+    border-radius: 8px;
+    /* background-color: #F8FAFC; */
+    /* padding: 10px 0; */
+    margin: 4px 0;
+    box-sizing: border-box;
+  }
+
+  .col-group-details .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border-right: 1px solid #C6CFD7;
+    border-bottom: none;
+    padding: 4px 0;
+    box-sizing: border-box;
+  }
+
+  .col-group-details .col:last-child {
+    border-right: none;
+    border-top: none
+  }
+
+  .col-group-details .mobile-label {
+    display: block;
+    font-size: 11px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    color: #5B6E80;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .col-group-details .cell-content {
+    font-size: 14px;
+    font-weight: 700;
+    color: #222222;
+    text-align: center;
+  }
+
+  /* Mostrar etiquetas en móvil */
+  .mobile-label {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #5B6E80;
+  }
+
+  .cell-content {
+    font-size: 14px;
+    text-align: right;
+  }
+
+  .tabs {
+    gap: 8px;
+  }
+
+  .skeleton-tabs-row {
+    gap: 8px;
+  }
+
+  .skeleton-tab-item {
+    max-width: 100%;
+  }
+
+  /* Estilos para los tabs en mobile */
+  .tab {
+    width: 100%;
+    min-width: 80px;
+    max-width: 100%;
+    font-size: 13px;
+    padding: 8px 8px;
+    border-bottom: 2px solid transparent;
+    text-align: center;
+  }
+
+  .tab.active {
+    border-bottom: 3px solid #0F848F;
+    color: #222222;
+  }
+
+  .legend-badge {
+    width: 64px;
+    min-width: 64px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .legend-address {
+    font-size: 12px;
+  }
+}
+
+/* Clases de utilidad para Accesibilidad (WCAG 2.1) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rol de Exámenes - Intranet Universidad Norbert Wiener</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="rol-examenes.css">
+</head>
+
+<body>
+
+  <main class="main-content-layout">
+
+    <!-- Elemento para anuncios de accesibilidad (Lector de pantalla) -->
+    <div id="a11y-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- ==========================================================================
+         PANTALLA DE CARGA (Skeleton Loader animado)
+         ========================================================================== -->
+    <div id="skeletonLoader" class="skeleton-loader-container">
+
+      <!-- Cabecera skeleton -->
+      <div class="skeleton-header-row">
+        <div class="skeleton-header-left">
+          <div class="skeleton-header-icon skeleton-item"></div>
+          <div class="skeleton-header-texts">
+            <div class="skeleton-header-title skeleton-item"></div>
+            <div class="skeleton-header-subtitle skeleton-item"></div>
+          </div>
+        </div>
+        <div class="skeleton-header-right">
+          <div class="skeleton-header-label skeleton-item"></div>
+          <div class="skeleton-header-select skeleton-item"></div>
+        </div>
+      </div>
+
+      <hr class="header-divider"
+        style="margin-top: 0.25rem; margin-bottom: 1.5rem; width: 100%; border: none; height: 1px; background-color: #C6CFD7;">
+
+      <!-- Ficha de alumno skeleton -->
+      <div class="skeleton-student-card skeleton-item"></div>
+
+      <!-- Tabs skeleton -->
+      <div class="skeleton-tabs-row">
+        <div class="skeleton-tab-item skeleton-item"></div>
+        <div class="skeleton-tab-item skeleton-item"></div>
+      </div>
+
+      <!-- Tabla listado skeleton -->
+      <div class="skeleton-table-container">
+        <div class="skeleton-table-header skeleton-item"></div>
+        <div class="skeleton-table-row skeleton-item"></div>
+        <div class="skeleton-table-row skeleton-item"></div>
+        <div class="skeleton-table-row skeleton-item"></div>
+        <div class="skeleton-table-row skeleton-item"></div>
+        <div class="skeleton-table-row skeleton-item"></div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         CONTENIDO REAL DEL ROL DE EXÁMENES (Inicialmente oculto)
+         ========================================================================== -->
+    <div id="examsContent" class="exams-content-wrapper" style="display: none;">
+
+      <!-- HEADER -->
+      <header class="page-header-flex">
+        <div class="header-left">
+          <div class="header-icon">
+            <!-- Icono de calendario con check para exámenes -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+              <path d="M9 16l2 2 4-4"></path>
+            </svg>
+          </div>
+          <div class="header-titles">
+            <h1>Rol de Exámenes</h1>
+            <p>Consulta las fechas, horarios, aulas y locales programados para tus evaluaciones parciales y finales.</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <label for="period">Elige el periodo</label>
+          <div class="select-wrapper">
+            <select id="period" class="period-select">
+              <option value="2026-I">2026 - I</option>
+            </select>
+            <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <hr class="header-divider">
+
+      <!-- FICHA INFORMATIVA DEL ALUMNO -->
+      <div class="card student-info-card">
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Alumno(a):</span>
+            <span class="info-value student-name">ANDY GABRIEL VIDAL CHIHUAN</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Periodo:</span>
+            <span class="info-value">2026-I</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Modalidad de Estudios:</span>
+            <span class="info-value">
+              <span class="tag-modalidad-semipresencial">SEMIPRESENCIAL</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS NAVEGACIÓN -->
+      <div class="tabs-container">
+        <ul class="tabs" role="tablist">
+          <li class="tab active" id="tabParcial" role="tab" aria-selected="true" tabindex="0"
+            data-target="parcialContainer">Examen Parcial</li>
+          <li class="tab" id="tabFinal" role="tab" aria-selected="false" tabindex="-1" data-target="finalContainer">
+            Examen Final</li>
+        </ul>
+      </div>
+
+      <!-- ==========================================================
+           CONTENEDOR EXAMEN PARCIAL
+           ========================================================== -->
+      <div id="parcialContainer" class="tab-content-panel">
+
+        <div class="table-container">
+          <!-- Cabecera Tabla -->
+          <div class="table-header">
+            <div class="table-row-tb">
+              <div class="col-tb col-dia-tb">Día</div>
+              <div class="col-tb col-hora-tb">Hora</div>
+              <div class="col-tb col-curso-tb">Curso</div>
+              <div class="col-group-details-tb">
+                <div class="col-tb col-seccion-tb">Sección</div>
+                <div class="col-tb col-aula-tb">Aula</div>
+                <div class="col-tb col-local-tb">Local</div>
+              </div>
+              <div class="col-tb col-docente-tb">Docente</div>
+            </div>
+          </div>
+
+          <!-- Listado de Fila de Datos -->
+          <div class="table-list">
+
+            <!-- Fila 1: Investigación e Innovación -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Lunes 11 Mayo</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">18:45 - 20:15</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">AC4062 - Investigación E Innovación</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">AC6N16</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content text-muted">—</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content"><span class="tag-local-virtual">SVIR</span></span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Enciso Soto, R.</span>
+              </div>
+            </div>
+
+            <!-- Fila 2: Contabilidad Avanzada -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Miércoles 13 Mayo</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">19:00 - 20:30</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">CA5041SP - Contabilidad Avanzada</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">CA4N1VSP</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content highlighted-room">WA207</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content bold-local">05</span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Palacios Acuache, M.</span>
+              </div>
+            </div>
+
+            <!-- Fila 3: Normalización Contable -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Jueves 14 Mayo</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">15:15 - 16:45</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">CA5052SP - Normalización Contable De Nics Y Nifs</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">CA5N1VSP</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content highlighted-room">WA407</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content bold-local">05</span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Fuertes Santos, D.</span>
+              </div>
+            </div>
+
+            <!-- Fila 4: Finanzas -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Jueves 14 Mayo</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">19:45 - 21:15</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">CA5042SP - Finanzas</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">CA4N1SP</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content text-muted">—</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content bold-local">05</span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Manrique De Lara Seminario, C.</span>
+              </div>
+            </div>
+
+            <!-- Fila 5: Derecho Empresarial -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Viernes 15 Mayo</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">18:15 - 19:45</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">AE4061SP - Derecho Empresarial</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">AE6N2VSP</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content highlighted-room">WA407</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content bold-local">05</span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Pineda Villavicencio, G.</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==========================================================
+           CONTENEDOR EXAMEN FINAL
+           ========================================================== -->
+      <div id="finalContainer" class="tab-content-panel" style="display: none;">
+
+        <div class="table-container">
+          <!-- Cabecera Tabla -->
+          <div class="table-header">
+            <div class="table-row-tb">
+              <div class="col-tb col-dia-tb">Día</div>
+              <div class="col-tb col-hora-tb">Hora</div>
+              <div class="col-tb col-curso-tb">Curso</div>
+              <div class="col-group-details-tb">
+                <div class="col-tb col-seccion-tb">Sección</div>
+                <div class="col-tb col-aula-tb">Aula</div>
+                <div class="col-tb col-local-tb">Local</div>
+              </div>
+              <div class="col-tb col-docente-tb">Docente</div>
+            </div>
+          </div>
+
+          <!-- Listado de Fila de Datos -->
+          <div class="table-list">
+
+            <!-- Fila 1: Investigación e Innovación -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Lunes 06 Julio</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">18:45 - 20:15</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">AC4062 - Investigación E Innovación</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">AC6N16</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content text-muted">—</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content"><span class="tag-local-virtual">SVIR</span></span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Enciso Soto, R.</span>
+              </div>
+            </div>
+
+            <!-- Fila 2: Contabilidad Avanzada -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Miércoles 08 Julio</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">19:00 - 20:30</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">CA5041SP - Contabilidad Avanzada</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">CA4N1VSP</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content highlighted-room">WA207</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content bold-local">05</span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Palacios Acuache, M.</span>
+              </div>
+            </div>
+
+            <!-- Fila 3: Normalización Contable -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Jueves 09 Julio</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">15:15 - 16:45</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">CA5052SP - Normalización Contable De Nics Y Nifs</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">CA5N1VSP</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content highlighted-room">WA407</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content bold-local">05</span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Fuertes Santos, D.</span>
+              </div>
+            </div>
+
+            <!-- Fila 4: Finanzas -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Jueves 09 Julio</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">19:45 - 21:15</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">CA5042SP - Finanzas</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">CA4N1SP</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content text-muted">—</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content bold-local">05</span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Manrique De Lara Seminario, C.</span>
+              </div>
+            </div>
+
+            <!-- Fila 5: Derecho Empresarial -->
+            <div class="table-row">
+              <div class="col col-dia">
+                <span class="mobile-label">Día</span>
+                <span class="cell-content date-text">Viernes 10 Julio</span>
+              </div>
+              <div class="col col-hora">
+                <span class="mobile-label">Hora</span>
+                <span class="cell-content">19:00 - 20:30</span>
+              </div>
+              <div class="col col-curso">
+                <span class="mobile-label">Curso</span>
+                <span class="cell-content bold-text">AE4061SP - Derecho Empresarial</span>
+              </div>
+              <div class="col-group-details">
+                <div class="col col-seccion">
+                  <span class="mobile-label">Sección</span>
+                  <span class="cell-content uppercase-badge">AE6N2VSP</span>
+                </div>
+                <div class="col col-aula">
+                  <span class="mobile-label">Aula</span>
+                  <span class="cell-content highlighted-room">WA407</span>
+                </div>
+                <div class="col col-local">
+                  <span class="mobile-label">Local</span>
+                  <span class="cell-content bold-local">05</span>
+                </div>
+              </div>
+              <div class="col col-docente">
+                <span class="mobile-label">Docente</span>
+                <span class="cell-content">Pineda Villavicencio, G.</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==========================================================
+           LEYENDA DE LOCALES AL PIE DE PÁGINA
+           ========================================================== -->
+      <footer class="card legend-card">
+        <h2 class="legend-title">Guía de Locales Asignados</h2>
+        <div class="legend-grid">
+          <div class="legend-item">
+            <span class="legend-badge">Local 01</span>
+            <span class="legend-address">Jr. Larrabure y Unanue 110, Lima</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-badge">Local 02</span>
+            <span class="legend-address">Av. Arequipa 440, Lima</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-badge">Local 03</span>
+            <span class="legend-address">Av. Petit Thoars 2021, Lince</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-badge">Local 04</span>
+            <span class="legend-address">Jr. Saco Oliveros 150, Lima</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-badge">Local 05</span>
+            <span class="legend-address">Av. Arenales 1535 -1555, Lince</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-badge virtual">SVIR</span>
+            <span class="legend-address">Salón Virtual (Evaluación a través del Aula Virtual Canvas)</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script src="rol-examenes.js"></script>
+</body>
+
+</html>
