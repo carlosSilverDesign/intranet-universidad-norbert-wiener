@@ -1,0 +1,483 @@
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS - SECCIÓN DETALLE DE ASISTENCIA
+   Norbert Wiener Intranet - Wieners Brand Redesign
+   ========================================================================== */
+
+/* --- NAVEGACIÓN ATRÁS --- */
+.back-nav {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-back-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0F848F;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.btn-back-nav:hover {
+  opacity: 0.8;
+}
+
+.interactive-filters-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E2E8F0;
+  width: 100%;
+}
+
+/* Checkbox interactivo en formato de pastilla (pill) */
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #475569;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.filter-pill input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.filter-custom-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Efecto hover en el box interactivo */
+.filter-pill:hover .filter-custom-box {
+  transform: scale(1.05);
+}
+
+/* Estilos cuando están checked */
+.pill-attended:has(input:checked) .filter-custom-box {
+  background-color: #ECFDF5;
+  border: 1.5px solid #10B981;
+  color: #059669;
+}
+
+.pill-attended:has(input:checked) .filter-custom-box::after {
+  content: "✓";
+}
+
+.pill-absent:has(input:checked) .filter-custom-box {
+  background-color: #FEF2F2;
+  border: 1.5px solid #FCA5A5;
+  color: #DC2626;
+}
+
+.pill-absent:has(input:checked) .filter-custom-box::after {
+  content: "F";
+}
+
+.pill-justified:has(input:checked) .filter-custom-box {
+  background-color: #FFFBEB;
+  border: 1.5px solid #FCD34D;
+  color: #D97706;
+}
+
+.pill-justified:has(input:checked) .filter-custom-box::after {
+  content: "J";
+}
+
+.pill-pending:has(input:checked) .filter-custom-box {
+  background-color: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+}
+
+.pill-pending:has(input:checked) .filter-custom-box::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #94A3B8;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Efecto no checked */
+.filter-pill:has(input:not(:checked)) {
+  color: #94A3B8;
+}
+
+.filter-pill:has(input:not(:checked)) .filter-custom-box {
+  border: 1.5px solid #CBD5E1;
+  background-color: #FFFFFF;
+  color: transparent;
+}
+
+.filter-pill:has(input:not(:checked)) .filter-custom-box::after {
+  content: none !important;
+}
+
+/* --- CONTENEDOR PRINCIPAL DE TABLAS --- */
+.course-detail-tables-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1082px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+}
+
+.course-title-text-detail {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-family: 'Lato', sans-serif;
+  color: #222222;
+  text-transform: uppercase;
+}
+
+.detail-course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+  border-bottom: 1px solid #E2E8F0;
+  padding-bottom: 24px;
+}
+
+.badge-yellow {
+  background-color: #FFF9E6 !important;
+  border-color: #FDE68A !important;
+  color: #B45309 !important;
+}
+
+.badge-yellow span {
+  color: #D97706 !important;
+}
+
+/* --- ESTRUCTURACIÓN DE TABLAS DETALLADAS --- */
+.table-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.table-title-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #FFFFFF;
+  border-radius: 8px 8px 0 0;
+  padding: 14px 20px;
+}
+
+.table-title-header.header-teoria,
+.table-title-header.header-laboratorio {
+  background-color: #0F848F;
+  /* Teal corporativo */
+}
+
+.table-title-header.header-evaluaciones {
+  background-color: #6B21A8;
+  /* Morado corporativo */
+}
+
+.table-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.table-title-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-family: 'Lato', sans-serif;
+}
+
+.table-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #E2E8F0;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  scrollbar-width: thin;
+}
+
+/* Custom scrollbar para las tablas */
+.table-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-scroll-container::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+.table-scroll-container::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.table-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Estilos de Tabla */
+.detail-table {
+  width: max-content;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #FFFFFF;
+}
+
+.detail-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #E2E8F0;
+  border-right: 1px solid #E2E8F0;
+  font-size: 13.5px;
+  text-align: center;
+  color: #475569;
+  box-sizing: border-box;
+}
+
+.detail-table td:not(.col-sticky) {
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  padding: 12px 0;
+}
+
+#table-evaluaciones td:not(.col-sticky) {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+}
+
+.detail-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Columna Sticky a la izquierda */
+.col-sticky {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  background-color: #F8FAFC;
+  font-weight: 700;
+  color: #475569 !important;
+  border-right: 2px solid #C6CFD7;
+  width: 96px;
+  min-width: 96px;
+  max-width: 96px;
+  text-align: left !important;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.02);
+  padding: 14px 10px !important;
+  /* Ajuste de padding para evitar envoltura de texto en 96px */
+  box-sizing: border-box;
+}
+
+/* Semana capsule style */
+.week-pill {
+  background-color: #F1F5F9;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #E2E8F0;
+}
+
+/* --- INDICADORES INTERNOS DE ASISTENCIA --- */
+.attendance-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+.indicator-attended {
+  background-color: #ECFDF5;
+  border: 1px solid #10B981;
+  color: #059669;
+}
+
+.indicator-absent {
+  background-color: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #DC2626;
+}
+
+.indicator-justified {
+  background-color: #FFFBEB;
+  border: 1px solid #FCD34D;
+  color: #D97706;
+}
+
+.indicator-pending {
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: transparent;
+  position: relative;
+}
+
+.indicator-pending::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #94A3B8;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* --- FILA DE RESUMEN UNIFICADA --- */
+.table-summary-cell {
+  background-color: #E6F3F4 !important;
+  /* Soft light blue/teal corporativo */
+  text-align: left !important;
+  padding: 16px 20px !important;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: none !important;
+}
+
+.summary-sticky-text {
+  position: sticky;
+  left: 20px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #5B6E80;
+}
+
+.text-left-align-padding {
+  text-align: left !important;
+}
+
+.divider-vertical {
+  color: #CBD5E1;
+  margin: 0 12px;
+  font-weight: normal;
+}
+
+.text-dark {
+  color: #222222;
+  font-weight: 700;
+}
+
+/* --- FOOTER GENERAL --- */
+.detail-footer {
+  text-align: center;
+  padding: 24px 0 12px 0;
+  color: #5B6E80;
+  font-size: 12.5px;
+  margin-top: 16px;
+}
+
+#table-laboratorio {
+  width: 576px !important;
+}
+
+#table-evaluaciones {
+  width: 456px !important;
+}
+
+/* --- AJUSTES RESPONSIVOS (MOBILE) --- */
+@media (max-width: 768px) {
+  .course-detail-tables-card {
+    padding: 16px;
+    gap: 24px;
+  }
+
+  .detail-course-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-right-course {
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px dashed #E2E8F0;
+    padding-top: 12px;
+  }
+
+  .filters-legend-column {
+    gap: 12px;
+  }
+
+  .legend-row-detail {
+    gap: 8px 12px;
+  }
+
+  .interactive-filters-row {
+    gap: 8px;
+  }
+
+  .filter-pill {
+    padding: 2px 0;
+    font-size: 13.5px;
+  }
+
+  .detail-table td {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .col-sticky {
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    padding-left: 10px !important;
+    padding-right: 8px !important;
+  }
+}

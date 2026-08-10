@@ -1,0 +1,1203 @@
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Estilos específicos para Cursos (Hereda de styles.css) */
+
+
+.page-header-flex {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-titles h1 {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.header-titles p {
+  color: #5B6E80;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-right label {
+  color: #404040;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.period-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 8px 36px 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #C6CFD7;
+  background-color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222222;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  outline: none;
+}
+
+.select-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.header-divider {
+  border: none;
+  border-top: 1px solid #C6CFD7;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Tabs */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.tabs {
+  width: 100%;
+  list-style: none;
+  justify-content: center;
+  display: flex;
+  gap: 32px;
+}
+
+.tab {
+  min-width: 120px;
+  width: 100%;
+  max-width: 240px;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: #9AA6B2;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  color: #5B6E80;
+}
+
+.tab.active {
+  color: #222222;
+  border-bottom: 3px solid #0F848F;
+
+}
+
+/* Grid Cursos */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.course-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  min-height: 140px;
+}
+
+.course-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.25rem;
+}
+
+.tag-presencial {
+  background-color: #0F848F;
+}
+
+.tag-en-vivo {
+  background-color: #0EA5E9;
+}
+
+.tag-24-7 {
+  background-color: #F97316;
+}
+
+.course-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222222;
+  line-height: 1.4;
+  margin-top: auto;
+  /* Push down if needed */
+  margin-bottom: auto;
+  /* Push up if needed */
+}
+
+.course-teacher {
+  font-size: 14px;
+  color: #5B6E80;
+  margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .page-header-flex {
+    /* flex-direction: column; */
+    /* align-items: flex-start; */
+    gap: 20px;
+  }
+
+  .header-left {
+    width: 100%;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+
+  .tabs {
+    gap: 12px;
+  }
+
+  .tab {
+    font-size: 15px;
+    min-width: 100px;
+    width: 100%;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-header-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .header-left {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .header-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .header-titles h1 {
+    font-size: 18px;
+  }
+
+  .header-titles p {
+    font-size: 12px;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .tabs {
+    gap: 8px;
+    /* flex-wrap: wrap; */
+  }
+
+  .tab {
+    width: 100%;
+    min-width: 80px;
+    max-width: 100%;
+    font-size: 13px;
+    padding: 8px 8px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .course-card {
+    padding: 12px;
+    min-height: 100px;
+    gap: 8px;
+  }
+}
+
+/* ==========================================================================
+   Sección de Progreso Académico 
+   ========================================================================== */
+
+.progreso-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.progreso-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.progreso-section-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0F848F;
+  margin: 0;
+}
+
+/* Tarjeta General de Progreso */
+.progreso-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  width: 100%;
+}
+
+/* Estilos de Fila de Datos Académicos */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
+}
+
+.info-label {
+  color: #727272;
+  font-weight: 400;
+}
+
+.info-value {
+  color: #222222;
+  font-weight: 700;
+}
+
+/* Fila de Estadísticas (Cursos Obligatorios) */
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stat-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Divisor vertical entre columnas estadísticas */
+.stat-col:not(:last-child) {
+  border-right: 1px solid #E2E8F0;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #727272;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #222222;
+  line-height: 1;
+}
+
+/* Créditos - Estilos unificados y grids */
+.progreso-credits-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Grilla de créditos en desktop (Obligatorios y Electivos lado a lado) */
+.credits-wrapper-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.credits-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.credits-section .progreso-card {
+  height: 100%;
+}
+
+/* Títulos adaptativos */
+.desktop-only-title {
+  display: block;
+}
+
+.mobile-only-title,
+.mobile-credits-header,
+.credits-mobile-divider {
+  display: none;
+}
+
+/* Responsividad para la vista de Progreso Académico */
+@media (max-width: 992px) {
+  .stat-value {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .progreso-container {
+    gap: 24px;
+  }
+
+  .progreso-section {
+    gap: 12px;
+  }
+
+  .progreso-card {
+    padding: 20px 16px;
+  }
+
+  /* Ocultamos los títulos de escritorio y visualizamos el unificado en mobile */
+  .desktop-only-title {
+    display: none;
+  }
+
+  .mobile-only-title {
+    display: block;
+    font-size: 16px;
+  }
+
+  /* En móviles, la envoltura se comporta como una sola tarjeta unificada */
+  .credits-wrapper-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    background-color: #FFFFFF;
+    border: 1px solid #C6CFD7;
+    border-radius: 12px;
+    padding: 20px 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  }
+
+  /* Las sub-tarjetas internas pierden sus fondos y bordes en móvil */
+  .credits-section .progreso-card {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .mobile-credits-header {
+    display: block;
+    text-align: center;
+    color: #0F848F;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 8px;
+    margin-top: 4px;
+  }
+
+  .credits-mobile-divider {
+    display: block;
+    border: none;
+    border-top: 1px solid #E2E8F0;
+    margin: 8px 0;
+    width: 100%;
+  }
+
+  .info-row {
+    font-size: 13.5px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+}
+
+/* ==========================================================================
+   Estilos específicos para cursos-lc.html (Progreso Académico Rediseñado)
+   ========================================================================== */
+
+/* Clases de utilidad para Accesibilidad (WCAG 2.1) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: #0F848F;
+  color: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: 0 0 8px 8px;
+  z-index: 9999;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #222222;
+}
+
+/* Indicadores de foco de alto contraste para teclado */
+:focus-visible {
+  outline: 3px solid #0F848F !important;
+  outline-offset: 2px !important;
+}
+
+.lc-accordion-header:focus-visible {
+  outline: 3px solid #FFFFFF !important;
+  outline-offset: -4px !important;
+}
+
+.progreso-container-lc {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.lc-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 12px;
+  padding: 18px 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* NIVEL 1: Card Datos del Alumno */
+.lc-student-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lc-student-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.lc-student-row-secondary {
+  border-top: 1px dashed #E2E8F0;
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.lc-student-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #5B6E80;
+  font-family: 'Roboto', sans-serif;
+}
+
+.lc-label {
+  color: #5B6E80;
+  font-weight: 500;
+}
+
+.lc-value {
+  color: #222222;
+  font-weight: 700;
+}
+
+.lc-code-highlight {
+  color: #0F848F;
+  font-weight: 700;
+}
+
+.lc-bold-dark {
+  color: #222222;
+  font-weight: 700;
+}
+
+.lc-text-muted {
+  color: #5B6E80;
+  font-weight: 400;
+}
+
+/* NIVEL 2: Cards de Créditos */
+.lc-credits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.lc-credit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lc-credit-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lc-credit-header span,
+.lc-credit-header h3 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #0F848F;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.lc-credit-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lc-credit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #404040;
+}
+
+.lc-credit-label {
+  font-weight: 500;
+}
+
+.lc-credit-num {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.lc-teal-text {
+  color: #0F848F;
+  font-weight: 700;
+}
+
+.lc-slash-text {
+  color: #9AA6B2;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.lc-credit-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.lc-credit-footer-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F848F;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+}
+
+.lc-pill-badge {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  padding: 4px 16px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  min-width: 60px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.lc-white-num {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.lc-pill-slash {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+/* Progress Bar */
+.lc-progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.lc-progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background-color: #E2E8F0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lc-progress-bar-fill {
+  height: 100%;
+  background-color: #0F848F;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.lc-progress-text {
+  font-size: 11.5px;
+  color: #727272;
+  font-weight: 400;
+  text-align: left;
+}
+
+/* NIVEL 3: Accordions & Tablas */
+.lc-section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 16px 0 8px 0;
+  position: relative;
+}
+
+.lc-section-divider::before,
+.lc-section-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #C6CFD7;
+}
+
+.lc-section-divider span,
+.lc-section-divider h2 {
+  padding: 0 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #727272;
+  letter-spacing: 0.5px;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.lc-accordions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.lc-accordion {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #0F848F;
+  background-color: #FFFFFF;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+button.lc-accordion-header,
+.lc-accordion-header {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+  box-sizing: border-box;
+  margin: 0;
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.lc-accordion-header:hover {
+  background-color: #0b6770;
+}
+
+.lc-accordion-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lc-accordion-icon {
+  width: 18px;
+  height: 18px;
+  stroke: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.lc-accordion-title h3 {
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lc-sub-title {
+  font-weight: 400;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.lc-accordion-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lc-count-pill {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.lc-arrow-icon {
+  width: 18px;
+  height: 18px;
+  stroke: #FFFFFF;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.lc-accordion.expanded .lc-arrow-icon {
+  transform: rotate(180deg);
+}
+
+.lc-accordion:not(.expanded) .lc-arrow-icon {
+  transform: rotate(0deg);
+}
+
+.lc-accordion-content {
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
+.lc-table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lc-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.lc-table thead tr {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.lc-table th {
+  padding: 12px 16px;
+  color: #5B6E80;
+  font-weight: 500;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.lc-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #F1F5F9;
+  color: #222222;
+  vertical-align: middle;
+}
+
+.lc-table tbody tr:hover {
+  background-color: #F8FAFC;
+}
+
+.lc-col-center {
+  text-align: center !important;
+}
+
+.lc-credit-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #E2E8F0;
+  color: #404040;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.lc-course-code {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #E6F3F4;
+  color: #0F848F;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.lc-course-name {
+  font-weight: 500;
+}
+
+.lc-status-pill.status-aprobado {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid #33B56B;
+  background-color: #E7F8EF;
+  color: #278B52;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.lc-grade-val {
+  font-weight: 700;
+  color: #222222;
+}
+
+.lc-period-link {
+  color: #0F848F;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.lc-period-link:hover {
+  text-decoration: underline;
+}
+
+.lc-table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background-color: #F4F6F8;
+  border-top: 1px solid #E2E8F0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.lc-footer-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F848F;
+  font-family: 'Lato', sans-serif;
+}
+
+.lc-footer-pill {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+}
+
+.lc-footer {
+  text-align: center;
+  padding: 24px 0;
+  color: #727272;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 20px;
+}
+
+/* Responsividad Mobile para cursos-lc */
+@media (max-width: 767px) {
+  .lc-credits-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .lc-card {
+    padding: 16px;
+  }
+
+  .lc-student-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .lc-student-row-secondary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .lc-accordion-header {
+    padding: 10px 14px;
+  }
+
+  .lc-accordion-title h3 {
+    font-size: 13.5px;
+    flex-wrap: wrap;
+  }
+
+  .lc-sub-title {
+    font-size: 12px;
+  }
+
+  .lc-table-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* --- ESTILOS PARA EL SKELETON LOADER (Progreso Académico) --- */
+.lc-skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.skeleton-card {
+  position: relative;
+  overflow: hidden;
+  background-color: #FFFFFF !important;
+  border: 1px solid #C6CFD7 !important;
+  border-radius: 12px !important;
+  min-height: auto !important;
+  box-shadow: none !important;
+}
+
+/* Animación Shimmer */
+.skeleton-item {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+  background-color: #E2E8F0;
+  border-radius: 4px;
+}
+
+.skeleton-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 20%,
+      rgba(255, 255, 255, 0.6) 60%,
+      rgba(255, 255, 255, 0) 100%);
+  animation: shimmer-effect 1.5s infinite;
+}
+
+@keyframes shimmer-effect {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-text {
+  height: 10px !important;
+  margin: 2px 0 !important;
+}
+
+.skeleton-icon {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #E2E8F0;
+}
+
+.skeleton-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #E2E8F0;
+  padding-bottom: 8px;
+}
+
+.skeleton-progress-bar {
+  height: 8px !important;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 6px !important;
+}
+
+.skeleton-divider-wrapper {
+  margin: 18px 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.skeleton-divider-wrapper::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: #E2E8F0;
+  margin-left: 12px;
+}
+
+.skeleton-accordion-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+
+  .lc-student-card-actual,
+  .lc-student-card-skeleton {
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
+  }
+
+  .lc-credit-card-actual,
+  .lc-credit-card-skeleton {
+    height: 240px !important;
+    min-height: 240px !important;
+    max-height: 240px !important;
+  }
+}

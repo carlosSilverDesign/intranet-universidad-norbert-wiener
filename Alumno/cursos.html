@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos - Intranet Universidad Norbert Wiener</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="cursos.css">
+</head>
+<body>
+
+  <main class="main-content">
+    
+    <!-- HEADER -->
+    <header class="page-header-flex">
+      <div class="header-left">
+        <div class="header-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="header-titles">
+          <h1>Cursos</h1>
+          <p>Lorem ipsum is the text for designers</p>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <label for="period">Elige el periodo</label>
+        <div class="select-wrapper">
+          <select id="period" class="period-select">
+            <option value="2025-2">2025 - II</option>
+            <option value="2025-1">2025 - I</option>
+          </select>
+          <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <hr class="header-divider">
+
+    <!-- TABS -->
+    <div class="tabs-container">
+      <ul class="tabs">
+        <li class="tab active" id="tabMatriculados">Matriculados</li>
+        <li class="tab" id="tabProgreso">Progreso académico</li>
+      </ul>
+    </div>
+
+    <!-- GRID DE CURSOS -->
+    <div class="courses-grid" id="coursesGrid">
+      
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-presencial">Presencial</span>
+        <h3 class="course-name">Bases de la Terapéutica Farmacológica</h3>
+        <p class="course-teacher">Jorge Rosendo Navarro</p>
+      </a>
+
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-presencial">Presencial</span>
+        <h3 class="course-name">Procesos Celulares y Moleculares II</h3>
+        <p class="course-teacher">Jorge Rosendo Navarro</p>
+      </a>
+
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-en-vivo">Virtual en vivo</span>
+        <h3 class="course-name">Estructura y Función del Cuerpo Humano</h3>
+        <p class="course-teacher">Jorge Rosendo Navarro</p>
+      </a>
+
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-presencial">Presencial</span>
+        <h3 class="course-name">Desarrollo Humano y Social</h3>
+        <p class="course-teacher">Jorge Rosendo Navarro</p>
+      </a>
+
+      <a href="curso-detalle.html" class="course-card">
+        <span class="tag tag-24-7">Virtual 24/7</span>
+        <h3 class="course-name">Ingles II</h3>
+      </a>
+
+    </div>
+
+    <!-- SECCIÓN DE PROGRESO ACADÉMICO -->
+    <div id="progresoContainer" class="progreso-container" style="display: none;">
+      
+      <!-- Mis datos académicos -->
+      <div class="progreso-section">
+        <h2 class="progreso-section-title">Mis datos acad&eacute;micos</h2>
+        <div class="progreso-card info-card">
+          <div class="info-row">
+            <span class="info-label">Carrera:</span>
+            <span class="info-value">Medicina General</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">C&oacute;digo:</span>
+            <span class="info-value">MG2022</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Campus:</span>
+            <span class="info-value">Lima Centro</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Modalidad de carrera:</span>
+            <span class="info-value">Presencial</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cursos obligatorios -->
+      <div class="progreso-section">
+        <h2 class="progreso-section-title">Cursos obligatorios</h2>
+        <div class="progreso-card stats-card">
+          <div class="stats-row">
+            <div class="stat-col">
+              <span class="stat-label">Requeridos</span>
+              <span class="stat-value">64</span>
+            </div>
+            <div class="stat-col">
+              <span class="stat-label">Aprobados</span>
+              <span class="stat-value">29</span>
+            </div>
+            <div class="stat-col">
+              <span class="stat-label">Pendientes</span>
+              <span class="stat-value">35</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Créditos (Adaptativo Desktop vs Mobile) -->
+      <div class="progreso-credits-container">
+        <!-- Título visible solo en mobile -->
+        <h2 class="progreso-section-title mobile-only-title">Cr&eacute;ditos</h2>
+        
+        <div class="credits-wrapper-card">
+          
+          <!-- Sección Obligatorios -->
+          <div class="credits-section obligatorios">
+            <h2 class="progreso-section-title desktop-only-title">Cr&eacute;ditos Obligatorios</h2>
+            <h4 class="mobile-credits-header">Obligatorios</h4>
+            <div class="progreso-card stats-card">
+              <div class="stats-row">
+                <div class="stat-col">
+                  <span class="stat-label">Requeridos</span>
+                  <span class="stat-value">197</span>
+                </div>
+                <div class="stat-col">
+                  <span class="stat-label">Aprobados</span>
+                  <span class="stat-value">90</span>
+                </div>
+                <div class="stat-col">
+                  <span class="stat-label">Pendientes</span>
+                  <span class="stat-value">107</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="credits-mobile-divider">
+
+          <!-- Sección Electivos -->
+          <div class="credits-section electivos">
+            <h2 class="progreso-section-title desktop-only-title">Cr&eacute;ditos Electivos</h2>
+            <h4 class="mobile-credits-header">Electivos</h4>
+            <div class="progreso-card stats-card">
+              <div class="stats-row">
+                <div class="stat-col">
+                  <span class="stat-label">Requeridos</span>
+                  <span class="stat-value">3</span>
+                </div>
+                <div class="stat-col">
+                  <span class="stat-label">Aprobados</span>
+                  <span class="stat-value">4</span>
+                </div>
+                <div class="stat-col">
+                  <span class="stat-label">Pendientes</span>
+                  <span class="stat-value">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Script interactivo de pestañas -->
+  <script src="cursos.js"></script>
+
+</body>
+</html>
