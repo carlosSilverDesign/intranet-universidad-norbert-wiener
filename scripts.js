@@ -226,5 +226,52 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // ==========================================================
 
+  // ==========================================================
+  // NUEVO: INTERACCIÓN DE MODAL DE ANUNCIOS
+  // ==========================================================
+  const announcementModal = document.getElementById('announcementModal');
+  const announcementModalTitle = document.getElementById('announcementModalTitle');
+  const announcementModalImg = document.getElementById('announcementModalImg');
+  const announcementModalClose = document.getElementById('announcementModalClose');
+  const cardAnnouncements = document.querySelector('.card-announcements');
+
+  if (announcementModal && cardAnnouncements) {
+    // Escuchar clicks usando delegación de eventos en los items de noticia
+    cardAnnouncements.addEventListener('click', (e) => {
+      const newsItem = e.target.closest('.news-item');
+      if (newsItem) {
+        // Encontrar título e imagen
+        const titleEl = newsItem.querySelector('.news-title');
+        const imgEl = newsItem.querySelector('.news-img');
+
+        if (titleEl && imgEl) {
+          // Asignar contenido al modal
+          announcementModalTitle.textContent = titleEl.textContent;
+          announcementModalImg.src = imgEl.src;
+          announcementModalImg.alt = imgEl.alt || titleEl.textContent;
+
+          // Abrir modal de forma nativa
+          announcementModal.showModal();
+        }
+      }
+    });
+
+    // Cerrar con el botón
+    if (announcementModalClose) {
+      announcementModalClose.addEventListener('click', () => {
+        announcementModal.close();
+      });
+    }
+
+    // Cerrar haciendo click fuera del modal (en el backdrop)
+    announcementModal.addEventListener('click', (e) => {
+      if (e.target === announcementModal) {
+        announcementModal.close();
+      }
+    });
+  }
+  // ==========================================================
+
 });
+
 
