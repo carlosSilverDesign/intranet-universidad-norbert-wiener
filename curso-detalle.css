@@ -594,3 +594,28 @@ html {
     padding: 12px 16px;
   }
 }
+
+/* SKELETON LOADER ANIMADO */
+.skeleton-card {
+  width: 100%;
+  max-width: 840px;
+  box-sizing: border-box;
+}
+
+.skeleton-item {
+  background: #E5E7EB;
+  background: linear-gradient(90deg, #E5E7EB 25%, #F3F4F6 50%, #E5E7EB 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite linear;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
