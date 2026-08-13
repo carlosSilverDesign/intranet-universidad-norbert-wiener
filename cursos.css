@@ -917,6 +917,51 @@ button.lc-accordion-header,
   font-size: 13px;
 }
 
+/* Alinear columnas entre múltiples tablas fijando anchos en desktop */
+@media (min-width: 768px) {
+  .lc-table {
+    table-layout: fixed;
+  }
+
+  .lc-table th:nth-child(1),
+  .lc-table td:nth-child(1) {
+    width: 100px; /* Curso */
+  }
+
+  .lc-table th:nth-child(2),
+  .lc-table td:nth-child(2) {
+    width: 320px; /* Nombre del Curso */
+    max-width: 320px;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+
+  .lc-table th:nth-child(3),
+  .lc-table td:nth-child(3) {
+    width: 90px; /* Créditos */
+  }
+
+  .lc-table th:nth-child(4),
+  .lc-table td:nth-child(4) {
+    width: 130px; /* Prerrequisitos */
+  }
+
+  .lc-table th:nth-child(5),
+  .lc-table td:nth-child(5) {
+    width: 120px; /* Estado */
+  }
+
+  .lc-table th:nth-child(6),
+  .lc-table td:nth-child(6) {
+    width: 80px; /* Nota */
+  }
+
+  .lc-table th:nth-child(7),
+  .lc-table td:nth-child(7) {
+    width: 100px; /* Periodo */
+  }
+}
+
 .lc-table thead tr {
   background-color: #FFFFFF;
   border-bottom: 1px solid #E2E8F0;
