@@ -424,6 +424,8 @@ h1 {
   border: 1px solid #8E9EAE;
   background: #fff;
   transition: all 0.3s ease-in-out;
+  margin-bottom: 0.75rem;
+  /* Asegura el espaciado/padding entre filas */
 }
 
 .data-row {
@@ -1365,5 +1367,78 @@ dd {
 
   .back-button-container {
     display: none;
+  }
+}
+
+/*  SKELETON LOADER  */
+.skeleton-item {
+  background: #DCE1E6;
+  background: linear-gradient(90deg, #DCE1E6 25%, #E9ECEF 50%, #DCE1E6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.table-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.skeleton-row {
+  pointer-events: none;
+  background-color: #FFFFFF;
+  border: 1px solid #E4E8EC;
+}
+
+.checkbox-skeleton {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.doc-id-skeleton {
+  width: 150px;
+  height: 16px;
+}
+
+.tag-skeleton {
+  width: 70px;
+  height: 16px;
+  border-radius: 12px;
+}
+
+.desc-skeleton {
+  width: 250px;
+  height: 14px;
+  margin-top: 4px;
+}
+
+.label-skeleton {
+  width: 50px;
+  height: 11px;
+  margin-bottom: 4px;
+}
+
+.price-skeleton,
+.date-skeleton {
+  width: 65px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .desc-skeleton {
+    width: 85%;
   }
 }

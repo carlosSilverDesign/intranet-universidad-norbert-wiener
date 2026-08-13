@@ -483,7 +483,8 @@ i svg {
   position: relative;
   width: 100%;
   max-width: 980px;
-  margin: 0 auto 36px auto; /* Agrega espacio inferior para los bullets */
+  margin: 0 auto 36px auto;
+  /* Agrega espacio inferior para los bullets */
 }
 
 /* Controles de navegación manual (Flechas laterales de 40x40px) */
@@ -507,11 +508,13 @@ i svg {
 }
 
 .slider-arrow.prev {
-  left: -20px; /* Hace que sobresalga exactamente la mitad */
+  left: -20px;
+  /* Hace que sobresalga exactamente la mitad */
 }
 
 .slider-arrow.next {
-  right: -20px; /* Hace que sobresalga exactamente la mitad */
+  right: -20px;
+  /* Hace que sobresalga exactamente la mitad */
 }
 
 .slider-arrow:hover {
@@ -520,7 +523,8 @@ i svg {
 }
 
 .slider-arrow svg {
-  stroke: #4B5563; /* Gris intermedio del icono */
+  stroke: #4B5563;
+  /* Gris intermedio del icono */
   width: 20px;
   height: 20px;
 }
@@ -528,7 +532,8 @@ i svg {
 /* Contenedor de puntos indicadores debajo del slider */
 .slider-dots-container {
   position: absolute;
-  bottom: -24px; /* Ubicados debajo del slider */
+  bottom: -24px;
+  /* Ubicados debajo del slider */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -540,21 +545,25 @@ i svg {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #D1D5DB; /* Gris claro inactivo */
+  background: #D1D5DB;
+  /* Gris claro inactivo */
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .slider-dots-container .dot.active {
-  background: #374151; /* Gris oscuro activo */
-  width: 8px; /* Mantener forma circular uniforme */
+  background: #374151;
+  /* Gris oscuro activo */
+  width: 8px;
+  /* Mantener forma circular uniforme */
   border-radius: 50%;
 }
 
 /* Adaptación para pantallas pequeñas */
 @media (max-width: 768px) {
   .slider-arrow.prev {
-    left: 8px; /* Se meten un poco para evitar salirse de la pantalla en mobile */
+    left: 8px;
+    /* Se meten un poco para evitar salirse de la pantalla en mobile */
   }
 
   .slider-arrow.next {
@@ -1482,9 +1491,7 @@ i svg {
   }
 }
 
-/* =========================================
-   MODAL DE ANUNCIOS
-========================================= */
+/* MODAL DE ANUNCIOS */
 .announcement-modal {
   border: none;
   border-radius: 16px;
@@ -1500,7 +1507,6 @@ i svg {
 
 .announcement-modal::backdrop {
   background-color: rgba(13, 58, 64, 0.45);
-  /* Color a tono con la paleta de la intranet */
   backdrop-filter: blur(8px);
 }
 
@@ -1523,7 +1529,6 @@ i svg {
   font-size: 1.25rem;
   line-height: 1.4;
   color: #0D3A40;
-  /* Tono principal oscuro de la intranet */
   font-weight: 700;
   margin: 0;
 }
@@ -1574,12 +1579,10 @@ i svg {
   width: 100%;
   height: auto;
   max-height: 70vh;
-  /* Para que formatos muy altos tipo Story no sobrepasen la pantalla */
   object-fit: contain;
   display: block;
 }
 
-/* Responsividad para móviles */
 @media (max-width: 640px) {
   .announcement-modal {
     width: 92%;

@@ -17,7 +17,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // --- NUEVO: Lógica de Pestañas (Tabs) ---
+  // --- NUEVO: Simulación de Carga Inicial con Skeleton Loader ---
+  const skeletonPendientes = document.getElementById('tableSkeletonPendientes');
+  const listPendientes = document.querySelector('#pendientes-tab .table-list');
+  const skeletonPagados = document.getElementById('tableSkeletonPagados');
+  const listPagados = document.querySelector('#pagados-tab .table-list');
+
+  if (skeletonPendientes && listPendientes) {
+    skeletonPendientes.style.display = 'flex';
+    listPendientes.style.display = 'none';
+
+    setTimeout(() => {
+      skeletonPendientes.style.display = 'none';
+      listPendientes.style.display = 'block';
+    }, 1500); // Carga simulada de 1.5 segundos
+  }
+
+  // --- NUEVO: Lógica de Pestañas (Tabs) con Skeleton ---
   const tabs = document.querySelectorAll('.tab');
   const tableContainers = document.querySelectorAll('.table-container');
 
@@ -35,6 +51,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetContainer = document.getElementById(targetId);
         if (targetContainer) {
           targetContainer.style.display = 'block';
+
+          const currentSkeleton = targetContainer.querySelector('.table-skeleton');
+          const currentList = targetContainer.querySelector('.table-list');
+
+          if (currentSkeleton && currentList) {
+            currentSkeleton.style.display = 'flex';
+            currentList.style.display = 'none';
+
+            setTimeout(() => {
+              currentSkeleton.style.display = 'none';
+              currentList.style.display = 'block';
+            }, 800); // Carga simulada rápida de 800ms al cambiar pestañas
+          }
         }
       }
     });
