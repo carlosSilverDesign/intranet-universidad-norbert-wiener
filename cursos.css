@@ -1246,3 +1246,16 @@ button.lc-accordion-header,
     max-height: 240px !important;
   }
 }
+
+/* --- ESTILOS PARA EL SKELETON LOADER (Cursos Grid) --- */
+#coursesSkeleton .skeleton-card {
+  min-height: 140px !important;
+  cursor: default;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  #coursesSkeleton .skeleton-card {
+    min-height: 100px !important;
+  }
+}

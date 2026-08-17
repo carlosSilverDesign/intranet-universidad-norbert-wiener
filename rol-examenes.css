@@ -792,3 +792,46 @@
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/* --- ESTILO PARA EL MENSAJE SIN EXÁMENES (Empty State) --- */
+.no-exams-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #FFFFFF;
+  border: 1px dashed #C6CFD7;
+  border-radius: 8px;
+  padding: 40px 24px;
+  box-sizing: border-box;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.no-exams-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 360px;
+}
+
+.no-exams-content svg {
+  stroke: #9AA6B2;
+}
+
+.no-exams-content h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+}
+
+.no-exams-content p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #5B6E80;
+  margin: 0;
+  line-height: 1.4;
+}

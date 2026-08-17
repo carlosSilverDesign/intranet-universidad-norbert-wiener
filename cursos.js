@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabProgreso = document.getElementById('tabProgreso');
   
   const coursesGrid = document.getElementById('coursesGrid');
+  const coursesSkeleton = document.getElementById('coursesSkeleton');
   const progresoContainer = document.getElementById('progresoContainer');
   const announcer = document.getElementById('a11y-announcer');
 
@@ -38,6 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 800);
     }
 
+    function showCoursesWithSkeleton() {
+      if (!coursesGrid || !coursesSkeleton) return;
+      
+      coursesGrid.style.display = 'none';
+      coursesSkeleton.style.display = 'grid';
+      
+      setTimeout(() => {
+        if (tabMatriculados && tabMatriculados.classList.contains('active')) {
+          coursesSkeleton.style.display = 'none';
+          coursesGrid.style.display = 'grid';
+          announce('Cursos del periodo cargados');
+        }
+      }, 800);
+    }
+
     function activateTab(selectedTab, targetPanel, hiddenPanel, tabName) {
       tabs.forEach(t => {
         t.classList.remove('active');
@@ -50,11 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
       selectedTab.setAttribute('tabindex', '0');
 
       if (tabName === 'Matriculados') {
-        if (coursesGrid) coursesGrid.style.display = 'grid';
         if (progresoContainer) progresoContainer.style.display = 'none';
         if (progresoSkeleton) progresoSkeleton.style.display = 'none';
+        showCoursesWithSkeleton();
       } else if (tabName === 'Progreso académico') {
         if (coursesGrid) coursesGrid.style.display = 'none';
+        if (coursesSkeleton) coursesSkeleton.style.display = 'none';
         showProgresoWithSkeleton();
       }
 
@@ -123,13 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showProgresoWithSkeleton();
       } else if (tabMatriculados && tabMatriculados.classList.contains('active')) {
         announce('Cargando cursos del periodo seleccionado...');
-        if (coursesGrid) {
-          coursesGrid.style.opacity = '0.5';
-          setTimeout(() => {
-            coursesGrid.style.opacity = '1';
-            announce('Cursos del periodo cargados');
-          }, 500);
-        }
+        showCoursesWithSkeleton();
       }
     });
   }
@@ -137,5 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Carga inicial si la pestaña activa por defecto es progreso académico
   if (tabProgreso && tabProgreso.classList.contains('active')) {
     showProgresoWithSkeleton();
+  }
+
+  // Carga inicial si la pestaña activa por defecto es matriculados
+  if (tabMatriculados && tabMatriculados.classList.contains('active')) {
+    showCoursesWithSkeleton();
   }
 });
