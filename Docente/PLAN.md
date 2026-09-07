@@ -6,12 +6,12 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
 
 ## 📋 Control de Estados y Avance General
 
-- [ ] **Paso 1: Estructura Base y Navegación (Sidebar / Topbar)**
-  - Estado: Pendiente
-  - Archivos: `Docente/navbar.css`, `Docente/navbar.js`
-- [ ] **Paso 2: Dashboard Principal (Home)**
-  - Estado: Pendiente
-  - Archivos: `Docente/index.html`, `Docente/index.css`, `Docente/index.js`
+- [x] **Paso 1: Estructura Base y Navegación (Sidebar / Topbar)**
+  - Estado: Completado (2026-09-03)
+  - Archivos: `Docente/navbar.html`, `Docente/navbar.css`, `Docente/navbar.js`
+- [x] **Paso 2: Dashboard Principal (Home) y Componente de Marcación**
+  - Estado: Completado (2026-09-03)
+  - Archivos: `Docente/index.html`, `Docente/styles.css`, `Docente/scripts.js`
 - [ ] **Paso 3: Mis Datos (Perfil Docente)**
   - Estado: Pendiente
   - Archivos: `Docente/mis-datos.html`, `Docente/mis-datos.css`, `Docente/mis-datos.js`
@@ -82,3 +82,13 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
 *(Las actualizaciones de las tareas completadas se documentarán en esta sección).*
 
 - **2026-08-09**: Creación de la estructura de carpetas `Alumno/` y `Docente/`. Reorganización de las vistas originales de Alumno y corrección de rutas relativas. Inicialización del archivo de plan de ruta `Docente/PLAN.md`.
+- **2026-09-03**: Maquetación modular completa de la Home Docente y sistema de navegación inicial.
+- **2026-09-04**: Unificación rigurosa de estilos con el perfil Estudiante y alineación con el diseño de referencia (`index.html`, `navbar.html`, `navbar.css`, `styles.css`):
+  - Carrusel de 4 banners de texto (980x180 px) con comentarios de reemplazo para imágenes y 4 puntos de paginación.
+  - Fila unificada horizontal: Tarjeta de marcación horaria en una sola línea (icono, hora, segundos, fecha, estado y botón) alineada con los 4 botones de acceso rápido (`Fotocheck`, `Mi Perfil`, `Mesa Ayuda`, `Capacitación`).
+  - Ajuste de proporciones en `docente-metrics-grid` (4 columnas con tipografía y tags estandarizados).
+  - Distribución central 50/50 (`docente-middle-grid`) con el mismo ancho para la tarjeta de horario y los accesos rápidos.
+  - Estandarización de estilos para las clases `AHORA` y `SIGUIENTE CLASE` en `card-next-class` (mismas tipografías y dimensiones, diferenciadas únicamente por los tags).
+  - Navbar lateral ampliado a 240px con enlaces de 14px en una sola línea, padding compacto, flechas de 18x18px y submenús internos sin icono con sangría.
+  - Eliminación de márgenes inferiores sobrantes para corte limpio sobre el pie de página.
+  - Cero variables CSS y comentarios técnicos redactados en español.
