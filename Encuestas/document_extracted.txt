@@ -1,0 +1,264 @@
+UNIVERSIDADNORBERT WIENER
+ENCUESTA DE CARACTERIZACIÓN LABORAL Y DESARROLLOPROFESIONAL DE ESTUDIANTES WIENER 2026
+Instrumento institucional - Versión revisada
+2026
+.
+¡Hola! Queremos conocerte un poco más.
+Esta encuesta tiene como propósito conocer tu situación laboral, nivel de preparación profesional, objetivos, barreras y necesidades, con la finalidad de diseñar rutas diferenciadas de desarrollo profesional y facilitar tu acceso a prácticas, empleo y oportunidades de crecimiento.
+Tu participación es muy valiosa. La información recopilada será utilizada de forma confidencial y con fines de análisis institucional y mejora de los servicios dirigidos a estudiantes.
+Protección de datos personales: Ley Nº 29733, Ley de Protección de Datos Personales, y Reglamento aprobado mediante D. S. Nº 016-2024-JUS.
+A. DATOS GENERALES
+1. Distrito o localidad de residencia actual: 
+(Usar una lista estandarizada. Para Lima y Callao, registrar distrito; para otras regiones, provincia y departamento; incluir 'Fuera del Perú'. https://github.com/jmcastagnetto/ubigeo-peru-aumentado
+Departamento
+Provincia
+Distrito
+B. SITUACIÓN LABORAL Y ACTIVIDAD ACTUAL
+2. ¿Cuál de las siguientes opciones describe mejor tu actividad principal actual? 
+Marca una sola alternativa.
+Trabajo dependiente remunerado (pasar a 2.1)
+Trabajo independiente o freelance remunerado (pasar a 2.2)
+Prácticas preprofesionales remuneradas (pasar a 3)
+Prácticas preprofesionales no remuneradas (pasar a 3)
+Internado clínico o actividad formativa equivalente (pasar a 3)
+Negocio propio o familiar (pasar a 2.3)
+Voluntariado, investigación o proyecto no remunerado (pasar a 3)
+Otra actividad (especificar) (pasar a 3)
+No realizo actualmente ninguna actividad laboral, práctica, internado, negocio o voluntariado (pasar a al bloque C)
+2.1. Si trabajas de manera dependiente, ¿cuál es tu modalidad de vinculación laboral?
+Planilla con contrato a plazo indeterminado
+Planilla con contrato a plazo fijo, temporal o por suplencia
+Vinculación con una entidad pública: nombramiento, contrato o CAS
+Trabajo dependiente sin contrato formal
+Otro (especificar)
+2.2. Si trabajas de manera independiente o freelance, ¿cómo desarrollas principalmente tu actividad?
+Brindo servicios a una empresa o institución mediante recibo por honorarios
+Brindo servicios a varias empresas o instituciones
+Brindo servicios directamente a clientes o usuarios
+Desarrollo consultorías, asesorías o proyectos especializados
+Trabajo mediante plataformas digitales o canales virtuales
+ Otro (especificar)
+2.3. Si tienes un negocio propio o familiar, ¿cuál es su situación de formalización?
+Formalizado: cuenta con RUC activo y actividad declarada
+En proceso de formalización
+No formalizado
+3. ¿Cuál es el nombre de la empresa, organización, institución o negocio donde realizas esta actividad?
+______________________________________________________________
+4. ¿A qué sector económico pertenece principalmente?
+Salud
+Educación
+Comercio y retail
+Finanzas y seguros
+Industria y manufactura
+Tecnología y telecomunicaciones
+Construcción e inmobiliario
+Hotelería, turismo y gastronomía
+Servicios legales
+Administración pública y gobierno
+Consultoría y servicios profesionales
+Organización social, comunitaria u ONG
+Otros servicios
+Otro sector (especificar)
+5. ¿Cuál es el cargo o función que desempeñas actualmente?
+______________________________________________________________
+6. ¿Cuál es la modalidad principal en la que realizas esta actividad?
+Presencial (pasar a 7)
+Híbrida (pasar a 7)
+Remota (pasar a 8)
+7. Si realizas la actividad de manera presencial o híbrida, indica el distrito, provincia o país donde la desarrollas principalmente:
+Departamento
+Provincia 
+Distrito
+8. En tu actividad laboral actual ¿Puedes ajustar tu horario por motivos académicos?
+Sí
+Parcialmente
+No
+No lo he solicitado o no lo necesito
+9. Aproximadamente, ¿cuánto recibes al mes por tu actividad principal? Si el monto cambia cada mes, considera un mes habitual. Marca una sola alternativa. (Información confidencial: Tu respuesta es opcional y será analizada únicamente de forma agrupada, con fines estadísticos y para mejorar los servicios de desarrollo profesional. No será utilizada para ningún otro fin.)
+No recibo ingresos por esta actividad
+Menos de S/ 500
+De S/ 500 a S/ 999
+De S/ 1,000 a S/ 1,499
+De S/ 1,500 a S/ 1,999
+De S/ 2,000 a S/ 2,999
+De S/ 3,000 a S/ 3,999
+De S/ 4,000 a S/ 5,999
+S/ 6,000 o más
+Prefiero no responder
+10. ¿Esta es tu primera experiencia laboral, práctica, internado o actividad profesional?
+Sí
+No
+11. ¿Qué tan relacionada está tu actividad actual con la carrera que estudias?
+Totalmente relacionada
+Parcialmente relacionada
+No está relacionada
+12. ¿Qué tan satisfecho te encuentras con tu actividad actual?
+Muy satisfecho
+Satisfecho
+Ni satisfecho ni insatisfecho
+Insatisfecho
+Muy insatisfecho
+13. Respecto a tu actividad actual, ¿qué te gustaría hacer principalmente en los próximos 12 meses? Marca una sola alternativa.
+Continuar en mi posición o actividad actual
+Progresar o asumir mayores responsabilidades
+Cambiar a una oportunidad más relacionada con mi carrera
+Cambiar de empresa u organización
+Pasar de prácticas o internado a empleo
+Emprender o fortalecer mi negocio
+Dejar de trabajar temporalmente
+Aún no lo tengo definido
+Otro (especificar)
+(Pasar a Bloque D-Desarrollo Profesional) 
+C. SI ACTUALMENTE NO REALIZAS NINGUNA ACTIVIDAD
+3. ¿Cuál de las siguientes opciones describe mejor tu intención de búsqueda de trabajo o prácticas?
+Estoy buscando activamente (responder 3.1 y 3.2)
+Quiero empezar a buscar en los próximos tres meses 
+Quiero buscar más adelante
+Actualmente no tengo previsto buscar trabajo o prácticas
+3.1. Si estás buscando activamente, ¿cuánto tiempo llevas buscando?
+Menos de 1 mes
+1 a 3 meses
+4 a 6 meses
+7 a 12 meses
+Más de 12 meses
+3.2. Durante tu búsqueda actual, ¿has participado en algún proceso de entrevista?
+Sí
+No
+4. ¿Qué factores dificultan actualmente que encuentres o inicies una oportunidad laboral o de prácticas? Puedes marcar más de una alternativa.
+Los horarios no son compatibles con mis estudios
+No encuentro oportunidades relacionadas con mi carrera
+La ubicación o el tiempo de traslado dificultan mi participación
+Las condiciones o la remuneración de las oportunidades no son adecuadas
+Tengo responsabilidades familiares o de cuidado
+Tengo motivos personales o de salud
+Prefiero concentrarme en mis estudios
+Considero que necesito fortalecer competencias o cumplir otros requisitos
+No identifico dificultades actualmente
+Otra razón (especificar)
+5. ¿Has tenido anteriormente alguna experiencia laboral, práctica, internado o actividad profesional?
+Sí
+No
+D. PREPARACIÓN PROFESIONAL 
+1. Indica con cuáles de los siguientes elementos cuentas actualmente. Puedes marcar más de una alternativa.
+Tengo un objetivo profesional definido
+CV actualizado
+Perfil de LinkedIn actualizado
+Perfil completo en el Portal de Desarrollo Profesional y Empleabilidad
+He participado en entrevistas laborales
+Conozco canales para buscar prácticas o empleo
+Portafolio profesional, cuando corresponde
+Certificaciones o formación complementaria
+Experiencias de voluntariado, investigación, liderazgo o representación estudiantil
+Ninguno de los anteriores
+2. ¿Qué competencias te gustaría fortalecer para mejorar tu desarrollo profesional? Selecciona como máximo tres alternativas.
+Comunicación efectiva
+Trabajo en equipo
+Liderazgo
+Resolución de problemas
+Pensamiento analítico
+Herramientas digitales o tecnológicas
+Inteligencia artificial aplicada
+Inglés u otros idiomas
+Gestión del tiempo
+Marca personal y networking
+Emprendimiento
+Otra (especificar)
+3. ¿Qué tipo de oportunidad te interesa principalmente para los próximos 12 meses? Marca una sola alternativa.
+Prácticas preprofesionales
+Empleo de medio tiempo
+Empleo de tiempo completo
+Internado
+Trabajo freelance o independiente
+Emprendimiento
+Voluntariado o investigación
+Aún estoy explorando opciones
+No busco una oportunidad por ahora
+Otra (especificar)
+4. Señala qué tan capaz te sientes actualmente para realizar cada acción:
+Actividad
+Nada capaz
+Poco capaz
+Medianamente capaz
+Bastante capaz
+Muy capaz
+¿Qué tan capaz te sientes de identificar el tipo de trabajo o área profesional en la que te gustaría desempeñarte?
+○
+○
+○
+○
+○
+¿Qué tan capaz te sientes de buscar y postular a una práctica o empleo?
+○
+○
+○
+○
+○
+¿Qué tan capaz te sientes de explicar tus habilidades durante una entrevista o proceso de selección?
+○
+○
+○
+○
+○
+E. CONOCIMIENTO, USO Y EXPERIENCIA CON LOS SERVICIOS
+5. Para cada servicio, marca una sola alternativa sobre su conocimiento y uso.
+Servicio
+No lo conozco
+Lo conozco, no lo he usado
+Lo he usado
+Bolsa Laboral Wiener
+○
+○
+○
+Ferias laborales presenciales o virtuales
+○
+○
+○
+Jornadas de reclutamiento, charlas y eventos con empresas
+○
+○
+○
+Talleres y programas de empleabilidad
+○
+○
+○
+Asesorías personalizadas de empleabilidad
+○
+○
+○
+Cursos y programas de actualización profesional
+○
+○
+○
+5.1 Solo si el servicio marcado es [BOLSA LABORAL] como 'Lo he usado': pensando en tu experiencia más reciente, ¿qué tan fácil o difícil te resultó completar la acción o gestión que necesitabas?
+1Muy difícil
+2Difícil
+3Ni fácil ni difícil
+4Fácil
+5Muy fácil
+○
+○
+○
+○
+○
+5.2 Si respondiste 'Difícil' o 'Muy difícil', ¿cuál fue la principal dificultad?
+Acceso, registro o inicio de sesión
+Navegación o búsqueda de información
+La información disponible no fue suficiente o clara
+No pude completar la acción que necesitaba
+Problemas técnicos
+Tiempo de respuesta o falta de soporte
+Otra (especificar)
+6. ¿Cuáles de estos servicios te interesa utilizar durante los próximos 12 meses? Puedes marcar más de una alternativa.
+Bolsa Laboral Wiener
+Ferias laborales presenciales o virtuales
+Jornadas de reclutamiento, charlas y eventos con empresas
+Talleres y programas de empleabilidad
+Asesorías personalizadas de empleabilidad
+Mentorías y networking con alumni o profesionales
+Cursos y programas de actualización profesional
+Ninguno por ahora
+7. Señala qué tan capaz te sientes actualmente para realizar cada acción:
+8. ¿Qué otro apoyo, servicio o actividad te gustaría recibir para fortalecer tu desarrollo profesional? (Pregunta opcional)
+______________________________________________________________
+______________________________________________________________
+¡Muchas gracias por tu participación!
