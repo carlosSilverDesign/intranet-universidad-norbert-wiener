@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta de Satisfacción Primeras Semanas | Universidad Norbert Wiener</title>
+
+  <!-- Google Fonts: Lato & Roboto (Producción) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Estilos del Formulario Modal de Encuesta -->
+  <link rel="stylesheet" href="Encuestas/encuesta-primeras-semanas.css">
+</head>
+
+<body>
+
+  <!-- MODAL PRINCIPAL DE ENCUESTA (Estructura de producción lista para Blazor) -->
+  <div id="modalPrimerasSemanas" class="survey-dialog-form satisfaction-survey-dialog" role="dialog" aria-modal="true"
+    aria-labelledby="surveyModalTitle">
+    <div class="survey-modal-wrapper">
+
+      <!-- CABECERA: Solo Ícono y Título según especificación -->
+      <header class="survey-modal-header">
+        <div class="header-info">
+          <div class="header-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="header-course" id="surveyModalTitle">Encuesta de Satisfacción Primeras Semanas</h3>
+          </div>
+        </div>
+        <button type="button" class="survey-modal-close" id="surveyModalClose" aria-label="Cerrar modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+
+      <!-- BARRA DE PROGRESO DE CARGA / COMPLETADO (Producción) -->
+      <div class="survey-progress-container">
+        <div class="progress-info">
+          <span class="progress-type">ENCUESTA DE SATISFACCIÓN • PRIMERAS SEMANAS</span>
+          <span class="progress-count" id="surveyProgressCount">0/5</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="surveyProgressFill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- CUERPO DEL FORMULARIO (Scrollable) -->
+      <form id="surveyForm" class="survey-modal-content scrollable-survey-content">
+
+        <!-- DESCRIPCIÓN DENTRO DEL CUERPO DEL FORMULARIO -->
+        <div class="survey-intro-box">
+          <div class="survey-intro-text-wrapper">
+            <p class="survey-intro-greeting">¡Hola! En nuestra universidad valoramos mucho tu opinión.</p>
+            <p class="survey-intro-sub">Queremos seguir mejorando para darte la mejor experiencia.</p>
+          </div>
+          <div class="survey-intro-img-wrapper">
+            <img src="Encuestas/img/encuesta-firstweek.png" alt="Encuesta Primeras Semanas" class="survey-intro-img">
+          </div>
+        </div>
+
+        <!-- ENUNCIADO PREVIO A LAS PREGUNTAS -->
+        <p class="survey-instruction-text">Te invitamos a responder las siguientes preguntas:</p>
+
+        <!-- PREGUNTA 1: DNI o Carné de extranjería -->
+        <div class="survey-question-item" data-q-index="1">
+          <div class="question-row-header">
+            <span class="question-number-badge">1/5</span>
+            <label for="inputDni" class="question-description">Coloca tu DNI o Carné de extranjería</label>
+          </div>
+          <input type="text" id="inputDni" class="survey-input-text"
+            placeholder="Ingresa tu número de documento de identidad" maxlength="15" autocomplete="off" required>
+        </div>
+
+        <!-- PREGUNTA 2: Apellidos y nombres completos -->
+        <div class="survey-question-item" data-q-index="2">
+          <div class="question-row-header">
+            <span class="question-number-badge">2/5</span>
+            <label for="inputFullName" class="question-description">Coloca tus apellidos y nombres completos</label>
+          </div>
+          <input type="text" id="inputFullName" class="survey-input-text" placeholder="Ej. Pérez Ramírez, Juan Carlos"
+            autocomplete="name" required>
+        </div>
+
+        <!-- PREGUNTA 3: Escala NPS (0 al 10) -->
+        <div class="survey-question-item" data-q-index="3">
+          <div class="question-row-header">
+            <span class="question-number-badge">3/5</span>
+            <p class="question-description">Pensando en tu experiencia durante estas primeras semanas de clase, ¿qué
+              tan probable es que recomiendes la Universidad Norbert Wiener a un amigo o familiar?</p>
+          </div>
+          <div class="nps-scale-container">
+            <div class="nps-options" role="group" aria-label="Escala de probabilidad del 0 al 10">
+              <button type="button" class="nps-btn" data-value="0" aria-label="0 - Nada probable">0</button>
+              <button type="button" class="nps-btn" data-value="1" aria-label="1">1</button>
+              <button type="button" class="nps-btn" data-value="2" aria-label="2">2</button>
+              <button type="button" class="nps-btn" data-value="3" aria-label="3">3</button>
+              <button type="button" class="nps-btn" data-value="4" aria-label="4">4</button>
+              <button type="button" class="nps-btn" data-value="5" aria-label="5">5</button>
+              <button type="button" class="nps-btn" data-value="6" aria-label="6">6</button>
+              <button type="button" class="nps-btn" data-value="7" aria-label="7">7</button>
+              <button type="button" class="nps-btn" data-value="8" aria-label="8">8</button>
+              <button type="button" class="nps-btn" data-value="9" aria-label="9">9</button>
+              <button type="button" class="nps-btn" data-value="10" aria-label="10 - Muy probable">10</button>
+            </div>
+            <div class="nps-labels">
+              <span>0 — Nada probable</span>
+              <span>10 — Muy probable</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PREGUNTA 4: Razón principal de la calificación -->
+        <div class="survey-question-item" data-q-index="4">
+          <div class="question-row-header">
+            <span class="question-number-badge">4/5</span>
+            <label for="inputNpsReason" class="question-description">¿Cuál es la razón principal de tu
+              calificación?</label>
+          </div>
+          <textarea id="inputNpsReason" class="survey-textarea"
+            placeholder="Escribe brevemente el motivo principal de tu respuesta..." rows="3" required></textarea>
+        </div>
+
+        <!-- PREGUNTA 5: Matriz de Aspectos con Caritas (Adaptación Mobile Optimizada) -->
+        <div class="survey-question-item" data-q-index="5">
+          <div class="question-row-header">
+            <span class="question-number-badge">5/5</span>
+            <p class="question-description">¿Qué tan satisfecho te sientes con los siguientes aspectos?</p>
+          </div>
+
+          <div class="survey-aspects-container">
+
+            <!-- ASPECTO A: Desempeño de tus docentes -->
+            <div class="survey-aspect-item" data-aspect="docentes">
+              <span class="survey-aspect-label">Desempeño de tus docentes</span>
+              <div class="emoji-options-row emoji-options-6" role="group" aria-label="Desempeño de tus docentes">
+
+                <button type="button" class="emoji-option-btn" data-score="1" aria-label="Totalmente insatisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="10" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="10" r="1.5" fill="currentColor"></circle>
+                      <line x1="7" y1="7.5" x2="10" y2="9" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round"></line>
+                      <line x1="17" y1="7.5" x2="14" y2="9" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round"></line>
+                      <path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Totalmente insatisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="2" aria-label="Insatisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Insatisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="3" aria-label="Indistinto">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round"></line>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Indistinto</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="4" aria-label="Satisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Satisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="5" aria-label="Totalmente satisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Totalmente satisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="na" aria-label="No he utilizado el servicio">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" stroke="currentColor" stroke-width="1.8"></line>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">No he utilizado el servicio</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- ASPECTO B: Atención a tus consultas -->
+            <div class="survey-aspect-item" data-aspect="consultas">
+              <span class="survey-aspect-label">Atención a tus consultas</span>
+              <div class="emoji-options-row emoji-options-6" role="group" aria-label="Atención a tus consultas">
+
+                <button type="button" class="emoji-option-btn" data-score="1" aria-label="Totalmente insatisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="10" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="10" r="1.5" fill="currentColor"></circle>
+                      <line x1="7" y1="7.5" x2="10" y2="9" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round"></line>
+                      <line x1="17" y1="7.5" x2="14" y2="9" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round"></line>
+                      <path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Totalmente insatisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="2" aria-label="Insatisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Insatisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="3" aria-label="Indistinto">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round"></line>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Indistinto</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="4" aria-label="Satisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Satisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="5" aria-label="Totalmente satisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Totalmente satisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="na" aria-label="No he utilizado el servicio">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" stroke="currentColor" stroke-width="1.8"></line>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">No he utilizado el servicio</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- ASPECTO C: Ambientes de tu sede/campus -->
+            <div class="survey-aspect-item" data-aspect="ambientes">
+              <span class="survey-aspect-label">Ambientes de tu sede/campus</span>
+              <div class="emoji-options-row emoji-options-6" role="group" aria-label="Ambientes de tu sede/campus">
+
+                <button type="button" class="emoji-option-btn" data-score="1" aria-label="Totalmente insatisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="10" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="10" r="1.5" fill="currentColor"></circle>
+                      <line x1="7" y1="7.5" x2="10" y2="9" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round"></line>
+                      <line x1="17" y1="7.5" x2="14" y2="9" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round"></line>
+                      <path d="M8 17.5c2-3 6-3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Totalmente insatisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="2" aria-label="Insatisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <path d="M9 16c1.5-1.5 4.5-1.5 6 0" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Insatisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="3" aria-label="Indistinto">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round"></line>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Indistinto</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="4" aria-label="Satisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <path d="M9 14.5c1.5 1.5 4.5 1.5 6 0" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Satisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="5" aria-label="Totalmente satisfecho">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <circle cx="15.5" cy="9.5" r="1.5" fill="currentColor"></circle>
+                      <path d="M8 14.5c2 3 6 3 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        fill="none"></path>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">Totalmente satisfecho</span>
+                </button>
+
+                <button type="button" class="emoji-option-btn" data-score="na" aria-label="No he utilizado el servicio">
+                  <div class="emoji-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" stroke="currentColor" stroke-width="1.8"></line>
+                    </svg>
+                  </div>
+                  <span class="emoji-label">No he utilizado el servicio</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PREGUNTA 6: Mejoras para experiencia excepcional (opcional) -->
+        <div class="survey-question-item" data-q-index="6">
+          <div class="question-row-header">
+            <label for="inputImprovements" class="question-description">
+              ¿Qué deberíamos mejorar para brindarte una experiencia excepcional?
+              <span class="optional-tag">(opcional)</span>
+            </label>
+          </div>
+          <textarea id="inputImprovements" class="survey-textarea"
+            placeholder="Escribe aquí tus sugerencias o aspectos a mejorar..." rows="3"></textarea>
+        </div>
+
+      </form>
+
+      <!-- FOOTER DEL MODAL (Producción) -->
+      <footer class="survey-modal-footer">
+        <span class="survey-unanswered-counter" id="surveyUnansweredText">5 preguntas sin responder</span>
+        <button type="button" class="survey-btn-submit" id="btnSurveySubmit" disabled>
+          Enviar encuesta
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" style="width: 14px; height: 14px; margin-left: 2px;">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- MODAL DIALOG DE ÉXITO AL ENVIAR (Reutilizado de Producción) -->
+  <dialog id="modalSurveySuccess" class="survey-success-dialog">
+    <div class="success-modal-content">
+      <div class="success-icon-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h3 class="success-modal-title">¡Gracias por tu participación!</h3>
+      <p class="success-modal-desc">
+        Tus respuestas sobre las primeras semanas han sido registradas exitosamente. Nos ayudan a mejorar continuamente
+        tu experiencia académica.
+      </p>
+      <button type="button" class="success-modal-btn" id="btnCloseSuccess">Aceptar y continuar</button>
+    </div>
+  </dialog>
+
+  <!-- Lógica JavaScript Independiente -->
+  <script src="Encuestas/encuesta-primeras-semanas.js"></script>
+</body>
+
+</html>

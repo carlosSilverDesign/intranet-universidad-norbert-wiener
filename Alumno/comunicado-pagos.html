@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comunicado Oficial - Universidad Norbert Wiener</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="comunicado-pagos.css">
+</head>
+<body>
+
+  <div class="comunicado-container">
+    <main class="comunicado-card">
+      <header class="comunicado-header">
+        <div class="comunicado-title-container">
+          <img src="../img/notice.svg" class="notice-icon" alt="Aviso">
+          <h1 class="comunicado-title">COMUNICADO</h1>
+        </div>
+        <p class="comunicado-date" id="live-date">Martes 4 de Agosto del 2026, 05:22:30 pm</p>
+      </header>
+
+      <section class="comunicado-body">
+        <p class="salutation">Estimado(a) estudiante,</p>
+        
+        <p class="message-text">
+          Te informamos que la <strong>Política de Pagos del Estudiante</strong> se encuentra publicada en el Portal de Transparencia.
+        </p>
+        
+        <p class="message-text">
+          En este documento podrás encontrar información oportuna y relevante sobre la matrícula por créditos, renovación de beneficios comerciales, seguro universitario, convenios institucionales y más.
+        </p>
+        
+        <div class="download-container">
+          <a href="#" class="btn-download" title="Descargar Política de Pagos (PDF)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Descargar Política de Pagos (PDF)</span>
+          </a>
+        </div>
+      </section>
+
+      <footer class="comunicado-footer">
+        <div class="acceptance-area">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="check-accept">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">Acepto la Política de Pagos del Estudiante.</span>
+          </label>
+          
+          <button id="btn-aceptar" class="btn btn-primary" disabled>Aceptar</button>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const checkAccept = document.getElementById('check-accept');
+    const btnAceptar = document.getElementById('btn-aceptar');
+
+    checkAccept.addEventListener('change', () => {
+      btnAceptar.disabled = !checkAccept.checked;
+    });
+
+    btnAceptar.addEventListener('click', () => {
+      if (checkAccept.checked) {
+        btnAceptar.classList.add('success-state');
+        btnAceptar.innerHTML = `
+          <svg class="checkmark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="20" height="20">
+            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" stroke="#fff" stroke-width="4"/>
+            <path class="checkmark-check" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+          Procesando...
+        `;
+        btnAceptar.disabled = true;
+
+        setTimeout(() => {
+          window.location.href = 'index.html?policy_accepted=true';
+        }, 1500);
+      }
+    });
+  </script>
+</body>
+</html>

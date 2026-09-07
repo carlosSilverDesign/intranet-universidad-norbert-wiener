@@ -1,0 +1,295 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F4F6F8;
+  color: #404040;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.comunicado-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.comunicado-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 16px;
+  padding: 48px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.comunicado-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.comunicado-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.notice-icon {
+  width: 56px;
+  height: 56px;
+}
+
+.comunicado-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: #222222;
+  letter-spacing: 1.5px;
+}
+
+.comunicado-date {
+  font-size: 13px;
+  color: #8A9CA8;
+  text-align: right;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.comunicado-body {
+  margin-bottom: 40px;
+}
+
+.salutation {
+  font-size: 16px;
+  font-weight: 500;
+  color: #222222;
+  margin-bottom: 24px;
+}
+
+.message-text {
+  font-size: 15px;
+  color: #4A5568;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.message-text strong {
+  color: #222222;
+}
+
+.download-container {
+  display: flex;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #F7FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 14px 24px;
+  color: #0F848F;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btn-download:hover {
+  background-color: #EBF8FA;
+  border-color: #0F848F;
+  color: #0b6770;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(15, 132, 143, 0.08);
+}
+
+.btn-download:active {
+  transform: translateY(0);
+}
+
+.download-icon {
+  width: 20px;
+  height: 20px;
+  stroke: #0F848F;
+  transition: stroke 0.2s ease;
+}
+
+.btn-download:hover .download-icon {
+  stroke: #0b6770;
+}
+
+.comunicado-footer {
+  border-top: 1px solid #E2E8F0;
+  padding-top: 32px;
+}
+
+.acceptance-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 15px;
+  color: #2D3748;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: #FFFFFF;
+  border: 2px solid #A0AEC0;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.custom-checkbox:hover input~.checkmark {
+  border-color: #0F848F;
+}
+
+.custom-checkbox input:checked~.checkmark {
+  background-color: #0F848F;
+  border-color: #0F848F;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input:checked~.checkmark::after {
+  display: block;
+}
+
+.custom-checkbox .checkmark::after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 32px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #222;
+  color: #FFFFFF;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #000;
+}
+
+.btn:disabled {
+  background-color: #CBD5E0;
+  color: #718096;
+  cursor: not-allowed;
+}
+
+.btn-primary.success-state {
+  background-color: #1D9E75 !important;
+  color: #FFFFFF;
+  cursor: default;
+}
+
+/* Checkmark Icon Animation inside Button */
+.checkmark-icon {
+  width: 20px;
+  height: 20px;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  stroke: #fff;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .comunicado-card {
+    padding: 32px 24px;
+  }
+
+  .comunicado-title {
+    font-size: 24px;
+  }
+
+  .acceptance-area {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
