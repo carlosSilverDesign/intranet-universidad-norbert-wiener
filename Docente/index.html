@@ -5,23 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal Docente - Universidad Norbert Wiener</title>
-  <!-- Tipografía oficial Google Fonts: Roboto y Lato -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
-  <!-- Hojas de estilo locales autocontenidas (cero variables CSS, comentarios en español) -->
   <link rel="stylesheet" href="navbar.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
-  <!-- ==========================================================================
-       [BLAZOR COMPONENT: MainLayout.razor / NavMenu.razor]
-       Barra Superior de Búsqueda, Menú Lateral Docente y Drawer de Notificaciones
-       ========================================================================== -->
 
   <!-- Barra Superior de Búsqueda (Top Search Bar - 64px) -->
   <header class="top-search-bar" id="topSearchBar">
@@ -35,8 +28,7 @@
         </svg>
       </button>
       <a href="index.html" class="sidebar-logo-link" aria-label="Ir a Inicio">
-        <svg class="sidebar-logo-mobile" xmlns="http://www.w3.org/2000/svg" width="130" height="26" viewBox="0 0 171 32"
-          fill="none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="171" height="32" viewBox="0 0 171 32" fill="none">
           <path
             d="M1.71813 17.3648C1.8067 17.4028 1.95853 17.4492 2.13989 17.4534C2.37186 17.4534 2.65444 17.3859 2.91594 17.1202L10.2841 9.74354L1.31745 0.806371C1.20779 0.696713 1.02222 0.77263 1.02222 0.928683V15.6482L1.03487 16.3357C1.03487 17.0063 1.51568 17.2762 1.72234 17.3606"
             fill="#07C8CC" />
@@ -49,6 +41,75 @@
           <path
             d="M51.5663 0.781081C51.4018 0.616593 51.1319 0.616593 50.9632 0.781081L32.6839 19.0603L32.3929 19.364C32.2748 19.4821 32.1525 19.5875 32.026 19.6887C32.0175 19.6972 32.0049 19.7056 31.9922 19.7141C31.9501 19.7478 31.9121 19.7773 31.8699 19.8111C31.1192 20.3804 30.2293 20.6757 29.314 20.6757C28.7531 20.6757 28.1837 20.566 27.6354 20.3383C27.5131 20.2877 27.4119 20.2413 27.298 20.178C27.2136 20.1316 27.1335 20.2286 27.2263 20.3172C27.3149 20.4057 37.6565 30.7432 37.6565 30.7432C39.3225 32.4091 42.026 32.4091 43.692 30.7432L59.5503 14.8849C61.2415 13.1936 61.2415 10.4563 59.5503 8.76507L51.5663 0.781081Z"
             fill="#07C8CC" />
+          <path
+            d="M73.079 14.0565C75.4508 14.0565 77.3529 12.942 77.3529 9.97139V3.68481H75.9344V9.99903C75.9344 11.9195 74.9166 12.8729 73.079 12.8729C71.2414 12.8729 70.2558 11.9195 70.2558 9.9806V3.68481H68.8188V9.96679C68.8188 12.9374 70.7071 14.0519 73.079 14.0519"
+            fill="black" />
+          <path
+            d="M80.3374 9.8056C80.3374 8.51144 81.2079 7.67322 82.3086 7.67322C83.4093 7.67322 84.0449 8.41472 84.0449 9.59374V13.8585H85.4312V9.4786C85.4312 7.82981 84.6621 6.60474 82.76 6.60474C81.673 6.60474 80.6875 7.20346 80.3374 8.06009V6.79817H78.9512V13.8585H80.3374V9.8056Z"
+            fill="black" />
+          <path d="M88.3556 3.68481H86.9187V5.20465H88.3556V3.68481Z" fill="black" />
+          <path d="M88.3372 6.80273H86.9509V13.863H88.3372V6.80273Z" fill="black" />
+          <path
+            d="M93.4357 13.8584L96.4431 6.80273H95.0891L92.8692 12.2281H92.8001L90.5296 6.80273H89.0742L92.0816 13.8584H93.4357Z"
+            fill="black" />
+          <path
+            d="M100.183 14.0565C102.002 14.0565 103.222 13.0847 103.591 11.4866L102.439 11.3577C102.14 12.44 101.422 13.0065 100.201 13.0065C98.8978 13.0065 97.8799 12.0393 97.8109 10.6622H103.623V10.128C103.623 8.20747 102.439 6.60474 100.118 6.60474C98.0135 6.60474 96.4292 8.20286 96.4292 10.432C96.4292 12.661 98.0181 14.0519 100.187 14.0519M100.114 7.62717C101.5 7.62717 102.149 8.66342 102.2 9.79178H97.8431C98.0089 8.63118 98.7965 7.62717 100.114 7.62717Z"
+            fill="black" />
+          <path
+            d="M106.207 10.128C106.207 8.76935 106.99 7.84824 108.044 7.84824C108.496 7.84824 108.781 7.93114 109.182 8.13839L109.316 6.92712C109.067 6.71527 108.731 6.60474 108.279 6.60474C107.229 6.60474 106.474 7.42913 106.207 8.2351V6.79817H104.821V13.8585H106.207V10.128Z"
+            fill="black" />
+          <path
+            d="M112.949 13.071C111.697 13.071 110.914 12.4907 110.78 11.4084L109.61 11.4867C109.744 13.2322 111.13 14.0566 112.949 14.0566C114.653 14.0566 115.938 13.2966 115.938 11.8919C115.938 10.6162 115.068 10.082 113.599 9.84247L112.231 9.63062C111.48 9.50166 111.112 9.21151 111.112 8.64503C111.112 8.00025 111.71 7.59496 112.632 7.59496C113.866 7.59496 114.552 8.09697 114.718 9.17927L115.837 9.1148C115.703 7.48443 114.566 6.60938 112.632 6.60938C110.946 6.60938 109.827 7.47982 109.827 8.77399C109.827 9.98525 110.647 10.5517 112.014 10.759L113.249 10.9708C114.151 11.132 114.635 11.3577 114.635 12.0209C114.635 12.7302 113.917 13.071 112.949 13.071Z"
+            fill="black" />
+          <path d="M118.536 6.80273H117.15V13.863H118.536V6.80273Z" fill="black" />
+          <path d="M118.554 3.68481H117.117V5.20465H118.554V3.68481Z" fill="black" />
+          <path
+            d="M125.647 12.3893V13.8585H127.033V3.68481H125.647V8.29037C125.311 7.41992 124.394 6.60934 123.026 6.60934C120.857 6.60934 119.687 8.25813 119.687 10.3398C119.687 12.4215 120.857 14.0565 123.026 14.0565C124.394 14.0565 125.315 13.2644 125.647 12.3939M121.106 10.3398C121.106 8.72329 121.907 7.69164 123.344 7.69164C124.666 7.69164 125.665 8.59433 125.665 10.1326V10.5379C125.665 12.0899 124.666 12.9926 123.344 12.9926C121.907 12.9926 121.106 11.961 121.106 10.3444"
+            fill="black" />
+          <path
+            d="M131.187 9.87007C129.433 10.2109 128.249 10.7589 128.249 12.0992C128.249 13.3104 129.166 14.0519 130.589 14.0519C131.772 14.0519 132.809 13.4394 133.209 12.615C133.292 13.4532 133.826 14.0059 134.577 14.0059C135.144 14.0059 135.448 13.8262 135.696 13.5868V12.8591C135.498 12.9742 135.226 13.0203 135.061 13.0203C134.711 13.0203 134.494 12.8407 134.494 12.4722V9.30359C134.494 7.51203 133.407 6.60474 131.57 6.60474C129.847 6.60474 128.765 7.57651 128.479 8.8983L129.714 9.0595C129.93 8.2351 130.497 7.63638 131.551 7.63638C132.606 7.63638 133.154 8.2351 133.154 9.20227V9.4786L131.183 9.86547L131.187 9.87007ZM133.159 10.7129C133.159 12.136 132.173 13.0709 130.888 13.0709C130.054 13.0709 129.635 12.6196 129.635 12.0209C129.635 11.1642 130.368 10.9524 131.524 10.7129L133.159 10.3721V10.7129Z"
+            fill="black" />
+          <path
+            d="M139.293 14.0565C140.661 14.0565 141.582 13.2644 141.914 12.3939V13.8631H143.3V3.68481H141.914V8.29037C141.582 7.41992 140.661 6.60934 139.293 6.60934C137.124 6.60934 135.954 8.25813 135.954 10.3398C135.954 12.4215 137.124 14.0565 139.293 14.0565ZM139.611 7.69164C140.928 7.69164 141.932 8.59433 141.932 10.1326V10.5379C141.932 12.0899 140.928 12.9926 139.611 12.9926C138.174 12.9926 137.373 11.961 137.373 10.3444C137.373 8.72789 138.174 7.69625 139.611 7.69625"
+            fill="black" />
+          <path
+            d="M75.8055 24.7322L70.8959 17.9482H68.8511V28.1219H70.7624V20.9511L76.068 28.1219H77.7168V17.9482H75.8055V24.7322Z"
+            fill="black" />
+          <path
+            d="M82.7186 20.8037C80.4757 20.8037 78.896 22.3558 78.896 24.5664C78.896 26.7771 80.4757 28.3154 82.7186 28.3154C84.9615 28.3154 86.5596 26.7817 86.5596 24.5664C86.5596 22.3512 84.9799 20.8037 82.7186 20.8037ZM82.7186 26.8462C81.5166 26.8462 80.8902 25.9113 80.8902 24.5664C80.8902 23.2216 81.5166 22.2729 82.7186 22.2729C83.9207 22.2729 84.5654 23.2078 84.5654 24.5664C84.5654 25.9251 83.9391 26.8462 82.7186 26.8462Z"
+            fill="black" />
+          <path
+            d="M92.4361 22.9038L92.5835 21.0939C92.3716 20.9142 92.0078 20.8037 91.5611 20.8037C90.5571 20.8037 89.7971 21.5452 89.5346 22.3558V20.9971H87.5588V28.1219H89.5346V24.5987C89.5346 23.3045 90.2255 22.5953 91.2479 22.5953C91.7269 22.5953 92.0539 22.692 92.4361 22.9038Z"
+            fill="black" />
+          <path
+            d="M97.7004 20.8037C96.3971 20.8037 95.5266 21.4991 95.195 22.3695V17.9436H93.2192V28.1219H94.7345L95.0983 26.7494C95.476 27.6383 96.4017 28.3153 97.6682 28.3153C99.842 28.3153 100.98 26.6665 100.98 24.5664C100.98 22.4663 99.842 20.8037 97.7004 20.8037ZM97.0879 26.8001C95.9688 26.8001 95.1766 26.0079 95.1766 24.6999V24.4236C95.1766 23.1295 95.9688 22.3235 97.0879 22.3235C98.3406 22.3235 98.9808 23.2124 98.9808 24.571C98.9808 25.9296 98.336 26.8001 97.0879 26.8001Z"
+            fill="black" />
+          <path
+            d="M107.367 25.6349C107.086 26.4409 106.511 26.8462 105.539 26.8462C104.466 26.8462 103.628 26.1047 103.563 25.0546H109.016V24.3592C109.016 22.4203 107.796 20.8037 105.424 20.8037C103.25 20.8037 101.62 22.4203 101.62 24.6632C101.62 26.9061 103.236 28.3154 105.474 28.3154C107.335 28.3154 108.588 27.3804 108.97 25.7961L107.372 25.6349H107.367ZM105.405 22.2268C106.511 22.2268 107.022 23.019 107.086 23.8434H103.591C103.77 22.9545 104.318 22.2268 105.405 22.2268Z"
+            fill="black" />
+          <path
+            d="M113.764 22.5997C114.243 22.5997 114.57 22.6964 114.953 22.9082L115.1 21.0983C114.888 20.9186 114.524 20.8081 114.078 20.8081C113.074 20.8081 112.314 21.5496 112.051 22.3602V21.0015H110.075V28.1263H112.051V24.6031C112.051 23.3089 112.742 22.5997 113.764 22.5997Z"
+            fill="black" />
+          <path
+            d="M118.375 25.8789V22.3557H120.35V20.9971H118.375V19.0259H117.173L116.942 19.993C116.777 20.6562 116.579 21.0109 115.869 21.126L115.376 21.2089V22.3557H116.413V26.3119C116.413 27.8317 117.352 28.3153 118.471 28.3153C119.36 28.3153 119.954 28.0896 120.484 27.7027V26.427C120.056 26.6204 119.641 26.7678 119.25 26.7678C118.656 26.7678 118.375 26.4915 118.375 25.8789Z"
+            fill="black" />
+          <path
+            d="M135.084 17.9482L133.186 25.4415H133.122L131.095 17.9482H129.198L127.19 25.4277H127.125L125.214 17.9482H123.151L125.84 28.1219H128.097L130.073 20.7899H130.137L132.099 28.1219H134.374L137.059 17.9482H135.084Z"
+            fill="black" />
+          <path d="M139.758 17.9436H137.732V19.8319H139.758V17.9436Z" fill="black" />
+          <path d="M139.744 20.9971H137.769V28.1219H139.744V20.9971Z" fill="black" />
+          <path
+            d="M144.53 20.8037C142.356 20.8037 140.725 22.4203 140.725 24.6632C140.725 26.9061 142.342 28.3154 144.58 28.3154C146.441 28.3154 147.694 27.3804 148.071 25.7961L146.473 25.6349C146.192 26.4409 145.616 26.8462 144.645 26.8462C143.572 26.8462 142.733 26.1047 142.669 25.0546H148.122V24.3592C148.122 22.4203 146.901 20.8037 144.53 20.8037ZM142.701 23.8434C142.881 22.9545 143.424 22.2268 144.516 22.2268C145.607 22.2268 146.132 23.019 146.197 23.8434H142.706H142.701Z"
+            fill="black" />
+          <path
+            d="M151.157 24.3131C151.157 23.1157 151.783 22.342 152.787 22.342C153.791 22.342 154.206 22.9729 154.206 24.069V28.1219H156.182V23.6776C156.182 22.0933 155.472 20.8037 153.529 20.8037C152.442 20.8037 151.521 21.3518 151.157 22.1623V20.9971H149.181V28.1219H151.157V24.3085V24.3131Z"
+            fill="black" />
+          <path
+            d="M160.962 28.3154C162.823 28.3154 164.076 27.3804 164.458 25.7961L162.86 25.6349C162.579 26.4409 162.003 26.8462 161.031 26.8462C159.963 26.8462 159.12 26.1047 159.056 25.0546H164.509V24.3592C164.509 22.4203 163.288 20.8037 160.916 20.8037C158.742 20.8037 157.112 22.4203 157.112 24.6632C157.112 26.9061 158.729 28.3154 160.967 28.3154M160.898 22.2268C162.003 22.2268 162.514 23.019 162.579 23.8434H159.083C159.263 22.9545 159.811 22.2268 160.898 22.2268Z"
+            fill="black" />
+          <path
+            d="M167.539 24.6031C167.539 23.3089 168.23 22.5997 169.252 22.5997C169.731 22.5997 170.058 22.6964 170.441 22.9082L170.588 21.0983C170.376 20.9186 170.012 20.8081 169.565 20.8081C168.561 20.8081 167.802 21.5496 167.539 22.3602V21.0015H165.563V28.1263H167.539V24.6031Z"
+            fill="black" />
         </svg>
       </a>
     </div>
@@ -68,14 +129,15 @@
 
     <!-- Acciones de la barra superior -->
     <div class="top-bar-right-actions">
-      <div class="top-bar-campus-badge">
+
+      <!-- <div class="top-bar-campus-badge">
         <svg viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="2" y1="12" x2="22" y2="12"></line>
           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
         </svg>
         • Campus Lima Centro
-      </div>
+      </div> -->
 
       <button type="button" class="top-bar-action-btn mobile-search-btn" id="mobileSearchBtn" aria-label="Buscar">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -554,7 +616,7 @@
     </div>
   </aside>
 
-  <!-- Panel Deslizable de Notificaciones (Drawer) -->
+  <!-- Panel Deslizable de Notificaciones -->
   <aside class="notifications-drawer" id="notificationsDrawer">
     <div class="notifications-header">
       <div class="notifications-title-area">
@@ -571,7 +633,7 @@
     </div>
 
     <div class="notifications-body">
-      <!-- Tarjeta 1: Notificación con botón de acción -->
+
       <div class="notification-card">
         <div class="notification-card-header">
           <div class="notification-card-header-left">
@@ -593,7 +655,6 @@
         </div>
       </div>
 
-      <!-- Tarjeta 2: Notificación con icono de calendario -->
       <div class="notification-card">
         <div class="notification-card-header">
           <div class="notification-card-header-left">
@@ -622,7 +683,6 @@
         </div>
       </div>
 
-      <!-- Tarjeta 3: Notificación de Evento con imagen -->
       <div class="notification-card">
         <div class="notification-card-header">
           <div class="notification-card-header-left">
@@ -638,7 +698,6 @@
         </div>
       </div>
 
-      <!-- Tarjeta 4: Notificación de Reserva -->
       <div class="notification-card">
         <div class="notification-card-header">
           <div class="notification-card-header-left">
@@ -665,15 +724,11 @@
   <!-- Capa de oscurecimiento (blur overlay) -->
   <div class="navbar-blur-overlay" id="navbarBlurOverlay"></div>
 
-
-  <!-- ==========================================================================
-       [BLAZOR COMPONENT: Pages/Index.razor]
-       Layout Principal y Dashboard del Perfil Docente
-       ========================================================================== -->
+  <!-- Layout Principal y Dashboard del Perfil Docente -->
   <div class="main-content-layout">
     <main class="main-content" id="mainDashboardContent">
 
-      <!-- 1. Encabezado de Bienvenida del Docente -->
+      <!-- Encabezado de Bienvenida del Docente -->
       <section class="profile-header">
         <div class="profile-info">
           <img src="img/docente-avatar.jpg" alt="Jonah Miguel Asensio Peña" class="user-avatar-large">
@@ -689,7 +744,7 @@
         </div>
       </section>
 
-      <!-- 2. BANNER HERO SLIDER (980x180 y Centrado - 4 Banners con texto de ejemplo) -->
+      <!-- BANNER HERO SLIDER -->
       <div class="hero-slider-outer">
         <button class="slider-arrow prev" id="btnSliderPrev" aria-label="Slide anterior">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -701,17 +756,6 @@
         <section class="hero-slider" id="heroSlider">
           <div class="slider-wrapper">
 
-            <!-- ===============================================================
-                 SLIDE 1: Formato Estructurado Texto (980x180)
-                 Nota: Para utilizar una imagen en lugar de texto estructurado:
-                 <div class="hero-slide slide-image">
-                   <img src="img/banner1.jpg" alt="Banner" class="slide-bg-img">
-                   <div class="slide-image-overlay"></div>
-                   <div class="hero-action-overlay">
-                     <a href="#" class="btn btn-white">Acción</a>
-                   </div>
-                 </div>
-                 =============================================================== -->
             <div class="hero-slide slide-html">
               <div class="hero-content">
                 <div class="hero-tags">
@@ -736,17 +780,7 @@
               </div>
             </div>
 
-            <!-- ===============================================================
-                 SLIDE 2: Formato Estructurado Texto (980x180)
-                 Nota: Para utilizar una imagen en lugar de texto estructurado:
-                 <div class="hero-slide slide-image">
-                   <img src="img/banner2.jpg" alt="Banner" class="slide-bg-img">
-                   <div class="slide-image-overlay"></div>
-                   <div class="hero-action-overlay">
-                     <a href="formacion.html" class="btn btn-white">Ver talleres</a>
-                   </div>
-                 </div>
-                 =============================================================== -->
+
             <div class="hero-slide slide-html" style="background-color: #0E6B75;">
               <div class="hero-content">
                 <div class="hero-tags">
@@ -771,17 +805,7 @@
               </div>
             </div>
 
-            <!-- ===============================================================
-                 SLIDE 3: Formato Estructurado Texto (980x180)
-                 Nota: Para utilizar una imagen en lugar de texto estructurado:
-                 <div class="hero-slide slide-image">
-                   <img src="img/banner3.jpg" alt="Banner" class="slide-bg-img">
-                   <div class="slide-image-overlay"></div>
-                   <div class="hero-action-overlay">
-                     <a href="mide.html" class="btn btn-white">Ver resultados</a>
-                   </div>
-                 </div>
-                 =============================================================== -->
+
             <div class="hero-slide slide-html" style="background-color: #135A62;">
               <div class="hero-content">
                 <div class="hero-tags">
@@ -806,17 +830,7 @@
               </div>
             </div>
 
-            <!-- ===============================================================
-                 SLIDE 4: Formato Estructurado Texto (980x180)
-                 Nota: Para utilizar una imagen en lugar de texto estructurado:
-                 <div class="hero-slide slide-image">
-                   <img src="img/banner4.jpg" alt="Banner" class="slide-bg-img">
-                   <div class="slide-image-overlay"></div>
-                   <div class="hero-action-overlay">
-                     <a href="#" class="btn btn-white">Ver bases</a>
-                   </div>
-                 </div>
-                 =============================================================== -->
+
             <div class="hero-slide slide-html" style="background-color: #0A4F56;">
               <div class="hero-content">
                 <div class="hero-tags">
@@ -859,9 +873,9 @@
         </div>
       </div>
 
-      <!-- 3. Fila de Marcación y 4 Accesos Rápidos Superiores (Al mismo nivel horizontal en una sola línea) -->
+      <!-- Fila de Marcación -->
       <section class="docente-punch-row">
-        <!-- Tarjeta de Reloj y Marcación Horaria en una sola línea -->
+        <!-- Tarjeta de Reloj y Marcación Horaria -->
         <article class="card card-punch-clock">
           <div class="punch-clock-info">
             <div class="punch-clock-icon-wrap">
@@ -899,33 +913,30 @@
         <div class="docente-top-badges-grid">
           <article class="badge-action-card active" title="Fotocheck Digital">
             <div class="badge-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <circle cx="12" cy="10" r="3"></circle>
-                <path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21" fill="none">
+                <path
+                  d="M16.3636 0H1.63636C1.20237 0 0.786157 0.170192 0.47928 0.473135C0.172402 0.776078 0 1.18696 0 1.61538V19.3846C0 19.813 0.172402 20.2239 0.47928 20.5269C0.786157 20.8298 1.20237 21 1.63636 21H16.3636C16.7976 21 17.2138 20.8298 17.5207 20.5269C17.8276 20.2239 18 19.813 18 19.3846V1.61538C18 1.18696 17.8276 0.776078 17.5207 0.473135C17.2138 0.170192 16.7976 0 16.3636 0ZM5.72727 2.42308H12.2727C12.4897 2.42308 12.6978 2.50817 12.8513 2.65964C13.0047 2.81112 13.0909 3.01656 13.0909 3.23077C13.0909 3.44498 13.0047 3.65042 12.8513 3.80189C12.6978 3.95337 12.4897 4.03846 12.2727 4.03846H5.72727C5.51028 4.03846 5.30217 3.95337 5.14873 3.80189C4.99529 3.65042 4.90909 3.44498 4.90909 3.23077C4.90909 3.01656 4.99529 2.81112 5.14873 2.65964C5.30217 2.50817 5.51028 2.42308 5.72727 2.42308ZM14.401 17.6077C14.315 17.6715 14.2171 17.7179 14.113 17.7443C14.0088 17.7707 13.9003 17.7766 13.7939 17.7616C13.6874 17.7466 13.5849 17.711 13.4924 17.6569C13.3998 17.6028 13.319 17.5312 13.2545 17.4462C12.7592 16.7941 12.1168 16.2649 11.3784 15.9004C10.6399 15.5359 9.82562 15.3462 9 15.3462C8.17438 15.3462 7.3601 15.5359 6.62164 15.9004C5.88318 16.2649 5.24083 16.7941 4.74545 17.4462C4.68099 17.531 4.60022 17.6025 4.50777 17.6565C4.41531 17.7106 4.31298 17.7461 4.20662 17.7611C4.10025 17.7761 3.99194 17.7703 3.88785 17.744C3.78377 17.7176 3.68596 17.6713 3.6 17.6077C3.51404 17.5441 3.44163 17.4643 3.38688 17.3731C3.33214 17.2818 3.29615 17.1808 3.28095 17.0758C3.26576 16.9708 3.27166 16.8638 3.29833 16.7611C3.32499 16.6583 3.3719 16.5618 3.43636 16.4769C4.16085 15.5181 5.12696 14.7631 6.23864 14.2871C5.62941 13.738 5.20258 13.0199 5.01416 12.227C4.82574 11.4342 4.88453 10.6036 5.18283 9.84438C5.48112 9.08511 6.00498 8.43261 6.68564 7.9725C7.36631 7.5124 8.17198 7.26619 8.99693 7.26619C9.82188 7.26619 10.6276 7.5124 11.3082 7.9725C11.9889 8.43261 12.5127 9.08511 12.811 9.84438C13.1093 10.6036 13.1681 11.4342 12.9797 12.227C12.7913 13.0199 12.3645 13.738 11.7552 14.2871C12.8691 14.7622 13.8375 15.5172 14.5636 16.4769C14.6939 16.6482 14.75 16.8635 14.7195 17.0755C14.689 17.2876 14.5745 17.479 14.401 17.6077ZM11.4545 11.3077C11.4545 11.7869 11.3106 12.2554 11.0409 12.6539C10.7712 13.0524 10.3878 13.3629 9.93931 13.5463C9.4908 13.7297 8.99728 13.7777 8.52114 13.6842C8.04501 13.5907 7.60765 13.3599 7.26437 13.0211C6.9211 12.6822 6.68733 12.2504 6.59262 11.7804C6.49791 11.3104 6.54652 10.8232 6.7323 10.3804C6.91807 9.93766 7.23268 9.55923 7.63633 9.29298C8.03998 9.02673 8.51454 8.88461 9 8.88461C9.65099 8.88461 10.2753 9.1399 10.7356 9.59432C11.1959 10.0487 11.4545 10.6651 11.4545 11.3077Z"
+                  fill="#166A74" />
               </svg>
             </div>
             <span class="badge-card-label">Fotocheck</span>
           </article>
           <article class="badge-action-card" onclick="window.location.href='mis-datos.html'" title="Mi Perfil">
             <div class="badge-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                stroke="#7C3AED" stroke-width="2">
-                <circle cx="12" cy="7" r="4"></circle>
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path
+                  d="M12 11.6922C11.0375 11.6922 10.2136 11.3496 9.52825 10.6642C8.84275 9.97875 8.5 9.15475 8.5 8.19225C8.5 7.22975 8.84275 6.40583 9.52825 5.7205C10.2136 5.035 11.0375 4.69225 12 4.69225C12.9625 4.69225 13.7864 5.035 14.4718 5.7205C15.1573 6.40583 15.5 7.22975 15.5 8.19225C15.5 9.15475 15.1573 9.97875 14.4718 10.6642C13.7864 11.3496 12.9625 11.6922 12 11.6922ZM4.5 17.7885V17.0845C4.5 16.5948 4.633 16.1413 4.899 15.724C5.165 15.3067 5.5205 14.9858 5.9655 14.7615C6.95383 14.277 7.95092 13.9136 8.95675 13.6712C9.96258 13.4289 10.977 13.3077 12 13.3077C13.023 13.3077 14.0374 13.4289 15.0433 13.6712C16.0491 13.9136 17.0462 14.277 18.0345 14.7615C18.4795 14.9858 18.835 15.3067 19.101 15.724C19.367 16.1413 19.5 16.5948 19.5 17.0845V17.7885C19.5 18.2102 19.3523 18.5688 19.0568 18.8645C18.7613 19.16 18.4026 19.3077 17.9808 19.3077H6.01925C5.59742 19.3077 5.23875 19.16 4.94325 18.8645C4.64775 18.5688 4.5 18.2102 4.5 17.7885ZM6 17.8077H18V17.0845C18 16.882 17.9413 16.6945 17.824 16.522C17.7067 16.3497 17.5474 16.209 17.3462 16.1C16.4846 15.6757 15.6061 15.3542 14.7107 15.1355C13.8153 14.917 12.9117 14.8077 12 14.8077C11.0883 14.8077 10.1848 14.917 9.28925 15.1355C8.39392 15.3542 7.51542 15.6757 6.65375 16.1C6.45258 16.209 6.29333 16.3497 6.176 16.522C6.05867 16.6945 6 16.882 6 17.0845V17.8077ZM12 10.1922C12.55 10.1922 13.0208 9.99641 13.4125 9.60475C13.8042 9.21308 14 8.74225 14 8.19225C14 7.64225 13.8042 7.17141 13.4125 6.77975C13.0208 6.38808 12.55 6.19225 12 6.19225C11.45 6.19225 10.9792 6.38808 10.5875 6.77975C10.1958 7.17141 10 7.64225 10 8.19225C10 8.74225 10.1958 9.21308 10.5875 9.60475C10.9792 9.99641 11.45 10.1922 12 10.1922Z"
+                  fill="#5B6E80" />
               </svg>
             </div>
             <span class="badge-card-label">Mi Perfil</span>
           </article>
           <article class="badge-action-card" title="Mesa de Ayuda">
             <div class="badge-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                stroke="#EA580C" stroke-width="2">
-                <path d="M18 20V10a6 6 0 0 0-12 0v10"></path>
-                <path d="M2 14h2"></path>
-                <path d="M20 14h2"></path>
-                <path d="M6 20h12"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path
+                  d="M2.25 10.5H4.5C4.89782 10.5 5.27936 10.658 5.56066 10.9393C5.84196 11.2206 6 11.6022 6 12V14.25C6 14.6478 5.84196 15.0294 5.56066 15.3107C5.27936 15.592 4.89782 15.75 4.5 15.75H3.75C3.35218 15.75 2.97064 15.592 2.68934 15.3107C2.40804 15.0294 2.25 14.6478 2.25 14.25V9C2.25 7.20979 2.96116 5.4929 4.22703 4.22703C5.4929 2.96116 7.20979 2.25 9 2.25C10.7902 2.25 12.5071 2.96116 13.773 4.22703C15.0388 5.4929 15.75 7.20979 15.75 9V14.25C15.75 14.6478 15.592 15.0294 15.3107 15.3107C15.0294 15.592 14.6478 15.75 14.25 15.75H13.5C13.1022 15.75 12.7206 15.592 12.4393 15.3107C12.158 15.0294 12 14.6478 12 14.25V12C12 11.6022 12.158 11.2206 12.4393 10.9393C12.7206 10.658 13.1022 10.5 13.5 10.5H15.75"
+                  stroke="#D97706" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </div>
             <span class="badge-card-label">Mesa Ayuda</span>
@@ -933,10 +944,13 @@
           <article class="badge-action-card" onclick="window.location.href='formacion.html'"
             title="Capacitación Docente">
             <div class="badge-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                stroke="#16A34A" stroke-width="2">
-                <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path
+                  d="M12 9.74999L15.9172 12.3615C15.9737 12.3991 16.0393 12.4206 16.1071 12.4239C16.1748 12.4271 16.2422 12.4119 16.302 12.3799C16.3618 12.3479 16.4118 12.3002 16.4467 12.2421C16.4815 12.1839 16.5 12.1173 16.5 12.0495V5.90249C16.5 5.8365 16.4826 5.77168 16.4496 5.71457C16.4165 5.65746 16.369 5.61008 16.3118 5.57721C16.2546 5.54434 16.1897 5.52715 16.1237 5.52738C16.0577 5.5276 15.993 5.54523 15.936 5.57849L12 7.87499"
+                  stroke="#059669" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M10.5 4.5H3C2.17157 4.5 1.5 5.17157 1.5 6V12C1.5 12.8284 2.17157 13.5 3 13.5H10.5C11.3284 13.5 12 12.8284 12 12V6C12 5.17157 11.3284 4.5 10.5 4.5Z"
+                  stroke="#059669" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </div>
             <span class="badge-card-label">Capacitación</span>
@@ -944,7 +958,7 @@
         </div>
       </section>
 
-      <!-- 4. Grilla de 4 Métricas Docente (Tamaños y proporciones ajustadas) -->
+      <!-- Grilla de 4 Métricas Docente (Tamaños y proporciones ajustadas) -->
       <section class="docente-metrics-grid">
         <article class="card-metric">
           <p class="metric-subtitle">Cursos Asignados</p>
@@ -979,10 +993,10 @@
         </article>
       </section>
 
-      <!-- 5. Sección Central: Horario de Clases y Accesos Rápidos (50/50 exacto) -->
+      <!-- Sección Central: Horario de Clases y Accesos Rápidos -->
       <section class="docente-middle-grid">
 
-        <!-- Columna 1: Horario de Clases de Hoy (Mismos estilos para ambas clases) -->
+        <!-- Columna 1: Horario de Clases de Hoy -->
         <article class="card-next-class">
           <div class="class-schedule-block">
             <span class="tag-schedule-now">
@@ -1039,13 +1053,13 @@
           </button>
         </article>
 
-        <!-- Columna 2: Accesos Rápidos Docente (Mismo ancho 50%) -->
+        <!-- Columna 2: Accesos Rápidos Docente -->
         <article class="card-quick-access">
           <h3 class="card-title">Accesos Rápidos</h3>
           <div class="quick-access-grid">
             <a href="horario.html" class="access-item" title="Horario de Clases">
               <div class="access-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
                   stroke="#0284C7" stroke-width="2">
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
@@ -1056,7 +1070,7 @@
 
             <a href="notas.html" class="access-item" title="Registro de Notas">
               <div class="access-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
                   stroke="#2563EB" stroke-width="2">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
@@ -1069,7 +1083,7 @@
 
             <a href="asistencia-alumno.html" class="access-item" title="Asistencia Alumnos">
               <div class="access-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
                   stroke="#059669" stroke-width="2">
                   <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                   <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
@@ -1081,7 +1095,7 @@
 
             <a href="alumnos.html" class="access-item" title="Listado de Alumnos">
               <div class="access-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
                   stroke="#7C3AED" stroke-width="2">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                   <circle cx="9" cy="7" r="4"></circle>
@@ -1094,7 +1108,7 @@
 
             <a href="encuestas-satisfaccion.html" class="access-item" title="Encuesta Docente ESD">
               <div class="access-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
                   stroke="#D97706" stroke-width="2">
                   <circle cx="12" cy="12" r="10"></circle>
                   <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
@@ -1107,7 +1121,7 @@
 
             <a href="mide.html" class="access-item" title="Resultados MIDE">
               <div class="access-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
                   stroke="#EA580C" stroke-width="2">
                   <line x1="18" y1="20" x2="18" y2="10"></line>
                   <line x1="12" y1="20" x2="12" y2="4"></line>
@@ -1121,7 +1135,7 @@
 
       </section>
 
-      <!-- 6. Sección de Anuncios (Exacto según visual de referencia) -->
+      <!-- Sección de Anuncios -->
       <article class="card card-announcements">
         <div class="card-header-flex">
           <h3 class="card-title">Últimos anuncios</h3>
@@ -1160,7 +1174,7 @@
         </div>
       </article>
 
-      <!-- 7. Footer Institucional -->
+      <!-- Footer Institucional -->
       <footer class="main-footer">
         <p>© 2026 Universidad Norbert Wiener. Todos los derechos reservados.</p>
         <p>
@@ -1214,11 +1228,9 @@
 
         <!-- Alerta de conflicto si se detecta superposición -->
         <div class="marcacion-conflict-alert" id="marcacionConflictAlert" style="display: none;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="12"></line>
-            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#991B1B">
+            <path
+              d="M502.92-300.15q9.39-9.39 9.39-22.93T502.92-346q-9.38-9.38-22.92-9.38-13.54 0-22.92 9.38-9.39 9.38-9.39 22.92 0 13.54 9.39 22.93 9.38 9.38 22.92 9.38 13.54 0 22.92-9.38Zm-1.54-145.4q8.62-8.62 8.62-21.37v-180q0-12.75-8.63-21.38-8.63-8.62-21.38-8.62-12.76 0-21.37 8.62-8.62 8.63-8.62 21.38v180q0 12.75 8.63 21.37 8.63 8.63 21.38 8.63 12.76 0 21.37-8.63ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
           </svg>
           <span id="marcacionConflictText">Conflicto de horario detectado.</span>
         </div>
@@ -1254,7 +1266,6 @@
   </div>
 
 
-  <!-- Archivos de Scripts Locales -->
   <script src="navbar.js"></script>
   <script src="scripts.js"></script>
 </body>

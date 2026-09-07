@@ -1,11 +1,3 @@
-/**
- * ==========================================================================
- * SCRIPTS PRINCIPALES, CARRUSEL Y MOTOR DE MARCACIÓN - PERFIL DOCENTE
- * Universidad Norbert Wiener
- * Réplica fiel del comportamiento de scripts.js del perfil estudiante.
- * Todos los comentarios están redactados en español.
- * ==========================================================================
- */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -90,10 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(actualizarReloj, 1000);
 
 
-  // ==========================================================================
   // 2. LÓGICA DEL CARRUSEL / HERO SLIDER (980x180 Centrado)
-  // Idéntico al script de slider del perfil estudiante
-  // ==========================================================================
+
   const heroSlider = document.getElementById('heroSlider');
   const sliderWrapper = heroSlider ? heroSlider.querySelector('.slider-wrapper') : null;
   const heroSlides = heroSlider ? heroSlider.querySelectorAll('.hero-slide') : [];
