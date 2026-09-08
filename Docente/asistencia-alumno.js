@@ -1,9 +1,3 @@
-/**
- * ==========================================================================
- * LÓGICA INTERACTIVA - REGISTRO DE ASISTENCIA ALUMNOS (PERFIL DOCENTE)
- * Universidad Norbert Wiener
- * ==========================================================================
- */
 
 document.addEventListener('DOMContentLoaded', () => {
   const table = document.querySelector('.attendance-table');
@@ -46,7 +40,55 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * 2. INTERACTIVIDAD DE MARCACIÓN EN CASILLAS
+   * 2. DESKTOP DRAG-TO-SCROLL (DESPLAZAMIENTO HORIZONTAL CON CLIC SOSTENIDO)
+   * Permite arrastrar libremente la tabla en Desktop manteniendo clic sostenido,
+   * sin interferir en mobile ni en los clics estándar de marcación.
+   */
+  const scrollContainer = document.querySelector('.attendance-table-scroll-container');
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let hasDragged = false;
+
+  if (scrollContainer) {
+    scrollContainer.addEventListener('mousedown', (e) => {
+      // Solo actuar con botón principal del mouse (izquierdo)
+      if (e.button !== 0) return;
+
+      isDown = true;
+      hasDragged = false;
+      startX = e.pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+
+      const x = e.pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 1.35; // Desplazamiento fluido y ergonómico
+
+      if (Math.abs(x - startX) > 4) {
+        hasDragged = true;
+        scrollContainer.classList.add('is-dragging');
+        e.preventDefault();
+        scrollContainer.scrollLeft = scrollLeft - walk;
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDown) {
+        isDown = false;
+        scrollContainer.classList.remove('is-dragging');
+        // Breve retardo para evitar que el evento 'click' active la casilla si se estaba arrastrando
+        setTimeout(() => {
+          hasDragged = false;
+        }, 60);
+      }
+    });
+  }
+
+  /**
+   * 3. INTERACTIVIDAD DE MARCACIÓN EN CASILLAS
    * Clic:
    * - Vacío (status-empty) -> Asistió (✓)
    * - Asistió (status-attended) -> Faltó (F)
@@ -56,6 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   if (table) {
     table.addEventListener('click', (e) => {
+      // Si se estaba arrastrando la tabla con clic sostenido, omitir la acción de marcación
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
       const cellBtn = e.target.closest('.cell-trigger');
       if (!cellBtn) return;
 
@@ -116,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * 3. NOTIFICACIÓN TOAST FLOTANTE
+   * 4. NOTIFICACIÓN TOAST FLOTANTE
    */
   let toastTimer = null;
   function showToast(message, isError = false) {
@@ -141,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * 4. BOTÓN "REGISTRAR ASISTENCIA ALUMNO"
+   * 5. BOTÓN "REGISTRAR ASISTENCIA ALUMNO"
    */
   if (btnSaveAttendance) {
     btnSaveAttendance.addEventListener('click', () => {
@@ -164,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * 5. BOTÓN DE FILTRADO "BUSCAR"
+   * 6. BOTÓN DE FILTRADO "BUSCAR"
    */
   if (btnSearchFilters) {
     btnSearchFilters.addEventListener('click', (e) => {
@@ -178,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * 6. BOTÓN "DESCARGAR EXCEL"
+   * 7. BOTÓN "DESCARGAR EXCEL"
    */
   if (btnExportExcel) {
     btnExportExcel.addEventListener('click', () => {
@@ -187,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * 7. ESTILO DINÁMICO PARA ANIMACIÓN DE CARGA DEL BOTÓN
+   * 8. ESTILO DINÁMICO PARA ANIMACIÓN DE CARGA DEL BOTÓN
    */
   const styleSpin = document.createElement('style');
   styleSpin.innerHTML = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;

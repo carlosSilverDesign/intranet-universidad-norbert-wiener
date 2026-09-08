@@ -536,8 +536,8 @@
           </li>
           <li class="sidebar-menu-item">
             <a href="acompanamiento.html" class="sidebar-menu-link">
-              <span class="sidebar-icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                  height="24" viewBox="0 0 24 24" fill="none">
+              <span class="sidebar-icon-box" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M5.30775 19.5C4.80258 19.5 4.375 19.325 4.025 18.975C3.675 18.625 3.5 18.1974 3.5 17.6923V11C3.5 9.83083 3.72308 8.73083 4.16925 7.7C4.61542 6.66917 5.22442 5.76792 5.99625 4.99625C6.76792 4.22442 7.66917 3.61542 8.7 3.16925C9.73083 2.72308 10.8308 2.5 12 2.5C13.1692 2.5 14.2692 2.72308 15.3 3.16925C16.3308 3.61542 17.2321 4.22442 18.0038 4.99625C18.7756 5.76792 19.3846 6.66917 19.8307 7.7C20.2769 8.73083 20.5 9.83083 20.5 11V20.3845C20.5 20.8897 20.325 21.3173 19.975 21.6673C19.625 22.0173 19.1974 22.1923 18.6923 22.1923H12.75C12.5372 22.1923 12.359 22.1204 12.2155 21.9768C12.0718 21.8333 12 21.6551 12 21.4423C12 21.2294 12.0718 21.0513 12.2155 20.9078C12.359 20.7641 12.5372 20.6923 12.75 20.6923H18.6923C18.7821 20.6923 18.8558 20.6634 18.9135 20.6058C18.9712 20.5481 19 20.4743 19 20.3845V19.5H17.2693C16.7706 19.5 16.3447 19.3234 15.9915 18.9703C15.6382 18.6169 15.4615 18.1909 15.4615 17.6923V14.2308C15.4615 13.7321 15.6382 13.3062 15.9915 12.953C16.3447 12.5997 16.7706 12.423 17.2693 12.423H19V11C19 9.06667 18.3167 7.41667 16.95 6.05C15.5833 4.68333 13.9333 4 12 4C10.0667 4 8.41667 4.68333 7.05 6.05C5.68333 7.41667 5 9.06667 5 11V12.423H6.73075C7.22942 12.423 7.65533 12.5997 8.0085 12.953C8.36183 13.3062 8.5385 13.7321 8.5385 14.2308V17.6923C8.5385 18.1909 8.36183 18.6169 8.0085 18.9703C7.65533 19.3234 7.22942 19.5 6.73075 19.5H5.30775ZM5.30775 18H6.73075C6.82042 18 6.89417 17.9712 6.952 17.9135C7.00967 17.8558 7.0385 17.7821 7.0385 17.6923V14.2308C7.0385 14.1411 7.00967 14.0673 6.952 14.0095C6.89417 13.9518 6.82042 13.923 6.73075 13.923H5V17.6923C5 17.7821 5.02883 17.8558 5.0865 17.9135C5.14417 17.9712 5.21792 18 5.30775 18ZM17.2693 18H19V13.923H17.2693C17.1796 13.923 17.1058 13.9518 17.048 14.0095C16.9903 14.0673 16.9615 14.1411 16.9615 14.2308V17.6923C16.9615 17.7821 16.9903 17.8558 17.048 17.9135C17.1058 17.9712 17.1796 18 17.2693 18ZM5.30775 13.923H5H7.0385H5.30775ZM17.2693 13.923H16.9615H19H17.2693Z"
                     fill="#5B6E80" />
@@ -734,7 +734,8 @@
         <div class="header-left">
           <!-- Contenedor de Icono con placeholder de respaldo -->
           <div class="header-icon">
-            <svg class="header-icon-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="header-icon-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+              fill="none" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
               <circle cx="9" cy="7" r="4"></circle>
               <polyline points="16 11 18 13 22 9"></polyline>
@@ -743,13 +744,12 @@
           </div>
           <div class="header-titles">
             <h1>Registro de Asistencia Alumnos</h1>
-            <p>Lorem ipsum...</p>
+            <p>Lorem ipsum is the text of a placeholder used in the design of the page...</p>
           </div>
         </div>
 
         <!-- Contenedor derecho (opcional para selectores de periodo u opciones) -->
         <div class="header-right">
-          <!-- Aquí se puede integrar opcionalmente el selector de periodo en otras vistas -->
         </div>
       </header>
 
@@ -758,7 +758,7 @@
       <!-- TARJETA DE FILTROS DOCENTE (2 FILAS COMPLETAS) -->
       <section class="attendance-filters-card" aria-label="Filtros de Asistencia">
         <form class="filters-form-grid" id="attendanceFiltersForm" onsubmit="return false;">
-          
+
           <!-- Fila 1: Periodo, Periodo Mes, Carrera, Sección -->
           <div class="filters-row filters-row-1">
             <div class="filter-item">
@@ -769,7 +769,9 @@
                   <option value="2026-2">2026-II</option>
                   <option value="2026-1">2026-I</option>
                 </select>
-                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
@@ -783,7 +785,9 @@
                   <option value="202608">202608</option>
                   <option value="202609">202609</option>
                 </select>
-                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
@@ -799,7 +803,9 @@
                   <option value="psi">Psicología</option>
                   <option value="der">Derecho</option>
                 </select>
-                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
@@ -813,7 +819,9 @@
                   <option value="AD2N5">AD2N5</option>
                   <option value="AD2N6">AD2N6</option>
                 </select>
-                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
@@ -830,7 +838,9 @@
                   <option value="AD8022">AD8022 - Formulación y Evaluación de Proyectos</option>
                   <option value="AD8023">AD8023 - Gerencia Estratégica</option>
                 </select>
-                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
@@ -844,7 +854,9 @@
                   <option value="Práctica">Práctica</option>
                   <option value="Laboratorio">Laboratorio</option>
                 </select>
-                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
@@ -866,7 +878,9 @@
                   <option value="noviembre">Noviembre</option>
                   <option value="diciembre">Diciembre</option>
                 </select>
-                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
@@ -874,7 +888,8 @@
 
             <div class="filter-item" style="justify-content: flex-end;">
               <button type="button" class="btn-filter-search" id="btnBuscarFiltros">
-                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
@@ -907,17 +922,20 @@
           </div>
 
           <button type="button" class="btn-download-excel" id="btnDescargarExcel">
-            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-              <line x1="10" y1="4" x2="10" y2="22"></line>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path
+                d="M14.625 5.99963H3.375C2.75368 5.99963 2.25 6.50331 2.25 7.12463V14.6246C2.25 15.246 2.75368 15.7496 3.375 15.7496H14.625C15.2463 15.7496 15.75 15.246 15.75 14.6246V7.12463C15.75 6.50331 15.2463 5.99963 14.625 5.99963Z"
+                stroke="#217346" stroke-width="1.39991" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2.25 2.25H15.75" stroke="#217346" stroke-width="1.39991" stroke-linecap="round" />
+              <path d="M5.99951 9.74939H7.49951M10.4995 9.74939H11.9995M5.99951 12.7494H7.49951M10.4995 12.7494H11.9995"
+                stroke="#217346" stroke-width="1.39991" stroke-linecap="round" />
             </svg>
             Descargar Excel
           </button>
         </div>
       </section>
 
-      <!-- MATRIZ DE ASISTENCIA: TABLA DE ALUMNOS (17 SESIONES) -->
+      <!-- MATRIZ DE ASISTENCIA: TABLA DE ALUMNOS (17 Sesiones Ejemplo) -->
       <section class="attendance-table-card">
         <div class="attendance-table-scroll-container">
           <table class="attendance-table" aria-label="Tabla de registro de asistencias">
@@ -928,8 +946,7 @@
                 <th class="th-student">ALUMNO</th>
                 <th class="th-section">SECCIÓN</th>
                 <th class="th-prog">PROG.</th>
-                
-                <!-- 17 Sesiones Programadas -->
+
                 <th class="th-date"><span class="th-date-month">Ago</span><span class="th-date-day">27</span></th>
                 <th class="th-date"><span class="th-date-month">Sep</span><span class="th-date-day">03</span></th>
                 <th class="th-date"><span class="th-date-month">Sep</span><span class="th-date-day">10</span></th>
@@ -947,7 +964,7 @@
                 <th class="th-date"><span class="th-date-month">Dic</span><span class="th-date-day">03</span></th>
                 <th class="th-date"><span class="th-date-month">Dic</span><span class="th-date-day">10</span></th>
                 <th class="th-date"><span class="th-date-month">Dic</span><span class="th-date-day">17</span></th>
-                
+
                 <!-- Resumen de Asistencia -->
                 <th class="th-asist-count">
                   <span>ASIST.</span>
@@ -967,23 +984,40 @@
                 <td class="td-prog">17</td>
 
                 <!-- Casillas de asistencia (Clic para alternar Asistió / Falta) -->
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-empty" title="Sin marcar" aria-label="Sin marcar"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-empty" title="Sin marcar"
+                    aria-label="Sin marcar"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
 
                 <td class="td-asist-count">4</td>
                 <td class="td-asist-pct">24%</td>
@@ -997,23 +1031,40 @@
                 <td class="td-section">AD2N4</td>
                 <td class="td-prog">17</td>
 
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-empty" title="Sin marcar" aria-label="Sin marcar"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-empty" title="Sin marcar"
+                    aria-label="Sin marcar"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
 
                 <td class="td-asist-count">6</td>
                 <td class="td-asist-pct">35%</td>
@@ -1027,23 +1078,40 @@
                 <td class="td-section">AD2N4</td>
                 <td class="td-prog">17</td>
 
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
 
                 <td class="td-asist-count">9</td>
                 <td class="td-asist-pct">53%</td>
@@ -1057,23 +1125,40 @@
                 <td class="td-section">AD2N4</td>
                 <td class="td-prog">17</td>
 
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-empty" title="Sin marcar" aria-label="Sin marcar"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-empty" title="Sin marcar"
+                    aria-label="Sin marcar"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
 
                 <td class="td-asist-count">4</td>
                 <td class="td-asist-pct">24%</td>
@@ -1087,26 +1172,278 @@
                 <td class="td-section">AD2N4</td>
                 <td class="td-prog">17</td>
 
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó" aria-label="Faltó">F</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió" aria-label="Asistió">✓</button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
-                <td class="attendance-cell"><button type="button" class="cell-trigger status-future" title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
 
                 <td class="td-asist-count">8</td>
                 <td class="td-asist-pct">47%</td>
+              </tr>
+
+              <!-- Alumno 6 -->
+              <tr data-student-id="2024204910">
+                <td class="td-num">6</td>
+                <td class="td-code">2024204910</td>
+                <td class="td-student">MENDOZA BAZAN, Camila Sofia</td>
+                <td class="td-section">AD2N4</td>
+                <td class="td-prog">17</td>
+
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+
+                <td class="td-asist-count">10</td>
+                <td class="td-asist-pct">59%</td>
+              </tr>
+
+              <!-- Alumno 7 -->
+              <tr data-student-id="2025109823">
+                <td class="td-num">7</td>
+                <td class="td-code">2025109823</td>
+                <td class="td-student">SALAZAR GUTIERREZ, Mateo Joaquin</td>
+                <td class="td-section">AD2N4</td>
+                <td class="td-prog">17</td>
+
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+
+                <td class="td-asist-count">7</td>
+                <td class="td-asist-pct">41%</td>
+              </tr>
+
+              <!-- Alumno 8 -->
+              <tr data-student-id="2026105432">
+                <td class="td-num">8</td>
+                <td class="td-code">2026105432</td>
+                <td class="td-student">VILLANUEVA LOPEZ, Ariana Belen</td>
+                <td class="td-section">AD2N4</td>
+                <td class="td-prog">17</td>
+
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-empty" title="Sin marcar"
+                    aria-label="Sin marcar"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+
+                <td class="td-asist-count">9</td>
+                <td class="td-asist-pct">53%</td>
+              </tr>
+
+              <!-- Alumno 9 -->
+              <tr data-student-id="2023107890">
+                <td class="td-num">9</td>
+                <td class="td-code">2023107890</td>
+                <td class="td-student">RODRIGUEZ PAREDES, Diego Alonso</td>
+                <td class="td-section">AD2N4</td>
+                <td class="td-prog">17</td>
+
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-absent" title="Faltó"
+                    aria-label="Faltó">F</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+
+                <td class="td-asist-count">8</td>
+                <td class="td-asist-pct">47%</td>
+              </tr>
+
+              <!-- Alumno 10 -->
+              <tr data-student-id="2026207711">
+                <td class="td-num">10</td>
+                <td class="td-code">2026207711</td>
+                <td class="td-student">FERNANDEZ CASTRO, Luciana Nicole</td>
+                <td class="td-section">AD2N4</td>
+                <td class="td-prog">17</td>
+
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-attended" title="Asistió"
+                    aria-label="Asistió">✓</button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+                <td class="attendance-cell"><button type="button" class="cell-trigger status-future"
+                    title="Sesión futura" aria-label="Sesión futura" tabindex="-1"></button></td>
+
+                <td class="td-asist-count">10</td>
+                <td class="td-asist-pct">59%</td>
               </tr>
             </tbody>
           </table>
@@ -1116,10 +1453,10 @@
       <!-- BOTÓN REGISTRAR ASISTENCIA ALUMNO (ACCIÓN DE GUARDADO) -->
       <section class="attendance-bottom-actions">
         <button type="button" class="btn-save-attendance" id="btnRegistrarAsistencia">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-            <polyline points="17 21 17 13 7 13 7 21"></polyline>
-            <polyline points="7 3 7 8 15 8"></polyline>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M4.42296 17.0833C4.00199 17.0833 3.64567 16.9375 3.354 16.6458C3.06234 16.3541 2.9165 15.9978 2.9165 15.5768V4.42308C2.9165 4.00211 3.06234 3.64579 3.354 3.35413C3.64567 3.06246 4.00199 2.91663 4.42296 2.91663H13.3667C13.5677 2.91663 13.7608 2.95565 13.9461 3.03371C14.1315 3.11163 14.2925 3.21899 14.4292 3.35579L16.644 5.57058C16.7808 5.70725 16.8882 5.86829 16.9661 6.05371C17.0441 6.23899 17.0832 6.43211 17.0832 6.63308V15.5768C17.0832 15.9978 16.9373 16.3541 16.6457 16.6458C16.354 16.9375 15.9977 17.0833 15.5767 17.0833H4.42296ZM15.8332 6.54163L13.4582 4.16663H4.42296C4.3481 4.16663 4.28664 4.19065 4.23859 4.23871C4.19053 4.28677 4.1665 4.34822 4.1665 4.42308V15.5768C4.1665 15.6517 4.19053 15.7132 4.23859 15.7612C4.28664 15.8093 4.3481 15.8333 4.42296 15.8333H15.5767C15.6516 15.8333 15.713 15.8093 15.7611 15.7612C15.8091 15.7132 15.8332 15.6517 15.8332 15.5768V6.54163ZM11.4742 13.782C11.8802 13.3761 12.0832 12.8846 12.0832 12.3077C12.0832 11.7307 11.8802 11.2393 11.4742 10.8333C11.0682 10.4273 10.5768 10.2243 9.99984 10.2243C9.42289 10.2243 8.93143 10.4273 8.52546 10.8333C8.11949 11.2393 7.9165 11.7307 7.9165 12.3077C7.9165 12.8846 8.11949 13.3761 8.52546 13.782C8.93143 14.188 9.42289 14.391 9.99984 14.391C10.5768 14.391 11.0682 14.188 11.4742 13.782ZM6.07359 8.23704H11.41C11.6248 8.23704 11.804 8.16524 11.9478 8.02163C12.0914 7.87788 12.1632 7.69864 12.1632 7.48392V6.07371C12.1632 5.85899 12.0914 5.67975 11.9478 5.536C11.804 5.39239 11.6248 5.32058 11.41 5.32058H6.07359C5.85887 5.32058 5.67963 5.39239 5.53588 5.536C5.39227 5.67975 5.32046 5.85899 5.32046 6.07371V7.48392C5.32046 7.69864 5.39227 7.87788 5.53588 8.02163C5.67963 8.16524 5.85887 8.23704 6.07359 8.23704ZM4.1665 6.54163V15.8333V4.16663V6.54163Z"
+              fill="white" />
           </svg>
           Registrar Asistencia Alumno
         </button>
@@ -1133,16 +1470,16 @@
     </main>
   </div>
 
-  <!-- TOAST DE NOTIFICACIÓN FLOTANTE -->
+  <!-- TOAST DE NOTIFICACIÓN FLOTANTE (ESTE SE DEBE OCULTAR, SOLO EJEMPLO, USAR EL QUE YA TENEMOS CREADO) -->
   <div class="attendance-toast" id="attendanceToast" role="status" aria-live="polite">
-    <svg class="attendance-toast-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="attendance-toast-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
       <polyline points="22 4 12 14.01 9 11.01"></polyline>
     </svg>
     <span class="attendance-toast-text" id="attendanceToastText">Asistencia registrada correctamente.</span>
   </div>
 
-  <!-- SCRIPTS -->
   <script src="navbar.js"></script>
   <script src="asistencia-alumno.js"></script>
 </body>
