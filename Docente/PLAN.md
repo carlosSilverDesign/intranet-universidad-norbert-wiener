@@ -24,9 +24,9 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
 - [ ] **Paso 6: Registro de Notas**
   - Estado: Pendiente
   - Archivos: `Docente/notas.html`, `Docente/notas.css`, `Docente/notas.js`
-- [ ] **Paso 7: Control y Registro de Asistencias (Estudiantes)**
-  - Estado: Pendiente
-  - Archivos: `Docente/asistencia.html`, `Docente/asistencia.css`, `Docente/asistencia.js`
+- [x] **Paso 7: Control y Registro de Asistencias (Estudiantes)**
+  - Estado: Completado (2026-09-07)
+  - Archivos: `Docente/asistencia-alumno.html`, `Docente/asistencia-alumno.css`, `Docente/asistencia-alumno.js`, `Docente/componentes/section-header.html`
 - [ ] **Paso 8: Avance Académico, Asistencia Docente y Reglamentos**
   - Estado: Pendiente
   - Archivos: `Docente/avance.html`, `Docente/asistencia-docente.html`, `Docente/reglamentos.html`
@@ -92,3 +92,10 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
   - Navbar lateral ampliado a 240px con enlaces de 14px en una sola línea, padding compacto, flechas de 18x18px y submenús internos sin icono con sangría.
   - Eliminación de márgenes inferiores sobrantes para corte limpio sobre el pie de página.
   - Cero variables CSS y comentarios técnicos redactados en español.
+- **2026-09-07**: Maquetación modular completa de la vista **Registro de Asistencia Alumnos** (`Docente/asistencia-alumno.html`, `Docente/asistencia.html`, `Docente/asistencia-alumno.css`, `Docente/asistencia-alumno.js`):
+  - Extracción y creación de la plantilla reutilizable de cabecera de sección institucional (`Docente/componentes/section-header.html`) con soporte para icono/placeholder y selector opcional de periodo a la derecha.
+  - Formulario de filtros institucional de dos filas con todos los selectores de la maqueta (`Periodo`, `Periodo Mes`, `Carrera`, `Sección`, `Curso`, `Tipo Sesión`, `Mes`) y botón de búsqueda.
+  - Subheader con fecha del sistema, leyenda semántica de colores y botón outline para exportar a Excel.
+  - Matriz interactiva de 17 sesiones de clase con casillas clickeables (Asistió ✓ / Faltó F / Vacío) y recálculo dinámico en tiempo real de asistencias acumuladas y porcentajes por fila.
+  - Botón verde institucional para registrar/grabar asistencias con feedback mediante notificación Toast flotante.
+  - Adaptabilidad responsive completa para dispositivos móviles y tablets con scroll horizontal táctil y columnas fijas.

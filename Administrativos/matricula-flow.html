@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrícula · Talleres, Selecciones y Elencos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F7F7;
+    --surface:#FFFFFF;
+    --surface-muted:#EEF3F3;
+    --ink:#16262B;
+    --ink-muted:#5C7278;
+    --ink-faint:#8AA0A3;
+    --border:#DCE6E7;
+    --border-strong:#C3D2D3;
+    --teal:#0E7C86;
+    --teal-dark:#0A5F67;
+    --teal-light:#E3F1F1;
+    --success:#2F8F5B;
+    --success-light:#E6F4EC;
+    --warning:#B4622A;
+    --warning-light:#FBEDE2;
+    --danger:#B23A3A;
+    --danger-light:#FBEAEA;
+    --radius:10px;
+    --radius-sm:6px;
+    --shadow-card:0 1px 2px rgba(20,40,44,0.06);
+    --shadow-pop:0 12px 32px rgba(15,35,38,0.18);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', -apple-system, sans-serif;
+    font-size:14.5px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  button{font-family:inherit;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .app{max-width:1180px;margin:0 auto;padding:28px 24px 80px;}
+
+  .app-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px;gap:16px;flex-wrap:wrap;}
+  .app-header h1{font-size:20px;font-weight:600;margin:0 0 2px;letter-spacing:-0.01em;}
+  .app-header p{margin:0;color:var(--ink-muted);font-size:13px;}
+  .env-tag{
+    font-size:11.5px;color:var(--teal-dark);background:var(--teal-light);
+    padding:4px 10px;border-radius:20px;font-weight:500;white-space:nowrap;
+  }
+
+  .layout{display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start;}
+  @media (max-width:920px){.layout{grid-template-columns:1fr;}}
+
+  .aside{position:sticky;top:20px;}
+  @media (max-width:920px){.aside{position:static;}}
+
+  /* Step cards */
+  .step{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    margin-bottom:14px;
+    box-shadow:var(--shadow-card);
+    overflow:hidden;
+    transition:border-color .15s ease;
+  }
+  .step.active{border-color:var(--border-strong);}
+  .step.locked{opacity:0.55;}
+
+  .step-head{
+    display:flex;align-items:center;gap:12px;
+    padding:16px 18px;
+    cursor:default;
+  }
+  .step-head.clickable{cursor:pointer;}
+  .step-num{
+    width:24px;height:24px;flex:none;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:600;
+    background:var(--surface-muted);color:var(--ink-muted);
+    border:1px solid var(--border);
+  }
+  .step.done .step-num{background:var(--success-light);color:var(--success);border-color:transparent;}
+  .step.active .step-num{background:var(--teal);color:#fff;border-color:transparent;}
+
+  .step-titles{flex:1;min-width:0;}
+  .step-title{font-size:14.5px;font-weight:600;margin:0;}
+  .step-sub{margin:2px 0 0;font-size:12.5px;color:var(--ink-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+  .step-change{
+    background:none;border:none;color:var(--teal-dark);font-size:13px;font-weight:500;
+    cursor:pointer;padding:6px 8px;border-radius:6px;flex:none;
+  }
+  .step-change:hover{background:var(--teal-light);}
+
+  .step-body{padding:0 18px 20px;}
+  .step-body.hidden{display:none;}
+
+  .field-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field label{font-size:12.5px;font-weight:600;color:var(--ink-muted);}
+  .input{
+    border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+    padding:9px 11px;font-size:14px;font-family:'IBM Plex Mono',monospace;
+    min-width:220px;background:#fff;color:var(--ink);
+  }
+  .input:focus{outline:2px solid var(--teal);outline-offset:0;border-color:var(--teal);}
+  .hint{font-size:12px;color:var(--ink-faint);margin-top:2px;}
+
+  .segmented{display:inline-flex;background:var(--surface-muted);border-radius:var(--radius-sm);padding:3px;gap:2px;}
+  .seg-btn{
+    border:none;background:transparent;padding:9px 16px;border-radius:5px;
+    font-size:13.5px;font-weight:500;color:var(--ink-muted);cursor:pointer;
+  }
+  .seg-btn.active{background:#fff;color:var(--teal-dark);box-shadow:0 1px 2px rgba(20,40,44,0.12);}
+  .seg-btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+
+  .btn{
+    border-radius:var(--radius-sm);border:1px solid transparent;
+    padding:9px 16px;font-size:13.5px;font-weight:600;cursor:pointer;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .btn:focus-visible{outline:2px solid var(--teal-dark);outline-offset:2px;}
+  .btn-primary{background:var(--teal);color:#fff;}
+  .btn-primary:hover{background:var(--teal-dark);}
+  .btn-primary:disabled{background:#B9CBCC;cursor:not-allowed;}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--border-strong);}
+  .btn-secondary:hover{background:var(--surface-muted);}
+  .btn-ghost{background:transparent;color:var(--danger);border-color:transparent;padding:6px 8px;font-weight:500;}
+  .btn-ghost:hover{background:var(--danger-light);}
+  .btn-block{width:100%;justify-content:center;}
+  .btn-lg{padding:11px 18px;font-size:14px;}
+
+  .student-card{
+    display:flex;gap:14px;align-items:center;
+    background:var(--teal-light);border:1px solid #CDE5E5;border-radius:var(--radius-sm);
+    padding:12px 14px;margin-top:10px;
+  }
+  .student-avatar{
+    width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;flex:none;
+  }
+  .student-info b{font-size:14px;}
+  .student-meta{font-size:12.5px;color:var(--ink-muted);margin-top:2px;}
+
+  .msg-error{
+    color:var(--danger);background:var(--danger-light);border:1px solid #F3CFCF;
+    border-radius:var(--radius-sm);padding:9px 12px;font-size:13px;margin-top:10px;
+    display:flex;gap:8px;align-items:flex-start;
+  }
+  .msg-info{
+    color:var(--ink-muted);background:var(--surface-muted);border:1px solid var(--border);
+    border-radius:var(--radius-sm);padding:14px;font-size:13.5px;
+    display:flex;gap:10px;align-items:flex-start;
+  }
+
+  .search-row{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+  .search-row .input{min-width:260px;flex:1;}
+
+  .table-wrap{border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;}
+  .table-scroll{max-height:320px;overflow:auto;}
+  table.data{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table.data thead th{
+    position:sticky;top:0;background:var(--surface-muted);
+    text-align:left;padding:9px 12px;font-weight:600;color:var(--ink-muted);
+    font-size:12px;border-bottom:1px solid var(--border);white-space:nowrap;
+  }
+  table.data tbody td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle;}
+  table.data tbody tr:last-child td{border-bottom:none;}
+  table.data tbody tr{cursor:pointer;}
+  table.data tbody tr:hover{background:var(--surface-muted);}
+  table.data tbody tr.selected{background:var(--teal-light);}
+  table.data tbody tr.disabled{cursor:not-allowed;color:var(--ink-faint);}
+  table.data tbody tr.disabled:hover{background:transparent;}
+  .col-num{color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;font-size:12.5px;}
+  .col-code{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-muted);}
+  .col-name{font-weight:500;}
+
+  input[type=radio]{accent-color:var(--teal);width:16px;height:16px;}
+
+  .pill{display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:2px 8px;border-radius:20px;}
+  .pill-ok{background:var(--success-light);color:var(--success);}
+  .pill-tight{background:var(--warning-light);color:var(--warning);}
+  .pill-full{background:var(--danger-light);color:var(--danger);}
+
+  .table-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px;flex-wrap:wrap;}
+  .table-count{font-size:12.5px;color:var(--ink-muted);}
+
+  .step-actions{display:flex;justify-content:flex-end;margin-top:14px;gap:10px;}
+
+  /* Aside / cart */
+  .summary-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:18px;box-shadow:var(--shadow-card);
+  }
+  .summary-card h2{font-size:14px;margin:0 0 4px;font-weight:600;}
+  .summary-card .sub{font-size:12.5px;color:var(--ink-muted);margin:0 0 14px;}
+  .summary-student{
+    display:flex;gap:10px;align-items:center;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--border);
+  }
+  .summary-student .name{font-size:13.5px;font-weight:600;}
+  .summary-student .meta{font-size:12px;color:var(--ink-muted);margin-top:1px;}
+  .summary-empty{text-align:center;padding:22px 10px;color:var(--ink-faint);font-size:13px;}
+  .summary-empty svg{margin-bottom:8px;opacity:0.6;}
+
+  .cart-item{
+    border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 12px;margin-bottom:10px;
+  }
+  .cart-item-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;}
+  .cart-item-name{font-size:13.5px;font-weight:600;}
+  .cart-item-code{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);}
+  .cart-item-detail{font-size:12.5px;color:var(--ink-muted);margin-top:6px;line-height:1.6;}
+  .cart-item-actions{display:flex;gap:4px;margin-top:8px;}
+  .cart-item-actions button{font-size:12px;padding:4px 8px;}
+  .tag-tipo{
+    font-size:10.5px;font-weight:600;text-transform:none;padding:2px 7px;border-radius:4px;
+    background:var(--teal-light);color:var(--teal-dark);white-space:nowrap;
+  }
+
+  .footer-note{font-size:12px;color:var(--ink-faint);margin-top:14px;text-align:center;}
+
+  /* Modal */
+  .overlay{
+    position:fixed;inset:0;background:rgba(15,30,32,0.45);
+    display:flex;align-items:center;justify-content:center;padding:20px;z-index:50;
+    animation:fade .15s ease;
+  }
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal{
+    background:#fff;border-radius:14px;max-width:420px;width:100%;
+    box-shadow:var(--shadow-pop);padding:26px 26px 22px;
+    animation:pop .18s cubic-bezier(.2,.8,.3,1.1);
+  }
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+  .modal-icon{
+    width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  }
+  .modal-icon.confirm{background:var(--teal-light);color:var(--teal-dark);}
+  .modal-icon.success{background:var(--success-light);color:var(--success);}
+  .modal h3{margin:0 0 8px;font-size:16.5px;}
+  .modal p{margin:0 0 4px;color:var(--ink-muted);font-size:13.5px;line-height:1.55;}
+  .modal ul{margin:10px 0 0;padding-left:0;list-style:none;}
+  .modal ul li{
+    font-size:13px;padding:8px 10px;background:var(--surface-muted);border-radius:7px;margin-bottom:6px;
+  }
+  .modal ul li b{display:block;font-size:13.5px;}
+  .modal ul li span{color:var(--ink-muted);font-size:12px;}
+  .modal-actions{display:flex;gap:10px;margin-top:20px;}
+  .modal-actions .btn{flex:1;justify-content:center;}
+  .hidden{display:none !important;}
+
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="app-header">
+    <div>
+      <h1>Matrícula a Talleres, Selecciones y Elencos</h1>
+      <p>Módulo administrativo — matrícula libre unificada</p>
+    </div>
+    <span class="env-tag">Personal administrativo</span>
+  </div>
+
+  <div class="layout">
+    <!-- MAIN COLUMN -->
+    <div class="main">
+
+      <!-- STEP 1: TIPO + ALUMNO -->
+      <div class="step active" id="step1">
+        <div class="step-head">
+          <div class="step-num">1</div>
+          <div class="step-titles">
+            <p class="step-title">Tipo de matrícula y alumno</p>
+            <p class="step-sub" id="step1-sub"></p>
+          </div>
+          <button class="step-change hidden" id="step1-change" onclick="reopenStep(1)">Cambiar</button>
+        </div>
+        <div class="step-body" id="step1-body">
+          <div class="field-row">
+            <div class="field">
+              <label>Tipo</label>
+              <div class="segmented" id="tipo-segmented">
+                <button class="seg-btn active" data-tipo="taller">Talleres</button>
+                <button class="seg-btn" data-tipo="seleccion">Selecciones deportivas</button>
+                <button class="seg-btn" data-tipo="elenco">Elencos</button>
+              </div>
+            </div>
+          </div>
+          <div class="search-row">
+            <div class="field" style="flex:1;">
+              <label>Código del alumno</label>
+              <input class="input" id="student-code" placeholder="Ej. 2021045678" maxlength="12">
+              <span class="hint">Códigos de prueba: 2021045678 · 2020098123 · 2022011044</span>
+            </div>
+            <button class="btn btn-primary" style="margin-top:20px;" onclick="buscarAlumno()">Buscar alumno</button>
+          </div>
+          <div id="student-error"></div>
+          <div id="student-card-wrap"></div>
+        </div>
+      </div>
+
+      <!-- STEP 2: CURSO -->
+      <div class="step locked" id="step2">
+        <div class="step-head">
+          <div class="step-num">2</div>
+          <div class="step-titles">
+            <p class="step-title">Elige un curso</p>
+            <p class="step-sub" id="step2-sub">Selecciona primero el tipo y el alumno</p>
+          </div>
+          <button class="step-change hidden" id="step2-change" onclick="reopenStep(2)">Cambiar</button>
+        </div>
+        <div class="step-body hidden" id="step2-body">
+          <div class="table-toolbar">
+            <input class="input" id="course-filter" placeholder="Buscar curso por nombre o código…" style="min-width:260px;" oninput="renderCourseTable()">
+            <span class="table-count" id="course-count"></span>
+          </div>
+          <div class="table-wrap">
+            <div class="table-scroll">
+              <table class="data">
+                <thead>
+                  <tr><th></th><th>N°</th><th>Código</th><th>Nombre del curso</th><th>Créd.</th><th>PK</th><th>Prio.</th></tr>
+                </thead>
+                <tbody id="course-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: SECCION -->
+      <div class="step locked" id="step3">
+        <div class="step-head">
+          <div class="step-num">3</div>
+          <div class="step-titles">
+            <p class="step-title">Elige una sección de teoría</p>
+            <p class="step-sub" id="step3-sub">Elige un curso primero</p>
+          </div>
+          <button class="step-change hidden" id="step3-change" onclick="reopenStep(3)">Cambiar</button>
+        </div>
+        <div class="step-body hidden" id="step3-body">
+          <div class="table-wrap">
+            <div class="table-scroll">
+              <table class="data">
+                <thead>
+                  <tr><th></th><th>Sección</th><th>Día</th><th>Horas</th><th>Docente</th><th>Sesión</th><th>Local</th><th>Aula</th><th>Vacantes</th></tr>
+                </thead>
+                <tbody id="section-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: GRUPO -->
+      <div class="step locked" id="step4">
+        <div class="step-head">
+          <div class="step-num">4</div>
+          <div class="step-titles">
+            <p class="step-title">Elige un grupo de práctica</p>
+            <p class="step-sub" id="step4-sub">Elige una sección primero</p>
+          </div>
+          <button class="step-change hidden" id="step4-change" onclick="reopenStep(4)">Cambiar</button>
+        </div>
+        <div class="step-body hidden" id="step4-body">
+          <div id="group-area"></div>
+          <div class="step-actions">
+            <button class="btn btn-primary btn-lg" id="assign-btn" onclick="asignarCurso()" disabled>Asignar sección / grupo para el curso seleccionado</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ASIDE: RESUMEN -->
+    <div class="aside">
+      <div class="summary-card">
+        <h2>Resumen de la matrícula</h2>
+        <p class="sub">Cursos que se registrarán para este alumno</p>
+        <div id="summary-student-wrap"></div>
+        <div id="cart-wrap"></div>
+        <button class="btn btn-secondary btn-block" id="add-another-btn" style="margin-top:4px;" onclick="agregarOtroCurso()" disabled>+ Agregar otro curso</button>
+        <button class="btn btn-primary btn-block btn-lg" id="grabar-btn" style="margin-top:10px;" onclick="abrirConfirmacion()" disabled>Grabar matrícula</button>
+        <p class="footer-note">Se guardarán todos los cursos listados arriba</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="overlay hidden" id="confirm-overlay">
+  <div class="modal">
+    <div class="modal-icon confirm">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    </div>
+    <h3>¿Registrar esta matrícula?</h3>
+    <p id="confirm-body-text">Se registrará la matrícula de <b></b> en los siguientes cursos:</p>
+    <ul id="confirm-list"></ul>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="cerrarConfirmacion()">Cancelar</button>
+      <button class="btn btn-primary" onclick="registrarMatricula()">Registrar matrícula</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="overlay hidden" id="success-overlay">
+  <div class="modal">
+    <div class="modal-icon success">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+    </div>
+    <h3>Matrícula registrada</h3>
+    <p id="success-body-text"></p>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="matricularOtroAlumno()">Matricular a otro alumno</button>
+      <button class="btn btn-primary" onclick="cerrarExito()">Listo</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- DATA ---------- */
+const TALLERES = [
+  ["TALLA036","Voces Y Cuerdas"],["TALL001","Baile Moderno"],["TALL003","Basquetbol Mixto"],
+  ["TALL007","Clown"],["TALL008","Danzas Afroperuanas"],["TALL009","Danzas Folclóricas"],
+  ["TALL010","Futsal Damas"],["TALL012","Futsal Varones"],["TALL014","Karate"],
+  ["TALL015","Marinera Norteña"],["TALL017","Taekwondo"],["TALL018","Teatro"],
+  ["TALL020","Voleibol Mixto"],["TALL026","Magia E Ilusionismo"],["TALL027","Música"],
+  ["TALL029","Tenis De Mesa"],["TALL032","Caporales"],["TALL033","Guitarra Acústica"],
+  ["TALL034","Ajedréz"],["TALL035","Judo"]
+];
+const SELECCIONES = [
+  ["SEL001","Básquet Selección Varones"],["SEL002","Básquet Selección Damas"],
+  ["SEL003","Vóley Selección Damas"],["SEL004","Futsal Selección Varones"],
+  ["SEL005","Atletismo Selección"]
+];
+const ELENCOS = [
+  ["ELE001","Elenco De Danzas Folclóricas"],["ELE002","Elenco De Marinera Norteña"],
+  ["ELE003","Elenco De Teatro"],["ELE004","Elenco De Música"],
+  ["ELE005","Elenco De Caporales"],["ELE006","Coro Institucional"]
+];
+const TIPO_DATA = {
+  taller:{label:"Taller", courses:TALLERES},
+  seleccion:{label:"Selección deportiva", courses:SELECCIONES},
+  elenco:{label:"Elenco", courses:ELENCOS}
+};
+
+const STUDENTS = {
+  "2021045678":{nombre:"GARCÍA LÓPEZ, María Fernanda", carrera:"Ingeniería de Sistemas e Informática", periodo:"2026-II", mes:"Setiembre"},
+  "2020098123":{nombre:"RAMOS VÁSQUEZ, Diego Alonso", carrera:"Administración y Negocios Internacionales", periodo:"2026-II", mes:"Setiembre"},
+  "2022011044":{nombre:"TORRES CASTILLO, Camila Belén", carrera:"Psicología", periodo:"2026-II", mes:"Setiembre"}
+};
+
+const DOCENTES = ["CAMPANA PILLHUAMAN, Ciro","RÍOS MENDOZA, Ana","QUISPE TORRES, Luis","FLORES ROJAS, Patricia"];
+const LOCALES = [["Local 1","WTS01"],["Local 5","WTAL"],["Local 3","WTS02"]];
+const DIAS = ["Lun","Mar","Mié","Jue","Vie","Sáb"];
+const HORAS = ["14:45 - 16:15","16:15 - 17:45","17:45 - 19:15"];
+
+function hashCode(str){let h=0;for(let i=0;i<str.length;i++){h=(h*31+str.charCodeAt(i))>>>0;}return h;}
+
+function seededSections(codigo){
+  const h = hashCode(codigo);
+  const n = 2 + (h % 3); // 2-4 sections
+  const secs = [];
+  for(let i=0;i<n;i++){
+    const seed = h + i*17;
+    const tope = 20 + (seed % 3)*5; // 20,25,30
+    let matriculados = tope - ((seed>>3) % (tope-14));
+    if(i === n-1) matriculados = tope; // last section demo: full
+    secs.push({
+      id: codigo+"-S"+(i+1),
+      nombre: "Sección T"+(i+1),
+      dia: DIAS[(seed)%DIAS.length],
+      hora: HORAS[(seed>>2)%HORAS.length],
+      docente: DOCENTES[(seed>>4)%DOCENTES.length],
+      sesion: "Práctica",
+      local: LOCALES[(seed>>1)%LOCALES.length][0],
+      aula: LOCALES[(seed>>1)%LOCALES.length][1],
+      matriculados: matriculados,
+      tope: tope
+    });
+  }
+  return secs;
+}
+
+function seededGroups(sectionId){
+  const h = hashCode(sectionId);
+  if(h % 3 !== 0) return []; // most sections have no groups
+  const n = 2;
+  const groups = [];
+  for(let i=0;i<n;i++){
+    const seed = h + i*29;
+    const tope = 12 + (seed%2)*4;
+    const matriculados = tope - ((seed>>2)%(tope-6));
+    groups.push({
+      id: sectionId+"-G"+String.fromCharCode(65+i),
+      nombre: "Grupo "+String.fromCharCode(65+i),
+      dia: DIAS[(seed)%DIAS.length],
+      hora: HORAS[(seed>>2)%HORAS.length],
+      docente: DOCENTES[(seed>>3)%DOCENTES.length],
+      aula: LOCALES[(seed>>1)%LOCALES.length][1],
+      matriculados: matriculados,
+      tope: tope
+    });
+  }
+  return groups;
+}
+
+/* ---------- STATE ---------- */
+const state = {
+  tipo: "taller",
+  student: null,
+  studentCode: "",
+  currentCourse: null,   // {codigo,nombre}
+  currentSection: null,
+  currentGroup: null,    // null allowed if "no groups"
+  groupAcknowledgedNone: false,
+  cart: [],
+  openStep: 1
+};
+
+/* ---------- UTIL ---------- */
+function initials(nombre){
+  const parts = nombre.split(",");
+  return (parts[0]||"").trim().slice(0,1) + (parts[1]||"").trim().slice(0,1);
+}
+function escapeHtml(s){return s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+/* ---------- STEP 1 ---------- */
+document.getElementById("tipo-segmented").addEventListener("click", e=>{
+  const btn = e.target.closest(".seg-btn");
+  if(!btn) return;
+  document.querySelectorAll(".seg-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  state.tipo = btn.dataset.tipo;
+});
+
+document.getElementById("student-code").addEventListener("keydown", e=>{
+  if(e.key==="Enter") buscarAlumno();
+});
+
+function buscarAlumno(){
+  const codeInput = document.getElementById("student-code");
+  const code = codeInput.value.trim();
+  const errorWrap = document.getElementById("student-error");
+  const cardWrap = document.getElementById("student-card-wrap");
+  errorWrap.innerHTML = "";
+  cardWrap.innerHTML = "";
+
+  if(!code){
+    errorWrap.innerHTML = `<div class="msg-error">Ingresa un código de alumno para continuar.</div>`;
+    return;
+  }
+  const student = STUDENTS[code];
+  if(!student){
+    errorWrap.innerHTML = `<div class="msg-error">No se encontró un alumno con el código <b class="mono">${escapeHtml(code)}</b>. Verifica el código e intenta de nuevo.</div>`;
+    state.student = null;
+    updateAsideStudent();
+    return;
+  }
+  state.student = student;
+  state.studentCode = code;
+  cardWrap.innerHTML = `
+    <div class="student-card">
+      <div class="student-avatar">${initials(student.nombre)}</div>
+      <div class="student-info">
+        <b>${escapeHtml(student.nombre)}</b>
+        <div class="student-meta">${escapeHtml(student.carrera)} · ${student.periodo} · ${student.mes}</div>
+      </div>
+    </div>`;
+  updateAsideStudent();
+  completeStep1();
+}
+
+function completeStep1(){
+  const step = document.getElementById("step1");
+  step.classList.remove("active");
+  step.classList.add("done");
+  document.getElementById("step1-body").classList.add("hidden");
+  document.getElementById("step1-change").classList.remove("hidden");
+  document.getElementById("step1-sub").textContent =
+    `${TIPO_DATA[state.tipo].label} · ${state.student.nombre.split(",")[0]}, código ${state.studentCode}`;
+  unlockStep(2);
+  openStep(2);
+}
+
+function reopenStep(n){
+  if(n===1){
+    document.getElementById("step1").classList.remove("done");
+    document.getElementById("step1").classList.add("active");
+    document.getElementById("step1-body").classList.remove("hidden");
+    document.getElementById("step1-change").classList.add("hidden");
+  }
+  openStep(n);
+}
+
+/* ---------- generic step open/lock helpers ---------- */
+function unlockStep(n){
+  document.getElementById("step"+n).classList.remove("locked");
+}
+function openStep(n){
+  [1,2,3,4].forEach(i=>{
+    const stepEl = document.getElementById("step"+i);
+    const body = document.getElementById("step"+i+"-body");
+    if(i===n){
+      stepEl.classList.add("active");
+      stepEl.classList.remove("done");
+      body.classList.remove("hidden");
+    } else if(i<n){
+      stepEl.classList.remove("active");
+      body.classList.add("hidden");
+    } else {
+      stepEl.classList.remove("active");
+      body.classList.add("hidden");
+    }
+  });
+  state.openStep = n;
+  if(n===2) renderCourseTable();
+}
+
+/* ---------- STEP 2: CURSO ---------- */
+function renderCourseTable(){
+  const list = TIPO_DATA[state.tipo].courses;
+  const filter = (document.getElementById("course-filter").value||"").toLowerCase();
+  const filtered = list.filter(([cod,nom]) =>
+    nom.toLowerCase().includes(filter) || cod.toLowerCase().includes(filter));
+  document.getElementById("course-count").textContent = `${filtered.length} de ${list.length} cursos`;
+
+  const tbody = document.getElementById("course-tbody");
+  if(filtered.length===0){
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--ink-faint);padding:20px;">No se encontraron cursos con ese criterio.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = filtered.map(([cod,nom], idx)=>{
+    const alreadyInCart = state.cart.some(c => c.codigo===cod);
+    const selected = state.currentCourse && state.currentCourse.codigo===cod;
+    return `<tr class="${selected?'selected':''} ${alreadyInCart?'disabled':''}"
+              onclick="${alreadyInCart? '' : `selectCourse('${cod}', '${escapeHtml(nom).replace(/'/g,"\\'")}')`}"
+              title="${alreadyInCart? 'Ya fue asignado a este alumno' : ''}">
+      <td><input type="radio" name="course-radio" ${selected?'checked':''} ${alreadyInCart?'disabled':''} onclick="event.stopPropagation();${alreadyInCart?'':`selectCourse('${cod}','${escapeHtml(nom).replace(/'/g,"\\'")}')`}"></td>
+      <td class="col-num">${idx+1}</td>
+      <td class="col-code">${cod}</td>
+      <td class="col-name">${nom}${alreadyInCart?' <span class="pill pill-ok" style="margin-left:6px;">Ya asignado</span>':''}</td>
+      <td class="col-code">0</td>
+      <td class="col-code">14</td>
+      <td class="col-code">1</td>
+    </tr>`;
+  }).join("");
+}
+
+function selectCourse(codigo, nombre){
+  state.currentCourse = {codigo, nombre};
+  state.currentSection = null;
+  state.currentGroup = null;
+  state.groupAcknowledgedNone = false;
+  renderCourseTable();
+  completeStep2();
+}
+
+function completeStep2(){
+  const step = document.getElementById("step2");
+  step.classList.remove("active");
+  step.classList.add("done");
+  document.getElementById("step2-body").classList.add("hidden");
+  document.getElementById("step2-change").classList.remove("hidden");
+  document.getElementById("step2-sub").textContent = `${state.currentCourse.codigo} · ${state.currentCourse.nombre}`;
+  unlockStep(3);
+  document.getElementById("step3-sub").textContent = "Cargando secciones…";
+  openStep(3);
+  renderSectionTable();
+}
+
+/* ---------- STEP 3: SECCION ---------- */
+function renderSectionTable(){
+  const sections = seededSections(state.currentCourse.codigo);
+  const tbody = document.getElementById("section-tbody");
+  tbody.innerHTML = sections.map(s=>{
+    const full = s.matriculados >= s.tope;
+    const tight = !full && (s.tope - s.matriculados) <= 3;
+    const selected = state.currentSection && state.currentSection.id===s.id;
+    const pillClass = full ? "pill-full" : tight ? "pill-tight" : "pill-ok";
+    const pillText = full ? "Sin cupos" : `${s.matriculados}/${s.tope}`;
+    return `<tr class="${selected?'selected':''} ${full?'disabled':''}"
+              onclick="${full?'':`selectSection('${s.id}')`}">
+      <td><input type="radio" name="section-radio" ${selected?'checked':''} ${full?'disabled':''} onclick="event.stopPropagation();${full?'':`selectSection('${s.id}')`}"></td>
+      <td class="col-code">${s.nombre.replace('Sección ','')}</td>
+      <td>${s.dia}</td>
+      <td class="col-code">${s.hora}</td>
+      <td>${s.docente}</td>
+      <td>${s.sesion}</td>
+      <td>${s.local}</td>
+      <td class="col-code">${s.aula}</td>
+      <td><span class="pill ${pillClass}">${pillText}</span></td>
+    </tr>`;
+  }).join("");
+  tbody.dataset.sections = JSON.stringify(sections);
+}
+
+function selectSection(id){
+  const sections = JSON.parse(document.getElementById("section-tbody").dataset.sections);
+  const sec = sections.find(s=>s.id===id);
+  state.currentSection = sec;
+  state.currentGroup = null;
+  state.groupAcknowledgedNone = false;
+  renderSectionTable();
+  completeStep3();
+}
+
+function completeStep3(){
+  const step = document.getElementById("step3");
+  step.classList.remove("active");
+  step.classList.add("done");
+  document.getElementById("step3-body").classList.add("hidden");
+  document.getElementById("step3-change").classList.remove("hidden");
+  document.getElementById("step3-sub").textContent =
+    `${state.currentSection.nombre} · ${state.currentSection.dia} ${state.currentSection.hora}`;
+  unlockStep(4);
+  openStep(4);
+  renderGroupArea();
+}
+
+/* ---------- STEP 4: GRUPO ---------- */
+function renderGroupArea(){
+  const groups = seededGroups(state.currentSection.id);
+  const area = document.getElementById("group-area");
+  const assignBtn = document.getElementById("assign-btn");
+
+  if(groups.length===0){
+    area.innerHTML = `
+      <div class="msg-info">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <div>No hay grupos de práctica en esta sección. Puedes continuar y asignar el curso directamente con la sección elegida.</div>
+      </div>`;
+    state.groupAcknowledgedNone = true;
+    state.currentGroup = null;
+    assignBtn.disabled = false;
+    return;
+  }
+
+  area.innerHTML = `
+    <div class="table-wrap">
+      <div class="table-scroll">
+        <table class="data">
+          <thead><tr><th></th><th>Grupo</th><th>Día</th><th>Horas</th><th>Docente</th><th>Aula</th><th>Vacantes</th></tr></thead>
+          <tbody id="group-tbody"></tbody>
+        </table>
+      </div>
+    </div>`;
+  const tbody = document.getElementById("group-tbody");
+  tbody.dataset.groups = JSON.stringify(groups);
+  tbody.innerHTML = groups.map(g=>{
+    const full = g.matriculados >= g.tope;
+    const tight = !full && (g.tope-g.matriculados) <= 2;
+    const selected = state.currentGroup && state.currentGroup.id===g.id;
+    const pillClass = full? "pill-full" : tight? "pill-tight" : "pill-ok";
+    const pillText = full? "Sin cupos" : `${g.matriculados}/${g.tope}`;
+    return `<tr class="${selected?'selected':''} ${full?'disabled':''}" onclick="${full?'':`selectGroup('${g.id}')`}">
+      <td><input type="radio" name="group-radio" ${selected?'checked':''} ${full?'disabled':''} onclick="event.stopPropagation();${full?'':`selectGroup('${g.id}')`}"></td>
+      <td class="col-code">${g.nombre}</td>
+      <td>${g.dia}</td>
+      <td class="col-code">${g.hora}</td>
+      <td>${g.docente}</td>
+      <td class="col-code">${g.aula}</td>
+      <td><span class="pill ${pillClass}">${pillText}</span></td>
+    </tr>`;
+  }).join("");
+  assignBtn.disabled = !state.currentGroup;
+}
+
+function selectGroup(id){
+  const groups = JSON.parse(document.getElementById("group-tbody").dataset.groups);
+  state.currentGroup = groups.find(g=>g.id===id);
+  renderGroupArea();
+}
+
+/* ---------- ASIGNAR ---------- */
+function asignarCurso(){
+  const item = {
+    tipo: state.tipo,
+    tipoLabel: TIPO_DATA[state.tipo].label,
+    codigo: state.currentCourse.codigo,
+    nombre: state.currentCourse.nombre,
+    seccion: state.currentSection.nombre,
+    seccionDetalle: `${state.currentSection.dia} ${state.currentSection.hora}`,
+    grupo: state.currentGroup ? state.currentGroup.nombre : null
+  };
+  state.cart.push(item);
+
+  // reset course/section/group, collapse step4, go back to step2 for another addition
+  state.currentCourse = null;
+  state.currentSection = null;
+  state.currentGroup = null;
+  state.groupAcknowledgedNone = false;
+
+  document.getElementById("step4").classList.remove("active");
+  document.getElementById("step4").classList.add("locked");
+  document.getElementById("step4-body").classList.add("hidden");
+  document.getElementById("step4-change").classList.add("hidden");
+  document.getElementById("step4-sub").textContent = "Elige una sección primero";
+
+  document.getElementById("step3").classList.add("locked");
+  document.getElementById("step3-body").classList.add("hidden");
+  document.getElementById("step3-change").classList.add("hidden");
+  document.getElementById("step3-sub").textContent = "Elige un curso primero";
+
+  document.getElementById("step2-change").classList.add("hidden");
+  document.getElementById("step2-sub").textContent = "Selecciona el siguiente curso o revisa el resumen";
+  openStep(2);
+
+  renderCart();
+}
+
+function agregarOtroCurso(){
+  reopenStep(2);
+  document.getElementById("step2").classList.remove("locked");
+  openStep(2);
+}
+
+/* ---------- ASIDE ---------- */
+function updateAsideStudent(){
+  const wrap = document.getElementById("summary-student-wrap");
+  if(!state.student){
+    wrap.innerHTML = "";
+    return;
+  }
+  wrap.innerHTML = `
+    <div class="summary-student">
+      <div class="student-avatar" style="width:30px;height:30px;font-size:11.5px;">${initials(state.student.nombre)}</div>
+      <div>
+        <div class="name">${escapeHtml(state.student.nombre)}</div>
+        <div class="meta">${escapeHtml(state.student.carrera)}</div>
+      </div>
+    </div>`;
+}
+
+function renderCart(){
+  const wrap = document.getElementById("cart-wrap");
+  const addBtn = document.getElementById("add-another-btn");
+  const grabarBtn = document.getElementById("grabar-btn");
+
+  if(state.cart.length===0){
+    wrap.innerHTML = `
+      <div class="summary-empty">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a4 4 0 0 1 8 0v2"></path></svg>
+        <div>Aún no has asignado ningún curso.<br>Completa los pasos de la izquierda.</div>
+      </div>`;
+    grabarBtn.disabled = true;
+    addBtn.disabled = true;
+    return;
+  }
+
+  addBtn.disabled = !state.student;
+  grabarBtn.disabled = false;
+
+  wrap.innerHTML = state.cart.map((item, i)=>`
+    <div class="cart-item">
+      <div class="cart-item-top">
+        <div>
+          <span class="tag-tipo">${item.tipoLabel}</span>
+          <div class="cart-item-name" style="margin-top:5px;">${escapeHtml(item.nombre)}</div>
+          <div class="cart-item-code">${item.codigo}</div>
+        </div>
+      </div>
+      <div class="cart-item-detail">
+        ${item.seccion} · ${item.seccionDetalle}<br>
+        ${item.grupo ? item.grupo : "Sin grupo de práctica"}
+      </div>
+      <div class="cart-item-actions">
+        <button class="btn btn-secondary" onclick="quitarDelCarrito(${i})">Quitar</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function quitarDelCarrito(i){
+  state.cart.splice(i,1);
+  renderCart();
+  renderCourseTable();
+}
+
+/* ---------- CONFIRM / SUCCESS ---------- */
+function abrirConfirmacion(){
+  document.querySelector("#confirm-body-text b").textContent = state.student.nombre;
+  document.getElementById("confirm-list").innerHTML = state.cart.map(item=>`
+    <li><b>${escapeHtml(item.nombre)}</b>
+      <span>${item.seccion} ${item.grupo ? "· " + item.grupo : "· sin grupo"}</span>
+    </li>`).join("");
+  document.getElementById("confirm-overlay").classList.remove("hidden");
+}
+function cerrarConfirmacion(){
+  document.getElementById("confirm-overlay").classList.add("hidden");
+}
+function registrarMatricula(){
+  document.getElementById("confirm-overlay").classList.add("hidden");
+  const n = state.cart.length;
+  document.getElementById("success-body-text").innerHTML =
+    `Se registró la matrícula de <b>${escapeHtml(state.student.nombre)}</b> en ${n} ${n===1?'curso':'cursos'}: ` +
+    state.cart.map(c=>escapeHtml(c.nombre)).join(", ") + ".";
+  document.getElementById("success-overlay").classList.remove("hidden");
+}
+function cerrarExito(){
+  document.getElementById("success-overlay").classList.add("hidden");
+}
+function matricularOtroAlumno(){
+  document.getElementById("success-overlay").classList.add("hidden");
+  resetAll();
+}
+
+/* ---------- RESET ---------- */
+function resetAll(){
+  state.student = null;
+  state.studentCode = "";
+  state.currentCourse = null;
+  state.currentSection = null;
+  state.currentGroup = null;
+  state.cart = [];
+
+  document.getElementById("student-code").value = "";
+  document.getElementById("student-error").innerHTML = "";
+  document.getElementById("student-card-wrap").innerHTML = "";
+  document.getElementById("course-filter").value = "";
+
+  document.getElementById("step1").classList.remove("done");
+  document.getElementById("step1").classList.add("active");
+  document.getElementById("step1-body").classList.remove("hidden");
+  document.getElementById("step1-change").classList.add("hidden");
+
+  [2,3,4].forEach(n=>{
+    document.getElementById("step"+n).classList.add("locked");
+    document.getElementById("step"+n).classList.remove("active","done");
+    document.getElementById("step"+n+"-body").classList.add("hidden");
+    document.getElementById("step"+n+"-change").classList.add("hidden");
+  });
+  document.getElementById("step2-sub").textContent = "Selecciona primero el tipo y el alumno";
+  document.getElementById("step3-sub").textContent = "Elige un curso primero";
+  document.getElementById("step4-sub").textContent = "Elige una sección primero";
+
+  updateAsideStudent();
+  renderCart();
+}
+
+/* init */
+renderCart();
+</script>
+</body>
+</html>

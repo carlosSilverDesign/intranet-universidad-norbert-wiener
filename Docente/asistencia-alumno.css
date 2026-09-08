@@ -1,0 +1,788 @@
+/* ==========================================================================
+   ESTILOS - VISTA REGISTRO DE ASISTENCIA ALUMNOS (PERFIL DOCENTE)
+   Universidad Norbert Wiener
+   Diseñado 100% acorde al visual de referencia institucional.
+   ========================================================================== */
+
+/* --- 1. CABECERA MODULAR DE SECCIÓN --- */
+.page-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 0.75rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.header-icon-svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+/* Cuadrado gris de reserva / placeholder: si no hay SVG o está vacío se visualiza */
+.header-icon-placeholder {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background-color: #E2E8F0;
+  border-radius: 8px;
+}
+
+.header-icon:empty .header-icon-placeholder,
+.header-icon.is-placeholder .header-icon-placeholder {
+  display: block;
+}
+
+.header-icon.is-placeholder .header-icon-svg {
+  display: none;
+}
+
+.header-titles h1 {
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 0 0 4px 0;
+  font-family: 'Lato', sans-serif;
+  color: #1E293B;
+  font-weight: 700;
+}
+
+.header-titles p {
+  margin: 0;
+  color: #64748B;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-select-label {
+  color: #475569;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.header-select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 8px 36px 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #CBD5E1;
+  background-color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1E293B;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.header-select:focus {
+  border-color: #07C8CC;
+  box-shadow: 0 0 0 3px rgba(7, 200, 204, 0.15);
+}
+
+.header-select-arrow {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: #64748B;
+}
+
+.header-divider {
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: #E2E8F0;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* --- 2. TARJETA DE FILTROS DOCENTE --- */
+.attendance-filters-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  margin-bottom: 1.5rem;
+}
+
+.filters-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filters-row {
+  display: grid;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+/* Fila 1: 4 campos (Periodo, Periodo Mes, Carrera más ancha, Sección) */
+.filters-row-1 {
+  grid-template-columns: 140px 140px 1fr 130px;
+}
+
+/* Fila 2: Curso amplio, Tipo Sesión, Mes, Botón Buscar */
+.filters-row-2 {
+  grid-template-columns: 1fr 180px 180px 140px;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-item label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.filter-select {
+  width: 100%;
+  height: 42px;
+  padding: 0 34px 0 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  font-size: 13.5px;
+  font-family: 'Roboto', sans-serif;
+  color: #1E293B;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filter-select:focus {
+  border-color: #07C8CC;
+  box-shadow: 0 0 0 3px rgba(7, 200, 204, 0.15);
+}
+
+.filter-select-icon {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: #64748B;
+}
+
+/* Botón de Buscar dentro de los filtros */
+.btn-filter-search {
+  height: 42px;
+  background-color: #1E293B;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-filter-search:hover {
+  background-color: #0F172A;
+}
+
+.btn-filter-search:active {
+  transform: scale(0.98);
+}
+
+
+/* --- 3. BARRA DE INFORMACIÓN Y ACCIONES (FECHA, LEYENDA, EXCEL) --- */
+.attendance-subbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.attendance-date-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.attendance-legend-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.attendance-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.legend-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.legend-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.legend-box.sin-clase {
+  border: 1.5px solid #CBD5E1;
+  background-color: #FFFFFF;
+}
+
+.legend-box.asistio {
+  border: 1.5px solid #10B981;
+  background-color: #ECFDF5;
+  color: #059669;
+}
+
+.legend-box.falto {
+  border: 1.5px solid #FCA5A5;
+  background-color: #FEF2F2;
+  color: #DC2626;
+}
+
+/* Botón Descargar Excel */
+.btn-download-excel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #FFFFFF;
+  border: 1.5px solid #10B981;
+  border-radius: 8px;
+  color: #059669;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-download-excel:hover {
+  background-color: #ECFDF5;
+  color: #047857;
+}
+
+.btn-download-excel:active {
+  transform: scale(0.98);
+}
+
+
+/* --- 4. MATRIZ DE ASISTENCIA (TABLA INTERACTIVA) --- */
+.attendance-table-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.attendance-table-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Barra de scroll personalizada */
+  scrollbar-width: thin;
+  scrollbar-color: #94A3B8 #F1F5F9;
+}
+
+.attendance-table-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.attendance-table-scroll-container::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+.attendance-table-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #94A3B8;
+  border-radius: 4px;
+}
+
+.attendance-table {
+  width: 100%;
+  min-width: 1180px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* Cabecera Verde Institucional */
+.attendance-table thead {
+  background-color: #0D6E6A;
+  color: #FFFFFF;
+}
+
+.attendance-table th {
+  padding: 12px 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.attendance-table th:last-child {
+  border-right: none;
+}
+
+.th-num {
+  width: 44px;
+  min-width: 44px;
+}
+
+.th-code {
+  width: 110px;
+  min-width: 110px;
+  text-align: left;
+  padding-left: 14px;
+}
+
+.th-student {
+  width: 260px;
+  min-width: 240px;
+  text-align: left;
+  padding-left: 14px;
+}
+
+.th-section {
+  width: 75px;
+  min-width: 75px;
+}
+
+.th-prog {
+  width: 65px;
+  min-width: 65px;
+}
+
+.th-date {
+  width: 44px;
+  min-width: 44px;
+  line-height: 1.25;
+}
+
+.th-date-month {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.th-date-day {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.th-asist-count {
+  width: 70px;
+  min-width: 70px;
+  line-height: 1.25;
+}
+
+.th-asist-sub {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.th-asist-pct {
+  width: 75px;
+  min-width: 75px;
+}
+
+/* Cuerpo de la tabla */
+.attendance-table tbody tr {
+  border-bottom: 1px solid #E2E8F0;
+  transition: background-color 0.15s;
+}
+
+.attendance-table tbody tr:hover {
+  background-color: #F8FAFC;
+}
+
+.attendance-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.attendance-table td {
+  padding: 10px 4px;
+  font-size: 13px;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.td-num {
+  font-weight: 500;
+  color: #64748B;
+}
+
+.td-code {
+  text-align: left;
+  padding-left: 14px;
+  font-weight: 500;
+  color: #475569;
+  font-size: 13px;
+}
+
+.td-student {
+  text-align: left;
+  padding-left: 14px;
+  font-weight: 700;
+  color: #1E293B;
+  font-size: 13px;
+}
+
+.td-section {
+  font-size: 12.5px;
+  color: #475569;
+}
+
+.td-prog {
+  font-size: 13px;
+  color: #475569;
+}
+
+.td-asist-count {
+  font-weight: 700;
+  font-size: 14px;
+  color: #0D6E6A;
+}
+
+.td-asist-pct {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #1E293B;
+}
+
+
+/* --- 5. CASILLAS INTERACTIVAS DE ASISTENCIA --- */
+.attendance-cell {
+  padding: 6px 2px !important;
+}
+
+.cell-trigger {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  background: none;
+  border: 1.5px solid transparent;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.cell-trigger:focus-visible {
+  box-shadow: 0 0 0 2px #07C8CC;
+}
+
+/* Estado 1: Asistió ✓ */
+.cell-trigger.status-attended {
+  border-color: #10B981;
+  background-color: #ECFDF5;
+  color: #059669;
+}
+
+.cell-trigger.status-attended:hover {
+  background-color: #D1FAE5;
+  border-color: #059669;
+}
+
+/* Estado 2: Faltó F */
+.cell-trigger.status-absent {
+  border-color: #FCA5A5;
+  background-color: #FEF2F2;
+  color: #DC2626;
+}
+
+.cell-trigger.status-absent:hover {
+  background-color: #FEE2E2;
+  border-color: #EF4444;
+}
+
+/* Estado 3: Vacío / Sin marcar (clase activa habilitada) */
+.cell-trigger.status-empty {
+  border-color: #CBD5E1;
+  background-color: #FFFFFF;
+  color: transparent;
+}
+
+.cell-trigger.status-empty:hover {
+  border-color: #94A3B8;
+  background-color: #F8FAFC;
+}
+
+/* Estado 4: Futura / Sin clase (bloque gris sólido no editable) */
+.cell-trigger.status-future {
+  border-color: #E2E8F0;
+  background-color: #E2E8F0;
+  cursor: not-allowed;
+  color: transparent;
+  pointer-events: none;
+}
+
+
+/* --- 6. BOTÓN PRINCIPAL DE REGISTRO INFERIOR --- */
+.attendance-bottom-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn-save-attendance {
+  background-color: #166534;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(22, 101, 52, 0.28);
+  transition: all 0.2s ease;
+}
+
+.btn-save-attendance:hover {
+  background-color: #14532D;
+  box-shadow: 0 4px 12px rgba(22, 101, 52, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-save-attendance:active {
+  transform: translateY(0);
+}
+
+
+/* --- 7. PIE DE PÁGINA INSTITUCIONAL --- */
+.main-footer {
+  text-align: center;
+  padding: 1.5rem 0 2rem 0;
+  font-size: 13px;
+  color: #64748B;
+  border-top: 1px solid #E2E8F0;
+  margin-top: 2rem;
+}
+
+
+/* --- 8. TOAST DE CONFIRMACIÓN AL GUARDAR --- */
+.attendance-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #0F172A;
+  color: #FFFFFF;
+  padding: 14px 22px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transform: translateY(100px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+}
+
+.attendance-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.attendance-toast-icon {
+  width: 22px;
+  height: 22px;
+  color: #10B981;
+}
+
+.attendance-toast-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+/* ==========================================================================
+   ADAPTABILIDAD RESPONSIVE (MOBILE & TABLET)
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .filters-row-1 {
+    grid-template-columns: 130px 130px 1fr 120px;
+  }
+  .filters-row-2 {
+    grid-template-columns: 1fr 160px 150px 130px;
+  }
+}
+
+@media (max-width: 992px) {
+  .attendance-filters-card {
+    padding: 16px 18px;
+  }
+
+  .filters-row-1 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filters-row-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn-filter-search {
+    width: 100%;
+  }
+
+  /* Columnas fijas en scroll horizontal para móviles */
+  .attendance-table th.th-num,
+  .attendance-table td.td-num {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+  }
+
+  .attendance-table th.th-num {
+    background-color: #0D6E6A;
+  }
+
+  .attendance-table td.td-num {
+    background-color: #FFFFFF;
+  }
+
+  .attendance-table th.th-student,
+  .attendance-table td.td-student {
+    position: sticky;
+    left: 44px;
+    z-index: 2;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.04);
+  }
+
+  .attendance-table th.th-student {
+    background-color: #0D6E6A;
+  }
+
+  .attendance-table td.td-student {
+    background-color: #FFFFFF;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-titles h1 {
+    font-size: 20px;
+  }
+
+  .filters-row-1,
+  .filters-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .attendance-subbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .attendance-legend-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn-download-excel {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .attendance-bottom-actions {
+    justify-content: stretch;
+  }
+
+  .btn-save-attendance {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+}
