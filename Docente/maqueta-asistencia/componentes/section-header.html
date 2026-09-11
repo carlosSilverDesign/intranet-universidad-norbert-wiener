@@ -1,0 +1,72 @@
+<!-- ==========================================================================
+     PLANTILLA REUTILIZABLE: CABECERA DE SECCIÓN (PERFIL DOCENTE)
+     Universidad Norbert Wiener
+     
+     Uso:
+     - Copiar este bloque en la parte superior de cada vista dentro de <main class="main-content-layout">.
+     - Si la sección NO requiere selector de periodo a la derecha, se puede omitir o dejar vacío el bloque .header-right.
+     - Para el icono: si no hay SVG cargado, la clase .header-icon-placeholder muestra un cuadrado gris que se oculta o adapta automáticamente cuando se coloca el SVG.
+     ========================================================================== -->
+
+<!-- VARIACIÓN 1: Cabecera Estándar (como en Registro de Asistencia Alumnos) -->
+<header class="page-header-flex">
+  <div class="header-left">
+    <!-- Contenedor de Icono con placeholder gris automático -->
+    <div class="header-icon">
+      <!-- Si tienes el SVG, colócalo aquí dentro. Si no hay SVG, se muestra el cuadrado gris -->
+      <svg class="header-icon-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <polyline points="16 11 18 13 22 9"></polyline>
+      </svg>
+      <div class="header-icon-placeholder" aria-hidden="true"></div>
+    </div>
+    <div class="header-titles">
+      <h1>Registro de Asistencia Alumnos</h1>
+      <p>Lorem ipsum...</p>
+    </div>
+  </div>
+
+  <!-- Contenedor derecho (opcional para botones o selectores a la derecha) -->
+  <div class="header-right">
+    <!-- Dejar vacío si la vista no requiere select u opciones en la cabecera -->
+  </div>
+</header>
+<hr class="header-divider">
+
+<!-- ==========================================================================
+     VARIACIÓN 2: Cabecera con Selector de Periodo a la derecha (extremo opuesto)
+     ========================================================================== -->
+<!--
+<header class="page-header-flex">
+  <div class="header-left">
+    <div class="header-icon">
+      <svg class="header-icon-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <polyline points="16 11 18 13 22 9"></polyline>
+      </svg>
+      <div class="header-icon-placeholder" aria-hidden="true"></div>
+    </div>
+    <div class="header-titles">
+      <h1>Nombre de la Sección</h1>
+      <p>Descripción breve de la funcionalidad o contenido de la pantalla.</p>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <label for="headerPeriodSelect" class="header-select-label">Periodo Académico:</label>
+    <div class="header-select-wrapper">
+      <select id="headerPeriodSelect" class="header-select">
+        <option value="2027-1" selected>2027 - I</option>
+        <option value="2026-2">2026 - II</option>
+        <option value="2026-1">2026 - I</option>
+      </select>
+      <svg class="header-select-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </div>
+</header>
+<hr class="header-divider">
+-->
