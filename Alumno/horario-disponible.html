@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horario Disponible - Intranet Universidad Norbert Wiener</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="horario-disponible.css">
+</head>
+
+<body>
+
+  <!-- Enlace de salto accesible para lectores de pantalla y navegación por teclado -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Zona de anuncios accesibles en vivo (Live Region) -->
+  <div id="a11y-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Contenedor Principal (Máximo 1082px en desktop) -->
+  <main class="main-content-layout" id="main-content" tabindex="-1">
+
+    <!-- ==========================================================================
+         HEADER DE PÁGINA
+         ========================================================================== -->
+    <header class="page-header-flex">
+      <div class="header-left">
+        <div class="header-icon" aria-hidden="true">
+          <!-- Icono institucional de horario/calendario -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <polyline points="12 14 12 17 15 17"></polyline>
+          </svg>
+        </div>
+        <div class="header-titles">
+          <h1>Horario Disponible</h1>
+          <p>Consulta las secciones, horarios, sedes y docentes programados para el ciclo académico.</p>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <!-- Botón para imprimir la totalidad de los datos -->
+        <button type="button" class="btn-print" id="btnPrintSchedule" aria-label="Imprimir horario disponible completo"
+          onclick="window.print()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+            focusable="false">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          <span>Imprimir</span>
+        </button>
+      </div>
+    </header>
+
+    <hr class="header-divider" aria-hidden="true">
+
+    <!-- ==========================================================================
+         FICHA INFORMATIVA DEL ALUMNO
+         ========================================================================== -->
+    <section class="student-info-card" aria-labelledby="heading-datos-alumno">
+      <h2 id="heading-datos-alumno" class="sr-only">Datos académicos del estudiante y período</h2>
+
+      <!-- Fila 1: Alumno, Carrera y Selects de Periodo y Mes -->
+      <div class="student-info-row">
+        <div class="info-item">
+          <span class="info-label">Alumno(a):</span>
+          <span class="info-value info-value-name">LILA YAJAIRA CAMPOS SOTO</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Carrera:</span>
+          <span class="info-value">CARRERA PROFESIONAL DE ENFERMERÍA</span>
+        </div>
+
+        <div class="info-item">
+          <label for="periodoSelect" class="info-label">Período:</label>
+          <div class="select-wrapper">
+            <select id="periodoSelect" class="hd-select" aria-label="Seleccionar período académico">
+              <option value="2026-2" selected>2026 - II</option>
+              <option value="2026-1">2026 - I</option>
+              <option value="2025-2">2025 - II</option>
+            </select>
+            <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true" focusable="false">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <label for="mesSelect" class="info-label">Mes:</label>
+          <div class="select-wrapper">
+            <select id="mesSelect" class="hd-select" aria-label="Seleccionar mes de consulta">
+              <option value="AGOSTO" selected>AGOSTO</option>
+              <option value="SETIEMBRE">SETIEMBRE</option>
+              <option value="OCTUBRE">OCTUBRE</option>
+              <option value="NOVIEMBRE">NOVIEMBRE</option>
+              <option value="DICIEMBRE">DICIEMBRE</option>
+            </select>
+            <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true" focusable="false">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fila 2: Fechas del ciclo y Modalidad -->
+      <div class="student-info-row student-info-row-secondary">
+        <div class="info-item">
+          <span class="info-label">Inicio:</span>
+          <span class="info-value">24/08/2026</span>
+          <span class="info-label" style="margin-left: 12px;">Fin:</span>
+          <span class="info-value">13/12/2026</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Modalidad de Estudios:</span>
+          <span class="tag-modalidad" aria-label="Modalidad de estudio: Presencial">Presencial</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LEYENDA INFORMATIVA
+         ========================================================================== -->
+    <aside class="legend-callout" aria-label="Leyenda informativa sobre modalidades y programación">
+      <div class="legend-callout-row">
+        <span class="legend-term">REMOTO:</span>
+        <span class="legend-desc">Curso que se dictará a través de videoconferencia, con sesiones en vivo.</span>
+      </div>
+      <div class="legend-callout-row">
+        <span class="legend-term">A DISTANCIA:</span>
+        <span class="legend-desc">Curso que se dictará de manera asincrónica, con módulos de autoaprendizaje.</span>
+      </div>
+      <div class="legend-notes">
+        <span>(*) La asignación docente puede variar según la programación del curso.</span>
+        <span>(**) Los horarios son susceptibles a cambios antes de la matrícula.</span>
+      </div>
+    </aside>
+
+    <!-- ==========================================================================
+         MENSAJE CENTRAL: CRÉDITOS PERMITIDOS
+         ========================================================================== -->
+    <div class="max-credits-banner" role="note">
+      <strong>Máximo 22 Creditos permitidos.</strong>
+    </div>
+
+    <!-- ==========================================================================
+         LISTADO DE CURSOS Y TABLAS DESPLEGADAS
+         Todas las tablas usan la misma grilla .hd-table-grid para mantener
+         columnas estrictamente alineadas en toda la página.
+         ========================================================================== -->
+    <section class="courses-container" aria-label="Listado de horarios por curso">
+
+      <!-- ----------------------------------------------------------------------
+           CURSO 1: EN7011 - PROCESOS BIOLÓGICOS (Créditos: 6)
+           Demuestra múltiples secciones, 1 y 2 horarios por día, aulas físicas
+           y la casuística de 3 horarios simultáneos/secuenciales.
+           ---------------------------------------------------------------------- -->
+      <article class="course-block" aria-labelledby="curso-en7011-title">
+        <header class="course-header">
+          <h2 id="curso-en7011-title" class="course-title">EN7011 - PROCESOS BIOLÓGICOS</h2>
+          <span class="course-credits" aria-label="6 créditos">Créditos: 6</span>
+        </header>
+
+        <!-- Contenedor con scroll horizontal para móvil -->
+        <div class="table-scroll-container" tabindex="0" role="region" aria-label="Tabla de horarios para Procesos Biológicos">
+          <div class="hd-table" role="table">
+
+            <!-- Encabezado de la tabla -->
+            <div class="hd-table-grid hd-table-header" role="row">
+              <div class="hd-col-th" role="columnheader">Sección / Grupo</div>
+              <div class="hd-col-th" role="columnheader">tipo</div>
+              <div class="hd-col-th" role="columnheader">Día</div>
+              <div class="hd-col-th" role="columnheader">Inicio</div>
+              <div class="hd-col-th" role="columnheader">Fin</div>
+              <div class="hd-col-th" role="columnheader">Sede</div>
+              <div class="hd-col-th" role="columnheader">Aula</div>
+              <div class="hd-col-th" role="columnheader">Docente</div>
+              <div class="hd-col-th hd-col-center" role="columnheader">Sesión</div>
+              <div class="hd-col-th hd-col-center" role="columnheader">Cupos Max.</div>
+              <div class="hd-col-th hd-col-center" role="columnheader">Matriculados</div>
+            </div>
+
+            <!-- Fila 1: EN1M30 - Teoría -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M30</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Mar</span></div>
+              <div class="hd-cell" role="cell"><span>07:00</span></div>
+              <div class="hd-cell" role="cell"><span>10:00</span></div>
+              <div class="hd-cell" role="cell"><span>Local 1</span></div>
+              <div class="hd-cell" role="cell"><span>A.506</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">VITE CACERES, Zoila Veronica</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Teoría</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 2: EN1M30 - Práctica (2 horarios apilados: Local 2 / Local 1, LCS401 / T807) -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M30</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Mar</span></div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">10:00</span>
+                  <span class="hd-subitem">11:30</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">11:30</span>
+                  <span class="hd-subitem">13:00</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">Local 2</span>
+                  <span class="hd-subitem">Local 1</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">LCS401</span>
+                  <span class="hd-subitem">T807</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">ALMEIDA GRANDEZ, Kathia Julissa</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Práctica</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 3: EN1M31 - Teoría -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M31</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Jue</span></div>
+              <div class="hd-cell" role="cell"><span>07:00</span></div>
+              <div class="hd-cell" role="cell"><span>10:00</span></div>
+              <div class="hd-cell" role="cell"><span>Local 1</span></div>
+              <div class="hd-cell" role="cell"><span>A.407</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">TERRY BORJAS, Carmen Rosa</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Teoría</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 4: EN1M31 - Práctica (2 horarios: Sede única Local 1, Aulas LCS402 y T807) -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M31</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Jue</span></div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">10:00</span>
+                  <span class="hd-subitem">11:30</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">11:30</span>
+                  <span class="hd-subitem">13:00</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell"><span>Local 1</span></div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">LCS402</span>
+                  <span class="hd-subitem">T807</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">TERRY BORJAS, Carmen Rosa</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Práctica</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 5: EN1M32 - Teoría -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M32</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Vie</span></div>
+              <div class="hd-cell" role="cell"><span>08:30</span></div>
+              <div class="hd-cell" role="cell"><span>11:30</span></div>
+              <div class="hd-cell" role="cell"><span>Local 1</span></div>
+              <div class="hd-cell" role="cell"><span>A.407</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">CARRASCO VILLANUEVA, Mariela Emperatriz</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Teoría</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 6: EN1M32 - Práctica (2 horarios: Local 2 / Local 1, LCS401 / T807) -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M32</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Vie</span></div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">11:30</span>
+                  <span class="hd-subitem">13:00</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">13:00</span>
+                  <span class="hd-subitem">14:30</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">Local 2</span>
+                  <span class="hd-subitem">Local 1</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">LCS401</span>
+                  <span class="hd-subitem">T807</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">CARRASCO VILLANUEVA, Mariela Emperatriz</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Práctica</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 7: EN1M33 - Teoría -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M33</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Vie</span></div>
+              <div class="hd-cell" role="cell"><span>09:15</span></div>
+              <div class="hd-cell" role="cell"><span>12:15</span></div>
+              <div class="hd-cell" role="cell"><span>Local 1</span></div>
+              <div class="hd-cell" role="cell"><span>L615</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">ACOSTA CORNEJO, Orlando Oscar</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Teoría</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 8: EN1M33 - Práctica (2 horarios: Local 1 / Local 2, T508 / LCS402) -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M33</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Vie</span></div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">12:15</span>
+                  <span class="hd-subitem">13:45</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">13:45</span>
+                  <span class="hd-subitem">15:15</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">Local 1</span>
+                  <span class="hd-subitem">Local 2</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">T508</span>
+                  <span class="hd-subitem">LCS402</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">MERINO CABALLERO, Jose</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Práctica</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 9: EN1M34 - Teoría -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M34</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Lun</span></div>
+              <div class="hd-cell" role="cell"><span>07:45</span></div>
+              <div class="hd-cell" role="cell"><span>10:45</span></div>
+              <div class="hd-cell" role="cell"><span>Local 1</span></div>
+              <div class="hd-cell" role="cell"><span>A502</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">NOBLECILLA HUIMAN, Maggie Carolina</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Teoría</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 10: EN1M34 - Práctica (2 horarios: Local 2 / Local 1, LCS402 / T508) -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M34</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Lun</span></div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">10:45</span>
+                  <span class="hd-subitem">12:15</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">12:15</span>
+                  <span class="hd-subitem">13:45</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">Local 2</span>
+                  <span class="hd-subitem">Local 1</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">LCS402</span>
+                  <span class="hd-subitem">T508</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">NOBLECILLA HUIMAN, Maggie Carolina</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Práctica</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 11: EN1M35 - Teoría -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M35</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Lun</span></div>
+              <div class="hd-cell" role="cell"><span>11:30</span></div>
+              <div class="hd-cell" role="cell"><span>14:30</span></div>
+              <div class="hd-cell" role="cell"><span>Local 1</span></div>
+              <div class="hd-cell" role="cell"><span>A.307</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">HUILLCA CASTILLO, Alberto</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Teoría</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+            </div>
+
+            <!-- Fila 12: EN1M35 - Práctica (CASUÍSTICA: 3 Horarios en un mismo día) -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">EN1M35</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Lun</span></div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">14:30</span>
+                  <span class="hd-subitem">16:00</span>
+                  <span class="hd-subitem">17:30</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">16:00</span>
+                  <span class="hd-subitem">17:30</span>
+                  <span class="hd-subitem">19:00</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">Local 1</span>
+                  <span class="hd-subitem">Local 2</span>
+                  <span class="hd-subitem">Local 3</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell">
+                <div class="hd-subitems">
+                  <span class="hd-subitem">T807</span>
+                  <span class="hd-subitem">LCS401</span>
+                  <span class="hd-subitem">LAB302</span>
+                </div>
+              </div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">HUILLCA CASTILLO, Alberto</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Práctica</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">30</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">28</span></div>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- ----------------------------------------------------------------------
+           CURSO 2: AC4011 - DESARROLLO HUMANO Y SOCIAL (Créditos: 4)
+           Demuestra alineación estricta compartida con Curso 1, además de
+           Sede Virtual, Remoto y modalidad A Distancia.
+           ---------------------------------------------------------------------- -->
+      <article class="course-block" aria-labelledby="curso-ac4011-title">
+        <header class="course-header">
+          <h2 id="curso-ac4011-title" class="course-title">AC4011 - DESARROLLO HUMANO Y SOCIAL</h2>
+          <span class="course-credits" aria-label="4 créditos">Créditos: 4</span>
+        </header>
+
+        <!-- Contenedor con scroll horizontal para móvil -->
+        <div class="table-scroll-container" tabindex="0" role="region" aria-label="Tabla de horarios para Desarrollo Humano y Social">
+          <div class="hd-table" role="table">
+
+            <!-- Encabezado de la tabla (Idéntico grid template) -->
+            <div class="hd-table-grid hd-table-header" role="row">
+              <div class="hd-col-th" role="columnheader">Sección / Grupo</div>
+              <div class="hd-col-th" role="columnheader">tipo</div>
+              <div class="hd-col-th" role="columnheader">Día</div>
+              <div class="hd-col-th" role="columnheader">Inicio</div>
+              <div class="hd-col-th" role="columnheader">Fin</div>
+              <div class="hd-col-th" role="columnheader">Sede</div>
+              <div class="hd-col-th" role="columnheader">Aula</div>
+              <div class="hd-col-th" role="columnheader">Docente</div>
+              <div class="hd-col-th hd-col-center" role="columnheader">Sesión</div>
+              <div class="hd-col-th hd-col-center" role="columnheader">Cupos Max.</div>
+              <div class="hd-col-th hd-col-center" role="columnheader">Matriculados</div>
+            </div>
+
+            <!-- Fila 1: AC1M10 - Sede Virtual / Remoto -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">AC1M10</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Lun</span></div>
+              <div class="hd-cell" role="cell"><span>08:30</span></div>
+              <div class="hd-cell" role="cell"><span>11:30</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-tag-sede-virtual">Sede Virtual</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-tag-remoto">Remoto</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">ZACARIAS DE LA CRUZ, Luis Rodrigo</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Teoría</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">50</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">9</span></div>
+            </div>
+
+            <!-- Fila 2: AC1M38 - Sede Virtual / Remoto -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">AC1M38</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Lun</span></div>
+              <div class="hd-cell" role="cell"><span>07:00</span></div>
+              <div class="hd-cell" role="cell"><span>10:00</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-tag-sede-virtual">Sede Virtual</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-tag-remoto">Remoto</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">ROSALES LIBIA, Beder Orestes</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Teoría</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">50</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">47</span></div>
+            </div>
+
+            <!-- Fila 3: AC1M40 - Sede Virtual / A Distancia -->
+            <div class="hd-table-grid hd-table-row" role="row">
+              <div class="hd-cell" role="cell"><span class="hd-section-code">AC1M40</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-type-badge">REGULAR</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-day">Sáb</span></div>
+              <div class="hd-cell" role="cell"><span>08:00</span></div>
+              <div class="hd-cell" role="cell"><span>12:00</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-tag-sede-virtual">Sede Virtual</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-tag-distancia">A Distancia</span></div>
+              <div class="hd-cell" role="cell"><span class="hd-docente">MORALES SANCHEZ, Patricia Elena</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-session">Teoría</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">50</span></div>
+              <div class="hd-cell hd-cell-center" role="cell"><span class="hd-number">35</span></div>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Footer Institucional -->
+    <footer style="text-align: center; padding: 24px 0; color: #727272; font-size: 13px; font-family: 'Roboto', sans-serif; margin-top: 20px;">
+      <p>&copy; 2026 Universidad Norbert Wiener. Todos los derechos reservados.</p>
+    </footer>
+
+  </main>
+
+  <script>
+    // Anuncios dinámicos accesibles al cambiar periodo o mes
+    const periodoSelect = document.getElementById('periodoSelect');
+    const mesSelect = document.getElementById('mesSelect');
+    const announcer = document.getElementById('a11y-announcer');
+
+    function notifyChange() {
+      if (announcer && periodoSelect && mesSelect) {
+        announcer.textContent = `Mostrando horarios para el período ${periodoSelect.value}, mes de ${mesSelect.value}.`;
+      }
+    }
+
+    if (periodoSelect) periodoSelect.addEventListener('change', notifyChange);
+    if (mesSelect) mesSelect.addEventListener('change', notifyChange);
+  </script>
+
+</body>
+
+</html>
