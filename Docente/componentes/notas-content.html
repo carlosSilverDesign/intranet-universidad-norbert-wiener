@@ -1,0 +1,373 @@
+<!-- ==========================================================================
+     COMPONENTE MODULAR CENTRAL: REGISTRO DE NOTAS
+     Universidad Norbert Wiener - Perfil Docente
+     
+     Uso:
+     - En Blazor / ASP.NET: Inyectar este bloque directamente dentro de la página/componente (@Body).
+     - En Maqueta Dinámica: Inyectar dentro de <main class="main-content"> o .main-content-layout.
+     ========================================================================== -->
+
+<div class="notes-page-container">
+
+  <!-- CABECERA DE PÁGINA -->
+  <header class="notes-header-flex">
+    <div class="notes-header-left">
+      <div class="notes-header-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+          stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+      </div>
+      <div class="notes-header-titles">
+        <h1>Registro de Notas</h1>
+        <p>Consulte y registre las calificaciones de los estudiantes por cada unidad y fase de evaluación.</p>
+      </div>
+    </div>
+  </header>
+
+  <hr class="notes-header-divider">
+
+  <!-- TARJETA DE FILTROS DOCENTE -->
+  <section class="notes-filters-card" aria-label="Filtros de Registro de Notas">
+    <form class="notes-filters-form" id="notesFiltersForm" onsubmit="return false;">
+
+      <!-- Fila 1: Periodo, Mes, Carrera, Sección -->
+      <div class="notes-filters-row notes-filters-row-1">
+        <div class="notes-filter-item">
+          <label for="filtroPeriodo">Periodo</label>
+          <div class="notes-select-wrapper">
+            <select id="filtroPeriodo" class="notes-select">
+              <option value="2027-1" selected>2027-I</option>
+              <option value="2026-2">2026-II</option>
+              <option value="2026-1">2026-I</option>
+            </select>
+            <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="notes-filter-item">
+          <label for="filtroMes">Mes</label>
+          <div class="notes-select-wrapper">
+            <select id="filtroMes" class="notes-select">
+              <option value="julio" selected>Julio</option>
+              <option value="agosto">Agosto</option>
+              <option value="setiembre">Setiembre</option>
+              <option value="octubre">Octubre</option>
+              <option value="noviembre">Noviembre</option>
+              <option value="diciembre">Diciembre</option>
+            </select>
+            <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="notes-filter-item">
+          <label for="filtroCarrera">Carrera</label>
+          <div class="notes-select-wrapper">
+            <select id="filtroCarrera" class="notes-select">
+              <option value="ani" selected>Administración y Negocios Internacionales</option>
+              <option value="med">Medicina Humana</option>
+              <option value="enf">Enfermería</option>
+              <option value="psi">Psicología</option>
+              <option value="der">Derecho</option>
+            </select>
+            <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="notes-filter-item">
+          <label for="filtroSeccion">Sección</label>
+          <div class="notes-select-wrapper">
+            <select id="filtroSeccion" class="notes-select">
+              <option value="AD2N4" selected>AD2N4</option>
+              <option value="AD2N5">AD2N5</option>
+              <option value="AD2N6">AD2N6</option>
+            </select>
+            <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fila 2: Curso, Tipo Sesión, Botón Buscar -->
+      <div class="notes-filters-row notes-filters-row-2">
+        <div class="notes-filter-item">
+          <label for="filtroCurso">Curso</label>
+          <div class="notes-select-wrapper">
+            <select id="filtroCurso" class="notes-select">
+              <option value="AD8021" selected>AD8021 - Informática para la Toma de Decisiones</option>
+              <option value="AD8022">AD8022 - Formulación y Evaluación de Proyectos</option>
+              <option value="AD8023">AD8023 - Gerencia Estratégica</option>
+            </select>
+            <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="notes-filter-item">
+          <label for="filtroTipoSesion">Tipo Sesión</label>
+          <div class="notes-select-wrapper">
+            <select id="filtroTipoSesion" class="notes-select">
+              <option value="Teoría" selected>Teoría</option>
+              <option value="Práctica">Práctica</option>
+              <option value="Laboratorio">Laboratorio</option>
+            </select>
+            <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="notes-filter-item" style="justify-content: flex-end;">
+          <button type="button" class="btn-notes-search" id="btnBuscarNotas">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Buscar
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </section>
+
+  <!-- CRONOGRAMA DE EVALUACIÓN (Coherente con Design System - Carga colapsado) -->
+  <section class="schedule-card is-collapsed" id="scheduleCard" aria-label="Cronograma de Evaluación">
+    <div class="schedule-card-header" id="scheduleCardHeader">
+      <div class="schedule-header-left">
+        <span class="schedule-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="#0F848F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Cronograma de Evaluación
+        </span>
+        <span class="schedule-badge-active">Habilitado: Fase 1 - UD1 (Hasta 20/09/2026)</span>
+      </div>
+      <button type="button" class="schedule-toggle-btn" id="scheduleToggleBtn" aria-label="Colapsar o expandir cronograma">
+        <span class="schedule-toggle-text" id="scheduleToggleText">Ver Cronograma</span>
+        <svg class="schedule-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <div class="schedule-card-body" id="scheduleCardBody">
+      <div class="schedule-grid">
+        <div class="schedule-grid-header">
+          <div class="schedule-th">Fase</div>
+          <div class="schedule-th">Evaluación</div>
+          <div class="schedule-th">Inicio</div>
+          <div class="schedule-th">Fin</div>
+          <div class="schedule-th">Estado</div>
+        </div>
+
+        <div class="schedule-grid-row is-active-phase">
+          <div class="schedule-td" data-label="Fase">1</div>
+          <div class="schedule-td td-align-left td-eval" data-label="Evaluación">UD1 - Conceptual (C) / Procedimental (P) / Actitudinal (A)</div>
+          <div class="schedule-td" data-label="Inicio">2026/08/24</div>
+          <div class="schedule-td" data-label="Fin">2026/09/20</div>
+          <div class="schedule-td" data-label="Estado">
+            <span class="schedule-status-pill vigente">Vigente</span>
+          </div>
+        </div>
+
+        <div class="schedule-grid-row">
+          <div class="schedule-td" data-label="Fase">1</div>
+          <div class="schedule-td td-align-left" data-label="Evaluación">UD2 - Conceptual (C) / Procedimental (P) / Actitudinal (A)</div>
+          <div class="schedule-td" data-label="Inicio">2026/09/14</div>
+          <div class="schedule-td" data-label="Fin">2026/10/11</div>
+          <div class="schedule-td" data-label="Estado">
+            <span class="schedule-status-pill proximo">Próximo</span>
+          </div>
+        </div>
+
+        <div class="schedule-grid-row">
+          <div class="schedule-td" data-label="Fase">1</div>
+          <div class="schedule-td td-align-left" data-label="Evaluación">E1</div>
+          <div class="schedule-td" data-label="Inicio">2026/10/12</div>
+          <div class="schedule-td" data-label="Fin">2026/10/25</div>
+          <div class="schedule-td" data-label="Estado">
+            <span class="schedule-status-pill proximo">Próximo</span>
+          </div>
+        </div>
+
+        <div class="schedule-grid-row">
+          <div class="schedule-td" data-label="Fase">2</div>
+          <div class="schedule-td td-align-left" data-label="Evaluación">UD3 - Conceptual (C) / Procedimental (P) / Actitudinal (A)</div>
+          <div class="schedule-td" data-label="Inicio">2026/10/19</div>
+          <div class="schedule-td" data-label="Fin">2026/11/15</div>
+          <div class="schedule-td" data-label="Estado">
+            <span class="schedule-status-pill proximo">Próximo</span>
+          </div>
+        </div>
+
+        <div class="schedule-grid-row">
+          <div class="schedule-td" data-label="Fase">2</div>
+          <div class="schedule-td td-align-left" data-label="Evaluación">UD4 - Conceptual (C) / Procedimental (P) / Actitudinal (A)</div>
+          <div class="schedule-td" data-label="Inicio">2026/11/09</div>
+          <div class="schedule-td" data-label="Fin">2026/12/06</div>
+          <div class="schedule-td" data-label="Estado">
+            <span class="schedule-status-pill proximo">Próximo</span>
+          </div>
+        </div>
+
+        <div class="schedule-grid-row">
+          <div class="schedule-td" data-label="Fase">2</div>
+          <div class="schedule-td td-align-left" data-label="Evaluación">E2</div>
+          <div class="schedule-td" data-label="Inicio">2026/12/07</div>
+          <div class="schedule-td" data-label="Fin">2026/12/13</div>
+          <div class="schedule-td" data-label="Estado">
+            <span class="schedule-status-pill proximo">Próximo</span>
+          </div>
+        </div>
+
+        <div class="schedule-grid-row">
+          <div class="schedule-td" data-label="Fase">—</div>
+          <div class="schedule-td td-align-left" data-label="Evaluación">E3 (Examen Sustitutorio)</div>
+          <div class="schedule-td" data-label="Inicio">2026/12/15</div>
+          <div class="schedule-td" data-label="Fin">2026/12/16</div>
+          <div class="schedule-td" data-label="Estado">
+            <span class="schedule-status-pill proximo">Próximo</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBBARRA: TÍTULO DE SECCIÓN Y DESCARGAR EXCEL -->
+  <section class="notes-table-subbar">
+    <h2 class="notes-table-title">Registro sección AD2N4 - Informática para la Toma de Decisiones</h2>
+
+    <button type="button" class="btn-download-excel" id="btnDescargarExcel">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path
+          d="M14.625 5.99963H3.375C2.75368 5.99963 2.25 6.50331 2.25 7.12463V14.6246C2.25 15.246 2.75368 15.7496 3.375 15.7496H14.625C15.2463 15.7496 15.75 15.246 15.75 14.6246V7.12463C15.75 6.50331 15.2463 5.99963 14.625 5.99963Z"
+          stroke="#217346" stroke-width="1.39991" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M2.25 2.25H15.75" stroke="#217346" stroke-width="1.39991" stroke-linecap="round" />
+        <path d="M5.99951 9.74939H7.49951M10.4995 9.74939H11.9995M5.99951 12.7494H7.49951M10.4995 12.7494H11.9995"
+          stroke="#217346" stroke-width="1.39991" stroke-linecap="round" />
+      </svg>
+      Descargar Excel
+    </button>
+  </section>
+
+  <!-- MATRIZ DE NOTAS: TABLA BASADA EN CSS GRID Y FLEXBOX (10 ALUMNOS) -->
+  <section class="notes-matrix-card">
+    <div class="notes-table-scroll-wrapper">
+      <div class="notes-grid-table" role="table" aria-label="Tabla de Registro de Notas">
+
+        <!-- ENCABEZADOS MULTINIVEL -->
+        <div class="th-cell th-span-3 sticky-th-1" role="columnheader">N°</div>
+        <div class="th-cell th-span-3 sticky-th-2" role="columnheader">CÓDIGO</div>
+        <div class="th-cell th-span-3 sticky-th-3" role="columnheader">APELLIDOS Y NOMBRES</div>
+        <div class="th-cell th-span-3" role="columnheader">ED</div>
+
+        <!-- Fase 1: Primera Fase 40% (spans 5 cols) -->
+        <div class="th-cell th-phase-1" role="columnheader">(PF1) Primera Fase 40%</div>
+
+        <!-- Fase 2: Segunda Fase 60% (spans 5 cols) -->
+        <div class="th-cell th-phase-2" role="columnheader">(PF2) Segunda Fase 60%</div>
+
+        <!-- Cierre de Tabla: E3, PF, Condición -->
+        <div class="th-cell th-span-3" role="columnheader">E3</div>
+        <div class="th-cell th-span-3" role="columnheader">PF</div>
+        <div class="th-cell th-span-3" role="columnheader">CONDICIÓN</div>
+
+        <!-- Nivel 2: Sub-encabezados de Fase 1 -->
+        <div class="th-cell th-ep-fase1" role="columnheader">(EP) Evaluación Permanente 70%</div>
+        <div class="th-cell th-eval-fase1" role="columnheader">
+          <span class="th-eval-percent">30%</span>
+          <span class="th-eval-code">E1</span>
+        </div>
+        <div class="th-cell th-eval-fase1" role="columnheader">PF1</div>
+
+        <!-- Nivel 2: Sub-encabezados de Fase 2 -->
+        <div class="th-cell th-ep-fase2" role="columnheader">(EP) Evaluación Permanente 70%</div>
+        <div class="th-cell th-eval-fase2" role="columnheader">
+          <span class="th-eval-percent">30%</span>
+          <span class="th-eval-code">E2</span>
+        </div>
+        <div class="th-cell th-eval-fase2" role="columnheader">PF2</div>
+
+        <!-- Nivel 3: Unidades individuales Fase 1 -->
+        <div class="th-cell th-sub-fase1" role="columnheader">UD1</div>
+        <div class="th-cell th-sub-fase1" role="columnheader">UD2</div>
+        <div class="th-cell th-sub-fase1 pep" role="columnheader">PEP</div>
+
+        <!-- Nivel 3: Unidades individuales Fase 2 -->
+        <div class="th-cell th-sub-fase2" role="columnheader">UD3</div>
+        <div class="th-cell th-sub-fase2" role="columnheader">UD4</div>
+        <div class="th-cell th-sub-fase2 pep" role="columnheader">PEP</div>
+
+        <!-- CUERPO DE LA TABLA (Generado por JS: 10 Alumnos) -->
+        <div id="notesTableBody" style="display: contents;"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCIÓN PRINCIPAL: BOTÓN GRABAR -->
+  <section class="notes-bottom-actions">
+    <button type="button" class="btn-save-notes" id="btnGrabarNotas">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path
+          d="M4.42296 17.0833C4.00199 17.0833 3.64567 16.9375 3.354 16.6458C3.06234 16.3541 2.9165 15.9978 2.9165 15.5768V4.42308C2.9165 4.00211 3.06234 3.64579 3.354 3.35413C3.64567 3.06246 4.00199 2.91663 4.42296 2.91663H13.3667C13.5677 2.91663 13.7608 2.95565 13.9461 3.03371C14.1315 3.11163 14.2925 3.21899 14.4292 3.35579L16.644 5.57058C16.7808 5.70725 16.8882 5.86829 16.9661 6.05371C17.0441 6.23899 17.0832 6.43211 17.0832 6.63308V15.5768C17.0832 15.9978 16.9373 16.3541 16.6457 16.6458C16.354 16.9375 15.9977 17.0833 15.5767 17.0833H4.42296ZM15.8332 6.54163L13.4582 4.16663H4.42296C4.3481 4.16663 4.28664 4.19065 4.23859 4.23871C4.19053 4.28677 4.1665 4.34822 4.1665 4.42308V15.5768C4.1665 15.6517 4.19053 15.7132 4.23859 15.7612C4.28664 15.8093 4.3481 15.8333 4.42296 15.8333H15.5767C15.6516 15.8333 15.713 15.8093 15.7611 15.7612C15.8091 15.7132 15.8332 15.6517 15.8332 15.5768V6.54163ZM11.4742 13.782C11.8802 13.3761 12.0832 12.8846 12.0832 12.3077C12.0832 11.7307 11.8802 11.2393 11.4742 10.8333C11.0682 10.4273 10.5768 10.2243 9.99984 10.2243C9.42289 10.2243 8.93143 10.4273 8.52546 10.8333C8.11949 11.2393 7.9165 11.7307 7.9165 12.3077C7.9165 12.8846 8.11949 13.3761 8.52546 13.782C8.93143 14.188 9.42289 14.391 9.99984 14.391C10.5768 14.391 11.0682 14.188 11.4742 13.782ZM6.07359 8.23704H11.41C11.6248 8.23704 11.804 8.16524 11.9478 8.02163C12.0914 7.87788 12.1632 7.69864 12.1632 7.48392V6.07371C12.1632 5.85899 12.0914 5.67975 11.9478 5.536C11.804 5.39239 11.6248 5.32058 11.41 5.32058H6.07359C5.85887 5.32058 5.67963 5.39239 5.53588 5.536C5.39227 5.67975 5.32046 5.85899 5.32046 6.07371V7.48392C5.32046 7.69864 5.39227 7.87788 5.53588 8.02163C5.67963 8.16524 5.85887 8.23704 6.07359 8.23704ZM4.1665 6.54163V15.8333V4.16663V6.54163Z"
+          fill="white" />
+      </svg>
+      Grabar
+    </button>
+  </section>
+
+  <!-- BANNER DE ADVERTENCIA INSTITUCIONAL (OSARC) -->
+  <section class="notes-alert-card" role="alert">
+    <div class="notes-alert-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+        <line x1="12" y1="9" x2="12" y2="13"></line>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+    </div>
+    <p class="notes-alert-text">
+      <strong>Recuerde que usted es el único responsable del registro de estas notas.</strong> Los promedios mostrados son referenciales mientras no sea procesado por OSARC, estos varían según las notas que usted vaya registrando.
+    </p>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="notes-footer">
+    <p>© 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
+  </footer>
+
+</div>

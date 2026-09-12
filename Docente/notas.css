@@ -1,0 +1,1465 @@
+/* ==========================================================================
+   REGISTRO DE NOTAS - PORTAL DOCENTE UNW
+   Estilos basados en Design System (Design.md)
+   ========================================================================== */
+
+/* --- LAYOUT Y CONTENEDOR EXPANDIDO (SIN PADDINGS LATERALES INNECESARIOS) --- */
+.main-content-layout.notes-layout {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.main-content.notes-main-content {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+.notes-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+/* --- CABECERA DE PÁGINA --- */
+.notes-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.notes-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notes-header-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F4F6F8;
+  border: 1px solid #E2E8F0;
+}
+
+.notes-header-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.notes-header-titles h1 {
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 0 0 4px 0;
+  font-family: 'Lato', sans-serif;
+  color: #222222;
+  font-weight: 700;
+}
+
+.notes-header-titles p {
+  margin: 0;
+  color: #5B6E80;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.notes-header-divider {
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: #CBD5E1;
+  margin: 0;
+}
+
+/* --- TARJETA DE FILTROS DOCENTE --- */
+.notes-filters-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.notes-filters-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notes-filters-row {
+  display: grid;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+/* Fila 1: Periodo (140px), Mes (140px), Carrera (1fr), Sección (140px) */
+.notes-filters-row-1 {
+  grid-template-columns: 140px 140px 1fr 140px;
+}
+
+/* Fila 2: Curso (1fr), Tipo Sesión (180px), Botón Buscar (140px) */
+.notes-filters-row-2 {
+  grid-template-columns: 1fr 180px 140px;
+}
+
+.notes-filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.notes-filter-item label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #5B6E80;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.notes-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.notes-select {
+  width: 100%;
+  height: 42px;
+  padding: 0 34px 0 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #C6CFD7;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  font-size: 13.5px;
+  font-family: 'Roboto', sans-serif;
+  color: #222222;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notes-select:focus {
+  border-color: #0F848F;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.15);
+}
+
+.notes-select-icon {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: #5B6E80;
+}
+
+.btn-notes-search {
+  height: 42px;
+  background-color: #222222;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-notes-search:hover {
+  background-color: #404040;
+}
+
+.btn-notes-search:active {
+  transform: scale(0.98);
+}
+
+/* --- CRONOGRAMA DE EVALUACIÓN (Compacto y Coherente con Design System) --- */
+.schedule-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s ease;
+}
+
+.schedule-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.schedule-card.is-collapsed .schedule-card-header {
+  border-bottom: none;
+}
+
+.schedule-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.schedule-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #222222;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.schedule-badge-active {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background-color: #E6F3F4;
+  color: #0F848F;
+  border: 1px solid #B8E4E8;
+}
+
+.schedule-badge-active::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #0F848F;
+  animation: pulseTeal 1.8s infinite;
+}
+
+@keyframes pulseTeal {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.schedule-toggle-btn {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #0F848F;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.schedule-toggle-btn:hover {
+  background-color: #E6F3F4;
+}
+
+.schedule-toggle-icon {
+  transition: transform 0.25s ease;
+  transform: rotate(-180deg);
+}
+
+.schedule-card.is-collapsed .schedule-toggle-icon {
+  transform: rotate(0deg);
+}
+
+.schedule-card.is-collapsed .schedule-card-body {
+  display: none;
+}
+
+.schedule-card-body {
+  padding: 10px 16px;
+  background-color: #FFFFFF;
+}
+
+/* Tabla del Cronograma compacta estructurada con CSS Grid */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 70px 1fr 110px 110px 120px;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.schedule-grid-header {
+  display: contents;
+}
+
+.schedule-th {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  font-weight: 700;
+  padding: 6px 10px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+
+.schedule-th:last-child {
+  border-right: none;
+}
+
+.schedule-grid-row {
+  display: contents;
+}
+
+.schedule-td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #E2E8F0;
+  border-right: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #334155;
+  background-color: #FFFFFF;
+  font-size: 12px;
+}
+
+.schedule-td.td-align-left {
+  justify-content: flex-start;
+}
+
+.schedule-td:last-child {
+  border-right: none;
+}
+
+.schedule-grid-row:last-child .schedule-td {
+  border-bottom: none;
+}
+
+/* Fila activa destacada (UD1 Vigente en Teal Institucional) */
+.schedule-grid-row.is-active-phase .schedule-td {
+  background-color: #F0FAFA;
+  color: #0F848F;
+  font-weight: 600;
+  border-top: 1.5px solid #0F848F;
+  border-bottom: 1.5px solid #0F848F;
+}
+
+.schedule-grid-row.is-active-phase .schedule-td:first-child {
+  border-left: 3px solid #0F848F;
+}
+
+.schedule-grid-row.is-active-phase .schedule-td.td-eval {
+  color: #0F848F;
+  font-weight: 700;
+}
+
+.schedule-status-pill {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.schedule-status-pill.vigente {
+  background-color: #E6F3F4;
+  color: #0F848F;
+  border: 1px solid #B8E4E8;
+}
+
+.schedule-status-pill.proximo {
+  background-color: #F1F5F9;
+  color: #64748B;
+  border: 1px solid #E2E8F0;
+}
+
+
+/* --- SECCIÓN SUBHEADER: TÍTULO Y DESCARGAR EXCEL --- */
+.notes-table-subbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.notes-table-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.btn-download-excel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #FFFFFF;
+  border: 1px solid #217346;
+  color: #217346;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-download-excel:hover {
+  background-color: #E7F8EF;
+}
+
+.btn-download-excel svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* --- MATRIZ DE NOTAS: TABLA BASADA EN CSS GRID Y FLEXBOX --- */
+.notes-matrix-card {
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.notes-table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Contenedor principal de la tabla con CSS Grid (Recalculada para Desktop sin scroll) */
+.notes-grid-table {
+  display: grid;
+  /* 17 columnas calculadas para visibilidad completa en Desktop (sin scroll horizontal):
+     1: N° (36px)
+     2: CÓDIGO (88px)
+     3: APELLIDOS Y NOMBRES (minmax(165px, 1.4fr))
+     4: ED (36px)
+     5: UD1 (38px)
+     6: UD2 (38px)
+     7: PEP (40px)
+     8: E1 (38px)
+     9: PF1 (40px)
+     10: UD3 (38px)
+     11: UD4 (38px)
+     12: PEP (40px)
+     13: E2 (38px)
+     14: PF2 (40px)
+     15: E3 (36px)
+     16: PF (42px)
+     17: CONDICIÓN (102px)
+     Total mín: ~935px -> En desktop (>1000px libres) abarca el 100% sin generar scroll */
+  grid-template-columns: 
+    36px 
+    88px 
+    minmax(165px, 1.4fr) 
+    36px 
+    38px 38px 40px 38px 40px 
+    38px 38px 40px 38px 40px 
+    36px 42px 102px;
+  min-width: 935px;
+  width: 100%;
+  background-color: #FFFFFF;
+}
+
+/* --- ENCABEZADOS DE TABLA (HEADER MULTINIVEL CON CSS GRID) --- */
+.th-cell {
+  background-color: #F8FAFC;
+  color: #475569;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  user-select: none;
+}
+
+/* Columnas de nivel 1 que ocupan las 3 filas de cabecera */
+.th-span-3 {
+  grid-row: span 3;
+}
+
+/* Cabecera Fase 1 (Celeste/Teal según imagen) */
+.th-phase-1 {
+  grid-column: span 5;
+  background-color: #E6F7F8;
+  color: #0F848F;
+  border-bottom: 1px solid #B8E4E8;
+  font-size: 11.5px;
+}
+
+.th-ep-fase1 {
+  grid-column: span 3;
+  background-color: #F0FAFA;
+  color: #0F848F;
+  font-size: 10.5px;
+  border-bottom: 1px solid #CDECEF;
+}
+
+.th-eval-fase1 {
+  grid-row: span 2;
+  background-color: #F0FAFA;
+  color: #088796;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 4px 2px;
+}
+
+.th-eval-percent {
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.th-eval-code {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+}
+
+.th-sub-fase1 {
+  background-color: #F0FAFA;
+  color: #088796;
+  font-size: 11px;
+}
+
+.th-sub-fase1.pep {
+  color: #0F848F;
+  font-weight: 800;
+}
+
+/* Cabecera Fase 2 (Ámbar/Crema según imagen) */
+.th-phase-2 {
+  grid-column: span 5;
+  background-color: #FFF8ED;
+  color: #B45309;
+  border-bottom: 1px solid #FDE68A;
+  font-size: 11.5px;
+}
+
+.th-ep-fase2 {
+  grid-column: span 3;
+  background-color: #FFFDF8;
+  color: #B45309;
+  font-size: 10.5px;
+  border-bottom: 1px solid #FEF3C7;
+}
+
+.th-eval-fase2 {
+  grid-row: span 2;
+  background-color: #FFFDF8;
+  color: #B45309;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 4px 2px;
+}
+
+.th-sub-fase2 {
+  background-color: #FFFDF8;
+  color: #B45309;
+  font-size: 11px;
+}
+
+.th-sub-fase2.pep {
+  color: #B45309;
+  font-weight: 800;
+}
+
+/* Subencabezados E3, PF, Condición */
+.th-cell:last-child {
+  border-right: none;
+}
+
+/* Sticky columns para cabecera en scroll horizontal */
+.sticky-th-1 {
+  position: sticky;
+  left: 0;
+  z-index: 20;
+  background-color: #F8FAFC;
+}
+
+.sticky-th-2 {
+  position: sticky;
+  left: 36px;
+  z-index: 20;
+  background-color: #F8FAFC;
+}
+
+.sticky-th-3 {
+  position: sticky;
+  left: 124px;
+  z-index: 20;
+  background-color: #F8FAFC;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.04);
+}
+
+/* --- FILAS DE DATOS DE ALUMNOS --- */
+.notes-table-row {
+  display: contents;
+}
+
+.td-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 3px;
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12.5px;
+  color: #222222;
+  background-color: #FFFFFF;
+  transition: background-color 0.15s ease;
+}
+
+.td-cell:last-child {
+  border-right: none;
+}
+
+.notes-table-row:hover .td-cell {
+  background-color: #F8FAFC;
+}
+
+/* Sticky columns para cuerpo en scroll horizontal */
+.sticky-td-1 {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background-color: #FFFFFF;
+  font-weight: 500;
+  color: #64748B;
+}
+
+.sticky-td-2 {
+  position: sticky;
+  left: 36px;
+  z-index: 10;
+  background-color: #FFFFFF;
+  font-weight: 500;
+  color: #334155;
+  font-size: 12px;
+}
+
+.sticky-td-3 {
+  position: sticky;
+  left: 124px;
+  z-index: 10;
+  background-color: #FFFFFF;
+  justify-content: flex-start;
+  padding-left: 10px;
+  padding-right: 8px;
+  font-weight: 600;
+  color: #1E293B;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notes-table-row:hover .sticky-td-1,
+.notes-table-row:hover .sticky-td-2,
+.notes-table-row:hover .sticky-td-3 {
+  background-color: #F1F5F9;
+}
+
+/* Celdas de Fase 1 */
+.td-fase1 {
+  color: #088796;
+  font-weight: 600;
+}
+
+.td-fase1.td-avg {
+  color: #0F848F;
+  font-weight: 700;
+  background-color: #FAFDFD;
+}
+
+/* Celdas de Fase 2 */
+.td-fase2 {
+  color: #B45309;
+  font-weight: 600;
+}
+
+.td-fase2.td-avg {
+  color: #B45309;
+  font-weight: 700;
+  background-color: #FFFEFA;
+}
+
+/* Promedio Final */
+.td-pf {
+  font-weight: 700;
+  color: #1E293B;
+}
+
+/* Condición */
+.td-condicion {
+  padding: 4px 6px;
+}
+
+/* Input de notas editable */
+.note-input {
+  width: 32px;
+  height: 26px;
+  text-align: center;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #088796;
+  background-color: #FFFFFF;
+  outline: none;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.note-input:focus {
+  border-color: #07C8CC;
+  box-shadow: 0 0 0 2px rgba(7, 200, 204, 0.2);
+  background-color: #F0FAFA;
+}
+
+.note-input.input-error {
+  border-color: #E22731 !important;
+  background-color: #FFF5F5 !important;
+  box-shadow: 0 0 0 2px rgba(226, 39, 49, 0.2) !important;
+}
+
+.note-input:disabled {
+  background-color: transparent;
+  border-color: transparent;
+  color: #475569;
+  cursor: default;
+}
+
+/* Tags de condición */
+.tag-condition {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.2px;
+  min-width: 82px;
+}
+
+.tag-condition.aprobado {
+  background-color: #E7F8EF;
+  color: #278B52;
+  border: 1px solid #C4EBD4;
+}
+
+.tag-condition.desaprobado {
+  background-color: #FFEBEE;
+  color: #D32F2F;
+  border: 1px solid #FFCDD2;
+}
+
+.tag-condition.pendiente {
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+
+/* --- ACCIÓN PRINCIPAL: BOTÓN GRABAR --- */
+.notes-bottom-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.btn-save-notes {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #238656;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(35, 134, 86, 0.2);
+}
+
+.btn-save-notes:hover {
+  background-color: #1E7348;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(35, 134, 86, 0.25);
+}
+
+.btn-save-notes:active {
+  transform: translateY(0);
+}
+
+
+/* --- BANNER DE ADVERTENCIA INSTITUCIONAL (OSARC) --- */
+.notes-alert-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #EDF7FD;
+  border: 1.5px solid #56B9E8;
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.notes-alert-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0288D1;
+}
+
+.notes-alert-text {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #334155;
+  font-family: 'Roboto', sans-serif;
+}
+
+.notes-alert-text strong {
+  color: #0F172A;
+}
+
+
+/* --- FOOTER INSTITUCIONAL --- */
+.notes-footer {
+  text-align: center;
+  padding: 24px 0 16px 0;
+  border-top: 1px solid #E2E8F0;
+  margin-top: 1rem;
+}
+
+.notes-footer p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748B;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+/* ==========================================================================
+   MODALES DE VALIDACIÓN DE SEGURIDAD (COORDENADAS, BLOQUEO, CONFIRMACIÓN)
+   Diseño fiel a las capturas adjuntas
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.is-active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-box {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #C6CFD7;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+  width: 100%;
+  max-width: 440px;
+  padding: 30px 26px;
+  text-align: center;
+  transform: scale(0.95);
+  transition: transform 0.25s ease;
+  position: relative;
+}
+
+.modal-backdrop.is-active .modal-box {
+  transform: scale(1);
+}
+
+/* Iconos de cabecera de modal en círculos con tokens de color */
+.modal-icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin: 0 auto 16px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-icon-badge.teal {
+  background-color: #E6F3F4;
+  color: #0F848F;
+}
+
+.modal-icon-badge.red {
+  background-color: #FFEBEE;
+  color: #D32F2F;
+}
+
+.modal-icon-badge.green {
+  background-color: #E7F8EF;
+  color: #278B52;
+}
+
+/* Encabezados de modal según Design System */
+.modal-title-security {
+  font-size: 18px;
+  font-weight: 800;
+  color: #222222;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.3px;
+  margin: 0 0 6px 0;
+}
+
+.modal-subtitle-card {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0F848F;
+  margin: 0 0 10px 0;
+  font-family: 'Roboto', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #E6F3F4;
+  padding: 4px 12px;
+  border-radius: 14px;
+}
+
+.modal-attempt-text {
+  font-size: 12.5px;
+  color: #5B6E80;
+  margin: 0 0 18px 0;
+  font-weight: 500;
+}
+
+/* Tarjeta estilizada de ingreso de coordenada */
+.modal-coordinate-card {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-coordinate-label {
+  font-size: 13px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.modal-coordinate-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.modal-coordinate-code-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: 'Lato', sans-serif;
+  width: 48px;
+  height: 40px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+}
+
+.modal-coordinate-input {
+  width: 84px;
+  height: 40px;
+  border: 2px solid #C6CFD7;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  color: #222222;
+  background-color: #FFFFFF;
+  outline: none;
+  font-family: 'Roboto', monospace;
+  letter-spacing: 4px;
+  transition: all 0.2s;
+}
+
+.modal-coordinate-input:focus {
+  border-color: #0F848F;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.2);
+}
+
+/* Banner de error / advertencia en modal */
+.modal-error-banner {
+  display: none;
+  background-color: #FFEBEE;
+  border: 1px solid #FFCDD2;
+  color: #D32F2F;
+  font-size: 12.5px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 18px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1.35;
+  animation: shake 0.3s ease;
+}
+
+.modal-error-banner.is-visible {
+  display: flex;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* Botones de acción del modal según Design System */
+.modal-btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn-primary-ds {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  min-width: 90px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-primary-ds:hover {
+  background-color: #0b6770;
+}
+
+.btn-primary-ds:active {
+  transform: scale(0.98);
+}
+
+.btn-outline-ds {
+  border: 1px solid #C6CFD7;
+  background-color: #FFFFFF;
+  color: #5B6E80;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  min-width: 90px;
+  transition: all 0.2s;
+}
+
+.btn-outline-ds:hover {
+  background-color: #F4F6F8;
+  color: #222222;
+}
+
+.btn-black-ds {
+  background-color: #222222;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  min-width: 100px;
+  transition: background-color 0.2s;
+}
+
+.btn-black-ds:hover {
+  background-color: #404040;
+}
+
+/* Modal Bloqueado */
+.modal-title-locked {
+  font-size: 17px;
+  font-weight: 800;
+  color: #D32F2F;
+  margin: 4px 0 10px 0;
+  letter-spacing: 0.5px;
+  font-family: 'Lato', sans-serif;
+}
+
+.modal-text-desc {
+  font-size: 13px;
+  color: #5B6E80;
+  line-height: 1.45;
+  margin: 0 0 14px 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.modal-timer-box {
+  background-color: #FFF5F5;
+  border: 1px solid #FECACA;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 14px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.modal-timer-label {
+  font-size: 12px;
+  color: #991B1B;
+  font-weight: 600;
+}
+
+.modal-timer-display {
+  font-size: 18px;
+  font-weight: 800;
+  color: #D32F2F;
+  font-family: 'Roboto', monospace;
+}
+
+/* Botón reseteo para testing del prototipo */
+.btn-reset-demo {
+  background: none;
+  border: none;
+  color: #0F848F;
+  font-size: 11.5px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.btn-reset-demo:hover {
+  opacity: 1;
+}
+
+/* Modal Confirmación de Grabado */
+.modal-title-confirm {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0 0 8px 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.modal-text-confirm {
+  font-size: 13.5px;
+  color: #5B6E80;
+  line-height: 1.5;
+  margin: 0 0 22px 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+/* ==========================================================================
+   WIDGET FLOTANTE DE CASUÍSTICAS (DEMO SWITCHER)
+   Fácil de ocultar / comentar en HTML sin alterar el diseño
+   ========================================================================== */
+.floating-scenario-switcher {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1500;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 320px;
+}
+
+.floating-scenario-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.floating-scenario-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #0F848F;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.floating-scenario-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background-color: #E6F3F4;
+  color: #0F848F;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.floating-scenario-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-scenario-pill {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #CBD5E1;
+  background-color: #F8FAFC;
+  color: #475569;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.btn-scenario-pill:hover {
+  background-color: #E2E8F0;
+}
+
+.btn-scenario-pill.is-selected {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  border-color: #0F848F;
+  box-shadow: 0 1px 3px rgba(15, 132, 143, 0.25);
+}
+
+.floating-scenario-note {
+  font-size: 10.5px;
+  color: #64748B;
+  line-height: 1.3;
+}
+
+
+/* ==========================================================================
+   TOAST DE NOTIFICACIÓN FLOTANTE
+   ========================================================================== */
+.attendance-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  max-width: 440px;
+}
+
+.attendance-toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.attendance-toast-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.attendance-toast-text {
+  font-size: 13.5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS Y MOBILE)
+   Evita desbordamientos y optimiza vista táctil
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .notes-filters-row-1 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .notes-filters-row-2 {
+    grid-template-columns: 1fr 1fr 140px;
+  }
+
+  .schedule-grid {
+    grid-template-columns: 70px 1fr 110px 110px 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .notes-filters-row-1,
+  .notes-filters-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .notes-filters-card {
+    padding: 16px;
+  }
+
+  .notes-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .notes-table-subbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .schedule-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .schedule-grid-header {
+    display: none; /* Ocultar cabeceras en cards mobile de cronograma */
+  }
+
+  .schedule-grid-row {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #CBD5E1;
+    padding: 10px 12px;
+  }
+
+  .schedule-grid-row:last-child {
+    border-bottom: none;
+  }
+
+  .schedule-td {
+    border: none;
+    padding: 3px 0;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .schedule-td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #64748B;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .schedule-td.td-align-left::before {
+    margin-right: 12px;
+  }
+
+  .floating-scenario-switcher {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    max-width: none;
+  }
+
+  /* Ajustes tabla de notas para scroll táctil fluido: sincronizar cabecera y filas en scroll horizontal */
+  .sticky-th-1,
+  .sticky-th-2,
+  .sticky-th-3,
+  .sticky-td-1,
+  .sticky-td-2,
+  .sticky-td-3 {
+    position: static !important;
+    left: auto !important;
+    box-shadow: none !important;
+  }
+
+  .notes-grid-table {
+    min-width: 935px;
+  }
+}
