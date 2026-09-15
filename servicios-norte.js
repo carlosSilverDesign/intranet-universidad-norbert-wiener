@@ -251,6 +251,83 @@ document.addEventListener('DOMContentLoaded', () => {
           "linkText": "WhatsApp Empleabilidad"
         }
       ]
+    },
+    "seguro-universitario": {
+      "title": "Seguro Universitario",
+      "subtitle": "Póliza contra accidentes, red de clínicas y trámite de exoneración",
+      "icon": "img/servicios medicos.svg",
+      "type": "custom",
+      "content": `
+        <div class="seguro-container">
+          <div class="seguro-date">Lunes 14 de Septiembre del 2026, 02:38:32 pm</div>
+          <p class="seguro-greeting">Estimado estudiante,</p>
+          <p class="seguro-text">
+            Le informamos que en conformidad a los artículos 126 y 128 de la Ley Universitaria N° 30220, <strong>TODOS LOS ESTUDIANTES DEBEN CONTAR CON UN SEGURO DE SALUD.</strong> La Universidad Norbert Wiener brinda la afiliación a un seguro universitario con un costo semestral de S/40 soles; pago que se divide en 4 cuotas y se realizará a partir de su segunda pensión.
+          </p>
+
+          <div class="seguro-docs-section">
+            <h4 class="seguro-docs-title">DOCUMENTOS IMPORTANTES:</h4>
+            <ul class="seguro-docs-list">
+              <li>
+                <a href="https://test-intranet.uwiener.edu.pe/Alumno/DSU/Seguro_Universitario_Condicionados_Clausulas_v3.pdf" target="_blank" class="seguro-pdf-link">
+                  <span>Condicionados y Clausulas</span>
+                  <svg class="seguro-pdf-icon" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://test-intranet.uwiener.edu.pe/Alumno/DSU/Lista_de_asegurados_2025-1.pdf" target="_blank" class="seguro-pdf-link">
+                  <span>Lista de Asegurados 2025 - I</span>
+                  <svg class="seguro-pdf-icon" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://test-intranet.uwiener.edu.pe/Alumno/DSU/Procedimiento_Red_de_clinicas_202604.pdf" target="_blank" class="seguro-pdf-link">
+                  <span>Procedimiento y Red de Clínicas</span>
+                  <svg class="seguro-pdf-icon" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <p class="seguro-text">
+            Si cuentas con un seguro de salud (SIS, ESSALUD, EPS, FFAA), y no deseas el seguro complementario contra accidentes (seguro universitario) puede realizar su <strong>TRAMITE DE EXONERACIÓN</strong> en las fechas según <strong>EL CALENDARIO ACADÉMICO</strong>, cumpliendo con la declaración del seguro de salud con su respectivo sustento.
+          </p>
+
+          <div class="seguro-actions">
+            <button type="button" class="btn-exonerar-aqui" id="btnExonerarme">EXONERARME AQUÍ</button>
+            <button type="button" class="btn-omitir-seguro" id="btnOmitirSeguro">OMITIR</button>
+          </div>
+
+          <div class="seguro-informes">
+            <h4>INFORMES</h4>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span><strong>Correo:</strong> <a href="mailto:servicios.medicos@uwiener.edu.pe">servicios.medicos@uwiener.edu.pe</a></span>
+            </p>
+          </div>
+        </div>
+      `
     }
   };
 
@@ -263,7 +340,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawerHeaderIcon = document.getElementById('drawerHeaderIcon');
   const drawerBody = document.getElementById('drawerBody');
 
-  // Función para abrir el panel
+  // Referencias del Modal
+  const modalExoneracion = document.getElementById('modalExoneracion');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const formDeclaracionSeguro = document.getElementById('formDeclaracionSeguro');
+
+  // Función para abrir el panel drawer
   function openDrawer(serviceKey) {
     const data = serviciosData[serviceKey];
     if (!data) return;
@@ -340,11 +422,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Añadir listeners de click a las pestañas
         tabBtn.addEventListener('click', () => {
-          // Desactivar todos los botones e indicar activo el actual
           tabsHeader.querySelectorAll('.tab-nav-btn').forEach(btn => btn.classList.remove('active'));
           tabBtn.classList.add('active');
 
-          // Desactivar todos los paneles de contenido y activar el actual
           tabsContentWrapper.querySelectorAll('.tab-content-pane').forEach(pane => pane.classList.remove('active'));
           tabPane.classList.add('active');
         });
@@ -356,6 +436,25 @@ document.addEventListener('DOMContentLoaded', () => {
       tabsWrapper.appendChild(tabsHeader);
       tabsWrapper.appendChild(tabsContentWrapper);
       drawerBody.appendChild(tabsWrapper);
+    } else if (data.type === 'custom') {
+      // Contenido personalizado HTML (Seguro Universitario)
+      drawerBody.innerHTML = data.content;
+
+      // Asignar eventos de los botones del Seguro
+      const btnExonerarme = document.getElementById('btnExonerarme');
+      const btnOmitirSeguro = document.getElementById('btnOmitirSeguro');
+
+      if (btnExonerarme) {
+        btnExonerarme.addEventListener('click', () => {
+          openModalExoneracion();
+        });
+      }
+
+      if (btnOmitirSeguro) {
+        btnOmitirSeguro.addEventListener('click', () => {
+          closeDrawer();
+        });
+      }
     }
 
     // Activar cajón y overlay con animaciones CSS
@@ -368,7 +467,26 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeDrawer() {
     drawerOverlay.classList.remove('active');
     drawerContainer.classList.remove('active');
-    document.body.style.overflow = ''; // Restaurar scroll
+    if (!modalExoneracion || !modalExoneracion.classList.contains('active')) {
+      document.body.style.overflow = ''; // Restaurar scroll si no hay modal abierto
+    }
+  }
+
+  // Funciones del Modal de Exoneración
+  function openModalExoneracion() {
+    if (!modalExoneracion) return;
+    modalExoneracion.classList.add('active');
+    modalExoneracion.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModalExoneracion() {
+    if (!modalExoneracion) return;
+    modalExoneracion.classList.remove('active');
+    modalExoneracion.setAttribute('aria-hidden', 'true');
+    if (!drawerOverlay.classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
   }
 
   // Event Listeners para las tarjetas de servicios principales
@@ -388,24 +506,163 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Event Listeners de Cierre
+  // Event Listeners de Cierre de Drawer
   if (drawerCloseBtn) {
     drawerCloseBtn.addEventListener('click', closeDrawer);
   }
 
   if (drawerOverlay) {
     drawerOverlay.addEventListener('click', (e) => {
-      // Cerrar solo si hace click directo en la máscara/fondo exterior
       if (e.target === drawerOverlay) {
         closeDrawer();
       }
     });
   }
 
+  // Botón Cancelar del Modal de Exoneración
+  const btnCancelExoneracion = document.getElementById('btnCancelExoneracion');
+  if (btnCancelExoneracion) {
+    btnCancelExoneracion.addEventListener('click', closeModalExoneracion);
+  }
+
+  // Reactividad en inputs de subida de archivos (DNI y Seguro)
+  const fileDniDoc = document.getElementById('fileDniDoc');
+  const dniFileStatus = document.getElementById('dniFileStatus');
+  const cardUploadDni = document.getElementById('cardUploadDni');
+
+  if (fileDniDoc && dniFileStatus) {
+    fileDniDoc.addEventListener('change', () => {
+      if (fileDniDoc.files && fileDniDoc.files.length > 0) {
+        const file = fileDniDoc.files[0];
+        const sizeKb = (file.size / 1024).toFixed(1);
+        
+        if (file.size > 250 * 1024) {
+          alert(`El archivo seleccionado supera el límite permitido de 250 KB (tamaño actual: ${sizeKb} KB).`);
+          fileDniDoc.value = '';
+          dniFileStatus.textContent = 'Ningún archivo seleccionado';
+          dniFileStatus.classList.remove('selected');
+          if (cardUploadDni) cardUploadDni.classList.remove('has-file');
+          return;
+        }
+
+        dniFileStatus.textContent = `✓ ${file.name} (${sizeKb} KB)`;
+        dniFileStatus.classList.add('selected');
+        if (cardUploadDni) cardUploadDni.classList.add('has-file');
+      } else {
+        dniFileStatus.textContent = 'Ningún archivo seleccionado';
+        dniFileStatus.classList.remove('selected');
+        if (cardUploadDni) cardUploadDni.classList.remove('has-file');
+      }
+    });
+  }
+
+  const fileSeguroDoc = document.getElementById('fileSeguroDoc');
+  const seguroFileStatus = document.getElementById('seguroFileStatus');
+  const cardUploadSeguro = document.getElementById('cardUploadSeguro');
+
+  if (fileSeguroDoc && seguroFileStatus) {
+    fileSeguroDoc.addEventListener('change', () => {
+      if (fileSeguroDoc.files && fileSeguroDoc.files.length > 0) {
+        const file = fileSeguroDoc.files[0];
+        const sizeKb = (file.size / 1024).toFixed(1);
+        
+        if (file.size > 250 * 1024) {
+          alert(`El archivo seleccionado supera el límite permitido de 250 KB (tamaño actual: ${sizeKb} KB).`);
+          fileSeguroDoc.value = '';
+          seguroFileStatus.textContent = 'Ningún archivo seleccionado';
+          seguroFileStatus.classList.remove('selected');
+          if (cardUploadSeguro) cardUploadSeguro.classList.remove('has-file');
+          return;
+        }
+
+        seguroFileStatus.textContent = `✓ ${file.name} (${sizeKb} KB)`;
+        seguroFileStatus.classList.add('selected');
+        if (cardUploadSeguro) cardUploadSeguro.classList.add('has-file');
+      } else {
+        seguroFileStatus.textContent = 'Ningún archivo seleccionado';
+        seguroFileStatus.classList.remove('selected');
+        if (cardUploadSeguro) cardUploadSeguro.classList.remove('has-file');
+      }
+    });
+  }
+
+  // Event Listeners del Modal de Exoneración
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModalExoneracion);
+  }
+
+  if (modalExoneracion) {
+    modalExoneracion.addEventListener('click', (e) => {
+      if (e.target === modalExoneracion) {
+        closeModalExoneracion();
+      }
+    });
+  }
+
+  // Envío del formulario de exoneración
+  if (formDeclaracionSeguro) {
+    formDeclaracionSeguro.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const fileDni = document.getElementById('fileDniDoc');
+      const fileSeguro = document.getElementById('fileSeguroDoc');
+      const tipoSeguro = document.getElementById('selectTipoSeguro');
+      const tel = document.getElementById('inputEmergenciaNumero');
+      const parentesco = document.getElementById('inputEmergenciaParentesco');
+      const nombres = document.getElementById('inputEmergenciaNombres');
+
+      // Validaciones
+      if (!fileDni.files.length) {
+        alert('Por favor adjunte la copia de su DNI (dni.pdf).');
+        fileDni.focus();
+        return;
+      }
+
+      if (!fileSeguro.files.length) {
+        alert('Por favor adjunte el documento que acredite contar con Seguro de Salud (seguro.pdf).');
+        fileSeguro.focus();
+        return;
+      }
+
+      if (!tipoSeguro.value) {
+        alert('Por favor seleccione el Tipo de Seguro de Salud.');
+        tipoSeguro.focus();
+        return;
+      }
+
+      if (!tel.value.trim() || !parentesco.value.trim() || !nombres.value.trim()) {
+        alert('Por favor complete todos los datos de contacto de emergencia.');
+        return;
+      }
+
+      // Confirmación exitosa
+      alert('¡SOLICITUD REGISTRADA EXITOSAMENTE!\n\nEstimado(a) estudiante, su Declaración Jurada de Exoneración de Seguro de Salud ha sido ingresada con éxito bajo el registro EX-2026-0941.\n\nSe ha enviado un correo con el comprobante de trámite a yajairacampos88@gmail.com.');
+
+      formDeclaracionSeguro.reset();
+      if (dniFileStatus) {
+        dniFileStatus.textContent = 'Ningún archivo seleccionado';
+        dniFileStatus.classList.remove('selected');
+      }
+      if (seguroFileStatus) {
+        seguroFileStatus.textContent = 'Ningún archivo seleccionado';
+        seguroFileStatus.classList.remove('selected');
+      }
+      if (cardUploadDni) cardUploadDni.classList.remove('has-file');
+      if (cardUploadSeguro) cardUploadSeguro.classList.remove('has-file');
+
+      closeModalExoneracion();
+      closeDrawer();
+    });
+  }
+
   // Tecla Escape para cerrar
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawerOverlay.classList.contains('active')) {
-      closeDrawer();
+    if (e.key === 'Escape') {
+      if (modalExoneracion && modalExoneracion.classList.contains('active')) {
+        closeModalExoneracion();
+      } else if (drawerOverlay && drawerOverlay.classList.contains('active')) {
+        closeDrawer();
+      }
     }
   });
 });

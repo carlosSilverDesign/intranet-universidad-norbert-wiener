@@ -104,6 +104,21 @@
         </div>
       </a>
 
+      <!-- 5. Seguro Universitario -->
+      <a href="#" class="servicios-card" data-service-key="seguro-universitario">
+        <img src="img/servicios medicos.svg" alt="Seguro Universitario" class="card-circular-icon" width="72" height="72">
+        <div class="card-text">
+          <h3 class="servicio-title">Seguro Universitario</h3>
+          <p class="servicio-desc">Póliza contra accidentes, red de clínicas y trámite de exoneración</p>
+        </div>
+        <div class="card-action-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </div>
+      </a>
+
     </div>
 
   </main>
@@ -126,6 +141,254 @@
       <div class="drawer-body" id="drawerBody">
         <!-- El contenido dinámico se inyectará aquí desde JavaScript -->
       </div>
+    </div>
+  </div>
+
+  <!-- MODAL DECLARACIÓN DE SEGURO DE SALUD (EXONERACIÓN) -->
+  <div class="modal-exoneracion-overlay" id="modalExoneracion" aria-hidden="true">
+    <div class="modal-exoneracion-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTituloDoc">
+      
+      <!-- Cabecera moderna -->
+      <div class="modal-header-modern">
+        <div class="modal-header-top-row">
+          <span class="modal-ref-badge">CÓDIGO: 25D - 1</span>
+          <span class="modal-type-badge">Trámite de Exoneración</span>
+        </div>
+        <h2 class="modal-title-modern" id="modalTituloDoc">DECLARACIÓN DE SEGURO DE SALUD</h2>
+        <p class="modal-subtitle-modern">Acreditación obligatoria de seguro médico para estudiantes (Ley Universitaria N° 30220)</p>
+        
+        <button type="button" class="modal-close-btn-modern" id="modalCloseBtn" aria-label="Cerrar modal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Formulario interactivo -->
+      <form id="formDeclaracionSeguro" class="modal-body-modern">
+        
+        <!-- Tarjeta de datos del estudiante -->
+        <div class="student-summary-card">
+          <div class="student-avatar-box">
+            <img src="img/imagen-perfil.png" class="student-avatar-img" alt="Foto del alumno" onerror="this.onerror=null; this.src='img/avatar.jpg';">
+          </div>
+          <div class="student-summary-info">
+            <div class="student-name-row">
+              <h3 class="student-name-text"><strong>Campos Soto</strong> Lila Yajaira</h3>
+              <a href="perfil.html" class="btn-update-profile-link" title="Actualizar datos personales">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+                <span>Pulse aquí para actualizar tus Datos Personales</span>
+              </a>
+            </div>
+            <div class="student-meta-chips">
+              <span class="meta-chip"><strong>Cód:</strong> 2024100100</span>
+              <span class="meta-chip"><strong>DNI:</strong> 44811773</span>
+              <span class="meta-chip highlight"><strong>EAP:</strong> ENFERMERÍA • Ciclo 1</span>
+              <span class="meta-chip">Facultad de Ciencias de la Salud</span>
+            </div>
+            <div class="student-contact-chips">
+              <span class="contact-item-span">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                yajairacampos88@gmail.com
+              </span>
+              <span class="contact-item-span">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Teléf: 999507748 / Cel: 51999507748
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Declaración Jurada (Callout) -->
+        <div class="sworn-declaration-card">
+          <div class="sworn-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+          </div>
+          <div class="sworn-card-body">
+            <h4>DECLARO:</h4>
+            <p><strong>1. EN FORMA EXPRESA Y BAJO JURAMENTO QUE CUENTO CON SEGURO DE SALUD, EN TAL SENTIDO NO DESEO CONTAR CON EL SEGURO QUE ME OFRECE LA UNIVERSIDAD.</strong></p>
+          </div>
+        </div>
+
+        <!-- Requisitos de documentos adjuntos -->
+        <div class="doc-rules-banner">
+          <div class="doc-rules-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="doc-rules-text">
+            <strong>DOCUMENTOS ADJUNTOS OBLIGATORIOS:</strong><br>
+            • Los documentos deben ser archivos PDF, <strong>no mayor a 250Kb cada uno</strong>.<br>
+            • Los nombres de archivo deben ser <strong>dni.pdf</strong> y <strong>seguro.pdf</strong>.
+          </div>
+        </div>
+
+        <!-- Sección de Campos Interactivos -->
+        <div class="form-section-modern">
+          
+          <!-- 1. Copia de DNI -->
+          <div class="modern-upload-card" id="cardUploadDni">
+            <div class="upload-card-header">
+              <label class="upload-card-label" for="fileDniDoc">
+                <span class="step-circle">1</span>
+                <span>Copia de DNI (dni.pdf)</span>
+                <span class="req-asterisk">*</span>
+              </label>
+              <span class="upload-card-hint">Formato PDF • Máx. 250 KB</span>
+            </div>
+            <div class="upload-file-wrapper">
+              <input type="file" id="fileDniDoc" name="dni" accept=".pdf" class="file-input-real" required>
+              <label for="fileDniDoc" class="btn-file-trigger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <span>Seleccionar archivo</span>
+              </label>
+              <span class="file-chosen-status" id="dniFileStatus">Ningún archivo seleccionado</span>
+            </div>
+          </div>
+
+          <!-- 2. Copia de Seguro -->
+          <div class="modern-upload-card" id="cardUploadSeguro">
+            <div class="upload-card-header">
+              <label class="upload-card-label" for="fileSeguroDoc">
+                <span class="step-circle">2</span>
+                <span>Copia de Documento que acredite contar con Seguro de Salud (seguro.pdf)</span>
+                <span class="req-asterisk">*</span>
+              </label>
+              <span class="upload-card-hint">Formato PDF • Máx. 250 KB</span>
+            </div>
+            <div class="upload-file-wrapper">
+              <input type="file" id="fileSeguroDoc" name="seguro" accept=".pdf" class="file-input-real" required>
+              <label for="fileSeguroDoc" class="btn-file-trigger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <span>Seleccionar archivo</span>
+              </label>
+              <span class="file-chosen-status" id="seguroFileStatus">Ningún archivo seleccionado</span>
+            </div>
+          </div>
+
+          <!-- 3. Tipo de Seguros -->
+          <div class="form-group-modern">
+            <label class="form-label-modern" for="selectTipoSeguro">
+              <span class="step-circle">3</span>
+              <span>Tipo de seguros:</span>
+              <span class="req-asterisk">*</span>
+            </label>
+            <select id="selectTipoSeguro" name="tipo_seguro" class="form-control-modern" required>
+              <option value="">-- Seleccione --</option>
+              <option value="SIS">SIS</option>
+              <option value="ESSALUD">ESSALUD</option>
+              <option value="FFAA">FFAA</option>
+              <option value="PNP">PNP</option>
+              <option value="EPS">EPS</option>
+              <option value="OTROS">OTROS</option>
+            </select>
+          </div>
+
+          <!-- 4. Contactos de Emergencia -->
+          <div class="form-group-modern">
+            <label class="form-label-modern">
+              <span class="step-circle">4</span>
+              <span>Datos de contacto de emergencia (obligatorio):</span>
+              <span class="req-asterisk">*</span>
+            </label>
+            <div class="emergency-card-modern">
+              <div class="emergency-grid-row">
+                <div class="emergency-field-item">
+                  <label for="inputEmergenciaNumero" class="field-sublabel">Número de contacto:</label>
+                  <input type="tel" id="inputEmergenciaNumero" name="emergencia_numero" class="form-control-modern" placeholder="Ej. 987654321" required>
+                </div>
+                <div class="emergency-field-item">
+                  <label for="inputEmergenciaParentesco" class="field-sublabel">Parentesco:</label>
+                  <input type="text" id="inputEmergenciaParentesco" name="emergencia_parentesco" class="form-control-modern" placeholder="Ej. Padre / Madre / Cónyuge" required>
+                </div>
+                <div class="emergency-field-item full-width">
+                  <label for="inputEmergenciaNombres" class="field-sublabel">Nombres completos:</label>
+                  <input type="text" id="inputEmergenciaNombres" name="emergencia_nombres" class="form-control-modern" placeholder="Nombres y apellidos completos del contacto" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Validación Institucional / Sello Oficial -->
+        <div class="institutional-badge-card">
+          <div class="inst-badge-left">
+            <svg class="inst-stamp-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="46" stroke="#0F848F" stroke-width="2" stroke-dasharray="3 2" />
+              <circle cx="50" cy="50" r="41" stroke="#0F848F" stroke-width="1" />
+              <path id="curveTopMod" d="M 18 50 A 32 32 0 0 1 82 50" fill="none" />
+              <path id="curveBottomMod" d="M 82 50 A 32 32 0 0 1 18 50" fill="none" />
+              <text font-size="6.2" font-weight="700" fill="#0F848F" letter-spacing="0.5">
+                <textPath href="#curveTopMod" startOffset="50%" text-anchor="middle">BIENESTAR UNIVERSITARIO</textPath>
+              </text>
+              <text font-size="6.2" font-weight="700" fill="#0F848F" letter-spacing="0.5">
+                <textPath href="#curveBottomMod" startOffset="50%" text-anchor="middle">SERVICIOS MÉDICOS</textPath>
+              </text>
+              <text x="50" y="47" font-size="6.5" font-weight="700" fill="#1E293B" text-anchor="middle">Universidad</text>
+              <text x="50" y="55" font-size="6.5" font-weight="700" fill="#1E293B" text-anchor="middle">Norbert Wiener</text>
+            </svg>
+            <div class="inst-badge-text">
+              <h5>DIRECCIÓN DE BIENESTAR UNIVERSITARIOS</h5>
+              <p>Área de Servicios Médicos • Sede Institucional</p>
+            </div>
+          </div>
+          <div class="inst-badge-status">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>Trámite Oficial Validado</span>
+          </div>
+        </div>
+
+        <!-- Aviso de Renovación -->
+        <div class="renewal-alert-modern">
+          <svg class="renewal-alert-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div>
+            <strong>IMPORTANTE:</strong> Este trámite se <strong>RENUEVA</strong> entre <strong>Enero, Febrero y Marzo</strong> de cada año.
+          </div>
+        </div>
+
+        <!-- Pie de Modal Moderno -->
+        <div class="modal-footer-modern">
+          <button type="button" class="btn-modern-ghost" id="btnCancelExoneracion">Cancelar</button>
+          <button type="submit" class="btn-modern-primary" id="btnSubmitExoneracion">
+            <span>SOLICITAR</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+
+      </form>
     </div>
   </div>
 

@@ -1,9 +1,4 @@
-/* ==========================================================================
-   REGISTRO DE NOTAS - PORTAL DOCENTE UNW
-   Estilos basados en Design System (Design.md)
-   ========================================================================== */
-
-/* --- LAYOUT Y CONTENEDOR EXPANDIDO (SIN PADDINGS LATERALES INNECESARIOS) --- */
+/* --- LAYOUT Y CONTENEDOR EXPANDIDO --- */
 .main-content-layout.notes-layout {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -47,13 +42,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F4F6F8;
-  border: 1px solid #E2E8F0;
+  /* background-color: #F4F6F8;
+  border: 1px solid #E2E8F0; */
 }
 
 .notes-header-icon svg {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   display: block;
 }
 
@@ -102,12 +97,12 @@
   align-items: flex-end;
 }
 
-/* Fila 1: Periodo (140px), Mes (140px), Carrera (1fr), Sección (140px) */
+
 .notes-filters-row-1 {
   grid-template-columns: 140px 140px 1fr 140px;
 }
 
-/* Fila 2: Curso (1fr), Tipo Sesión (180px), Botón Buscar (140px) */
+
 .notes-filters-row-2 {
   grid-template-columns: 1fr 180px 140px;
 }
@@ -193,7 +188,6 @@
   transform: scale(0.98);
 }
 
-/* --- CRONOGRAMA DE EVALUACIÓN (Compacto y Coherente con Design System) --- */
 .schedule-card {
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
@@ -258,9 +252,20 @@
 }
 
 @keyframes pulseTeal {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.8; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
 }
 
 .schedule-toggle-btn {
@@ -300,7 +305,6 @@
   background-color: #FFFFFF;
 }
 
-/* Tabla del Cronograma compacta estructurada con CSS Grid */
 .schedule-grid {
   display: grid;
   grid-template-columns: 70px 1fr 110px 110px 120px;
@@ -358,7 +362,6 @@
   border-bottom: none;
 }
 
-/* Fila activa destacada (UD1 Vigente en Teal Institucional) */
 .schedule-grid-row.is-active-phase .schedule-td {
   background-color: #F0FAFA;
   color: #0F848F;
@@ -415,6 +418,40 @@
   margin: 0;
 }
 
+.notes-subbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-notes-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #E6F3F4;
+  border: 1px solid #0F848F;
+  color: #0F848F;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-notes-legend:hover {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(15, 132, 143, 0.22);
+  transform: translateY(-1px);
+}
+
+.btn-notes-legend:active {
+  transform: translateY(0);
+}
+
 .btn-download-excel {
   display: inline-flex;
   align-items: center;
@@ -433,15 +470,23 @@
 
 .btn-download-excel:hover {
   background-color: #E7F8EF;
+  box-shadow: 0 2px 6px rgba(33, 115, 70, 0.15);
+  transform: translateY(-1px);
 }
 
-.btn-download-excel svg {
-  width: 18px;
-  height: 18px;
+.btn-download-excel:active {
+  transform: translateY(0);
+}
+
+.btn-download-excel svg,
+.btn-notes-legend svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
 }
 
 
-/* --- MATRIZ DE NOTAS: TABLA BASADA EN CSS GRID Y FLEXBOX --- */
+/* --- MATRIZ DE NOTAS --- */
 .notes-matrix-card {
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
@@ -456,11 +501,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* Contenedor principal de la tabla con CSS Grid (Recalculada para Desktop sin scroll) */
+/* Contenedor principal de la tabla con CSS Grid */
 .notes-grid-table {
   display: grid;
-  /* 17 columnas calculadas para visibilidad completa en Desktop (sin scroll horizontal):
-     1: N° (36px)
+  /* 17 columnas calculadas para visibilidad completa en Desktop */
+  /* 1: N° (36px)
      2: CÓDIGO (88px)
      3: APELLIDOS Y NOMBRES (minmax(165px, 1.4fr))
      4: ED (36px)
@@ -477,21 +522,15 @@
      15: E3 (36px)
      16: PF (42px)
      17: CONDICIÓN (102px)
-     Total mín: ~935px -> En desktop (>1000px libres) abarca el 100% sin generar scroll */
-  grid-template-columns: 
-    36px 
-    88px 
-    minmax(165px, 1.4fr) 
-    36px 
-    38px 38px 40px 38px 40px 
-    38px 38px 40px 38px 40px 
-    36px 42px 102px;
+     Total mín: ~935px -> En desktop (>1000px libres) */
+  grid-template-columns:
+    36px 88px minmax(165px, 1.4fr) 36px 38px 38px 40px 38px 40px 38px 38px 40px 38px 40px 36px 42px 102px;
   min-width: 935px;
   width: 100%;
   background-color: #FFFFFF;
 }
 
-/* --- ENCABEZADOS DE TABLA (HEADER MULTINIVEL CON CSS GRID) --- */
+/* --- ENCABEZADOS DE TABLA --- */
 .th-cell {
   background-color: #F8FAFC;
   color: #475569;
@@ -510,12 +549,11 @@
   user-select: none;
 }
 
-/* Columnas de nivel 1 que ocupan las 3 filas de cabecera */
 .th-span-3 {
   grid-row: span 3;
 }
 
-/* Cabecera Fase 1 (Celeste/Teal según imagen) */
+/* Cabecera Fase 1 */
 .th-phase-1 {
   grid-column: span 5;
   background-color: #E6F7F8;
@@ -570,7 +608,7 @@
   font-weight: 800;
 }
 
-/* Cabecera Fase 2 (Ámbar/Crema según imagen) */
+/* Cabecera Fase 2 */
 .th-phase-2 {
   grid-column: span 5;
   background-color: #FFF8ED;
@@ -865,6 +903,12 @@
   color: #0288D1;
 }
 
+.notes-alert-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .notes-alert-text {
   margin: 0;
   font-size: 13.5px;
@@ -877,11 +921,38 @@
   color: #0F172A;
 }
 
+.btn-alert-legend-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0F848F;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.btn-alert-legend-link:hover {
+  color: #085D65;
+  text-decoration: underline;
+}
+
+.btn-alert-legend-link svg {
+  color: #0F848F;
+  flex-shrink: 0;
+}
+
 
 /* --- FOOTER INSTITUCIONAL --- */
 .notes-footer {
   text-align: center;
-  padding: 24px 0 16px 0;
+  padding: 24px 0 0 0;
   border-top: 1px solid #E2E8F0;
   margin-top: 1rem;
 }
@@ -894,11 +965,7 @@
 }
 
 
-/* ==========================================================================
-   MODALES DE VALIDACIÓN DE SEGURIDAD (COORDENADAS, BLOQUEO, CONFIRMACIÓN)
-   Diseño fiel a las capturas adjuntas
-   ========================================================================== */
-
+/* MODALES DE VALIDACIÓN DE SEGURIDAD (COORDENADAS, BLOQUEO, CONFIRMACIÓN) */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -939,7 +1006,6 @@
   transform: scale(1);
 }
 
-/* Iconos de cabecera de modal en círculos con tokens de color */
 .modal-icon-badge {
   width: 52px;
   height: 52px;
@@ -1081,9 +1147,19 @@
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  75% { transform: translateX(4px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
 }
 
 /* Botones de acción del modal según Design System */
@@ -1235,10 +1311,7 @@
 }
 
 
-/* ==========================================================================
-   WIDGET FLOTANTE DE CASUÍSTICAS (DEMO SWITCHER)
-   Fácil de ocultar / comentar en HTML sin alterar el diseño
-   ========================================================================== */
+/* WIDGET FLOTANTE DE CASUÍSTICAS (DEMO SWITCHER - ELIMINAR EN PRODUCCIÓN) */
 .floating-scenario-switcher {
   position: fixed;
   bottom: 24px;
@@ -1319,9 +1392,7 @@
 }
 
 
-/* ==========================================================================
-   TOAST DE NOTIFICACIÓN FLOTANTE
-   ========================================================================== */
+/* TOAST DE NOTIFICACIÓN FLOTANTE (cambiar por el nuestro en la Intranet)*/
 .attendance-toast {
   position: fixed;
   bottom: 24px;
@@ -1362,10 +1433,7 @@
 }
 
 
-/* ==========================================================================
-   RESPONSIVE DESIGN (TABLETS Y MOBILE)
-   Evita desbordamientos y optimiza vista táctil
-   ========================================================================== */
+/* RESPONSIVE DESIGN (TABLETS Y MOBILE) */
 @media (max-width: 1024px) {
   .notes-filters-row-1 {
     grid-template-columns: 1fr 1fr;
@@ -1381,6 +1449,7 @@
 }
 
 @media (max-width: 768px) {
+
   .notes-filters-row-1,
   .notes-filters-row-2 {
     grid-template-columns: 1fr;
@@ -1407,7 +1476,8 @@
   }
 
   .schedule-grid-header {
-    display: none; /* Ocultar cabeceras en cards mobile de cronograma */
+    display: none;
+    /* Ocultar cabeceras en cards mobile de cronograma */
   }
 
   .schedule-grid-row {
@@ -1461,5 +1531,1173 @@
 
   .notes-grid-table {
     min-width: 935px;
+  }
+}
+
+
+/* MODAL Y COMPONENTE REUTILIZABLE: SISTEMA DE EVALUACIÓN Y FÓRMULAS */
+
+/* Extensión de Backdrop para modal amplio */
+.modal-backdrop-wide .modal-box-wide {
+  max-width: 900px;
+  width: 94%;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+  border-radius: 14px;
+}
+
+/* Cabecera del Modal */
+.modal-header-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  flex-shrink: 0;
+}
+
+.modal-header-title-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.modal-icon-badge-mini {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modal-icon-badge-mini.teal {
+  background-color: #E6F3F4;
+  color: #0F848F;
+  border: 1px solid #B8E4E8;
+}
+
+.modal-title-custom {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0F172A;
+  font-family: 'Lato', sans-serif;
+  margin: 0 0 2px 0;
+}
+
+.modal-subtitle-custom {
+  font-size: 13px;
+  color: #64748B;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+.modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-btn-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #CBD5E1;
+  background-color: #FFFFFF;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-btn-icon:hover {
+  background-color: #F1F5F9;
+  color: #0F172A;
+  border-color: #94A3B8;
+}
+
+.modal-btn-close:hover {
+  background-color: #FEE2E2;
+  color: #DC2626;
+  border-color: #FCA5A5;
+}
+
+/* Área de contenido deslizable */
+.modal-body-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 28px;
+  background-color: #F8FAFC;
+}
+
+/* Pie del modal */
+.modal-footer-custom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background-color: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  flex-shrink: 0;
+}
+
+.modal-footer-custom .btn-primary-ds {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.grading-system-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: 'Roboto', sans-serif;
+  color: #334155;
+}
+
+.grading-section {
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 12px;
+  padding: 20px 22px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.grading-section-header {
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid #E2E8F0;
+}
+
+.grading-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* 1. TABLA SEMÁNTICA CON CSS GRID: TIPOS DE EVALUACIÓN */
+.grading-table-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.grading-th {
+  background-color: #F1F5F9;
+  color: #1E293B;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 12px 16px;
+  border-bottom: 1.5px solid #CBD5E1;
+}
+
+.grading-th:first-child {
+  border-right: 1px solid #CBD5E1;
+}
+
+.grading-cell {
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.grading-cell:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.eval-type-cell {
+  background-color: #F8FAFC;
+  border-right: 1px solid #CBD5E1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.eval-type-cell strong {
+  color: #0F172A;
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+
+.eval-desc-cell p {
+  margin: 0 0 6px 0;
+  color: #334155;
+}
+
+.eval-desc-cell p:last-child {
+  margin-bottom: 0;
+}
+
+.grading-subtext {
+  font-size: 13px;
+  color: #64748B;
+  line-height: 1.45;
+}
+
+/* Badges de Códigos de Evaluación */
+.grading-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  width: fit-content;
+}
+
+.badge-ed {
+  background-color: #E0F2FE;
+  color: #0369A1;
+  border: 1px solid #BAE6FD;
+}
+
+.badge-ep {
+  background-color: #E6F3F4;
+  color: #0F848F;
+  border: 1px solid #B8E4E8;
+}
+
+.badge-e {
+  background-color: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FDE68A;
+}
+
+.badge-ex {
+  background-color: #FEE2E2;
+  color: #B91C1C;
+  border: 1px solid #FECACA;
+}
+
+.eval-combo-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.eval-subtag {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.grading-alert-inline {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background-color: #FEF2F2;
+  border-left: 3px solid #EF4444;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: #991B1B;
+  line-height: 1.4;
+}
+
+.grading-alert-inline svg {
+  color: #DC2626;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* 2. EVALUACIÓN PERMANENTE POR COMPETENCIA */
+.competencies-intro-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #F0FAFA;
+  border: 1px solid #B8E4E8;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.competencies-intro-icon {
+  color: #0F848F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.competencies-intro-card p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #134E4A;
+  line-height: 1.4;
+}
+
+.competencies-container {
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.competencies-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #F1F5F9;
+  border-bottom: 1px solid #CBD5E1;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.competencies-header-bar svg {
+  color: #0F848F;
+}
+
+.competencies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background-color: #CBD5E1;
+  /* Borde entre columnas */
+}
+
+.competency-card {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.competency-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.competency-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'Lato', sans-serif;
+  flex-shrink: 0;
+}
+
+.card-conceptual .competency-letter {
+  background-color: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
+}
+
+.card-procedimental .competency-letter {
+  background-color: #F0FDF4;
+  color: #15803D;
+  border: 1px solid #BBF7D0;
+}
+
+.card-actitudinal .competency-letter {
+  background-color: #FAF5FF;
+  color: #7E22CE;
+  border: 1px solid #E9D5FF;
+}
+
+.competency-titles h4 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.competency-code {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.competency-card-body {
+  padding: 14px 16px;
+  flex: 1;
+}
+
+.competency-card-body p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #475569;
+}
+
+/* 3. FÓRMULAS DE CÁLCULO Y PONDERACIONES */
+.phase-division-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  font-size: 13.5px;
+  color: #1E40AF;
+}
+
+.phase-division-icon {
+  color: #2563EB;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.phase-division-banner p {
+  margin: 0;
+}
+
+.formulas-phase-container {
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.formulas-phase-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #F1F5F9;
+  border-bottom: 1px solid #CBD5E1;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.formulas-phase-title svg {
+  color: #0F848F;
+}
+
+.formulas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  background-color: #FFFFFF;
+}
+
+.formula-card {
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 16px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.formula-card:hover {
+  border-color: #0F848F;
+  box-shadow: 0 4px 12px rgba(15, 132, 143, 0.08);
+}
+
+.formula-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.formula-phase-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: #0F848F;
+  color: #FFFFFF;
+}
+
+.formula-weight-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F848F;
+  background-color: #E6F3F4;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid #B8E4E8;
+}
+
+.formula-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F172A;
+  font-family: 'Lato', sans-serif;
+  margin: 0 0 12px 0;
+}
+
+.formula-equation-box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+
+.formula-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.formula-term {
+  font-weight: 700;
+  font-size: 13px;
+  color: #1E293B;
+}
+
+.formula-times {
+  color: #94A3B8;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.formula-factor {
+  font-weight: 800;
+  font-size: 13px;
+  color: #0F848F;
+  background-color: #E6F3F4;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.formula-plus {
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748B;
+}
+
+.formula-caption {
+  font-size: 12px;
+  color: #64748B;
+  margin: 4px 0 0 0;
+  font-style: italic;
+}
+
+.formula-final-card {
+  background-color: #F8FAFC;
+  border: 1.5px solid #0F848F;
+  border-left: 5px solid #0F848F;
+  color: #0F172A;
+  border-radius: 10px;
+  padding: 18px 22px;
+  box-shadow: 0 2px 8px rgba(15, 132, 143, 0.08);
+  margin-bottom: 18px;
+}
+
+.formula-final-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.formula-final-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.formula-final-badge {
+  background-color: #E6F3F4;
+  color: #0F848F;
+  border: 1px solid #B8E4E8;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.formula-final-header h4 {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0F172A;
+  font-family: 'Lato', sans-serif;
+}
+
+.formula-final-scale {
+  font-size: 12px;
+  color: #475569;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.formula-final-equation-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+
+.final-term-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  padding: 6px 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.final-term-name {
+  font-size: 15px;
+  font-weight: 800;
+  font-family: 'Lato', sans-serif;
+  color: #0F848F;
+}
+
+.final-term-weight {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.final-operator {
+  font-size: 18px;
+  font-weight: 700;
+  color: #64748B;
+}
+
+.final-factor {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0F848F;
+  background-color: #E6F3F4;
+  border: 1px solid #B8E4E8;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.final-result-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  border-radius: 6px;
+  padding: 6px 16px;
+  box-shadow: 0 2px 6px rgba(15, 132, 143, 0.25);
+}
+
+.final-result-name {
+  font-size: 16px;
+  font-weight: 900;
+  font-family: 'Lato', sans-serif;
+  color: #FFFFFF;
+}
+
+.final-result-desc {
+  font-size: 11px;
+  font-weight: 700;
+  color: #E6F3F4;
+}
+
+/* Nota Regulatoria */
+.grading-regulatory-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #FEF9C3;
+  border: 1px solid #FDE047;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #713F12;
+}
+
+.grading-regulatory-note svg {
+  color: #CA8A04;
+  flex-shrink: 0;
+}
+
+/* Footer del Componente */
+.grading-component-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px 4px 4px;
+  border-top: 1px solid #CBD5E1;
+  font-size: 12.5px;
+  color: #64748B;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-print-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid #CBD5E1;
+  padding: 4px 12px;
+  border-radius: 6px;
+  color: #0F848F;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-print-link:hover {
+  background-color: #E6F3F4;
+  border-color: #0F848F;
+}
+
+
+@media (max-width: 768px) {
+
+  /* Contenedor general en mobile */
+  .main-content-layout.notes-layout {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .notes-page-container {
+    gap: 0.75rem;
+  }
+
+  .notes-alert-card {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .notes-alert-text {
+    font-size: 12.5px;
+  }
+
+  .btn-alert-legend-link {
+    font-size: 12px;
+  }
+
+  .modal-backdrop,
+  .modal-backdrop-wide {
+    padding: 6px;
+  }
+
+  .modal-box-wide {
+    width: 100%;
+    max-width: 100%;
+    max-height: 96vh;
+    border-radius: 10px;
+  }
+
+  .modal-header-custom {
+    padding: 10px 14px;
+  }
+
+  .modal-icon-badge-mini {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .modal-icon-badge-mini svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .modal-title-custom {
+    font-size: 15px;
+  }
+
+  .modal-subtitle-custom {
+    font-size: 11px;
+  }
+
+  .modal-header-actions .modal-btn-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modal-body-scroll {
+    padding: 10px 8px;
+  }
+
+  .grading-system-card {
+    gap: 10px;
+  }
+
+  .grading-section {
+    padding: 10px 8px;
+    border-radius: 8px;
+  }
+
+  .grading-section-header {
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+  }
+
+  .grading-section-title {
+    font-size: 13.5px;
+    gap: 6px;
+  }
+
+  .section-num-badge {
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+  }
+
+  .grading-table-grid {
+    grid-template-columns: 1fr;
+    border-radius: 6px;
+  }
+
+  .grading-th {
+    display: none;
+  }
+
+  .eval-type-cell {
+    border-right: none;
+    border-bottom: 1px solid #E2E8F0;
+    background-color: #F1F5F9;
+    padding: 8px 10px;
+  }
+
+  .eval-desc-cell {
+    padding: 8px 10px;
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+
+  .eval-desc-cell p {
+    font-size: 12.5px;
+  }
+
+  .grading-alert-inline {
+    padding: 6px 8px;
+    font-size: 11.5px;
+    margin-top: 6px;
+  }
+
+  /* Competencias en mobile */
+  .competencies-intro-card {
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+
+  .competencies-intro-card p {
+    font-size: 12px;
+  }
+
+  .competencies-header-bar {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .competencies-grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
+  .competency-card-header {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .competency-letter {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+
+  .competency-titles h4 {
+    font-size: 13px;
+  }
+
+  .competency-card-body {
+    padding: 8px 10px;
+  }
+
+  .competency-card-body p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  /* Fórmulas en mobile */
+  .phase-division-banner {
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .formulas-phase-container {
+    margin-bottom: 8px;
+  }
+
+  .formulas-phase-title {
+    padding: 6px 10px;
+    font-size: 12.5px;
+  }
+
+  .formulas-grid {
+    grid-template-columns: 1fr;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .formula-card {
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  .formula-card-top {
+    margin-bottom: 6px;
+  }
+
+  .formula-phase-badge,
+  .formula-weight-badge {
+    font-size: 11px;
+    padding: 1px 6px;
+  }
+
+  .formula-card-title {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .formula-equation-box {
+    padding: 6px 8px;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .formula-item {
+    padding: 2px 6px;
+  }
+
+  .formula-term {
+    font-size: 12px;
+  }
+
+  .formula-factor {
+    font-size: 12px;
+    padding: 1px 4px;
+  }
+
+  .formula-plus {
+    font-size: 12px;
+  }
+
+  .formula-caption {
+    font-size: 11px;
+  }
+
+  /* Tarjeta Promedio Final en mobile */
+  .formula-final-card {
+    padding: 10px 8px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border-left-width: 4px;
+  }
+
+  .formula-final-header {
+    margin-bottom: 6px;
+    gap: 4px;
+  }
+
+  .formula-final-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .formula-final-header h4 {
+    font-size: 13px;
+  }
+
+  .formula-final-scale {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+
+  .formula-final-equation-box {
+    padding: 6px 4px;
+    gap: 5px;
+  }
+
+  .final-term-box {
+    padding: 3px 6px;
+  }
+
+  .final-term-name {
+    font-size: 12px;
+  }
+
+  .final-term-weight {
+    font-size: 10px;
+  }
+
+  .final-operator {
+    font-size: 14px;
+  }
+
+  .final-factor {
+    font-size: 12px;
+    padding: 2px 5px;
+  }
+
+  .final-result-box {
+    padding: 3px 8px;
+  }
+
+  .final-result-name {
+    font-size: 13px;
+  }
+
+  .final-result-desc {
+    font-size: 10px;
+  }
+
+  /* Nota y pie en mobile */
+  .grading-regulatory-note {
+    padding: 6px 8px;
+    font-size: 11.5px;
+    gap: 6px;
+  }
+
+  .grading-component-footer {
+    padding: 8px 2px 2px 2px;
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .btn-print-link {
+    padding: 2px 8px;
+    font-size: 11px;
+  }
+
+  .modal-footer-custom {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .modal-footer-custom button {
+    padding: 6px 12px;
+    font-size: 12.5px;
+  }
+}
+
+/* ESTILOS DE IMPRESIÓN OFICIAL (WINDOW.PRINT) */
+@media print {
+
+  body * {
+    visibility: hidden;
+  }
+
+  #modalGradingLegend,
+  #modalGradingLegend * {
+    visibility: visible;
+  }
+
+  #modalGradingLegend {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: #FFFFFF !important;
+    display: block !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+  }
+
+  .modal-box-wide {
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .modal-header-actions,
+  .modal-footer-custom,
+  .btn-print-link,
+  .top-search-bar,
+  .sidebar-navbar,
+  .floating-scenario-switcher {
+    display: none !important;
+  }
+
+  .modal-body-scroll {
+    overflow: visible !important;
+    padding: 0 !important;
+    background-color: #FFFFFF !important;
+  }
+
+  .grading-section {
+    border: 1px solid #94A3B8 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
   }
 }

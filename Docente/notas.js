@@ -284,6 +284,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnScenarioDefault = document.getElementById('btnScenarioDefault');
   const btnScenarioComplete = document.getElementById('btnScenarioComplete');
 
+  // Modal Leyenda y Fórmulas
+  const modalGradingLegend = document.getElementById('modalGradingLegend');
+  const btnOpenGradingLegend = document.getElementById('btnOpenGradingLegend');
+  const btnOpenGradingLegendAlert = document.getElementById('btnOpenGradingLegendAlert');
+  const btnCloseGradingLegend = document.getElementById('btnCloseGradingLegend');
+  const btnCloseGradingLegendBtn = document.getElementById('btnCloseGradingLegendBtn');
+  const btnPrintGradingLegendTop = document.getElementById('btnPrintGradingLegendTop');
+  const btnPrintGradingLegendFooter = document.getElementById('btnPrintGradingLegendFooter');
+  const btnPrintGradingLegendMain = document.getElementById('btnPrintGradingLegendMain');
+
 
   /**
    * RENDERIZAR LA TABLA DE NOTAS SEGÚN EL ESCENARIO ACTIVO
@@ -511,6 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal(modalSecurity);
     closeModal(modalLocked);
     closeModal(modalConfirm);
+    closeModal(modalGradingLegend);
   }
 
   // Cerrar al presionar Escape o clic en backdrop
@@ -520,12 +531,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  [modalSecurity, modalLocked, modalConfirm].forEach((modal) => {
+  [modalSecurity, modalLocked, modalConfirm, modalGradingLegend].forEach((modal) => {
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
           closeModal(modal);
         }
+      });
+    }
+  });
+
+  /**
+   * CONTROL DEL MODAL DE LEYENDA Y FÓRMULAS
+   */
+  if (btnOpenGradingLegend) {
+    btnOpenGradingLegend.addEventListener('click', () => {
+      openModal(modalGradingLegend);
+    });
+  }
+
+  if (btnOpenGradingLegendAlert) {
+    btnOpenGradingLegendAlert.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(modalGradingLegend);
+    });
+  }
+
+  if (btnCloseGradingLegend) {
+    btnCloseGradingLegend.addEventListener('click', () => {
+      closeModal(modalGradingLegend);
+    });
+  }
+
+  if (btnCloseGradingLegendBtn) {
+    btnCloseGradingLegendBtn.addEventListener('click', () => {
+      closeModal(modalGradingLegend);
+    });
+  }
+
+  // Impresión de Ficha Oficial
+  [btnPrintGradingLegendTop, btnPrintGradingLegendFooter, btnPrintGradingLegendMain].forEach((btn) => {
+    if (btn) {
+      btn.addEventListener('click', () => {
+        window.print();
       });
     }
   });
