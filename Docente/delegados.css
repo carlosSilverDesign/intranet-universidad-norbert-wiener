@@ -1,0 +1,526 @@
+
+.main-content {
+  width: 100%;
+  max-width: 1082px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    max-width: 1082px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* --- TARJETA DE FILTROS DOCENTE --- */
+.attendance-filters-card {
+  width: 100%;
+  max-width: 1082px;
+  box-sizing: border-box;
+  margin-bottom: 0 !important;
+}
+
+/* Fila 1: 4 selectores alineados */
+.filters-row-1 {
+  display: grid;
+  grid-template-columns: 140px 140px 1fr 140px;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+/* Fila 2: Curso amplio, Tipo Sesión y Botón Buscar al final */
+.filters-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 220px 140px;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+/* Botón Buscar */
+.btn-filter-search {
+  height: 42px;
+  background-color: #222222 !important;
+  color: #FFFFFF !important;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  user-select: none;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(34, 34, 34, 0.25);
+}
+
+.btn-filter-search:hover {
+  background-color: #000000 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-filter-search:active {
+  transform: translateY(0);
+}
+
+.btn-filter-search svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* --- TOAST DE OBSERVACIÓN --- */
+.observation-toast-card {
+  width: 100%;
+  max-width: 1082px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+  border: 1px solid #BAE6FD;
+  border-left: 5px solid #0284C7;
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(2, 132, 199, 0.08);
+}
+
+.observation-toast-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.observation-toast-icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 8px;
+  background-color: #BAE6FD;
+  color: #0284C7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.observation-toast-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.observation-toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.observation-toast-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0369A1;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.observation-toast-text {
+  margin: 0;
+  font-size: 13.5px;
+  color: #0C4A6E;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.45;
+}
+
+.observation-toast-text strong {
+  font-weight: 700;
+  color: #075985;
+}
+
+/* --- SUBBAR DE RESUMEN DE SELECCIÓN --- */
+.delegados-subbar {
+  width: 100%;
+  max-width: 1082px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 1rem; */
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.delegados-summary-chips {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chip-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  color: #475569;
+}
+
+.chip-status.has-selection-del {
+  background-color: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #065F46;
+  font-weight: 600;
+}
+
+.chip-status.has-selection-sub {
+  background-color: #F0F9FF;
+  border-color: #BAE6FD;
+  color: #0369A1;
+  font-weight: 600;
+}
+
+.chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #94A3B8;
+}
+
+.chip-status.has-selection-del .chip-dot {
+  background-color: #10B981;
+}
+
+.chip-status.has-selection-sub .chip-dot {
+  background-color: #0284C7;
+}
+
+.delegados-total-count {
+  font-size: 13px;
+  color: #64748B;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* --- TABLA DE ALUMNOS --- */
+.attendance-table-card {
+  width: 100%;
+  max-width: 1082px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.attendance-table-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.attendance-table.delegados-table {
+  width: 100%;
+  min-width: 0 !important;
+  max-width: 100%;
+  table-layout: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.delegados-table th.th-num,
+.delegados-table td.td-num {
+  width: 48px;
+  min-width: 44px;
+  text-align: center;
+  padding: 12px 6px;
+}
+
+.delegados-table th.th-code,
+.delegados-table td.td-code {
+  width: 110px;
+  min-width: 95px;
+  text-align: left;
+  padding: 12px 14px;
+}
+
+.delegados-table th.th-student,
+.delegados-table td.td-student {
+  width: auto;
+  min-width: 240px;
+  text-align: left;
+  padding: 12px 16px;
+}
+
+.delegados-table td.td-student {
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.delegados-table th.th-section,
+.delegados-table td.td-section {
+  width: 90px;
+  min-width: 80px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.delegados-table th.th-delegado,
+.delegados-table td.td-delegado {
+  width: 135px;
+  min-width: 120px;
+  text-align: center;
+  padding: 10px 6px;
+}
+
+.delegados-table th.th-subdelegado,
+.delegados-table td.td-subdelegado {
+  width: 140px;
+  min-width: 125px;
+  text-align: center;
+  padding: 10px 6px;
+}
+
+.delegados-table td.td-select {
+  text-align: center;
+  padding: 8px 4px;
+  vertical-align: middle;
+}
+
+/* --- CHECKBOX --- */
+.delegado-check-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  width: 26px;
+  height: 26px;
+  user-select: none;
+  margin: 0 auto;
+}
+
+.delegado-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.delegado-check-wrap:hover .custom-checkbox {
+  border-color: #07C8CC;
+  background-color: #F8FAFC;
+}
+
+/* Checkbox activo Delegado */
+.input-delegado:checked~.custom-checkbox {
+  background-color: #0D6E6A;
+  border-color: #0D6E6A;
+  box-shadow: 0 2px 5px rgba(13, 110, 106, 0.28);
+}
+
+/* Checkbox activo Sub-delegado */
+.subdelegado-check .input-subdelegado:checked~.custom-checkbox {
+  background-color: #0284C7;
+  border-color: #0284C7;
+  box-shadow: 0 2px 5px rgba(2, 132, 199, 0.28);
+}
+
+.custom-checkbox svg {
+  display: none;
+  width: 15px;
+  height: 15px;
+  color: #FFFFFF;
+}
+
+.delegado-input:checked~.custom-checkbox svg {
+  display: block;
+}
+
+.attendance-table tbody tr.is-delegado-row {
+  background-color: #F0FDF4 !important;
+}
+
+.attendance-table tbody tr.is-subdelegado-row {
+  background-color: #F0F9FF !important;
+}
+
+/* --- BOTÓN INFERIOR DE ACCIÓN --- */
+.attendance-bottom-actions {
+  width: 100%;
+  max-width: 1082px;
+  box-sizing: border-box;
+}
+
+/* --- RESPONSIVIDAD Y OPTIMIZACIÓN MOBILE --- */
+@media (max-width: 992px) {
+  .filters-row-1 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filters-row-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filter-item-btn {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Contenedor con scroll vertical para mantener la cabecera fija y horizontal para columnas */
+  .attendance-table-scroll-container {
+    overflow: auto;
+    max-height: calc(100dvh - 200px);
+    max-height: 70vh;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+
+  .attendance-table.delegados-table {
+    min-width: 480px !important;
+  }
+
+  .delegados-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 12;
+    background-color: #0D6E6A;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .delegados-table th.th-num,
+  .delegados-table td.td-num {
+    position: sticky;
+    left: 0;
+    z-index: 6;
+    width: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    padding: 10px 2px;
+    text-align: center;
+    font-size: 11.5px;
+  }
+
+  .delegados-table th.th-num {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 25;
+    background-color: #0D6E6A;
+  }
+
+  .delegados-table td.td-num {
+    background-color: #FFFFFF;
+  }
+
+  .delegados-table tbody tr:nth-child(even) td.td-num {
+    background-color: #FAFCFD;
+  }
+
+  .delegados-table tbody tr.is-delegado-row td.td-num {
+    background-color: #F0FDF4 !important;
+  }
+
+  .delegados-table tbody tr.is-subdelegado-row td.td-num {
+    background-color: #F0F9FF !important;
+  }
+
+  /* Nombre de Alumno Fijo a la izquierda y en esquina superior izquierda */
+  .delegados-table th.th-student,
+  .delegados-table td.td-student {
+    position: sticky;
+    left: 32px;
+    z-index: 6;
+    width: 155px;
+    min-width: 145px;
+    max-width: 165px;
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 1.25;
+    white-space: normal;
+    word-break: break-word;
+    border-right: 2px solid #CBD5E1;
+    box-shadow: 4px 0 8px -2px rgba(0, 0, 0, 0.12);
+  }
+
+  .delegados-table th.th-student {
+    position: sticky;
+    top: 0;
+    left: 32px;
+    z-index: 25;
+    background-color: #0D6E6A;
+  }
+
+  .delegados-table td.td-student {
+    background-color: #FFFFFF;
+  }
+
+  .delegados-table tbody tr:nth-child(even) td.td-student {
+    background-color: #FAFCFD;
+  }
+
+  .delegados-table tbody tr.is-delegado-row td.td-student {
+    background-color: #F0FDF4 !important;
+  }
+
+  .delegados-table tbody tr.is-subdelegado-row td.td-student {
+    background-color: #F0F9FF !important;
+  }
+
+  .delegados-table th.th-code,
+  .delegados-table td.td-code {
+    display: none;
+  }
+
+  .delegados-table th.th-section,
+  .delegados-table td.td-section {
+    width: 75px;
+    min-width: 75px;
+    text-align: center;
+  }
+
+  .delegados-table th.th-delegado,
+  .delegados-table td.td-delegado {
+    width: 95px;
+    min-width: 95px;
+  }
+
+  .delegados-table th.th-subdelegado,
+  .delegados-table td.td-subdelegado {
+    width: 105px;
+    min-width: 105px;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .filters-row-1,
+  .filters-row-2 {
+    grid-template-columns: 1fr;
+  }
+}

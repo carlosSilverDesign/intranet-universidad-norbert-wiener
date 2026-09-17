@@ -27,6 +27,9 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
 - [x] **Paso 7: Control y Registro de Asistencias (Estudiantes)**
   - Estado: Completado (2026-09-07)
   - Archivos: `Docente/asistencia-alumno.html`, `Docente/asistencia-alumno.css`, `Docente/asistencia-alumno.js`, `Docente/componentes/section-header.html`
+- [x] **Paso 7.1: Asignación de Delegado de Clase**
+  - Estado: Completado (2026-09-15)
+  - Archivos: `Docente/delegados.html`, `Docente/delegados.css`, `Docente/delegados.js`
 - [ ] **Paso 8: Avance Académico, Asistencia Docente y Reglamentos**
   - Estado: Pendiente
   - Archivos: `Docente/avance.html`, `Docente/asistencia-docente.html`, `Docente/reglamentos.html`
