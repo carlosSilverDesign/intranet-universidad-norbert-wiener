@@ -12,6 +12,57 @@
   <link rel="stylesheet" href="cursos.css">
 </head>
 
+<style>
+  .action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid #D9D9D9;
+    border-radius: 6px;
+    background: #FFFFFF;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .action-button:hover {
+    background: #F5F5F5;
+    border-color: #BDBDBD;
+  }
+
+  .action-button svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  /* Mobile */
+  @media (max-width: 576px) {
+    .action-buttons {
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    .action-button {
+      flex: 1;
+      padding: 0 10px;
+    }
+  }
+</style>
+
 <body>
 
   <!-- Enlace de salto al contenido principal para lectores de pantalla y navegación por teclado -->
@@ -153,16 +204,22 @@
 
           <div class="lc-credit-body">
             <div class="lc-credit-row">
-              <span class="lc-credit-label skeleton-item skeleton-text" style="margin: 0; height: 12px; width: 140px;"></span>
-              <span class="lc-credit-num skeleton-item skeleton-text" style="margin: 0; height: 14px; width: 30px;"></span>
+              <span class="lc-credit-label skeleton-item skeleton-text"
+                style="margin: 0; height: 12px; width: 140px;"></span>
+              <span class="lc-credit-num skeleton-item skeleton-text"
+                style="margin: 0; height: 14px; width: 30px;"></span>
             </div>
             <div class="lc-credit-row">
-              <span class="lc-credit-label skeleton-item skeleton-text" style="margin: 0; height: 12px; width: 120px;"></span>
-              <span class="lc-credit-num skeleton-item skeleton-text" style="margin: 0; height: 14px; width: 30px;"></span>
+              <span class="lc-credit-label skeleton-item skeleton-text"
+                style="margin: 0; height: 12px; width: 120px;"></span>
+              <span class="lc-credit-num skeleton-item skeleton-text"
+                style="margin: 0; height: 14px; width: 30px;"></span>
             </div>
             <div class="lc-credit-footer">
-              <span class="lc-credit-footer-label skeleton-item skeleton-text" style="margin: 0; height: 12px; width: 130px;"></span>
-              <span class="lc-pill-badge skeleton-item skeleton-text" style="width: 45px; height: 24px; border-radius: 12px; margin: 0;"></span>
+              <span class="lc-credit-footer-label skeleton-item skeleton-text"
+                style="margin: 0; height: 12px; width: 130px;"></span>
+              <span class="lc-pill-badge skeleton-item skeleton-text"
+                style="width: 45px; height: 24px; border-radius: 12px; margin: 0;"></span>
             </div>
           </div>
         </div>
@@ -177,22 +234,29 @@
 
           <div class="lc-credit-body">
             <div class="lc-credit-row">
-              <span class="lc-credit-label skeleton-item skeleton-text" style="margin: 0; height: 12px; width: 150px;"></span>
-              <span class="lc-credit-num skeleton-item skeleton-text" style="margin: 0; height: 14px; width: 50px;"></span>
+              <span class="lc-credit-label skeleton-item skeleton-text"
+                style="margin: 0; height: 12px; width: 150px;"></span>
+              <span class="lc-credit-num skeleton-item skeleton-text"
+                style="margin: 0; height: 14px; width: 50px;"></span>
             </div>
             <div class="lc-credit-row">
-              <span class="lc-credit-label skeleton-item skeleton-text" style="margin: 0; height: 12px; width: 140px;"></span>
-              <span class="lc-credit-num skeleton-item skeleton-text" style="margin: 0; height: 14px; width: 50px;"></span>
+              <span class="lc-credit-label skeleton-item skeleton-text"
+                style="margin: 0; height: 12px; width: 140px;"></span>
+              <span class="lc-credit-num skeleton-item skeleton-text"
+                style="margin: 0; height: 14px; width: 50px;"></span>
             </div>
             <div class="lc-credit-footer">
-              <span class="lc-credit-footer-label skeleton-item skeleton-text" style="margin: 0; height: 12px; width: 130px;"></span>
-              <span class="lc-pill-badge skeleton-item skeleton-text" style="width: 65px; height: 24px; border-radius: 12px; margin: 0;"></span>
+              <span class="lc-credit-footer-label skeleton-item skeleton-text"
+                style="margin: 0; height: 12px; width: 130px;"></span>
+              <span class="lc-pill-badge skeleton-item skeleton-text"
+                style="width: 65px; height: 24px; border-radius: 12px; margin: 0;"></span>
             </div>
 
             <!-- Progress Bar Accesible -->
             <div class="lc-progress-container">
               <div class="skeleton-item skeleton-progress-bar" style="margin-top: 4px; height: 8px;"></div>
-              <span class="lc-progress-text skeleton-item skeleton-text" style="margin-top: 6px; height: 12px; width: 100px;"></span>
+              <span class="lc-progress-text skeleton-item skeleton-text"
+                style="margin-top: 6px; height: 12px; width: 100px;"></span>
             </div>
           </div>
         </div>
@@ -893,6 +957,35 @@
             aria-labelledby="accordion-header-cursos-extracurriculares" style="display: none;">
           </div>
         </div>
+
+      </div>
+
+      <!-- Separador 3 -->
+      <div class="lc-section-divider" role="separator" aria-label="Descargar Programa de Estudios">
+        <h2>Descargar Progreso Académico</h2>
+      </div>
+
+      <div class="action-buttons">
+
+        <button type="button" class="action-button">
+          <!-- SVG DESCARGA -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M9.99518 12.5512C9.90588 12.5512 9.82282 12.5352 9.74602 12.5031C9.66921 12.4712 9.59872 12.4231 9.53456 12.3589L6.98497 9.80937C6.87497 9.70061 6.82074 9.57325 6.82227 9.42728C6.82393 9.28131 6.88178 9.15062 6.99581 9.0352C7.11789 8.91992 7.24886 8.8636 7.38872 8.86624C7.52872 8.86888 7.65643 8.92791 7.77185 9.04332L9.45768 10.75V3.95832C9.45768 3.80457 9.50914 3.67589 9.61206 3.57228C9.71484 3.46853 9.84247 3.41666 9.99497 3.41666C10.1475 3.41666 10.2766 3.46853 10.3823 3.57228C10.4881 3.67589 10.541 3.80457 10.541 3.95832V10.75L12.2477 9.04332C12.3531 8.93332 12.4783 8.87909 12.6233 8.88062C12.7682 8.88228 12.9016 8.94075 13.0237 9.05603C13.1378 9.17145 13.1934 9.30048 13.1908 9.44311C13.1882 9.58575 13.1291 9.71478 13.0137 9.8302L10.4641 12.3589C10.3944 12.4231 10.3212 12.4712 10.2443 12.5031C10.1675 12.5352 10.0845 12.5512 9.99518 12.5512ZM5.74997 15.5833C5.37456 15.5833 5.05838 15.4538 4.80143 15.1948C4.54449 14.9358 4.41602 14.6187 4.41602 14.2435V13.5256C4.41602 13.3719 4.46747 13.2432 4.57039 13.1396C4.67317 13.0358 4.80081 12.9839 4.95331 12.9839C5.10581 12.9839 5.2349 13.0358 5.3406 13.1396C5.44643 13.2432 5.49935 13.3719 5.49935 13.5256V14.2435C5.49935 14.3077 5.52609 14.3664 5.57956 14.4198C5.63289 14.4733 5.69164 14.5 5.75581 14.5H14.2429C14.3071 14.5 14.3658 14.4733 14.4191 14.4198C14.4726 14.3664 14.4993 14.3077 14.4993 14.2435V13.5256C14.4993 13.3719 14.5507 13.2432 14.6535 13.1396C14.7564 13.0358 14.8841 12.9839 15.0366 12.9839C15.1891 12.9839 15.3182 13.0358 15.4239 13.1396C15.5298 13.2432 15.5827 13.3719 15.5827 13.5256V14.2435C15.5827 14.6187 15.4531 14.9358 15.1939 15.1948C14.9348 15.4538 14.6175 15.5833 14.2421 15.5833H5.74997Z"
+              fill="#404040" />
+          </svg>
+          <span>Descargar</span>
+        </button>
+
+        <button type="button" class="action-button">
+          <!-- SVG IMPRESIÓN -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M6.75562 16.5833C6.38715 16.5833 6.07174 16.4524 5.80938 16.1904C5.54701 15.9286 5.41583 15.6138 5.41583 15.246V13.5881H3.99604C3.62757 13.5881 3.31215 13.4572 3.04979 13.1952C2.78743 12.9334 2.65625 12.6162 2.65625 12.2435V8.83979C2.65625 8.40229 2.80931 8.02903 3.11542 7.72C3.42153 7.41097 3.79625 7.25646 4.23958 7.25646H15.7588C16.1963 7.25646 16.5695 7.41097 16.8785 7.72C17.1876 8.02903 17.3421 8.40229 17.3421 8.83979V12.2435C17.3421 12.612 17.2111 12.9274 16.9492 13.1898C16.6874 13.4522 16.3726 13.5833 16.0048 13.5833H14.5873V15.2435C14.5873 15.612 14.4563 15.9274 14.1944 16.1898C13.9326 16.4522 13.6153 16.5833 13.2427 16.5833H6.75562ZM3.99604 12.5H5.41583C5.42653 12.141 5.56146 11.8333 5.82062 11.5769C6.07993 11.3205 6.3916 11.1923 6.75562 11.1923H13.2427C13.6067 11.1923 13.9184 11.3205 14.1777 11.5769C14.4369 11.8333 14.5718 12.141 14.5825 12.5H16.0231C16.098 12.5 16.1594 12.476 16.2075 12.4279C16.2556 12.3799 16.2796 12.3184 16.2796 12.2435V9.13813C16.2796 8.91146 16.1963 8.72174 16.0296 8.56896C15.8629 8.41618 15.6685 8.33979 15.4463 8.33979H4.53125C4.30694 8.33979 4.11889 8.41646 3.96708 8.56979C3.81542 8.72313 3.73958 8.91313 3.73958 9.13979V12.2435C3.73958 12.3184 3.76361 12.3799 3.81167 12.4279C3.85972 12.476 3.92118 12.5 3.99604 12.5ZM13.4992 7.25646V5.01292C13.4992 4.93806 13.4751 4.8766 13.4271 4.82854C13.379 4.78049 13.3176 4.75646 13.2427 4.75646H6.75562C6.68076 4.75646 6.61931 4.78049 6.57125 4.82854C6.52319 4.8766 6.49917 4.93806 6.49917 5.01292V7.25646H5.41583V5.01292C5.41583 4.64028 5.54701 4.32382 5.80938 4.06354C6.07174 3.80326 6.38715 3.67313 6.75562 3.67313H13.2427C13.6112 3.67313 13.9266 3.80431 14.189 4.06667C14.4513 4.32903 14.5825 4.64445 14.5825 5.01292V7.25646H13.4992ZM14.5846 10.3398C14.7958 10.3398 14.9744 10.2683 15.1202 10.1254C15.266 9.9825 15.339 9.80542 15.339 9.59417C15.339 9.38292 15.2675 9.20438 15.1246 9.05854C14.9817 8.91271 14.8046 8.83979 14.5933 8.83979C14.3821 8.83979 14.2035 8.91125 14.0577 9.05417C13.9119 9.19708 13.839 9.37417 13.839 9.58542C13.839 9.79667 13.9104 9.97521 14.0533 10.121C14.1962 10.2669 14.3733 10.3398 14.5846 10.3398ZM13.4992 15.2435V12.5321C13.4992 12.4572 13.4751 12.3958 13.4271 12.3477C13.379 12.2997 13.3176 12.2756 13.2427 12.2756H6.75562C6.68076 12.2756 6.61931 12.2997 6.57125 12.3477C6.52319 12.3958 6.49917 12.4572 6.49917 12.5321V15.2435C6.49917 15.3184 6.52319 15.3799 6.57125 15.4279C6.61931 15.476 6.68076 15.5 6.75562 15.5H13.2427C13.3176 15.5 13.379 15.476 13.4271 15.4279C13.4751 15.3799 13.4992 15.3184 13.4992 15.2435ZM3.99604 8.33979H3.73958H16.2796H3.99604Z"
+              fill="#404040" />
+          </svg>
+          <span>Imprimir</span>
+        </button>
 
       </div>
 
