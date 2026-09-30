@@ -1,10 +1,3 @@
-/* ==========================================================================
-   APROBACIÓN DE FOTOGRAFÍAS - PERFIL ADMINISTRATIVO
-   Design System: Universidad Norbert Wiener
-   NOTA: Cero variables CSS (valores hexadecimales directos según directiva).
-   ========================================================================== */
-
-/* --- RESET BÁSICO Y TIPOGRAFÍA --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +20,7 @@ body {
   padding: 28px 20px 80px;
 }
 
-/* --- CABECERA DE SECCIÓN (Design.md Sección 10) --- */
+/* --- CABECERA DE SECCIÓN --- */
 .page-header-flex {
   display: flex;
   justify-content: space-between;
@@ -131,7 +124,7 @@ body {
   margin: 12px 0 24px;
 }
 
-/* --- TARJETA DE FILTROS (Basada en perfil Docente) --- */
+/* --- TARJETA DE FILTROS */
 .admin-filters-card {
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
@@ -230,7 +223,7 @@ body {
   color: #5B6E80;
 }
 
-/* Botón de Actualizar Listado (Estilo btn-black) */
+/* Botón de Actualizar Listado*/
 .btn-filter-action {
   height: 42px;
   background-color: #222222;
@@ -324,7 +317,7 @@ body {
   border: 1px solid #C4EBD4;
 }
 
-/* --- ESTRUCTURA DE LA TABLA (Basada en Flexbox y Grid) --- */
+/* --- ESTRUCTURA DE LA TABLA */
 .table-main-wrapper {
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
@@ -371,7 +364,6 @@ body {
   flex-direction: column;
 }
 
-/* Fila individual */
 .table-row {
   display: grid;
   grid-template-columns: 38px 100px 180px 140px 1fr;
@@ -484,18 +476,8 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* ==========================================================================
-   CONTROL DE TAMAÑO DE FOTOS (DESKTOP)
-   -> Configurado al ancho solicitado: 110px.
-   -> Modifica aquí directamente el valor de 'width' en .photo-frame para calibrar.
-   -> 'aspect-ratio: 4 / 5;' y 'object-fit: cover;' garantizan que el alto
-      sea siempre proporcional (137.5px) y que la foto NUNCA se deforme ni distorsione.
-   ========================================================================== */
 .photo-frame {
   width: 110px;
-  /* <--- VALOR CONFIGURABLE: MODIFICA AQUÍ EL ANCHO DE LA FOTO */
-  aspect-ratio: 4 / 5;
-  /* Alto proporcional automático: 137.5px (sin deformación) */
   height: auto;
   min-height: 137px;
   border-radius: 6px;
@@ -514,7 +496,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Evita cualquier deformación o estiramiento */
   display: block;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -606,7 +587,6 @@ body {
   gap: 10px;
   width: 100%;
   flex-wrap: nowrap;
-  /* Garantiza 3 fotos en una sola línea continua */
 }
 
 /* Tarjeta individual de foto enviada por la intranet */
@@ -749,7 +729,6 @@ body {
   transform: scale(1.08);
 }
 
-/* Botón flotante de lupa sobre la foto */
 .photo-zoom-overlay-btn {
   position: absolute;
   top: 6px;
@@ -1188,9 +1167,7 @@ body {
   color: #D32F2F;
 }
 
-/* ==========================================================================
-   OPTIMIZACIÓN RESPONSIVA Y VERSIÓN MOBILE
-   ========================================================================== */
+/* --- VERSIÓN MOBILE --- */
 
 /* Pantallas medianas (tablets / laptops pequeñas: max-width 960px) */
 @media (max-width: 960px) {
@@ -1241,7 +1218,6 @@ body {
     gap: 12px;
   }
 
-  /* Ocultar cabecera tabular rígida en mobile */
   .table-row-tb {
     display: none;
   }
@@ -1256,7 +1232,6 @@ body {
     gap: 16px;
   }
 
-  /* Transformar cada fila en una tarjeta móvil autónoma */
   .table-row {
     display: flex;
     flex-direction: column;
@@ -1339,7 +1314,6 @@ body {
     box-sizing: border-box;
   }
 
-  /* Estado vacío en mobile: barra compacta horizontal */
   .photo-card-sigu.empty-state {
     display: flex;
     flex-direction: row;
@@ -1419,7 +1393,7 @@ body {
     padding: 8px;
   }
 
-  /* Columna WEB en mobile: encabezado al top y fotos acomodadas en 'Z' (cuadrícula de 2 columnas) */
+  /* Columna WEB en mobile: encabezado al top y fotos acomodadas en 'Z' */
   .td-web {
     display: flex;
     flex-direction: column;
