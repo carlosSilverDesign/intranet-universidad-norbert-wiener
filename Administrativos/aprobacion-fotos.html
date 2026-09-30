@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprobación de Fotos de Alumnos - Perfil Administrativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="aprobacion-fotos.css">
+</head>
+
+<body>
+
+  <!-- CONTENEDOR CENTRAL -->
+  <main class="admin-main-container">
+
+    <!-- 1. CABECERA MODULAR DE SECCIÓN -->
+    <header class="page-header-flex">
+      <div class="header-left">
+        <div class="header-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+            <path
+              d="M172.31-140Q142-140 121-161q-21-21-21-51.31v-455.38Q100-698 121-719q21-21 51.31-21h122.15l52.31-56.69q9.85-10.85 23.81-17.08Q384.54-820 400-820h160q15.46 0 29.42 6.23t23.81 17.08L665.54-740h122.15Q818-740 839-719q21 21 21 51.31v455.38Q860-182 839-161q-21 21-51.31 21H172.31Zm0-60h615.38q5.39 0 8.85-3.46t3.46-8.85v-455.38q0-5.39-3.46-8.85t-8.85-3.46H638.77l-73.39-80H394.62l-73.39 80H172.31q-5.39 0-8.85 3.46t-3.46 8.85v455.38q0 5.39 3.46 8.85t8.85 3.46ZM480-440ZM333.85-297.69h292.3V-312q0-40-39.57-62.85Q547-397.69 480-397.69t-106.58 22.84Q333.85-352 333.85-312v14.31Zm195.73-172.73Q550-490.85 550-520t-20.42-49.58Q509.15-590 480-590t-49.58 20.42Q410-549.15 410-520t20.42 49.58Q450.85-450 480-450t49.58-20.42Z" />
+          </svg>
+        </div>
+        <div class="header-titles">
+          <h1>Validación de Fotos de Perfil</h1>
+          <p>Revisa, aprueba o descarta las fotos enviadas por los alumnos desde la Intranet para su actualización en el
+            sistema SIGU.</p>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="header-stats-badge" id="statsBadge">
+          <span class="header-stats-dot"></span>
+          <span id="statsBadgeText">4 solicitudes por revisar</span>
+        </div>
+      </div>
+    </header>
+
+    <hr class="header-divider">
+
+    <!-- 2. TARJETA DE FILTROS -->
+    <section class="admin-filters-card" aria-label="Filtros de Búsqueda">
+      <form class="filters-form-grid" id="photoFiltersForm" onsubmit="return false;">
+        <div class="filters-row">
+
+          <!-- Fecha inicio -->
+          <div class="filter-item">
+            <label for="filtroFechaInicio">Fecha Inicio</label>
+            <div class="filter-input-wrapper">
+              <input type="date" id="filtroFechaInicio" class="filter-input" value="2026-09-10">
+            </div>
+          </div>
+
+          <!-- Fecha fin -->
+          <div class="filter-item">
+            <label for="filtroFechaFin">Fecha Fin</label>
+            <div class="filter-input-wrapper">
+              <input type="date" id="filtroFechaFin" class="filter-input" value="2026-09-17">
+            </div>
+          </div>
+
+          <!-- Institución -->
+          <div class="filter-item">
+            <label for="filtroInstitucion">Institución</label>
+            <div class="filter-input-wrapper">
+              <select id="filtroInstitucion" class="filter-select">
+                <option value="todas">Todas las instituciones</option>
+                <option value="carrion" selected>Instituto Carrión</option>
+                <option value="wiener">Universidad Norbert Wiener</option>
+              </select>
+              <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Tipo (Estado) -->
+          <div class="filter-item">
+            <label for="filtroTipo">Tipo de Estado</label>
+            <div class="filter-input-wrapper">
+              <select id="filtroTipo" class="filter-select">
+                <option value="todos" selected>Todos</option>
+                <option value="pendientes">Por aprobar</option>
+                <option value="aprobados">Aprobados</option>
+              </select>
+              <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Botón Actualizar Listado -->
+          <div class="filter-item">
+            <button type="button" class="btn-filter-action" id="btnActualizarListado">
+              <svg id="refreshIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+              </svg>
+              <span>Actualizar Listado</span>
+            </button>
+          </div>
+
+        </div>
+      </form>
+    </section>
+
+    <!-- 3. BARRA CONTEXTUAL PREVIA A LA TABLA -->
+    <section class="table-context-subbar">
+      <div class="context-text-main" id="contextCounterText">
+        Mostrando <strong id="countShown">5</strong> alumnos con solicitudes • <strong id="countPending">4</strong> por
+        aprobar
+      </div>
+      <div class="context-summary-pills">
+        <span class="summary-pill pending" id="pillPending">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          4 Por aprobar
+        </span>
+        <span class="summary-pill approved" id="pillApproved">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          1 Aprobado
+        </span>
+      </div>
+    </section>
+
+    <!-- 4. TABLA ESTRUCTURADA EN GRID Y FLEXBOX -->
+    <div class="table-main-wrapper" id="tableWrapper">
+
+      <!-- Cabecera de la tabla -->
+      <div class="table-row-tb" role="row">
+        <div class="th-col center" role="columnheader">Nro</div>
+        <div class="th-col" role="columnheader">Código</div>
+        <div class="th-col" role="columnheader">Apellidos y Nombres</div>
+        <div class="th-col center" role="columnheader">SIGU (Actual)</div>
+        <div class="th-col th-web" role="columnheader">WEB (Fotos Intranet)</div>
+      </div>
+
+      <!-- Contenedor flexible de filas -->
+      <div class="table-list" id="tableListContainer">
+
+        <!-- ================= FILA 1 ================= -->
+        <article class="table-row" id="row-student-1" data-institution="carrion" data-status="pendientes">
+          <div class="td-num"><span class="num-prefix">N° </span>1</div>
+
+          <div class="td-code">
+            <span class="student-code-badge">C26BR08229</span>
+          </div>
+
+          <div class="td-student">
+            <span class="student-name">COLLAVINO SALAS, Brandon Lautaro</span>
+            <span class="student-program">Farmacia Técnica</span>
+            <span class="student-institution-tag">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+              </svg>
+              Instituto Carrión
+            </span>
+          </div>
+
+          <!-- COLUMNA SIGU: Foto oficial actual -->
+          <div class="td-sigu">
+            <div class="photo-card-sigu empty-state" id="sigu-card-1">
+              <div class="empty-photo-placeholder"
+                title="El alumno aún no cuenta con una fotografía oficial registrada en SIGU">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="#9AA6B2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <span class="empty-photo-text">Sin foto oficial</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- COLUMNA WEB: Fotos subidas por la intranet (Foto por aprobar + historial) -->
+          <div class="td-web">
+            <div class="web-photos-container">
+
+              <!-- FOTO 1: Más reciente (Por aprobar) -->
+              <div class="photo-card-web is-new" id="photo-card-1-1">
+                <span class="photo-status-tag new-tag">Por aprobar</span>
+                <div class="photo-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=240&auto=format&fit=crop&q=80"
+                    alt="Foto enviada por Brandon Lautaro Collavino Salas"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=80', 'COLLAVINO SALAS, Brandon Lautaro', '10/09/2026 09:41 PM')">
+                  <button type="button" class="photo-zoom-overlay-btn" title="Ampliar e inspeccionar foto"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=80', 'COLLAVINO SALAS, Brandon Lautaro', '10/09/2026 09:41 PM')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo-date-time">10/09/2026<br>09:41 PM</div>
+                <div class="photo-actions-row">
+                  <button type="button" class="btn-photo-action approve" title="Aprobar y registrar como foto oficial"
+                    onclick="triggerApproveModal(1, 'COLLAVINO SALAS, Brandon Lautaro', 'C26BR08229', 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=240&auto=format&fit=crop&q=80', '10/09/2026 09:41 PM', 'photo-card-1-1')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-photo-action delete" title="Eliminar y descartar foto"
+                    onclick="triggerDeleteModal(1, 'COLLAVINO SALAS, Brandon Lautaro', 'C26BR08229', '10/09/2026 09:41 PM', 'photo-card-1-1')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- FOTO 2: Historial previo -->
+              <div class="photo-card-web is-history" id="photo-card-1-2">
+                <span class="photo-status-tag history-tag">Historial</span>
+                <div class="photo-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&auto=format&fit=crop&q=80"
+                    alt="Foto anterior de Brandon Collavino"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80', 'COLLAVINO SALAS, Brandon Lautaro (Historial)', '02/09/2026 11:15 AM')">
+                  <button type="button" class="photo-zoom-overlay-btn" title="Ampliar foto"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80', 'COLLAVINO SALAS, Brandon Lautaro (Historial)', '02/09/2026 11:15 AM')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo-date-time">02/09/2026<br>11:15 AM</div>
+                <div class="photo-actions-row">
+                  <button type="button" class="btn-photo-action approve" title="Aprobar y registrar como foto oficial"
+                    onclick="triggerApproveModal(1, 'COLLAVINO SALAS, Brandon Lautaro', 'C26BR08229', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&auto=format&fit=crop&q=80', '02/09/2026 11:15 AM', 'photo-card-1-2')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-photo-action delete" title="Eliminar foto del historial"
+                    onclick="triggerDeleteModal(1, 'COLLAVINO SALAS, Brandon Lautaro', 'C26BR08229', '02/09/2026 11:15 AM', 'photo-card-1-2')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
+        <!-- ================= FILA 2 ================= -->
+        <article class="table-row" id="row-student-2" data-institution="carrion" data-status="pendientes">
+          <div class="td-num"><span class="num-prefix">N° </span>2</div>
+
+          <div class="td-code">
+            <span class="student-code-badge">C22AE02J36</span>
+          </div>
+
+          <div class="td-student">
+            <span class="student-name">RAMIREZ SEGIL, Mirella Denis</span>
+            <span class="student-program">Enfermería Técnica</span>
+            <span class="student-institution-tag">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+              </svg>
+              Instituto Carrión
+            </span>
+          </div>
+
+          <!-- COLUMNA SIGU: Con foto oficial previa -->
+          <div class="td-sigu">
+            <div class="photo-card-sigu" id="sigu-card-2">
+              <span class="photo-badge-official">Foto Oficial Activa</span>
+              <div class="photo-frame">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=240&auto=format&fit=crop&q=80"
+                  alt="Foto Oficial SIGU - Mirella Denis Ramirez"
+                  onclick="openZoomModal('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&auto=format&fit=crop&q=80', 'RAMIREZ SEGIL, Mirella Denis (Foto Oficial SIGU)', 'Registrada en 2025')">
+              </div>
+              <button type="button" class="btn-remove-sigu" title="Retirar foto oficial activa"
+                onclick="triggerDeleteModal(2, 'RAMIREZ SEGIL, Mirella Denis', 'C22AE02J36', 'Foto Oficial Activa', 'sigu-card-2')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- COLUMNA WEB: 3 Fotos (Nueva + 2 de Historial) -->
+          <div class="td-web">
+            <div class="web-photos-container">
+
+              <!-- FOTO 1: Nueva (Por aprobar) -->
+              <div class="photo-card-web is-new" id="photo-card-2-1">
+                <span class="photo-status-tag new-tag">Por aprobar</span>
+                <div class="photo-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=240&auto=format&fit=crop&q=80"
+                    alt="Foto enviada por Mirella Denis Ramirez Segil"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&q=80', 'RAMIREZ SEGIL, Mirella Denis', '12/09/2026 04:15 PM')">
+                  <button type="button" class="photo-zoom-overlay-btn" title="Ampliar foto"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&q=80', 'RAMIREZ SEGIL, Mirella Denis', '12/09/2026 04:15 PM')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo-date-time">12/09/2026<br>04:15 PM</div>
+                <div class="photo-actions-row">
+                  <button type="button" class="btn-photo-action approve" title="Aprobar foto"
+                    onclick="triggerApproveModal(2, 'RAMIREZ SEGIL, Mirella Denis', 'C22AE02J36', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=240&auto=format&fit=crop&q=80', '12/09/2026 04:15 PM', 'photo-card-2-1')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.8">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-photo-action delete" title="Eliminar foto"
+                    onclick="triggerDeleteModal(2, 'RAMIREZ SEGIL, Mirella Denis', 'C22AE02J36', '12/09/2026 04:15 PM', 'photo-card-2-1')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- FOTO 2: Historial -->
+              <div class="photo-card-web is-history" id="photo-card-2-2">
+                <span class="photo-status-tag history-tag">Historial</span>
+                <div class="photo-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop&q=80"
+                    alt="Foto de historial 1 de Mirella Denis"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80', 'RAMIREZ SEGIL, Mirella Denis (Historial)', '28/08/2026 10:05 AM')">
+                  <button type="button" class="photo-zoom-overlay-btn" title="Ampliar foto"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80', 'RAMIREZ SEGIL, Mirella Denis (Historial)', '28/08/2026 10:05 AM')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo-date-time">28/08/2026<br>10:05 AM</div>
+                <div class="photo-actions-row">
+                  <button type="button" class="btn-photo-action approve" title="Aprobar foto"
+                    onclick="triggerApproveModal(2, 'RAMIREZ SEGIL, Mirella Denis', 'C22AE02J36', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop&q=80', '28/08/2026 10:05 AM', 'photo-card-2-2')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.8">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-photo-action delete" title="Eliminar foto"
+                    onclick="triggerDeleteModal(2, 'RAMIREZ SEGIL, Mirella Denis', 'C22AE02J36', '28/08/2026 10:05 AM', 'photo-card-2-2')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- FOTO 3: Historial más antiguo -->
+              <div class="photo-card-web is-history" id="photo-card-2-3">
+                <span class="photo-status-tag history-tag">Historial</span>
+                <div class="photo-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=240&auto=format&fit=crop&q=80"
+                    alt="Foto de historial 2 de Mirella Denis"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80', 'RAMIREZ SEGIL, Mirella Denis (Historial 2)', '15/07/2026 03:30 PM')">
+                  <button type="button" class="photo-zoom-overlay-btn" title="Ampliar foto"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80', 'RAMIREZ SEGIL, Mirella Denis (Historial 2)', '15/07/2026 03:30 PM')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo-date-time">15/07/2026<br>03:30 PM</div>
+                <div class="photo-actions-row">
+                  <button type="button" class="btn-photo-action approve" title="Aprobar foto"
+                    onclick="triggerApproveModal(2, 'RAMIREZ SEGIL, Mirella Denis', 'C22AE02J36', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=240&auto=format&fit=crop&q=80', '15/07/2026 03:30 PM', 'photo-card-2-3')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.8">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-photo-action delete" title="Eliminar foto"
+                    onclick="triggerDeleteModal(2, 'RAMIREZ SEGIL, Mirella Denis', 'C22AE02J36', '15/07/2026 03:30 PM', 'photo-card-2-3')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
+        <!-- ================= FILA 3 ================= -->
+        <article class="table-row" id="row-student-3" data-institution="wiener" data-status="pendientes">
+          <div class="td-num"><span class="num-prefix">N° </span>3</div>
+
+          <div class="td-code">
+            <span class="student-code-badge">W20261045</span>
+          </div>
+
+          <div class="td-student">
+            <span class="student-name">MENDOZA HUAMÁN, Carlos Alberto</span>
+            <span class="student-program">Medicina Humana</span>
+            <span class="student-institution-tag">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+              </svg>
+              Universidad Norbert Wiener
+            </span>
+          </div>
+
+          <div class="td-sigu">
+            <div class="photo-card-sigu empty-state" id="sigu-card-3">
+              <div class="empty-photo-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="#9AA6B2" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <span class="empty-photo-text">Sin foto oficial</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="td-web">
+            <div class="web-photos-container">
+              <div class="photo-card-web is-new" id="photo-card-3-1">
+                <span class="photo-status-tag new-tag">Por aprobar</span>
+                <div class="photo-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&auto=format&fit=crop&q=80"
+                    alt="Foto enviada por Carlos Alberto Mendoza"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=80', 'MENDOZA HUAMÁN, Carlos Alberto', '16/09/2026 08:30 PM')">
+                  <button type="button" class="photo-zoom-overlay-btn" title="Ampliar foto"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=80', 'MENDOZA HUAMÁN, Carlos Alberto', '16/09/2026 08:30 PM')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo-date-time">16/09/2026<br>08:30 PM</div>
+                <div class="photo-actions-row">
+                  <button type="button" class="btn-photo-action approve" title="Aprobar foto"
+                    onclick="triggerApproveModal(3, 'MENDOZA HUAMÁN, Carlos Alberto', 'W20261045', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&auto=format&fit=crop&q=80', '16/09/2026 08:30 PM', 'photo-card-3-1')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.8">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-photo-action delete" title="Eliminar foto"
+                    onclick="triggerDeleteModal(3, 'MENDOZA HUAMÁN, Carlos Alberto', 'W20261045', '16/09/2026 08:30 PM', 'photo-card-3-1')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ================= FILA 4 ================= -->
+        <article class="table-row" id="row-student-4" data-institution="wiener" data-status="pendientes">
+          <div class="td-num"><span class="num-prefix">N° </span>4</div>
+
+          <div class="td-code">
+            <span class="student-code-badge">W20252119</span>
+          </div>
+
+          <div class="td-student">
+            <span class="student-name">ALVARADO CHÁVEZ, Lucía Andrea</span>
+            <span class="student-program">Odontología</span>
+            <span class="student-institution-tag">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+              </svg>
+              Universidad Norbert Wiener
+            </span>
+          </div>
+
+          <div class="td-sigu">
+            <div class="photo-card-sigu empty-state" id="sigu-card-4">
+              <div class="empty-photo-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="#9AA6B2" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <span class="empty-photo-text">Sin foto oficial</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="td-web">
+            <div class="web-photos-container">
+              <!-- Foto 1 -->
+              <div class="photo-card-web is-new" id="photo-card-4-1">
+                <span class="photo-status-tag new-tag">Por aprobar</span>
+                <div class="photo-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80"
+                    alt="Foto enviada por Lucía Andrea Alvarado"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80', 'ALVARADO CHÁVEZ, Lucía Andrea', '17/09/2026 09:10 AM')">
+                  <button type="button" class="photo-zoom-overlay-btn" title="Ampliar foto"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80', 'ALVARADO CHÁVEZ, Lucía Andrea', '17/09/2026 09:10 AM')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo-date-time">17/09/2026<br>09:10 AM</div>
+                <div class="photo-actions-row">
+                  <button type="button" class="btn-photo-action approve" title="Aprobar foto"
+                    onclick="triggerApproveModal(4, 'ALVARADO CHÁVEZ, Lucía Andrea', 'W20252119', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80', '17/09/2026 09:10 AM', 'photo-card-4-1')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.8">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-photo-action delete" title="Eliminar foto"
+                    onclick="triggerDeleteModal(4, 'ALVARADO CHÁVEZ, Lucía Andrea', 'W20252119', '17/09/2026 09:10 AM', 'photo-card-4-1')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Foto 2 (Historial) -->
+              <div class="photo-card-web is-history" id="photo-card-4-2">
+                <span class="photo-status-tag history-tag">Historial</span>
+                <div class="photo-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80"
+                    alt="Foto de historial de Lucía Andrea"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80', 'ALVARADO CHÁVEZ, Lucía Andrea (Historial)', '02/09/2026 05:40 PM')">
+                  <button type="button" class="photo-zoom-overlay-btn" title="Ampliar foto"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80', 'ALVARADO CHÁVEZ, Lucía Andrea (Historial)', '02/09/2026 05:40 PM')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="photo-date-time">02/09/2026<br>05:40 PM</div>
+                <div class="photo-actions-row">
+                  <button type="button" class="btn-photo-action approve" title="Aprobar foto"
+                    onclick="triggerApproveModal(4, 'ALVARADO CHÁVEZ, Lucía Andrea', 'W20252119', 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80', '02/09/2026 05:40 PM', 'photo-card-4-2')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.8">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-photo-action delete" title="Eliminar foto"
+                    onclick="triggerDeleteModal(4, 'ALVARADO CHÁVEZ, Lucía Andrea', 'W20252119', '02/09/2026 05:40 PM', 'photo-card-4-2')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ================= FILA 5 ================= -->
+        <article class="table-row" id="row-student-5" data-institution="carrion" data-status="aprobados">
+          <div class="td-num"><span class="num-prefix">N° </span>5</div>
+
+          <div class="td-code">
+            <span class="student-code-badge">C21BE09811</span>
+          </div>
+
+          <div class="td-student">
+            <span class="student-name">GÓMEZ PEÑA, Roberto Sebastián</span>
+            <span class="student-program">Fisioterapia y Rehabilitación</span>
+            <span class="student-institution-tag">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+              </svg>
+              Instituto Carrión
+            </span>
+          </div>
+
+          <!-- COLUMNA SIGU: Ya aprobada previamente -->
+          <div class="td-sigu">
+            <div class="photo-card-sigu" id="sigu-card-5">
+              <span class="photo-badge-official">Foto Oficial Activa</span>
+              <div class="photo-frame">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=240&auto=format&fit=crop&q=80"
+                  alt="Foto Oficial SIGU - Roberto Gómez"
+                  onclick="openZoomModal('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&q=80', 'GÓMEZ PEÑA, Roberto Sebastián (Foto Oficial)', 'Aprobada el 14/09/2026')">
+              </div>
+              <button type="button" class="btn-remove-sigu" title="Retirar foto oficial activa"
+                onclick="triggerDeleteModal(5, 'GÓMEZ PEÑA, Roberto Sebastián', 'C21BE09811', 'Foto Oficial Activa', 'sigu-card-5')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="td-web">
+            <div class="web-photos-container">
+              <div class="photo-card-web is-history" id="photo-card-5-1">
+                <span class="photo-status-tag approved-tag">Aprobada</span>
+                <div class="photo-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=240&auto=format&fit=crop&q=80"
+                    alt="Foto aprobada de Roberto Gómez"
+                    onclick="openZoomModal('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&q=80', 'GÓMEZ PEÑA, Roberto Sebastián', '14/09/2026 10:20 AM')">
+                </div>
+                <div class="photo-date-time">14/09/2026<br>10:20 AM</div>
+                <div class="photo-actions-row">
+                  <span style="font-size: 10px; color: #278B52; font-weight: 600;">✓ Registrada en SIGU</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- Fin .table-list -->
+
+      <!-- Estado vacío cuando los filtros no arrojan resultados -->
+      <div class="table-empty-records" id="tableEmptyState">
+        <svg class="table-empty-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <div class="table-empty-title">No se encontraron solicitudes de fotografías</div>
+        <div class="table-empty-subtitle">Intenta modificar los filtros de fecha, institución o estado para visualizar
+          otros registros.</div>
+      </div>
+
+    </div><!-- Fin .table-main-wrapper -->
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="admin-footer">
+      © 2026 Universidad Norbert Wiener e Instituto Carrión. Todos los derechos reservados.
+    </footer>
+
+  </main>
+
+  <!-- =====================================================================
+       5. MODALES INTERACTIVOS
+       ===================================================================== -->
+
+  <!-- A. MODAL DE CONFIRMACIÓN DE APROBACIÓN -->
+  <div class="modal-backdrop" id="modalApproveBackdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modalApproveTitle">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-header-context">
+          <div class="modal-badge-icon approve">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="modal-title-wrap">
+            <h2 id="modalApproveTitle">¿Establecer como foto oficial en SIGU?</h2>
+            <p>Se actualizará el registro institucional del alumno</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" aria-label="Cerrar modal"
+          onclick="closeModal('modalApproveBackdrop')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-size: 13.5px; color: #222222; line-height: 1.4;">
+          Estás por registrar esta imagen como la fotografía oficial activa para el alumno <strong
+            id="approveStudentName">COLLAVINO SALAS, Brandon Lautaro</strong> (<span id="approveStudentCode"
+            style="font-family: monospace; color: #0F848F;">C26BR08229</span>).
+        </p>
+
+        <!-- Comparación visual de la foto previa vs nueva aprobada -->
+        <div class="modal-preview-comparison">
+          <div class="preview-col">
+            <span class="preview-tag">Foto Oficial Previa</span>
+            <div class="preview-thumb-box" id="approveThumbPrev">
+            </div>
+          </div>
+          <div class="preview-arrow-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+          <div class="preview-col">
+            <span class="preview-tag" style="color: #278B52;">Nueva Foto Oficial</span>
+            <div class="preview-thumb-box" id="approveThumbNew"
+              style="border-color: #278B52; box-shadow: 0 0 0 2px rgba(39, 139, 82, 0.2);">
+              <img id="approveImgElement" src="" alt="Previsualización de foto a aprobar">
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-info-box">
+          Esta fotografía se sincronizará automáticamente para la emisión del carné universitario, certificados
+          académicos y fotocheck institucional.
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" onclick="closeModal('modalApproveBackdrop')">Cancelar</button>
+        <button type="button" class="btn-modal-confirm-approve" id="btnConfirmApproveAction">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Sí, aprobar y registrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- B. MODAL DE CONFIRMACIÓN DE ELIMINACIÓN -->
+  <div class="modal-backdrop" id="modalDeleteBackdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modalDeleteTitle">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-header-context">
+          <div class="modal-badge-icon delete">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </div>
+          <div class="modal-title-wrap">
+            <h2 id="modalDeleteTitle">¿Eliminar fotografía subida?</h2>
+            <p>Se descartará la imagen seleccionada</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" aria-label="Cerrar modal"
+          onclick="closeModal('modalDeleteBackdrop')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-size: 13.5px; color: #222222; line-height: 1.4;">
+          Estás por eliminar la fotografía subida el <strong id="deletePhotoDate">10/09/2026 09:41 PM</strong> para el
+          alumno <strong id="deleteStudentName">COLLAVINO SALAS, Brandon Lautaro</strong> (<span id="deleteStudentCode"
+            style="font-family: monospace; color: #0F848F;">C26BR08229</span>).
+        </p>
+
+        <div class="modal-select-reason">
+          <label for="selectRejectReason">Motivo de descarte (opcional para feedback al alumno)</label>
+          <div class="filter-input-wrapper">
+            <select id="selectRejectReason" class="filter-select">
+              <option value="fondo">No cumple con fondo blanco liso</option>
+              <option value="vestimenta">Vestimenta no formal o prenda blanca</option>
+              <option value="accesorios">Presencia de accesorios no permitidos (gorra, lentes oscuros)</option>
+              <option value="resolucion">Baja resolución o imagen borrosa</option>
+              <option value="encuadre">Rostro o hombros no centrados (formato no tipo carné)</option>
+              <option value="otro">Otro motivo administrativo</option>
+            </select>
+            <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="modal-warning-box">
+          Esta acción retirará la imagen de la lista. El alumno recibirá una notificación en su Intranet para subir una
+          nueva fotografía con las observaciones indicadas.
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" onclick="closeModal('modalDeleteBackdrop')">Cancelar</button>
+        <button type="button" class="btn-modal-confirm-delete" id="btnConfirmDeleteAction">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+          Sí, eliminar fotografía
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- C. MODAL DE ZOOM / INSPECCIÓN DE REQUISITOS -->
+  <div class="modal-backdrop" id="modalZoomBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalZoomTitle">
+    <div class="modal-box" style="max-width: 600px;">
+      <div class="modal-header">
+        <div class="modal-header-context">
+          <div class="modal-badge-icon zoom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <div class="modal-title-wrap">
+            <h2 id="modalZoomTitle">Inspección de Fotografía</h2>
+            <p id="zoomSubtitle">COLLAVINO SALAS, Brandon Lautaro</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" aria-label="Cerrar modal"
+          onclick="closeModal('modalZoomBackdrop')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="zoom-modal-content">
+          <div class="zoom-large-image">
+            <img id="zoomModalImg" src="" alt="Vista ampliada de la foto">
+          </div>
+
+          <div class="zoom-checklist">
+            <div class="zoom-checklist-title">Checklist de Calidad SUNEDU:</div>
+            <div class="zoom-check-item">
+              <span class="zoom-check-icon">✓</span> Fondo blanco liso e iluminación pareja
+            </div>
+            <div class="zoom-check-item">
+              <span class="zoom-check-icon">✓</span> Rostro de frente y hombros centrados
+            </div>
+            <div class="zoom-check-item">
+              <span class="zoom-check-icon">✓</span> Vestimenta formal (sin prendas blancas)
+            </div>
+            <div class="zoom-check-item">
+              <span class="zoom-check-icon">✓</span> Sin accesorios (lentes oscuros, gorras)
+            </div>
+            <div class="zoom-check-item">
+              <span class="zoom-check-icon">✓</span> Resolución adecuada (300 DPI / 240x288 px)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" onclick="closeModal('modalZoomBackdrop')">Cerrar vista
+          previa</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENEDOR DE TOASTS PARA FEEDBACK EN VIVO -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="aprobacion-fotos.js"></script>
+</body>
+
+</html>
