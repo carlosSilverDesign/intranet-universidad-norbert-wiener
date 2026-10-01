@@ -5,7 +5,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   const STORAGE_CRONOGRAMAS = 'wiener_cronogramas_data';
   const STORAGE_SOLICITUDES = 'wiener_solicitudes_data';
 
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ticket: '2026.3826',
       carrera: 'ODONTOLOGÍA',
       periodo: '2026-I',
-      solicitante: 'OBREGON FIGUEROA ANA DORILA',
+      solicitante: 'CARLOS JESÚS SILVA SANCHEZ',
       seccion: 'OD3N3',
       curso: 'OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II',
       sesion: 'Práctica 3',
@@ -139,13 +139,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCloseModalRect = document.getElementById('btnCloseModalRect');
   const btnCancelModalRect = document.getElementById('btnCancelModalRect');
   const btnSubmitRectificacion = document.getElementById('btnSubmitRectificacion');
-  const modalRectCurso = document.getElementById('modalRectCurso');
+  const modalRectPeriodo = document.getElementById('modalRectPeriodo');
+  const modalRectMes = document.getElementById('modalRectMes');
+  const modalRectCarrera = document.getElementById('modalRectCarrera');
   const modalRectSeccion = document.getElementById('modalRectSeccion');
+  const modalRectCurso = document.getElementById('modalRectCurso');
+  const modalRectTipoSesion = document.getElementById('modalRectTipoSesion');
   const modalRectTipoEval = document.getElementById('modalRectTipoEval');
   const chkSelectAllRect = document.getElementById('chkSelectAllRect');
   const modalRectAlumnosList = document.getElementById('modalRectAlumnosList');
   const rectSelectedCountText = document.getElementById('rectSelectedCountText');
   const modalRectMotivoSelect = document.getElementById('modalRectMotivoSelect');
+  const modalRectOtroMotivoContainer = document.getElementById('modalRectOtroMotivoContainer');
+  const modalRectOtroMotivoInput = document.getElementById('modalRectOtroMotivoInput');
   const modalRectDetalleMotivo = document.getElementById('modalRectDetalleMotivo');
 
   // Modal 2: Extemporánea
@@ -153,11 +159,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCloseModalExt = document.getElementById('btnCloseModalExt');
   const btnCancelModalExt = document.getElementById('btnCancelModalExt');
   const btnSubmitExtemporanea = document.getElementById('btnSubmitExtemporanea');
-  const modalExtCurso = document.getElementById('modalExtCurso');
+  const modalExtPeriodo = document.getElementById('modalExtPeriodo');
+  const modalExtMes = document.getElementById('modalExtMes');
+  const modalExtCarrera = document.getElementById('modalExtCarrera');
   const modalExtSeccion = document.getElementById('modalExtSeccion');
+  const modalExtCurso = document.getElementById('modalExtCurso');
+  const modalExtTipoSesion = document.getElementById('modalExtTipoSesion');
   const modalExtTipoEval = document.getElementById('modalExtTipoEval');
   const modalExtAlumnosList = document.getElementById('modalExtAlumnosList');
   const modalExtMotivoSelect = document.getElementById('modalExtMotivoSelect');
+  const modalExtOtroMotivoContainer = document.getElementById('modalExtOtroMotivoContainer');
+  const modalExtOtroMotivoInput = document.getElementById('modalExtOtroMotivoInput');
   const modalExtDetalleMotivo = document.getElementById('modalExtDetalleMotivo');
 
   // Modal 3: Resumen
@@ -213,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
           modalRectTipoEval.appendChild(opt);
         });
       }
+      syncCustomSelect(modalRectTipoEval);
     }
   }
 
@@ -281,8 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <td class="col-td-estado">
           <span class="badge-status-pill ${badgeClass}">${item.estado}</span>
         </td>
-        <td class="col-td-acciones">
-          <button type="button" class="btn-row-action" data-ticket="${item.ticket}" title="Ver resumen de la solicitud">
+        <td class="col-td-acciones col-td-detalle">
+          <button type="button" class="btn-row-action" data-ticket="${item.ticket}" title="Ver detalle de la solicitud">
             ${SEARCH_SVG}
           </button>
         </td>
@@ -390,7 +403,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <td style="text-align: center;">${index + 1}</td>
         <td><strong>${alumno.id}</strong></td>
         <td>${alumno.nombre} ${alumno.retirado ? '<span class="tag-retirado">Retirado</span>' : ''}</td>
-        <td style="text-align: center; color: #64748B;">${alumno.retirado ? 'Retirado' : 'Sin calificar'}</td>
         <td style="text-align: center;">
           <input type="text" class="input-calificacion-control input-ext-nota" data-index="${index}" placeholder="--" maxlength="2" ${disabledAttr}>
         </td>
@@ -581,20 +593,33 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const seccionVal = modalRectSeccion ? modalRectSeccion.value : 'OD3N3 • Práctica - 3';
-      const partesSeccion = seccionVal.split(' - ');
-      const seccionCodigo = partesSeccion[0] || 'OD3N3';
-      const sesionNombre = partesSeccion[1] || 'Práctica 3';
+      const periodoVal = modalRectPeriodo ? modalRectPeriodo.value : '2026-I';
+      const carreraVal = modalRectCarrera ? modalRectCarrera.options[modalRectCarrera.selectedIndex].text : 'ODONTOLOGÍA';
+      const seccionVal = modalRectSeccion ? modalRectSeccion.value : 'OD3N3';
+      const cursoVal = modalRectCurso ? modalRectCurso.options[modalRectCurso.selectedIndex].text : 'OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II';
+      const sesionVal = modalRectTipoSesion ? modalRectTipoSesion.options[modalRectTipoSesion.selectedIndex].text : 'Práctica 3';
+      const tipoEvalVal = modalRectTipoEval ? modalRectTipoEval.value : 'Eval. Permanente 1 (UD1)';
+
+      let motivoVal = modalRectMotivoSelect ? modalRectMotivoSelect.value : 'Error de digitación en la transcripción de notas';
+      if (motivoVal === 'Otros') {
+        const otroTxt = modalRectOtroMotivoInput ? modalRectOtroMotivoInput.value.trim() : '';
+        if (!otroTxt) {
+          alert('Por favor especifique el motivo de rectificación.');
+          if (modalRectOtroMotivoInput) modalRectOtroMotivoInput.focus();
+          return;
+        }
+        motivoVal = `Otros: ${otroTxt}`;
+      }
 
       const data = {
         tipoSolicitud: 'Rectificación',
-        periodo: '2026-I',
-        carrera: 'ODONTOLOGÍA',
-        seccion: seccionCodigo,
-        curso: modalRectCurso ? modalRectCurso.value : 'OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II',
-        sesion: sesionNombre,
-        tipoEval: modalRectTipoEval ? modalRectTipoEval.value : 'Eval. Permanente 1 (UD1)',
-        motivo: modalRectMotivoSelect ? modalRectMotivoSelect.value : 'Error de digitación en la transcripción de notas',
+        periodo: periodoVal,
+        carrera: carreraVal,
+        seccion: seccionVal,
+        curso: cursoVal,
+        sesion: sesionVal,
+        tipoEval: tipoEvalVal,
+        motivo: motivoVal,
         detalleMotivo: detalle,
         alumnosAfectados: alumnosAfectados
       };
@@ -637,20 +662,33 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const seccionVal = modalExtSeccion ? modalExtSeccion.value : 'OD3N3 • Teoría';
-      const partesSeccion = seccionVal.split(' - ');
-      const seccionCodigo = partesSeccion[0] || 'OD3N3';
-      const sesionNombre = partesSeccion[1] || 'Teoría';
+      const periodoVal = modalExtPeriodo ? modalExtPeriodo.value : '2026-I';
+      const carreraVal = modalExtCarrera ? modalExtCarrera.options[modalExtCarrera.selectedIndex].text : 'ODONTOLOGÍA';
+      const seccionVal = modalExtSeccion ? modalExtSeccion.value : 'OD3N3';
+      const cursoVal = modalExtCurso ? modalExtCurso.options[modalExtCurso.selectedIndex].text : 'OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II';
+      const sesionVal = modalExtTipoSesion ? modalExtTipoSesion.options[modalExtTipoSesion.selectedIndex].text : 'Teoría';
+      const tipoEvalVal = modalExtTipoEval ? modalExtTipoEval.value : 'Examen Sustitutorio (E3)';
+
+      let motivoVal = modalExtMotivoSelect ? modalExtMotivoSelect.value : 'Cambio de docente';
+      if (motivoVal === 'Otros') {
+        const otroTxt = modalExtOtroMotivoInput ? modalExtOtroMotivoInput.value.trim() : '';
+        if (!otroTxt) {
+          alert('Por favor especifique el motivo extemporáneo.');
+          if (modalExtOtroMotivoInput) modalExtOtroMotivoInput.focus();
+          return;
+        }
+        motivoVal = `Otros: ${otroTxt}`;
+      }
 
       const data = {
         tipoSolicitud: 'Extemporánea',
-        periodo: '2026-I',
-        carrera: 'ODONTOLOGÍA',
-        seccion: seccionCodigo,
-        curso: modalExtCurso ? modalExtCurso.value : 'OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II',
-        sesion: sesionNombre,
-        tipoEval: modalExtTipoEval ? modalExtTipoEval.value : 'Examen Sustitutorio (E3)',
-        motivo: modalExtMotivoSelect ? modalExtMotivoSelect.value : 'Omisión de registro de nota por cierre de periodo',
+        periodo: periodoVal,
+        carrera: carreraVal,
+        seccion: seccionVal,
+        curso: cursoVal,
+        sesion: sesionVal,
+        tipoEval: tipoEvalVal,
+        motivo: motivoVal,
         detalleMotivo: detalle,
         alumnosAfectados: alumnosAfectados
       };
@@ -658,6 +696,53 @@ document.addEventListener('DOMContentLoaded', () => {
       triggerConfirmModal('extemporanea', data);
     });
   }
+
+  // Despliegue de input de texto al seleccionar 'Otros'
+  if (modalRectMotivoSelect) {
+    modalRectMotivoSelect.addEventListener('change', () => {
+      const isOtros = modalRectMotivoSelect.value === 'Otros';
+      if (modalRectOtroMotivoContainer) {
+        modalRectOtroMotivoContainer.style.display = isOtros ? 'flex' : 'none';
+        if (isOtros && modalRectOtroMotivoInput) {
+          modalRectOtroMotivoInput.focus();
+        } else if (modalRectOtroMotivoInput) {
+          modalRectOtroMotivoInput.value = '';
+        }
+      }
+    });
+  }
+
+  if (modalExtMotivoSelect) {
+    modalExtMotivoSelect.addEventListener('change', () => {
+      const isOtros = modalExtMotivoSelect.value === 'Otros';
+      if (modalExtOtroMotivoContainer) {
+        modalExtOtroMotivoContainer.style.display = isOtros ? 'flex' : 'none';
+        if (isOtros && modalExtOtroMotivoInput) {
+          modalExtOtroMotivoInput.focus();
+        } else if (modalExtOtroMotivoInput) {
+          modalExtOtroMotivoInput.value = '';
+        }
+      }
+    });
+  }
+
+  // Filtrado reactivo de estudiantes en modales al cambiar cualquiera de los 7 select
+  [modalRectPeriodo, modalRectMes, modalRectCarrera, modalRectSeccion, modalRectCurso, modalRectTipoSesion, modalRectTipoEval].forEach(sel => {
+    if (sel) {
+      sel.addEventListener('change', () => {
+        if (chkSelectAllRect) chkSelectAllRect.checked = false;
+        renderModalRectAlumnos();
+      });
+    }
+  });
+
+  [modalExtPeriodo, modalExtMes, modalExtCarrera, modalExtSeccion, modalExtCurso, modalExtTipoSesion, modalExtTipoEval].forEach(sel => {
+    if (sel) {
+      sel.addEventListener('change', () => {
+        renderModalExtAlumnos();
+      });
+    }
+  });
 
   // Toast Feedback
   let toastTimer = null;
@@ -689,7 +774,10 @@ document.addEventListener('DOMContentLoaded', () => {
     btnOpenModalRectificacion.addEventListener('click', () => {
       updateEvaluacionesActivas();
       renderModalRectAlumnos();
+      initCustomSelects();
       if (modalRectDetalleMotivo) modalRectDetalleMotivo.value = '';
+      if (modalRectOtroMotivoContainer) modalRectOtroMotivoContainer.style.display = 'none';
+      if (modalRectOtroMotivoInput) modalRectOtroMotivoInput.value = '';
       if (modalRectBackdrop) modalRectBackdrop.classList.add('active');
     });
   }
@@ -697,7 +785,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnOpenModalExtemporanea) {
     btnOpenModalExtemporanea.addEventListener('click', () => {
       renderModalExtAlumnos();
+      initCustomSelects();
       if (modalExtDetalleMotivo) modalExtDetalleMotivo.value = '';
+      if (modalExtOtroMotivoContainer) modalExtOtroMotivoContainer.style.display = 'none';
+      if (modalExtOtroMotivoInput) modalExtOtroMotivoInput.value = '';
       if (modalExtBackdrop) modalExtBackdrop.classList.add('active');
     });
   }
@@ -734,11 +825,233 @@ document.addEventListener('DOMContentLoaded', () => {
       if (filterCarrera) filterCarrera.value = 'todos';
       if (filterTipoSolicitud) filterTipoSolicitud.value = 'todos';
       if (filterEstado) filterEstado.value = 'todos';
+      [filterPeriodo, filterCarrera, filterTipoSolicitud, filterEstado].forEach(syncCustomSelect);
       renderSolicitudesTable();
       showToast('Filtros restablecidos');
     });
   }
 
+  // ==========================================================================
+  // CUSTOM SELECTS PERSONALIZADOS (Rotación 180° y Micro-interacciones)
+  // ==========================================================================
+  function initCustomSelects() {
+    const wrappers = document.querySelectorAll('.notes-select-wrapper');
+
+    wrappers.forEach(wrapper => {
+      const select = wrapper.querySelector('select');
+      if (!select) return;
+
+      select.classList.add('custom-select-hidden');
+
+      let trigger = wrapper.querySelector('.custom-select-trigger');
+      let menu = wrapper.querySelector('.custom-select-menu');
+      let icon = wrapper.querySelector('.notes-select-icon');
+
+      if (!icon) {
+        icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        icon.setAttribute('class', 'notes-select-icon');
+        icon.setAttribute('width', '16');
+        icon.setAttribute('height', '16');
+        icon.setAttribute('viewBox', '0 0 24 24');
+        icon.setAttribute('fill', 'none');
+        icon.setAttribute('stroke', 'currentColor');
+        icon.setAttribute('stroke-width', '2');
+        icon.setAttribute('stroke-linecap', 'round');
+        icon.setAttribute('stroke-linejoin', 'round');
+        icon.innerHTML = '<polyline points="6 9 12 15 18 9"></polyline>';
+        wrapper.appendChild(icon);
+      }
+
+      if (!trigger) {
+        trigger = document.createElement('div');
+        trigger.className = 'custom-select-trigger';
+        if (select.classList.contains('highlight-eval-select')) {
+          trigger.classList.add('highlight-eval-select');
+        }
+        trigger.tabIndex = 0;
+        trigger.setAttribute('role', 'combobox');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.setAttribute('aria-haspopup', 'listbox');
+
+        const valSpan = document.createElement('span');
+        valSpan.className = 'custom-select-value';
+        trigger.appendChild(valSpan);
+
+        wrapper.insertBefore(trigger, icon);
+
+        // Click en el trigger para alternar menú y rotar flecha 180°
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = wrapper.classList.contains('is-open');
+          closeAllCustomSelects();
+          if (!isOpen) {
+            wrapper.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Soporte de navegación por teclado
+        trigger.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            const isOpen = wrapper.classList.contains('is-open');
+            if (!isOpen) {
+              closeAllCustomSelects();
+              wrapper.classList.add('is-open');
+              trigger.setAttribute('aria-expanded', 'true');
+            } else if (e.key === 'Enter' || e.key === ' ') {
+              closeAllCustomSelects();
+            }
+          } else if (e.key === 'Escape') {
+            closeAllCustomSelects();
+          }
+        });
+      }
+
+      if (!menu) {
+        menu = document.createElement('div');
+        menu.className = 'custom-select-menu';
+        menu.setAttribute('role', 'listbox');
+        wrapper.appendChild(menu);
+      }
+
+      // Reconstruir o sincronizar opciones del menú
+      menu.innerHTML = '';
+      const selectedOption = select.options[select.selectedIndex] || select.options[0];
+      const valSpan = trigger.querySelector('.custom-select-value');
+      if (valSpan && selectedOption) {
+        valSpan.textContent = selectedOption.textContent;
+      }
+
+      Array.from(select.options).forEach(opt => {
+        const item = document.createElement('div');
+        item.className = 'custom-select-option' + (opt.selected ? ' is-selected' : '');
+        item.setAttribute('role', 'option');
+        item.setAttribute('aria-selected', opt.selected ? 'true' : 'false');
+        item.setAttribute('data-value', opt.value);
+
+        const textSpan = document.createElement('span');
+        textSpan.textContent = opt.textContent;
+        item.appendChild(textSpan);
+
+        const checkSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        checkSvg.setAttribute('class', 'option-check-icon');
+        checkSvg.setAttribute('viewBox', '0 0 24 24');
+        checkSvg.setAttribute('fill', 'none');
+        checkSvg.setAttribute('stroke', 'currentColor');
+        checkSvg.setAttribute('stroke-width', '2.5');
+        checkSvg.setAttribute('stroke-linecap', 'round');
+        checkSvg.setAttribute('stroke-linejoin', 'round');
+        checkSvg.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+        item.appendChild(checkSvg);
+
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          select.value = opt.value;
+          if (valSpan) valSpan.textContent = opt.textContent;
+
+          menu.querySelectorAll('.custom-select-option').forEach(el => {
+            el.classList.remove('is-selected');
+            el.setAttribute('aria-selected', 'false');
+          });
+          item.classList.add('is-selected');
+          item.setAttribute('aria-selected', 'true');
+
+          closeAllCustomSelects();
+          trigger.focus();
+
+          // Disparar evento change en el select nativo
+          select.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+
+        menu.appendChild(item);
+      });
+    });
+  }
+
+  function closeAllCustomSelects() {
+    document.querySelectorAll('.notes-select-wrapper.is-open').forEach(w => {
+      w.classList.remove('is-open');
+      const trig = w.querySelector('.custom-select-trigger');
+      if (trig) trig.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  // Cerrar al hacer clic fuera del select
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.notes-select-wrapper')) {
+      closeAllCustomSelects();
+    }
+  });
+
+  // Cerrar al presionar Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllCustomSelects();
+    }
+  });
+
+  // Helper para sincronizar un select cuando cambie programáticamente
+  function syncCustomSelect(selectEl) {
+    if (!selectEl) return;
+    const wrapper = selectEl.closest('.notes-select-wrapper');
+    if (!wrapper) return;
+    const trigger = wrapper.querySelector('.custom-select-trigger');
+    const menu = wrapper.querySelector('.custom-select-menu');
+    if (!trigger || !menu) return;
+
+    const valSpan = trigger.querySelector('.custom-select-value');
+    const selectedOption = selectEl.options[selectEl.selectedIndex];
+    if (valSpan && selectedOption) {
+      valSpan.textContent = selectedOption.textContent;
+    }
+
+    // Reconstruir opciones del menú si cambió el innerHTML del select
+    menu.innerHTML = '';
+    Array.from(selectEl.options).forEach(opt => {
+      const item = document.createElement('div');
+      item.className = 'custom-select-option' + (opt.selected ? ' is-selected' : '');
+      item.setAttribute('role', 'option');
+      item.setAttribute('aria-selected', opt.selected ? 'true' : 'false');
+      item.setAttribute('data-value', opt.value);
+
+      const textSpan = document.createElement('span');
+      textSpan.textContent = opt.textContent;
+      item.appendChild(textSpan);
+
+      const checkSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      checkSvg.setAttribute('class', 'option-check-icon');
+      checkSvg.setAttribute('viewBox', '0 0 24 24');
+      checkSvg.setAttribute('fill', 'none');
+      checkSvg.setAttribute('stroke', 'currentColor');
+      checkSvg.setAttribute('stroke-width', '2.5');
+      checkSvg.setAttribute('stroke-linecap', 'round');
+      checkSvg.setAttribute('stroke-linejoin', 'round');
+      checkSvg.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+      item.appendChild(checkSvg);
+
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectEl.value = opt.value;
+        if (valSpan) valSpan.textContent = opt.textContent;
+
+        menu.querySelectorAll('.custom-select-option').forEach(el => {
+          el.classList.remove('is-selected');
+          el.setAttribute('aria-selected', 'false');
+        });
+        item.classList.add('is-selected');
+        item.setAttribute('aria-selected', 'true');
+
+        closeAllCustomSelects();
+        trigger.focus();
+        selectEl.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+
+      menu.appendChild(item);
+    });
+  }
+
   // Inicializar
+  initCustomSelects();
   renderSolicitudesTable();
 });
