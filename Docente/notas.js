@@ -155,20 +155,20 @@ document.addEventListener('DOMContentLoaded', () => {
       ed: "08",
       // Fase 1
       ud1: "07",
-      ud2: "08",
-      pep1: 7.5,
-      e1: "06",
-      pf1: 7.1,
-      // Fase 2
-      ud3: "08",
-      ud4: "07",
-      pep2: 7.5,
-      e2: "07",
-      pf2: 7.4,
+      ud2: "06",
+      pep1: 6.5,
+      e1: "05",
+      pf1: 6.1,
+      // Fase 2 (Inasistencia superó el 30% reglamentario - DPI)
+      ud3: "—",
+      ud4: "—",
+      pep2: "—",
+      e2: "—",
+      pf2: "—",
       // Cierre
-      e3: "09",
-      pf: "08",
-      condicion: "Desaprobado"
+      e3: "—",
+      pf: "DPI",
+      condicion: "Deshabilitado por inasistencia"
     },
     {
       num: 8,
@@ -198,21 +198,21 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "RODRIGUEZ PAREDES, Diego Alonso",
       ed: 11,
       // Fase 1
-      ud1: 12,
-      ud2: 13,
-      pep1: 12.5,
-      e1: 11,
-      pf1: 12.1,
+      ud1: "NP",
+      ud2: "NP",
+      pep1: "NP",
+      e1: "NP",
+      pf1: "NP",
       // Fase 2
-      ud3: 13,
-      ud4: 12,
-      pep2: 12.5,
-      e2: 12,
-      pf2: 12.4,
+      ud3: "NP",
+      ud4: "NP",
+      pep2: "NP",
+      e2: "NP",
+      pf2: "NP",
       // Cierre
       e3: "—",
-      pf: 12,
-      condicion: "Desaprobado"
+      pf: "NP",
+      condicion: "No se presentó (NP)"
     },
     {
       num: 10,
@@ -235,6 +235,30 @@ document.addEventListener('DOMContentLoaded', () => {
       e3: "—",
       pf: 19,
       condicion: "Aprobado"
+    },
+    {
+      num: 11,
+      code: "2024108819",
+      name: "QUISPE VILCA, Jhonatan Alex",
+      ed: "—",
+      // Fase 1
+      ud1: "—",
+      ud2: "—",
+      pep1: "—",
+      e1: "—",
+      pf1: "—",
+      // Fase 2
+      ud3: "—",
+      ud4: "—",
+      pep2: "—",
+      e2: "—",
+      pf2: "—",
+      // Cierre
+      e3: "—",
+      pf: "—",
+      estado: 3,
+      isRetirado: true,
+      condicion: "Retirado"
     }
   ];
 
@@ -296,6 +320,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /**
+   * DETERMINAR CLASE CSS DEL TAG DE CONDICIÓN SEGÚN EL REGLAMENTO
+   * Opciones soportadas:
+   * - Retirado (Estado = 3)
+   * - Deshabilitado por inasistencia (PF < 0 / DPI)
+   * - No se presentó (NP)
+   * - Aprobado (PF >= 11)
+   * - Desaprobado (PF < 11)
+   */
+  function getConditionTagClass(condicion) {
+    if (!condicion || condicion === '—' || condicion === '.') return 'pendiente';
+    const c = condicion.toLowerCase();
+    if (c.includes('retirado')) return 'retirado';
+    if (c.includes('deshabilitado') || c.includes('inasistencia') || c.includes('dpi')) return 'deshabilitado';
+    if (c.includes('no se presentó') || c.includes('no se presento') || c.includes('np')) return 'no-presento';
+    if (c.includes('aprobado')) return 'aprobado';
+    if (c.includes('desaprobado')) return 'desaprobado';
+    return 'pendiente';
+  }
+
+
+  /**
    * RENDERIZAR LA TABLA DE NOTAS SEGÚN EL ESCENARIO ACTIVO
    */
   function renderTable() {
@@ -303,32 +348,48 @@ document.addEventListener('DOMContentLoaded', () => {
     tableBody.innerHTML = '';
 
     STUDENTS_DATA.forEach((student) => {
+      const isRetirado = !!student.isRetirado || student.estado === 3;
       const row = document.createElement('div');
-      row.className = 'notes-table-row';
+      row.className = 'notes-table-row' + (isRetirado ? ' is-retired' : '');
       row.setAttribute('data-student-id', student.code);
 
       if (currentScenario === 'default') {
         // ESCENARIO 1 (Por Defecto): UD1 es input editable, UD2..PF son "—"
+        // Si el alumno está retirado (Estado 3), la fila y el input quedan deshabilitados con condición "Retirado"
+        const inputHtml = isRetirado
+          ? `<input type="text" 
+                   class="note-input input-ud1 is-disabled" 
+                   value="—" 
+                   disabled
+                   data-index="${student.num}"
+                   aria-label="Deshabilitado por retiro para ${student.name}"
+                   title="Deshabilitado por retiro (Estado 3)">`
+          : `<input type="text" 
+                   class="note-input input-ud1" 
+                   value="${student.ud1}" 
+                   maxlength="2" 
+                   data-index="${student.num}"
+                   aria-label="Nota UD1 para ${student.name}">`;
+
+        const tagCondicion = isRetirado
+          ? `<span class="tag-condition retirado" title="Retirado (Estado 3)">Retirado</span>`
+          : `<span class="tag-condition pendiente">—</span>`;
+
         row.innerHTML = `
           <!-- Sticky 1: N° -->
           <div class="td-cell sticky-td-1">${student.num}</div>
           <!-- Sticky 2: CÓDIGO -->
           <div class="td-cell sticky-td-2">${student.code}</div>
           <!-- Sticky 3: APELLIDOS Y NOMBRES -->
-          <div class="td-cell sticky-td-3" title="${student.name}">${student.name}</div>
+          <div class="td-cell sticky-td-3" title="${student.name}${isRetirado ? ' (Retirado - Estado 3)' : ''}">${student.name}</div>
 
           <!-- ED (Evaluación de entrada) -->
-          <div class="td-cell td-ed">${student.ed}</div>
+          <div class="td-cell td-ed">${isRetirado ? '—' : student.ed}</div>
 
           <!-- (PF1) Primera Fase 40% -->
-          <!-- UD1 Editable -->
+          <!-- UD1 Editable o Bloqueado por retiro -->
           <div class="td-cell td-fase1">
-            <input type="text" 
-                   class="note-input input-ud1" 
-                   value="${student.ud1}" 
-                   maxlength="2" 
-                   data-index="${student.num}"
-                   aria-label="Nota UD1 para ${student.name}">
+            ${inputHtml}
           </div>
           <!-- UD2 -->
           <div class="td-cell td-fase1 td-ud2">—</div>
@@ -358,13 +419,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="td-cell td-pf">—</div>
           <!-- CONDICIÓN -->
           <div class="td-cell td-condicion">
-            <span class="tag-condition pendiente">—</span>
+            ${tagCondicion}
           </div>
         `;
       } else {
         // ESCENARIO 2 (Completo con Condición): Todas las notas cargadas y tags de condición
-        const isAprobado = student.condicion === 'Aprobado';
-        const tagClass = isAprobado ? 'aprobado' : 'desaprobado';
+        const tagClass = getConditionTagClass(student.condicion);
 
         row.innerHTML = `
           <!-- Sticky 1: N° -->
@@ -372,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Sticky 2: CÓDIGO -->
           <div class="td-cell sticky-td-2">${student.code}</div>
           <!-- Sticky 3: APELLIDOS Y NOMBRES -->
-          <div class="td-cell sticky-td-3" title="${student.name}">${student.name}</div>
+          <div class="td-cell sticky-td-3" title="${student.name}${isRetirado ? ' (Retirado - Estado 3)' : ''}">${student.name}</div>
 
           <!-- ED (Evaluación de entrada) -->
           <div class="td-cell td-ed">${student.ed}</div>
@@ -410,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * ATAR EVENTOS A LOS INPUTS DE NOTA (Validación 0-20 o NP y navegación teclado)
    */
   function attachInputEvents() {
-    const inputs = tableBody.querySelectorAll('.note-input');
+    const inputs = Array.from(tableBody.querySelectorAll('.note-input:not([disabled])'));
     inputs.forEach((input, idx) => {
       // Limpiar error al tipear
       input.addEventListener('input', (e) => {
@@ -470,14 +530,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * VALIDACIÓN ANTES DE GRABAR
-   * En evaluaciones normales debe completar la nota de todos los alumnos (o 0 / NP).
+   * En evaluaciones normales debe completar la nota de todos los alumnos habilitados (o 0 / NP).
    */
   function validateInputsBeforeSave() {
     if (currentScenario === 'complete') {
       return true; // Ya están todas completas
     }
 
-    const inputs = tableBody.querySelectorAll('.note-input.input-ud1');
+    const inputs = tableBody.querySelectorAll('.note-input.input-ud1:not([disabled])');
     let hasEmpty = false;
     let firstEmpty = null;
 
@@ -743,10 +803,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Simulación de procesamiento de promedios
       // Actualizar valores en la tabla para reflejar notas grabadas
-      const inputs = tableBody.querySelectorAll('.note-input.input-ud1');
-      inputs.forEach((input, index) => {
-        const student = STUDENTS_DATA[index];
-        if (student) {
+      const inputs = tableBody.querySelectorAll('.note-input.input-ud1:not([disabled])');
+      inputs.forEach((input) => {
+        const idx = parseInt(input.getAttribute('data-index'), 10) - 1;
+        const student = STUDENTS_DATA[idx];
+        if (student && !student.isRetirado) {
           student.ud1 = input.value.trim();
         }
       });

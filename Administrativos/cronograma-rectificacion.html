@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronograma de Rectificación de Notas - Administrador RRAA | Universidad Norbert Wiener</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="cronograma-rectificacion.css">
+</head>
+
+<body>
+
+  <!-- CONTENEDOR PRINCIPAL CENTRAL (Máximo 1082px en desktop) -->
+  <main class="admin-main-container">
+
+    <header class="page-header-flex">
+        <div class="header-left">
+          <div class="header-icon">
+            <svg class="header-icon-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+              fill="none" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <div class="header-icon-placeholder" aria-hidden="true"></div>
+          </div>
+          <div class="header-titles">
+            <h1>Cronograma de Rectificación de Notas</h1>
+            <p>Configuración y calendario de periodos habilitados para rectificación académica y solicitudes de notas extemporáneas.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-actions-group">
+            <button type="button" class="btn-primary-action" id="btnOpenAddModal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Agregar cronograma</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <hr class="header-divider">
+
+      <!-- TARJETA DE FILTROS ADMIN (Look & Feel exacto de Registro de notas / delegados) -->
+      <section class="attendance-filters-card" aria-label="Filtros de Cronograma">
+        <form class="filters-form-grid" id="cronogramaFiltersForm" onsubmit="return false;">
+          
+          <div class="filters-row filters-row-1">
+            <!-- 1. Periodo -->
+            <div class="filter-item">
+              <label for="filterPeriodo">PERIODO ACADÉMICO</label>
+              <div class="filter-select-wrapper">
+                <select id="filterPeriodo" class="filter-select">
+                  <option value="todos">Todos los periodos</option>
+                  <option value="2026-II">2026 - II</option>
+                  <option value="2026-I" selected>2026 - I</option>
+                  <option value="2026-0">2026 - 0</option>
+                  <option value="2025-II">2025 - II</option>
+                </select>
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- 2. Tipo Evaluación -->
+            <div class="filter-item">
+              <label for="filterTipoEval">TIPO DE EVALUACIÓN</label>
+              <div class="filter-select-wrapper">
+                <select id="filterTipoEval" class="filter-select">
+                  <option value="todos" selected>Todas las evaluaciones</option>
+                  <option value="Eval. Permanente 1 (UD1)">Eval. Permanente 1 (UD1)</option>
+                  <option value="Eval. Permanente 2 (UD2)">Eval. Permanente 2 (UD2)</option>
+                  <option value="Eval. Permanente 3 (UD3)">Eval. Permanente 3 (UD3)</option>
+                  <option value="Eval. Permanente 4 (UD4)">Eval. Permanente 4 (UD4)</option>
+                  <option value="Examen Parcial (E1)">Examen Parcial (E1)</option>
+                  <option value="Examen Final (E2)">Examen Final (E2)</option>
+                  <option value="Examen Sustitutorio (E3)">Examen Sustitutorio (E3)</option>
+                </select>
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- 3. Tipo Curso -->
+            <div class="filter-item">
+              <label for="filterTipoCurso">TIPO DE CURSO</label>
+              <div class="filter-select-wrapper">
+                <select id="filterTipoCurso" class="filter-select">
+                  <option value="todos" selected>Todos los tipos</option>
+                  <option value="REGULAR">REGULAR</option>
+                  <option value="MODULO 1">MODULO 1</option>
+                  <option value="MODULO 2">MODULO 2</option>
+                </select>
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- 4. Estado -->
+            <div class="filter-item">
+              <label for="filterEstado">ESTADO DEL PERIODO</label>
+              <div class="filter-select-wrapper">
+                <select id="filterEstado" class="filter-select">
+                  <option value="todos" selected>Todos los estados</option>
+                  <option value="ACTIVO">ACTIVO (Habilitado)</option>
+                  <option value="INACTIVO">INACTIVO (Cerrado)</option>
+                </select>
+                <svg class="filter-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Botón Limpiar Filtros -->
+            <div class="filter-item filter-btn-item">
+              <button type="button" class="btn-clear-filters" id="btnClearFilters" title="Restablecer filtros">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                </svg>
+                <span>Limpiar</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- SUBBARRA INFORMATIVA CON RESUMEN Y CONTADORES -->
+      <section class="delegados-subbar">
+        <div class="delegados-counter-text" id="contextSummaryText">
+          Mostrando <strong id="countShown">19</strong> fases de cronograma configuradas
+        </div>
+        <div class="delegados-summary-pills">
+          <span class="summary-pill active-pill" id="pillActivos">
+            <span class="pill-dot green"></span>
+            <span id="countActivos">2</span> Activos
+          </span>
+          <span class="summary-pill inactive-pill" id="pillInactivos">
+            <span class="pill-dot gray"></span>
+            <span id="countInactivos">17</span> Inactivos
+          </span>
+        </div>
+      </section>
+
+      <!-- TABLA PRINCIPAL DE CRONOGRAMAS -->
+      <div class="attendance-table-card">
+        <div class="attendance-table-scroll-container">
+          <table class="attendance-table delegados-table" id="cronogramasTable">
+            <thead>
+              <tr class="table-row-tb">
+                <th class="th-num" scope="col">Nº</th>
+                <th scope="col">PERIODO</th>
+                <th scope="col">TIPO DE EVALUACIÓN</th>
+                <th scope="col">TIPO CURSO</th>
+                <th scope="col">FECHA INICIO</th>
+                <th scope="col">FECHA FIN</th>
+                <th scope="col" style="text-align: center;">ESTADO</th>
+                <th scope="col" style="text-align: center;">ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody id="cronogramasTableBody">
+              <!-- Renderizado dinámicamente mediante JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Paginador estándar -->
+        <div class="table-pagination-footer">
+          <div class="pagination-info">Mostrando registros del 1 al <span id="pagCount">19</span> de <span id="pagTotal">19</span></div>
+          <div class="pagination-controls">
+            <button type="button" class="btn-page-nav" disabled aria-label="Página anterior">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <span class="page-number active">1</span>
+            <button type="button" class="btn-page-nav" disabled aria-label="Página siguiente">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL: AGREGAR / EDITAR CRONOGRAMA
+       ========================================================================== -->
+  <div class="modal-overlay" id="modalCronogramaBackdrop">
+    <div class="modal-container modal-cronograma-card" role="dialog" aria-modal="true" aria-labelledby="modalCronogramaTitle">
+      
+      <!-- Modal Header -->
+      <div class="modal-header-delegados">
+        <div class="modal-header-left">
+          <div class="modal-header-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <h3 id="modalCronogramaTitle" class="modal-title-text">Configurar Cronograma</h3>
+        </div>
+        <button type="button" class="modal-btn-close" id="btnCloseModalCronograma" aria-label="Cerrar modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body-delegados">
+        <form id="formCronograma" onsubmit="return false;">
+          <input type="hidden" id="cronogramaEditIndex" value="-1">
+
+          <div class="form-grid-modal">
+            <!-- Periodo -->
+            <div class="form-field-item">
+              <label for="modalInputPeriodo">Periodo Académico <span class="req">*</span></label>
+              <div class="custom-modal-select-wrap">
+                <select id="modalInputPeriodo" class="modal-select-input" required>
+                  <option value="2026-II">2026 - II</option>
+                  <option value="2026-I" selected>2026 - I</option>
+                  <option value="2026-0">2026 - 0</option>
+                  <option value="2025-II">2025 - II</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Tipo Evaluación -->
+            <div class="form-field-item">
+              <label for="modalInputTipoEval">Tipo de Evaluación <span class="req">*</span></label>
+              <div class="custom-modal-select-wrap">
+                <select id="modalInputTipoEval" class="modal-select-input" required>
+                  <option value="Eval. Permanente 1 (UD1)">Eval. Permanente 1 (UD1)</option>
+                  <option value="Eval. Permanente 2 (UD2)">Eval. Permanente 2 (UD2)</option>
+                  <option value="Eval. Permanente 3 (UD3)">Eval. Permanente 3 (UD3)</option>
+                  <option value="Eval. Permanente 4 (UD4)">Eval. Permanente 4 (UD4)</option>
+                  <option value="Examen Parcial (E1)">Examen Parcial (E1)</option>
+                  <option value="Examen Final (E2)">Examen Final (E2)</option>
+                  <option value="Examen Sustitutorio (E3)">Examen Sustitutorio (E3)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Tipo Curso -->
+            <div class="form-field-item">
+              <label for="modalInputTipoCurso">Tipo de Curso <span class="req">*</span></label>
+              <div class="custom-modal-select-wrap">
+                <select id="modalInputTipoCurso" class="modal-select-input" required>
+                  <option value="REGULAR" selected>REGULAR</option>
+                  <option value="MODULO 1">MODULO 1</option>
+                  <option value="MODULO 2">MODULO 2</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Estado -->
+            <div class="form-field-item">
+              <label for="modalInputEstado">Estado del Periodo <span class="req">*</span></label>
+              <div class="custom-modal-select-wrap">
+                <select id="modalInputEstado" class="modal-select-input" required>
+                  <option value="ACTIVO" selected>ACTIVO (Habilitado para docentes)</option>
+                  <option value="INACTIVO">INACTIVO (Cerrado)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Fecha Inicio -->
+            <div class="form-field-item">
+              <label for="modalInputFechaInicio">Fecha de Inicio <span class="req">*</span></label>
+              <input type="date" id="modalInputFechaInicio" class="modal-text-input" value="2026-09-14" required>
+            </div>
+
+            <!-- Fecha Fin -->
+            <div class="form-field-item">
+              <label for="modalInputFechaFin">Fecha de Cierre / Fin <span class="req">*</span></label>
+              <input type="date" id="modalInputFechaFin" class="modal-text-input" value="2026-09-18" required>
+            </div>
+          </div>
+
+          <div class="modal-info-alert">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Al activar un periodo, los docentes podrán enviar solicitudes de rectificación dentro del rango de fechas configurado.</span>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer-delegados">
+        <button type="button" class="btn-cancel-modal" id="btnCancelModalCronograma">Cancelar</button>
+        <button type="button" class="btn-save-modal" id="btnSaveCronograma">Guardar Cronograma</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-notification" id="toastMessage">
+    <div class="toast-icon-circle">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <div class="toast-body-text" id="toastText">Operación realizada con éxito</div>
+  </div>
+
+  <script src="cronograma-rectificacion.js"></script>
+</body>
+
+</html>

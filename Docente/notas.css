@@ -524,8 +524,8 @@
      17: CONDICIÓN (102px)
      Total mín: ~935px -> En desktop (>1000px libres) */
   grid-template-columns:
-    36px 88px minmax(165px, 1.4fr) 36px 38px 38px 40px 38px 40px 38px 38px 40px 38px 40px 36px 42px 102px;
-  min-width: 935px;
+    36px 88px minmax(165px, 1.4fr) 36px 38px 38px 40px 38px 40px 38px 38px 40px 38px 40px 36px 42px minmax(115px, 1.2fr);
+  min-width: 955px;
   width: 100%;
   background-color: #FFFFFF;
 }
@@ -821,13 +821,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 3px 8px;
+  padding: 3px 6px;
   border-radius: 12px;
   font-size: 11px;
   font-weight: 600;
   font-family: 'Roboto', sans-serif;
-  letter-spacing: 0.2px;
-  min-width: 82px;
+  letter-spacing: 0.1px;
+  min-width: 76px;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .tag-condition.aprobado {
@@ -842,9 +844,64 @@
   border: 1px solid #FFCDD2;
 }
 
+.tag-condition.retirado {
+  background-color: #F1F5F9;
+  color: #64748B;
+  border: 1px solid #CBD5E1;
+}
+
+.tag-condition.deshabilitado {
+  background-color: #F5EEFD;
+  color: #7E22CE;
+  border: 1px solid #E9D5FF;
+  font-size: 10px;
+  padding: 2px 5px;
+}
+
+.tag-condition.no-presento {
+  background-color: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FCD34D;
+}
+
 .tag-condition.pendiente {
   color: #94A3B8;
   font-weight: 500;
+}
+
+/* --- FILA DE ALUMNO DESHABILITADA POR RETIRO (ESTADO = 3) --- */
+.notes-table-row.is-retired .td-cell {
+  background-color: #F8FAFC;
+  color: #94A3B8;
+  cursor: not-allowed;
+}
+
+.notes-table-row.is-retired .sticky-td-1,
+.notes-table-row.is-retired .sticky-td-2,
+.notes-table-row.is-retired .sticky-td-3 {
+  background-color: #F8FAFC;
+  color: #94A3B8;
+}
+
+.notes-table-row.is-retired .sticky-td-3 {
+  color: #64748B;
+  font-style: italic;
+}
+
+.notes-table-row.is-retired:hover .td-cell,
+.notes-table-row.is-retired:hover .sticky-td-1,
+.notes-table-row.is-retired:hover .sticky-td-2,
+.notes-table-row.is-retired:hover .sticky-td-3 {
+  background-color: #F1F5F9;
+}
+
+.notes-table-row.is-retired .note-input {
+  background-color: #F1F5F9;
+  border-color: #E2E8F0;
+  color: #94A3B8;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
 }
 
 
