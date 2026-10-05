@@ -178,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCerrarModalResumen = document.getElementById('btnCerrarModalResumen');
   const modalResumenTitle = document.getElementById('modalResumenTitle');
   const resumenTicketBadge = document.getElementById('resumenTicketBadge');
+  const resumenCarreraLabel = document.getElementById('resumenCarreraLabel');
+  const resumenCarreraVal = document.getElementById('resumenCarreraVal');
   const resumenCursoSeccion = document.getElementById('resumenCursoSeccion');
   const resumenTipoEval = document.getElementById('resumenTipoEval');
   const resumenFechaSolicitud = document.getElementById('resumenFechaSolicitud');
@@ -410,6 +412,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
       modalExtAlumnosList.appendChild(tr);
     });
+
+    updateExtCounter();
+
+    const inputs = modalExtAlumnosList.querySelectorAll('.input-ext-nota:not([disabled])');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        input.classList.remove('input-error');
+        updateExtCounter();
+      });
+    });
+  }
+
+  function updateExtCounter() {
+    if (!extSelectedCountText || !modalExtAlumnosList) return;
+    const inputs = modalExtAlumnosList.querySelectorAll('.input-ext-nota:not([disabled])');
+    const total = inputs.length;
+    let filled = 0;
+    inputs.forEach(inp => {
+      if (inp.value.trim() !== '') filled++;
+    });
+
+    if (filled === total && total > 0) {
+      extSelectedCountText.innerHTML = `<span style="color: #0F848F; font-weight: 700;">${filled} de ${total} calificaciones registradas (Completo)</span>`;
+    } else {
+      extSelectedCountText.textContent = `${filled} de ${total} calificaciones ingresadas (Ingrese 00-20 o 'NP')`;
+    }
   }
 
   // Modal Resumen
@@ -427,6 +455,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (resumenTicketBadge) resumenTicketBadge.textContent = `Ticket: ${item.ticket}`;
+    if (resumenCarreraLabel) {
+      resumenCarreraLabel.textContent = isRect ? 'CARRERA' : 'PROGRAMA ACADÉMICO';
+    }
+    if (resumenCarreraVal) {
+      resumenCarreraVal.textContent = item.carrera || 'ODONTOLOGÍA';
+    }
     if (resumenCursoSeccion) resumenCursoSeccion.textContent = `${item.curso} • ${item.seccion}`;
     if (resumenTipoEval) resumenTipoEval.textContent = `${item.tipoEval} (${item.sesion})`;
     if (resumenFechaSolicitud) resumenFechaSolicitud.textContent = item.fechaSolicitud || '14/09/2026 01:28 PM';
@@ -631,27 +665,51 @@ document.addEventListener('DOMContentLoaded', () => {
   // Envío Formulario Extemporánea
   if (btnSubmitExtemporanea) {
     btnSubmitExtemporanea.addEventListener('click', () => {
-      const inputs = modalExtAlumnosList ? modalExtAlumnosList.querySelectorAll('.input-ext-nota:not([disabled])') : [];
+      const inputs = modalExtAlumnosList ? Array.from(modalExtAlumnosList.querySelectorAll('.input-ext-nota:not([disabled])')) : [];
       const alumnosAfectados = [];
-      let hasAnyGrade = false;
+      const missingInputs = [];
+      const invalidInputs = [];
+
+      // Limpiar errores visuales previos
+      inputs.forEach(input => input.classList.remove('input-error'));
 
       inputs.forEach(input => {
         const val = input.value.trim().toUpperCase();
         const idx = input.getAttribute('data-index');
         const alData = ALUMNOS_DATA[idx];
 
-        if (val !== '') {
-          hasAnyGrade = true;
-          alumnosAfectados.push({
-            alumno: `${alData.id} - ${alData.nombre}`,
-            notaActual: '-',
-            notaNueva: val
-          });
+        if (val === '') {
+          missingInputs.push(input);
+          input.classList.add('input-error');
+        } else {
+          const isNP = val === 'NP';
+          const isNum = /^(0?[0-9]|1[0-9]|20)$/.test(val);
+          if (!isNP && !isNum) {
+            invalidInputs.push(input);
+            input.classList.add('input-error');
+          } else {
+            const notaFormatted = isNP ? 'NP' : (val.length === 1 ? '0' + val : val);
+            alumnosAfectados.push({
+              alumno: `${alData.id} - ${alData.nombre}`,
+              notaActual: '-',
+              notaNueva: notaFormatted
+            });
+          }
         }
       });
 
-      if (!hasAnyGrade || alumnosAfectados.length === 0) {
-        alert('Por favor ingrese al menos una calificación (número 00-20 o NP) en el listado.');
+      if (missingInputs.length > 0) {
+        const plural = missingInputs.length > 1;
+        alert(`Debe completar la calificación de todos los alumnos del listado para poder guardar. Falta registrar nota a ${missingInputs.length} alumno${plural ? 's' : ''}.`);
+        missingInputs[0].focus();
+        missingInputs[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      if (invalidInputs.length > 0) {
+        alert("Por favor ingrese una calificación válida (número del 00 al 20 o 'NP') para todos los alumnos.");
+        invalidInputs[0].focus();
+        invalidInputs[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
       }
 

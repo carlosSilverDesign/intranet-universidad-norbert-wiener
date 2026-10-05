@@ -971,6 +971,12 @@ html::-webkit-scrollbar-thumb:hover {
   box-shadow: 0 0 0 2px rgba(15, 132, 143, 0.2);
 }
 
+.input-calificacion-control.input-error {
+  border-color: #EF4444 !important;
+  background-color: #FEF2F2 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25) !important;
+}
+
 .input-calificacion-control:disabled {
   background-color: #F1F5F9;
   border-color: #E2E8F0;
