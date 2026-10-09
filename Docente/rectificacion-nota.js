@@ -1,8 +1,3 @@
-/**
- * RECTIFICACIÓN DE NOTAS Y NOTA EXTEMPORÁNEA - LÓGICA JS
- * Perfil: Docente
- * Universidad Norbert Wiener - Sistema Institucional 2026
- */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -889,9 +884,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================================================================
   // CUSTOM SELECTS PERSONALIZADOS (Rotación 180° y Micro-interacciones)
-  // ==========================================================================
   function initCustomSelects() {
     const wrappers = document.querySelectorAll('.notes-select-wrapper');
 
@@ -1018,7 +1011,6 @@ document.addEventListener('DOMContentLoaded', () => {
           closeAllCustomSelects();
           trigger.focus();
 
-          // Disparar evento change en el select nativo
           select.dispatchEvent(new Event('change', { bubbles: true }));
         });
 
@@ -1035,21 +1027,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Cerrar al hacer clic fuera del select
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.notes-select-wrapper')) {
       closeAllCustomSelects();
     }
   });
 
-  // Cerrar al presionar Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeAllCustomSelects();
     }
   });
 
-  // Helper para sincronizar un select cuando cambie programáticamente
   function syncCustomSelect(selectEl) {
     if (!selectEl) return;
     const wrapper = selectEl.closest('.notes-select-wrapper');
@@ -1064,7 +1053,6 @@ document.addEventListener('DOMContentLoaded', () => {
       valSpan.textContent = selectedOption.textContent;
     }
 
-    // Reconstruir opciones del menú si cambió el innerHTML del select
     menu.innerHTML = '';
     Array.from(selectEl.options).forEach(opt => {
       const item = document.createElement('div');
@@ -1109,7 +1097,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Inicializar
   initCustomSelects();
   renderSolicitudesTable();
 });

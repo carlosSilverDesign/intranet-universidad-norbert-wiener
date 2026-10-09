@@ -1,16 +1,11 @@
-/* ==========================================================================
-   OPTIMIZACIÓN DEL ESPACIO DE SCROLL (Liberar ~10-16px de ancho útil)
-   ========================================================================== */
+
 html {
   scrollbar-gutter: auto !important;
-  /* Elimina la reserva permanente del canal de scroll */
   scrollbar-width: thin;
-  /* Barra de desplazamiento delgada moderna */
   scrollbar-color: #CBD5E1 transparent;
-  /* Thumb sutil y track transparente */
+
 }
 
-/* Scrollbar flotante / sutil para navegadores WebKit/Chromium */
 html::-webkit-scrollbar {
   width: 8px;
 }
@@ -28,9 +23,6 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: #94A3B8;
 }
 
-/* ==========================================================================
-   BOTONES DE ACCIÓN EN CABECERA (Desktop: mismo ancho | Mobile: 100% ancho)
-   ========================================================================== */
 .header-actions-group {
   display: flex;
   align-items: center;
@@ -78,7 +70,6 @@ html::-webkit-scrollbar-thumb:hover {
   transform: translateY(-1px);
 }
 
-/* En Desktop (>= 1024px): Ambos botones tienen exactamente el mismo ancho */
 @media (min-width: 1024px) {
 
   .header-actions-group .btn-primary-action,
@@ -89,7 +80,6 @@ html::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* En Móvil (<= 767px): Ambos botones ocupan todo el ancho disponible */
 @media (max-width: 767px) {
   .notes-header-right {
     width: 100%;
@@ -311,7 +301,6 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: #F8FAFC;
 }
 
-/* Anchos definidos para que las columnas nunca se solapen al reducir el ancho */
 .col-th-num,
 .col-td-num {
   width: 32px;
@@ -482,7 +471,6 @@ html::-webkit-scrollbar-thumb:hover {
   transform: scale(1.15);
 }
 
-/* Paginación con línea divisoria Top a todo lo ancho */
 .table-pagination-footer {
   border-top: 1px solid #CBD5E1;
   width: 100%;
@@ -549,9 +537,7 @@ html::-webkit-scrollbar-thumb:hover {
   color: #FFFFFF;
 }
 
-/* ==========================================================================
-   MODALES (ESTRUCTURA UNIFICADA)
-   ========================================================================== */
+/* MODALES */
 
 .modal-overlay {
   display: none;
@@ -578,7 +564,6 @@ html::-webkit-scrollbar-thumb:hover {
   border-radius: 16px;
   width: 100%;
   max-height: calc(100vh - 64px);
-  /* Garantiza al menos 32px arriba y abajo */
   display: flex;
   flex-direction: column;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
@@ -667,7 +652,6 @@ html::-webkit-scrollbar-thumb:hover {
   opacity: 0.8;
 }
 
-/* Body de Modal - Único scroll vertical en desktop */
 .modal-body-rect {
   padding: 20px 24px;
   overflow-y: auto;
@@ -687,9 +671,7 @@ html::-webkit-scrollbar-thumb:hover {
   border-radius: 3px;
 }
 
-/* ==========================================================================
-   ESTRUCTURA DE FILTROS EN MODALES (Organización en 3 filas sin scroll)
-   ========================================================================== */
+/* ESTRUCTURA DE FILTROS EN MODALES (Organización en 3 filas sin scroll) */
 .modal-filters-box {
   background-color: #F8FAFC;
   border: 1px solid #E2E8F0;
@@ -742,7 +724,6 @@ html::-webkit-scrollbar-thumb:hover {
   .modal-overlay {
     padding: 16px 10px;
     align-items: flex-start;
-    /* Alineado al top en móvil */
     overflow-y: auto;
   }
 
@@ -783,7 +764,6 @@ html::-webkit-scrollbar-thumb:hover {
 
   .student-select-table {
     min-width: 500px;
-    /* Evita que las columnas del listado se aplasten en mobile */
   }
 
   .modal-footer-rect {
@@ -1000,7 +980,7 @@ html::-webkit-scrollbar-thumb:hover {
   margin-left: 6px;
 }
 
-/* Footer de Modales - Fixed en la parte final */
+/* Footer de Modales */
 .modal-footer-rect {
   display: flex;
   justify-content: flex-end;
@@ -1048,9 +1028,7 @@ html::-webkit-scrollbar-thumb:hover {
   transform: translateY(-1px);
 }
 
-/* ==========================================================================
-   DETALLE / RESUMEN MODAL
-   ========================================================================== */
+/* DETALLE / RESUMEN MODAL */
 .request-meta-card {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1151,9 +1129,7 @@ html::-webkit-scrollbar-thumb:hover {
   margin: 0 0 6px 0;
 }
 
-/* ==========================================================================
-   MODAL DE CONFIRMACIÓN
-   ========================================================================== */
+/* MODAL DE CONFIRMACIÓN */
 .confirm-modal-body {
   display: flex;
   flex-direction: column;
@@ -1212,9 +1188,7 @@ html::-webkit-scrollbar-thumb:hover {
   transform: translateY(-1px);
 }
 
-/* ==========================================================================
-   TOAST FEEDBACK
-   ========================================================================== */
+/* TOAST FEEDBACK */
 .toast-notification {
   position: fixed;
   bottom: 28px;
@@ -1252,9 +1226,7 @@ html::-webkit-scrollbar-thumb:hover {
   font-weight: 600;
 }
 
-/* ==========================================================================
-   PIE DE PÁGINA (Reutilizado del sistema)
-   ========================================================================== */
+/* PIE DE PÁGINA */
 .notes-footer {
   text-align: center;
   padding: 24px 0 0 0;
@@ -1269,9 +1241,7 @@ html::-webkit-scrollbar-thumb:hover {
   font-family: 'Roboto', sans-serif;
 }
 
-/* ==========================================================================
-   CUSTOM SELECTS Y MICRO-INTERACCIONES (Personalización UI y Arrow 180°)
-   ========================================================================== */
+/* CUSTOM SELECTS Y MICRO-INTERACCIONES */
 .notes-select-wrapper {
   position: relative;
   display: flex;
@@ -1283,7 +1253,6 @@ html::-webkit-scrollbar-thumb:hover {
   z-index: 100;
 }
 
-/* Ocultar el select nativo pero mantenerlo accesible para eventos change y forms */
 .notes-select-wrapper select.custom-select-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -1356,7 +1325,6 @@ html::-webkit-scrollbar-thumb:hover {
   min-width: 0;
 }
 
-/* Icono flecha / Arrow con rotación de 180° y micro-interacción suave */
 .notes-select-wrapper .notes-select-icon {
   position: absolute;
   right: 12px;
@@ -1420,7 +1388,6 @@ html::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* Menú flotante hacia arriba (Dropup) para selectores en la parte final del modal */
 .modal-select-dropup .custom-select-menu {
   top: auto;
   bottom: calc(100% + 6px);
@@ -1444,7 +1411,7 @@ html::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* Opciones del Select con hover y active state */
+/* Opciones del Select */
 .custom-select-option {
   padding: 8px 12px;
   font-size: 13px;

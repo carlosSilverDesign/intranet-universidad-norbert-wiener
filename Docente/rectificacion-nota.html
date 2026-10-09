@@ -177,7 +177,7 @@
     </div>
   </header>
 
-  <!-- Barra Lateral Fija (Sidebar - 240px) -->
+  <!-- Barra Lateral Fija -->
   <aside class="sidebar-navbar" id="sidebarNavbar">
     <div class="sidebar-header">
       <a href="index.html" class="sidebar-logo-link" title="Universidad Norbert Wiener - Portal Docente">
@@ -308,7 +308,7 @@
           <!-- 2. Grupo: ACADÉMICO -->
           <li class="sidebar-category-title">Académico</li>
 
-          <!-- Gestión Académica con submenú (botones internos sin icono) -->
+          <!-- Gestión Académica con submenú -->
           <li class="sidebar-menu-item">
             <a href="#" class="sidebar-menu-link">
               <span class="sidebar-icon-box" aria-hidden="true">
@@ -352,7 +352,7 @@
             </ul>
           </li>
 
-          <!-- Procesos Académicos con submenú (botones internos sin icono) -->
+          <!-- Procesos Académicos con submenú -->
           <li class="sidebar-menu-item open">
             <a href="#" class="sidebar-menu-link">
               <span class="sidebar-icon-box" aria-hidden="true">
@@ -396,7 +396,7 @@
             </ul>
           </li>
 
-          <!-- Avance Académico con submenú (botones internos sin icono) -->
+          <!-- Avance Académico con submenú -->
           <li class="sidebar-menu-item">
             <a href="#" class="sidebar-menu-link">
               <span class="sidebar-icon-box" aria-hidden="true">
@@ -714,7 +714,7 @@
     </div>
   </aside>
 
-  <!-- Capa de oscurecimiento (blur overlay) -->
+  <!-- Capa de oscurecimiento -->
   <div class="navbar-blur-overlay" id="navbarBlurOverlay"></div>
 
   <!-- Layout Principal y Dashboard del Perfil Docente -->
@@ -762,7 +762,7 @@
 
         <hr class="notes-header-divider">
 
-        <!-- TARJETA DE FILTROS DOCENTE (Sin botón estorboso, 4 columnas limpias con reseteo sutil) -->
+        <!-- TARJETA DE FILTROS DOCENTE -->
         <section class="notes-filters-card" aria-label="Filtros de Solicitudes">
           <div class="filters-card-header-flex">
             <span class="filters-card-title">Criterios de Búsqueda</span>
@@ -815,7 +815,7 @@
                 </div>
               </div>
 
-              <!-- Tipo Solicitud (Una sola palabra: Rectificación o Extemporánea) -->
+              <!-- Tipo Solicitud -->
               <div class="notes-filter-item">
                 <label for="filterTipoSolicitud">Tipo de Solicitud</label>
                 <div class="notes-select-wrapper">
@@ -870,7 +870,7 @@
           </div>
         </section>
 
-        <!-- TABLA FLEXIBLE DE SOLICITUDES (Con anchos de columna controlables vía CSS) -->
+        <!-- TABLA FLEXIBLE DE SOLICITUDES -->
         <div class="rect-table-card">
           <div class="rect-table-scroll-container">
             <table class="rect-table table-flexible-rect" id="solicitudesTable">
@@ -925,9 +925,7 @@
     </main>
   </div>
 
-  <!-- ==========================================================================
-       MODAL 1: AGREGAR RECTIFICACIÓN (DOCENTE)
-       ========================================================================== -->
+  <!-- MODAL 1: AGREGAR RECTIFICACIÓN -->
   <div class="modal-overlay" id="modalRectificacionBackdrop">
     <div class="modal-container modal-form-large" role="dialog" aria-modal="true" aria-labelledby="modalRectTitle">
 
@@ -956,7 +954,7 @@
       <div class="modal-body-rect">
         <form id="formRectificacion" onsubmit="return false;">
 
-          <!-- Filtros de Selección de Alumnos (Formato Institucional) -->
+          <!-- Filtros de Selección de Alumnos -->
           <div class="modal-filters-box">
             <!-- Fila 1: Periodo, Mes, Carrera -->
             <div class="modal-filters-grid-1">
@@ -1170,9 +1168,7 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
-       MODAL 2: AGREGAR EXTEMPORÁNEA (DOCENTE)
-       ========================================================================== -->
+  <!-- MODAL 2: AGREGAR EXTEMPORÁNEA -->
   <div class="modal-overlay" id="modalExtemporaneaBackdrop">
     <div class="modal-container modal-form-large" role="dialog" aria-modal="true" aria-labelledby="modalExtTitle">
 
@@ -1197,7 +1193,7 @@
       <div class="modal-body-rect">
         <form id="formExtemporanea" onsubmit="return false;">
 
-          <!-- Filtros de Selección de Alumnos (Formato Institucional) -->
+          <!-- Filtros de Selección de Alumnos -->
           <div class="modal-filters-box">
             <!-- Fila 1: Periodo, Mes, Carrera -->
             <div class="modal-filters-grid-1">
@@ -1406,9 +1402,7 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
-       MODAL 3: VER RESUMEN Y DICTAMEN DE SOLICITUD
-       ========================================================================== -->
+  <!-- MODAL 3: VER RESUMEN Y DICTAMEN DE SOLICITUD -->
   <div class="modal-overlay" id="modalResumenBackdrop">
     <div class="modal-container modal-form-large" role="dialog" aria-modal="true" aria-labelledby="modalResumenTitle">
       <div class="modal-header-rect">
@@ -1524,7 +1518,6 @@
     <div class="toast-body-text" id="toastText">Operación realizada con éxito</div>
   </div>
 
-  <!-- Scripts -->
   <script src="navbar.js"></script>
   <script src="rectificacion-nota.js"></script>
 </body>
