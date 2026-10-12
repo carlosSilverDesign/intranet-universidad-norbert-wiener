@@ -121,4 +121,5 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
     - Se reemplazó el botón de texto "Ver Ficha" por un botón de acción con ícono de lupa (`.btn-action-lupa`).
     - Se reasignó y amplió el espacio disponible para las columnas "N° de Solicitud" y "Curso".
     - Se simplificaron las pestañas de filtro a una sola palabra por filtro: **Todas**, **Solicitado**, **Aceptado** y **Rechazado**.
+    - Se renombró la cabecera de la columna a **«Estado»** y los tags a una sola palabra (**Solicitado**, **Aceptado**, **Rechazado**) para evitar el scroll horizontal en el modal.
 

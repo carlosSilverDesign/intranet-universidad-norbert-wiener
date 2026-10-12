@@ -1094,8 +1094,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const tr = document.createElement('tr');
 
       let badgeClass = 'status-solicitado';
-      if (sol.estado.includes('Aceptado')) badgeClass = 'status-aceptado';
-      else if (sol.estado.includes('Rechazado')) badgeClass = 'status-rechazado';
+      let tagTexto = 'Solicitado';
+      if (sol.estado.toLowerCase().includes('aceptado')) {
+        badgeClass = 'status-aceptado';
+        tagTexto = 'Aceptado';
+      } else if (sol.estado.toLowerCase().includes('rechazado')) {
+        badgeClass = 'status-rechazado';
+        tagTexto = 'Rechazado';
+      }
 
       tr.innerHTML = `
         <td class="td-sol-id" style="font-weight: 700; color: #0F848F;">${sol.solicitudId}</td>
@@ -1104,8 +1110,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <td class="td-sol-curso">${sol.curso}</td>
         <td>${sol.seccion}</td>
         <td><span style="font-weight: 600;">${sol.tipo}</span></td>
-        <td>
-          <span class="btn-ver-solicitud-badge ${badgeClass}">${sol.estado}</span>
+        <td class="td-sol-estado" style="text-align: center;">
+          <span class="btn-ver-solicitud-badge ${badgeClass}">${tagTexto}</span>
         </td>
         <td class="td-sol-action" style="text-align: center;">
           <button type="button" class="btn-action-lupa" data-open-sol-id="${sol.solicitudId}" title="Ver detalle de la solicitud" aria-label="Ver solicitud">

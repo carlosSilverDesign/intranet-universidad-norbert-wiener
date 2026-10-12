@@ -1394,15 +1394,16 @@
   background-color: #F1F5F9;
   color: #475569;
   font-weight: 700;
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-bottom: 1px solid #CBD5E1;
   position: sticky;
   top: 0;
   z-index: 2;
+  white-space: nowrap;
 }
 
 .history-table td {
-  padding: 10px 12px;
+  padding: 8px 10px;
   border-bottom: 1px solid #E2E8F0;
   color: #334155;
   vertical-align: middle;
@@ -1414,20 +1415,25 @@
 
 .th-sol-id,
 .td-sol-id {
-  width: 140px;
-  min-width: 130px;
+  width: 125px;
   white-space: nowrap;
 }
 
 .th-sol-curso,
 .td-sol-curso {
-  min-width: 230px;
+  min-width: 180px;
+}
+
+.th-sol-estado,
+.td-sol-estado {
+  width: 105px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .th-sol-action,
 .td-sol-action {
-  width: 60px;
-  min-width: 60px;
+  width: 55px;
   text-align: center;
 }
 
