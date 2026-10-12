@@ -98,10 +98,15 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
   - Navbar lateral ampliado a 240px con enlaces de 14px en una sola línea, padding compacto, flechas de 18x18px y submenús internos sin icono con sangría.
   - Eliminación de márgenes inferiores sobrantes para corte limpio sobre el pie de página.
   - Cero variables CSS y comentarios técnicos redactados en español.
-- **2026-09-07**: Maquetación modular completa de la vista **Registro de Asistencia Alumnos** (`Docente/asistencia-alumno.html`, `Docente/asistencia.html`, `Docente/asistencia-alumno.css`, `Docente/asistencia-alumno.js`):
-  - Extracción y creación de la plantilla reutilizable de cabecera de sección institucional (`Docente/componentes/section-header.html`) con soporte para icono/placeholder y selector opcional de periodo a la derecha.
-  - Formulario de filtros institucional de dos filas con todos los selectores de la maqueta (`Periodo`, `Periodo Mes`, `Carrera`, `Sección`, `Curso`, `Tipo Sesión`, `Mes`) y botón de búsqueda.
-  - Subheader con fecha del sistema, leyenda semántica de colores y botón outline para exportar a Excel.
-  - Matriz interactiva de 17 sesiones de clase con casillas clickeables (Asistió ✓ / Faltó F / Vacío) y recálculo dinámico en tiempo real de asistencias acumuladas y porcentajes por fila.
-  - Botón verde institucional para registrar/grabar asistencias con feedback mediante notificación Toast flotante.
-  - Adaptabilidad responsive completa para dispositivos móviles y tablets con scroll horizontal táctil y columnas fijas.
+- **2026-10-12**: Implementación y pulido de la vista **Reporte de Asistencia Docente y Regularización de Marcaciones** (`Docente/asistencia-docente.html`, `Docente/asistencia-docente.css`, `Docente/asistencia-docente.js`):
+  - Creación de tabla central con columnas: N°, Fecha, Área/Carrera, Curso, Periodo, Sección, Sesión, Horario (Inicio - Fin), Registro (Inicio - Fin), Tarde, Estado, Solicitud, Observación.
+  - Lógica de estados de marcación: Asistió, Observado, Inasistencia y Tardanza.
+  - Modal condicional de regularización (`Descanso Médico` vs `Motivo Académico`) con campos obligatorios, dropzone de archivos, leyenda oficial de documentos EsSalud/Particular y alerta preventiva institucional.
+  - Modales complementarios de Vista de Solicitud y Panel Histórico de Solicitudes con seguimiento en tiempo real.
+  - Estandarización transversal de la barra de scroll en `sidebar-nav-container` (5px, sutil, track transparente, `#CBD5E1` thumb, idéntica a Asistencia Alumno).
+  - Scroll horizontal sutil y elegante en tablas (6px, `#CBD5E1`, sin botones de flechas nativos de Windows).
+  - Selectores de fecha nativos 100% funcionales (`type="date"`) con icono de calendario estándar SVG y disparador interactivo `showPicker()`.
+  - Corrección de botones de paginación eliminando el contorno 3D-outset para un aspecto plano, limpio y moderno.
+  - Estandarización de inputs de fecha e iconos dentro del modal `modal-form-large`.
+  - Selects con animación de rotación suave (180°) en `:focus-within` y padding derecho de 38px para evitar superposición con el texto.
+  - Sincronización completa con la rama de publicación en `docs/`.

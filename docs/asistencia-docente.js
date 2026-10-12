@@ -13,16 +13,88 @@ document.addEventListener('DOMContentLoaded', () => {
   const asistenciaData = [
     {
       id: 1,
-      fecha: '2025/10/02 - Jue.',
-      fechaIso: '2025-10-02',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Prácticas En Nutrición I - ND4012',
-      periodo: '2025-II',
-      seccion: 'ND1M1',
-      sesion: 'Prac. - A1',
-      horarioInicio: '12:15',
-      horarioFin: '13:00',
-      registroInicio: '12:14',
+      fecha: '06/01/2026 Martes',
+      fechaIso: '2026-01-06',
+      area: 'P.E. INVESTIGACIÓN',
+      curso: 'Validación De Instrumentos De Investigación - PEIC004',
+      periodo: '2025-III',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      horarioInicio: '18:30',
+      horarioFin: '19:15',
+      registroInicio: '18:22',
+      registroFin: '19:15',
+      tarde: '—',
+      estado: 'Asistió',
+      observacion: '—',
+      solicitudId: null
+    },
+    {
+      id: 2,
+      fecha: '06/01/2026 Martes',
+      fechaIso: '2026-01-06',
+      area: 'P.E. INVESTIGACIÓN',
+      curso: 'Validación De Instrumentos De Investigación - PEIC004',
+      periodo: '2025-III',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      horarioInicio: '19:15',
+      horarioFin: '20:00',
+      registroInicio: '19:15',
+      registroFin: '20:00',
+      tarde: '—',
+      estado: 'Asistió',
+      observacion: '—',
+      solicitudId: null
+    },
+    {
+      id: 3,
+      fecha: '06/01/2026 Martes',
+      fechaIso: '2026-01-06',
+      area: 'P.E. INVESTIGACIÓN',
+      curso: 'Validación De Instrumentos De Investigación - PEIC004',
+      periodo: '2025-III',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      horarioInicio: '20:00',
+      horarioFin: '20:45',
+      registroInicio: '20:00',
+      registroFin: '20:45',
+      tarde: '—',
+      estado: 'Asistió',
+      observacion: '—',
+      solicitudId: null
+    },
+    {
+      id: 4,
+      fecha: '06/01/2026 Martes',
+      fechaIso: '2026-01-06',
+      area: 'P.E. INVESTIGACIÓN',
+      curso: 'Validación De Instrumentos De Investigación - PEIC004',
+      periodo: '2025-III',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      horarioInicio: '20:45',
+      horarioFin: '21:30',
+      registroInicio: '20:45',
+      registroFin: '21:30',
+      tarde: "1'",
+      estado: 'Tardanza', // Hora de entrada posterior a la programada
+      observacion: 'Portal no carga',
+      solicitudId: null
+    },
+    {
+      id: 5,
+      fecha: '13/01/2026 Martes',
+      fechaIso: '2026-01-13',
+      area: 'P.E. INVESTIGACIÓN',
+      curso: 'Validación De Instrumentos De Investigación - PEIC004',
+      periodo: '2025-III',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      horarioInicio: '18:30',
+      horarioFin: '19:15',
+      registroInicio: '18:15',
       registroFin: '00:00',
       tarde: '—',
       estado: 'Observado', // Sin Marcación de Salida
@@ -30,34 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
       solicitudId: null
     },
     {
-      id: 2,
-      fecha: '2025/10/02 - Jue.',
-      fechaIso: '2025-10-02',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Prácticas En Nutrición I - ND4012',
-      periodo: '2025-II',
-      seccion: 'ND1M1',
-      sesion: 'Prac. - A1',
-      horarioInicio: '13:00',
-      horarioFin: '13:45',
-      registroInicio: '00:00',
-      registroFin: '00:00',
-      tarde: '—',
-      estado: 'Observado',
-      observacion: '—',
-      solicitudId: null
-    },
-    {
-      id: 3,
-      fecha: '2025/10/02 - Jue.',
-      fechaIso: '2025-10-02',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Prácticas En Nutrición I - ND4012',
-      periodo: '2025-II',
-      seccion: 'ND1M3',
-      sesion: 'Prac. - C1',
-      horarioInicio: '13:45',
-      horarioFin: '14:30',
+      id: 6,
+      fecha: '13/01/2026 Martes',
+      fechaIso: '2026-01-13',
+      area: 'P.E. INVESTIGACIÓN',
+      curso: 'Validación De Instrumentos De Investigación - PEIC004',
+      periodo: '2025-III',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      horarioInicio: '19:15',
+      horarioFin: '20:00',
       registroInicio: '00:00',
       registroFin: '00:00',
       tarde: '—',
@@ -66,140 +120,50 @@ document.addEventListener('DOMContentLoaded', () => {
       solicitudId: null
     },
     {
-      id: 4,
-      fecha: '2025/10/02 - Jue.',
-      fechaIso: '2025-10-02',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Prácticas En Nutrición I - ND4012',
-      periodo: '2025-II',
-      seccion: 'ND1M3',
-      sesion: 'Prac. - C1',
-      horarioInicio: '14:30',
-      horarioFin: '15:15',
-      registroInicio: '00:00',
-      registroFin: '00:00',
-      tarde: '—',
-      estado: 'Inasistencia',
-      observacion: '—',
-      solicitudId: null
-    },
-    {
-      id: 5,
-      fecha: '2025/10/02 - Jue.',
-      fechaIso: '2025-10-02',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Nutrición Y Dietoterapia Del Niño Y Del Adolescente - ND4054',
-      periodo: '2025-II',
-      seccion: 'ND5N2',
-      sesion: 'Prac. - 21',
-      horarioInicio: '19:45',
-      horarioFin: '20:30',
-      registroInicio: '19:50',
-      registroFin: '20:30',
-      tarde: "10'",
-      estado: 'Tardanza', // Hora de entrada después de la hora programada
-      observacion: '—',
-      solicitudId: null
-    },
-    {
-      id: 6,
-      fecha: '2025/10/02 - Jue.',
-      fechaIso: '2025-10-02',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Nutrición Y Dietoterapia Del Niño Y Del Adolescente - ND4054',
-      periodo: '2025-II',
-      seccion: 'ND5N2',
-      sesion: 'Prac. - 21',
-      horarioInicio: '20:30',
-      horarioFin: '21:15',
-      registroInicio: '20:30',
-      registroFin: '21:15',
-      tarde: '—',
-      estado: 'Tardanza',
-      observacion: '—',
-      solicitudId: null
-    },
-    {
       id: 7,
-      fecha: '2025/10/02 - Jue.',
-      fechaIso: '2025-10-02',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Nutrición Y Dietoterapia Del Niño Y Del Adolescente - ND4054',
-      periodo: '2025-II',
-      seccion: 'ND5N2',
-      sesion: 'Prac. - 21',
-      horarioInicio: '21:15',
-      horarioFin: '22:00',
-      registroInicio: '21:15',
-      registroFin: '22:00',
+      fecha: '13/01/2026 Martes',
+      fechaIso: '2026-01-13',
+      area: 'P.E. INVESTIGACIÓN',
+      curso: 'Validación De Instrumentos De Investigación - PEIC004',
+      periodo: '2025-III',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      horarioInicio: '20:00',
+      horarioFin: '20:45',
+      registroInicio: '20:00',
+      registroFin: '20:45',
       tarde: '—',
-      estado: 'Tardanza',
+      estado: 'Asistió',
       observacion: '—',
       solicitudId: null
     },
     {
       id: 8,
-      fecha: '2025/10/02 - Jue.',
-      fechaIso: '2025-10-02',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Nutrición Y Dietoterapia Del Niño Y Del Adolescente - ND4054',
-      periodo: '2025-II',
-      seccion: 'ND5N2',
-      sesion: 'Prac. - 21',
-      horarioInicio: '22:00',
-      horarioFin: '22:45',
-      registroInicio: '22:00',
-      registroFin: '22:45',
+      fecha: '13/01/2026 Martes',
+      fechaIso: '2026-01-13',
+      area: 'P.E. INVESTIGACIÓN',
+      curso: 'Validación De Instrumentos De Investigación - PEIC004',
+      periodo: '2025-III',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      horarioInicio: '20:45',
+      horarioFin: '21:30',
+      registroInicio: '20:45',
+      registroFin: '21:30',
       tarde: '—',
-      estado: 'Tardanza',
+      estado: 'Asistió',
       observacion: '—',
       solicitudId: null
     },
     {
       id: 9,
-      fecha: '2025/10/03 - Vie.',
-      fechaIso: '2025-10-03',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Prácticas En Nutrición I - ND4012',
-      periodo: '2025-II',
-      seccion: 'ND1M2',
-      sesion: 'Prac. - B1',
-      horarioInicio: '14:30',
-      horarioFin: '15:15',
-      registroInicio: '14:25',
-      registroFin: '15:15',
-      tarde: '—',
-      estado: 'Asistió',
-      observacion: '—',
-      solicitudId: null
-    },
-    {
-      id: 10,
-      fecha: '2025/10/03 - Vie.',
-      fechaIso: '2025-10-03',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Prácticas En Nutrición I - ND4012',
-      periodo: '2025-II',
-      seccion: 'ND1M2',
-      sesion: 'Prac. - B1',
-      horarioInicio: '15:15',
-      horarioFin: '16:00',
-      registroInicio: '15:15',
-      registroFin: '16:02',
-      tarde: '—',
-      estado: 'Asistió',
-      observacion: '—',
-      solicitudId: null
-    },
-    {
-      id: 11,
-      fecha: '2025/10/04 - Sáb.',
-      fechaIso: '2025-10-04',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Prácticas En Nutrición Iii - ND4035',
-      periodo: '2025-II',
-      seccion: 'ND3M1',
-      sesion: 'Prac. - A1',
+      fecha: '28/03/2026 Sábado',
+      fechaIso: '2026-03-28',
+      area: 'Ing. Sist. e Inf.',
+      curso: 'Introducción A La Ingeniería - IS6011',
+      periodo: '2026-I',
+      seccion: 'IS1M7',
+      sesion: 'Prac.',
       horarioInicio: '07:00',
       horarioFin: '07:45',
       registroInicio: '06:58',
@@ -210,14 +174,14 @@ document.addEventListener('DOMContentLoaded', () => {
       solicitudId: null
     },
     {
-      id: 12,
-      fecha: '2025/10/04 - Sáb.',
-      fechaIso: '2025-10-04',
-      area: 'NUTRICION. Y DIET.',
-      curso: 'Prácticas En Nutrición Iii - ND4035',
-      periodo: '2025-II',
-      seccion: 'ND3M1',
-      sesion: 'Prac. - A1',
+      id: 10,
+      fecha: '28/03/2026 Sábado',
+      fechaIso: '2026-03-28',
+      area: 'Ing. Sist. e Inf.',
+      curso: 'Introducción A La Ingeniería - IS6011',
+      periodo: '2026-I',
+      seccion: 'IS1M7',
+      sesion: 'Prac.',
       horarioInicio: '07:45',
       horarioFin: '08:30',
       registroInicio: '07:45',
@@ -228,36 +192,72 @@ document.addEventListener('DOMContentLoaded', () => {
       solicitudId: null
     },
     {
-      id: 13,
-      fecha: '2025/10/04 - Sáb.',
-      fechaIso: '2025-10-04',
+      id: 11,
+      fecha: '02/04/2026 Jueves',
+      fechaIso: '2026-04-02',
       area: 'NUTRICION. Y DIET.',
-      curso: 'Prácticas En Nutrición Iii - ND4035',
-      periodo: '2025-II',
-      seccion: 'ND3N1',
-      sesion: 'Prac. - 11',
-      horarioInicio: '10:00',
-      horarioFin: '10:45',
-      registroInicio: '09:55',
-      registroFin: '10:45',
+      curso: 'Prácticas En Nutrición I - ND4012',
+      periodo: '2026-I',
+      seccion: 'ND1M1',
+      sesion: 'Prac. - A1',
+      horarioInicio: '12:15',
+      horarioFin: '13:00',
+      registroInicio: '12:14',
+      registroFin: '00:00',
       tarde: '—',
-      estado: 'Asistió',
+      estado: 'Observado',
+      observacion: '—',
+      solicitudId: null
+    },
+    {
+      id: 12,
+      fecha: '02/04/2026 Jueves',
+      fechaIso: '2026-04-02',
+      area: 'NUTRICION. Y DIET.',
+      curso: 'Prácticas En Nutrición I - ND4012',
+      periodo: '2026-I',
+      seccion: 'ND1M1',
+      sesion: 'Prac. - A1',
+      horarioInicio: '13:00',
+      horarioFin: '13:45',
+      registroInicio: '00:00',
+      registroFin: '00:00',
+      tarde: '—',
+      estado: 'Inasistencia',
+      observacion: '—',
+      solicitudId: null
+    },
+    {
+      id: 13,
+      fecha: '02/04/2026 Jueves',
+      fechaIso: '2026-04-02',
+      area: 'NUTRICION. Y DIET.',
+      curso: 'Nutrición Y Dietoterapia Del Niño Y Del Adolescente - ND4054',
+      periodo: '2026-I',
+      seccion: 'ND5N2',
+      sesion: 'Prac. - 21',
+      horarioInicio: '19:45',
+      horarioFin: '20:30',
+      registroInicio: '19:55',
+      registroFin: '20:30',
+      tarde: "10'",
+      estado: 'Tardanza',
       observacion: '—',
       solicitudId: null
     },
     {
       id: 14,
-      fecha: '2025/10/04 - Sáb.',
-      fechaIso: '2025-10-04',
+      fecha: '03/04/2026 Viernes',
+      fechaIso: '2026-04-03',
       area: 'NUTRICION. Y DIET.',
       curso: 'Prácticas En Nutrición Iii - ND4035',
-      periodo: '2025-II',
-      seccion: 'ND3N1',
-      sesion: 'Prac. - 11',
-      horarioInicio: '10:45',
-      horarioFin: '11:30',
-      registroInicio: '10:45',
-      registroFin: '11:31',
+      periodo: '2026-I',
+      seccion: 'ND3M1',
+      sesion: 'Prac. - A1',
+      horarioInicio: '07:00',
+      horarioFin: '07:45',
+      registroInicio: '06:58',
+      registroFin: '07:45',
       tarde: '—',
       estado: 'Asistió',
       observacion: '—',
@@ -274,33 +274,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // - "Aceptado (Procede)"
   let solicitudesList = [
     {
-      solicitudId: 'SOL-2025-001',
-      asistenciaId: 1,
-      fechaSolicitud: '03/10/2025 09:20',
-      fechaSesion: '2025/10/02 - Jue.',
-      curso: 'Prácticas En Nutrición I - ND4012',
-      periodo: '2025-II',
-      seccion: 'ND1M1',
-      sesion: 'Prac. - A1',
-      horaInicioProg: '12:15',
-      horaFinProg: '13:00',
-      horaInicioReg: '12:14',
+      solicitudId: 'SOL-2026-001',
+      asistenciaId: 5,
+      fechaSolicitud: '14/01/2026 09:20',
+      fechaSesion: '13/01/2026 Martes',
+      curso: 'Validación De Instrumentos De Investigación - PEIC004',
+      periodo: '2025-III',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      horaInicioProg: '18:30',
+      horaFinProg: '19:15',
+      horaInicioReg: '18:15',
       horaFinReg: '00:00',
       tipo: 'Descanso Médico',
-      fechaInicioDM: '2025-10-02',
-      fechaFinDM: '2025-10-03',
+      fechaInicioDM: '2026-01-13',
+      fechaFinDM: '2026-01-14',
       jefeInmediato: 'Lic. Denssy López - Coordinadora Académica',
       tipoCentroSalud: 'Essalud',
-      nombreArchivo: 'CITT_EsSalud_Oct2025_JonahAsensio.pdf',
+      nombreArchivo: 'CITT_EsSalud_Ene2026_JonahAsensio.pdf',
       estado: 'Solicitado – Proceso de Validación',
       motivoRechazo: ''
     }
   ];
 
-  // Enlazar la solicitud inicial con la fila 1
-  const fila1 = asistenciaData.find(d => d.id === 1);
-  if (fila1) {
-    fila1.solicitudId = 'SOL-2025-001';
+  // Enlazar la solicitud inicial con la fila 5
+  const filaInicial = asistenciaData.find(d => d.id === 5);
+  if (filaInicial) {
+    filaInicial.solicitudId = 'SOL-2026-001';
   }
 
   // ==========================================
@@ -380,8 +380,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!tableBody) return;
 
     let filtered = asistenciaData;
+
+    // Filtrar por rango de fechas Desde - Hasta si se ingresaron
+    const fDesde = filtroFechaDesde ? filtroFechaDesde.value : '';
+    const fHasta = filtroFechaHasta ? filtroFechaHasta.value : '';
+    if (fDesde && fHasta) {
+      filtered = filtered.filter(item => {
+        if (!item.fechaIso) return true;
+        return item.fechaIso >= fDesde && item.fechaIso <= fHasta;
+      });
+    }
+
     if (filterEstado !== 'todos') {
-      filtered = asistenciaData.filter(item => item.estado.toLowerCase() === filterEstado.toLowerCase());
+      filtered = filtered.filter(item => item.estado.toLowerCase() === filterEstado.toLowerCase());
     }
 
     tableBody.innerHTML = '';
@@ -1110,8 +1121,60 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 10. BOTONES DE FILTRADO Y DESCARGA
+  // 10. INTERACTIVIDAD DE SELECTORES DE FECHA Y PAGINACIÓN
   // ==========================================
+  const datePickerWrappers = document.querySelectorAll('.date-picker-wrapper');
+  datePickerWrappers.forEach(wrapper => {
+    const dateInput = wrapper.querySelector('input[type="date"]');
+    if (!dateInput) return;
+
+    wrapper.addEventListener('click', (e) => {
+      if (e.target !== dateInput) {
+        try {
+          if (typeof dateInput.showPicker === 'function') {
+            dateInput.showPicker();
+          } else {
+            dateInput.focus();
+          }
+        } catch (err) {
+          dateInput.focus();
+        }
+      }
+    });
+
+    dateInput.addEventListener('click', () => {
+      try {
+        if (typeof dateInput.showPicker === 'function') {
+          dateInput.showPicker();
+        }
+      } catch (err) {}
+    });
+  });
+
+  if (filtroFechaDesde) {
+    filtroFechaDesde.addEventListener('change', () => {
+      renderTable(currentActivePillFilter);
+    });
+  }
+
+  if (filtroFechaHasta) {
+    filtroFechaHasta.addEventListener('change', () => {
+      renderTable(currentActivePillFilter);
+    });
+  }
+
+  // Interacción visual de botones de paginación
+  const pageNumButtons = document.querySelectorAll('.page-num-item');
+  pageNumButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      pageNumButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const pageNum = btn.textContent.trim();
+      showToast(`Mostrando registros de página ${pageNum}.`);
+    });
+  });
+
   if (btnBuscarAsistencia) {
     btnBuscarAsistencia.addEventListener('click', () => {
       showToast('Búsqueda actualizada según el rango de fechas ingresado.');
