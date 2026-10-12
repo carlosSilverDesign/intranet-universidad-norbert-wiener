@@ -375,6 +375,16 @@
   box-sizing: border-box;
 }
 
+/* --- TOAST DE ADVERTENCIA / ERROR --- */
+.attendance-toast.is-warning {
+  background-color: #1E293B;
+  border-left: 4px solid #F59E0B;
+}
+
+.attendance-toast.is-warning .attendance-toast-icon {
+  color: #F59E0B;
+}
+
 /* --- RESPONSIVIDAD Y OPTIMIZACIÓN MOBILE --- */
 @media (max-width: 992px) {
   .filters-row-1 {

@@ -122,4 +122,14 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
     - Se reasignó y amplió el espacio disponible para las columnas "N° de Solicitud" y "Curso".
     - Se simplificaron las pestañas de filtro a una sola palabra por filtro: **Todas**, **Solicitado**, **Aceptado** y **Rechazado**.
     - Se renombró la cabecera de la columna a **«Estado»** y los tags a una sola palabra (**Solicitado**, **Aceptado**, **Rechazado**) para evitar el scroll horizontal en el modal.
+- **2026-10-12 (Mejoras puntuales en Rectificación/Extemporánea y Registro de Delegados)**:
+  - **Solicitud de Rectificación y Solicitud de Nota Extemporánea (`rectificacion-nota.html` / `rectificacion-nota.js`)**:
+    - Se configuraron los periodos académicos `2026-0`, `2026-I` y `2026-II`.
+    - Se implementó el filtrado dinámico de meses para que el selector **Mes** muestre exclusivamente los meses correspondientes al periodo seleccionado:
+      - `2026-0` (Ciclo de verano): Enero y Febrero.
+      - `2026-I` (Primer semestre): Marzo, Abril, Mayo, Junio y Julio.
+      - `2026-II` (Segundo semestre): Agosto, Septiembre, Octubre, Noviembre y Diciembre.
+  - **Asignación de Delegado de Clase (`delegados.html` / `delegados.js` / `delegados.css`)**:
+    - Se bloqueó la selección y el registro de **Sub-delegado** cuando no existe un **Delegado** seleccionado o registrado previamente.
+    - Se incorporaron notificaciones Toast de advertencia e indicador visual en el resumen (*Requiere Delegado previo*) cuando el docente intenta asignar un Sub-delegado sin Delegado titular o cuando desmarca al Delegado titular.
 

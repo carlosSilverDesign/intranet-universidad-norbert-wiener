@@ -779,8 +779,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Filtrado reactivo de estudiantes en modales al cambiar cualquiera de los 7 select
-  [modalRectPeriodo, modalRectMes, modalRectCarrera, modalRectSeccion, modalRectCurso, modalRectTipoSesion, modalRectTipoEval].forEach(sel => {
+  // Mapeo oficial de meses por periodo académico:
+  // • Periodo 2026-0 (Ciclo de verano): De enero a febrero de 2026 (del 05/01 al 28/02/2026).
+  // • Periodo 2026-I (Primer semestre): De marzo a julio de 2026 (del 23/03 al 18/07/2026).
+  // • Periodo 2026-II (Segundo semestre): De agosto a diciembre de 2026 (del 24/08 al 19/12/2026).
+  const MESES_POR_PERIODO = {
+    '2026-0': ['Enero', 'Febrero'],
+    '2026-I': ['Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+    '2026-II': ['Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+  };
+
+  function updateMesesOptions(selectPeriodo, selectMes) {
+    if (!selectPeriodo || !selectMes) return;
+    const periodo = selectPeriodo.value;
+    let meses = MESES_POR_PERIODO[periodo];
+    if (!meses) {
+      if (periodo.includes('-0')) meses = MESES_POR_PERIODO['2026-0'];
+      else if (periodo.includes('-II')) meses = MESES_POR_PERIODO['2026-II'];
+      else meses = MESES_POR_PERIODO['2026-I'];
+    }
+    const currentVal = selectMes.value;
+    selectMes.innerHTML = '';
+    meses.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      selectMes.appendChild(opt);
+    });
+    if (meses.includes(currentVal)) {
+      selectMes.value = currentVal;
+    } else {
+      selectMes.value = meses[0];
+    }
+    syncCustomSelect(selectMes);
+  }
+
+  // Filtrado reactivo de estudiantes en modales al cambiar cualquiera de los select
+  if (modalRectPeriodo) {
+    modalRectPeriodo.addEventListener('change', () => {
+      updateMesesOptions(modalRectPeriodo, modalRectMes);
+      if (chkSelectAllRect) chkSelectAllRect.checked = false;
+      renderModalRectAlumnos();
+    });
+  }
+
+  [modalRectMes, modalRectCarrera, modalRectSeccion, modalRectCurso, modalRectTipoSesion, modalRectTipoEval].forEach(sel => {
     if (sel) {
       sel.addEventListener('change', () => {
         if (chkSelectAllRect) chkSelectAllRect.checked = false;
@@ -789,7 +832,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  [modalExtPeriodo, modalExtMes, modalExtCarrera, modalExtSeccion, modalExtCurso, modalExtTipoSesion, modalExtTipoEval].forEach(sel => {
+  if (modalExtPeriodo) {
+    modalExtPeriodo.addEventListener('change', () => {
+      updateMesesOptions(modalExtPeriodo, modalExtMes);
+      renderModalExtAlumnos();
+    });
+  }
+
+  [modalExtMes, modalExtCarrera, modalExtSeccion, modalExtCurso, modalExtTipoSesion, modalExtTipoEval].forEach(sel => {
     if (sel) {
       sel.addEventListener('change', () => {
         renderModalExtAlumnos();
@@ -825,6 +875,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Apertura y Cierre de Modales
   if (btnOpenModalRectificacion) {
     btnOpenModalRectificacion.addEventListener('click', () => {
+      updateMesesOptions(modalRectPeriodo, modalRectMes);
       updateEvaluacionesActivas();
       renderModalRectAlumnos();
       initCustomSelects();
@@ -837,6 +888,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnOpenModalExtemporanea) {
     btnOpenModalExtemporanea.addEventListener('click', () => {
+      updateMesesOptions(modalExtPeriodo, modalExtMes);
       renderModalExtAlumnos();
       initCustomSelects();
       if (modalExtDetalleMotivo) modalExtDetalleMotivo.value = '';
@@ -1097,6 +1149,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  updateMesesOptions(modalRectPeriodo, modalRectMes);
+  updateMesesOptions(modalExtPeriodo, modalExtMes);
   initCustomSelects();
   renderSolicitudesTable();
 });

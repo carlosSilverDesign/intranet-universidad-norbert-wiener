@@ -22,10 +22,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toastText.textContent = message;
 
+    const icon = toastNotification.querySelector('.attendance-toast-icon');
     if (isWarning) {
       toastNotification.classList.add('is-warning');
+      if (icon) {
+        icon.innerHTML = `
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        `;
+      }
     } else {
       toastNotification.classList.remove('is-warning');
+      if (icon) {
+        icon.innerHTML = `
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        `;
+      }
     }
 
     toastNotification.classList.add('show');
@@ -82,9 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (selectedSubdelegadoName) {
         chipSubdelegado.classList.add('has-selection-sub');
         chipSubdelegado.innerHTML = `<span class="chip-dot"></span> Sub-delegado: <strong>${selectedSubdelegadoName}</strong>`;
-      } else {
+      } else if (selectedDelegadoName) {
         chipSubdelegado.classList.remove('has-selection-sub');
         chipSubdelegado.innerHTML = `<span class="chip-dot"></span> Sub-delegado: <em>Sin asignar</em>`;
+      } else {
+        chipSubdelegado.classList.remove('has-selection-sub');
+        chipSubdelegado.innerHTML = `<span class="chip-dot"></span> Sub-delegado: <em>Requiere Delegado previo</em>`;
       }
     }
   }
@@ -111,6 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
           if (currentSub && currentSub.checked) {
             currentSub.checked = false;
           }
+        } else {
+          // Si se desmarca el delegado y había un sub-delegado seleccionado, retirarlo y mostrar aviso
+          const activeSub = table.querySelector('.input-subdelegado:checked');
+          if (activeSub) {
+            activeSub.checked = false;
+            showToast('Se retiró el Sub-delegado ya que no puede registrarse sin un Delegado asignado previamente.', true);
+          }
         }
 
         updateSelectionsState();
@@ -121,16 +145,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentRow = target.closest('tr');
 
         if (target.checked) {
+          // Validar que exista un Delegado registrado/seleccionado previamente
+          const checkedDel = table.querySelector('.input-delegado:checked');
+          if (!checkedDel) {
+            target.checked = false;
+            showToast('No es posible registrar un Sub-delegado si no hay un Delegado registrado previamente.', true);
+            updateSelectionsState();
+            return;
+          }
+
+          // Validar que no sea el mismo alumno que ya está marcado como Delegado
+          const currentDel = currentRow.querySelector('.input-delegado');
+          if (currentDel && currentDel.checked) {
+            target.checked = false;
+            showToast('Este alumno ya está asignado como Delegado. Seleccione a otro alumno como Sub-delegado.', true);
+            updateSelectionsState();
+            return;
+          }
+
           // Desmarcar cualquier otro sub-delegado en la tabla
           table.querySelectorAll('.input-subdelegado').forEach(input => {
             if (input !== target) input.checked = false;
           });
-
-          // Un alumno no puede ser Sub-delegado y Delegado a la vez
-          const currentDel = currentRow.querySelector('.input-delegado');
-          if (currentDel && currentDel.checked) {
-            currentDel.checked = false;
-          }
         }
 
         updateSelectionsState();
@@ -146,21 +182,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const checkedDel = table ? table.querySelector('.input-delegado:checked') : null;
       const checkedSub = table ? table.querySelector('.input-subdelegado:checked') : null;
 
-      if (!checkedDel && !checkedSub) {
-        showToast('Por favor, elija al menos un Delegado o Sub-delegado antes de registrar.', true);
+      if (!checkedDel && checkedSub) {
+        showToast('No es posible registrar un Sub-delegado si no hay un Delegado registrado previamente.', true);
         return;
       }
 
-      const delName = checkedDel ? checkedDel.closest('tr').querySelector('.td-student').textContent.trim() : null;
+      if (!checkedDel && !checkedSub) {
+        showToast('Por favor, seleccione un Delegado antes de registrar.', true);
+        return;
+      }
+
+      const delName = checkedDel.closest('tr').querySelector('.td-student').textContent.trim();
       const subName = checkedSub ? checkedSub.closest('tr').querySelector('.td-student').textContent.trim() : null;
 
-      let msg = 'Asignación de delegado registrada correctamente.';
-      if (delName && subName) {
+      let msg = `Delegado (${delName}) registrado con éxito.`;
+      if (subName) {
         msg = `Delegado (${delName}) y Sub-delegado (${subName}) registrados con éxito.`;
-      } else if (delName) {
-        msg = `Delegado (${delName}) registrado con éxito.`;
-      } else if (subName) {
-        msg = `Sub-delegado (${subName}) registrado con éxito.`;
       }
 
       showToast(msg, false);
