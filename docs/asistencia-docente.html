@@ -1091,62 +1091,7 @@
   </div>
 
   <!-- ==========================================================================
-       MODAL 2: VISTA DE SOLICITUD (SEGUIMIENTO Y DETALLE ESPECIFICADO)
-       Campos: Fecha, Curso, Periodo, Sección, Hora Inicio Programado,
-       Hora Fin Programado, Hora Inicio Registrado, Hora Fin Registrado,
-       Estado, Archivo [Aceptar]
-       ========================================================================== -->
-  <div class="modal-overlay" id="modalVistaSolicitud" role="dialog" aria-modal="true" aria-labelledby="modalVistaTitle">
-    <div class="modal-container vista-solicitud-container">
-
-      <!-- Header del Modal -->
-      <div class="modal-header-rect">
-        <div class="modal-header-left">
-          <div class="modal-header-icon-box">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-          </div>
-          <div>
-            <h3 class="modal-title-text" id="modalVistaTitle">Vista de Solicitud</h3>
-            <span class="modal-subtitle-ticket" id="vistaTicketNumber">SOL-2026-001</span>
-          </div>
-        </div>
-        <button type="button" class="modal-btn-close" id="btnCloseModalVista" aria-label="Cerrar Modal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Cuerpo del Modal -->
-      <div class="modal-body-rect">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
-          <span style="font-size: 13px; font-weight: 700; color: #475569; text-transform: uppercase;">Estado de la
-            Solicitud:</span>
-          <span class="btn-ver-solicitud-badge status-solicitado" id="vistaEstadoBadge">Solicitado – Proceso de
-            Validación</span>
-        </div>
-
-        <div class="solicitud-details-list" id="vistaSolicitudDetails">
-          <!-- Se inyecta dinámicamente con JS -->
-        </div>
-      </div>
-
-      <!-- Footer del Modal -->
-      <div class="modal-footer-rect" style="justify-content: flex-end;">
-        <button type="button" class="btn-save-modal" id="btnAceptarVista" style="min-width: 140px;">Aceptar</button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ==========================================================================
-       MODAL 3: HISTORIAL DE SOLICITUDES (SEGUIMIENTO OPORTUNO)
+       MODAL: HISTORIAL DE SOLICITUDES (SEGUIMIENTO OPORTUNO)
        ========================================================================== -->
   <div class="modal-overlay" id="modalHistorialSolicitudes" role="dialog" aria-modal="true"
     aria-labelledby="modalHistorialTitle">
@@ -1208,6 +1153,61 @@
       <div class="modal-footer-rect" style="justify-content: flex-end;">
         <button type="button" class="btn-cancel-modal" id="btnAceptarHistorial"
           style="min-width: 120px;">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: VISTA DE SOLICITUD (DETALLE DE LA SOLICITUD)
+       Campos: Fecha, Curso, Periodo, Sección, Hora Inicio Programado,
+       Hora Fin Programado, Hora Inicio Registrado, Hora Fin Registrado,
+       Estado, Archivo [Aceptar]
+       ========================================================================== -->
+  <div class="modal-overlay" id="modalVistaSolicitud" role="dialog" aria-modal="true" aria-labelledby="modalVistaTitle">
+    <div class="modal-container vista-solicitud-container">
+
+      <!-- Header del Modal -->
+      <div class="modal-header-rect">
+        <div class="modal-header-left">
+          <div class="modal-header-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <div>
+            <h3 class="modal-title-text" id="modalVistaTitle">Vista de Solicitud</h3>
+            <span class="modal-subtitle-ticket" id="vistaTicketNumber">SOL-2026-001</span>
+          </div>
+        </div>
+        <button type="button" class="modal-btn-close" id="btnCloseModalVista" aria-label="Cerrar Modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Cuerpo del Modal -->
+      <div class="modal-body-rect">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+          <span style="font-size: 13px; font-weight: 700; color: #475569; text-transform: uppercase;">Estado de la
+            Solicitud:</span>
+          <span class="btn-ver-solicitud-badge status-solicitado" id="vistaEstadoBadge">Solicitado – Proceso de
+            Validación</span>
+        </div>
+
+        <div class="solicitud-details-list" id="vistaSolicitudDetails">
+          <!-- Se inyecta dinámicamente con JS -->
+        </div>
+      </div>
+
+      <!-- Footer del Modal -->
+      <div class="modal-footer-rect" style="justify-content: flex-end;">
+        <button type="button" class="btn-save-modal" id="btnAceptarVista" style="min-width: 140px;">Aceptar</button>
       </div>
 
     </div>

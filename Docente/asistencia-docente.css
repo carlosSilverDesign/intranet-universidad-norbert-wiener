@@ -1248,6 +1248,18 @@
 /* ==========================================================================
    MODAL: VISTA DE SOLICITUD (Seguimiento Detallado)
    ========================================================================== */
+#modalHistorialSolicitudes {
+  z-index: 2050;
+}
+
+#modalVistaSolicitud {
+  z-index: 2150;
+}
+
+#modalConfirmacionRegularizacion {
+  z-index: 2200;
+}
+
 .vista-solicitud-container {
   max-width: 640px;
 }
