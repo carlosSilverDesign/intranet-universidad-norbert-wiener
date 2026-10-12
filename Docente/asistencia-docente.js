@@ -360,6 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const radioSaludPrivado = document.getElementById('saludPrivado');
   const fileDescansoInput = document.getElementById('fileDescansoInput');
   const dropzoneDescanso = document.getElementById('dropzoneDescanso');
+  const errorMsgDescanso = document.getElementById('errorMsgDescanso');
   const filePillDescanso = document.getElementById('filePillDescanso');
   const fileNameDescanso = document.getElementById('fileNameDescanso');
   const btnRemoveFileDescanso = document.getElementById('btnRemoveFileDescanso');
@@ -368,6 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const regMotivoAcademicoTexto = document.getElementById('regMotivoAcademicoTexto');
   const fileAcademicoInput = document.getElementById('fileAcademicoInput');
   const dropzoneAcademico = document.getElementById('dropzoneAcademico');
+  const errorMsgAcademico = document.getElementById('errorMsgAcademico');
   const filePillAcademico = document.getElementById('filePillAcademico');
   const fileNameAcademico = document.getElementById('fileNameAcademico');
   const btnRemoveFileAcademico = document.getElementById('btnRemoveFileAcademico');
@@ -646,8 +648,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnCloseModalReg) btnCloseModalReg.addEventListener('click', closeRegularizacionModal);
   if (btnCancelarReg) btnCancelarReg.addEventListener('click', closeRegularizacionModal);
 
+  function clearDropzoneErrors() {
+    if (dropzoneDescanso) dropzoneDescanso.classList.remove('has-error');
+    if (errorMsgDescanso) errorMsgDescanso.style.display = 'none';
+    if (dropzoneAcademico) dropzoneAcademico.classList.remove('has-error');
+    if (errorMsgAcademico) errorMsgAcademico.style.display = 'none';
+  }
+
   // Selector Tipo de Regularización (Descanso Médico vs Motivo Académico)
   function selectRegularizacionType(type) {
+    clearDropzoneErrors();
     if (type === 'descanso') {
       if (radioDescanso) radioDescanso.checked = true;
       if (cardDescanso) cardDescanso.classList.add('selected');
@@ -717,6 +727,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleFileSelectedDescanso(file) {
     attachedFileDescanso = file;
+    if (dropzoneDescanso) dropzoneDescanso.classList.remove('has-error');
+    if (errorMsgDescanso) errorMsgDescanso.style.display = 'none';
     const dropzoneContent = dropzoneDescanso.querySelector('.dropzone-inner-content');
     if (dropzoneContent) dropzoneContent.style.display = 'none';
     if (filePillDescanso) {
@@ -769,6 +781,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleFileSelectedAcademico(file) {
     attachedFileAcademico = file;
+    if (dropzoneAcademico) dropzoneAcademico.classList.remove('has-error');
+    if (errorMsgAcademico) errorMsgAcademico.style.display = 'none';
     const dropzoneContent = dropzoneAcademico.querySelector('.dropzone-inner-content');
     if (dropzoneContent) dropzoneContent.style.display = 'none';
     if (filePillAcademico) {
@@ -789,6 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function resetFormularioRegularizacion() {
+    clearDropzoneErrors();
     attachedFileDescanso = null;
     attachedFileAcademico = null;
     if (fileDescansoInput) fileDescansoInput.value = '';
@@ -825,7 +840,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!attachedFileDescanso) {
-          showToast('Es obligatorio adjuntar el sustento médico correspondiente.');
+          if (dropzoneDescanso) dropzoneDescanso.classList.add('has-error');
+          if (errorMsgDescanso) errorMsgDescanso.style.display = 'flex';
+          showToast('Debe adjuntar el sustento correspondiente.');
           return;
         }
 
@@ -848,6 +865,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!attachedFileAcademico) {
+          if (dropzoneAcademico) dropzoneAcademico.classList.add('has-error');
+          if (errorMsgAcademico) errorMsgAcademico.style.display = 'flex';
           showToast('Debe adjuntar el sustento correspondiente.');
           return;
         }
@@ -1051,11 +1070,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let filtered = solicitudesList;
     if (filterState === 'solicitado') {
-      filtered = solicitudesList.filter(s => s.estado.includes('Solicitado'));
+      filtered = solicitudesList.filter(s => s.estado.toLowerCase().includes('solicitado'));
     } else if (filterState === 'aceptado') {
-      filtered = solicitudesList.filter(s => s.estado.includes('Aceptado'));
+      filtered = solicitudesList.filter(s => s.estado.toLowerCase().includes('aceptado'));
     } else if (filterState === 'rechazado') {
-      filtered = solicitudesList.filter(s => s.estado.includes('Rechazado'));
+      filtered = solicitudesList.filter(s => s.estado.toLowerCase().includes('rechazado'));
     }
 
     historyBody.innerHTML = '';
@@ -1079,26 +1098,22 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (sol.estado.includes('Rechazado')) badgeClass = 'status-rechazado';
 
       tr.innerHTML = `
-        <td style="font-weight: 700; color: #0F848F;">${sol.solicitudId}</td>
+        <td class="td-sol-id" style="font-weight: 700; color: #0F848F;">${sol.solicitudId}</td>
         <td>${sol.fechaSolicitud}</td>
         <td>${sol.fechaSesion}</td>
-        <td>${sol.curso}</td>
+        <td class="td-sol-curso">${sol.curso}</td>
         <td>${sol.seccion}</td>
         <td><span style="font-weight: 600;">${sol.tipo}</span></td>
         <td>
           <span class="btn-ver-solicitud-badge ${badgeClass}">${sol.estado}</span>
         </td>
-        <td>
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <button type="button" class="btn-primary-action" style="padding: 4px 10px; font-size: 11px; min-width: 0;" data-open-sol-id="${sol.solicitudId}">
-              Ver Ficha
-            </button>
-            <select class="simulation-select-state" data-simulate-id="${sol.solicitudId}" title="Simular cambio de estado administrativo">
-              <option value="Solicitado – Proceso de Validación" ${sol.estado.includes('Solicitado') ? 'selected' : ''}>Solicitado</option>
-              <option value="Aceptado (Procede)" ${sol.estado.includes('Aceptado') ? 'selected' : ''}>Aceptar</option>
-              <option value="Rechazado (No Procede)" ${sol.estado.includes('Rechazado') ? 'selected' : ''}>Rechazar</option>
-            </select>
-          </div>
+        <td class="td-sol-action" style="text-align: center;">
+          <button type="button" class="btn-action-lupa" data-open-sol-id="${sol.solicitudId}" title="Ver detalle de la solicitud" aria-label="Ver solicitud">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
         </td>
       `;
 
@@ -1111,20 +1126,6 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-open-sol-id');
         openVistaSolicitudModal(id);
-      });
-    });
-
-    const simulateSelects = historyBody.querySelectorAll('[data-simulate-id]');
-    simulateSelects.forEach(select => {
-      select.addEventListener('change', (e) => {
-        const id = select.getAttribute('data-simulate-id');
-        const sol = solicitudesList.find(s => s.solicitudId === id);
-        if (sol) {
-          sol.estado = e.target.value;
-          showToast(`Estado de ${id} actualizado a: ${sol.estado}`);
-          renderHistorialTable(filterState);
-          renderTable(currentActivePillFilter);
-        }
       });
     });
   }

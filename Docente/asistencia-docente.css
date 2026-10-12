@@ -1059,6 +1059,26 @@
   background-color: #F0FAFA;
 }
 
+.file-upload-dropzone.has-error {
+  border-color: #DC2626 !important;
+  background-color: #FEF2F2 !important;
+}
+
+.file-upload-dropzone.has-error .dropzone-icon {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
+
+.dropzone-error-msg {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #DC2626;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 6px;
+}
+
 .dropzone-inner-content {
   display: flex;
   flex-direction: column;
@@ -1392,22 +1412,57 @@
   background-color: #F8FAFC;
 }
 
-.simulation-select-state {
-  padding: 3px 6px;
+.th-sol-id,
+.td-sol-id {
+  width: 140px;
+  min-width: 130px;
+  white-space: nowrap;
+}
+
+.th-sol-curso,
+.td-sol-curso {
+  min-width: 230px;
+}
+
+.th-sol-action,
+.td-sol-action {
+  width: 60px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.btn-action-lupa {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
   border: 1px solid #CBD5E1;
-  border-radius: 4px;
-  font-size: 11px;
   background-color: #FFFFFF;
+  color: #0F848F;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  outline: none;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.btn-action-lupa:hover {
+  background-color: #0F848F;
+  border-color: #0F848F;
+  color: #FFFFFF;
+  transform: scale(1.05);
+}
+
+.simulation-select-state {
+  display: none;
 }
 
 /* ==========================================================================
    MODAL: CONFIRMACIÓN DE ENVÍO DE SOLICITUD
    ========================================================================== */
 .modal-confirm-card {
-  max-width: 480px;
-  padding: 30px 24px;
+  max-width: 450px;
+  padding: 32px 28px;
   text-align: center;
   background-color: #FFFFFF;
   border-radius: 12px;
@@ -1421,40 +1476,34 @@
 }
 
 .confirm-icon-circle {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background-color: #0F848F;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
-  box-shadow: 0 4px 14px rgba(15, 132, 143, 0.3);
+  box-shadow: 0 4px 12px rgba(15, 132, 143, 0.25);
 }
 
 .confirm-title {
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
   color: #1E293B;
-  margin: 0 0 14px 0;
+  margin: 0 0 16px 0;
 }
 
-.confirm-message-box {
-  margin: 0 0 20px 0;
-  text-align: left;
-  background-color: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-left: 4px solid #0F848F;
-  border-radius: 8px;
-  padding: 14px 16px;
-  width: 100%;
-  box-sizing: border-box;
+.confirm-text-container {
+  margin: 0 0 24px 0;
+  text-align: center;
+  padding: 0 4px;
 }
 
 .confirm-salutation {
-  margin: 0 0 6px 0;
-  font-size: 13.5px;
+  margin: 0 0 8px 0;
+  font-size: 14.5px;
   font-weight: 700;
   color: #1E293B;
   font-family: 'Lato', sans-serif;
@@ -1462,9 +1511,9 @@
 
 .confirm-body-text {
   margin: 0;
-  font-size: 13px;
+  font-size: 13.5px;
   color: #475569;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .confirm-buttons-group {

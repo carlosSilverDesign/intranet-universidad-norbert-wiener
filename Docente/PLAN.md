@@ -113,3 +113,12 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
   - Renombrado de botón a 'Enviar Solicitud' y creación del nuevo **Modal de Confirmación** con advertencia institucional y botones de 'Cancelar' y 'Conforme'.
   - Flujo de confirmación interactivo que actualiza el estado de la solicitud en la tabla principal y muestra feedback Toast al docente.
   - Sincronización completa con la rama de publicación en `docs/`.
+- **2026-10-12 (Ajustes de UI y Validación de Solicitudes)**:
+  - **Modal de confirmación refinado**: Se eliminó la caja contenedora de tipo toast/alerta (`.confirm-message-box`), convirtiéndolo en un modal de confirmación limpio y directo con texto claro y botones de Cancelar / Conforme.
+  - **Validación obligatoria de justificación**: Se implementó la validación preventiva de archivo de sustento en ambas opciones (Descanso Médico y Motivo Académico), mostrando mensaje de alerta/toast y resaltando el dropzone en estado de error visual (`.has-error`) con mensaje explicativo si no se adjunta el documento.
+  - **Historial de Solicitudes optimizado**:
+    - Se retiró el selector desplegable administrativo de la última columna de la tabla (`historialTableBody`), ya que las aprobaciones corresponden a la vista administrativa.
+    - Se reemplazó el botón de texto "Ver Ficha" por un botón de acción con ícono de lupa (`.btn-action-lupa`).
+    - Se reasignó y amplió el espacio disponible para las columnas "N° de Solicitud" y "Curso".
+    - Se simplificaron las pestañas de filtro a una sola palabra por filtro: **Todas**, **Solicitado**, **Aceptado** y **Rechazado**.
+
