@@ -324,11 +324,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalRegularizacion = document.getElementById('modalRegularizacion');
   const modalVistaSolicitud = document.getElementById('modalVistaSolicitud');
   const modalHistorial = document.getElementById('modalHistorialSolicitudes');
+  const modalConfirmacionRegularizacion = document.getElementById('modalConfirmacionRegularizacion');
 
   // Botones de modales
   const btnCloseModalReg = document.getElementById('btnCloseModalReg');
   const btnCancelarReg = document.getElementById('btnCancelarReg');
   const btnGuardarRegularizacion = document.getElementById('btnGuardarRegularizacion');
+
+  const btnCancelarConfirmacion = document.getElementById('btnCancelarConfirmacion');
+  const btnConformeConfirmacion = document.getElementById('btnConformeConfirmacion');
+  let pendingSolicitudData = null;
 
   const btnCloseModalVista = document.getElementById('btnCloseModalVista');
   const btnAceptarVista = document.getElementById('btnAceptarVista');
@@ -800,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (regMotivoAcademicoTexto) regMotivoAcademicoTexto.value = '';
   }
 
-  // GUARDAR SOLICITUD DE REGULARIZACIÓN
+  // ENVIAR SOLICITUD DE REGULARIZACIÓN (ABRE MODAL DE CONFIRMACIÓN)
   if (btnGuardarRegularizacion) {
     btnGuardarRegularizacion.addEventListener('click', () => {
       if (!currentSessionForRegularizacion) return;
@@ -824,37 +829,14 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        // Generar Solicitud
-        const newSolId = `SOL-2025-${String(solicitudesList.length + 1).padStart(3, '0')}`;
-        const newSolicitud = {
-          solicitudId: newSolId,
-          asistenciaId: currentSessionForRegularizacion.id,
-          fechaSolicitud: getCurrentDateTimeFormatted(),
-          fechaSesion: currentSessionForRegularizacion.fecha,
-          curso: currentSessionForRegularizacion.curso,
-          periodo: currentSessionForRegularizacion.periodo,
-          seccion: currentSessionForRegularizacion.seccion,
-          sesion: currentSessionForRegularizacion.sesion,
-          horaInicioProg: currentSessionForRegularizacion.horarioInicio,
-          horaFinProg: currentSessionForRegularizacion.horarioFin,
-          horaInicioReg: currentSessionForRegularizacion.registroInicio,
-          horaFinReg: currentSessionForRegularizacion.registroFin,
+        pendingSolicitudData = {
           tipo: 'Descanso Médico',
           fechaInicioDM: fInicio,
           fechaFinDM: fFin,
           jefeInmediato: jefe,
           tipoCentroSalud: tipoSalud,
-          nombreArchivo: attachedFileDescanso.name || 'Certificado_Descanso_Medico.pdf',
-          estado: 'Solicitado – Proceso de Validación', // Estado automático
-          motivoRechazo: ''
+          nombreArchivo: attachedFileDescanso.name || 'Certificado_Descanso_Medico.pdf'
         };
-
-        solicitudesList.push(newSolicitud);
-        currentSessionForRegularizacion.solicitudId = newSolId;
-
-        showToast(`Solicitud ${newSolId} registrada con éxito. Estado: Solicitado.`);
-        closeRegularizacionModal();
-        renderTable(currentActivePillFilter);
 
       } else {
         // Validaciones Motivo Académico
@@ -870,35 +852,73 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        // Generar Solicitud
-        const newSolId = `SOL-2025-${String(solicitudesList.length + 1).padStart(3, '0')}`;
-        const newSolicitud = {
-          solicitudId: newSolId,
-          asistenciaId: currentSessionForRegularizacion.id,
-          fechaSolicitud: getCurrentDateTimeFormatted(),
-          fechaSesion: currentSessionForRegularizacion.fecha,
-          curso: currentSessionForRegularizacion.curso,
-          periodo: currentSessionForRegularizacion.periodo,
-          seccion: currentSessionForRegularizacion.seccion,
-          sesion: currentSessionForRegularizacion.sesion,
-          horaInicioProg: currentSessionForRegularizacion.horarioInicio,
-          horaFinProg: currentSessionForRegularizacion.horarioFin,
-          horaInicioReg: currentSessionForRegularizacion.registroInicio,
-          horaFinReg: currentSessionForRegularizacion.registroFin,
+        pendingSolicitudData = {
           tipo: 'Motivo Académico',
           motivoTexto: motivoTexto,
-          nombreArchivo: attachedFileAcademico.name || 'Sustento_Academico.pdf',
-          estado: 'Solicitado – Proceso de Validación', // Estado automático
-          motivoRechazo: ''
+          nombreArchivo: attachedFileAcademico.name || 'Sustento_Academico.pdf'
         };
-
-        solicitudesList.push(newSolicitud);
-        currentSessionForRegularizacion.solicitudId = newSolId;
-
-        showToast(`Solicitud ${newSolId} registrada con éxito. Estado: Solicitado.`);
-        closeRegularizacionModal();
-        renderTable(currentActivePillFilter);
       }
+
+      // Abrir Modal de Confirmación
+      if (modalConfirmacionRegularizacion) {
+        modalConfirmacionRegularizacion.classList.add('active');
+      }
+    });
+  }
+
+  // ACCIÓN CANCELAR EN EL MODAL DE CONFIRMACIÓN
+  if (btnCancelarConfirmacion) {
+    btnCancelarConfirmacion.addEventListener('click', () => {
+      if (modalConfirmacionRegularizacion) {
+        modalConfirmacionRegularizacion.classList.remove('active');
+      }
+    });
+  }
+
+  // ACCIÓN CONFORME EN EL MODAL DE CONFIRMACIÓN (ENVÍO DEFINITIVO)
+  if (btnConformeConfirmacion) {
+    btnConformeConfirmacion.addEventListener('click', () => {
+      if (!currentSessionForRegularizacion || !pendingSolicitudData) return;
+
+      const newSolId = `SOL-2026-${String(solicitudesList.length + 1).padStart(3, '0')}`;
+      const newSolicitud = {
+        solicitudId: newSolId,
+        asistenciaId: currentSessionForRegularizacion.id,
+        fechaSolicitud: getCurrentDateTimeFormatted(),
+        fechaSesion: currentSessionForRegularizacion.fecha,
+        curso: currentSessionForRegularizacion.curso,
+        periodo: currentSessionForRegularizacion.periodo,
+        seccion: currentSessionForRegularizacion.seccion,
+        sesion: currentSessionForRegularizacion.sesion,
+        horaInicioProg: currentSessionForRegularizacion.horarioInicio,
+        horaFinProg: currentSessionForRegularizacion.horarioFin,
+        horaInicioReg: currentSessionForRegularizacion.registroInicio,
+        horaFinReg: currentSessionForRegularizacion.registroFin,
+        estado: 'Solicitado – Proceso de Validación', // Estado automático inicial
+        motivoRechazo: '',
+        ...pendingSolicitudData
+      };
+
+      solicitudesList.push(newSolicitud);
+      currentSessionForRegularizacion.solicitudId = newSolId;
+
+      // Cerrar modal de confirmación y modal de formulario
+      if (modalConfirmacionRegularizacion) {
+        modalConfirmacionRegularizacion.classList.remove('active');
+      }
+      closeRegularizacionModal();
+
+      // Actualizar contador del badge de historial si existe
+      if (pendingRequestsCountBadge) {
+        const pendingCount = solicitudesList.filter(s => s.estado.includes('Solicitado')).length;
+        pendingRequestsCountBadge.textContent = pendingCount;
+      }
+
+      // Actualizar tabla principal con el estado actualizado
+      renderTable(currentActivePillFilter);
+
+      showToast(`Solicitud ${newSolId} enviada con éxito. Se encuentra en Proceso de Validación.`);
+      pendingSolicitudData = null;
     });
   }
 

@@ -672,7 +672,7 @@
             </div>
           </div>
 
-          <!-- <div class="asistencia-subbar-right">
+          <div class="asistencia-subbar-right">
             <button type="button" class="btn-history-solicitudes" id="btnOpenHistorial">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -682,7 +682,8 @@
               <span>Historial de Solicitudes</span>
               <span class="badge-count-pending" id="pendingRequestsCount">1</span>
             </button>
-          </div> -->
+          </div>
+
         </section>
 
         <!-- TABLA CENTRAL DE ASISTENCIA Y REGULARIZACIÓN -->
@@ -888,7 +889,8 @@
                     Académica</option>
                   <option value="Dr. Juan Carlos Mendoza - Director de Escuela">Dr. Juan Carlos Mendoza - Director de
                     Escuela</option>
-                  <option value="Mg. Rosa Luz Morales - Jefa de Departamento">Mg. Rosa Luz Morales - Jefa de Departamento
+                  <option value="Mg. Rosa Luz Morales - Jefa de Departamento">Mg. Rosa Luz Morales - Jefa de
+                    Departamento
                   </option>
                   <option value="Dra. Carmen Salazar - Decana de Facultad">Dra. Carmen Salazar - Decana de Facultad
                   </option>
@@ -975,15 +977,6 @@
               <li><strong>Centro particular:</strong> Certificado de descanso médico, receta médica, boleta de pago de
                 consulta y boleta de compra de receta.</li>
             </ul>
-            <p class="legend-docs-warning">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
-                </path>
-                <line x1="12" y1="9" x2="12" y2="13"></line>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-              <span>* Una vez solicitada no tendrá opción a realizar una segunda solicitud.</span>
-            </p>
           </div>
 
         </div>
@@ -1043,22 +1036,6 @@
             </div>
           </div>
 
-          <!-- Mensaje de alerta sugerido -->
-          <div class="alert-academic-card">
-            <div class="alert-academic-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
-            </div>
-            <div class="alert-academic-body">
-              <p><strong>Estimado docente,</strong></p>
-              <p>Le solicitamos verificar que la información registrada sea correcta y adjuntar el sustento
-                correspondiente. En caso de no hacerlo, su solicitud será rechazada.</p>
-            </div>
-          </div>
-
         </div>
 
       </div>
@@ -1066,9 +1043,35 @@
       <!-- Footer del Modal -->
       <div class="modal-footer-rect">
         <button type="button" class="btn-cancel-modal" id="btnCancelarReg">Cancelar</button>
-        <button type="button" class="btn-save-modal" id="btnGuardarRegularizacion">Guardar Solicitud</button>
+        <button type="button" class="btn-save-modal" id="btnGuardarRegularizacion">Enviar Solicitud</button>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL DE CONFIRMACIÓN DE ENVÍO DE SOLICITUD
+       ========================================================================== -->
+  <div class="modal-overlay" id="modalConfirmacionRegularizacion" role="dialog" aria-modal="true" aria-labelledby="modalConfirmTitle">
+    <div class="modal-container modal-confirm-card">
+      <div class="confirm-modal-body">
+        <div class="confirm-icon-circle">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <h4 class="confirm-title" id="modalConfirmTitle">Confirmación de Solicitud</h4>
+        <div class="confirm-message-box">
+          <p class="confirm-salutation">Estimado docente,</p>
+          <p class="confirm-body-text">Le solicitamos verificar que la información registrada sea correcta y adjuntar el sustento correspondiente. En caso de no hacerlo, su solicitud será rechazada.</p>
+        </div>
+        <div class="confirm-buttons-group">
+          <button type="button" class="btn-cancel-modal" id="btnCancelarConfirmacion">Cancelar</button>
+          <button type="button" class="btn-confirm-proceed" id="btnConformeConfirmacion">Conforme</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1094,7 +1097,7 @@
           </div>
           <div>
             <h3 class="modal-title-text" id="modalVistaTitle">Vista de Solicitud</h3>
-            <span class="modal-subtitle-ticket" id="vistaTicketNumber">SOL-2025-001</span>
+            <span class="modal-subtitle-ticket" id="vistaTicketNumber">SOL-2026-001</span>
           </div>
         </div>
         <button type="button" class="modal-btn-close" id="btnCloseModalVista" aria-label="Cerrar Modal">

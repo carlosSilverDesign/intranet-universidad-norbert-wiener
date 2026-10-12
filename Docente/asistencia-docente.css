@@ -1403,6 +1403,96 @@
 }
 
 /* ==========================================================================
+   MODAL: CONFIRMACIÓN DE ENVÍO DE SOLICITUD
+   ========================================================================== */
+.modal-confirm-card {
+  max-width: 480px;
+  padding: 30px 24px;
+  text-align: center;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+}
+
+.confirm-modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.confirm-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #0F848F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(15, 132, 143, 0.3);
+}
+
+.confirm-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1E293B;
+  margin: 0 0 14px 0;
+}
+
+.confirm-message-box {
+  margin: 0 0 20px 0;
+  text-align: left;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-left: 4px solid #0F848F;
+  border-radius: 8px;
+  padding: 14px 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.confirm-salutation {
+  margin: 0 0 6px 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1E293B;
+  font-family: 'Lato', sans-serif;
+}
+
+.confirm-body-text {
+  margin: 0;
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.55;
+}
+
+.confirm-buttons-group {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-confirm-proceed {
+  background-color: #0F848F;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+  min-width: 120px;
+}
+
+.btn-confirm-proceed:hover {
+  background-color: #0b6770;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
    RESPONSIVIDAD Y ADAPTACIONES MÓVILES
    ========================================================================== */
 @media (max-width: 1100px) {

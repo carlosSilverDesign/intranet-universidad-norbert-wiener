@@ -109,4 +109,7 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
   - Corrección de botones de paginación eliminando el contorno 3D-outset para un aspecto plano, limpio y moderno.
   - Estandarización de inputs de fecha e iconos dentro del modal `modal-form-large`.
   - Selects con animación de rotación suave (180°) en `:focus-within` y padding derecho de 38px para evitar superposición con el texto.
+  - Formulario de solicitud optimizado: eliminación de `legend-docs-warning` en Descanso Médico y `alert-academic-card` en Motivo Académico.
+  - Renombrado de botón a 'Enviar Solicitud' y creación del nuevo **Modal de Confirmación** con advertencia institucional y botones de 'Cancelar' y 'Conforme'.
+  - Flujo de confirmación interactivo que actualiza el estado de la solicitud en la tabla principal y muestra feedback Toast al docente.
   - Sincronización completa con la rama de publicación en `docs/`.
