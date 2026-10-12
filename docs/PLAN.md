@@ -30,9 +30,12 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
 - [x] **Paso 7.1: Asignación de Delegado de Clase**
   - Estado: Completado (2026-09-15)
   - Archivos: `Docente/delegados.html`, `Docente/delegados.css`, `Docente/delegados.js`
-- [ ] **Paso 8: Avance Académico, Asistencia Docente y Reglamentos**
+- [x] **Paso 8: Asistencia Docente y Regularización de Marcaciones**
+  - Estado: Completado (2026-10-12)
+  - Archivos: `Docente/asistencia-docente.html`, `Docente/asistencia-docente.css`, `Docente/asistencia-docente.js`
+- [ ] **Paso 8.1: Avance Académico y Reglamentos**
   - Estado: Pendiente
-  - Archivos: `Docente/avance.html`, `Docente/asistencia-docente.html`, `Docente/reglamentos.html`
+  - Archivos: `Docente/avance.html`, `Docente/reglamentos.html`
 - [ ] **Paso 9: Gestión Docente (DGDD) y Evaluación (MIDE / ESD)**
   - Estado: Pendiente
   - Archivos: `Docente/dgdd.html`, `Docente/dgdd.css`, `Docente/dgdd.js`
