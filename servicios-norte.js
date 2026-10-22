@@ -313,6 +313,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <div class="seguro-actions">
             <button type="button" class="btn-exonerar-aqui" id="btnExonerarme">EXONERARME AQUÍ</button>
+            <button type="button" class="btn-ver-aprobado" id="btnVerAprobadoDrawer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>VER TRÁMITE APROBADO</span>
+            </button>
             <button type="button" class="btn-omitir-seguro" id="btnOmitirSeguro">OMITIR</button>
           </div>
 
@@ -442,11 +448,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Asignar eventos de los botones del Seguro
       const btnExonerarme = document.getElementById('btnExonerarme');
+      const btnVerAprobadoDrawer = document.getElementById('btnVerAprobadoDrawer');
       const btnOmitirSeguro = document.getElementById('btnOmitirSeguro');
 
       if (btnExonerarme) {
         btnExonerarme.addEventListener('click', () => {
-          openModalExoneracion();
+          openModalExoneracion(false);
+        });
+      }
+
+      if (btnVerAprobadoDrawer) {
+        btnVerAprobadoDrawer.addEventListener('click', () => {
+          openModalExoneracion(true);
         });
       }
 
@@ -472,9 +485,133 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Funciones del Modal de Exoneración
-  function openModalExoneracion() {
+  // Funciones del Modal de Exoneración y Alternancia de Casuística
+  let isApprovedStateActive = false;
+
+  const btnToggleModalState = document.getElementById('btnToggleModalState');
+  const btnToggleModalStateText = document.getElementById('btnToggleModalStateText');
+  const badgeModalTipo = document.getElementById('badgeModalTipo');
+  const ticketAprobadoCard = document.getElementById('ticketAprobadoCard');
+  const docViewerSection = document.getElementById('docViewerSection');
+  const btnSubmitExoneracion = document.getElementById('btnSubmitExoneracion');
+  const btnDescargarConstancia = document.getElementById('btnDescargarConstancia');
+
+  const fileDniDoc = document.getElementById('fileDniDoc');
+  const dniFileStatus = document.getElementById('dniFileStatus');
+  const cardUploadDni = document.getElementById('cardUploadDni');
+  const fileSeguroDoc = document.getElementById('fileSeguroDoc');
+  const seguroFileStatus = document.getElementById('seguroFileStatus');
+  const cardUploadSeguro = document.getElementById('cardUploadSeguro');
+  const selectTipoSeguro = document.getElementById('selectTipoSeguro');
+  const inputEmergenciaNumero = document.getElementById('inputEmergenciaNumero');
+  const inputEmergenciaParentesco = document.getElementById('inputEmergenciaParentesco');
+  const inputEmergenciaNombres = document.getElementById('inputEmergenciaNombres');
+
+  function setModalExoneracionView(isApproved) {
+    isApprovedStateActive = isApproved;
+
+    if (isApproved) {
+      // Estado: TRÁMITE APROBADO
+      if (ticketAprobadoCard) ticketAprobadoCard.style.display = 'flex';
+      if (docViewerSection) docViewerSection.style.display = 'flex';
+
+      if (badgeModalTipo) {
+        badgeModalTipo.textContent = 'Solicitud Aprobada';
+        badgeModalTipo.classList.add('approved-badge');
+      }
+
+      if (btnToggleModalStateText) {
+        btnToggleModalStateText.textContent = 'Ver Formulario Nuevo';
+      }
+      if (btnToggleModalState) {
+        btnToggleModalState.classList.add('state-approved-active');
+      }
+
+      if (btnSubmitExoneracion) btnSubmitExoneracion.style.display = 'none';
+      if (btnDescargarConstancia) btnDescargarConstancia.style.display = 'inline-flex';
+
+      // Rellenar datos aprobados de ejemplo y bloquear campos
+      if (dniFileStatus) {
+        dniFileStatus.textContent = '✓ dni.pdf (184.2 KB) - Validado Conforme';
+        dniFileStatus.classList.add('selected');
+      }
+      if (cardUploadDni) cardUploadDni.classList.add('has-file');
+      if (fileDniDoc) fileDniDoc.disabled = true;
+
+      if (seguroFileStatus) {
+        seguroFileStatus.textContent = '✓ seguro.pdf (210.5 KB) - Validado Conforme';
+        seguroFileStatus.classList.add('selected');
+      }
+      if (cardUploadSeguro) cardUploadSeguro.classList.add('has-file');
+      if (fileSeguroDoc) fileSeguroDoc.disabled = true;
+
+      if (selectTipoSeguro) {
+        selectTipoSeguro.value = 'ESSALUD';
+        selectTipoSeguro.disabled = true;
+      }
+
+      if (inputEmergenciaNumero) {
+        inputEmergenciaNumero.value = '999507748';
+        inputEmergenciaNumero.readOnly = true;
+      }
+      if (inputEmergenciaParentesco) {
+        inputEmergenciaParentesco.value = 'Madre';
+        inputEmergenciaParentesco.readOnly = true;
+      }
+      if (inputEmergenciaNombres) {
+        inputEmergenciaNombres.value = 'Carmen Rosa Soto Palacios';
+        inputEmergenciaNombres.readOnly = true;
+      }
+    } else {
+      // Estado: FORMULARIO NUEVO (Pendiente)
+      if (ticketAprobadoCard) ticketAprobadoCard.style.display = 'none';
+      if (docViewerSection) docViewerSection.style.display = 'none';
+
+      if (badgeModalTipo) {
+        badgeModalTipo.textContent = 'Trámite de Exoneración';
+        badgeModalTipo.classList.remove('approved-badge');
+      }
+
+      if (btnToggleModalStateText) {
+        btnToggleModalStateText.textContent = 'Ver Trámite Aprobado';
+      }
+      if (btnToggleModalState) {
+        btnToggleModalState.classList.remove('state-approved-active');
+      }
+
+      if (btnSubmitExoneracion) btnSubmitExoneracion.style.display = 'inline-flex';
+      if (btnDescargarConstancia) btnDescargarConstancia.style.display = 'none';
+
+      // Habilitar campos editables
+      if (fileDniDoc) fileDniDoc.disabled = false;
+      if (fileSeguroDoc) fileSeguroDoc.disabled = false;
+      if (selectTipoSeguro) selectTipoSeguro.disabled = false;
+      if (inputEmergenciaNumero) inputEmergenciaNumero.readOnly = false;
+      if (inputEmergenciaParentesco) inputEmergenciaParentesco.readOnly = false;
+      if (inputEmergenciaNombres) inputEmergenciaNombres.readOnly = false;
+
+      // Si no había archivos subidos previamente, reiniciar textos
+      if (!fileDniDoc || !fileDniDoc.files || fileDniDoc.files.length === 0) {
+        if (dniFileStatus) {
+          dniFileStatus.textContent = 'Ningún archivo seleccionado';
+          dniFileStatus.classList.remove('selected');
+        }
+        if (cardUploadDni) cardUploadDni.classList.remove('has-file');
+      }
+
+      if (!fileSeguroDoc || !fileSeguroDoc.files || fileSeguroDoc.files.length === 0) {
+        if (seguroFileStatus) {
+          seguroFileStatus.textContent = 'Ningún archivo seleccionado';
+          seguroFileStatus.classList.remove('selected');
+        }
+        if (cardUploadSeguro) cardUploadSeguro.classList.remove('has-file');
+      }
+    }
+  }
+
+  function openModalExoneracion(isApproved = false) {
     if (!modalExoneracion) return;
+    setModalExoneracionView(isApproved);
     modalExoneracion.classList.add('active');
     modalExoneracion.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -487,6 +624,174 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!drawerOverlay.classList.contains('active')) {
       document.body.style.overflow = '';
     }
+  }
+
+  // Listener para alternar vista en el botón de la cabecera del modal
+  if (btnToggleModalState) {
+    btnToggleModalState.addEventListener('click', () => {
+      setModalExoneracionView(!isApprovedStateActive);
+    });
+  }
+
+  // Listener para botón de descarga de constancia aprobada
+  if (btnDescargarConstancia) {
+    btnDescargarConstancia.addEventListener('click', () => {
+      alert('DESCARGANDO CONSTANCIA OFICIAL:\n\nDocumento: Constancia_Exoneracion_Seguro_2026-I.pdf\nN° Ticket: 2026.96412\nEstudiante: Campos Soto Lila Yajaira\nEstado: APROBADO');
+    });
+  }
+
+  // =======================================================
+  // CONTROLADOR DEL VISOR DE DOCUMENTO (TIPO CHROMIUM PDF)
+  // =======================================================
+  const tabDocDni = document.getElementById('tabDocDni');
+  const tabDocSeguro = document.getElementById('tabDocSeguro');
+  const tabDocAmbos = document.getElementById('tabDocAmbos');
+  const viewerContainerDni = document.getElementById('viewerContainerDni');
+  const viewerContainerSeguro = document.getElementById('viewerContainerSeguro');
+
+  function setViewerTab(mode) {
+    [tabDocDni, tabDocSeguro, tabDocAmbos].forEach(btn => {
+      if (btn) btn.classList.remove('active');
+    });
+
+    if (mode === 'dni') {
+      if (tabDocDni) tabDocDni.classList.add('active');
+      if (viewerContainerDni) {
+        viewerContainerDni.style.display = 'flex';
+        viewerContainerDni.classList.remove('stacked-mode');
+      }
+      if (viewerContainerSeguro) {
+        viewerContainerSeguro.style.display = 'none';
+        viewerContainerSeguro.classList.remove('stacked-mode');
+      }
+    } else if (mode === 'seguro') {
+      if (tabDocSeguro) tabDocSeguro.classList.add('active');
+      if (viewerContainerDni) {
+        viewerContainerDni.style.display = 'none';
+        viewerContainerDni.classList.remove('stacked-mode');
+      }
+      if (viewerContainerSeguro) {
+        viewerContainerSeguro.style.display = 'flex';
+        viewerContainerSeguro.classList.remove('stacked-mode');
+      }
+    } else if (mode === 'ambos') {
+      if (tabDocAmbos) tabDocAmbos.classList.add('active');
+      if (viewerContainerDni) {
+        viewerContainerDni.style.display = 'flex';
+        viewerContainerDni.classList.add('stacked-mode');
+      }
+      if (viewerContainerSeguro) {
+        viewerContainerSeguro.style.display = 'flex';
+        viewerContainerSeguro.classList.add('stacked-mode');
+      }
+    }
+  }
+
+  if (tabDocDni) tabDocDni.addEventListener('click', () => setViewerTab('dni'));
+  if (tabDocSeguro) tabDocSeguro.addEventListener('click', () => setViewerTab('seguro'));
+  if (tabDocAmbos) tabDocAmbos.addEventListener('click', () => setViewerTab('ambos'));
+
+  // Zoom y rotación interactiva por cada visor
+  const viewerStates = {
+    dni: { zoom: 1, rotation: 0, container: document.getElementById('pageContainerDni'), label: document.getElementById('zoomLevelDni') },
+    seguro: { zoom: 1, rotation: 0, container: document.getElementById('pageContainerSeguro'), label: document.getElementById('zoomLevelSeguro') }
+  };
+
+  function updateViewerTransform(target) {
+    const st = viewerStates[target];
+    if (!st || !st.container) return;
+    st.container.style.transform = `scale(${st.zoom}) rotate(${st.rotation}deg)`;
+    if (st.label) st.label.textContent = `${Math.round(st.zoom * 100)}%`;
+  }
+
+  document.querySelectorAll('.pdf-btn-zoom-in').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      if (viewerStates[target] && viewerStates[target].zoom < 2.0) {
+        viewerStates[target].zoom += 0.2;
+        updateViewerTransform(target);
+      }
+    });
+  });
+
+  document.querySelectorAll('.pdf-btn-zoom-out').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      if (viewerStates[target] && viewerStates[target].zoom > 0.4) {
+        viewerStates[target].zoom -= 0.2;
+        updateViewerTransform(target);
+      }
+    });
+  });
+
+  document.querySelectorAll('.pdf-btn-fit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      if (viewerStates[target]) {
+        viewerStates[target].zoom = 1;
+        viewerStates[target].rotation = 0;
+        updateViewerTransform(target);
+      }
+    });
+  });
+
+  document.querySelectorAll('.pdf-btn-rotate').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      if (viewerStates[target]) {
+        viewerStates[target].rotation = (viewerStates[target].rotation + 90) % 360;
+        updateViewerTransform(target);
+      }
+    });
+  });
+
+  document.querySelectorAll('.btn-toggle-thumb').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      const sidebar = target === 'dni' ? document.getElementById('pdfThumbnailsDni') : document.getElementById('pdfThumbnailsSeguro');
+      if (sidebar) sidebar.classList.toggle('collapsed');
+    });
+  });
+
+  document.querySelectorAll('.pdf-btn-print').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      const filename = target === 'dni' ? 'dni.pdf' : 'seguro.pdf';
+      alert(`Preparando impresión de ${filename}...`);
+    });
+  });
+
+  // Carga dinámica de imágenes locales para pruebas rápidas
+  const inputTestImgDni = document.getElementById('inputTestImgDni');
+  const imgDocDni = document.getElementById('imgDocDni');
+  if (inputTestImgDni && imgDocDni) {
+    inputTestImgDni.addEventListener('change', () => {
+      if (inputTestImgDni.files && inputTestImgDni.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          imgDocDni.src = e.target.result;
+          const thumb = document.querySelector('#pdfThumbnailsDni .pdf-thumb-img');
+          if (thumb) thumb.src = e.target.result;
+        };
+        reader.readAsDataURL(inputTestImgDni.files[0]);
+      }
+    });
+  }
+
+  const inputTestImgSeguro = document.getElementById('inputTestImgSeguro');
+  const imgDocSeguro = document.getElementById('imgDocSeguro');
+  if (inputTestImgSeguro && imgDocSeguro) {
+    inputTestImgSeguro.addEventListener('change', () => {
+      if (inputTestImgSeguro.files && inputTestImgSeguro.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          imgDocSeguro.src = e.target.result;
+          const thumb = document.querySelector('#pdfThumbnailsSeguro .pdf-thumb-img');
+          if (thumb) thumb.src = e.target.result;
+        };
+        reader.readAsDataURL(inputTestImgSeguro.files[0]);
+      }
+    });
   }
 
   // Event Listeners para las tarjetas de servicios principales
@@ -526,10 +831,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Reactividad en inputs de subida de archivos (DNI y Seguro)
-  const fileDniDoc = document.getElementById('fileDniDoc');
-  const dniFileStatus = document.getElementById('dniFileStatus');
-  const cardUploadDni = document.getElementById('cardUploadDni');
-
   if (fileDniDoc && dniFileStatus) {
     fileDniDoc.addEventListener('change', () => {
       if (fileDniDoc.files && fileDniDoc.files.length > 0) {
@@ -555,10 +856,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  const fileSeguroDoc = document.getElementById('fileSeguroDoc');
-  const seguroFileStatus = document.getElementById('seguroFileStatus');
-  const cardUploadSeguro = document.getElementById('cardUploadSeguro');
 
   if (fileSeguroDoc && seguroFileStatus) {
     fileSeguroDoc.addEventListener('change', () => {

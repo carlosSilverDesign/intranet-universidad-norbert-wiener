@@ -1419,3 +1419,558 @@
     align-items: flex-start;
   }
 }
+
+/* =======================================================
+   CASUÍSTICA: TRÁMITE DE EXONERACIÓN APROBADO Y VISOR PDF
+   ======================================================= */
+
+/* Botón en el header del modal para alternar entre nuevo trámite y trámite aprobado */
+.modal-header-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-badges-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-toggle-modal-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #E6F3F4;
+  color: #0F848F;
+  border: 1px solid rgba(15, 132, 143, 0.3);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: auto;
+  box-shadow: 0 1px 3px rgba(15, 132, 143, 0.08);
+}
+
+.btn-toggle-modal-state:hover {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(15, 132, 143, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-toggle-modal-state.state-approved-active {
+  background-color: #FEF3C7;
+  color: #92400E;
+  border-color: #F59E0B;
+}
+
+.btn-toggle-modal-state.state-approved-active:hover {
+  background-color: #F59E0B;
+  color: #FFFFFF;
+}
+
+/* Badge Aprobado en cabecera */
+.modal-type-badge.approved-badge {
+  background-color: #DEF7EC;
+  color: #03543F;
+  border-color: rgba(3, 84, 63, 0.2);
+}
+
+/* Tarjeta de Trámite Aprobado (Ticket generado y Observaciones) */
+.ticket-aprobado-card {
+  background: #FFFFFF;
+  border: 1.5px solid #0F848F;
+  border-left: 6px solid #0F848F;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(15, 132, 143, 0.08);
+  animation: fadeInDown 0.3s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ticket-aprobado-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed #CBD5E1;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ticket-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #DEF7EC;
+  color: #03543F;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 16px;
+}
+
+.ticket-period-badge {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.ticket-aprobado-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.ticket-generado-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.ticket-generado-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14.5px;
+  font-weight: 900;
+  color: #8B1E1E; /* Color rojizo oscuro original */
+  letter-spacing: 0.3px;
+}
+
+.ticket-generado-val {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: #8B1E1E;
+  letter-spacing: 0.5px;
+}
+
+.ticket-observaciones-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ticket-obs-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13.5px;
+  font-weight: 900;
+  color: #1E3A8A; /* Color azul institucional original */
+  letter-spacing: 0.3px;
+}
+
+.ticket-obs-text {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E3A8A;
+}
+
+.ticket-status-val {
+  font-weight: 900;
+  color: #1E3A8A;
+  background-color: #EFF6FF;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.ticket-meta-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #64748B;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 8px;
+}
+
+/* Botón del Drawer para ver caso aprobado */
+.btn-ver-aprobado {
+  background-color: #F8FAFC;
+  color: #0F848F;
+  border: 1.5px solid #0F848F;
+  border-radius: 4px;
+  padding: 9px 18px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-ver-aprobado:hover {
+  background-color: #0F848F;
+  color: #FFFFFF;
+}
+
+/* Botón éxito descarga en footer modal */
+.btn-modern-success {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 20px;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(15, 132, 143, 0.2);
+  transition: all 0.2s ease;
+}
+
+.btn-modern-success:hover {
+  background-color: #09636c;
+  box-shadow: 0 4px 10px rgba(15, 132, 143, 0.3);
+  transform: translateY(-1px);
+}
+
+/* =======================================================
+   ESTILOS: VISOR DE DOCUMENTO (TIPO CHROMIUM PDF VIEWER)
+   ======================================================= */
+.doc-viewer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background-color: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-top: 8px;
+  animation: fadeInDown 0.3s ease-out;
+}
+
+.doc-viewer-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.doc-viewer-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.doc-viewer-icon-box {
+  width: 40px;
+  height: 40px;
+  background-color: #E6F3F4;
+  color: #0F848F;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.doc-viewer-title {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1E293B;
+  letter-spacing: 0.3px;
+}
+
+.doc-viewer-subtitle {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #64748B;
+}
+
+/* Pestañas de selector de documento */
+.doc-viewer-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: #E2E8F0;
+  padding: 4px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.doc-tab-btn {
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.doc-tab-btn:hover {
+  color: #0F848F;
+}
+
+.doc-tab-btn.active {
+  background-color: #FFFFFF;
+  color: #0F848F;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor del Visor Estilo PDF */
+.pdf-viewer-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  background-color: #323639;
+  border: 1px solid #1E293B;
+  margin-top: 4px;
+}
+
+/* Barra de herramientas estilo PDF (Dark Theme) */
+.pdf-toolbar {
+  height: 44px;
+  background-color: #323639;
+  border-bottom: 1px solid #202124;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  color: #F1F3F4;
+  user-select: none;
+}
+
+.pdf-toolbar-left,
+.pdf-toolbar-center,
+.pdf-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-doc-name {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #E8EAED;
+  max-width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdf-separator {
+  color: #5F6368;
+  font-size: 12px;
+}
+
+.pdf-page-indicator {
+  font-size: 12px;
+  font-weight: 500;
+  color: #BDC1C6;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.pdf-zoom-level {
+  font-size: 12px;
+  font-weight: 500;
+  color: #E8EAED;
+  min-width: 42px;
+  text-align: center;
+}
+
+.pdf-tool-btn {
+  background: transparent;
+  border: none;
+  color: #BDC1C6;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.pdf-tool-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+}
+
+.pdf-tool-btn:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Área de trabajo del visor */
+.pdf-viewer-workspace {
+  display: flex;
+  height: 360px;
+  background-color: #525659;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Barra lateral con miniaturas de página */
+.pdf-sidebar-thumbnails {
+  width: 140px;
+  background-color: #282A2D;
+  border-right: 1px solid #1E2022;
+  padding: 16px 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: width 0.25s ease, padding 0.25s ease;
+  flex-shrink: 0;
+}
+
+.pdf-sidebar-thumbnails.collapsed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  border-right: none;
+}
+
+.pdf-thumb-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.pdf-thumb-frame {
+  width: 104px;
+  height: 140px;
+  background: #FFFFFF;
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.pdf-thumb-card.active .pdf-thumb-frame {
+  border-color: #0F848F; /* Borde de selección azul cian/teal Wiener */
+  box-shadow: 0 0 0 2px rgba(15, 132, 143, 0.4);
+}
+
+.pdf-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pdf-thumb-page-label {
+  font-size: 11px;
+  color: #BDC1C6;
+  font-weight: 500;
+}
+
+/* Lienzo de previsualización del documento */
+.pdf-main-canvas {
+  flex: 1;
+  background-color: #525659;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding: 20px;
+  position: relative;
+}
+
+.pdf-page-container {
+  background: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  max-width: 95%;
+  max-height: 95%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.pdf-document-img {
+  max-width: 100%;
+  max-height: 310px;
+  display: block;
+  object-fit: contain;
+}
+
+/* Subidor rápido para pruebas */
+.viewer-test-uploader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #CBD5E1;
+  flex-wrap: wrap;
+}
+
+.test-uploader-label {
+  font-size: 11.5px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.btn-test-file {
+  background-color: #FFFFFF;
+  border: 1px dashed #0F848F;
+  color: #0F848F;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.2s;
+}
+
+.btn-test-file:hover {
+  background-color: #E6F3F4;
+}
+
+/* Ajustes de vista para 'Ver ambos documentos' en simultáneo */
+.pdf-viewer-container.stacked-mode {
+  display: flex !important;
+  margin-bottom: 14px;
+}

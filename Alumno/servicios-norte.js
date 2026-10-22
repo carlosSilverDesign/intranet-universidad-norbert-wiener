@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "biblioteca": {
       "title": "Biblioteca",
       "subtitle": "Acceso a colecciones físicas y recursos digitales de la universidad",
-      "icon": "img/biblioteca.svg",
+      "icon": "../img/biblioteca.svg",
       "type": "list",
       "items": [
         {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "tutorias": {
       "title": "Tutorías y Acompañamiento",
       "subtitle": "Apoyo académico y tutorías personalizadas para tu adaptación estudiantil",
-      "icon": "img/tutoria.svg",
+      "icon": "../img/tutoria.svg",
       "type": "list",
       "items": [
         {
@@ -82,13 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
     "bvu": {
       "title": "Bienestar y Vida Universitaria",
       "subtitle": "Dirección dedicada a promover la salud, el arte, el deporte y el bienestar mental",
-      "icon": "img/servicio social.svg",
+      "icon": "../img/servicio social.svg",
       "type": "tabs",
       "tabs": [
         {
           "id": "medicos",
           "title": "Servicios Médicos",
-          "icon": "img/servicios medicos.svg",
+          "icon": "../img/servicios medicos.svg",
           "content": `
             <div class="bvu-section-content">
               <p class="bvu-intro">Contamos con un staff calificado de profesionales de la salud para la atención oportuna de urgencias y emergencias:</p>
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           "id": "cultura",
           "title": "Cultura y Talleres",
-          "icon": "img/talleres artisiticos y deprotivos.svg",
+          "icon": "../img/talleres artisiticos y deprotivos.svg",
           "content": `
             <div class="bvu-section-content">
               <p class="bvu-intro">Fomentamos el desarrollo artístico de nuestros estudiantes de manera opcional e inscripción gratuita:</p>
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           "id": "deporte",
           "title": "Deportes",
-          "icon": "img/talleres artisiticos y deprotivos.svg",
+          "icon": "../img/talleres artisiticos y deprotivos.svg",
           "content": `
             <div class="bvu-section-content">
               <p class="bvu-intro">Promovemos la integración y los hábitos de vida saludable en la comunidad estudiantil:</p>
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           "id": "psicologia",
           "title": "Psicopedagogía",
-          "icon": "img/servicio psicopedagogico.svg",
+          "icon": "../img/servicio psicopedagogico.svg",
           "content": `
             <div class="bvu-section-content">
               <p class="bvu-intro">Brindamos orientación integral individual y grupal para potenciar tu salud mental y desempeño académico:</p>
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "empleabilidad": {
       "title": "Empleabilidad y Alumni",
       "subtitle": "Impulsa tu desarrollo laboral, postula a vacantes e inicia tus trámites de prácticas",
-      "icon": "img/empleabilidad.svg",
+      "icon": "../img/empleabilidad.svg",
       "type": "list",
       "items": [
         {
@@ -251,6 +251,89 @@ document.addEventListener('DOMContentLoaded', () => {
           "linkText": "WhatsApp Empleabilidad"
         }
       ]
+    },
+    "seguro-universitario": {
+      "title": "Seguro Universitario",
+      "subtitle": "Póliza contra accidentes, red de clínicas y trámite de exoneración",
+      "icon": "../img/servicios medicos.svg",
+      "type": "custom",
+      "content": `
+        <div class="seguro-container">
+          <div class="seguro-date">Lunes 14 de Septiembre del 2026, 02:38:32 pm</div>
+          <p class="seguro-greeting">Estimado estudiante,</p>
+          <p class="seguro-text">
+            Le informamos que en conformidad a los artículos 126 y 128 de la Ley Universitaria N° 30220, <strong>TODOS LOS ESTUDIANTES DEBEN CONTAR CON UN SEGURO DE SALUD.</strong> La Universidad Norbert Wiener brinda la afiliación a un seguro universitario con un costo semestral de S/40 soles; pago que se divide en 4 cuotas y se realizará a partir de su segunda pensión.
+          </p>
+
+          <div class="seguro-docs-section">
+            <h4 class="seguro-docs-title">DOCUMENTOS IMPORTANTES:</h4>
+            <ul class="seguro-docs-list">
+              <li>
+                <a href="https://test-intranet.uwiener.edu.pe/Alumno/DSU/Seguro_Universitario_Condicionados_Clausulas_v3.pdf" target="_blank" class="seguro-pdf-link">
+                  <span>Condicionados y Clausulas</span>
+                  <svg class="seguro-pdf-icon" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://test-intranet.uwiener.edu.pe/Alumno/DSU/Lista_de_asegurados_2025-1.pdf" target="_blank" class="seguro-pdf-link">
+                  <span>Lista de Asegurados 2025 - I</span>
+                  <svg class="seguro-pdf-icon" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://test-intranet.uwiener.edu.pe/Alumno/DSU/Procedimiento_Red_de_clinicas_202604.pdf" target="_blank" class="seguro-pdf-link">
+                  <span>Procedimiento y Red de Clínicas</span>
+                  <svg class="seguro-pdf-icon" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <p class="seguro-text">
+            Si cuentas con un seguro de salud (SIS, ESSALUD, EPS, FFAA), y no deseas el seguro complementario contra accidentes (seguro universitario) puede realizar su <strong>TRAMITE DE EXONERACIÓN</strong> en las fechas según <strong>EL CALENDARIO ACADÉMICO</strong>, cumpliendo con la declaración del seguro de salud con su respectivo sustento.
+          </p>
+
+          <div class="seguro-actions">
+            <button type="button" class="btn-exonerar-aqui" id="btnExonerarme">EXONERARME AQUÍ</button>
+            <button type="button" class="btn-ver-aprobado" id="btnVerAprobadoDrawer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>VER TRÁMITE APROBADO</span>
+            </button>
+            <button type="button" class="btn-omitir-seguro" id="btnOmitirSeguro">OMITIR</button>
+          </div>
+
+          <div class="seguro-informes">
+            <h4>INFORMES</h4>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span><strong>Correo:</strong> <a href="mailto:servicios.medicos@uwiener.edu.pe">servicios.medicos@uwiener.edu.pe</a></span>
+            </p>
+          </div>
+        </div>
+      `
     }
   };
 
@@ -263,7 +346,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawerHeaderIcon = document.getElementById('drawerHeaderIcon');
   const drawerBody = document.getElementById('drawerBody');
 
-  // Función para abrir el panel
+  // Referencias del Modal
+  const modalExoneracion = document.getElementById('modalExoneracion');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const formDeclaracionSeguro = document.getElementById('formDeclaracionSeguro');
+
+  // Función para abrir el panel drawer
   function openDrawer(serviceKey) {
     const data = serviciosData[serviceKey];
     if (!data) return;
@@ -340,11 +428,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Añadir listeners de click a las pestañas
         tabBtn.addEventListener('click', () => {
-          // Desactivar todos los botones e indicar activo el actual
           tabsHeader.querySelectorAll('.tab-nav-btn').forEach(btn => btn.classList.remove('active'));
           tabBtn.classList.add('active');
 
-          // Desactivar todos los paneles de contenido y activar el actual
           tabsContentWrapper.querySelectorAll('.tab-content-pane').forEach(pane => pane.classList.remove('active'));
           tabPane.classList.add('active');
         });
@@ -356,6 +442,32 @@ document.addEventListener('DOMContentLoaded', () => {
       tabsWrapper.appendChild(tabsHeader);
       tabsWrapper.appendChild(tabsContentWrapper);
       drawerBody.appendChild(tabsWrapper);
+    } else if (data.type === 'custom') {
+      // Contenido personalizado HTML (Seguro Universitario)
+      drawerBody.innerHTML = data.content;
+
+      // Asignar eventos de los botones del Seguro
+      const btnExonerarme = document.getElementById('btnExonerarme');
+      const btnVerAprobadoDrawer = document.getElementById('btnVerAprobadoDrawer');
+      const btnOmitirSeguro = document.getElementById('btnOmitirSeguro');
+
+      if (btnExonerarme) {
+        btnExonerarme.addEventListener('click', () => {
+          openModalExoneracion(false);
+        });
+      }
+
+      if (btnVerAprobadoDrawer) {
+        btnVerAprobadoDrawer.addEventListener('click', () => {
+          openModalExoneracion(true);
+        });
+      }
+
+      if (btnOmitirSeguro) {
+        btnOmitirSeguro.addEventListener('click', () => {
+          closeDrawer();
+        });
+      }
     }
 
     // Activar cajón y overlay con animaciones CSS
@@ -368,7 +480,318 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeDrawer() {
     drawerOverlay.classList.remove('active');
     drawerContainer.classList.remove('active');
-    document.body.style.overflow = ''; // Restaurar scroll
+    if (!modalExoneracion || !modalExoneracion.classList.contains('active')) {
+      document.body.style.overflow = ''; // Restaurar scroll si no hay modal abierto
+    }
+  }
+
+  // Funciones del Modal de Exoneración y Alternancia de Casuística
+  let isApprovedStateActive = false;
+
+  const btnToggleModalState = document.getElementById('btnToggleModalState');
+  const btnToggleModalStateText = document.getElementById('btnToggleModalStateText');
+  const badgeModalTipo = document.getElementById('badgeModalTipo');
+  const ticketAprobadoCard = document.getElementById('ticketAprobadoCard');
+  const docViewerSection = document.getElementById('docViewerSection');
+  const btnSubmitExoneracion = document.getElementById('btnSubmitExoneracion');
+  const btnDescargarConstancia = document.getElementById('btnDescargarConstancia');
+
+  const fileDniDoc = document.getElementById('fileDniDoc');
+  const dniFileStatus = document.getElementById('dniFileStatus');
+  const cardUploadDni = document.getElementById('cardUploadDni');
+  const fileSeguroDoc = document.getElementById('fileSeguroDoc');
+  const seguroFileStatus = document.getElementById('seguroFileStatus');
+  const cardUploadSeguro = document.getElementById('cardUploadSeguro');
+  const selectTipoSeguro = document.getElementById('selectTipoSeguro');
+  const inputEmergenciaNumero = document.getElementById('inputEmergenciaNumero');
+  const inputEmergenciaParentesco = document.getElementById('inputEmergenciaParentesco');
+  const inputEmergenciaNombres = document.getElementById('inputEmergenciaNombres');
+
+  function setModalExoneracionView(isApproved) {
+    isApprovedStateActive = isApproved;
+
+    if (isApproved) {
+      // Estado: TRÁMITE APROBADO
+      if (ticketAprobadoCard) ticketAprobadoCard.style.display = 'flex';
+      if (docViewerSection) docViewerSection.style.display = 'flex';
+
+      if (badgeModalTipo) {
+        badgeModalTipo.textContent = 'Solicitud Aprobada';
+        badgeModalTipo.classList.add('approved-badge');
+      }
+
+      if (btnToggleModalStateText) {
+        btnToggleModalStateText.textContent = 'Ver Formulario Nuevo';
+      }
+      if (btnToggleModalState) {
+        btnToggleModalState.classList.add('state-approved-active');
+      }
+
+      if (btnSubmitExoneracion) btnSubmitExoneracion.style.display = 'none';
+      if (btnDescargarConstancia) btnDescargarConstancia.style.display = 'inline-flex';
+
+      // Rellenar datos aprobados de ejemplo y bloquear campos
+      if (dniFileStatus) {
+        dniFileStatus.textContent = '✓ dni.pdf (184.2 KB) - Validado Conforme';
+        dniFileStatus.classList.add('selected');
+      }
+      if (cardUploadDni) cardUploadDni.classList.add('has-file');
+      if (fileDniDoc) fileDniDoc.disabled = true;
+
+      if (seguroFileStatus) {
+        seguroFileStatus.textContent = '✓ seguro.pdf (210.5 KB) - Validado Conforme';
+        seguroFileStatus.classList.add('selected');
+      }
+      if (cardUploadSeguro) cardUploadSeguro.classList.add('has-file');
+      if (fileSeguroDoc) fileSeguroDoc.disabled = true;
+
+      if (selectTipoSeguro) {
+        selectTipoSeguro.value = 'ESSALUD';
+        selectTipoSeguro.disabled = true;
+      }
+
+      if (inputEmergenciaNumero) {
+        inputEmergenciaNumero.value = '999507748';
+        inputEmergenciaNumero.readOnly = true;
+      }
+      if (inputEmergenciaParentesco) {
+        inputEmergenciaParentesco.value = 'Madre';
+        inputEmergenciaParentesco.readOnly = true;
+      }
+      if (inputEmergenciaNombres) {
+        inputEmergenciaNombres.value = 'Carmen Rosa Soto Palacios';
+        inputEmergenciaNombres.readOnly = true;
+      }
+    } else {
+      // Estado: FORMULARIO NUEVO (Pendiente)
+      if (ticketAprobadoCard) ticketAprobadoCard.style.display = 'none';
+      if (docViewerSection) docViewerSection.style.display = 'none';
+
+      if (badgeModalTipo) {
+        badgeModalTipo.textContent = 'Trámite de Exoneración';
+        badgeModalTipo.classList.remove('approved-badge');
+      }
+
+      if (btnToggleModalStateText) {
+        btnToggleModalStateText.textContent = 'Ver Trámite Aprobado';
+      }
+      if (btnToggleModalState) {
+        btnToggleModalState.classList.remove('state-approved-active');
+      }
+
+      if (btnSubmitExoneracion) btnSubmitExoneracion.style.display = 'inline-flex';
+      if (btnDescargarConstancia) btnDescargarConstancia.style.display = 'none';
+
+      // Habilitar campos editables
+      if (fileDniDoc) fileDniDoc.disabled = false;
+      if (fileSeguroDoc) fileSeguroDoc.disabled = false;
+      if (selectTipoSeguro) selectTipoSeguro.disabled = false;
+      if (inputEmergenciaNumero) inputEmergenciaNumero.readOnly = false;
+      if (inputEmergenciaParentesco) inputEmergenciaParentesco.readOnly = false;
+      if (inputEmergenciaNombres) inputEmergenciaNombres.readOnly = false;
+
+      // Si no había archivos subidos previamente, reiniciar textos
+      if (!fileDniDoc || !fileDniDoc.files || fileDniDoc.files.length === 0) {
+        if (dniFileStatus) {
+          dniFileStatus.textContent = 'Ningún archivo seleccionado';
+          dniFileStatus.classList.remove('selected');
+        }
+        if (cardUploadDni) cardUploadDni.classList.remove('has-file');
+      }
+
+      if (!fileSeguroDoc || !fileSeguroDoc.files || fileSeguroDoc.files.length === 0) {
+        if (seguroFileStatus) {
+          seguroFileStatus.textContent = 'Ningún archivo seleccionado';
+          seguroFileStatus.classList.remove('selected');
+        }
+        if (cardUploadSeguro) cardUploadSeguro.classList.remove('has-file');
+      }
+    }
+  }
+
+  function openModalExoneracion(isApproved = false) {
+    if (!modalExoneracion) return;
+    setModalExoneracionView(isApproved);
+    modalExoneracion.classList.add('active');
+    modalExoneracion.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModalExoneracion() {
+    if (!modalExoneracion) return;
+    modalExoneracion.classList.remove('active');
+    modalExoneracion.setAttribute('aria-hidden', 'true');
+    if (!drawerOverlay.classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Listener para alternar vista en el botón de la cabecera del modal
+  if (btnToggleModalState) {
+    btnToggleModalState.addEventListener('click', () => {
+      setModalExoneracionView(!isApprovedStateActive);
+    });
+  }
+
+  // Listener para botón de descarga de constancia aprobada
+  if (btnDescargarConstancia) {
+    btnDescargarConstancia.addEventListener('click', () => {
+      alert('DESCARGANDO CONSTANCIA OFICIAL:\n\nDocumento: Constancia_Exoneracion_Seguro_2026-I.pdf\nN° Ticket: 2026.96412\nEstudiante: Campos Soto Lila Yajaira\nEstado: APROBADO');
+    });
+  }
+
+  // =======================================================
+  // CONTROLADOR DEL VISOR DE DOCUMENTO (TIPO CHROMIUM PDF)
+  // =======================================================
+  const tabDocDni = document.getElementById('tabDocDni');
+  const tabDocSeguro = document.getElementById('tabDocSeguro');
+  const tabDocAmbos = document.getElementById('tabDocAmbos');
+  const viewerContainerDni = document.getElementById('viewerContainerDni');
+  const viewerContainerSeguro = document.getElementById('viewerContainerSeguro');
+
+  function setViewerTab(mode) {
+    [tabDocDni, tabDocSeguro, tabDocAmbos].forEach(btn => {
+      if (btn) btn.classList.remove('active');
+    });
+
+    if (mode === 'dni') {
+      if (tabDocDni) tabDocDni.classList.add('active');
+      if (viewerContainerDni) {
+        viewerContainerDni.style.display = 'flex';
+        viewerContainerDni.classList.remove('stacked-mode');
+      }
+      if (viewerContainerSeguro) {
+        viewerContainerSeguro.style.display = 'none';
+        viewerContainerSeguro.classList.remove('stacked-mode');
+      }
+    } else if (mode === 'seguro') {
+      if (tabDocSeguro) tabDocSeguro.classList.add('active');
+      if (viewerContainerDni) {
+        viewerContainerDni.style.display = 'none';
+        viewerContainerDni.classList.remove('stacked-mode');
+      }
+      if (viewerContainerSeguro) {
+        viewerContainerSeguro.style.display = 'flex';
+        viewerContainerSeguro.classList.remove('stacked-mode');
+      }
+    } else if (mode === 'ambos') {
+      if (tabDocAmbos) tabDocAmbos.classList.add('active');
+      if (viewerContainerDni) {
+        viewerContainerDni.style.display = 'flex';
+        viewerContainerDni.classList.add('stacked-mode');
+      }
+      if (viewerContainerSeguro) {
+        viewerContainerSeguro.style.display = 'flex';
+        viewerContainerSeguro.classList.add('stacked-mode');
+      }
+    }
+  }
+
+  if (tabDocDni) tabDocDni.addEventListener('click', () => setViewerTab('dni'));
+  if (tabDocSeguro) tabDocSeguro.addEventListener('click', () => setViewerTab('seguro'));
+  if (tabDocAmbos) tabDocAmbos.addEventListener('click', () => setViewerTab('ambos'));
+
+  // Zoom y rotación interactiva por cada visor
+  const viewerStates = {
+    dni: { zoom: 1, rotation: 0, container: document.getElementById('pageContainerDni'), label: document.getElementById('zoomLevelDni') },
+    seguro: { zoom: 1, rotation: 0, container: document.getElementById('pageContainerSeguro'), label: document.getElementById('zoomLevelSeguro') }
+  };
+
+  function updateViewerTransform(target) {
+    const st = viewerStates[target];
+    if (!st || !st.container) return;
+    st.container.style.transform = `scale(${st.zoom}) rotate(${st.rotation}deg)`;
+    if (st.label) st.label.textContent = `${Math.round(st.zoom * 100)}%`;
+  }
+
+  document.querySelectorAll('.pdf-btn-zoom-in').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      if (viewerStates[target] && viewerStates[target].zoom < 2.0) {
+        viewerStates[target].zoom += 0.2;
+        updateViewerTransform(target);
+      }
+    });
+  });
+
+  document.querySelectorAll('.pdf-btn-zoom-out').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      if (viewerStates[target] && viewerStates[target].zoom > 0.4) {
+        viewerStates[target].zoom -= 0.2;
+        updateViewerTransform(target);
+      }
+    });
+  });
+
+  document.querySelectorAll('.pdf-btn-fit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      if (viewerStates[target]) {
+        viewerStates[target].zoom = 1;
+        viewerStates[target].rotation = 0;
+        updateViewerTransform(target);
+      }
+    });
+  });
+
+  document.querySelectorAll('.pdf-btn-rotate').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      if (viewerStates[target]) {
+        viewerStates[target].rotation = (viewerStates[target].rotation + 90) % 360;
+        updateViewerTransform(target);
+      }
+    });
+  });
+
+  document.querySelectorAll('.btn-toggle-thumb').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      const sidebar = target === 'dni' ? document.getElementById('pdfThumbnailsDni') : document.getElementById('pdfThumbnailsSeguro');
+      if (sidebar) sidebar.classList.toggle('collapsed');
+    });
+  });
+
+  document.querySelectorAll('.pdf-btn-print').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-viewer');
+      const filename = target === 'dni' ? 'dni.pdf' : 'seguro.pdf';
+      alert(`Preparando impresión de ${filename}...`);
+    });
+  });
+
+  // Carga dinámica de imágenes locales para pruebas rápidas
+  const inputTestImgDni = document.getElementById('inputTestImgDni');
+  const imgDocDni = document.getElementById('imgDocDni');
+  if (inputTestImgDni && imgDocDni) {
+    inputTestImgDni.addEventListener('change', () => {
+      if (inputTestImgDni.files && inputTestImgDni.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          imgDocDni.src = e.target.result;
+          const thumb = document.querySelector('#pdfThumbnailsDni .pdf-thumb-img');
+          if (thumb) thumb.src = e.target.result;
+        };
+        reader.readAsDataURL(inputTestImgDni.files[0]);
+      }
+    });
+  }
+
+  const inputTestImgSeguro = document.getElementById('inputTestImgSeguro');
+  const imgDocSeguro = document.getElementById('imgDocSeguro');
+  if (inputTestImgSeguro && imgDocSeguro) {
+    inputTestImgSeguro.addEventListener('change', () => {
+      if (inputTestImgSeguro.files && inputTestImgSeguro.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          imgDocSeguro.src = e.target.result;
+          const thumb = document.querySelector('#pdfThumbnailsSeguro .pdf-thumb-img');
+          if (thumb) thumb.src = e.target.result;
+        };
+        reader.readAsDataURL(inputTestImgSeguro.files[0]);
+      }
+    });
   }
 
   // Event Listeners para las tarjetas de servicios principales
@@ -388,24 +811,155 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Event Listeners de Cierre
+  // Event Listeners de Cierre de Drawer
   if (drawerCloseBtn) {
     drawerCloseBtn.addEventListener('click', closeDrawer);
   }
 
   if (drawerOverlay) {
     drawerOverlay.addEventListener('click', (e) => {
-      // Cerrar solo si hace click directo en la máscara/fondo exterior
       if (e.target === drawerOverlay) {
         closeDrawer();
       }
     });
   }
 
+  // Botón Cancelar del Modal de Exoneración
+  const btnCancelExoneracion = document.getElementById('btnCancelExoneracion');
+  if (btnCancelExoneracion) {
+    btnCancelExoneracion.addEventListener('click', closeModalExoneracion);
+  }
+
+  // Reactividad en inputs de subida de archivos (DNI y Seguro)
+  if (fileDniDoc && dniFileStatus) {
+    fileDniDoc.addEventListener('change', () => {
+      if (fileDniDoc.files && fileDniDoc.files.length > 0) {
+        const file = fileDniDoc.files[0];
+        const sizeKb = (file.size / 1024).toFixed(1);
+        
+        if (file.size > 250 * 1024) {
+          alert(`El archivo seleccionado supera el límite permitido de 250 KB (tamaño actual: ${sizeKb} KB).`);
+          fileDniDoc.value = '';
+          dniFileStatus.textContent = 'Ningún archivo seleccionado';
+          dniFileStatus.classList.remove('selected');
+          if (cardUploadDni) cardUploadDni.classList.remove('has-file');
+          return;
+        }
+
+        dniFileStatus.textContent = `✓ ${file.name} (${sizeKb} KB)`;
+        dniFileStatus.classList.add('selected');
+        if (cardUploadDni) cardUploadDni.classList.add('has-file');
+      } else {
+        dniFileStatus.textContent = 'Ningún archivo seleccionado';
+        dniFileStatus.classList.remove('selected');
+        if (cardUploadDni) cardUploadDni.classList.remove('has-file');
+      }
+    });
+  }
+
+  if (fileSeguroDoc && seguroFileStatus) {
+    fileSeguroDoc.addEventListener('change', () => {
+      if (fileSeguroDoc.files && fileSeguroDoc.files.length > 0) {
+        const file = fileSeguroDoc.files[0];
+        const sizeKb = (file.size / 1024).toFixed(1);
+        
+        if (file.size > 250 * 1024) {
+          alert(`El archivo seleccionado supera el límite permitido de 250 KB (tamaño actual: ${sizeKb} KB).`);
+          fileSeguroDoc.value = '';
+          seguroFileStatus.textContent = 'Ningún archivo seleccionado';
+          seguroFileStatus.classList.remove('selected');
+          if (cardUploadSeguro) cardUploadSeguro.classList.remove('has-file');
+          return;
+        }
+
+        seguroFileStatus.textContent = `✓ ${file.name} (${sizeKb} KB)`;
+        seguroFileStatus.classList.add('selected');
+        if (cardUploadSeguro) cardUploadSeguro.classList.add('has-file');
+      } else {
+        seguroFileStatus.textContent = 'Ningún archivo seleccionado';
+        seguroFileStatus.classList.remove('selected');
+        if (cardUploadSeguro) cardUploadSeguro.classList.remove('has-file');
+      }
+    });
+  }
+
+  // Event Listeners del Modal de Exoneración
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModalExoneracion);
+  }
+
+  if (modalExoneracion) {
+    modalExoneracion.addEventListener('click', (e) => {
+      if (e.target === modalExoneracion) {
+        closeModalExoneracion();
+      }
+    });
+  }
+
+  // Envío del formulario de exoneración
+  if (formDeclaracionSeguro) {
+    formDeclaracionSeguro.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const fileDni = document.getElementById('fileDniDoc');
+      const fileSeguro = document.getElementById('fileSeguroDoc');
+      const tipoSeguro = document.getElementById('selectTipoSeguro');
+      const tel = document.getElementById('inputEmergenciaNumero');
+      const parentesco = document.getElementById('inputEmergenciaParentesco');
+      const nombres = document.getElementById('inputEmergenciaNombres');
+
+      // Validaciones
+      if (!fileDni.files.length) {
+        alert('Por favor adjunte la copia de su DNI (dni.pdf).');
+        fileDni.focus();
+        return;
+      }
+
+      if (!fileSeguro.files.length) {
+        alert('Por favor adjunte el documento que acredite contar con Seguro de Salud (seguro.pdf).');
+        fileSeguro.focus();
+        return;
+      }
+
+      if (!tipoSeguro.value) {
+        alert('Por favor seleccione el Tipo de Seguro de Salud.');
+        tipoSeguro.focus();
+        return;
+      }
+
+      if (!tel.value.trim() || !parentesco.value.trim() || !nombres.value.trim()) {
+        alert('Por favor complete todos los datos de contacto de emergencia.');
+        return;
+      }
+
+      // Confirmación exitosa
+      alert('¡SOLICITUD REGISTRADA EXITOSAMENTE!\n\nEstimado(a) estudiante, su Declaración Jurada de Exoneración de Seguro de Salud ha sido ingresada con éxito bajo el registro EX-2026-0941.\n\nSe ha enviado un correo con el comprobante de trámite a yajairacampos88@gmail.com.');
+
+      formDeclaracionSeguro.reset();
+      if (dniFileStatus) {
+        dniFileStatus.textContent = 'Ningún archivo seleccionado';
+        dniFileStatus.classList.remove('selected');
+      }
+      if (seguroFileStatus) {
+        seguroFileStatus.textContent = 'Ningún archivo seleccionado';
+        seguroFileStatus.classList.remove('selected');
+      }
+      if (cardUploadDni) cardUploadDni.classList.remove('has-file');
+      if (cardUploadSeguro) cardUploadSeguro.classList.remove('has-file');
+
+      closeModalExoneracion();
+      closeDrawer();
+    });
+  }
+
   // Tecla Escape para cerrar
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawerOverlay.classList.contains('active')) {
-      closeDrawer();
+    if (e.key === 'Escape') {
+      if (modalExoneracion && modalExoneracion.classList.contains('active')) {
+        closeModalExoneracion();
+      } else if (drawerOverlay && drawerOverlay.classList.contains('active')) {
+        closeDrawer();
+      }
     }
   });
 });

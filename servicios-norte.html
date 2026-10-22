@@ -151,8 +151,19 @@
       <!-- Cabecera moderna -->
       <div class="modal-header-modern">
         <div class="modal-header-top-row">
-          <span class="modal-ref-badge">CÓDIGO: 25D - 1</span>
-          <span class="modal-type-badge">Trámite de Exoneración</span>
+          <div class="modal-badges-group">
+            <span class="modal-ref-badge">CÓDIGO: 25D - 1</span>
+            <span class="modal-type-badge" id="badgeModalTipo">Trámite de Exoneración</span>
+          </div>
+
+          <!-- Botón para alternar casuística: Formulario vs Trámite Aprobado -->
+          <button type="button" class="btn-toggle-modal-state" id="btnToggleModalState" title="Haga clic para alternar entre el formulario nuevo y el caso de trámite ya aprobado">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span id="btnToggleModalStateText">Ver Trámite Aprobado</span>
+          </button>
         </div>
         <h2 class="modal-title-modern" id="modalTituloDoc">DECLARACIÓN DE SEGURO DE SALUD</h2>
         <p class="modal-subtitle-modern">Acreditación obligatoria de seguro médico para estudiantes (Ley Universitaria N° 30220)</p>
@@ -168,6 +179,38 @@
       <!-- Formulario interactivo -->
       <form id="formDeclaracionSeguro" class="modal-body-modern">
         
+        <!-- Tarjeta de Trámite Aprobado (Casuística Aprobado: TICKET y OBSERVACIONES) -->
+        <div class="ticket-aprobado-card" id="ticketAprobadoCard" style="display: none;">
+          <div class="ticket-aprobado-header">
+            <div class="ticket-badge-pill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>SOLICITUD APROBADA</span>
+            </div>
+            <span class="ticket-period-badge">Periodo Académico 2026-I</span>
+          </div>
+
+          <div class="ticket-aprobado-body">
+            <div class="ticket-generado-row">
+              <span class="ticket-generado-label">TICKET GENERADO:</span>
+              <span class="ticket-generado-val">2026.96412</span>
+            </div>
+            <div class="ticket-observaciones-row">
+              <span class="ticket-obs-label">OBSERVACIONES:</span>
+              <p class="ticket-obs-text">Su Solicitud esta en estado: <strong class="ticket-status-val">Aprobado</strong></p>
+            </div>
+          </div>
+          
+          <div class="ticket-meta-footer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 14 14"></polyline>
+            </svg>
+            <span>Validado por Servicios Médicos / Dirección de Bienestar Universitario</span>
+          </div>
+        </div>
+
         <!-- Tarjeta de datos del estudiante -->
         <div class="student-summary-card">
           <div class="student-avatar-box">
@@ -364,6 +407,185 @@
           </div>
         </div>
 
+        <!-- VISOR DE DOCUMENTOS ADJUNTOS (AL FINAL DEL FORMULARIO) -->
+        <div class="doc-viewer-section" id="docViewerSection" style="display: none;">
+          <div class="doc-viewer-header">
+            <div class="doc-viewer-title-row">
+              <div class="doc-viewer-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h4 class="doc-viewer-title">DOCUMENTOS ADJUNTOS POR EL ESTUDIANTE</h4>
+                <p class="doc-viewer-subtitle">Visualizador de expedientes remitidos para exoneración</p>
+              </div>
+            </div>
+
+            <!-- Selector de pestañas para ver DNI, Seguro o Ambos -->
+            <div class="doc-viewer-tabs">
+              <button type="button" class="doc-tab-btn active" data-viewer-target="dni" id="tabDocDni">
+                <span>1. Copia de DNI (dni.pdf)</span>
+              </button>
+              <button type="button" class="doc-tab-btn" data-viewer-target="seguro" id="tabDocSeguro">
+                <span>2. Sustento Seguro (seguro.pdf)</span>
+              </button>
+              <button type="button" class="doc-tab-btn" data-viewer-target="ambos" id="tabDocAmbos">
+                <span>Ver ambos documentos</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ESPACIO PARA IMÁGENES DE PRUEBA:
+               Para agregar o reemplazar imágenes de prueba, coloque los archivos en la carpeta img/ con los siguientes nombres:
+               • img/doc-dni-preview.png     -> Imagen principal del DNI
+               • img/doc-dni-thumb.png       -> Miniatura de la barra lateral del DNI
+               • img/doc-seguro-preview.png  -> Imagen principal del sustento de Seguro (EsSalud / SIS)
+               • img/doc-seguro-thumb.png    -> Miniatura lateral del sustento de Seguro
+          -->
+
+          <!-- VISOR 1: Copia de DNI -->
+          <div class="pdf-viewer-container" id="viewerContainerDni">
+            <div class="pdf-toolbar">
+              <div class="pdf-toolbar-left">
+                <button type="button" class="pdf-tool-btn btn-toggle-thumb" title="Alternar panel de miniaturas" data-viewer="dni">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </svg>
+                </button>
+                <span class="pdf-doc-name">dni.pdf</span>
+                <span class="pdf-separator">|</span>
+                <span class="pdf-page-indicator">1 / 1</span>
+              </div>
+
+              <div class="pdf-toolbar-center">
+                <button type="button" class="pdf-tool-btn pdf-btn-zoom-out" data-viewer="dni" title="Reducir zoom (−)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+                <span class="pdf-zoom-level" id="zoomLevelDni">100%</span>
+                <button type="button" class="pdf-tool-btn pdf-btn-zoom-in" data-viewer="dni" title="Aumentar zoom (+)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+                <button type="button" class="pdf-tool-btn pdf-btn-fit" data-viewer="dni" title="Ajustar a la página">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                </button>
+                <button type="button" class="pdf-tool-btn pdf-btn-rotate" data-viewer="dni" title="Girar en sentido horario (90°)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                </button>
+              </div>
+
+              <div class="pdf-toolbar-right">
+                <a href="img/doc-dni-preview.png" download="dni.pdf" class="pdf-tool-btn pdf-btn-download" title="Descargar archivo (dni.pdf)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                </a>
+                <button type="button" class="pdf-tool-btn pdf-btn-print" data-viewer="dni" title="Imprimir archivo">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="pdf-viewer-workspace">
+              <!-- Barra lateral de miniaturas (thumbnail bar) -->
+              <div class="pdf-sidebar-thumbnails" id="pdfThumbnailsDni">
+                <div class="pdf-thumb-card active">
+                  <div class="pdf-thumb-frame">
+                    <img src="img/doc-dni-thumb.png" alt="Miniatura DNI" class="pdf-thumb-img" onerror="this.onerror=null; this.src='img/preview-dni-sample.png';">
+                  </div>
+                  <span class="pdf-thumb-page-label">1</span>
+                </div>
+              </div>
+
+              <!-- Lienzo principal de visualización -->
+              <div class="pdf-main-canvas" id="canvasDni">
+                <div class="pdf-page-container" id="pageContainerDni">
+                  <img src="img/doc-dni-preview.png" alt="Visualizador Copia de DNI" id="imgDocDni" class="pdf-document-img" onerror="this.onerror=null; this.src='img/preview-dni-sample.png';">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VISOR 2: Sustento de Seguro de Salud -->
+          <div class="pdf-viewer-container" id="viewerContainerSeguro" style="display: none;">
+            <div class="pdf-toolbar">
+              <div class="pdf-toolbar-left">
+                <button type="button" class="pdf-tool-btn btn-toggle-thumb" title="Alternar panel de miniaturas" data-viewer="seguro">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </svg>
+                </button>
+                <span class="pdf-doc-name">seguro.pdf</span>
+                <span class="pdf-separator">|</span>
+                <span class="pdf-page-indicator">1 / 1</span>
+              </div>
+
+              <div class="pdf-toolbar-center">
+                <button type="button" class="pdf-tool-btn pdf-btn-zoom-out" data-viewer="seguro" title="Reducir zoom (−)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+                <span class="pdf-zoom-level" id="zoomLevelSeguro">100%</span>
+                <button type="button" class="pdf-tool-btn pdf-btn-zoom-in" data-viewer="seguro" title="Aumentar zoom (+)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+                <button type="button" class="pdf-tool-btn pdf-btn-fit" data-viewer="seguro" title="Ajustar a la página">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                </button>
+                <button type="button" class="pdf-tool-btn pdf-btn-rotate" data-viewer="seguro" title="Girar en sentido horario (90°)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                </button>
+              </div>
+
+              <div class="pdf-toolbar-right">
+                <a href="img/doc-seguro-preview.png" download="seguro.pdf" class="pdf-tool-btn pdf-btn-download" title="Descargar archivo (seguro.pdf)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                </a>
+                <button type="button" class="pdf-tool-btn pdf-btn-print" data-viewer="seguro" title="Imprimir archivo">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="pdf-viewer-workspace">
+              <!-- Barra lateral de miniaturas (thumbnail bar) -->
+              <div class="pdf-sidebar-thumbnails" id="pdfThumbnailsSeguro">
+                <div class="pdf-thumb-card active">
+                  <div class="pdf-thumb-frame">
+                    <img src="img/doc-seguro-thumb.png" alt="Miniatura Seguro" class="pdf-thumb-img" onerror="this.onerror=null; this.src='img/preview-seguro-sample.png';">
+                  </div>
+                  <span class="pdf-thumb-page-label">1</span>
+                </div>
+              </div>
+
+              <!-- Lienzo principal de visualización -->
+              <div class="pdf-main-canvas" id="canvasSeguro">
+                <div class="pdf-page-container" id="pageContainerSeguro">
+                  <img src="img/doc-seguro-preview.png" alt="Visualizador Sustento de Seguro" id="imgDocSeguro" class="pdf-document-img" onerror="this.onerror=null; this.src='img/preview-seguro-sample.png';">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Acceso rápido para adjuntar imágenes de prueba directamente en el navegador -->
+          <div class="viewer-test-uploader">
+            <span class="test-uploader-label">Prueba rápida de imágenes locales:</span>
+            <label class="btn-test-file" title="Seleccionar una imagen de tu computadora para verla en el visor de DNI">
+              <span>Subir imagen de prueba DNI</span>
+              <input type="file" id="inputTestImgDni" accept="image/*,.pdf" style="display:none;">
+            </label>
+            <label class="btn-test-file" title="Seleccionar una imagen de tu computadora para verla en el visor de Seguro">
+              <span>Subir imagen de prueba Seguro</span>
+              <input type="file" id="inputTestImgSeguro" accept="image/*,.pdf" style="display:none;">
+            </label>
+          </div>
+        </div>
+
         <!-- Aviso de Renovación -->
         <div class="renewal-alert-modern">
           <svg class="renewal-alert-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -379,12 +601,24 @@
         <!-- Pie de Modal Moderno -->
         <div class="modal-footer-modern">
           <button type="button" class="btn-modern-ghost" id="btnCancelExoneracion">Cancelar</button>
+          
+          <!-- Botón de Envío (Modo Formulario) -->
           <button type="submit" class="btn-modern-primary" id="btnSubmitExoneracion">
             <span>SOLICITAR</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="22" y1="2" x2="11" y2="13"></line>
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
+          </button>
+
+          <!-- Botón de Descarga Constancia (Modo Aprobado) -->
+          <button type="button" class="btn-modern-success" id="btnDescargarConstancia" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>DESCARGAR CONSTANCIA APROBADA (PDF)</span>
           </button>
         </div>
 
