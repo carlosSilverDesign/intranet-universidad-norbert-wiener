@@ -76,6 +76,10 @@
             <div class="skeleton-legend-color skeleton-item"></div>
             <div class="skeleton-legend-label skeleton-item"></div>
           </div>
+          <div class="skeleton-legend-item">
+            <div class="skeleton-legend-color skeleton-item"></div>
+            <div class="skeleton-legend-label skeleton-item"></div>
+          </div>
         </div>
         <div class="skeleton-filters-container">
           <div class="skeleton-filter-btn skeleton-item"></div>
@@ -336,6 +340,13 @@
             <span class="legend-color cell-absent">F</span>
             <span class="legend-label">Faltó (F)</span>
           </div>
+          <div class="legend-item">
+            <span class="legend-color cell-split legend-split">
+              <span class="split-half-top split-attended">✓</span>
+              <span class="split-half-bottom split-absent">F</span>
+            </span>
+            <span class="legend-label">Asistencia parcial (✓/F)</span>
+          </div>
         </div>
         <!-- Filtro por Mes -->
         <div class="filters-container">
@@ -420,7 +431,7 @@
         </article>
 
         <!-- Curso 2 -->
-        <article class="course-attendance-card">
+        <article class="course-attendance-card" data-course-card="2">
           <div class="card-header-attendance">
             <div class="header-left-course">
               <span class="course-number-badge">2</span>
@@ -432,16 +443,28 @@
                   <span class="tag-tipo practica">Práctica</span>
                 </div>
                 <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Comunicación de Alto Impacto</a></h3>
-                <p class="course-teacher-text">Bravo Guevara Babi Rosa</p>
+                <p class="course-teacher-text">BRAVO GUEVARA Dalia Rosa</p>
               </div>
             </div>
             <div class="header-right-course">
-              <span class="course-stats-label">4/7 clases asistidas</span>
-              <div class="course-percentage-badge">
-                12.50%
+              <div class="course-type-filter" data-course-id="2">
+                <button type="button" class="type-filter-btn active" data-type="all">Todo</button>
+                <button type="button" class="type-filter-btn" data-type="teoria">Solo Teoría</button>
+                <button type="button" class="type-filter-btn" data-type="practica">Solo Práctica</button>
+              </div>
+              <div class="course-stats-container">
+                <span class="course-stats-label" data-stats-label="2">9/12 clases asistidas</span>
+                <span class="course-stats-breakdown" data-stats-breakdown="2">T 6/7 · P 3/5</span>
+              </div>
+              <div class="course-percentage-badge badge-success" data-stats-badge-container="2">
+                <span class="badge-value" data-stats-badge="2">75.00%</span>
                 <span>asistencia</span>
               </div>
             </div>
+          </div>
+          <div class="course-alert-banner alert-warning">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-text">Tienes 2 inasistencias en Práctica. Límite permitido: 3. Te queda 1 falta antes de inhabilitarte.</span>
           </div>
           <div class="calendar-table-container">
             <table class="calendar-table" data-course-calendar="2">
@@ -557,28 +580,40 @@
         </article>
 
         <!-- Curso 4 -->
-        <article class="course-attendance-card">
+        <article class="course-attendance-card" data-course-card="4">
           <div class="card-header-attendance">
             <div class="header-left-course">
               <span class="course-number-badge">4</span>
               <div class="course-details">
                 <div class="tag-row">
-                  <span class="tag-seccion">AC3N3</span>
-                  <span class="tag-codigo">AC4037</span>
+                  <span class="tag-seccion">ID2L7</span>
+                  <span class="tag-codigo">ID3003</span>
                   <span class="tag-tipo teoria">Teoría</span>
                   <span class="tag-tipo practica">Práctica</span>
                 </div>
-                <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Ingles III</a></h3>
-                <p class="course-teacher-text">Rodriguez Delgado de Horna Verónica Paola</p>
+                <h3 class="course-title-text"><a href="asistencia-detalle.html" class="course-title-link">Inglés III</a></h3>
+                <p class="course-teacher-text">QUISPE MAMANI Carlos Alberto</p>
               </div>
             </div>
             <div class="header-right-course">
-              <span class="course-stats-label">2/8 clases asistidas</span>
-              <div class="course-percentage-badge">
-                6.25%
+              <div class="course-type-filter" data-course-id="4">
+                <button type="button" class="type-filter-btn active" data-type="all">Todo</button>
+                <button type="button" class="type-filter-btn" data-type="teoria">Solo Teoría</button>
+                <button type="button" class="type-filter-btn" data-type="practica">Solo Práctica</button>
+              </div>
+              <div class="course-stats-container">
+                <span class="course-stats-label" data-stats-label="4">9/12 clases asistidas</span>
+                <span class="course-stats-breakdown" data-stats-breakdown="4">T 5/6 · P 4/6</span>
+              </div>
+              <div class="course-percentage-badge badge-success" data-stats-badge-container="4">
+                <span class="badge-value" data-stats-badge="4">75.00%</span>
                 <span>asistencia</span>
               </div>
             </div>
+          </div>
+          <div class="course-alert-banner alert-danger">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-text">Tienes 2 inasistencias en Práctica. Límite permitido: 2. Límite alcanzado: riesgo de inhabilitación por DPI.</span>
           </div>
           <div class="calendar-table-container">
             <table class="calendar-table" data-course-calendar="4">
@@ -696,12 +731,10 @@
       </section>
 
     </div>
-
-  </main>>
-
-    </section>
-
   </main>
+
+  <!-- Tooltip flotante interactivo (Desktop & Mobile) -->
+  <div id="attendanceTooltip" class="attendance-tooltip" role="tooltip" aria-hidden="true"></div>
 
   <script src="asistencias.js"></script>
 
