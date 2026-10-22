@@ -433,12 +433,67 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* --- SELECTOR DE TIPO (TODO | SOLO TEORÍA | SOLO PRÁCTICA) --- */
+.course-type-filter {
+  display: inline-flex;
+  align-items: center;
+  background-color: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.type-filter-btn {
+  background: transparent;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #5B6E80;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+  white-space: nowrap;
+  outline: none;
+}
+
+.type-filter-btn:hover {
+  color: #0F848F;
+}
+
+.type-filter-btn.active {
+  background-color: #FFFFFF;
+  color: #0F848F;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.course-stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
 }
 
 .course-stats-label {
   font-size: 13px;
+  color: #222222;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  white-space: nowrap;
+}
+
+.course-stats-breakdown {
+  font-size: 11px;
   color: #5B6E80;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .course-percentage-badge {
@@ -451,6 +506,8 @@ body {
   font-size: 14px;
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  min-width: 72px;
+  transition: all 0.2s ease;
 }
 
 .course-percentage-badge span {
@@ -460,6 +517,75 @@ body {
   text-transform: uppercase;
   color: #D97706;
   margin-top: 2px;
+}
+
+.course-percentage-badge.badge-success {
+  background-color: #D1FAE4;
+  color: #065F46;
+  border-color: #A7F3D0;
+}
+
+.course-percentage-badge.badge-success span {
+  color: #0F848F;
+}
+
+.course-percentage-badge.badge-warning {
+  background-color: #FFF9E6;
+  color: #B45309;
+  border-color: #FDE68A;
+}
+
+.course-percentage-badge.badge-warning span {
+  color: #D97706;
+}
+
+.course-percentage-badge.badge-danger {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border-color: #FCA5A5;
+}
+
+.course-percentage-badge.badge-danger span {
+  color: #EF4444;
+}
+
+/* Banners de alerta por curso */
+.course-alert-banner {
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.course-alert-banner.alert-warning {
+  background-color: #FFFBEB;
+  border: 1px solid #FDE68A;
+  color: #B45309;
+}
+
+.course-alert-banner.alert-danger {
+  background-color: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #991B1B;
+}
+
+.course-alert-banner .alert-icon {
+  font-size: 15px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.course-alert-banner .alert-text {
+  flex: 1;
+  line-height: 1.4;
 }
 
 /* --- TABLA DE CALENDARIO DE ASISTENCIA --- */
@@ -604,6 +730,251 @@ body {
 .cell-absent:hover {
   transform: scale(1.1);
   box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2);
+}
+
+/* --- CELDA BICOLOR DIVIDIDA (TEORÍA Y PRÁCTICA EL MISMO DÍA) --- */
+.cell-split {
+  position: relative;
+  overflow: hidden;
+  width: 27px;
+  height: 27px;
+  min-width: 27px;
+  min-height: 27px;
+  max-width: 27px;
+  max-height: 27px;
+  padding: 0 !important;
+  border-radius: 4px;
+  border: 1px solid #94A3B8;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cell-split:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(15, 132, 143, 0.25);
+  z-index: 10;
+}
+
+/* Mitad superior izquierda (Teoría en Caso 3 o Práctica en Caso 4) */
+.cell-split .split-half-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 1px;
+  padding-left: 3px;
+  box-sizing: border-box;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Mitad inferior derecha (Práctica en Caso 3 o Teoría en Caso 4) */
+.cell-split .split-half-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 2px;
+  padding-right: 3px;
+  box-sizing: border-box;
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Colores para las mitades */
+.split-attended,
+.cell-split .split-half-top.split-attended,
+.cell-split .split-half-bottom.split-attended {
+  background-color: #D1FAE4;
+  color: #0F848F;
+}
+
+.split-absent,
+.cell-split .split-half-top.split-absent,
+.cell-split .split-half-bottom.split-absent {
+  background-color: #FEE2E2;
+  color: #EF4444;
+}
+
+/* Línea diagonal divisoria */
+.cell-split::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent calc(50% - 0.75px), #94A3B8 calc(50% - 0.75px), #94A3B8 calc(50% + 0.75px), transparent calc(50% + 0.75px));
+  pointer-events: none;
+}
+
+/* Ítem de leyenda para celda dividida */
+.legend-color.legend-split {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #94A3B8;
+  border-radius: 4px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.legend-color.legend-split .split-half-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  background-color: #D1FAE4;
+  color: #0F848F;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 1px;
+  padding-left: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.legend-color.legend-split .split-half-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  background-color: #FEE2E2;
+  color: #EF4444;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 1px;
+  padding-right: 2px;
+  font-size: 8.5px;
+  font-weight: 700;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.legend-color.legend-split::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent calc(50% - 0.75px), #94A3B8 calc(50% - 0.75px), #94A3B8 calc(50% + 0.75px), transparent calc(50% + 0.75px));
+  pointer-events: none;
+}
+
+/* --- TOOLTIP FLOTANTE (DESKTOP & MOBILE) --- */
+.attendance-tooltip {
+  position: fixed;
+  z-index: 9999;
+  background-color: #1E2229;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.45), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  font-family: 'Roboto', sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+  transform: translate(-50%, -100%) translateY(-8px);
+  min-width: 180px;
+  box-sizing: border-box;
+}
+
+.attendance-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -100%) translateY(-10px);
+}
+
+.attendance-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #1E2229 transparent transparent transparent;
+}
+
+.attendance-tooltip.tooltip-bottom {
+  transform: translate(-50%, 0) translateY(8px);
+}
+
+.attendance-tooltip.tooltip-bottom.visible {
+  transform: translate(-50%, 0) translateY(10px);
+}
+
+.attendance-tooltip.tooltip-bottom::after {
+  top: auto;
+  bottom: 100%;
+  border-color: transparent transparent #1E2229 transparent;
+}
+
+.tooltip-date {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.tooltip-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tooltip-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #F1F5F9;
+  white-space: nowrap;
+}
+
+.tooltip-dot {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  min-height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tooltip-dot.dot-attended {
+  background-color: #34D399;
+}
+
+.tooltip-dot.dot-absent {
+  background-color: #F87171;
 }
 
 /* Animación sutil de filtrado */
@@ -757,13 +1128,37 @@ body {
   .header-right-course {
     width: 100%;
     justify-content: space-between;
+    align-items: stretch;
     border-top: 1px dashed #E2E8F0;
     padding-top: 12px;
+    gap: 12px;
+  }
+
+  .course-type-filter {
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .type-filter-btn {
+    flex: 1;
+    text-align: center;
+    padding: 6px 8px;
+    font-size: 11.5px;
+  }
+
+  .course-stats-container {
+    align-items: flex-start;
   }
 
   .course-percentage-badge {
     padding: 6px 12px;
     font-size: 13px;
+  }
+
+  .course-alert-banner {
+    font-size: 12px;
+    padding: 8px 12px;
   }
 
   /* Ajustar tabla de calendario en móvil para touch */
@@ -773,13 +1168,26 @@ body {
   }
 
   .calendar-cell,
-  .calendar-header-cell {
+  .calendar-header-cell,
+  .cell-split {
     width: 30px;
     height: 30px;
     min-width: 30px;
     min-height: 30px;
     max-width: 30px;
     max-height: 30px;
+  }
+
+  .cell-split .split-half-top {
+    font-size: 11px;
+    padding-top: 2px;
+    padding-left: 3px;
+  }
+
+  .cell-split .split-half-bottom {
+    font-size: 10px;
+    padding-bottom: 2px;
+    padding-right: 3px;
   }
 }
 
