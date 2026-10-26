@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td class="td-num">${index + 1}</td>
-        <td><span class="period-badge-tag">${item.periodo}</span></td>
+        <td>${item.periodo}</td>
         <td style="font-weight: 700; color: #0F172A;">${item.tipoEval}</td>
         <td>
           <span class="course-type-pill ${isModulo ? 'modulo' : 'regular'}">
@@ -153,14 +153,17 @@ document.addEventListener('DOMContentLoaded', () => {
             ${item.estado}
           </span>
         </td>
-        <td style="text-align: center;">
-          <button type="button" class="btn-table-action-icon" data-id="${item.id}" title="Editar / Configurar Cronograma" aria-label="Editar">
-            ${EDIT_SVG}
+        <td class="col-td-acciones col-td-detalle">
+          <button type="button" class="btn-row-action" data-id="${item.id}" title="Ver detalle de cronograma">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
           </button>
         </td>
       `;
 
-      const btnEdit = tr.querySelector('.btn-table-action-icon');
+      const btnEdit = tr.querySelector('.btn-row-action');
       btnEdit.addEventListener('click', () => {
         openEditModal(item);
       });
@@ -179,6 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
     inputFechaInicio.value = '2026-09-14';
     inputFechaFin.value = '2026-09-18';
     inputEstado.value = 'ACTIVO';
+    syncCustomSelect(inputPeriodo);
+    syncCustomSelect(inputTipoEval);
+    syncCustomSelect(inputTipoCurso);
+    syncCustomSelect(inputEstado);
     modalBackdrop.classList.add('active');
   }
 
@@ -200,6 +207,10 @@ document.addEventListener('DOMContentLoaded', () => {
     inputFechaInicio.value = parseToIso(item.fechaInicio);
     inputFechaFin.value = parseToIso(item.fechaFin);
     inputEstado.value = item.estado;
+    syncCustomSelect(inputPeriodo);
+    syncCustomSelect(inputTipoEval);
+    syncCustomSelect(inputTipoCurso);
+    syncCustomSelect(inputEstado);
     modalBackdrop.classList.add('active');
   }
 
@@ -275,6 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
       filterTipoEval.value = 'todos';
       filterTipoCurso.value = 'todos';
       filterEstado.value = 'todos';
+      syncCustomSelect(filterPeriodo);
+      syncCustomSelect(filterTipoEval);
+      syncCustomSelect(filterTipoCurso);
+      syncCustomSelect(filterEstado);
       renderTable();
       showToast('Filtros restablecidos');
     });
@@ -292,6 +307,190 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
+  // ==========================================================================
+  // CUSTOM SELECT ENHANCEMENT (Animación, chevron rotativo, menú flotante)
+  // Look & Feel exacto de rectificacion-nota.html
+  // ==========================================================================
+
+  function initCustomSelects() {
+    const wrappers = document.querySelectorAll('.notes-select-wrapper');
+
+    wrappers.forEach(wrapper => {
+      const select = wrapper.querySelector('select');
+      if (!select) return;
+
+      select.classList.add('custom-select-hidden');
+
+      let trigger = wrapper.querySelector('.custom-select-trigger');
+      let menu = wrapper.querySelector('.custom-select-menu');
+      let icon = wrapper.querySelector('.notes-select-icon');
+
+      if (!icon) {
+        icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        icon.setAttribute('class', 'notes-select-icon');
+        icon.setAttribute('width', '16');
+        icon.setAttribute('height', '16');
+        icon.setAttribute('viewBox', '0 0 24 24');
+        icon.setAttribute('fill', 'none');
+        icon.setAttribute('stroke', 'currentColor');
+        icon.setAttribute('stroke-width', '2');
+        icon.setAttribute('stroke-linecap', 'round');
+        icon.setAttribute('stroke-linejoin', 'round');
+        icon.innerHTML = '<polyline points="6 9 12 15 18 9"></polyline>';
+        wrapper.appendChild(icon);
+      }
+
+      if (!trigger) {
+        trigger = document.createElement('div');
+        trigger.className = 'custom-select-trigger';
+        trigger.tabIndex = 0;
+        trigger.setAttribute('role', 'combobox');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.setAttribute('aria-haspopup', 'listbox');
+
+        const valSpan = document.createElement('span');
+        valSpan.className = 'custom-select-value';
+        trigger.appendChild(valSpan);
+
+        wrapper.insertBefore(trigger, icon);
+
+        // Click en el trigger para alternar menú y rotar flecha 180°
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = wrapper.classList.contains('is-open');
+          closeAllCustomSelects();
+          if (!isOpen) {
+            wrapper.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Soporte de navegación por teclado
+        trigger.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            const isOpen = wrapper.classList.contains('is-open');
+            if (!isOpen) {
+              closeAllCustomSelects();
+              wrapper.classList.add('is-open');
+              trigger.setAttribute('aria-expanded', 'true');
+            } else if (e.key === 'Enter' || e.key === ' ') {
+              closeAllCustomSelects();
+            }
+          } else if (e.key === 'Escape') {
+            closeAllCustomSelects();
+          }
+        });
+      }
+
+      if (!menu) {
+        menu = document.createElement('div');
+        menu.className = 'custom-select-menu';
+        menu.setAttribute('role', 'listbox');
+        wrapper.appendChild(menu);
+      }
+
+      // Reconstruir opciones del menú
+      menu.innerHTML = '';
+      const selectedOption = select.options[select.selectedIndex] || select.options[0];
+      const valSpan = trigger.querySelector('.custom-select-value');
+      if (valSpan && selectedOption) {
+        valSpan.textContent = selectedOption.textContent;
+      }
+
+      Array.from(select.options).forEach(opt => {
+        const item = document.createElement('div');
+        item.className = 'custom-select-option' + (opt.selected ? ' is-selected' : '');
+        item.setAttribute('role', 'option');
+        item.setAttribute('aria-selected', opt.selected ? 'true' : 'false');
+        item.setAttribute('data-value', opt.value);
+
+        const textSpan = document.createElement('span');
+        textSpan.textContent = opt.textContent;
+        item.appendChild(textSpan);
+
+        const checkSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        checkSvg.setAttribute('class', 'option-check-icon');
+        checkSvg.setAttribute('viewBox', '0 0 24 24');
+        checkSvg.setAttribute('fill', 'none');
+        checkSvg.setAttribute('stroke', 'currentColor');
+        checkSvg.setAttribute('stroke-width', '2.5');
+        checkSvg.setAttribute('stroke-linecap', 'round');
+        checkSvg.setAttribute('stroke-linejoin', 'round');
+        checkSvg.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+        item.appendChild(checkSvg);
+
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          select.value = opt.value;
+          if (valSpan) valSpan.textContent = opt.textContent;
+
+          menu.querySelectorAll('.custom-select-option').forEach(el => {
+            el.classList.remove('is-selected');
+            el.setAttribute('aria-selected', 'false');
+          });
+          item.classList.add('is-selected');
+          item.setAttribute('aria-selected', 'true');
+
+          closeAllCustomSelects();
+          trigger.focus();
+
+          select.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+
+        menu.appendChild(item);
+      });
+    });
+  }
+
+  function closeAllCustomSelects() {
+    document.querySelectorAll('.notes-select-wrapper.is-open').forEach(w => {
+      w.classList.remove('is-open');
+      const trig = w.querySelector('.custom-select-trigger');
+      if (trig) trig.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.notes-select-wrapper')) {
+      closeAllCustomSelects();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllCustomSelects();
+    }
+  });
+
+  function syncCustomSelect(selectEl) {
+    if (!selectEl) return;
+    const wrapper = selectEl.closest('.notes-select-wrapper');
+    if (!wrapper) return;
+    const trigger = wrapper.querySelector('.custom-select-trigger');
+    const menu = wrapper.querySelector('.custom-select-menu');
+    if (!trigger || !menu) return;
+
+    const valSpan = trigger.querySelector('.custom-select-value');
+    const selectedOption = selectEl.options[selectEl.selectedIndex];
+    if (valSpan && selectedOption) {
+      valSpan.textContent = selectedOption.textContent;
+    }
+
+    menu.querySelectorAll('.custom-select-option').forEach(item => {
+      const isSel = item.getAttribute('data-value') === selectEl.value;
+      if (isSel) {
+        item.classList.add('is-selected');
+        item.setAttribute('aria-selected', 'true');
+      } else {
+        item.classList.remove('is-selected');
+        item.setAttribute('aria-selected', 'false');
+      }
+    });
+  }
+
   // Inicialización
+  initCustomSelects();
   renderTable();
 });

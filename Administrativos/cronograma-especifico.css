@@ -1,0 +1,717 @@
+/* ==========================================================================
+   CRONOGRAMA ESPECÍFICO - ESTILOS ESPECÍFICOS DEL COMPONENTE
+   Hereda del shell institucional: navbar.css, styles.css, notas.css, 
+   rectificacion-nota.css y cronograma-rectificacion.css.
+   Sin resets globales para garantizar estabilidad visual y cero desplazamientos.
+   ========================================================================== */
+
+/* 1. Modal Overlay & Contenedor */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex !important;
+}
+
+.modal-container.modal-especifico-card {
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 840px;
+  width: 100%;
+  overflow: visible !important;
+  animation: modalFadeIn 0.22s ease-out;
+  position: relative;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 2. Header de Modal */
+.modal-header-rect {
+  background-color: #0F848F;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 14px 14px 0 0;
+}
+
+.modal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-header-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modal-title-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.modal-btn-close {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  transition: background-color 0.15s;
+}
+
+.modal-btn-close:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 3. Body de Modal & Grids */
+.modal-body-rect {
+  padding: 24px 28px;
+  overflow: visible !important;
+  position: relative;
+}
+
+.modal-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.modal-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.col-span-2 {
+  grid-column: span 2;
+}
+
+.col-span-3 {
+  grid-column: span 3;
+}
+
+/* 4. Form Fields & Controls */
+.form-field-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field-item label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.form-field-item label .req {
+  color: #DC2626;
+  margin-left: 2px;
+}
+
+.badge-editable-tag {
+  display: inline-block;
+  background-color: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #BBF7D0;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  text-transform: uppercase;
+}
+
+.modal-text-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1E293B;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.modal-text-input:focus {
+  outline: none;
+  border-color: #0F848F;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.12);
+}
+
+.modal-text-input.readonly,
+.modal-text-input:read-only {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+  color: #334155 !important;
+  font-weight: 600;
+  cursor: default;
+}
+
+.modal-text-input.editable-date {
+  border: 1.5px solid #0F848F;
+  background-color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* 5. Checkbox Personal */
+.checkbox-field-wrapper {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.custom-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1E293B;
+  margin: 0;
+}
+
+.custom-checkbox-input {
+  width: 18px;
+  height: 18px;
+  accent-color: #0F848F;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* 6. Sub-tarjeta de Búsqueda de Docente */
+.docente-search-box {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 4px;
+}
+
+.docente-search-header {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0F172A;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.docente-search-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto auto;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.btn-search-docente {
+  height: 40px;
+  padding: 0 18px;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.btn-search-docente:hover {
+  background-color: #0B6A73;
+}
+
+.btn-clear-docente {
+  height: 40px;
+  padding: 0 16px;
+  background-color: #FFFFFF;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-clear-docente:hover {
+  background-color: #F1F5F9;
+  color: #1E293B;
+}
+
+.docente-selected-indicator {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #E6F4F5;
+  border: 1px solid rgba(15, 132, 143, 0.25);
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: #0F848F;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.docente-selected-indicator strong {
+  color: #0B6A73;
+}
+
+/* 7. Footer de Modal */
+.modal-footer-rect {
+  background-color: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  padding: 16px 28px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-radius: 0 0 14px 14px;
+}
+
+.btn-cancel-modal {
+  height: 40px;
+  padding: 0 20px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-cancel-modal:hover {
+  background-color: #F1F5F9;
+  color: #1E293B;
+}
+
+.btn-save-modal {
+  height: 40px;
+  padding: 0 24px;
+  background-color: #0F848F;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background-color 0.15s, box-shadow 0.15s;
+}
+
+.btn-save-modal:hover {
+  background-color: #0B6A73;
+  box-shadow: 0 2px 4px rgba(15, 132, 143, 0.25);
+}
+
+/* 8. Botón 'Detalle' en Tabla */
+.btn-table-detail-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  color: #0F848F;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-table-detail-action:hover {
+  background-color: #0F848F;
+  border-color: #0F848F;
+  color: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(15, 132, 143, 0.2);
+}
+
+.btn-table-detail-action svg {
+  transition: transform 0.15s ease;
+}
+
+.btn-table-detail-action:hover svg {
+  transform: scale(1.1);
+}
+
+/* 9. Alertas en Modal */
+.modal-info-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background-color: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  border-radius: 8px;
+  color: #166534;
+  font-size: 12.5px;
+  line-height: 1.45;
+  margin-top: 16px;
+}
+
+.modal-info-alert.teal {
+  background-color: #F0FDFA;
+  border-color: #CCFBF1;
+  color: #0F766E;
+}
+
+.modal-info-alert svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* 10. Responsive */
+@media (max-width: 900px) {
+  .docente-search-inputs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-grid-3col,
+  .modal-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .col-span-2,
+  .col-span-3 {
+    grid-column: auto;
+  }
+
+  .docente-search-inputs-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .btn-search-docente,
+  .btn-clear-docente {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ==========================================================================
+   ESTILOS SELECT PERSONALIZADOS EN MODALES (LOOK & FEEL UNIFICADO)
+   ========================================================================== */
+.notes-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.notes-select-wrapper.is-open {
+  z-index: 100;
+}
+
+.notes-select-wrapper select,
+.notes-select-wrapper select.custom-select-hidden,
+select.custom-select-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  height: 40px;
+  padding: 0 32px 0 12px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #1E293B;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.custom-select-trigger:hover {
+  border-color: #0F848F;
+}
+
+.custom-select-trigger:focus,
+.notes-select-wrapper.is-open .custom-select-trigger {
+  border-color: #0F848F;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.15);
+  background-color: #FFFFFF;
+}
+
+.custom-select-value {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  flex: 1;
+  min-width: 0;
+}
+
+.notes-select-wrapper .notes-select-icon {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  color: #64748B;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+  transform-origin: center center;
+}
+
+.notes-select-wrapper:hover .notes-select-icon {
+  color: #0F848F;
+}
+
+.notes-select-wrapper.is-open .notes-select-icon {
+  transform: rotate(180deg);
+  color: #0F848F;
+}
+
+.custom-select-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 150;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.notes-select-wrapper.is-open .custom-select-menu {
+  display: block;
+}
+
+.custom-select-option {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  color: #334155;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+}
+
+.custom-select-option:hover {
+  background-color: #F1F5F9;
+  color: #0F848F;
+}
+
+.custom-select-option.is-selected {
+  background-color: #E6F3F4;
+  color: #0F848F;
+  font-weight: 600;
+}
+
+.custom-select-option .option-check-icon {
+  width: 14px;
+  height: 14px;
+  color: #0F848F;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.custom-select-option.is-selected .option-check-icon {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   ESTILOS COLUMNA DETALLE Y BOTÓN LUPA (Consistente con Inicio)
+   ========================================================================== */
+.col-th-detalle,
+.col-td-detalle {
+  width: 56px;
+  min-width: 56px;
+  text-align: center;
+}
+
+.btn-row-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0F848F;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-row-action:hover {
+  background-color: #E6F3F4;
+  transform: scale(1.15);
+}
+
+
+/* ==========================================================================
+   ESTILOS COLUMNA PERIODO (TEXTO LIMPIO SIN BADGE)
+   ========================================================================== */
+.period-badge-tag {
+  display: inline;
+  padding: 0;
+  background-color: transparent;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* ==========================================================================
+   OPTIMIZACIÓN DE COLUMNAS PARA TABLA COMPLETA
+   ========================================================================== */
+.attendance-table th,
+.attendance-table td {
+  padding: 10px 8px;
+}
+
+.col-th-docente,
+.col-td-docente {
+  width: 155px;
+  max-width: 155px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.35;
+  word-break: break-word;
+  white-space: normal;
+}
+
+
+/* ==========================================================================
+   DESPLEGADO FLOTANTE DE SELECTS (SIN ENMASCARAMIENTO NI ESPACIO INFERIOR)
+   ========================================================================== */
+.modal-grid-3col,
+.modal-grid-2col {
+  position: relative;
+}
+
+.modal-grid-3col:has(.notes-select-wrapper.is-open),
+.modal-grid-2col:has(.notes-select-wrapper.is-open),
+.form-field-item:has(.notes-select-wrapper.is-open) {
+  z-index: 1000 !important;
+}
+
+.notes-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.notes-select-wrapper.is-open {
+  z-index: 1050 !important;
+}
+
+.custom-select-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+/* Soporte para apertura flotante hacia arriba (dropup) cuando falta espacio abajo */
+.notes-select-wrapper.is-dropup .custom-select-menu {
+  top: auto;
+  bottom: calc(100% + 4px);
+  box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.16), 0 -4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.notes-select-wrapper.is-open .custom-select-menu {
+  display: block;
+}
