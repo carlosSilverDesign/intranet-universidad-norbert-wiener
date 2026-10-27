@@ -822,6 +822,43 @@ body {
   pointer-events: none;
 }
 
+/* --- CLASE PROGRAMADA PENDIENTE EN CELDA BIPARTIDA (AÚN NO SE TOMA LISTA) --- */
+/* Ocultar línea divisoria y mitades cuando aún no tiene asistencia marcada */
+.cell-split:not(:has(.split-attended)):not(:has(.split-absent))::after,
+.cell-split.cell-pending::after,
+.cell-split.status-future::after {
+  display: none !important;
+}
+
+.cell-split:not(:has(.split-attended)):not(:has(.split-absent)) .split-half-top,
+.cell-split:not(:has(.split-attended)):not(:has(.split-absent)) .split-half-bottom,
+.cell-split.cell-pending .split-half-top,
+.cell-split.cell-pending .split-half-bottom {
+  display: none !important;
+}
+
+/* Mostrar punto centrado (•) idéntico a las clases simples programadas */
+.cell-split:not(:has(.split-attended)):not(:has(.split-absent)),
+.cell-split.cell-pending,
+.cell-split.status-future {
+  font-size: 0 !important;
+}
+
+.cell-split:not(:has(.split-attended)):not(:has(.split-absent))::before,
+.cell-split.cell-pending::before,
+.cell-split.status-future::before {
+  content: '•';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748B;
+  line-height: 1;
+  pointer-events: none;
+}
+
 /* Ítem de leyenda para celda dividida */
 .legend-color.legend-split {
   width: 24px;
