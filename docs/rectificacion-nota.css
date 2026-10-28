@@ -282,6 +282,7 @@ html::-webkit-scrollbar-thumb:hover {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   scrollbar-width: thin;
   scrollbar-color: #CBD5E1 transparent;
 }
@@ -311,7 +312,7 @@ html::-webkit-scrollbar-thumb:hover {
 
 .table-flexible-rect {
   width: 100%;
-  min-width: 1060px;
+  min-width: 1280px;
   table-layout: fixed;
   border-collapse: collapse;
   text-align: left;
@@ -319,9 +320,10 @@ html::-webkit-scrollbar-thumb:hover {
 
 .table-flexible-rect th,
 .table-flexible-rect td {
-  padding: 10px 6px;
+  padding: 10px 8px;
   font-size: 12px;
   vertical-align: middle;
+  box-sizing: border-box;
 }
 
 .table-flexible-rect th {
@@ -347,8 +349,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-num,
 .col-td-num {
-  width: 32px;
-  min-width: 32px;
+  width: 38px;
+  min-width: 38px;
   text-align: center;
   font-size: 11.5px;
   color: #64748B;
@@ -356,8 +358,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-tipo,
 .col-td-tipo {
-  width: 95px;
-  min-width: 95px;
+  width: 110px;
+  min-width: 110px;
   font-size: 11.5px;
   font-weight: 600;
   color: #1E293B;
@@ -366,8 +368,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-ticket,
 .col-td-ticket {
-  width: 82px;
-  min-width: 82px;
+  width: 90px;
+  min-width: 90px;
   font-size: 11.5px;
   font-weight: 700;
   color: #0F848F;
@@ -377,8 +379,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-carrera,
 .col-td-carrera {
-  width: 95px;
-  min-width: 95px;
+  width: 120px;
+  min-width: 115px;
   font-size: 10.5px;
   font-weight: 600;
   text-transform: uppercase;
@@ -389,8 +391,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-periodo,
 .col-td-periodo {
-  width: 65px;
-  min-width: 65px;
+  width: 140px;
+  min-width: 135px;
   text-align: center;
   font-size: 11.5px;
   color: #475569;
@@ -399,8 +401,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-solicitante,
 .col-td-solicitante {
-  width: 140px;
-  min-width: 130px;
+  width: 175px;
+  min-width: 165px;
   font-size: 10.5px;
   font-weight: 600;
   text-transform: uppercase;
@@ -411,8 +413,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-seccion,
 .col-td-seccion {
-  width: 68px;
-  min-width: 60px;
+  width: 75px;
+  min-width: 70px;
   text-align: center;
   font-size: 11.5px;
   font-weight: 600;
@@ -422,8 +424,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-curso,
 .col-td-curso {
-  width: 160px;
-  min-width: 150px;
+  width: 220px;
+  min-width: 200px;
   font-size: 11px;
   line-height: 1.25;
   color: #1E293B;
@@ -432,8 +434,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-sesion,
 .col-td-sesion {
-  width: 70px;
-  min-width: 65px;
+  width: 85px;
+  min-width: 80px;
   font-size: 11.5px;
   color: #475569;
   white-space: nowrap;
@@ -441,8 +443,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-eval,
 .col-td-eval {
-  width: 105px;
-  min-width: 100px;
+  width: 135px;
+  min-width: 125px;
   font-size: 11px;
   line-height: 1.25;
   color: #334155;
@@ -451,8 +453,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 .col-th-estado,
 .col-td-estado {
-  width: 92px;
-  min-width: 90px;
+  width: 105px;
+  min-width: 100px;
   text-align: center;
   white-space: nowrap;
 }
@@ -461,7 +463,7 @@ html::-webkit-scrollbar-thumb:hover {
 .col-td-acciones,
 .col-th-detalle,
 .col-td-detalle {
-  width: 56px;
+  width: 60px;
   min-width: 56px;
   text-align: center;
 }

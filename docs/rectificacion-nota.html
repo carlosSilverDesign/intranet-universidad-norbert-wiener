@@ -330,22 +330,22 @@
                 </a>
               </li>
               <li>
-                <a href="examenes.html" class="sidebar-menu-link submenu-level-2">
+                <a href="program-exam.html" class="sidebar-menu-link submenu-level-2">
                   <span class="text">Programación de Exámenes</span>
                 </a>
               </li>
               <li>
-                <a href="alumnos.html" class="sidebar-menu-link submenu-level-2">
+                <a href="listado-alumno.html" class="sidebar-menu-link submenu-level-2">
                   <span class="text">Listado de Alumnos</span>
                 </a>
               </li>
               <li>
-                <a href="alumnos-3er-examen.html" class="sidebar-menu-link submenu-level-2">
+                <a href="tercer-exam.html" class="sidebar-menu-link submenu-level-2">
                   <span class="text">Listado de Alumnos 3er Exámen</span>
                 </a>
               </li>
               <li>
-                <a href="reporte-asistencia.html" class="sidebar-menu-link submenu-level-2">
+                <a href="report-asistencia-alumno.html" class="sidebar-menu-link submenu-level-2">
                   <span class="text">Reporte Asistencia Alumnos</span>
                 </a>
               </li>
@@ -872,14 +872,28 @@
 
         <!-- TABLA FLEXIBLE DE SOLICITUDES -->
         <div class="rect-table-card">
-          <div class="rect-table-scroll-container">
+          <div class="rect-table-scroll-container" tabindex="0" role="region" aria-label="Tabla de solicitudes registradas">
             <table class="rect-table table-flexible-rect" id="solicitudesTable">
+              <colgroup>
+                <col class="col-th-num">
+                <col class="col-th-tipo">
+                <col class="col-th-ticket">
+                <col class="col-th-carrera">
+                <col class="col-th-periodo">
+                <col class="col-th-solicitante">
+                <col class="col-th-seccion">
+                <col class="col-th-curso">
+                <col class="col-th-sesion">
+                <col class="col-th-eval">
+                <col class="col-th-estado">
+                <col class="col-th-acciones col-th-detalle">
+              </colgroup>
               <thead>
                 <tr class="table-row-tb">
                   <th class="col-th-num" scope="col">Nº</th>
                   <th class="col-th-tipo" scope="col">TIPO</th>
                   <th class="col-th-ticket" scope="col">TICKET</th>
-                  <th class="col-th-carrera" scope="col">CARRERA</th>
+                  <th class="col-th-carrera" scope="col">Prog. Acad.</th>
                   <th class="col-th-periodo" scope="col">PERIODO</th>
                   <th class="col-th-solicitante" scope="col">SOLICITANTE</th>
                   <th class="col-th-seccion" scope="col">SECCIÓN</th>

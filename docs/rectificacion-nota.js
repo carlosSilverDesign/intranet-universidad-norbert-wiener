@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tipoSolicitud: 'Extemporánea',
       ticket: '2026.3736',
       carrera: 'ODONTOLOGÍA',
-      periodo: '2026-I',
+      periodo: '2026-I - Marzo',
       solicitante: 'OBREGON FIGUEROA ANA DORILA',
       seccion: 'OD3N3',
       curso: 'OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II',
@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
       tipoSolicitud: 'Rectificación',
       ticket: '2026.3826',
       carrera: 'ODONTOLOGÍA',
-      periodo: '2026-I',
-      solicitante: 'CARLOS JESÚS SILVA SANCHEZ',
+      periodo: '2026-I - Marzo',
+      solicitante: 'OBREGON FIGUEROA ANA DORILA',
       seccion: 'OD3N3',
       curso: 'OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II',
       sesion: 'Práctica 3',
@@ -623,6 +623,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const periodoVal = modalRectPeriodo ? modalRectPeriodo.value : '2026-I';
+      const mesVal = modalRectMes ? modalRectMes.value : '';
+      const fullPeriodo = mesVal ? `${periodoVal} - ${mesVal}` : periodoVal;
       const carreraVal = modalRectCarrera ? modalRectCarrera.options[modalRectCarrera.selectedIndex].text : 'ODONTOLOGÍA';
       const seccionVal = modalRectSeccion ? modalRectSeccion.value : 'OD3N3';
       const cursoVal = modalRectCurso ? modalRectCurso.options[modalRectCurso.selectedIndex].text : 'OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II';
@@ -642,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = {
         tipoSolicitud: 'Rectificación',
-        periodo: periodoVal,
+        periodo: fullPeriodo,
         carrera: carreraVal,
         seccion: seccionVal,
         curso: cursoVal,
@@ -716,6 +718,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const periodoVal = modalExtPeriodo ? modalExtPeriodo.value : '2026-I';
+      const mesVal = modalExtMes ? modalExtMes.value : '';
+      const fullPeriodo = mesVal ? `${periodoVal} - ${mesVal}` : periodoVal;
       const carreraVal = modalExtCarrera ? modalExtCarrera.options[modalExtCarrera.selectedIndex].text : 'ODONTOLOGÍA';
       const seccionVal = modalExtSeccion ? modalExtSeccion.value : 'OD3N3';
       const cursoVal = modalExtCurso ? modalExtCurso.options[modalExtCurso.selectedIndex].text : 'OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II';
@@ -735,7 +739,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = {
         tipoSolicitud: 'Extemporánea',
-        periodo: periodoVal,
+        periodo: fullPeriodo,
         carrera: carreraVal,
         seccion: seccionVal,
         curso: cursoVal,

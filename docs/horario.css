@@ -1,0 +1,1807 @@
+/* ==========================================================================
+   HORARIO DE CLASES - PORTAL DOCENTE UNIVERSIDAD NORBERT WIENER
+   Estilos basados en Design.md y directrices del sistema Intranet 2026.
+   Look & feel institucional con arquitectura de calendario vivo estilo Teams.
+   Cero variables CSS, comentarios técnicos en español.
+   ========================================================================== */
+
+/* ==========================================================================
+   LAYOUT PRINCIPAL Y CONTENEDOR FLEXIBLE
+   Separación entre main y main-content-layout: exactamente 24px a ambos lados (left - right)
+   ========================================================================== */
+.main-content-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+  padding: 1.5rem 24px;
+  box-sizing: border-box;
+}
+
+/* Contenedor principal de la vista (flexible con ancho máximo para la malla horaria) */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   1. CABECERA DE LA PÁGINA (PAGE HEADER FLEX)
+   ========================================================================== */
+.schedule-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 52px;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.schedule-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.schedule-header-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+.schedule-header-icon-svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.schedule-header-titles h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1F1F1F;
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+
+.schedule-header-titles p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Divisor de cabecera estandarizado (Consistencia Gestión Académica) */
+.header-divider {
+  border: none;
+  border-top: 1px solid #E2E8F0;
+  margin: 8px 0 0 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.schedule-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.schedule-period-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.schedule-period-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222222;
+  white-space: nowrap;
+}
+
+.schedule-period-select-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.schedule-period-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #FFFFFF;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  padding: 10px 40px 10px 16px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222222;
+  cursor: pointer;
+  outline: none;
+  min-width: 150px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.schedule-period-select:focus {
+  border-color: #0F848F;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.15);
+}
+
+.schedule-period-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #222222;
+  display: flex;
+  align-items: center;
+}
+
+.btn-print-schedule {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0F848F;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-print-schedule:hover {
+  background-color: #F0FAFA;
+  border-color: #0F848F;
+}
+
+/* ==========================================================================
+   2. BARRA DE HERRAMIENTAS DEL CALENDARIO VIVO (DESKTOP)
+   ========================================================================== */
+.calendar-live-toolbar {
+  width: 100%;
+  max-width: 1400px;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+}
+
+.calendar-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-cal-today {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  background-color: #F4F6F8;
+  border: 1px solid #C6CFD7;
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #222222;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cal-today:hover {
+  background-color: #0F848F;
+  border-color: #0F848F;
+  color: #FFFFFF;
+}
+
+.btn-cal-arrow {
+  width: 36px;
+  height: 36px;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #404040;
+  transition: all 0.2s ease;
+}
+
+.btn-cal-arrow:hover {
+  background-color: #F4F6F8;
+  border-color: #0F848F;
+  color: #0F848F;
+}
+
+/* Selector desplegable de rango de fechas */
+.calendar-date-picker-wrap {
+  position: relative;
+}
+
+.btn-date-range-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-date-range-dropdown:hover,
+.btn-date-range-dropdown.active {
+  background-color: #F4F6F8;
+  border-color: #C6CFD7;
+}
+
+.btn-date-range-dropdown svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-date-range-dropdown.active svg {
+  transform: rotate(180deg);
+}
+
+/* Popup del Mini Calendario Desplegable (Referencia Teams) */
+.mini-calendar-popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 150;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: none;
+  padding: 16px;
+  gap: 16px;
+  width: 480px;
+}
+
+.mini-calendar-popup.show {
+  display: flex;
+  animation: fadeInPopup 0.2s ease-out;
+}
+
+@keyframes fadeInPopup {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mini-cal-left-pane {
+  flex: 1.2;
+  border-right: 1px solid #E2E8F0;
+  padding-right: 14px;
+}
+
+.mini-cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.mini-cal-month-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.mini-cal-nav-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.mini-cal-nav-btn {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #E2E8F0;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #5B6E80;
+}
+
+.mini-cal-nav-btn:hover {
+  background-color: #F4F6F8;
+  color: #0F848F;
+}
+
+.mini-cal-grid-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.mini-cal-weekday {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9AA6B2;
+  padding: 4px 0;
+}
+
+.mini-cal-day-cell {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #222222;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.mini-cal-day-cell:hover {
+  background-color: #E6F3F4;
+  color: #0F848F;
+}
+
+.mini-cal-day-cell.other-month {
+  color: #CBD5E1;
+}
+
+.mini-cal-day-cell.selected-week {
+  background-color: #F0FAFA;
+  border-radius: 4px;
+}
+
+.mini-cal-day-cell.today-live {
+  background-color: #0F848F !important;
+  color: #FFFFFF !important;
+  font-weight: 700;
+}
+
+/* Panel derecho del popup: Selector de Mes y Año */
+.mini-cal-right-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mini-cal-year-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.mini-cal-year-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.mini-cal-months-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.mini-cal-month-pill {
+  padding: 6px 4px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #404040;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mini-cal-month-pill:hover {
+  background-color: #F4F6F8;
+  color: #0F848F;
+}
+
+.mini-cal-month-pill.active {
+  background-color: #E6F3F4;
+  color: #0F848F;
+  font-weight: 700;
+}
+
+.mini-cal-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.mini-cal-quick-today {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F848F;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.mini-cal-quick-today:hover {
+  text-decoration: underline;
+}
+
+/* Filtros rápidos de contenido */
+.calendar-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cal-filter-btn {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  border: 1px solid #C6CFD7;
+  background-color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #5B6E80;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.cal-filter-btn:hover {
+  border-color: #0F848F;
+  color: #0F848F;
+}
+
+.cal-filter-btn.active {
+  background-color: #0F848F;
+  border-color: #0F848F;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.cal-filter-btn.filter-conflict {
+  border-color: #F59E0B;
+  color: #B45309;
+  background-color: #FFFBEB;
+}
+
+.cal-filter-btn.filter-conflict.active {
+  background-color: #F59E0B;
+  border-color: #F59E0B;
+  color: #FFFFFF;
+}
+
+.cal-conflict-count {
+  background-color: #EF4444;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 1px 6px;
+}
+
+/* Conmutador de Vistas (Semana / Mes) */
+.calendar-view-switcher {
+  display: inline-flex;
+  background-color: #F4F6F8;
+  border: 1px solid #C6CFD7;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.btn-view-toggle {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5B6E80;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.btn-view-toggle:hover {
+  color: #222222;
+}
+
+.btn-view-toggle.active {
+  background-color: #FFFFFF;
+  color: #0F848F;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   3. BANNER DE ESTADO Y CASUÍSTICA ACADÉMICA EN VIVO
+   ========================================================================== */
+.schedule-alert-banner {
+  background-color: #FFFBEB;
+  border: 1px solid #FCD34D;
+  border-left: 4px solid #F59E0B;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.alert-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.alert-banner-icon {
+  color: #D97706;
+  display: flex;
+  align-items: center;
+}
+
+.alert-banner-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #92400E;
+}
+
+.alert-banner-text strong {
+  font-weight: 700;
+}
+
+.btn-resolve-conflict {
+  background-color: #FFFFFF;
+  border: 1px solid #D97706;
+  color: #B45309;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.btn-resolve-conflict:hover {
+  background-color: #F59E0B;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   4. GRILLA PRINCIPAL DEL HORARIO SEMANAL EN DESKTOP
+   ========================================================================== */
+.schedule-grid-container {
+  width: 100%;
+  max-width: 1400px;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin: 0 auto 1.5rem auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Cabecera de días (Fila Superior) */
+.schedule-grid-header {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #C6CFD7;
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+}
+
+.grid-header-cell {
+  padding: 12px 8px;
+  text-align: center;
+  border-right: 1px solid #E2E8F0;
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+.grid-header-cell:last-child {
+  border-right: none;
+}
+
+.grid-header-cell.time-corner-cell {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5B6E80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F8FAFC;
+}
+
+.grid-header-cell .day-name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #5B6E80;
+  text-transform: capitalize;
+}
+
+.grid-header-cell .day-number {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222222;
+  margin-top: 2px;
+}
+
+/* Indicador de Día Actual (Today highlight - Estilo Teams / Wiener) */
+.grid-header-cell.today-column-header {
+  background-color: #F0FAFA;
+}
+
+.grid-header-cell.today-column-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #0F848F;
+}
+
+.grid-header-cell.today-column-header .day-name {
+  color: #0F848F;
+  font-weight: 700;
+}
+
+.grid-header-cell.today-column-header .day-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  border-radius: 50%;
+  margin: 2px auto 0;
+}
+
+/* Fila de eventos de todo el día (All-day / Hitos) */
+.schedule-allday-row {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  background-color: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  min-height: 36px;
+  align-items: center;
+}
+
+.allday-label-cell {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9AA6B2;
+  text-align: center;
+  border-right: 1px solid #E2E8F0;
+  padding: 6px 4px;
+}
+
+.allday-content-cell {
+  padding: 4px 6px;
+  border-right: 1px solid #E2E8F0;
+}
+
+.allday-content-cell:last-child {
+  border-right: none;
+}
+
+.allday-badge {
+  background-color: #E6F3F4;
+  border-left: 3px solid #0F848F;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #0F848F;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   5. CUERPO DE LA MALLA HORARIA (HOURLY BODY & SLOTS)
+   ========================================================================== */
+.schedule-grid-body-wrap {
+  position: relative;
+  overflow-y: auto;
+  max-height: 820px;
+}
+
+.schedule-grid-body {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+/* Columna de Horas a la izquierda */
+.schedule-time-scale {
+  background-color: #FAFCFD;
+  border-right: 1px solid #E2E8F0;
+  user-select: none;
+}
+
+.time-scale-slot {
+  height: 64px;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 6px 8px 0 0;
+  text-align: right;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #5B6E80;
+  box-sizing: border-box;
+}
+
+/* Columnas de los Días */
+.schedule-day-column {
+  border-right: 1px solid #E2E8F0;
+  position: relative;
+  min-height: 1024px;
+}
+
+.schedule-day-column:last-child {
+  border-right: none;
+}
+
+.schedule-day-column.today-column {
+  background-color: #FAFEFE;
+}
+
+/* Líneas de cuadrícula dentro de cada día */
+.day-slot-grid-line {
+  height: 64px;
+  border-bottom: 1px solid #E2E8F0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Línea media (media hora - discontinua) */
+.day-slot-grid-line::after {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 0;
+  right: 0;
+  border-bottom: 1px dashed #EEF2F6;
+}
+
+/* ==========================================================================
+   6. LÍNEA DE HORA ACTUAL EN VIVO (LIVE TIME INDICATOR)
+   ========================================================================== */
+.live-time-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #0F848F;
+  z-index: 35;
+  pointer-events: none;
+}
+
+.live-time-indicator::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  background-color: #0F848F;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.25);
+}
+
+.live-time-chip {
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   7. DISEÑO DE LOS CARDS (LOOK & FEEL WIENER OPTIMIZADO)
+   ========================================================================== */
+.schedule-card {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  background-color: #F4FBFC;
+  border: 1px solid #C6CFD7;
+  border-left: 4px solid #0F848F;
+  border-radius: 8px;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s, border-color 0.2s;
+  z-index: 10;
+}
+
+.schedule-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 132, 143, 0.16);
+  border-color: #0F848F;
+  z-index: 25;
+}
+
+/* Card en vivo / En curso */
+.schedule-card.live-now {
+  box-shadow: 0 0 0 2px #0F848F, 0 4px 12px rgba(15, 132, 143, 0.2);
+}
+
+.live-badge-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #278B52;
+  background-color: #E7F8EF;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  width: fit-content;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #278B52;
+  border-radius: 50%;
+  animation: pulseAnimation 1.5s infinite;
+}
+
+@keyframes pulseAnimation {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+/* Tipografía y jerarquía del Card */
+.card-location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: 3px;
+}
+
+.card-room-text,
+.card-campus-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  color: #5B6E80;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-code {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0F848F;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+}
+
+.card-course-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  color: #222222;
+  text-transform: uppercase;
+  line-height: 1.25;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-footer-tags {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.pill-session-type {
+  display: inline-block;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: #5B6E80;
+  white-space: nowrap;
+}
+
+.pill-modality-presencial {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 1px 6px;
+}
+
+.pill-modality-virtual {
+  background-color: #0EA5E9;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 1px 6px;
+}
+
+/* Evento DGDD (Educación con IA) */
+.schedule-card.card-event-dgdd {
+  background-color: #F8F5FF;
+  border-left-color: #7C3AED;
+  border-color: #D8B4FE;
+}
+
+.schedule-card.card-event-dgdd:hover {
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.16);
+  border-color: #7C3AED;
+}
+
+.schedule-card.card-event-dgdd .card-code {
+  color: #7C3AED;
+}
+
+.schedule-card.card-event-dgdd .pill-session-type {
+  border-color: #C084FC;
+  background-color: #FAF5FF;
+  color: #6B21A8;
+}
+
+/* Solapamiento / Cruce de eventos */
+.schedule-card.overlap-left {
+  left: 2px;
+  right: auto;
+  width: calc(50% - 4px);
+  border-left-color: #F59E0B;
+  background-color: #FFFDF5;
+  border-color: #FCD34D;
+}
+
+.schedule-card.overlap-right {
+  left: calc(50% + 2px);
+  right: auto;
+  width: calc(50% - 4px);
+  border-left-color: #F59E0B;
+  background-color: #FFFDF5;
+  border-color: #FCD34D;
+}
+
+.schedule-card.overlap-left:hover,
+.schedule-card.overlap-right:hover {
+  border-color: #D97706;
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.2);
+  z-index: 30;
+  width: calc(100% - 8px);
+  left: 4px;
+}
+
+.conflict-warning-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #FEF3C7;
+  color: #92400E;
+  font-family: 'Roboto', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  width: fit-content;
+}
+
+/* ==========================================================================
+   8. VERSIÓN MOBILE ESPECÍFICA (IDÉNTICA A REFERENCIA ADJUNTA)
+   ========================================================================== */
+/* Por defecto oculta en Desktop */
+.schedule-mobile-view {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* En móviles ocultamos la malla ancha de 7 columnas de desktop */
+  .schedule-grid-container {
+    display: none !important;
+  }
+
+  .calendar-live-toolbar {
+    display: none !important;
+  }
+
+  .schedule-header-flex {
+    margin-bottom: 0.5rem;
+  }
+
+  .schedule-header-right {
+    display: none; /* Ocultamos controles redundantes de desktop */
+  }
+
+  /* Mostramos la vista móvil dedicada */
+  .schedule-mobile-view {
+    display: block;
+    background-color: #FFFFFF;
+    border: 1px solid #C6CFD7;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Barra superior móvil: Mes + Pills de vista (Agenda / Día) */
+  .mobile-schedule-topbar {
+    padding: 14px 16px 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #F1F5F9;
+  }
+
+  .mobile-month-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #222222;
+    text-transform: lowercase;
+  }
+
+  .mobile-view-pill-group {
+    display: inline-flex;
+    background-color: #F4F6F8;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 2px;
+  }
+
+  .btn-mobile-pill {
+    border: none;
+    background: transparent;
+    padding: 5px 14px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #5B6E80;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-mobile-pill.active {
+    background-color: #FFFFFF;
+    color: #0F848F;
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Barra de días de la semana (D L M M J V S + 11 12 13 14 15 16 17) */
+  .mobile-week-strip {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px 8px;
+    border-bottom: 1px solid #E2E8F0;
+    background-color: #FFFFFF;
+  }
+
+  .mobile-strip-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .mobile-strip-letter {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #5B6E80;
+  }
+
+  .mobile-strip-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222222;
+    transition: all 0.2s;
+  }
+
+  .mobile-strip-day:hover .mobile-strip-number {
+    background-color: #E6F3F4;
+    color: #0F848F;
+  }
+
+  /* Día activo seleccionado en el strip móvil */
+  .mobile-strip-day.active .mobile-strip-number {
+    background-color: #0F848F;
+    color: #FFFFFF;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(15, 132, 143, 0.35);
+  }
+
+  /* Tirador visual y Fila de Todo el día */
+  .mobile-drag-handle {
+    width: 36px;
+    height: 4px;
+    background-color: #CBD5E1;
+    border-radius: 2px;
+    margin: 8px auto 6px auto;
+  }
+
+  .mobile-allday-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid #E2E8F0;
+    background-color: #FAFCFD;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #5B6E80;
+    gap: 12px;
+  }
+
+  .mobile-allday-number {
+    font-weight: 700;
+    color: #9AA6B2;
+    min-width: 14px;
+    text-align: right;
+  }
+
+  .mobile-allday-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Cuadrícula horaria de un solo día en móvil */
+  .mobile-day-timeline-wrap {
+    position: relative;
+    overflow-y: auto;
+    max-height: 580px;
+    background-color: #FFFFFF;
+  }
+
+  .mobile-day-timeline {
+    position: relative;
+    min-height: 1024px;
+    padding-left: 64px; /* Espacio para la columna de horas */
+  }
+
+  /* Escala de horas fija a la izquierda en móvil */
+  .mobile-timeline-hours {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    bottom: 0;
+    border-right: 1px solid #E2E8F0;
+    background-color: #FAFCFD;
+  }
+
+  .mobile-hour-slot {
+    height: 64px;
+    padding: 6px 6px 0 0;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #5B6E80;
+    border-bottom: 1px solid #E2E8F0;
+    box-sizing: border-box;
+  }
+
+  /* Líneas de fondo del día en móvil */
+  .mobile-day-grid-lines {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    right: 0;
+    bottom: 0;
+  }
+
+  .mobile-grid-line {
+    height: 64px;
+    border-bottom: 1px solid #E2E8F0;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .mobile-grid-line::after {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: 0;
+    right: 0;
+    border-bottom: 1px dashed #F1F5F9;
+  }
+
+  /* Línea de hora en vivo en móvil (Exacta a la imagen: 12:20 p.m. ●──────) */
+  .mobile-live-time-indicator {
+    position: absolute;
+    left: 4px;
+    right: 0;
+    height: 2px;
+    background-color: #E24B4B;
+    z-index: 35;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-live-time-indicator::before {
+    content: '';
+    position: absolute;
+    left: 56px;
+    width: 8px;
+    height: 8px;
+    background-color: #E24B4B;
+    border-radius: 50%;
+  }
+
+  .mobile-live-time-label {
+    position: absolute;
+    left: 2px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #E24B4B;
+    white-space: nowrap;
+  }
+
+  /* Cards dentro del timeline móvil */
+  .mobile-cards-layer {
+    position: absolute;
+    top: 0;
+    left: 64px;
+    right: 8px;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .mobile-cards-layer .schedule-card {
+    pointer-events: auto;
+    left: 4px;
+    right: 4px;
+  }
+
+  /* Vista Agenda Móvil (Lista vertical cuando se activa la píldora Agenda) */
+  .mobile-agenda-list {
+    display: none;
+    padding: 12px 14px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobile-agenda-list.active {
+    display: flex;
+  }
+
+  .agenda-card-item {
+    background-color: #FFFFFF;
+    border: 1px solid #C6CFD7;
+    border-left: 4px solid #0F848F;
+    border-radius: 8px;
+    padding: 12px 14px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+  }
+
+  .agenda-card-item.item-dgdd {
+    border-left-color: #7C3AED;
+    background-color: #FAF5FF;
+  }
+
+  .agenda-card-item.item-conflict {
+    border-left-color: #F59E0B;
+    background-color: #FFFBEB;
+  }
+
+  .agenda-card-time {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0F848F;
+    margin-bottom: 2px;
+  }
+
+  .agenda-card-item.item-dgdd .agenda-card-time {
+    color: #7C3AED;
+  }
+
+  .agenda-card-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 4px;
+  }
+
+  .agenda-card-meta {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #5B6E80;
+    margin-bottom: 6px;
+  }
+}
+
+/* ==========================================================================
+   9. VISTA MENSUAL (HISTÓRICO Y CALENDARIO COMPLETO)
+   ========================================================================== */
+.monthly-calendar-container {
+  display: none;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 1.5rem auto;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+}
+
+.monthly-calendar-container.active {
+  display: block;
+  animation: fadeInMonthly 0.25s ease-out;
+}
+
+@keyframes fadeInMonthly {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.monthly-weekdays-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #F8FAFC;
+  border-bottom: 1px solid #C6CFD7;
+}
+
+.monthly-weekday-col {
+  padding: 12px 8px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #222222;
+  border-right: 1px solid #E2E8F0;
+}
+
+.monthly-weekday-col:last-child {
+  border-right: none;
+}
+
+.monthly-days-matrix {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(115px, auto);
+}
+
+.monthly-day-cell {
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 8px 6px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background-color 0.15s;
+}
+
+.monthly-day-cell:nth-child(7n) {
+  border-right: none;
+}
+
+.monthly-day-cell:hover {
+  background-color: #F8FAFC;
+}
+
+.monthly-day-cell.other-month {
+  background-color: #F8FAFC;
+  opacity: 0.6;
+}
+
+.monthly-day-cell.current-day {
+  background-color: #F0FAFA;
+}
+
+.monthly-day-number {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #404040;
+  margin-bottom: 2px;
+}
+
+.monthly-day-cell.current-day .monthly-day-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  border-radius: 50%;
+}
+
+.monthly-event-chip {
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  border-left: 3px solid #0F848F;
+  background-color: #E6F3F4;
+  color: #166A74;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.monthly-event-chip:hover {
+  transform: translateX(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.monthly-event-chip.chip-training {
+  border-left-color: #7C3AED;
+  background-color: #F3E8FF;
+  color: #6B21A8;
+}
+
+.monthly-event-chip.chip-conflict {
+  border-left-color: #F59E0B;
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+/* ==========================================================================
+   10. MODAL DE DETALLE ACCESIBLE
+   ========================================================================== */
+.schedule-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  z-index: 210;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.schedule-modal-backdrop.open {
+  display: flex;
+  animation: fadeInModal 0.2s ease-out;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.schedule-modal-card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  max-width: 580px;
+  width: 100%;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  animation: slideUpModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpModal {
+  from { transform: translateY(20px); }
+  to { transform: translateY(0); }
+}
+
+.schedule-modal-header {
+  padding: 20px 24px;
+  background-color: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.modal-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.badge-medicina {
+  background-color: #E6F3F4;
+  color: #0F848F;
+}
+
+.badge-training {
+  background-color: #F3E8FF;
+  color: #7C3AED;
+}
+
+.badge-conflict {
+  background-color: #FEF3C7;
+  color: #B45309;
+}
+
+.modal-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.modal-code-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #5B6E80;
+  margin-top: 4px;
+}
+
+.btn-close-modal {
+  background: none;
+  border: none;
+  color: #5B6E80;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-close-modal:hover {
+  background-color: #E2E8F0;
+  color: #222222;
+}
+
+.schedule-modal-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.modal-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.modal-info-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5B6E80;
+}
+
+.modal-info-value {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222222;
+}
+
+.modal-alert-conflict-box {
+  background-color: #FFFBEB;
+  border: 1px solid #FCD34D;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.conflict-box-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #92400E;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.conflict-box-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #78350F;
+  line-height: 1.4;
+}
+
+.schedule-modal-footer {
+  padding: 16px 24px;
+  background-color: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-modal-secondary {
+  height: 40px;
+  padding: 0 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #C6CFD7;
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #404040;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-modal-secondary:hover {
+  background-color: #F4F6F8;
+  border-color: #9AA6B2;
+}
+
+.btn-modal-primary {
+  height: 40px;
+  padding: 0 20px;
+  background-color: #0F848F;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-modal-primary:hover {
+  background-color: #0b6770;
+}
+
+/* ==========================================================================
+   11. PIE DE PÁGINA INSTITUCIONAL (.main-footer)
+   Migrado desde asistencia-alumno.css para eliminar dependencia
+   ========================================================================== */
+.main-footer {
+  text-align: center;
+  padding: 1.5rem 0 2rem 0;
+  font-size: 13px;
+  color: #64748B;
+  border-top: 1px solid #E2E8F0;
+  margin-top: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   12. AJUSTES RESPONSIVOS DEL LAYOUT
+   ========================================================================== */
+@media (max-width: 992px) {
+  .main-content-layout {
+    margin-left: 0;
+    padding: 1rem 16px;
+  }
+}

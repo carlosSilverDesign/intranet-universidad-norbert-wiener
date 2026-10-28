@@ -15,8 +15,8 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
 - [ ] **Paso 3: Mis Datos (Perfil Docente)**
   - Estado: Pendiente
   - Archivos: `Docente/mis-datos.html`, `Docente/mis-datos.css`, `Docente/mis-datos.js`
-- [ ] **Paso 4: Horario de Clases**
-  - Estado: Pendiente
+- [x] **Paso 4: Horario de Clases**
+  - Estado: Completado (2026-10-13)
   - Archivos: `Docente/horario.html`, `Docente/horario.css`, `Docente/horario.js`
 - [ ] **Paso 5: Alumnos y Cursos Asignados**
   - Estado: Pendiente
