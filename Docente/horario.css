@@ -5,11 +5,28 @@
    Cero variables CSS, comentarios técnicos en español.
    ========================================================================== */
 
-/* Contenedor principal de la vista */
+/* ==========================================================================
+   LAYOUT PRINCIPAL Y CONTENEDOR FLEXIBLE
+   Separación entre main y main-content-layout: exactamente 24px a ambos lados (left - right)
+   ========================================================================== */
+.main-content-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+  padding: 1.5rem 24px;
+  box-sizing: border-box;
+}
+
+/* Contenedor principal de la vista (flexible con ancho máximo para la malla horaria) */
 .main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
   box-sizing: border-box;
 }
 
@@ -21,8 +38,11 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  min-height: 52px;
   gap: 20px;
-  margin-bottom: 1rem;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .schedule-header-left {
@@ -36,35 +56,44 @@
   height: 44px;
   min-width: 44px;
   min-height: 44px;
-  border-radius: 8px;
-  background-color: #E6F3F4;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0F848F;
+  background-color: transparent;
+  flex-shrink: 0;
 }
 
-.schedule-header-icon svg {
-  width: 26px;
-  height: 26px;
-  stroke: #0F848F;
+.schedule-header-icon-svg {
+  width: 36px;
+  height: 36px;
+  display: block;
 }
 
 .schedule-header-titles h1 {
   font-family: 'Lato', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #222222;
-  margin: 0;
+  color: #1F1F1F;
+  margin: 0 0 4px 0;
   line-height: 1.25;
 }
 
 .schedule-header-titles p {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  color: #5B6E80;
-  margin-top: 4px;
-  margin-bottom: 0;
+  font-weight: 400;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Divisor de cabecera estandarizado (Consistencia Gestión Académica) */
+.header-divider {
+  border: none;
+  border-top: 1px solid #E2E8F0;
+  margin: 8px 0 0 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .schedule-header-right {
@@ -151,17 +180,20 @@
    2. BARRA DE HERRAMIENTAS DEL CALENDARIO VIVO (DESKTOP)
    ========================================================================== */
 .calendar-live-toolbar {
+  width: 100%;
+  max-width: 1400px;
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 12px 18px;
-  margin-bottom: 1rem;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
 }
 
 .calendar-nav-controls {
@@ -598,13 +630,16 @@
    4. GRILLA PRINCIPAL DEL HORARIO SEMANAL EN DESKTOP
    ========================================================================== */
 .schedule-grid-container {
+  width: 100%;
+  max-width: 1400px;
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem auto;
   position: relative;
+  box-sizing: border-box;
 }
 
 /* Cabecera de días (Fila Superior) */
@@ -1394,12 +1429,15 @@
    ========================================================================== */
 .monthly-calendar-container {
   display: none;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 1.5rem auto;
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  margin-bottom: 1.5rem;
+  box-sizing: border-box;
 }
 
 .monthly-calendar-container.active {
@@ -1741,4 +1779,29 @@
 
 .btn-modal-primary:hover {
   background-color: #0b6770;
+}
+
+/* ==========================================================================
+   11. PIE DE PÁGINA INSTITUCIONAL (.main-footer)
+   Migrado desde asistencia-alumno.css para eliminar dependencia
+   ========================================================================== */
+.main-footer {
+  text-align: center;
+  padding: 1.5rem 0 2rem 0;
+  font-size: 13px;
+  color: #64748B;
+  border-top: 1px solid #E2E8F0;
+  margin-top: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   12. AJUSTES RESPONSIVOS DEL LAYOUT
+   ========================================================================== */
+@media (max-width: 992px) {
+  .main-content-layout {
+    margin-left: 0;
+    padding: 1rem 16px;
+  }
 }

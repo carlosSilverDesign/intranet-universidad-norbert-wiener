@@ -1,0 +1,602 @@
+/* ==========================================================================
+   PROGRAMACIÓN DE EXÁMENES - PORTAL DOCENTE UNIVERSIDAD NORBERT WIENER
+   Componentes: Selector de Periodo Flotante, Tapbar Parcial/Final,
+                Tabla Estilo Cards y Guía de Locales Asignados
+   ========================================================================== */
+
+.main-content {
+  width: 100%;
+  max-width: 1082px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    max-width: 1082px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* --- CABECERA DE PÁGINA (.program-header-flex) --- */
+.program-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 52px;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.program-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.program-header-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+.program-header-icon-svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.program-header-titles h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1F1F1F;
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+
+.program-header-titles p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* --- SELECTOR DE PERIODO EN CABECERA (.program-header-right) --- */
+.program-header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.program-period-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1F1F1F;
+  white-space: nowrap;
+}
+
+.program-period-select {
+  width: 130px;
+  position: relative;
+}
+
+/* --- SELECT PERSONALIZADO FLOTANTE --- */
+.custom-select-container {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease;
+  user-select: none;
+}
+
+.custom-select-trigger:hover {
+  border-color: #94A3B8;
+  background-color: #F8FAFC;
+}
+
+.custom-select-container.is-open .custom-select-trigger {
+  border-color: #0F848F;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.12);
+  background-color: #FFFFFF;
+}
+
+.custom-select-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1F1F1F;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-select-arrow {
+  color: #1F1F1F;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.2s ease;
+}
+
+.custom-select-container.is-open .custom-select-arrow {
+  transform: rotate(180deg);
+  color: #0F848F;
+}
+
+/* Menú Dropdown Flotante */
+.custom-dropdown-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.2s;
+  padding: 4px 0;
+  pointer-events: none;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: #CBD5E1;
+  border-radius: 4px;
+}
+
+.custom-select-container.is-open .custom-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.custom-dropdown-menu.dropdown-below {
+  top: calc(100% + 6px);
+  bottom: auto;
+}
+
+.custom-dropdown-menu.dropdown-above {
+  bottom: calc(100% + 6px);
+  top: auto;
+}
+
+.custom-dropdown-menu.align-right {
+  left: auto;
+  right: 0;
+  min-width: 130px;
+}
+
+.custom-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 14px;
+  font-family: 'Lato', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+}
+
+.custom-option:hover {
+  background-color: #F1F5F9;
+  color: #0F848F;
+}
+
+.custom-option.selected {
+  background-color: #E6F3F4;
+  color: #0F848F;
+}
+
+.custom-option .option-check {
+  display: none;
+  stroke: #0F848F;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.custom-option.selected .option-check {
+  display: block;
+}
+
+/* Divisor de cabecera */
+.header-divider {
+  border: none;
+  border-top: 1px solid #E2E8F0;
+  margin: 8px 0 0 0;
+  width: 100%;
+}
+
+/* --- TAPBAR / TABS (.program-tabs-section) --- */
+.program-tabs-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+}
+
+.program-tabs-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 48px;
+  position: relative;
+}
+
+.program-tab-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 16px 14px 16px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748B;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition: color 0.2s ease;
+}
+
+.program-tab-btn:hover {
+  color: #0F848F;
+}
+
+.program-tab-btn.active {
+  color: #1F1F1F;
+  font-weight: 700;
+}
+
+.program-tab-btn .tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #CBD5E1;
+  border-radius: 2px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.program-tab-btn.active .tab-indicator {
+  height: 3px;
+  background-color: #0F848F;
+  box-shadow: 0 1px 3px rgba(15, 132, 143, 0.3);
+}
+
+/* --- TABLA DEL ROL DE EXÁMENES (.program-table-card) --- */
+.program-table-card {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.program-table-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+}
+
+.program-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Encabezado de Tabla */
+.program-table thead th {
+  background-color: #E4E8EC;
+  color: #5A6A80;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 16px;
+  border: none;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.program-table thead th:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.program-table thead th:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.program-table th.th-dia {
+  width: 140px;
+}
+
+.program-table th.th-hora {
+  width: 120px;
+}
+
+.program-table th.th-curso {
+  min-width: 250px;
+}
+
+.program-table th.th-seccion {
+  width: 90px;
+}
+
+.program-table th.th-aula {
+  width: 90px;
+}
+
+.program-table th.th-sede {
+  width: 70px;
+  text-align: center;
+}
+
+.program-table th.th-docente {
+  min-width: 140px;
+}
+
+.program-table th.th-apoyo {
+  min-width: 140px;
+}
+
+/* Filas de Tabla Estilo Cards */
+.program-table tbody tr {
+  background-color: #FFFFFF;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.program-table tbody tr:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.program-table tbody td {
+  padding: 15px 16px;
+  font-size: 13.5px;
+  color: #1F1F1F;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.program-table tbody td:first-child {
+  border-left: 1px solid #E2E8F0;
+  border-radius: 8px 0 0 8px;
+}
+
+.program-table tbody td:last-child {
+  border-right: 1px solid #E2E8F0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Celdas Específicas */
+.program-table td.td-dia {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  color: #534AB7;
+}
+
+.program-table td.td-hora {
+  font-weight: 500;
+  color: #334155;
+}
+
+.program-table td.td-curso {
+  font-weight: 700;
+  color: #1F1F1F;
+}
+
+.program-table td.td-seccion {
+  font-weight: 700;
+  color: #1F1F1F;
+}
+
+.program-table td.td-aula {
+  font-weight: 700;
+  color: #0F848F;
+}
+
+.program-table td.td-sede {
+  font-weight: 700;
+  color: #1F1F1F;
+  text-align: center;
+}
+
+.program-table td.td-docente {
+  color: #334155;
+  font-weight: 500;
+}
+
+.program-table td.td-apoyo {
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Estado Vacío de Tabla */
+.program-empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+}
+
+.program-empty-state p {
+  color: #64748B;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* --- GUÍA DE LOCALES ASIGNADOS (.program-locales-card) --- */
+.program-locales-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 22px 26px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  margin-top: 0;
+}
+
+.program-locales-header h2 {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1F1F1F;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.program-locales-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 40px;
+  padding-top: 4px;
+}
+
+.program-locales-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.program-locale-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.program-locale-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 68px;
+  height: 26px;
+  padding: 0 10px;
+  background-color: #E6EAED;
+  color: #0F848F;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.program-locale-badge.svir {
+  background-color: #D7F0FD;
+  color: #0284C7;
+}
+
+.program-locale-address {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13.5px;
+  color: #475569;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+  .program-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .program-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .program-locales-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .program-tabs-container {
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .program-table td.td-dia {
+    position: sticky;
+    left: 0;
+    background-color: #FFFFFF;
+    z-index: 5;
+    box-shadow: 2px 0 4px -2px rgba(0, 0, 0, 0.08);
+  }
+
+  .program-table thead th.th-dia {
+    position: sticky;
+    left: 0;
+    background-color: #E4E8EC;
+    z-index: 15;
+  }
+
+  .program-table tbody tr:hover td.td-dia {
+    background-color: #F8FAFC;
+  }
+}
+
+@media (max-width: 580px) {
+  .program-header-titles h1 {
+    font-size: 20px;
+  }
+
+  .program-header-titles p {
+    font-size: 13px;
+  }
+
+  .program-tabs-container {
+    gap: 12px;
+  }
+
+  .program-tab-btn {
+    font-size: 14px;
+    padding: 8px 10px 12px 10px;
+  }
+}

@@ -12,7 +12,6 @@
     rel="stylesheet">
   <link rel="stylesheet" href="navbar.css">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="asistencia-alumno.css">
   <link rel="stylesheet" href="horario.css">
 </head>
 
@@ -339,22 +338,22 @@
                 </a>
               </li>
               <li>
-                <a href="examenes.html" class="sidebar-menu-link submenu-level-2">
+                <a href="program-exam.html" class="sidebar-menu-link submenu-level-2">
                   <span class="text">Programación de Exámenes</span>
                 </a>
               </li>
               <li>
-                <a href="alumnos.html" class="sidebar-menu-link submenu-level-2">
+                <a href="listado-alumno.html" class="sidebar-menu-link submenu-level-2">
                   <span class="text">Listado de Alumnos</span>
                 </a>
               </li>
               <li>
-                <a href="alumnos-3er-examen.html" class="sidebar-menu-link submenu-level-2">
+                <a href="tercer-exam.html" class="sidebar-menu-link submenu-level-2">
                   <span class="text">Listado de Alumnos 3er Exámen</span>
                 </a>
               </li>
               <li>
-                <a href="reporte-asistencia.html" class="sidebar-menu-link submenu-level-2">
+                <a href="report-asistencia-alumno.html" class="sidebar-menu-link submenu-level-2">
                   <span class="text">Reporte Asistencia Alumnos</span>
                 </a>
               </li>
@@ -734,11 +733,10 @@
       <header class="schedule-header-flex">
         <div class="schedule-header-left">
           <div class="schedule-header-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path
+                d="M8.84623 35.8333C8.00429 35.8333 7.29165 35.5417 6.70831 34.9583C6.12498 34.375 5.83331 33.6624 5.83331 32.8204V10.5129C5.83331 9.67097 6.12498 8.95834 6.70831 8.375C7.29165 7.79167 8.00429 7.5 8.84623 7.5H11.1537V5.25625C11.1537 4.89098 11.2761 4.58597 11.5208 4.34125C11.7655 4.09681 12.0705 3.97459 12.4358 3.97459C12.8014 3.97459 13.1064 4.09681 13.3508 4.34125C13.5955 4.58597 13.7179 4.89098 13.7179 5.25625V7.5H26.3462V5.22459C26.3462 4.86986 26.4658 4.57278 26.705 4.33334C26.9444 4.09417 27.2415 3.97459 27.5962 3.97459C27.951 3.97459 28.2479 4.09417 28.4871 4.33334C28.7265 4.57278 28.8462 4.86986 28.8462 5.22459V7.5H31.1537C31.9957 7.5 32.7083 7.79167 33.2916 8.375C33.875 8.95834 34.1666 9.67097 34.1666 10.5129V32.8204C34.1666 33.6624 33.875 34.375 33.2916 34.9583C32.7083 35.5417 31.9957 35.8333 31.1537 35.8333H8.84623ZM8.84623 33.3333H31.1537C31.2821 33.3333 31.3996 33.2799 31.5062 33.1729C31.6132 33.0663 31.6666 32.9488 31.6666 32.8204V17.1796H8.33331V32.8204C8.33331 32.9488 8.38679 33.0663 8.49373 33.1729C8.6004 33.2799 8.7179 33.3333 8.84623 33.3333ZM8.33331 14.6796H31.6666V10.5129C31.6666 10.3846 31.6132 10.2671 31.5062 10.1604C31.3996 10.0535 31.2821 10 31.1537 10H8.84623C8.7179 10 8.6004 10.0535 8.49373 10.1604C8.38679 10.2671 8.33331 10.3846 8.33331 10.5129V14.6796Z"
+                fill="#222222" />
             </svg>
           </div>
           <div class="schedule-header-titles">
@@ -775,6 +773,8 @@
           </button>
         </div>
       </header>
+
+      <hr class="header-divider">
 
       <!-- 2. BARRA DE HERRAMIENTAS DEL CALENDARIO VIVO (ESTILO TEAMS) -->
       <section class="calendar-live-toolbar" aria-label="Herramientas y Navegación del Calendario">
@@ -907,7 +907,8 @@
           <button type="button" class="cal-filter-btn active" data-filter="all">Todos</button>
           <button type="button" class="cal-filter-btn" data-filter="classes">Solo Clases Medicina</button>
           <button type="button" class="cal-filter-btn" data-filter="events">Eventos y DGDD</button>
-          <button type="button" class="cal-filter-btn filter-conflict" data-filter="conflicts" title="Ver cruces detectados">
+          <button type="button" class="cal-filter-btn filter-conflict" data-filter="conflicts"
+            title="Ver cruces detectados">
             <span>Cruces</span>
             <span class="cal-conflict-count">1</span>
           </button>
@@ -931,7 +932,8 @@
             </svg>
           </span>
           <p class="alert-banner-text">
-            <strong>Cruce de horario detectado:</strong> El día <strong>Martes 13</strong> existe solapamiento entre la <em>Reunión de Junta de Facultad</em> y la <em>Tutoría de Casos Clínicos</em>.
+            <strong>Cruce de horario detectado:</strong> El día <strong>Martes 13</strong> existe solapamiento entre la
+            <em>Reunión de Junta de Facultad</em> y la <em>Tutoría de Casos Clínicos</em>.
           </p>
         </div>
         <button type="button" class="btn-resolve-conflict" id="btnResolveConflictBanner">Ver Solapamiento</button>
@@ -1007,14 +1009,22 @@
             </div>
 
             <div class="mobile-day-grid-lines">
-              <div class="mobile-grid-line"></div><div class="mobile-grid-line"></div>
-              <div class="mobile-grid-line"></div><div class="mobile-grid-line"></div>
-              <div class="mobile-grid-line"></div><div class="mobile-grid-line"></div>
-              <div class="mobile-grid-line"></div><div class="mobile-grid-line"></div>
-              <div class="mobile-grid-line"></div><div class="mobile-grid-line"></div>
-              <div class="mobile-grid-line"></div><div class="mobile-grid-line"></div>
-              <div class="mobile-grid-line"></div><div class="mobile-grid-line"></div>
-              <div class="mobile-grid-line"></div><div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
+              <div class="mobile-grid-line"></div>
             </div>
 
             <div class="mobile-live-time-indicator" style="top: 341px;">
@@ -1109,28 +1119,29 @@
               <!-- COLUMNA: LUNES 12 -->
               <div class="schedule-day-column" data-day="lunes">
                 <!-- Líneas de fondo -->
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
 
                 <!-- Card Mañana: Anatomía Humana I (08:00 - 10:30) top = 64px, height = 160px -->
-                <div class="schedule-card" style="top: 64px; height: 160px;"
-                  data-type="clase"
-                  data-title="ANATOMÍA HUMANA I"
-                  data-subtitle="MED-104 · Sección A"
-                  data-aula="Lab. Anatomía L204, Piso 2"
-                  data-sede="Local Fernando Wiener"
-                  data-horario="08:00 - 10:30"
-                  data-sesion="Práctica / Disección"
-                  data-modalidad="Presencial"
-                  data-matriculados="30 alumnos"
-                  data-badgetext="Medicina Humana"
-                  data-badgeclass="badge-medicina">
+                <div class="schedule-card" style="top: 64px; height: 160px;" data-type="clase"
+                  data-title="ANATOMÍA HUMANA I" data-subtitle="MED-104 · Sección A"
+                  data-aula="Lab. Anatomía L204, Piso 2" data-sede="Local Fernando Wiener" data-horario="08:00 - 10:30"
+                  data-sesion="Práctica / Disección" data-modalidad="Presencial" data-matriculados="30 alumnos"
+                  data-badgetext="Medicina Humana" data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Aula: Lab L204, Piso 2</span>
                     <span class="card-campus-text">Sede: Fernando Wiener</span>
@@ -1144,17 +1155,10 @@
                 </div>
 
                 <!-- Card Visual Noche 1: Biología Celular (18:15 - 20:30) top = 720px, height = 144px -->
-                <div class="schedule-card" style="top: 720px; height: 144px;"
-                  data-type="clase"
-                  data-title="BIOLOGÍA CELULAR"
-                  data-subtitle="W1ND · Medicina Humana"
-                  data-aula="WT101, Piso 1"
-                  data-sede="Local 2 (Av. Arequipa)"
-                  data-horario="18:15 - 20:30"
-                  data-sesion="Teoría"
-                  data-modalidad="Presencial"
-                  data-matriculados="42 alumnos"
-                  data-badgetext="Medicina Humana"
+                <div class="schedule-card" style="top: 720px; height: 144px;" data-type="clase"
+                  data-title="BIOLOGÍA CELULAR" data-subtitle="W1ND · Medicina Humana" data-aula="WT101, Piso 1"
+                  data-sede="Local 2 (Av. Arequipa)" data-horario="18:15 - 20:30" data-sesion="Teoría"
+                  data-modalidad="Presencial" data-matriculados="42 alumnos" data-badgetext="Medicina Humana"
                   data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Aula: WT101, Piso 1</span>
@@ -1168,18 +1172,10 @@
                 </div>
 
                 <!-- Card Visual Noche 2: Procesos Biológicos (21:15 - 22:45) top = 912px, height = 96px -->
-                <div class="schedule-card" style="top: 912px; height: 96px;"
-                  data-type="clase"
-                  data-title="PROCESOS BIOLÓGICOS"
-                  data-subtitle="W1ND · Medicina Humana"
-                  data-aula="WT101, Piso 1"
-                  data-sede="Local 2"
-                  data-horario="21:15 - 22:45"
-                  data-sesion="Teoría"
-                  data-modalidad="Presencial"
-                  data-matriculados="38 alumnos"
-                  data-badgetext="Medicina Humana"
-                  data-badgeclass="badge-medicina">
+                <div class="schedule-card" style="top: 912px; height: 96px;" data-type="clase"
+                  data-title="PROCESOS BIOLÓGICOS" data-subtitle="W1ND · Medicina Humana" data-aula="WT101, Piso 1"
+                  data-sede="Local 2" data-horario="21:15 - 22:45" data-sesion="Teoría" data-modalidad="Presencial"
+                  data-matriculados="38 alumnos" data-badgetext="Medicina Humana" data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Aula: WT101, Piso 1</span>
                     <span class="card-campus-text">Sede: Local 2</span>
@@ -1195,14 +1191,22 @@
               <!-- COLUMNA: MARTES 13 (HOY) -->
               <div class="schedule-day-column today-column" data-day="martes">
                 <!-- Líneas de fondo -->
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
 
                 <!-- Línea de hora en vivo (Live time indicator a las 11:40 AM) -->
                 <div class="live-time-indicator" id="liveTimeIndicator" style="top: 300px;">
@@ -1211,18 +1215,11 @@
 
                 <!-- CASUÍSTICA: CRUCE DE EVENTOS EL MISMO DÍA (10:00 - 12:00) -->
                 <!-- Evento A (Izquierda): Junta de Facultad (top = 192px [10:00], height = 110px) -->
-                <div class="schedule-card overlap-left" style="top: 192px; height: 110px;"
-                  data-type="evento"
-                  data-conflict="true"
-                  data-title="JUNTA DE FACULTAD: ACREDITACIÓN"
-                  data-subtitle="Reunión Extraordinaria Decanato"
-                  data-aula="Sala de Consejo, Piso 7"
-                  data-sede="Campus Lima Centro"
-                  data-horario="10:00 - 11:45"
-                  data-sesion="Sesión Consejo"
-                  data-modalidad="Presencial"
-                  data-matriculados="18 miembros"
-                  data-badgetext="Cruce Detectado"
+                <div class="schedule-card overlap-left" style="top: 192px; height: 110px;" data-type="evento"
+                  data-conflict="true" data-title="JUNTA DE FACULTAD: ACREDITACIÓN"
+                  data-subtitle="Reunión Extraordinaria Decanato" data-aula="Sala de Consejo, Piso 7"
+                  data-sede="Campus Lima Centro" data-horario="10:00 - 11:45" data-sesion="Sesión Consejo"
+                  data-modalidad="Presencial" data-matriculados="18 miembros" data-badgetext="Cruce Detectado"
                   data-badgeclass="badge-conflict">
                   <div class="conflict-warning-badge">⚠️ Cruce</div>
                   <div class="card-location-info">
@@ -1236,19 +1233,11 @@
                 </div>
 
                 <!-- Evento B (Derecha): Tutoría Clínica Grupal (top = 210px [10:15], height = 100px) -->
-                <div class="schedule-card overlap-right live-now" style="top: 210px; height: 100px;"
-                  data-type="clase"
-                  data-conflict="true"
-                  data-title="TUTORÍA CLÍNICA GRUPAL"
-                  data-subtitle="MED-TUT · Medicina Humana"
-                  data-aula="Cubículo T-302, Piso 3"
-                  data-sede="Campus Lima Centro"
-                  data-horario="10:15 - 11:45"
-                  data-sesion="Tutoría"
-                  data-modalidad="Presencial"
-                  data-matriculados="8 alumnos"
-                  data-badgetext="Cruce Detectado"
-                  data-badgeclass="badge-conflict">
+                <div class="schedule-card overlap-right live-now" style="top: 210px; height: 100px;" data-type="clase"
+                  data-conflict="true" data-title="TUTORÍA CLÍNICA GRUPAL" data-subtitle="MED-TUT · Medicina Humana"
+                  data-aula="Cubículo T-302, Piso 3" data-sede="Campus Lima Centro" data-horario="10:15 - 11:45"
+                  data-sesion="Tutoría" data-modalidad="Presencial" data-matriculados="8 alumnos"
+                  data-badgetext="Cruce Detectado" data-badgeclass="badge-conflict">
                   <div class="live-badge-pulse">
                     <span class="pulse-dot"></span>
                     <span>En curso</span>
@@ -1264,17 +1253,10 @@
                 </div>
 
                 <!-- Card Visual Noche: Biología Celular (18:15 - 20:45) top = 720px, height = 160px -->
-                <div class="schedule-card" style="top: 720px; height: 160px;"
-                  data-type="clase"
-                  data-title="BIOLOGÍA CELULAR"
-                  data-subtitle="W1ND · Medicina Humana"
-                  data-aula="WT101, Piso 1"
-                  data-sede="Local 2 (Av. Arequipa)"
-                  data-horario="18:15 - 20:45"
-                  data-sesion="Teoría"
-                  data-modalidad="Presencial"
-                  data-matriculados="42 alumnos"
-                  data-badgetext="Medicina Humana"
+                <div class="schedule-card" style="top: 720px; height: 160px;" data-type="clase"
+                  data-title="BIOLOGÍA CELULAR" data-subtitle="W1ND · Medicina Humana" data-aula="WT101, Piso 1"
+                  data-sede="Local 2 (Av. Arequipa)" data-horario="18:15 - 20:45" data-sesion="Teoría"
+                  data-modalidad="Presencial" data-matriculados="42 alumnos" data-badgetext="Medicina Humana"
                   data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Aula: WT101, Piso 1</span>
@@ -1291,28 +1273,31 @@
               <!-- COLUMNA: MIÉRCOLES 14 -->
               <div class="schedule-day-column" data-day="miercoles">
                 <!-- Líneas de fondo -->
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
 
                 <!-- CASUÍSTICA: EVENTO / CAPACITACIÓN OBLIGATORIA CON IA (10:00 - 12:00) -->
                 <!-- top = 192px, height = 128px -->
-                <div class="schedule-card card-event-dgdd" style="top: 192px; height: 128px;"
-                  data-type="capacitacion"
+                <div class="schedule-card card-event-dgdd" style="top: 192px; height: 128px;" data-type="capacitacion"
                   data-title="CAPACITACIÓN: EDUCACIÓN MÉDICA CON IA"
                   data-subtitle="Dirección de Gestión y Desarrollo Docente (DGDD)"
-                  data-aula="Sala Virtual Microsoft Teams"
-                  data-sede="Campus Virtual Wiener"
-                  data-horario="10:00 - 12:00"
-                  data-sesion="Taller / Capacitación"
-                  data-modalidad="Virtual En vivo"
-                  data-matriculados="Plana Docente Medicina"
-                  data-badgetext="Capacitación DGDD"
+                  data-aula="Sala Virtual Microsoft Teams" data-sede="Campus Virtual Wiener"
+                  data-horario="10:00 - 12:00" data-sesion="Taller / Capacitación" data-modalidad="Virtual En vivo"
+                  data-matriculados="Plana Docente Medicina" data-badgetext="Capacitación DGDD"
                   data-badgeclass="badge-training">
                   <div class="card-location-info">
                     <span class="card-room-text">Sala: Virtual Teams</span>
@@ -1327,17 +1312,10 @@
                 </div>
 
                 <!-- Card Tarde: Fisiología Médica (15:00 - 17:30) top = 512px, height = 160px -->
-                <div class="schedule-card" style="top: 512px; height: 160px;"
-                  data-type="clase"
-                  data-title="FISIOLOGÍA MÉDICA"
-                  data-subtitle="MED-202 · Laboratorio"
-                  data-aula="Lab. Simulación S103"
-                  data-sede="Campus Lima Centro"
-                  data-horario="15:00 - 17:30"
-                  data-sesion="Simulación Clínica"
-                  data-modalidad="Presencial"
-                  data-matriculados="26 alumnos"
-                  data-badgetext="Medicina Humana"
+                <div class="schedule-card" style="top: 512px; height: 160px;" data-type="clase"
+                  data-title="FISIOLOGÍA MÉDICA" data-subtitle="MED-202 · Laboratorio" data-aula="Lab. Simulación S103"
+                  data-sede="Campus Lima Centro" data-horario="15:00 - 17:30" data-sesion="Simulación Clínica"
+                  data-modalidad="Presencial" data-matriculados="26 alumnos" data-badgetext="Medicina Humana"
                   data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Aula: Lab S103, Piso 5</span>
@@ -1355,27 +1333,28 @@
               <!-- COLUMNA: JUEVES 15 -->
               <div class="schedule-day-column" data-day="jueves">
                 <!-- Líneas de fondo -->
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
 
                 <!-- Card Mañana: Histología Humana (09:00 - 11:15) top = 128px, height = 144px -->
-                <div class="schedule-card" style="top: 128px; height: 144px;"
-                  data-type="clase"
-                  data-title="HISTOLOGÍA HUMANA"
-                  data-subtitle="MED-108 · Microscopía"
-                  data-aula="Lab. Microscopía L102"
-                  data-sede="Campus Lima Centro"
-                  data-horario="09:00 - 11:15"
-                  data-sesion="Laboratorio"
-                  data-modalidad="Presencial"
-                  data-matriculados="28 alumnos"
-                  data-badgetext="Medicina Humana"
+                <div class="schedule-card" style="top: 128px; height: 144px;" data-type="clase"
+                  data-title="HISTOLOGÍA HUMANA" data-subtitle="MED-108 · Microscopía" data-aula="Lab. Microscopía L102"
+                  data-sede="Campus Lima Centro" data-horario="09:00 - 11:15" data-sesion="Laboratorio"
+                  data-modalidad="Presencial" data-matriculados="28 alumnos" data-badgetext="Medicina Humana"
                   data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Aula: Lab L102, Piso 3</span>
@@ -1389,17 +1368,10 @@
                 </div>
 
                 <!-- Card Visual Noche: Biología Celular (19:00 - 20:45) top = 768px, height = 112px -->
-                <div class="schedule-card" style="top: 768px; height: 112px;"
-                  data-type="clase"
-                  data-title="BIOLOGÍA CELULAR"
-                  data-subtitle="W1ND · Medicina Humana"
-                  data-aula="WT101, Piso 1"
-                  data-sede="Local 2 (Av. Arequipa)"
-                  data-horario="19:00 - 20:45"
-                  data-sesion="Teoría"
-                  data-modalidad="Presencial"
-                  data-matriculados="42 alumnos"
-                  data-badgetext="Medicina Humana"
+                <div class="schedule-card" style="top: 768px; height: 112px;" data-type="clase"
+                  data-title="BIOLOGÍA CELULAR" data-subtitle="W1ND · Medicina Humana" data-aula="WT101, Piso 1"
+                  data-sede="Local 2 (Av. Arequipa)" data-horario="19:00 - 20:45" data-sesion="Teoría"
+                  data-modalidad="Presencial" data-matriculados="42 alumnos" data-badgetext="Medicina Humana"
                   data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Aula: WT101, Piso 1</span>
@@ -1416,27 +1388,28 @@
               <!-- COLUMNA: VIERNES 16 -->
               <div class="schedule-day-column" data-day="viernes">
                 <!-- Líneas de fondo -->
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
 
                 <!-- Card Tarde: Farmacología Básica (Virtual en Vivo) 16:00 - 18:30 top = 576px, height = 160px -->
-                <div class="schedule-card" style="top: 576px; height: 160px;"
-                  data-type="clase"
-                  data-title="FARMACOLOGÍA BÁSICA"
-                  data-subtitle="MED-205 · Sección B"
-                  data-aula="Aula Virtual Teams"
-                  data-sede="Campus Virtual"
-                  data-horario="16:00 - 18:30"
-                  data-sesion="Teoría Virtual"
-                  data-modalidad="Virtual En vivo"
-                  data-matriculados="36 alumnos"
-                  data-badgetext="Medicina Humana"
+                <div class="schedule-card" style="top: 576px; height: 160px;" data-type="clase"
+                  data-title="FARMACOLOGÍA BÁSICA" data-subtitle="MED-205 · Sección B" data-aula="Aula Virtual Teams"
+                  data-sede="Campus Virtual" data-horario="16:00 - 18:30" data-sesion="Teoría Virtual"
+                  data-modalidad="Virtual En vivo" data-matriculados="36 alumnos" data-badgetext="Medicina Humana"
                   data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Aula: Teams Síncrono</span>
@@ -1454,28 +1427,29 @@
               <!-- COLUMNA: SÁBADO 17 -->
               <div class="schedule-day-column" data-day="sabado">
                 <!-- Líneas de fondo -->
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
 
                 <!-- Card Mañana: Semiología Médica (Hospital Dos de Mayo) 08:00 - 11:00 top = 64px, height = 192px -->
-                <div class="schedule-card" style="top: 64px; height: 192px;"
-                  data-type="clase"
-                  data-title="SEMIOLOGÍA MÉDICA"
-                  data-subtitle="MED-301 · Rotación Clínica"
-                  data-aula="Pabellón San Fernando, Cama 12-24"
-                  data-sede="Hospital Nacional Dos de Mayo"
-                  data-horario="08:00 - 11:00"
-                  data-sesion="Práctica Hospitalaria"
-                  data-modalidad="Presencial"
-                  data-matriculados="16 alumnos"
-                  data-badgetext="Rotación Clínica"
-                  data-badgeclass="badge-medicina">
+                <div class="schedule-card" style="top: 64px; height: 192px;" data-type="clase"
+                  data-title="SEMIOLOGÍA MÉDICA" data-subtitle="MED-301 · Rotación Clínica"
+                  data-aula="Pabellón San Fernando, Cama 12-24" data-sede="Hospital Nacional Dos de Mayo"
+                  data-horario="08:00 - 11:00" data-sesion="Práctica Hospitalaria" data-modalidad="Presencial"
+                  data-matriculados="16 alumnos" data-badgetext="Rotación Clínica" data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Sede: Hosp. Dos de Mayo</span>
                     <span class="card-campus-text">Pabellón San Fernando</span>
@@ -1488,17 +1462,10 @@
                 </div>
 
                 <!-- Card Visual Noche: Procesos Biológicos (18:15 - 20:30) top = 720px, height = 144px -->
-                <div class="schedule-card" style="top: 720px; height: 144px;"
-                  data-type="clase"
-                  data-title="PROCESOS BIOLÓGICOS"
-                  data-subtitle="W1ND · Medicina Humana"
-                  data-aula="WT101, Piso 1"
-                  data-sede="Local 2 (Av. Arequipa)"
-                  data-horario="18:15 - 20:30"
-                  data-sesion="Teoría"
-                  data-modalidad="Presencial"
-                  data-matriculados="38 alumnos"
-                  data-badgetext="Medicina Humana"
+                <div class="schedule-card" style="top: 720px; height: 144px;" data-type="clase"
+                  data-title="PROCESOS BIOLÓGICOS" data-subtitle="W1ND · Medicina Humana" data-aula="WT101, Piso 1"
+                  data-sede="Local 2 (Av. Arequipa)" data-horario="18:15 - 20:30" data-sesion="Teoría"
+                  data-modalidad="Presencial" data-matriculados="38 alumnos" data-badgetext="Medicina Humana"
                   data-badgeclass="badge-medicina">
                   <div class="card-location-info">
                     <span class="card-room-text">Aula: WT101, Piso 1</span>
@@ -1515,14 +1482,22 @@
               <!-- COLUMNA: DOMINGO 18 -->
               <div class="schedule-day-column" data-day="domingo">
                 <!-- Líneas de fondo -->
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
-                <div class="day-slot-grid-line"></div><div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
+                <div class="day-slot-grid-line"></div>
               </div>
 
             </div>
@@ -1547,36 +1522,125 @@
           <div class="monthly-day-cell other-month"><span class="monthly-day-number">28</span></div>
           <div class="monthly-day-cell other-month"><span class="monthly-day-number">29</span></div>
           <div class="monthly-day-cell other-month"><span class="monthly-day-number">30</span></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">1</span><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="19:00 - 20:45" data-aula="WT101">19:00 Biología Celular</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">2</span><div class="monthly-event-chip" data-title="FARMACOLOGÍA" data-horario="16:00 - 18:30" data-aula="Virtual">16:00 Farmacología</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">3</span><div class="monthly-event-chip" data-title="SEMIOLOGÍA MÉDICA" data-horario="08:00 - 11:00" data-aula="Hosp. 2 de Mayo">08:00 Hosp. 2 de Mayo</div></div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">1</span>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="19:00 - 20:45"
+              data-aula="WT101">19:00 Biología Celular</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">2</span>
+            <div class="monthly-event-chip" data-title="FARMACOLOGÍA" data-horario="16:00 - 18:30" data-aula="Virtual">
+              16:00 Farmacología</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">3</span>
+            <div class="monthly-event-chip" data-title="SEMIOLOGÍA MÉDICA" data-horario="08:00 - 11:00"
+              data-aula="Hosp. 2 de Mayo">08:00 Hosp. 2 de Mayo</div>
+          </div>
           <div class="monthly-day-cell"><span class="monthly-day-number">4</span></div>
 
           <!-- Semana 2 -->
-          <div class="monthly-day-cell"><span class="monthly-day-number">5</span><div class="monthly-event-chip" data-title="ANATOMÍA HUMANA I" data-horario="08:00 - 10:30" data-aula="L204">08:00 Anatomía I</div><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:30" data-aula="WT101">18:15 Biología Celular</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">6</span><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:45" data-aula="WT101">18:15 Biología Celular</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">7</span><div class="monthly-event-chip" data-title="FISIOLOGÍA MÉDICA" data-horario="15:00 - 17:30" data-aula="S103">15:00 Fisiología Médica</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">8</span><div class="monthly-event-chip" data-title="HISTOLOGÍA" data-horario="09:00 - 11:15" data-aula="L102">09:00 Histología</div><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="19:00 - 20:45" data-aula="WT101">19:00 Biología Celular</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">9</span><div class="monthly-event-chip" data-title="FARMACOLOGÍA" data-horario="16:00 - 18:30" data-aula="Virtual">16:00 Farmacología</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">10</span><div class="monthly-event-chip" data-title="SEMIOLOGÍA MÉDICA" data-horario="08:00 - 11:00" data-aula="Hosp. 2 de Mayo">08:00 Hosp. 2 de Mayo</div><div class="monthly-event-chip" data-title="PROCESOS BIOLÓGICOS" data-horario="18:15 - 20:30" data-aula="WT101">18:15 Procesos Biol.</div></div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">5</span>
+            <div class="monthly-event-chip" data-title="ANATOMÍA HUMANA I" data-horario="08:00 - 10:30"
+              data-aula="L204">08:00 Anatomía I</div>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:30"
+              data-aula="WT101">18:15 Biología Celular</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">6</span>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:45"
+              data-aula="WT101">18:15 Biología Celular</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">7</span>
+            <div class="monthly-event-chip" data-title="FISIOLOGÍA MÉDICA" data-horario="15:00 - 17:30"
+              data-aula="S103">15:00 Fisiología Médica</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">8</span>
+            <div class="monthly-event-chip" data-title="HISTOLOGÍA" data-horario="09:00 - 11:15" data-aula="L102">09:00
+              Histología</div>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="19:00 - 20:45"
+              data-aula="WT101">19:00 Biología Celular</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">9</span>
+            <div class="monthly-event-chip" data-title="FARMACOLOGÍA" data-horario="16:00 - 18:30" data-aula="Virtual">
+              16:00 Farmacología</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">10</span>
+            <div class="monthly-event-chip" data-title="SEMIOLOGÍA MÉDICA" data-horario="08:00 - 11:00"
+              data-aula="Hosp. 2 de Mayo">08:00 Hosp. 2 de Mayo</div>
+            <div class="monthly-event-chip" data-title="PROCESOS BIOLÓGICOS" data-horario="18:15 - 20:30"
+              data-aula="WT101">18:15 Procesos Biol.</div>
+          </div>
           <div class="monthly-day-cell"><span class="monthly-day-number">11</span></div>
 
           <!-- Semana 3 (Semana Activa) -->
-          <div class="monthly-day-cell"><span class="monthly-day-number">12</span><div class="monthly-event-chip" data-title="ANATOMÍA HUMANA I" data-horario="08:00 - 10:30" data-aula="L204">08:00 Anatomía I</div><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:30" data-aula="WT101">18:15 Biología Celular</div><div class="monthly-event-chip" data-title="PROCESOS BIOLÓGICOS" data-horario="21:15 - 22:45" data-aula="WT101">21:15 Procesos Biol.</div></div>
-          <div class="monthly-day-cell current-day"><span class="monthly-day-number">13</span><div class="monthly-event-chip chip-conflict" data-title="JUNTA DE FACULTAD" data-horario="10:00 - 11:45" data-aula="Sala Consejo">⚠️ 10:00 Junta Facultad</div><div class="monthly-event-chip chip-conflict" data-title="TUTORÍA CLÍNICA" data-horario="10:15 - 11:45" data-aula="Cubículo T-302">⚠️ 10:15 Tutoría Clínica</div><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:45" data-aula="WT101">18:15 Biología Celular</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">14</span><div class="monthly-event-chip chip-training" data-title="CAPACITACIÓN DGDD: IA" data-horario="10:00 - 12:00" data-aula="Virtual Teams">🎓 10:00 DGDD: IA Médica</div><div class="monthly-event-chip" data-title="FISIOLOGÍA MÉDICA" data-horario="15:00 - 17:30" data-aula="S103">15:00 Fisiología Médica</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">15</span><div class="monthly-event-chip" data-title="HISTOLOGÍA" data-horario="09:00 - 11:15" data-aula="L102">09:00 Histología</div><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="19:00 - 20:45" data-aula="WT101">19:00 Biología Celular</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">16</span><div class="monthly-event-chip" data-title="FARMACOLOGÍA" data-horario="16:00 - 18:30" data-aula="Virtual">16:00 Farmacología</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">17</span><div class="monthly-event-chip" data-title="SEMIOLOGÍA MÉDICA" data-horario="08:00 - 11:00" data-aula="Hosp. 2 de Mayo">08:00 Hosp. 2 de Mayo</div><div class="monthly-event-chip" data-title="PROCESOS BIOLÓGICOS" data-horario="18:15 - 20:30" data-aula="WT101">18:15 Procesos Biol.</div></div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">12</span>
+            <div class="monthly-event-chip" data-title="ANATOMÍA HUMANA I" data-horario="08:00 - 10:30"
+              data-aula="L204">08:00 Anatomía I</div>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:30"
+              data-aula="WT101">18:15 Biología Celular</div>
+            <div class="monthly-event-chip" data-title="PROCESOS BIOLÓGICOS" data-horario="21:15 - 22:45"
+              data-aula="WT101">21:15 Procesos Biol.</div>
+          </div>
+          <div class="monthly-day-cell current-day"><span class="monthly-day-number">13</span>
+            <div class="monthly-event-chip chip-conflict" data-title="JUNTA DE FACULTAD" data-horario="10:00 - 11:45"
+              data-aula="Sala Consejo">⚠️ 10:00 Junta Facultad</div>
+            <div class="monthly-event-chip chip-conflict" data-title="TUTORÍA CLÍNICA" data-horario="10:15 - 11:45"
+              data-aula="Cubículo T-302">⚠️ 10:15 Tutoría Clínica</div>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:45"
+              data-aula="WT101">18:15 Biología Celular</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">14</span>
+            <div class="monthly-event-chip chip-training" data-title="CAPACITACIÓN DGDD: IA"
+              data-horario="10:00 - 12:00" data-aula="Virtual Teams">🎓 10:00 DGDD: IA Médica</div>
+            <div class="monthly-event-chip" data-title="FISIOLOGÍA MÉDICA" data-horario="15:00 - 17:30"
+              data-aula="S103">15:00 Fisiología Médica</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">15</span>
+            <div class="monthly-event-chip" data-title="HISTOLOGÍA" data-horario="09:00 - 11:15" data-aula="L102">09:00
+              Histología</div>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="19:00 - 20:45"
+              data-aula="WT101">19:00 Biología Celular</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">16</span>
+            <div class="monthly-event-chip" data-title="FARMACOLOGÍA" data-horario="16:00 - 18:30" data-aula="Virtual">
+              16:00 Farmacología</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">17</span>
+            <div class="monthly-event-chip" data-title="SEMIOLOGÍA MÉDICA" data-horario="08:00 - 11:00"
+              data-aula="Hosp. 2 de Mayo">08:00 Hosp. 2 de Mayo</div>
+            <div class="monthly-event-chip" data-title="PROCESOS BIOLÓGICOS" data-horario="18:15 - 20:30"
+              data-aula="WT101">18:15 Procesos Biol.</div>
+          </div>
           <div class="monthly-day-cell"><span class="monthly-day-number">18</span></div>
 
           <!-- Semana 4 -->
-          <div class="monthly-day-cell"><span class="monthly-day-number">19</span><div class="monthly-event-chip" data-title="ANATOMÍA HUMANA I" data-horario="08:00 - 10:30" data-aula="L204">08:00 Anatomía I</div><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:30" data-aula="WT101">18:15 Biología Celular</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">20</span><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:45" data-aula="WT101">18:15 Biología Celular</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">21</span><div class="monthly-event-chip" data-title="FISIOLOGÍA MÉDICA" data-horario="15:00 - 17:30" data-aula="S103">15:00 Fisiología Médica</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">22</span><div class="monthly-event-chip" data-title="HISTOLOGÍA" data-horario="09:00 - 11:15" data-aula="L102">09:00 Histología</div><div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="19:00 - 20:45" data-aula="WT101">19:00 Biología Celular</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">23</span><div class="monthly-event-chip" data-title="FARMACOLOGÍA" data-horario="16:00 - 18:30" data-aula="Virtual">16:00 Farmacología</div></div>
-          <div class="monthly-day-cell"><span class="monthly-day-number">24</span><div class="monthly-event-chip" data-title="SEMIOLOGÍA MÉDICA" data-horario="08:00 - 11:00" data-aula="Hosp. 2 de Mayo">08:00 Hosp. 2 de Mayo</div><div class="monthly-event-chip" data-title="PROCESOS BIOLÓGICOS" data-horario="18:15 - 20:30" data-aula="WT101">18:15 Procesos Biol.</div></div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">19</span>
+            <div class="monthly-event-chip" data-title="ANATOMÍA HUMANA I" data-horario="08:00 - 10:30"
+              data-aula="L204">08:00 Anatomía I</div>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:30"
+              data-aula="WT101">18:15 Biología Celular</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">20</span>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="18:15 - 20:45"
+              data-aula="WT101">18:15 Biología Celular</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">21</span>
+            <div class="monthly-event-chip" data-title="FISIOLOGÍA MÉDICA" data-horario="15:00 - 17:30"
+              data-aula="S103">15:00 Fisiología Médica</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">22</span>
+            <div class="monthly-event-chip" data-title="HISTOLOGÍA" data-horario="09:00 - 11:15" data-aula="L102">09:00
+              Histología</div>
+            <div class="monthly-event-chip" data-title="BIOLOGÍA CELULAR" data-horario="19:00 - 20:45"
+              data-aula="WT101">19:00 Biología Celular</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">23</span>
+            <div class="monthly-event-chip" data-title="FARMACOLOGÍA" data-horario="16:00 - 18:30" data-aula="Virtual">
+              16:00 Farmacología</div>
+          </div>
+          <div class="monthly-day-cell"><span class="monthly-day-number">24</span>
+            <div class="monthly-event-chip" data-title="SEMIOLOGÍA MÉDICA" data-horario="08:00 - 11:00"
+              data-aula="Hosp. 2 de Mayo">08:00 Hosp. 2 de Mayo</div>
+            <div class="monthly-event-chip" data-title="PROCESOS BIOLÓGICOS" data-horario="18:15 - 20:30"
+              data-aula="WT101">18:15 Procesos Biol.</div>
+          </div>
           <div class="monthly-day-cell"><span class="monthly-day-number">25</span></div>
         </div>
       </div>
@@ -1592,7 +1656,8 @@
   <!-- ==========================================================================
        6. MODAL DE DETALLE DE CLASE / EVENTO (SLIDE-IN ACCESIBLE)
        ========================================================================== -->
-  <div class="schedule-modal-backdrop" id="scheduleModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalCourseTitle">
+  <div class="schedule-modal-backdrop" id="scheduleModalBackdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modalCourseTitle">
     <div class="schedule-modal-card">
       <div class="schedule-modal-header">
         <div>
@@ -1642,7 +1707,9 @@
             ⚠️ Conflicto de Disponibilidad
           </span>
           <p class="conflict-box-desc">
-            Esta actividad se solapa con otro compromiso académico registrado en el mismo rango de horas. En un calendario en vivo, el sistema permite solicitar cambio de aula o justificar la superposición ante la Dirección Académica.
+            Esta actividad se solapa con otro compromiso académico registrado en el mismo rango de horas. En un
+            calendario en vivo, el sistema permite solicitar cambio de aula o justificar la superposición ante la
+            Dirección Académica.
           </p>
         </div>
       </div>
