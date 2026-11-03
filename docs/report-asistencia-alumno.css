@@ -509,6 +509,27 @@
   margin-top: 2px;
 }
 
+/* Columnas de Resumen de Asistencia */
+.report-table thead th.th-asist-count {
+  width: 70px;
+  min-width: 70px;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.report-table thead th .th-asist-sub {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.report-table thead th.th-asist-pct {
+  width: 75px;
+  min-width: 75px;
+  text-align: center;
+}
+
 /* Celdas del Tbody */
 .report-table tbody td {
   padding: 12px 10px;
@@ -569,6 +590,20 @@
 
 .report-table tbody td.td-session.dimmed {
   opacity: 0.35;
+}
+
+.report-table tbody td.td-asist-count {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0D6E6A;
+}
+
+.report-table tbody td.td-asist-pct {
+  text-align: center;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #1E293B;
 }
 
 /* Hover de filas */

@@ -71,27 +71,43 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       num: 6,
-      codigo: '2026104375',
-      nombre: 'BENITES MORALES, Valeria Nicole',
+      codigo: '2024204910',
+      nombre: 'MENDOZA BAZAN, Camila Sofia',
       seccion: 'AD2N4',
       prog: 17,
-      estados: ['attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'absent', 'attended', 'attended', 'future', 'future', 'future', 'future', 'future', 'future', 'future']
+      estados: ['attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'future', 'future', 'future', 'future', 'future', 'future', 'future']
     },
     {
       num: 7,
-      codigo: '2026104376',
-      nombre: 'CASTRO PAREDES, Joaquín Mateo',
+      codigo: '2025109823',
+      nombre: 'SALAZAR GUTIERREZ, Mateo Joaquin',
       seccion: 'AD2N4',
       prog: 17,
-      estados: ['attended', 'absent', 'attended', 'attended', 'absent', 'attended', 'attended', 'attended', 'absent', 'future', 'future', 'future', 'future', 'future', 'future', 'future', 'future']
+      estados: ['attended', 'absent', 'attended', 'absent', 'attended', 'absent', 'attended', 'attended', 'attended', 'attended', 'future', 'future', 'future', 'future', 'future', 'future', 'future']
     },
     {
       num: 8,
-      codigo: '2026104377',
-      nombre: 'DELGADO GUTIERREZ, Luciana Belén',
+      codigo: '2026105432',
+      nombre: 'VILLANUEVA LOPEZ, Ariana Belen',
       seccion: 'AD2N4',
       prog: 17,
-      estados: ['attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'absent', 'attended', 'attended', 'attended', 'future', 'future', 'future', 'future', 'future', 'future', 'future']
+      estados: ['attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'noclass', 'future', 'future', 'future', 'future', 'future', 'future', 'future']
+    },
+    {
+      num: 9,
+      codigo: '2023107890',
+      nombre: 'RODRIGUEZ PAREDES, Diego Alonso',
+      seccion: 'AD2N4',
+      prog: 17,
+      estados: ['attended', 'attended', 'absent', 'attended', 'attended', 'attended', 'absent', 'attended', 'attended', 'attended', 'future', 'future', 'future', 'future', 'future', 'future', 'future']
+    },
+    {
+      num: 10,
+      codigo: '2026207711',
+      nombre: 'FERNANDEZ CASTRO, Luciana Nicole',
+      seccion: 'AD2N4',
+      prog: 17,
+      estados: ['attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'attended', 'future', 'future', 'future', 'future', 'future', 'future', 'future']
     }
   ];
 
@@ -140,6 +156,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         html += `<td class="td-session" data-month="${sesion.mesKey}">${boxContent}</td>`;
       });
+
+      // Columnas de Resumen de Asistencia (Cantidad y Porcentaje)
+      const asistCount = alumno.estados.filter(e => e === 'attended').length;
+      const totalProg = alumno.prog || 17;
+      const asistPct = totalProg > 0 ? Math.round((asistCount / totalProg) * 100) : 0;
+
+      html += `
+        <td class="td-asist-count">${asistCount}</td>
+        <td class="td-asist-pct">${asistPct}%</td>
+      `;
 
       tr.innerHTML = html;
       tableBody.appendChild(tr);
