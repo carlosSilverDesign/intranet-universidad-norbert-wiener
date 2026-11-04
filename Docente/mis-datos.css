@@ -1,13 +1,4 @@
-/* ==========================================================================
-   PORTAL DOCENTE - SECCIÓN: MI PERFIL (MIS DATOS)
-   Universidad Norbert Wiener
-   Adaptación estética basada en el look & feel de Alumno 'perfil.html'
-   con campos editables en la parte superior y tabla de Capacitaciones.
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. CONTENEDOR PRINCIPAL Y ESTRUCTURA DE LA PÁGINA
-   -------------------------------------------------------------------------- */
+/* 1. CONTENEDOR PRINCIPAL Y ESTRUCTURA DE LA PÁGINA */
 .profile-page-container {
   display: flex;
   flex-direction: column;
@@ -139,9 +130,7 @@
   box-sizing: border-box;
 }
 
-/* --------------------------------------------------------------------------
-   2. ENCABEZADO DEL DOCENTE (FOTO + IDENTIDAD PRINCIPAL)
-   -------------------------------------------------------------------------- */
+/* 2. ENCABEZADO DEL DOCENTE (FOTO + IDENTIDAD PRINCIPAL) */
 .teacher-header-wrapper {
   display: flex;
   align-items: center;
@@ -305,9 +294,7 @@
   margin: 24px 0 28px 0;
 }
 
-/* --------------------------------------------------------------------------
-   3. CABECERA DE ACTUALIZACIÓN & AVISOS
-   -------------------------------------------------------------------------- */
+/* 3. CABECERA DE ACTUALIZACIÓN & AVISOS */
 .form-header {
   display: flex;
   justify-content: space-between;
@@ -389,9 +376,7 @@
   flex-shrink: 0;
 }
 
-/* --------------------------------------------------------------------------
-   4. SECCIONES DEL FORMULARIO Y CAMPOS (EDITABLES Y BLOQUEADOS)
-   -------------------------------------------------------------------------- */
+/* 4. SECCIONES DEL FORMULARIO Y CAMPOS (EDITABLES Y BLOQUEADOS) */
 .update-form {
   display: flex;
   flex-direction: column;
@@ -591,9 +576,7 @@
   font-weight: 700;
 }
 
-/* --------------------------------------------------------------------------
-   5. COMPONENTE INLINE EDITABLE (LOOK & FEEL perfil.html)
-   -------------------------------------------------------------------------- */
+/* 5. COMPONENTE INLINE EDITABLE (LOOK & FEEL perfil.html) */
 .inline-field {
   display: flex;
   flex-direction: column;
@@ -732,9 +715,7 @@
   display: flex;
 }
 
-/* --------------------------------------------------------------------------
-   6. SECCIÓN CAPACITACIONES (AL FINAL DE LA VISTA)
-   -------------------------------------------------------------------------- */
+/* 6. SECCIÓN CAPACITACIONES (AL FINAL DE LA VISTA) */
 .capacitaciones-section {
   border: 1px solid #C6CFD7;
   border-radius: 12px;
@@ -1119,9 +1100,7 @@
   color: #64748B;
 }
 
-/* --------------------------------------------------------------------------
-   7. MODAL FOTOCHECK Y MODAL ACTUALIZAR FOTO
-   -------------------------------------------------------------------------- */
+/* 7. MODAL FOTOCHECK Y MODAL ACTUALIZAR FOTO */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1277,9 +1256,7 @@
   gap: 10px;
 }
 
-/* --------------------------------------------------------------------------
-   8. TOAST NOTIFICATION FLOTANTE
-   -------------------------------------------------------------------------- */
+/* TOAST NOTIFICATION FLOTANTE */
 .profile-toast {
   position: fixed;
   bottom: 24px;
@@ -1315,9 +1292,6 @@
   flex-shrink: 0;
 }
 
-/* --------------------------------------------------------------------------
-   9. ADAPTACIÓN RESPONSIVE (TABLET & MOBILE)
-   -------------------------------------------------------------------------- */
 @media (max-width: 992px) {
   .profile-page-container {
     max-width: 100%;

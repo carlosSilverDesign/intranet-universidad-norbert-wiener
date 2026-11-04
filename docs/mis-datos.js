@@ -204,12 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 3. MODALES (FOTOCHECK DIGITAL & ACTUALIZAR FOTO)
+  // 3. FOTOCHECK DIGITAL & ACTUALIZAR FOTO
   // =========================================================================
   const btnVerFotocheck = document.getElementById('btnVerFotocheck');
-  const modalFotocheck = document.getElementById('modalFotocheck');
-  const closeFotocheckBtn = document.getElementById('closeFotocheckBtn');
-  const closeFotocheckFooter = document.getElementById('closeFotocheckFooter');
 
   const btnActualizarFoto = document.getElementById('btnActualizarFoto');
   const modalActualizarFoto = document.getElementById('modalActualizarFoto');
@@ -231,15 +228,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // Modal Fotocheck
+  // Enlace / botón Fotocheck Docente
   if (btnVerFotocheck) {
-    btnVerFotocheck.addEventListener('click', () => openModal(modalFotocheck));
-  }
-  if (closeFotocheckBtn) {
-    closeFotocheckBtn.addEventListener('click', () => closeModal(modalFotocheck));
-  }
-  if (closeFotocheckFooter) {
-    closeFotocheckFooter.addEventListener('click', () => closeModal(modalFotocheck));
+    btnVerFotocheck.addEventListener('click', (e) => {
+      // Navegación fluida hacia la vista de fotocheck independiente
+      window.location.href = 'fotocheck-docente.html';
+    });
   }
 
   // Modal Actualizar Foto
@@ -283,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Cerrar al hacer clic en el backdrop
-  [modalFotocheck, modalActualizarFoto].forEach(modal => {
+  [modalActualizarFoto].forEach(modal => {
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -296,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cerrar con Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      closeModal(modalFotocheck);
       closeModal(modalActualizarFoto);
     }
   });

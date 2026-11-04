@@ -1,14 +1,7 @@
-/**
- * Portal Docente - Mi Perfil (Mis Datos)
- * Lógica para edición inline de datos, buscador/filtrado de capacitaciones y modales.
- * Universidad Norbert Wiener - 2026
- */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // =========================================================================
   // 1. GESTIÓN DE CAMPOS EDITABLES EN LÍNEA (INLINE EDIT)
-  // =========================================================================
   const inlineFields = document.querySelectorAll('.inline-field');
   const profileToast = document.getElementById('profileToast');
   const toastText = document.getElementById('profileToastText');
@@ -123,9 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // =========================================================================
+
   // 2. BUSCADOR Y FILTRADO DE CAPACITACIONES
-  // =========================================================================
   const searchInput = document.getElementById('searchCapacitaciones');
   const yearSelect = document.getElementById('filterCapacitacionesYear');
   const tableRows = document.querySelectorAll('#capacitacionesTableBody tr');
@@ -203,13 +195,9 @@ document.addEventListener('DOMContentLoaded', () => {
     yearSelect.addEventListener('change', filterCapacitaciones);
   }
 
-  // =========================================================================
-  // 3. MODALES (FOTOCHECK DIGITAL & ACTUALIZAR FOTO)
-  // =========================================================================
+
+  // 3. FOTOCHECK DIGITAL & ACTUALIZAR FOTO
   const btnVerFotocheck = document.getElementById('btnVerFotocheck');
-  const modalFotocheck = document.getElementById('modalFotocheck');
-  const closeFotocheckBtn = document.getElementById('closeFotocheckBtn');
-  const closeFotocheckFooter = document.getElementById('closeFotocheckFooter');
 
   const btnActualizarFoto = document.getElementById('btnActualizarFoto');
   const modalActualizarFoto = document.getElementById('modalActualizarFoto');
@@ -231,15 +219,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // Modal Fotocheck
+  // Enlace / botón Fotocheck Docente
   if (btnVerFotocheck) {
-    btnVerFotocheck.addEventListener('click', () => openModal(modalFotocheck));
-  }
-  if (closeFotocheckBtn) {
-    closeFotocheckBtn.addEventListener('click', () => closeModal(modalFotocheck));
-  }
-  if (closeFotocheckFooter) {
-    closeFotocheckFooter.addEventListener('click', () => closeModal(modalFotocheck));
+    btnVerFotocheck.addEventListener('click', (e) => {
+      // Navegación fluida hacia la vista de fotocheck independiente
+      window.location.href = 'fotocheck-docente.html';
+    });
   }
 
   // Modal Actualizar Foto
@@ -283,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Cerrar al hacer clic en el backdrop
-  [modalFotocheck, modalActualizarFoto].forEach(modal => {
+  [modalActualizarFoto].forEach(modal => {
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -296,7 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cerrar con Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      closeModal(modalFotocheck);
       closeModal(modalActualizarFoto);
     }
   });
