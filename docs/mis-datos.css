@@ -11,21 +11,24 @@
 .profile-page-container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   width: 100%;
   max-width: 980px;
-  margin: 0 auto;
+  margin: 16px auto 0 auto;
   padding-bottom: 48px;
 }
 
-/* Cabecera Estándar de Sección (Reutilizada del Portal Docente) */
+/* Cabecera Estándar de Sección (Consistencia con Docente/listado-alumno.html) */
 .page-header-flex {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 1.25rem;
+  align-items: center;
   width: 100%;
+  min-height: 52px;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .header-left {
@@ -35,43 +38,48 @@
 }
 
 .header-icon {
-  width: 52px;
-  height: 52px;
-  background-color: #E6F7F8;
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
   flex-shrink: 0;
-  border: 1px solid rgba(7, 200, 204, 0.25);
 }
 
 .header-icon-svg {
-  width: 32px;
-  height: 32px;
-  stroke: #0F848F;
+  width: 36px;
+  height: 36px;
+  stroke: #1F1F1F;
+  display: block;
 }
 
 .header-titles {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .header-titles h1 {
   font-family: 'Lato', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #222222;
-  margin: 0;
-  line-height: 1.2;
+  color: #1F1F1F;
+  margin: 0 0 4px 0;
+  line-height: 1.25;
 }
 
 .header-titles p {
   font-family: 'Roboto', sans-serif;
-  font-size: 15px;
-  color: #5B6E80;
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748B;
   margin: 0;
+  line-height: 1.4;
 }
 
 .header-right {
@@ -115,8 +123,9 @@
 .header-divider {
   border: none;
   border-top: 1px solid #E2E8F0;
-  margin: 0 0 24px 0;
+  margin: 8px 0 0 0;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /* Tarjeta Principal del Perfil */
@@ -241,25 +250,53 @@
   border: 1px solid #E2E8F0;
 }
 
-.teacher-info-item {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14.5px;
-  color: #4A5568;
+.teacher-info-list {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.teacher-info-item {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 8px;
 }
 
-.teacher-info-item svg {
-  width: 16px;
-  height: 16px;
-  color: #5B6E80;
+.teacher-info-item .info-item-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
   flex-shrink: 0;
 }
 
-.teacher-info-item strong {
-  color: #2D3748;
-  font-weight: 600;
+.teacher-info-item .info-item-label svg {
+  width: 15px;
+  height: 15px;
+  color: #0F848F;
+  flex-shrink: 0;
+}
+
+.teacher-info-item .info-item-label strong {
+  color: #475569;
+  font-weight: 700;
+}
+
+.teacher-info-item .info-item-value {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #1E293B;
+  line-height: 1.35;
 }
 
 .divider {
@@ -422,15 +459,15 @@
   width: 100%;
 }
 
-.input-grid-2 > *,
-.input-grid-3 > * {
+.input-grid-2>*,
+.input-grid-3>* {
   border-bottom: 1px solid #EDF2F7;
   padding-bottom: 16px;
   margin-bottom: 16px;
 }
 
-.input-grid-2 > *:last-child,
-.input-grid-3 > *:last-child {
+.input-grid-2>*:last-child,
+.input-grid-3>*:last-child {
   border-bottom: none;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -1119,6 +1156,7 @@
     transform: scale(0.95);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -1280,25 +1318,77 @@
 /* --------------------------------------------------------------------------
    9. ADAPTACIÓN RESPONSIVE (TABLET & MOBILE)
    -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
   .profile-page-container {
     max-width: 100%;
+    margin-top: 12px;
+    gap: 16px;
+  }
+
+  .form-main-card {
+    text-align: left;
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .form-section,
+  .capacitaciones-section {
+    padding: 20px 18px;
+    border-radius: 12px;
+    gap: 18px;
   }
 
   .teacher-header-wrapper {
-    gap: 24px;
+    gap: 20px;
   }
 
   .capacitaciones-stats-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
   }
 }
 
 @media (max-width: 768px) {
+  .main-content {
+    padding: 12px 14px;
+    gap: 16px;
+  }
+
   .page-header-flex {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
+    min-height: auto;
+    margin-bottom: 2px;
+  }
+
+  .header-left {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+  }
+
+  .header-icon-svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-titles h1 {
+    font-size: 20px;
+    line-height: 1.25;
+    margin-bottom: 2px;
+  }
+
+  .header-titles p {
+    font-size: 13px;
+    line-height: 1.35;
+    color: #64748B;
   }
 
   .header-right {
@@ -1308,63 +1398,257 @@
   .button-id {
     width: 100%;
     justify-content: center;
+    height: 42px;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  .header-divider {
+    margin: 6px 0 0 0;
+  }
+
+  .profile-page-container {
+    margin: 12px auto 0 auto;
+    gap: 16px;
   }
 
   .form-main-card {
-    padding: 24px 18px;
+    padding: 20px 14px;
     border-radius: 12px;
   }
 
   .teacher-header-wrapper {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     gap: 16px;
+    margin-bottom: 1.25rem;
+  }
+
+  .teacher-profile-side {
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .avatar-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .btn-outline-primary {
+    font-size: 13px;
+    padding: 6px 14px;
+    margin-top: 2px;
   }
 
   .teacher-data-column {
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .teacher-name {
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 4px;
+    line-height: 1.25;
   }
 
   .teacher-tags-row {
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .teacher-badge {
+    font-size: 11.5px;
+    padding: 2px 8px;
+  }
+
+  .teacher-info-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 12px;
+    margin-top: 6px;
+    width: 100%;
+  }
+
+  .teacher-info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 3px;
+    width: 100%;
+  }
+
+  .teacher-info-item .info-item-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    font-size: 11.5px;
+  }
+
+  .teacher-info-item .info-item-value {
+    text-align: left;
+    font-size: 13.5px;
+    line-height: 1.35;
+  }
+
+  .divider {
+    margin: 18px 0;
   }
 
   .form-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    padding-bottom: 1rem;
+  }
+
+  .sub-title {
+    font-size: 18px;
+  }
+
+  .sub-description {
+    font-size: 13px;
+  }
+
+  .last-update {
+    align-self: flex-start;
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .tc-box {
+    padding: 12px 14px;
+    font-size: 13px;
+    gap: 10px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+
+  .form-section,
+  .capacitaciones-section {
+    padding: 16px 14px;
+    border-radius: 10px;
+    gap: 16px;
+  }
+
+  .section-title {
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-bottom: 8px;
+  }
+
+  .section-tag-editable,
+  .section-tag-locked {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+
+  .input-grid-2>*,
+  .input-grid-3>* {
+    padding-bottom: 14px;
+    margin-bottom: 14px;
   }
 
   .locked-fields-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-label {
+    font-size: 12.5px;
+  }
+
+  .form-control {
+    font-size: 14px;
+    padding: 9px 12px;
   }
 
   .inline-header {
-    gap: 10px;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .field-value {
+    font-size: 14px;
+    line-height: 1.35;
   }
 
   .btn-toggle-edit {
-    padding: 4px 8px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    min-height: 30px;
+  }
+
+  .inline-body {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .inline-body-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .btn-save,
+  .btn-cancel-inline {
+    flex: 1;
+    justify-content: center;
     font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .alert-box {
+    padding: 12px 12px;
+    font-size: 12.5px;
+    gap: 8px;
   }
 
   .capacitaciones-stats-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .stat-pill-item {
+    padding: 10px 12px;
+  }
+
+  .stat-pill-value {
+    font-size: 16px;
   }
 
   .capacitaciones-toolbar {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .capacitaciones-search-wrap {
+    min-width: 100%;
   }
 
   .capacitaciones-filter-wrap {
     justify-content: space-between;
     width: 100%;
+    gap: 8px;
   }
 
   .capacitaciones-filter-select {
     flex: 1;
+    font-size: 12.5px;
+    padding: 6px 28px 6px 10px;
   }
 
   /* Mostrar vista tarjetas en móvil para lectura cómoda */
@@ -1374,25 +1658,95 @@
 
   .capacitaciones-mobile-cards {
     display: flex;
+    gap: 10px;
+  }
+
+  .cap-mobile-card {
+    padding: 12px;
+    gap: 8px;
+    border-radius: 8px;
+  }
+
+  .cap-mobile-title {
+    font-size: 13.5px;
+  }
+
+  .cap-mobile-meta-row {
+    font-size: 12.5px;
+  }
+
+  .capacitaciones-watermark {
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    text-align: center;
+    font-size: 11px;
+    padding-top: 8px;
   }
 }
 
 @media (max-width: 480px) {
   .form-main-card {
-    padding: 18px 14px;
+    padding: 16px 16px;
+    border-radius: 10px;
+  }
+
+  .form-section,
+  .capacitaciones-section {
+    padding: 14px 10px;
+    gap: 12px;
+  }
+
+  .teacher-info-item .info-item-label {
+    font-size: 11px;
+  }
+
+  .teacher-info-item .info-item-value {
+    font-size: 13px;
   }
 
   .avatar-container {
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
   }
 
   .teacher-name {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .tc-box {
-    padding: 12px 14px;
-    font-size: 13.5px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+  }
+
+  .modal-card {
+    border-radius: 12px;
+    max-width: calc(100vw - 20px);
+  }
+
+  .modal-header {
+    padding: 14px 16px;
+  }
+
+  .modal-body {
+    padding: 16px 14px;
+  }
+
+  .fotocheck-card {
+    padding: 18px 12px;
+  }
+
+  .fotocheck-avatar {
+    width: 76px;
+    height: 76px;
+  }
+
+  .profile-toast {
+    left: 12px;
+    right: 12px;
+    bottom: 16px;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
   }
 }

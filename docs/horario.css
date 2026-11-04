@@ -1000,35 +1000,81 @@
   margin-top: auto;
 }
 
+.pill-session-type,
+.pill-modality-presencial,
+.pill-modality-virtual,
+.pill-shared-course {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
 .pill-session-type {
-  display: inline-block;
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
   border-radius: 4px;
-  padding: 1px 6px;
+  padding: 3px 6px;
   font-family: 'Roboto', sans-serif;
   font-size: 10px;
   font-weight: 500;
-  color: #5B6E80;
+  color: #475569;
+  min-height: 18px;
   white-space: nowrap;
 }
 
 .pill-modality-presencial {
   background-color: #0F848F;
   color: #FFFFFF;
-  font-size: 9px;
+  font-size: 9.5px;
   font-weight: 600;
   border-radius: 10px;
-  padding: 1px 6px;
+  padding: 3px 8px;
+  min-height: 18px;
+  white-space: nowrap;
 }
 
 .pill-modality-virtual {
   background-color: #0EA5E9;
   color: #FFFFFF;
-  font-size: 9px;
+  font-size: 9.5px;
   font-weight: 600;
   border-radius: 10px;
-  padding: 1px 6px;
+  padding: 3px 8px;
+  min-height: 18px;
+  white-space: nowrap;
+}
+
+.pill-shared-course {
+  background-color: #EDE9FE;
+  color: #5B21B6;
+  border: 1px solid #C4B5FD;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 3px 7px;
+  min-height: 18px;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+/* Card específica para Curso Compartido */
+.schedule-card.card-shared-course {
+  background-color: #FAF8FF;
+  border-left-color: #6366F1;
+  border-color: #C7D2FE;
+}
+
+.schedule-card.card-shared-course:hover {
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.16);
+  border-color: #6366F1;
+}
+
+.schedule-card.card-shared-course .card-code {
+  color: #4F46E5;
 }
 
 /* Evento DGDD (Educación con IA) */
@@ -1667,6 +1713,12 @@
   color: #B45309;
 }
 
+.badge-shared {
+  background-color: #EDE9FE;
+  color: #5B21B6;
+  border: 1px solid #DDD6FE;
+}
+
 .modal-title {
   font-family: 'Lato', sans-serif;
   font-size: 18px;
@@ -1759,6 +1811,176 @@
   font-size: 12px;
   color: #78350F;
   line-height: 1.4;
+}
+
+/* Sección de Distribución Horaria en Modal (Teoría vs Práctica) */
+.modal-hours-distribution {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hours-dist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hours-dist-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hours-dist-title svg {
+  color: #0F848F;
+}
+
+.hours-dist-total {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F848F;
+  background-color: #E6F7F8;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.hours-dist-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.hours-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hours-card.hours-card-theory {
+  border-left: 3px solid #0EA5E9;
+}
+
+.hours-card.hours-card-practice {
+  border-left: 3px solid #10B981;
+}
+
+.hours-card-type {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.hours-card-count {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1E293B;
+  margin: 2px 0;
+}
+
+.hours-card-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  color: #64748B;
+}
+
+/* Barra Proporcional de Horas */
+.hours-dist-summary-bar {
+  display: flex;
+  height: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-top: 2px;
+}
+
+.hours-bar-theory {
+  background-color: #0EA5E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s ease;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+.hours-bar-practice {
+  background-color: #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s ease;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+/* Caja de Detalle para Curso Compartido */
+.modal-shared-course-box {
+  background-color: #F5F3FF;
+  border: 1px solid #DDD6FE;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shared-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.shared-box-badge {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #5B21B6;
+  background-color: #EDE9FE;
+  padding: 2px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.shared-box-sections {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4C1D95;
+}
+
+.shared-box-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #5B21B6;
+  line-height: 1.45;
+  margin: 0;
 }
 
 .schedule-modal-footer {

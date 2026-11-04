@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width="device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Perfil - Portal Docente Universidad Norbert Wiener</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -734,7 +734,7 @@
       <header class="page-header-flex">
         <div class="header-left">
           <div class="header-icon" aria-hidden="true">
-            <svg class="header-icon-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="header-icon-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -768,29 +768,40 @@
           <div class="teacher-header-wrapper">
             <div class="teacher-profile-side">
               <div class="avatar-container">
-                <img src="img/docente-avatar.jpg" alt="Foto de Cesar Augusto Carignano Quispe" class="teacher-avatar">
+                <img src="img/docente-avatar.jpg" alt="Foto de Jonah Miguel Asensio Peña" class="teacher-avatar">
               </div>
               <button type="button" class="btn-outline-primary" id="btnActualizarFoto">Actualizar foto</button>
             </div>
 
             <div class="teacher-data-column">
-              <h2 class="teacher-name"><strong>Cesar Augusto</strong> Carignano Quispe</h2>
+              <h2 class="teacher-name"><strong>Jonah Miguel</strong> Asensio Peña</h2>
               <div class="teacher-tags-row">
                 <span class="teacher-badge badge-role">UW014 - COORDINADOR</span>
                 <span class="teacher-badge badge-code">Cód. Docente: 10006551</span>
               </div>
-              <span class="teacher-info-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                <strong>Cargo:</strong> U0416 - COORDINADOR DE TECNOLOGIAS EDUCATIVAS
-              </span>
-              <span class="teacher-info-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                <strong>Departamento:</strong> W108 - COORDINACION DE PLATAFORMAS
-              </span>
-              <span class="teacher-info-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <strong>Sede:</strong> Sede Central - Av Republica de Chile 376-388
-              </span>
+              <div class="teacher-info-list">
+                <div class="teacher-info-item">
+                  <span class="info-item-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    <strong>Cargo:</strong>
+                  </span>
+                  <span class="info-item-value">U0416 - COORDINADOR DE TECNOLOGIAS EDUCATIVAS</span>
+                </div>
+                <div class="teacher-info-item">
+                  <span class="info-item-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <strong>Departamento:</strong>
+                  </span>
+                  <span class="info-item-value">W108 - COORDINACION DE PLATAFORMAS</span>
+                </div>
+                <div class="teacher-info-item">
+                  <span class="info-item-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <strong>Sede:</strong>
+                  </span>
+                  <span class="info-item-value">Sede Central - Av Republica de Chile 376-388</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -877,7 +888,7 @@
                     <button type="button" class="btn-toggle-edit">Editar</button>
                   </div>
                   <div class="inline-body">
-                    <input type="email" class="form-control field-input" placeholder="cesar.carignano@gmail.com">
+                    <input type="email" class="form-control field-input" placeholder="jonah.asensio@gmail.com">
                     <div class="inline-body-actions">
                       <button type="button" class="btn btn-primary btn-save">Guardar</button>
                       <button type="button" class="btn btn-cancel-inline">Cancelar</button>
@@ -892,7 +903,7 @@
                     <span class="optional-label">(Asignado por la universidad)</span>
                   </label>
                   <div class="locked-field-wrapper">
-                    <input type="email" class="form-control locked" value="cesar.carignano@uwiener.edu.pe" readonly disabled>
+                    <input type="email" class="form-control locked" value="jonah.asensio@uwiener.edu.pe" readonly disabled>
                     <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                   </div>
                 </div>
@@ -1039,7 +1050,7 @@
                 <div class="form-group">
                   <label class="form-label">Apellidos</label>
                   <div class="locked-field-wrapper">
-                    <input type="text" class="form-control locked" value="Carignano Quispe" readonly disabled>
+                    <input type="text" class="form-control locked" value="Asensio Peña" readonly disabled>
                     <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                   </div>
                 </div>
@@ -1047,7 +1058,7 @@
                 <div class="form-group">
                   <label class="form-label">Nombres</label>
                   <div class="locked-field-wrapper">
-                    <input type="text" class="form-control locked" value="Cesar Augusto" readonly disabled>
+                    <input type="text" class="form-control locked" value="Jonah Miguel" readonly disabled>
                     <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                   </div>
                 </div>
@@ -1160,7 +1171,7 @@
             <!-- ================================================================
                  4. SECCIÓN CAPACITACIONES (AL FINAL DE LA VISTA)
                  ================================================================ -->
-            <div class="capacitaciones-section">
+            <div class="form-section capacitaciones-section">
               <div class="capacitaciones-header">
                 <div class="capacitaciones-title-block">
                   <h4 class="capacitaciones-main-title">
@@ -1666,8 +1677,8 @@
       </div>
       <div class="modal-body">
         <div class="fotocheck-card">
-          <img src="img/docente-avatar.jpg" alt="Cesar Augusto Carignano Quispe" class="fotocheck-avatar">
-          <h4 class="fotocheck-name">Cesar Augusto Carignano Quispe</h4>
+          <img src="img/docente-avatar.jpg" alt="Jonah Miguel Asensio Peña" class="fotocheck-avatar">
+          <h4 class="fotocheck-name">Jonah Miguel Asensio Peña</h4>
           <span class="fotocheck-role">UW014 - COORDINADOR</span>
           <p class="fotocheck-code">Cód. Docente: 10006551</p>
           <div class="fotocheck-qr">

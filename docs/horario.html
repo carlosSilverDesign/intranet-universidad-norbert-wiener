@@ -1289,13 +1289,13 @@
                 <div class="day-slot-grid-line"></div>
                 <div class="day-slot-grid-line"></div>
 
-                <!-- CASUÍSTICA: EVENTO / CAPACITACIÓN OBLIGATORIA CON IA (10:00 - 12:00) -->
-                <!-- top = 192px, height = 128px -->
-                <div class="schedule-card card-event-dgdd" style="top: 192px; height: 128px;" data-type="capacitacion"
+                <!-- CASUÍSTICA: EVENTO / CAPACITACIÓN OBLIGATORIA CON IA (08:00 - 10:00) -->
+                <!-- top = 64px, height = 128px -->
+                <div class="schedule-card card-event-dgdd" style="top: 64px; height: 128px;" data-type="capacitacion"
                   data-title="CAPACITACIÓN: EDUCACIÓN MÉDICA CON IA"
                   data-subtitle="Dirección de Gestión y Desarrollo Docente (DGDD)"
                   data-aula="Sala Virtual Microsoft Teams" data-sede="Campus Virtual Wiener"
-                  data-horario="10:00 - 12:00" data-sesion="Taller / Capacitación" data-modalidad="Virtual En vivo"
+                  data-horario="08:00 - 10:00" data-sesion="Taller / Capacitación" data-modalidad="Virtual En vivo"
                   data-matriculados="Plana Docente Medicina" data-badgetext="Capacitación DGDD"
                   data-badgeclass="badge-training">
                   <div class="card-location-info">
@@ -1307,6 +1307,34 @@
                   <div class="card-footer-tags">
                     <span class="pill-session-type">Capacitación</span>
                     <span class="pill-modality-virtual">Virtual En vivo</span>
+                  </div>
+                </div>
+
+                <!-- CASUÍSTICA: CURSO COMPARTIDO (3 HORAS CONTINUAS: 1h TEORÍA + 2h PRÁCTICA) -->
+                <!-- top = 256px (11:00), height = 192px (3h) -->
+                <div class="schedule-card card-shared-course" style="top: 256px; height: 192px;" data-type="clase"
+                  data-title="EPIDEMIOLOGÍA CLÍNICA Y BIOESTADÍSTICA"
+                  data-subtitle="MED-305 · Secciones SC01 + SC02 (Compartido)"
+                  data-aula="Auditorio A-201, Piso 2" data-sede="Campus Lima Centro"
+                  data-horario="11:00 - 14:00 (3h)" data-sesion="1h Teoría + 2h Práctica"
+                  data-modalidad="Presencial"
+                  data-matriculados="68 alumnos (Secc. SC01: 34 + Secc. SC02: 34)"
+                  data-badgetext="Curso Compartido" data-badgeclass="badge-shared"
+                  data-compartido="true" data-ht="1" data-hp="2"
+                  data-ht-desc="11:00 - 12:00: Cátedra teórica y fundamentos bioestadísticos"
+                  data-hp-desc="12:00 - 14:00: Laboratorio de análisis con software SPSS y discusión de casos clínicos"
+                  data-secciones="SC01 (34 est.) + SC02 (34 est.)"
+                  data-distribucion="11:00 - 12:00: Bloque Teórico Magistral (1h) | 12:00 - 14:00: Bloque Práctico de Casos y Software en Laboratorio (2h)">
+                  <div class="card-location-info">
+                    <span class="card-room-text">Aula: Auditorio A-201, Piso 2</span>
+                    <span class="card-campus-text">Sede: Campus Lima Centro</span>
+                  </div>
+                  <div class="card-code">MED-305 · Secc. SC01 / SC02</div>
+                  <div class="card-course-name">EPIDEMIOLOGÍA CLÍNICA Y BIOESTADÍSTICA</div>
+                  <div class="card-footer-tags">
+                    <span class="pill-shared-course">Curso compartido</span>
+                    <span class="pill-session-type">1h Teoría + 2h Práctica</span>
+                    <span class="pill-modality-presencial">Presencial</span>
                   </div>
                 </div>
 
@@ -1363,6 +1391,34 @@
                   <div class="card-course-name">HISTOLOGÍA HUMANA</div>
                   <div class="card-footer-tags">
                     <span class="pill-session-type">Laboratorio</span>
+                  </div>
+                </div>
+
+                <!-- CASUÍSTICA: CURSO COMPARTIDO (3 HORAS CONTINUAS: 3h TEORÍA VIRTUAL) -->
+                <!-- top = 448px (14:00), height = 192px (3h) -->
+                <div class="schedule-card card-shared-course" style="top: 448px; height: 192px;" data-type="clase"
+                  data-title="BIOÉTICA Y DEONTOLOGÍA MÉDICA"
+                  data-subtitle="MED-402 · Secciones SC03 + SC04 (Compartido)"
+                  data-aula="Aula Magna Teams (Virtual)" data-sede="Campus Virtual Wiener"
+                  data-horario="14:00 - 17:00 (3h)" data-sesion="3h Teoría"
+                  data-modalidad="Virtual En vivo"
+                  data-matriculados="75 alumnos (Secc. SC03: 38 + Secc. SC04: 37)"
+                  data-badgetext="Curso Compartido" data-badgeclass="badge-shared"
+                  data-compartido="true" data-ht="3" data-hp="0"
+                  data-ht-desc="14:00 - 17:00: Cátedra teórica integral, dilemas bioéticos y análisis de casos"
+                  data-hp-desc="Sin horas de laboratorio programadas"
+                  data-secciones="SC03 (38 est.) + SC04 (37 est.)"
+                  data-distribucion="14:00 - 17:00: Cátedra Teórica y Discusión de Dilemas Bioéticos en Medicina (3h Teoría)">
+                  <div class="card-location-info">
+                    <span class="card-room-text">Aula: Aula Magna Virtual</span>
+                    <span class="card-campus-text">Sede: Campus Virtual</span>
+                  </div>
+                  <div class="card-code">MED-402 · Secc. SC03 / SC04</div>
+                  <div class="card-course-name">BIOÉTICA Y DEONTOLOGÍA MÉDICA</div>
+                  <div class="card-footer-tags">
+                    <span class="pill-shared-course">Curso compartido</span>
+                    <span class="pill-session-type">3h Teoría</span>
+                    <span class="pill-modality-virtual">Virtual En vivo</span>
                   </div>
                 </div>
 
@@ -1644,6 +1700,46 @@
         </div>
       </div>
 
+      <!-- GUÍA DE LOCALES ASIGNADOS -->
+      <section class="program-locales-card" aria-label="Guía de Locales Asignados">
+        <div class="program-locales-header">
+          <h2>Guía de Locales Asignados</h2>
+        </div>
+        <div class="program-locales-grid">
+          <!-- Columna Izquierda -->
+          <div class="program-locales-col">
+            <div class="program-locale-item">
+              <span class="program-locale-badge">Local 01</span>
+              <span class="program-locale-address">Jr. Larrabure y Unanue 110, Lima</span>
+            </div>
+            <div class="program-locale-item">
+              <span class="program-locale-badge">Local 03</span>
+              <span class="program-locale-address">Av. Petit Thoars 2021, Lince</span>
+            </div>
+            <div class="program-locale-item">
+              <span class="program-locale-badge">Local 05</span>
+              <span class="program-locale-address">Av. Arenales 1535 -1555, Lince</span>
+            </div>
+          </div>
+
+          <!-- Columna Derecha -->
+          <div class="program-locales-col">
+            <div class="program-locale-item">
+              <span class="program-locale-badge">Local 02</span>
+              <span class="program-locale-address">Av. Arequipa 440, Lima</span>
+            </div>
+            <div class="program-locale-item">
+              <span class="program-locale-badge">Local 04</span>
+              <span class="program-locale-address">Jr. Saco Oliveros 150, Lima</span>
+            </div>
+            <div class="program-locale-item">
+              <span class="program-locale-badge svir">SVIR</span>
+              <span class="program-locale-address">Salón Virtual (Evaluación a través del Aula Virtual Canvas)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- PIE DE PÁGINA INSTITUCIONAL -->
       <footer class="main-footer">
         <p>© 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
@@ -1668,6 +1764,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
 
@@ -1696,6 +1793,56 @@
           <div class="modal-info-item">
             <span class="modal-info-label">Estudiantes Asignados:</span>
             <span class="modal-info-value" id="modalMatriculados">42 matriculados</span>
+          </div>
+        </div>
+
+        <!-- Sección de Curso Compartido si Aplica -->
+        <div class="modal-shared-course-box" id="modalSharedBox" style="display: none;">
+          <div class="shared-box-header">
+            <span class="shared-box-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              Curso Compartido (Fusión de Secciones)
+            </span>
+            <span class="shared-box-sections" id="modalSharedSections">SC01 + SC02</span>
+          </div>
+          <p class="shared-box-desc" id="modalSharedDesc">
+            Este bloque reúne a estudiantes de dos o más secciones en una sola sesión lectiva continua.
+          </p>
+        </div>
+
+        <!-- Módulo de Diferenciación de Horas: Teoría (HT) vs Práctica (HP) -->
+        <div class="modal-hours-distribution" id="modalHoursDistribution">
+          <div class="hours-dist-header">
+            <span class="hours-dist-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Distribución Horaria Académica
+            </span>
+            <span class="hours-dist-total" id="modalHorasTotal">3 Horas Lectivas</span>
+          </div>
+          <div class="hours-dist-cards-grid">
+            <div class="hours-card hours-card-theory" id="modalCardTheory">
+              <span class="hours-card-type">Horas Teoría (HT)</span>
+              <span class="hours-card-count" id="modalHorasTeoria">1 hora</span>
+              <span class="hours-card-desc" id="modalHorasTeoriaDesc">Cátedra magistral</span>
+            </div>
+            <div class="hours-card hours-card-practice" id="modalCardPractice">
+              <span class="hours-card-type">Horas Práctica (HP)</span>
+              <span class="hours-card-count" id="modalHorasPractica">2 horas</span>
+              <span class="hours-card-desc" id="modalHorasPracticaDesc">Talleres y casos</span>
+            </div>
+          </div>
+          <!-- Barra Proporcional de Horas -->
+          <div class="hours-dist-summary-bar" id="modalBarContainer">
+            <div class="hours-bar-theory" id="modalBarTheory" style="width: 33%;">1h Teoría (33%)</div>
+            <div class="hours-bar-practice" id="modalBarPractice" style="width: 67%;">2h Práctica (67%)</div>
           </div>
         </div>
 

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width="device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Perfil - Portal Docente Universidad Norbert Wiener</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
 
 <body>
 
-<header class="top-search-bar" id="topSearchBar">
+  <header class="top-search-bar" id="topSearchBar">
     <div class="top-bar-left-mobile">
       <button type="button" class="top-bar-burger-btn" id="topBarBurgerBtn" aria-label="Abrir Menú">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -734,14 +734,16 @@
       <header class="page-header-flex">
         <div class="header-left">
           <div class="header-icon" aria-hidden="true">
-            <svg class="header-icon-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="header-icon-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+              fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
           </div>
           <div class="header-titles">
             <h1>Mi Perfil</h1>
-            <p>Gestiona tu información personal, residencia, datos laborales y consulta tus capacitaciones acumuladas.</p>
+            <p>Gestiona tu información personal, residencia, datos laborales y consulta tus capacitaciones acumuladas.
+            </p>
           </div>
         </div>
 
@@ -768,29 +770,52 @@
           <div class="teacher-header-wrapper">
             <div class="teacher-profile-side">
               <div class="avatar-container">
-                <img src="img/docente-avatar.jpg" alt="Foto de Cesar Augusto Carignano Quispe" class="teacher-avatar">
+                <img src="img/docente-avatar.jpg" alt="Foto de Jonah Miguel Asensio Peña" class="teacher-avatar">
               </div>
               <button type="button" class="btn-outline-primary" id="btnActualizarFoto">Actualizar foto</button>
             </div>
 
             <div class="teacher-data-column">
-              <h2 class="teacher-name"><strong>Cesar Augusto</strong> Carignano Quispe</h2>
+              <h2 class="teacher-name"><strong>Jonah Miguel</strong> Asensio Peña</h2>
               <div class="teacher-tags-row">
                 <span class="teacher-badge badge-role">UW014 - COORDINADOR</span>
                 <span class="teacher-badge badge-code">Cód. Docente: 10006551</span>
               </div>
-              <span class="teacher-info-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                <strong>Cargo:</strong> U0416 - COORDINADOR DE TECNOLOGIAS EDUCATIVAS
-              </span>
-              <span class="teacher-info-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                <strong>Departamento:</strong> W108 - COORDINACION DE PLATAFORMAS
-              </span>
-              <span class="teacher-info-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <strong>Sede:</strong> Sede Central - Av Republica de Chile 376-388
-              </span>
+              <div class="teacher-info-list">
+                <div class="teacher-info-item">
+                  <span class="info-item-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <strong>Cargo:</strong>
+                  </span>
+                  <span class="info-item-value">U0416 - COORDINADOR DE TECNOLOGIAS EDUCATIVAS</span>
+                </div>
+                <div class="teacher-info-item">
+                  <span class="info-item-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <strong>Departamento:</strong>
+                  </span>
+                  <span class="info-item-value">W108 - COORDINACION DE PLATAFORMAS</span>
+                </div>
+                <div class="teacher-info-item">
+                  <span class="info-item-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <strong>Sede:</strong>
+                  </span>
+                  <span class="info-item-value">Sede Central - Av Republica de Chile 376-388</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -810,7 +835,8 @@
           <!-- Aviso de Términos de Tratamiento de Datos -->
           <a href="terminos-datos.html" class="tc-box" title="Revisar Términos de Tratamiento de Datos Personales">
             <p>Para editar, necesitamos que primero revises los <b>Términos de Tratamientos de Datos Personales</b>.</p>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </a>
@@ -841,7 +867,8 @@
                     <button type="button" class="btn-toggle-edit">Editar</button>
                   </div>
                   <div class="inline-body">
-                    <input type="tel" class="form-control field-input" value="997277949" placeholder="Número de teléfono o celular">
+                    <input type="tel" class="form-control field-input" value="997277949"
+                      placeholder="Número de teléfono o celular">
                     <div class="inline-body-actions">
                       <button type="button" class="btn btn-primary btn-save">Guardar</button>
                       <button type="button" class="btn btn-cancel-inline">Cancelar</button>
@@ -877,7 +904,7 @@
                     <button type="button" class="btn-toggle-edit">Editar</button>
                   </div>
                   <div class="inline-body">
-                    <input type="email" class="form-control field-input" placeholder="cesar.carignano@gmail.com">
+                    <input type="email" class="form-control field-input" placeholder="jonah.asensio@gmail.com">
                     <div class="inline-body-actions">
                       <button type="button" class="btn btn-primary btn-save">Guardar</button>
                       <button type="button" class="btn btn-cancel-inline">Cancelar</button>
@@ -892,8 +919,14 @@
                     <span class="optional-label">(Asignado por la universidad)</span>
                   </label>
                   <div class="locked-field-wrapper">
-                    <input type="email" class="form-control locked" value="cesar.carignano@uwiener.edu.pe" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <input type="email" class="form-control locked" value="jonah.asensio@uwiener.edu.pe" readonly
+                      disabled>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
@@ -919,7 +952,8 @@
                     <button type="button" class="btn-toggle-edit">Editar</button>
                   </div>
                   <div class="inline-body">
-                    <input type="text" class="form-control field-input" value="GOZZOLI NORTE 120" placeholder="Ej. Av. Arequipa 440, Jr. Gozzoli Norte 120">
+                    <input type="text" class="form-control field-input" value="GOZZOLI NORTE 120"
+                      placeholder="Ej. Av. Arequipa 440, Jr. Gozzoli Norte 120">
                     <div class="inline-body-actions">
                       <button type="button" class="btn btn-primary btn-save">Guardar</button>
                       <button type="button" class="btn btn-cancel-inline">Cancelar</button>
@@ -976,7 +1010,8 @@
                     <button type="button" class="btn-toggle-edit">Editar</button>
                   </div>
                   <div class="inline-body">
-                    <input type="text" class="form-control field-input" placeholder="Ej. A media cuadra del parque, frente a farmacia">
+                    <input type="text" class="form-control field-input"
+                      placeholder="Ej. A media cuadra del parque, frente a farmacia">
                     <div class="inline-body-actions">
                       <button type="button" class="btn btn-primary btn-save">Guardar</button>
                       <button type="button" class="btn btn-cancel-inline">Cancelar</button>
@@ -1039,16 +1074,26 @@
                 <div class="form-group">
                   <label class="form-label">Apellidos</label>
                   <div class="locked-field-wrapper">
-                    <input type="text" class="form-control locked" value="Carignano Quispe" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <input type="text" class="form-control locked" value="Asensio Peña" readonly disabled>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="form-label">Nombres</label>
                   <div class="locked-field-wrapper">
-                    <input type="text" class="form-control locked" value="Cesar Augusto" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <input type="text" class="form-control locked" value="Jonah Miguel" readonly disabled>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
@@ -1056,7 +1101,12 @@
                   <label class="form-label">Documento de Identidad (DNI)</label>
                   <div class="locked-field-wrapper">
                     <input type="text" class="form-control locked" value="09483721" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
@@ -1064,7 +1114,12 @@
                   <label class="form-label">Fecha de Nacimiento</label>
                   <div class="locked-field-wrapper">
                     <input type="text" class="form-control locked" value="05/10/1977" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
@@ -1072,7 +1127,12 @@
                   <label class="form-label">Estado Civil</label>
                   <div class="locked-field-wrapper">
                     <input type="text" class="form-control locked" value="Soltero" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
@@ -1080,7 +1140,12 @@
                   <label class="form-label">Grupo Sanguíneo</label>
                   <div class="locked-field-wrapper">
                     <input type="text" class="form-control locked" value="No Consta" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
@@ -1089,9 +1154,16 @@
               <!-- Aviso Informativo -->
               <div class="alert-box">
                 <div class="icon-info">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
                 </div>
-                <p>Si los datos personales mostrados contienen errores o requieren actualización oficial, por favor registra una solicitud en la <b>Mesa de Ayuda Docente</b> o comunícate con la <b>Dirección de Gestión Docente (DGDD)</b>.</p>
+                <p>Si los datos personales mostrados contienen errores o requieren actualización oficial, por favor
+                  registra una solicitud en la <b>Mesa de Ayuda Docente</b> o comunícate con la <b>Dirección de Gestión
+                    Docente (DGDD)</b>.</p>
               </div>
             </div>
 
@@ -1109,8 +1181,14 @@
                 <div class="form-group">
                   <label class="form-label">Sede (Local)</label>
                   <div class="locked-field-wrapper">
-                    <input type="text" class="form-control locked" value="Av Republica de Chile 376-388" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <input type="text" class="form-control locked" value="Av Republica de Chile 376-388" readonly
+                      disabled>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
@@ -1118,23 +1196,40 @@
                   <label class="form-label">Puesto</label>
                   <div class="locked-field-wrapper">
                     <input type="text" class="form-control locked" value="UW014 - COORDINADOR" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="form-label">Cargo</label>
                   <div class="locked-field-wrapper">
-                    <input type="text" class="form-control locked" value="U0416 - COORDINADOR DE TECNOLOGIAS EDUCATIVAS" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <input type="text" class="form-control locked" value="U0416 - COORDINADOR DE TECNOLOGIAS EDUCATIVAS"
+                      readonly disabled>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="form-label">Departamento</label>
                   <div class="locked-field-wrapper">
-                    <input type="text" class="form-control locked" value="W108 - COORDINACION DE PLATAFORMAS" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <input type="text" class="form-control locked" value="W108 - COORDINACION DE PLATAFORMAS" readonly
+                      disabled>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
@@ -1142,15 +1237,26 @@
                   <label class="form-label">Horario Laboral</label>
                   <div class="locked-field-wrapper">
                     <input type="text" class="form-control locked" value="Horario No Fiscalizable" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="form-label">Responsable del Departamento</label>
                   <div class="locked-field-wrapper">
-                    <input type="text" class="form-control locked" value="10006551 - Peralta Miranda Margarita Ysabel" readonly disabled>
-                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <input type="text" class="form-control locked" value="10006551 - Peralta Miranda Margarita Ysabel"
+                      readonly disabled>
+                    <svg class="locked-field-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
                   </div>
                 </div>
 
@@ -1160,14 +1266,19 @@
             <!-- ================================================================
                  4. SECCIÓN CAPACITACIONES (AL FINAL DE LA VISTA)
                  ================================================================ -->
-            <div class="capacitaciones-section">
+            <div class="form-section capacitaciones-section">
               <div class="capacitaciones-header">
                 <div class="capacitaciones-title-block">
                   <h4 class="capacitaciones-main-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
                     <span>3. Capacitaciones</span>
                   </h4>
-                  <p class="capacitaciones-subtitle">Historial acumulado de programas y talleres pedagógicos completados conforme a tu tiempo de contratación.</p>
+                  <p class="capacitaciones-subtitle">Historial acumulado de programas y talleres pedagógicos completados
+                    conforme a tu tiempo de contratación.</p>
                 </div>
               </div>
 
@@ -1175,7 +1286,14 @@
               <div class="capacitaciones-stats-grid">
                 <div class="stat-pill-card">
                   <div class="stat-pill-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
                   </div>
                   <div class="stat-pill-content">
                     <span class="stat-pill-label">Capacitaciones Llevadas</span>
@@ -1185,7 +1303,11 @@
 
                 <div class="stat-pill-card">
                   <div class="stat-pill-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
                   </div>
                   <div class="stat-pill-content">
                     <span class="stat-pill-label">Total Horas Acumuladas</span>
@@ -1195,7 +1317,11 @@
 
                 <div class="stat-pill-card">
                   <div class="stat-pill-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
                   </div>
                   <div class="stat-pill-content">
                     <span class="stat-pill-label">Acreditación y Estado</span>
@@ -1207,8 +1333,13 @@
               <!-- Barra de Búsqueda y Filtrado de Cursos -->
               <div class="capacitaciones-toolbar">
                 <div class="capacitaciones-search-wrap">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                  <input type="text" id="searchCapacitaciones" class="capacitaciones-search-input" placeholder="Buscar por título de capacitación o código...">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" id="searchCapacitaciones" class="capacitaciones-search-input"
+                    placeholder="Buscar por título de capacitación o código...">
                 </div>
 
                 <div class="capacitaciones-filter-wrap">
@@ -1237,166 +1368,166 @@
                     </tr>
                   </thead>
                   <tbody id="capacitacionesTableBody">
-              <tr data-year="2012" data-hours="3.5">
-                <td class="col-center col-num-val">1</td>
-                <td class="col-center"><span class="col-code-pill">1872</span></td>
-                <td class="col-title-val">Interpretación De La Norma Iso 9001</td>
-                <td class="col-center col-hours-val">3,5</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2012" data-hours="3.5">
-                <td class="col-center col-num-val">2</td>
-                <td class="col-center"><span class="col-code-pill">1884</span></td>
-                <td class="col-title-val">Formación De Auditores Internos</td>
-                <td class="col-center col-hours-val">3,5</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2012" data-hours="3.5">
-                <td class="col-center col-num-val">3</td>
-                <td class="col-center"><span class="col-code-pill">1870</span></td>
-                <td class="col-title-val">Interpretación De La Norma Iso 9001</td>
-                <td class="col-center col-hours-val">3,5</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2012" data-hours="3.5">
-                <td class="col-center col-num-val">4</td>
-                <td class="col-center"><span class="col-code-pill">1871</span></td>
-                <td class="col-title-val">Interpretación De La Norma Iso 9001</td>
-                <td class="col-center col-hours-val">3,5</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2012" data-hours="3.5">
-                <td class="col-center col-num-val">5</td>
-                <td class="col-center"><span class="col-code-pill">1885</span></td>
-                <td class="col-title-val">Formación De Auditores Internos</td>
-                <td class="col-center col-hours-val">3,5</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2012" data-hours="3.3">
-                <td class="col-center col-num-val">6</td>
-                <td class="col-center"><span class="col-code-pill">1902</span></td>
-                <td class="col-title-val">Formación De Auditores Internos</td>
-                <td class="col-center col-hours-val">3,3</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2012" data-hours="3.5">
-                <td class="col-center col-num-val">7</td>
-                <td class="col-center"><span class="col-code-pill">1882</span></td>
-                <td class="col-title-val">Formación De Auditores Internos</td>
-                <td class="col-center col-hours-val">3,5</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2012" data-hours="3.5">
-                <td class="col-center col-num-val">8</td>
-                <td class="col-center"><span class="col-code-pill">1873</span></td>
-                <td class="col-title-val">Interpretación De La Norma Iso 9001</td>
-                <td class="col-center col-hours-val">3,5</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2012" data-hours="1.0">
-                <td class="col-center col-num-val">9</td>
-                <td class="col-center"><span class="col-code-pill">1912</span></td>
-                <td class="col-title-val">Reunión Con Auditores Internos</td>
-                <td class="col-center col-hours-val">1,0</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2012" data-hours="3.5">
-                <td class="col-center col-num-val">10</td>
-                <td class="col-center"><span class="col-code-pill">1883</span></td>
-                <td class="col-title-val">Formación De Auditores Internos</td>
-                <td class="col-center col-hours-val">3,5</td>
-                <td class="col-center col-year-val">2012</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2013" data-hours="2.0">
-                <td class="col-center col-num-val">11</td>
-                <td class="col-center"><span class="col-code-pill">1978</span></td>
-                <td class="col-title-val">Primeros Auxilios Y Prevención De Desastres</td>
-                <td class="col-center col-hours-val">2,0</td>
-                <td class="col-center col-year-val">2013</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2014" data-hours="7.0">
-                <td class="col-center col-num-val">12</td>
-                <td class="col-center"><span class="col-code-pill">2112</span></td>
-                <td class="col-title-val">Almuerzo De Fin De Año</td>
-                <td class="col-center col-hours-val">7,0</td>
-                <td class="col-center col-year-val">2014</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2023" data-hours="2.0">
-                <td class="col-center col-num-val">13</td>
-                <td class="col-center"><span class="col-code-pill">2351</span></td>
-                <td class="col-title-val">Andragogía 2023-Ii</td>
-                <td class="col-center col-hours-val">2,0</td>
-                <td class="col-center col-year-val">2023</td>
-                <td class="col-center"><span class="badge-nota">20</span></td>
-              </tr>
-              <tr data-year="2023" data-hours="1.0">
-                <td class="col-center col-num-val">14</td>
-                <td class="col-center"><span class="col-code-pill">2354</span></td>
-                <td class="col-title-val">Canvas: Creación De Grupos</td>
-                <td class="col-center col-hours-val">1,0</td>
-                <td class="col-center col-year-val">2023</td>
-                <td class="col-center"><span class="badge-nota">20</span></td>
-              </tr>
-              <tr data-year="2023" data-hours="2.0">
-                <td class="col-center col-num-val">15</td>
-                <td class="col-center"><span class="col-code-pill">2356</span></td>
-                <td class="col-title-val">Canvas: Preparación De Evaluaciones I - Exámenes Clásicos</td>
-                <td class="col-center col-hours-val">2,0</td>
-                <td class="col-center col-year-val">2023</td>
-                <td class="col-center"><span class="badge-nota">20</span></td>
-              </tr>
-              <tr data-year="2023" data-hours="1.0">
-                <td class="col-center col-num-val">16</td>
-                <td class="col-center"><span class="col-code-pill">2373</span></td>
-                <td class="col-title-val">Herramienta Tecnológica: Kahoot</td>
-                <td class="col-center col-hours-val">1,0</td>
-                <td class="col-center col-year-val">2023</td>
-                <td class="col-center"><span class="badge-nota">16</span></td>
-              </tr>
-              <tr data-year="2023" data-hours="1.0">
-                <td class="col-center col-num-val">17</td>
-                <td class="col-center"><span class="col-code-pill">2353</span></td>
-                <td class="col-title-val">Canvas: Corrección De Tareas Y Foros</td>
-                <td class="col-center col-hours-val">1,0</td>
-                <td class="col-center col-year-val">2023</td>
-                <td class="col-center"><span class="badge-nota">18</span></td>
-              </tr>
-              <tr data-year="2023" data-hours="2.0">
-                <td class="col-center col-num-val">18</td>
-                <td class="col-center"><span class="col-code-pill">2368</span></td>
-                <td class="col-title-val">El Arte De Comunicar 2023-Ii</td>
-                <td class="col-center col-hours-val">2,0</td>
-                <td class="col-center col-year-val">2023</td>
-                <td class="col-center"><span class="badge-nota">20</span></td>
-              </tr>
-              <tr data-year="2023" data-hours="1.0">
-                <td class="col-center col-num-val">19</td>
-                <td class="col-center"><span class="col-code-pill">2386</span></td>
-                <td class="col-title-val">Webinar 1 - Innovation Talks</td>
-                <td class="col-center col-hours-val">1,0</td>
-                <td class="col-center col-year-val">2023</td>
-                <td class="col-center"><span class="badge-nota-empty">—</span></td>
-              </tr>
-              <tr data-year="2023" data-hours="1.0">
-                <td class="col-center col-num-val">20</td>
-                <td class="col-center"><span class="col-code-pill">2357</span></td>
-                <td class="col-title-val">Canvas: Rúbricas</td>
-                <td class="col-center col-hours-val">1,0</td>
-                <td class="col-center col-year-val">2023</td>
-                <td class="col-center"><span class="badge-nota">20</span></td>
-              </tr>
+                    <tr data-year="2012" data-hours="3.5">
+                      <td class="col-center col-num-val">1</td>
+                      <td class="col-center"><span class="col-code-pill">1872</span></td>
+                      <td class="col-title-val">Interpretación De La Norma Iso 9001</td>
+                      <td class="col-center col-hours-val">3,5</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2012" data-hours="3.5">
+                      <td class="col-center col-num-val">2</td>
+                      <td class="col-center"><span class="col-code-pill">1884</span></td>
+                      <td class="col-title-val">Formación De Auditores Internos</td>
+                      <td class="col-center col-hours-val">3,5</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2012" data-hours="3.5">
+                      <td class="col-center col-num-val">3</td>
+                      <td class="col-center"><span class="col-code-pill">1870</span></td>
+                      <td class="col-title-val">Interpretación De La Norma Iso 9001</td>
+                      <td class="col-center col-hours-val">3,5</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2012" data-hours="3.5">
+                      <td class="col-center col-num-val">4</td>
+                      <td class="col-center"><span class="col-code-pill">1871</span></td>
+                      <td class="col-title-val">Interpretación De La Norma Iso 9001</td>
+                      <td class="col-center col-hours-val">3,5</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2012" data-hours="3.5">
+                      <td class="col-center col-num-val">5</td>
+                      <td class="col-center"><span class="col-code-pill">1885</span></td>
+                      <td class="col-title-val">Formación De Auditores Internos</td>
+                      <td class="col-center col-hours-val">3,5</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2012" data-hours="3.3">
+                      <td class="col-center col-num-val">6</td>
+                      <td class="col-center"><span class="col-code-pill">1902</span></td>
+                      <td class="col-title-val">Formación De Auditores Internos</td>
+                      <td class="col-center col-hours-val">3,3</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2012" data-hours="3.5">
+                      <td class="col-center col-num-val">7</td>
+                      <td class="col-center"><span class="col-code-pill">1882</span></td>
+                      <td class="col-title-val">Formación De Auditores Internos</td>
+                      <td class="col-center col-hours-val">3,5</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2012" data-hours="3.5">
+                      <td class="col-center col-num-val">8</td>
+                      <td class="col-center"><span class="col-code-pill">1873</span></td>
+                      <td class="col-title-val">Interpretación De La Norma Iso 9001</td>
+                      <td class="col-center col-hours-val">3,5</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2012" data-hours="1.0">
+                      <td class="col-center col-num-val">9</td>
+                      <td class="col-center"><span class="col-code-pill">1912</span></td>
+                      <td class="col-title-val">Reunión Con Auditores Internos</td>
+                      <td class="col-center col-hours-val">1,0</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2012" data-hours="3.5">
+                      <td class="col-center col-num-val">10</td>
+                      <td class="col-center"><span class="col-code-pill">1883</span></td>
+                      <td class="col-title-val">Formación De Auditores Internos</td>
+                      <td class="col-center col-hours-val">3,5</td>
+                      <td class="col-center col-year-val">2012</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2013" data-hours="2.0">
+                      <td class="col-center col-num-val">11</td>
+                      <td class="col-center"><span class="col-code-pill">1978</span></td>
+                      <td class="col-title-val">Primeros Auxilios Y Prevención De Desastres</td>
+                      <td class="col-center col-hours-val">2,0</td>
+                      <td class="col-center col-year-val">2013</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2014" data-hours="7.0">
+                      <td class="col-center col-num-val">12</td>
+                      <td class="col-center"><span class="col-code-pill">2112</span></td>
+                      <td class="col-title-val">Almuerzo De Fin De Año</td>
+                      <td class="col-center col-hours-val">7,0</td>
+                      <td class="col-center col-year-val">2014</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2023" data-hours="2.0">
+                      <td class="col-center col-num-val">13</td>
+                      <td class="col-center"><span class="col-code-pill">2351</span></td>
+                      <td class="col-title-val">Andragogía 2023-Ii</td>
+                      <td class="col-center col-hours-val">2,0</td>
+                      <td class="col-center col-year-val">2023</td>
+                      <td class="col-center"><span class="badge-nota">20</span></td>
+                    </tr>
+                    <tr data-year="2023" data-hours="1.0">
+                      <td class="col-center col-num-val">14</td>
+                      <td class="col-center"><span class="col-code-pill">2354</span></td>
+                      <td class="col-title-val">Canvas: Creación De Grupos</td>
+                      <td class="col-center col-hours-val">1,0</td>
+                      <td class="col-center col-year-val">2023</td>
+                      <td class="col-center"><span class="badge-nota">20</span></td>
+                    </tr>
+                    <tr data-year="2023" data-hours="2.0">
+                      <td class="col-center col-num-val">15</td>
+                      <td class="col-center"><span class="col-code-pill">2356</span></td>
+                      <td class="col-title-val">Canvas: Preparación De Evaluaciones I - Exámenes Clásicos</td>
+                      <td class="col-center col-hours-val">2,0</td>
+                      <td class="col-center col-year-val">2023</td>
+                      <td class="col-center"><span class="badge-nota">20</span></td>
+                    </tr>
+                    <tr data-year="2023" data-hours="1.0">
+                      <td class="col-center col-num-val">16</td>
+                      <td class="col-center"><span class="col-code-pill">2373</span></td>
+                      <td class="col-title-val">Herramienta Tecnológica: Kahoot</td>
+                      <td class="col-center col-hours-val">1,0</td>
+                      <td class="col-center col-year-val">2023</td>
+                      <td class="col-center"><span class="badge-nota">16</span></td>
+                    </tr>
+                    <tr data-year="2023" data-hours="1.0">
+                      <td class="col-center col-num-val">17</td>
+                      <td class="col-center"><span class="col-code-pill">2353</span></td>
+                      <td class="col-title-val">Canvas: Corrección De Tareas Y Foros</td>
+                      <td class="col-center col-hours-val">1,0</td>
+                      <td class="col-center col-year-val">2023</td>
+                      <td class="col-center"><span class="badge-nota">18</span></td>
+                    </tr>
+                    <tr data-year="2023" data-hours="2.0">
+                      <td class="col-center col-num-val">18</td>
+                      <td class="col-center"><span class="col-code-pill">2368</span></td>
+                      <td class="col-title-val">El Arte De Comunicar 2023-Ii</td>
+                      <td class="col-center col-hours-val">2,0</td>
+                      <td class="col-center col-year-val">2023</td>
+                      <td class="col-center"><span class="badge-nota">20</span></td>
+                    </tr>
+                    <tr data-year="2023" data-hours="1.0">
+                      <td class="col-center col-num-val">19</td>
+                      <td class="col-center"><span class="col-code-pill">2386</span></td>
+                      <td class="col-title-val">Webinar 1 - Innovation Talks</td>
+                      <td class="col-center col-hours-val">1,0</td>
+                      <td class="col-center col-year-val">2023</td>
+                      <td class="col-center"><span class="badge-nota-empty">—</span></td>
+                    </tr>
+                    <tr data-year="2023" data-hours="1.0">
+                      <td class="col-center col-num-val">20</td>
+                      <td class="col-center"><span class="col-code-pill">2357</span></td>
+                      <td class="col-title-val">Canvas: Rúbricas</td>
+                      <td class="col-center col-hours-val">1,0</td>
+                      <td class="col-center col-year-val">2023</td>
+                      <td class="col-center"><span class="badge-nota">20</span></td>
+                    </tr>
                   </tbody>
                   <tfoot>
                     <tr>
@@ -1410,233 +1541,233 @@
 
               <!-- Vista Adaptada en Tarjetas para Teléfonos Móviles -->
               <div class="capacitaciones-mobile-cards" id="capacitacionesMobileCards">
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#1 | Cód. 1872</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Interpretación De La Norma Iso 9001</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 3,5 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#2 | Cód. 1884</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Formación De Auditores Internos</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 3,5 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#3 | Cód. 1870</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Interpretación De La Norma Iso 9001</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 3,5 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#4 | Cód. 1871</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Interpretación De La Norma Iso 9001</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 3,5 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#5 | Cód. 1885</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Formación De Auditores Internos</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 3,5 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#6 | Cód. 1902</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Formación De Auditores Internos</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 3,3 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#7 | Cód. 1882</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Formación De Auditores Internos</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 3,5 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#8 | Cód. 1873</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Interpretación De La Norma Iso 9001</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 3,5 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#9 | Cód. 1912</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Reunión Con Auditores Internos</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 1,0 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2012">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#10 | Cód. 1883</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
-            </div>
-            <p class="cap-mobile-title">Formación De Auditores Internos</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 3,5 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2013">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#11 | Cód. 1978</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2013</strong></span>
-            </div>
-            <p class="cap-mobile-title">Primeros Auxilios Y Prevención De Desastres</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 2,0 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2014">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#12 | Cód. 2112</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2014</strong></span>
-            </div>
-            <p class="cap-mobile-title">Almuerzo De Fin De Año</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 7,0 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2023">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#13 | Cód. 2351</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
-            </div>
-            <p class="cap-mobile-title">Andragogía 2023-Ii</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 2,0 horas</span>
-              <span class="badge-nota">Nota: 20</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2023">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#14 | Cód. 2354</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
-            </div>
-            <p class="cap-mobile-title">Canvas: Creación De Grupos</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 1,0 horas</span>
-              <span class="badge-nota">Nota: 20</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2023">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#15 | Cód. 2356</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
-            </div>
-            <p class="cap-mobile-title">Canvas: Preparación De Evaluaciones I - Exámenes Clásicos</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 2,0 horas</span>
-              <span class="badge-nota">Nota: 20</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2023">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#16 | Cód. 2373</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
-            </div>
-            <p class="cap-mobile-title">Herramienta Tecnológica: Kahoot</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 1,0 horas</span>
-              <span class="badge-nota">Nota: 16</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2023">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#17 | Cód. 2353</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
-            </div>
-            <p class="cap-mobile-title">Canvas: Corrección De Tareas Y Foros</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 1,0 horas</span>
-              <span class="badge-nota">Nota: 18</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2023">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#18 | Cód. 2368</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
-            </div>
-            <p class="cap-mobile-title">El Arte De Comunicar 2023-Ii</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 2,0 horas</span>
-              <span class="badge-nota">Nota: 20</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2023">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#19 | Cód. 2386</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
-            </div>
-            <p class="cap-mobile-title">Webinar 1 - Innovation Talks</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 1,0 horas</span>
-              <span class="badge-nota-empty">Nota: —</span>
-            </div>
-          </div>
-          <div class="cap-mobile-card" data-year="2023">
-            <div class="cap-mobile-card-header">
-              <span class="col-code-pill">#20 | Cód. 2357</span>
-              <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
-            </div>
-            <p class="cap-mobile-title">Canvas: Rúbricas</p>
-            <div class="cap-mobile-meta-row">
-              <span class="col-hours-val">⏱ 1,0 horas</span>
-              <span class="badge-nota">Nota: 20</span>
-            </div>
-          </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#1 | Cód. 1872</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Interpretación De La Norma Iso 9001</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 3,5 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#2 | Cód. 1884</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Formación De Auditores Internos</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 3,5 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#3 | Cód. 1870</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Interpretación De La Norma Iso 9001</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 3,5 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#4 | Cód. 1871</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Interpretación De La Norma Iso 9001</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 3,5 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#5 | Cód. 1885</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Formación De Auditores Internos</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 3,5 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#6 | Cód. 1902</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Formación De Auditores Internos</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 3,3 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#7 | Cód. 1882</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Formación De Auditores Internos</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 3,5 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#8 | Cód. 1873</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Interpretación De La Norma Iso 9001</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 3,5 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#9 | Cód. 1912</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Reunión Con Auditores Internos</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 1,0 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2012">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#10 | Cód. 1883</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2012</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Formación De Auditores Internos</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 3,5 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2013">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#11 | Cód. 1978</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2013</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Primeros Auxilios Y Prevención De Desastres</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 2,0 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2014">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#12 | Cód. 2112</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2014</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Almuerzo De Fin De Año</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 7,0 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2023">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#13 | Cód. 2351</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Andragogía 2023-Ii</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 2,0 horas</span>
+                    <span class="badge-nota">Nota: 20</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2023">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#14 | Cód. 2354</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Canvas: Creación De Grupos</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 1,0 horas</span>
+                    <span class="badge-nota">Nota: 20</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2023">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#15 | Cód. 2356</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Canvas: Preparación De Evaluaciones I - Exámenes Clásicos</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 2,0 horas</span>
+                    <span class="badge-nota">Nota: 20</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2023">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#16 | Cód. 2373</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Herramienta Tecnológica: Kahoot</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 1,0 horas</span>
+                    <span class="badge-nota">Nota: 16</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2023">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#17 | Cód. 2353</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Canvas: Corrección De Tareas Y Foros</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 1,0 horas</span>
+                    <span class="badge-nota">Nota: 18</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2023">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#18 | Cód. 2368</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">El Arte De Comunicar 2023-Ii</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 2,0 horas</span>
+                    <span class="badge-nota">Nota: 20</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2023">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#19 | Cód. 2386</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Webinar 1 - Innovation Talks</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 1,0 horas</span>
+                    <span class="badge-nota-empty">Nota: —</span>
+                  </div>
+                </div>
+                <div class="cap-mobile-card" data-year="2023">
+                  <div class="cap-mobile-card-header">
+                    <span class="col-code-pill">#20 | Cód. 2357</span>
+                    <span class="col-year-val"><strong style="color:#0F848F;">2023</strong></span>
+                  </div>
+                  <p class="cap-mobile-title">Canvas: Rúbricas</p>
+                  <div class="cap-mobile-meta-row">
+                    <span class="col-hours-val">⏱ 1,0 horas</span>
+                    <span class="badge-nota">Nota: 20</span>
+                  </div>
+                </div>
               </div>
 
               <!-- Pie de Fuente / Watermark Institucional -->
-              <div class="capacitaciones-watermark">
+              <!-- <div class="capacitaciones-watermark">
                 <span>Fuente: <strong>WienerNet</strong></span>
                 <span>Lima, Martes 3 de Noviembre del 2026</span>
-              </div>
+              </div> -->
 
             </div>
 
@@ -1661,18 +1792,22 @@
       <div class="modal-header">
         <h3 id="fotocheckTitle">Fotocheck Digital Docente</h3>
         <button type="button" class="modal-close-btn" id="closeFotocheckBtn" aria-label="Cerrar Fotocheck">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
       <div class="modal-body">
         <div class="fotocheck-card">
-          <img src="img/docente-avatar.jpg" alt="Cesar Augusto Carignano Quispe" class="fotocheck-avatar">
-          <h4 class="fotocheck-name">Cesar Augusto Carignano Quispe</h4>
+          <img src="img/docente-avatar.jpg" alt="Jonah Miguel Asensio Peña" class="fotocheck-avatar">
+          <h4 class="fotocheck-name">Jonah Miguel Asensio Peña</h4>
           <span class="fotocheck-role">UW014 - COORDINADOR</span>
           <p class="fotocheck-code">Cód. Docente: 10006551</p>
           <div class="fotocheck-qr">
             <svg width="80" height="80" viewBox="0 0 24 24" fill="#0F848F">
-              <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 0h2v2h-2v-2zm-4 0h2v4h-2v-4zm6 4h2v2h-2v-2zm-2 2h2v2h-2v-2zm-4 0h2v2h-2v-2zm6-4h2v2h-2v-2zm-6-2h4v2h-4v-2z"/>
+              <path
+                d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 0h2v2h-2v-2zm-4 0h2v4h-2v-4zm6 4h2v2h-2v-2zm-2 2h2v2h-2v-2zm-4 0h2v2h-2v-2zm6-4h2v2h-2v-2zm-6-2h4v2h-4v-2z" />
             </svg>
           </div>
         </div>
@@ -1686,12 +1821,16 @@
   <!-- ==========================================================================
        MODAL: ACTUALIZAR FOTO DE PERFIL
        ========================================================================== -->
-  <div class="modal-overlay" id="modalActualizarFoto" role="dialog" aria-modal="true" aria-labelledby="actualizarFotoTitle">
+  <div class="modal-overlay" id="modalActualizarFoto" role="dialog" aria-modal="true"
+    aria-labelledby="actualizarFotoTitle">
     <div class="modal-card">
       <div class="modal-header">
         <h3 id="actualizarFotoTitle">Actualizar Foto de Perfil</h3>
         <button type="button" class="modal-close-btn" id="closeFotoBtn" aria-label="Cerrar Modal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
       <div class="modal-body">
@@ -1700,7 +1839,8 @@
             <img src="img/docente-avatar.jpg" id="photoPreview" alt="Vista previa" class="teacher-avatar">
           </div>
           <input type="file" id="photoFileInput" accept="image/*" style="display: block; font-size: 13px;">
-          <span style="font-size: 12px; color: #64748B; text-align: center;">Formatos permitidos: JPG, PNG. Tamaño máximo recomendado: 2 MB.</span>
+          <span style="font-size: 12px; color: #64748B; text-align: center;">Formatos permitidos: JPG, PNG. Tamaño
+            máximo recomendado: 2 MB.</span>
         </div>
       </div>
       <div class="modal-footer">
@@ -1714,7 +1854,8 @@
        TOAST FLOTANTE DE NOTIFICACIÓN
        ========================================================================== -->
   <div class="profile-toast" id="profileToast" role="status" aria-live="polite">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
       <polyline points="22 4 12 14.01 9 11.01"></polyline>
     </svg>
