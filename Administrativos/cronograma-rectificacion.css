@@ -693,3 +693,17 @@
   background-color: #E6F3F4;
   transform: scale(1.15);
 }
+
+/* Prevencion de recorte de popups y datepickers en modales Wiener */
+.modal-cronograma-card,
+.modal-especifico-card {
+  overflow: visible !important;
+}
+.modal-cronograma-card .modal-body-rect,
+.modal-especifico-card .modal-body-rect {
+  overflow: visible !important;
+  position: relative;
+}
+.custom-calendar-popup {
+  z-index: 2500 !important;
+}

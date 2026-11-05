@@ -921,6 +921,41 @@ document.addEventListener('DOMContentLoaded', () => {
       solicitudesList.push(newSolicitud);
       currentSessionForRegularizacion.solicitudId = newSolId;
 
+      // Sincronizar automáticamente con el módulo Administrativo RRAA
+      try {
+        const STORAGE_KEY = 'wiener_rraa_asistencia_solicitudes_v1';
+        const raw = localStorage.getItem(STORAGE_KEY);
+        let adminList = raw ? JSON.parse(raw) : [];
+        const nextTicket = String(adminList.length + 1);
+        adminList.unshift({
+          ticket: nextTicket,
+          fecha: currentSessionForRegularizacion.fecha,
+          area: currentSessionForRegularizacion.area || 'P.E. INVESTIGACIÓN',
+          curso: currentSessionForRegularizacion.curso,
+          periodo: currentSessionForRegularizacion.periodo,
+          seccion: currentSessionForRegularizacion.seccion,
+          sesion: currentSessionForRegularizacion.sesion,
+          horarioInicio: currentSessionForRegularizacion.horarioInicio,
+          horarioFin: currentSessionForRegularizacion.horarioFin,
+          registroInicio: currentSessionForRegularizacion.registroInicio,
+          registroFin: currentSessionForRegularizacion.registroFin,
+          tardanza: currentSessionForRegularizacion.tarde !== '-' ? currentSessionForRegularizacion.tarde : '',
+          estado: currentSessionForRegularizacion.estado || 'Observado',
+          condicion: 'Solicitado',
+          sustento: (pendingSolicitudData && pendingSolicitudData.archivoSustentoNombre) ? pendingSolicitudData.archivoSustentoNombre : 'Sustento_Regularizacion_Docente.pdf',
+          tipoSustento: (pendingSolicitudData && pendingSolicitudData.tipoRegularizacion === 'descanso') ? 'Descanso Médico' : 'Motivo Académico',
+          fechaSolicitud: new Date().toLocaleDateString('es-PE'),
+          observacion: '-',
+          docente: 'Jonah Miguel Asensio Peña',
+          docenteCodigo: 'DOC-99214',
+          decisionTimestamp: null,
+          aprobador: null
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(adminList));
+      } catch (err) {
+        console.warn('Error sincronizando con bandeja administrativa:', err);
+      }
+
       // Cerrar modal de confirmación y modal de formulario
       if (modalConfirmacionRegularizacion) {
         modalConfirmacionRegularizacion.classList.remove('active');

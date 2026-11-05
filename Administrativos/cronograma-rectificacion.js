@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 1, periodo: '2026-I', tipoEval: 'Eval. Permanente 1 (UD1)', tipoCurso: 'REGULAR', fechaInicio: '14/09/2026', fechaFin: '18/09/2026', estado: 'ACTIVO' },
     { id: 2, periodo: '2026-I', tipoEval: 'Eval. Permanente 1 (UD1)', tipoCurso: 'MODULO 1', fechaInicio: '16/03/2026', fechaFin: '18/04/2026', estado: 'INACTIVO' },
     { id: 3, periodo: '2026-I', tipoEval: 'Eval. Permanente 1 (UD1)', tipoCurso: 'MODULO 2', fechaInicio: '01/06/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
-    { id: 4, periodo: '2026-I', tipoEval: 'Eval. Permanente 2 (UD2)', tipoCurso: 'REGULAR', fechaInicio: '06/04/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 4, periodo: '2026-I', tipoEval: 'Eval. Permanente 2 (UD2)', tipoCurso: 'REGULAR', fechaInicio: '06/04/2026', fechaFin: '16/07/2026', estado: 'ACTIVO' },
     { id: 5, periodo: '2026-I', tipoEval: 'Eval. Permanente 2 (UD2)', tipoCurso: 'MODULO 1', fechaInicio: '06/04/2026', fechaFin: '09/05/2026', estado: 'INACTIVO' },
     { id: 6, periodo: '2026-I', tipoEval: 'Eval. Permanente 2 (UD2)', tipoCurso: 'MODULO 2', fechaInicio: '08/06/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
     { id: 7, periodo: '2026-I', tipoEval: 'Eval. Permanente 3 (UD3)', tipoCurso: 'REGULAR', fechaInicio: '04/05/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
@@ -38,7 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return INITIAL_CRONOGRAMAS;
     }
     try {
-      return JSON.parse(data);
+      const list = JSON.parse(data);
+      const activos2026I = list.filter(x => x.periodo === '2026-I' && x.estado === 'ACTIVO');
+      if (activos2026I.length < 2) {
+        const item4 = list.find(x => x.id === 4);
+        if (item4) item4.estado = 'ACTIVO';
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      }
+      return list;
     } catch (e) {
       return INITIAL_CRONOGRAMAS;
     }
@@ -179,9 +186,11 @@ document.addEventListener('DOMContentLoaded', () => {
     inputPeriodo.value = '2026-I';
     inputTipoEval.value = 'Eval. Permanente 1 (UD1)';
     inputTipoCurso.value = 'REGULAR';
-    inputFechaInicio.value = '2026-09-14';
-    inputFechaFin.value = '2026-09-18';
+    inputFechaInicio.value = '14/09/2026';
+    inputFechaFin.value = '18/09/2026';
     inputEstado.value = 'ACTIVO';
+    initDatePicker('dateContainerModalInicio', 'modalInputFechaInicio', '14/09/2026');
+    initDatePicker('dateContainerModalFin', 'modalInputFechaFin', '18/09/2026');
     syncCustomSelect(inputPeriodo);
     syncCustomSelect(inputTipoEval);
     syncCustomSelect(inputTipoCurso);
@@ -195,22 +204,17 @@ document.addEventListener('DOMContentLoaded', () => {
     inputPeriodo.value = item.periodo.replace(/\s+/g, '');
     inputTipoEval.value = item.tipoEval;
     inputTipoCurso.value = item.tipoCurso;
-    
-    // Convertir DD/MM/YYYY a YYYY-MM-DD
-    const parseToIso = (str) => {
-      if (!str) return '2026-09-14';
-      const parts = str.split('/');
-      if (parts.length === 3) return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
-      return str;
-    };
-
-    inputFechaInicio.value = parseToIso(item.fechaInicio);
-    inputFechaFin.value = parseToIso(item.fechaFin);
+    inputFechaInicio.value = item.fechaInicio;
+    inputFechaFin.value = item.fechaFin;
+    initDatePicker('dateContainerModalInicio', 'modalInputFechaInicio', item.fechaInicio);
+    initDatePicker('dateContainerModalFin', 'modalInputFechaFin', item.fechaFin);
     inputEstado.value = item.estado;
+
     syncCustomSelect(inputPeriodo);
     syncCustomSelect(inputTipoEval);
     syncCustomSelect(inputTipoCurso);
     syncCustomSelect(inputEstado);
+
     modalBackdrop.classList.add('active');
   }
 
@@ -230,15 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const list = getCronogramas();
     const id = parseInt(inputEditIndex.value, 10);
 
-    const parseFromIso = (str) => {
-      if (!str) return '14/09/2026';
-      const parts = str.split('-');
-      if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
-      return str;
-    };
-
-    const fechaIniFormateada = parseFromIso(inputFechaInicio.value);
-    const fechaFinFormateada = parseFromIso(inputFechaFin.value);
+    const fechaIniFormateada = inputFechaInicio.value || '14/09/2026';
+    const fechaFinFormateada = inputFechaFin.value || '18/09/2026';
 
     if (id === -1) {
       // Crear nuevo
@@ -309,12 +306,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ==========================================================================
-  // CUSTOM SELECT ENHANCEMENT (Animación, chevron rotativo, menú flotante)
-  // Look & Feel exacto de rectificacion-nota.html
+  // CUSTOM SELECTS PERSONALIZADOS WIENER (Smart Positioning, Keyframes y Micro-animaciones)
+  // Replicado del estándar de rectificacion-asistencia-docente.html
   // ==========================================================================
-
   function initCustomSelects() {
-    const wrappers = document.querySelectorAll('.notes-select-wrapper');
+    const wrappers = document.querySelectorAll('.rect-select-wrapper, .notes-select-wrapper, .custom-select-container');
 
     wrappers.forEach(wrapper => {
       const select = wrapper.querySelector('select');
@@ -323,12 +319,12 @@ document.addEventListener('DOMContentLoaded', () => {
       select.classList.add('custom-select-hidden');
 
       let trigger = wrapper.querySelector('.custom-select-trigger');
-      let menu = wrapper.querySelector('.custom-select-menu');
-      let icon = wrapper.querySelector('.notes-select-icon');
+      let menu = wrapper.querySelector('.custom-dropdown-menu, .custom-select-menu');
+      let icon = wrapper.querySelector('.rect-select-icon, .notes-select-icon, .custom-select-arrow');
 
       if (!icon) {
         icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        icon.setAttribute('class', 'notes-select-icon');
+        icon.setAttribute('class', 'rect-select-icon custom-select-arrow');
         icon.setAttribute('width', '16');
         icon.setAttribute('height', '16');
         icon.setAttribute('viewBox', '0 0 24 24');
@@ -342,56 +338,80 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (!trigger) {
-        trigger = document.createElement('div');
+        trigger = document.createElement('button');
+        trigger.type = 'button';
         trigger.className = 'custom-select-trigger';
-        trigger.tabIndex = 0;
         trigger.setAttribute('role', 'combobox');
         trigger.setAttribute('aria-expanded', 'false');
         trigger.setAttribute('aria-haspopup', 'listbox');
 
         const valSpan = document.createElement('span');
-        valSpan.className = 'custom-select-value';
+        valSpan.className = 'custom-select-value custom-select-label';
         trigger.appendChild(valSpan);
 
         wrapper.insertBefore(trigger, icon);
 
-        // Click en el trigger para alternar menú y rotar flecha 180°
         trigger.addEventListener('click', (e) => {
           e.stopPropagation();
           const isOpen = wrapper.classList.contains('is-open');
-          closeAllCustomSelects();
+          closeAllCustomDropdowns();
+
           if (!isOpen) {
+            const triggerRect = trigger.getBoundingClientRect();
+            const menuHeight = 220;
+            const spaceBelow = window.innerHeight - triggerRect.bottom;
+            const spaceAbove = triggerRect.top;
+
+            menu.classList.remove('dropdown-above', 'dropdown-below', 'align-right');
+            if (spaceBelow < menuHeight && spaceAbove > spaceBelow) {
+              menu.classList.add('dropdown-above');
+            } else {
+              menu.classList.add('dropdown-below');
+            }
+
+            if (window.innerWidth - triggerRect.left < 260) {
+              menu.classList.add('align-right');
+            }
+
             wrapper.classList.add('is-open');
             trigger.setAttribute('aria-expanded', 'true');
           }
         });
 
-        // Soporte de navegación por teclado
         trigger.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
             e.preventDefault();
             const isOpen = wrapper.classList.contains('is-open');
             if (!isOpen) {
-              closeAllCustomSelects();
+              closeAllCustomDropdowns();
+              const triggerRect = trigger.getBoundingClientRect();
+              const menuHeight = 220;
+              const spaceBelow = window.innerHeight - triggerRect.bottom;
+              const spaceAbove = triggerRect.top;
+              menu.classList.remove('dropdown-above', 'dropdown-below', 'align-right');
+              if (spaceBelow < menuHeight && spaceAbove > spaceBelow) {
+                menu.classList.add('dropdown-above');
+              } else {
+                menu.classList.add('dropdown-below');
+              }
               wrapper.classList.add('is-open');
               trigger.setAttribute('aria-expanded', 'true');
             } else if (e.key === 'Enter' || e.key === ' ') {
-              closeAllCustomSelects();
+              closeAllCustomDropdowns();
             }
           } else if (e.key === 'Escape') {
-            closeAllCustomSelects();
+            closeAllCustomDropdowns();
           }
         });
       }
 
       if (!menu) {
         menu = document.createElement('div');
-        menu.className = 'custom-select-menu';
+        menu.className = 'custom-dropdown-menu custom-select-menu';
         menu.setAttribute('role', 'listbox');
         wrapper.appendChild(menu);
       }
 
-      // Reconstruir opciones del menú
       menu.innerHTML = '';
       const selectedOption = select.options[select.selectedIndex] || select.options[0];
       const valSpan = trigger.querySelector('.custom-select-value');
@@ -401,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       Array.from(select.options).forEach(opt => {
         const item = document.createElement('div');
-        item.className = 'custom-select-option' + (opt.selected ? ' is-selected' : '');
+        item.className = 'custom-option custom-select-option' + (opt.selected ? ' selected is-selected' : '');
         item.setAttribute('role', 'option');
         item.setAttribute('aria-selected', opt.selected ? 'true' : 'false');
         item.setAttribute('data-value', opt.value);
@@ -411,11 +431,13 @@ document.addEventListener('DOMContentLoaded', () => {
         item.appendChild(textSpan);
 
         const checkSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        checkSvg.setAttribute('class', 'option-check-icon');
+        checkSvg.setAttribute('class', 'option-check option-check-icon');
         checkSvg.setAttribute('viewBox', '0 0 24 24');
+        checkSvg.setAttribute('width', '16');
+        checkSvg.setAttribute('height', '16');
         checkSvg.setAttribute('fill', 'none');
-        checkSvg.setAttribute('stroke', 'currentColor');
-        checkSvg.setAttribute('stroke-width', '2.5');
+        checkSvg.setAttribute('stroke', '#0F848F');
+        checkSvg.setAttribute('stroke-width', '2.2');
         checkSvg.setAttribute('stroke-linecap', 'round');
         checkSvg.setAttribute('stroke-linejoin', 'round');
         checkSvg.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
@@ -426,14 +448,14 @@ document.addEventListener('DOMContentLoaded', () => {
           select.value = opt.value;
           if (valSpan) valSpan.textContent = opt.textContent;
 
-          menu.querySelectorAll('.custom-select-option').forEach(el => {
-            el.classList.remove('is-selected');
+          menu.querySelectorAll('.custom-option, .custom-select-option').forEach(el => {
+            el.classList.remove('selected', 'is-selected');
             el.setAttribute('aria-selected', 'false');
           });
-          item.classList.add('is-selected');
+          item.classList.add('selected', 'is-selected');
           item.setAttribute('aria-selected', 'true');
 
-          closeAllCustomSelects();
+          closeAllCustomDropdowns();
           trigger.focus();
 
           select.dispatchEvent(new Event('change', { bubbles: true }));
@@ -444,32 +466,186 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function closeAllCustomSelects() {
-    document.querySelectorAll('.notes-select-wrapper.is-open').forEach(w => {
-      w.classList.remove('is-open');
-      const trig = w.querySelector('.custom-select-trigger');
-      if (trig) trig.setAttribute('aria-expanded', 'false');
+  // ==========================================================================
+  // CUSTOM DATEPICKER WIENER (CALENDARIO FLOTANTE INTERACTIVO)
+  // Replicado del estándar de rectificacion-asistencia-docente.html
+  // ==========================================================================
+  const mesesNombres = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+
+  function initDatePicker(containerId, inputId, defaultDateStr) {
+    const container = document.getElementById(containerId);
+    const input = document.getElementById(inputId);
+    if (!container || !input) return;
+
+    if (defaultDateStr) {
+      input.value = defaultDateStr;
+    }
+
+    if (container._datePickerInitialized) {
+      if (container._setDate) container._setDate(defaultDateStr || input.value);
+      return;
+    }
+    container._datePickerInitialized = true;
+
+    const popup = container.querySelector('.custom-calendar-popup');
+    const trigger = container.querySelector('.custom-date-trigger');
+    if (!popup || !trigger) return;
+
+    let parts = (defaultDateStr || '14/09/2026').split('/');
+    let curDay = parseInt(parts[0], 10) || 14;
+    let curMonth = (parseInt(parts[1], 10) || 9) - 1;
+    let curYear = parseInt(parts[2], 10) || 2026;
+
+    let viewMonth = curMonth;
+    let viewYear = curYear;
+
+    function renderCalendar() {
+      popup.innerHTML = `
+        <div class="cal-header">
+          <span class="cal-month-title">${mesesNombres[viewMonth]} ${viewYear}</span>
+          <div class="cal-nav-group">
+            <button type="button" class="cal-nav-btn prev-month" aria-label="Mes anterior">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button type="button" class="cal-nav-btn next-month" aria-label="Mes siguiente">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+        <div class="cal-weekdays-grid">
+          <span class="cal-weekday">DO</span>
+          <span class="cal-weekday">LU</span>
+          <span class="cal-weekday">MA</span>
+          <span class="cal-weekday">MI</span>
+          <span class="cal-weekday">JU</span>
+          <span class="cal-weekday">VI</span>
+          <span class="cal-weekday">SÁ</span>
+        </div>
+        <div class="cal-days-grid" id="calDaysGrid_${inputId}"></div>
+      `;
+
+      const grid = popup.querySelector(`#calDaysGrid_${inputId}`);
+      const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+      const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+      const daysInPrevMonth = new Date(viewYear, viewMonth, 0).getDate();
+
+      for (let i = firstDay - 1; i >= 0; i--) {
+        const cell = document.createElement('div');
+        cell.className = 'cal-day-cell other-month';
+        cell.textContent = daysInPrevMonth - i;
+        grid.appendChild(cell);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const cell = document.createElement('div');
+        cell.className = 'cal-day-cell';
+        cell.textContent = day;
+
+        if (day === curDay && viewMonth === curMonth && viewYear === curYear) {
+          cell.classList.add('selected');
+        }
+
+        cell.addEventListener('click', (e) => {
+          e.stopPropagation();
+          curDay = day;
+          curMonth = viewMonth;
+          curYear = viewYear;
+
+          const dd = String(curDay).padStart(2, '0');
+          const mm = String(curMonth + 1).padStart(2, '0');
+          input.value = `${dd}/${mm}/${curYear}`;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+
+          container.classList.remove('is-open');
+        });
+
+        grid.appendChild(cell);
+      }
+
+      popup.querySelector('.prev-month').addEventListener('click', (e) => {
+        e.stopPropagation();
+        viewMonth--;
+        if (viewMonth < 0) {
+          viewMonth = 11;
+          viewYear--;
+        }
+        renderCalendar();
+      });
+
+      popup.querySelector('.next-month').addEventListener('click', (e) => {
+        e.stopPropagation();
+        viewMonth++;
+        if (viewMonth > 11) {
+          viewMonth = 0;
+          viewYear++;
+        }
+        renderCalendar();
+      });
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = container.classList.contains('is-open');
+      closeAllCustomDropdowns();
+
+      if (!isOpen) {
+        renderCalendar();
+        const triggerRect = trigger.getBoundingClientRect();
+        popup.classList.remove('popup-above', 'popup-below', 'align-right');
+        const modalBody = container.closest('.modal-body-rect, .modal-body, .modal-container, .modal-card');
+        let openAbove = false;
+        if (modalBody) {
+          const bodyRect = modalBody.getBoundingClientRect();
+          if (bodyRect.bottom - triggerRect.bottom < 270 && triggerRect.top - bodyRect.top > 200) {
+            openAbove = true;
+          }
+        }
+        if (!openAbove && (window.innerHeight - triggerRect.bottom < 280 && triggerRect.top > 280)) {
+          openAbove = true;
+        }
+        if (openAbove) {
+          popup.classList.add('popup-above');
+        } else {
+          popup.classList.add('popup-below');
+        }
+        if (window.innerWidth - triggerRect.left < 300) {
+          popup.classList.add('align-right');
+        }
+        container.classList.add('is-open');
+      }
     });
   }
 
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.notes-select-wrapper')) {
-      closeAllCustomSelects();
-    }
+  function closeAllCustomDropdowns() {
+    document.querySelectorAll('.rect-select-wrapper.is-open, .notes-select-wrapper.is-open, .custom-select-container.is-open').forEach(c => {
+      c.classList.remove('is-open');
+      const t = c.querySelector('.custom-select-trigger');
+      if (t) t.setAttribute('aria-expanded', 'false');
+    });
+    document.querySelectorAll('.custom-date-container.is-open').forEach(c => {
+      c.classList.remove('is-open');
+    });
+  }
+
+  document.addEventListener('click', () => {
+    closeAllCustomDropdowns();
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      closeAllCustomSelects();
+      closeAllCustomDropdowns();
     }
   });
 
   function syncCustomSelect(selectEl) {
     if (!selectEl) return;
-    const wrapper = selectEl.closest('.notes-select-wrapper');
+    const wrapper = selectEl.closest('.rect-select-wrapper, .notes-select-wrapper, .custom-select-container');
     if (!wrapper) return;
     const trigger = wrapper.querySelector('.custom-select-trigger');
-    const menu = wrapper.querySelector('.custom-select-menu');
+    const menu = wrapper.querySelector('.custom-dropdown-menu, .custom-select-menu');
     if (!trigger || !menu) return;
 
     const valSpan = trigger.querySelector('.custom-select-value');
@@ -478,19 +654,52 @@ document.addEventListener('DOMContentLoaded', () => {
       valSpan.textContent = selectedOption.textContent;
     }
 
-    menu.querySelectorAll('.custom-select-option').forEach(item => {
-      const isSel = item.getAttribute('data-value') === selectEl.value;
-      if (isSel) {
-        item.classList.add('is-selected');
+    menu.innerHTML = '';
+    Array.from(selectEl.options).forEach(opt => {
+      const item = document.createElement('div');
+      item.className = 'custom-option custom-select-option' + (opt.selected ? ' selected is-selected' : '');
+      item.setAttribute('role', 'option');
+      item.setAttribute('aria-selected', opt.selected ? 'true' : 'false');
+      item.setAttribute('data-value', opt.value);
+
+      const textSpan = document.createElement('span');
+      textSpan.textContent = opt.textContent;
+      item.appendChild(textSpan);
+
+      const checkSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      checkSvg.setAttribute('class', 'option-check option-check-icon');
+      checkSvg.setAttribute('viewBox', '0 0 24 24');
+      checkSvg.setAttribute('width', '16');
+      checkSvg.setAttribute('height', '16');
+      checkSvg.setAttribute('fill', 'none');
+      checkSvg.setAttribute('stroke', '#0F848F');
+      checkSvg.setAttribute('stroke-width', '2.2');
+      checkSvg.setAttribute('stroke-linecap', 'round');
+      checkSvg.setAttribute('stroke-linejoin', 'round');
+      checkSvg.innerHTML = '<polyline points="20 6 9 17 4 12"></polyline>';
+      item.appendChild(checkSvg);
+
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectEl.value = opt.value;
+        if (valSpan) valSpan.textContent = opt.textContent;
+
+        menu.querySelectorAll('.custom-option, .custom-select-option').forEach(el => {
+          el.classList.remove('selected', 'is-selected');
+          el.setAttribute('aria-selected', 'false');
+        });
+        item.classList.add('selected', 'is-selected');
         item.setAttribute('aria-selected', 'true');
-      } else {
-        item.classList.remove('is-selected');
-        item.setAttribute('aria-selected', 'false');
-      }
+
+        closeAllCustomDropdowns();
+        trigger.focus();
+        selectEl.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+
+      menu.appendChild(item);
     });
   }
-
-  // Inicialización
-  initCustomSelects();
+  // Cargar tabla inicial
   renderTable();
+  initCustomSelects();
 });

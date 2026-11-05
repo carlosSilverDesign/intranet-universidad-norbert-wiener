@@ -10,10 +10,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../Docente/navbar.css">
-  <link rel="stylesheet" href="../Docente/styles.css">
-  <link rel="stylesheet" href="../Docente/notas.css">
-  <link rel="stylesheet" href="../Docente/rectificacion-nota.css">
+  <!-- Estilos Generales del Portal Administrativo -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Estilos Específicos del Módulo de Regularización de Asistencia -->
   <link rel="stylesheet" href="rectificacion-asistencia-docente.css">
 </head>
 
@@ -66,12 +65,12 @@
     <!-- Acciones de la barra superior -->
     <div class="top-bar-right-actions">
       <!-- Badge de Perfil Oficial RRAA -->
-      <div class="top-bar-campus-badge" aria-label="Rol Actual">
+      <!-- <div class="top-bar-campus-badge" aria-label="Rol Actual">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
         </svg>
         <span>RRAA - Registros Académicos</span>
-      </div>
+      </div> -->
 
       <button type="button" class="top-bar-action-btn mobile-search-btn" id="mobileSearchBtn" aria-label="Buscar">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -140,6 +139,75 @@
           <path
             d="M96.1783 1.80065C95.897 1.51827 95.4354 1.51827 95.147 1.80065L63.8893 33.1812L63.3917 33.7026C63.1898 33.9053 62.9806 34.0863 62.7642 34.2601C62.7498 34.2746 62.7282 34.289 62.7065 34.3035C62.6344 34.3615 62.5695 34.4121 62.4974 34.4701C61.2136 35.4475 59.6919 35.9544 58.1268 35.9544C57.1676 35.9544 56.1939 35.7661 55.2564 35.3751C55.0472 35.2882 54.8741 35.2086 54.6794 35.1C54.5351 35.0203 54.3981 35.1869 54.5568 35.3389C54.7082 35.491 72.3925 53.2376 72.3925 53.2376C75.2413 56.0976 79.8643 56.0976 82.7131 53.2376L109.831 26.0131C112.723 23.1096 112.723 18.4105 109.831 15.507L96.1783 1.80065Z"
             fill="#07C8CC" />
+          <path
+            d="M13.5131 78.8704C16.5825 78.8704 19.0441 77.4224 19.0441 73.563V65.3955H17.2083V73.5989C17.2083 76.0941 15.8912 77.3327 13.5131 77.3327C11.135 77.3327 9.85955 76.0941 9.85955 73.575V65.3955H8V73.5571C8 77.4164 10.4436 78.8645 13.5131 78.8645"
+            fill="black" />
+          <path
+            d="M22.9063 73.3475C22.9063 71.6662 24.0327 70.5771 25.4572 70.5771C26.8817 70.5771 27.7042 71.5405 27.7042 73.0723V78.613H29.4982V72.9227C29.4982 70.7806 28.5028 69.189 26.0413 69.189C24.6347 69.189 23.3593 69.9668 22.9063 71.0798V69.4403H21.1123V78.613H22.9063V73.3475Z"
+            fill="black" />
+          <path d="M33.2829 65.3955H31.4233V67.3701H33.2829V65.3955Z" fill="black" />
+          <path d="M33.2588 69.4463H31.4648V78.6191H33.2588V69.4463Z" fill="black" />
+          <path
+            d="M39.8569 78.6131L43.7488 69.4463H41.9965L39.1238 76.4949H39.0344L36.096 69.4463H34.2126L38.1046 78.6131H39.8569Z"
+            fill="black" />
+          <path
+            d="M48.5887 78.8703C50.9429 78.8703 52.5223 77.6078 52.9992 75.5315L51.5091 75.364C51.1217 76.7701 50.1919 77.5061 48.6125 77.5061C46.9258 77.5061 45.6086 76.2495 45.5192 74.4605H53.0409V73.7664C53.0409 71.2712 51.5091 69.189 48.5052 69.189C45.7815 69.189 43.7312 71.2653 43.7312 74.1613C43.7312 77.0573 45.7874 78.8644 48.5946 78.8644M48.4993 70.5173C50.2933 70.5173 51.1336 71.8636 51.1992 73.3296H45.5609C45.7755 71.8217 46.7947 70.5173 48.4993 70.5173Z"
+            fill="black" />
+          <path
+            d="M56.3841 73.7664C56.3841 72.0012 57.3973 70.8045 58.7622 70.8045C59.3462 70.8045 59.7158 70.9122 60.2343 71.1815L60.4071 69.6078C60.0853 69.3326 59.6502 69.189 59.0661 69.189C57.7072 69.189 56.7298 70.26 56.3841 71.3071V69.4403H54.5901V78.613H56.3841V73.7664Z"
+            fill="black" />
+          <path
+            d="M65.1094 77.59C63.4883 77.59 62.475 76.8361 62.3022 75.4299L60.7883 75.5316C60.9612 77.7994 62.7552 78.8705 65.1094 78.8705C67.3146 78.8705 68.9775 77.8832 68.9775 76.0582C68.9775 74.4008 67.851 73.7067 65.9498 73.3955L64.1796 73.1203C63.2081 72.9527 62.7313 72.5758 62.7313 71.8398C62.7313 71.0021 63.5061 70.4755 64.6982 70.4755C66.2955 70.4755 67.1835 71.1278 67.3981 72.5339L68.8464 72.4501C68.6735 70.3319 67.2014 69.1951 64.6982 69.1951C62.5168 69.1951 61.0685 70.326 61.0685 72.0073C61.0685 73.581 62.1294 74.317 63.8995 74.5862L65.4968 74.8615C66.665 75.0709 67.2908 75.3641 67.2908 76.2257C67.2908 77.1472 66.361 77.59 65.1094 77.59Z"
+            fill="black" />
+          <path d="M72.3396 69.4463H70.5457V78.6191H72.3396V69.4463Z" fill="black" />
+          <path d="M72.3635 65.3955H70.5039V67.3701H72.3635V65.3955Z" fill="black" />
+          <path
+            d="M81.5417 76.7044V78.6132H83.3357V65.3955H81.5417V71.3791C81.1066 70.2482 79.9206 69.1951 78.1504 69.1951C75.3432 69.1951 73.8293 71.3372 73.8293 74.0417C73.8293 76.7463 75.3432 78.8704 78.1504 78.8704C79.9206 78.8704 81.1126 77.8413 81.5417 76.7104M75.665 74.0417C75.665 71.9415 76.7021 70.6012 78.5617 70.6012C80.2722 70.6012 81.5656 71.774 81.5656 73.7725V74.299C81.5656 76.3155 80.2722 77.4882 78.5617 77.4882C76.7021 77.4882 75.665 76.1479 75.665 74.0477"
+            fill="black" />
+          <path
+            d="M88.7115 73.4313C86.4407 73.8741 84.9089 74.5861 84.9089 76.3273C84.9089 77.901 86.095 78.8644 87.9367 78.8644C89.4684 78.8644 90.8094 78.0685 91.328 76.9975C91.4352 78.0865 92.1266 78.8045 93.0981 78.8045C93.8312 78.8045 94.2246 78.5712 94.5464 78.26V77.3146C94.2901 77.4642 93.9385 77.524 93.7239 77.524C93.271 77.524 92.9908 77.2907 92.9908 76.812V72.6953C92.9908 70.3677 91.5842 69.189 89.2062 69.189C86.9771 69.189 85.5765 70.4515 85.2069 72.1688L86.8042 72.3782C87.0844 71.3071 87.8175 70.5293 89.1823 70.5293C90.5472 70.5293 91.2564 71.3071 91.2564 72.5637V72.9227L88.7055 73.4253L88.7115 73.4313ZM91.2624 74.5263C91.2624 76.3752 89.9869 77.5899 88.3241 77.5899C87.2453 77.5899 86.7029 77.0035 86.7029 76.2256C86.7029 75.1127 87.6506 74.8374 89.1466 74.5263L91.2624 74.0835V74.5263Z"
+            fill="black" />
+          <path
+            d="M99.2019 78.8704C100.972 78.8704 102.164 77.8413 102.593 76.7104V78.6191H104.387V65.3955H102.593V71.3791C102.164 70.2482 100.972 69.1951 99.2019 69.1951C96.3947 69.1951 94.8809 71.3372 94.8809 74.0417C94.8809 76.7463 96.3947 78.8704 99.2019 78.8704ZM99.6132 70.6012C101.318 70.6012 102.617 71.774 102.617 73.7725V74.299C102.617 76.3155 101.318 77.4882 99.6132 77.4882C97.7536 77.4882 96.7166 76.1479 96.7166 74.0477C96.7166 71.9475 97.7536 70.6072 99.6132 70.6072"
+            fill="black" />
+          <path
+            d="M17.0415 92.7403L10.688 83.9265H8.04175V97.1442H10.5152V87.8278L17.3812 97.1442H19.5149V83.9265H17.0415V92.7403Z"
+            fill="black" />
+          <path
+            d="M25.9879 87.6362C23.0853 87.6362 21.041 89.6527 21.041 92.5248C21.041 95.3969 23.0853 97.3954 25.9879 97.3954C28.8905 97.3954 30.9586 95.4029 30.9586 92.5248C30.9586 89.6467 28.9143 87.6362 25.9879 87.6362ZM25.9879 95.4866C24.4323 95.4866 23.6217 94.272 23.6217 92.5248C23.6217 90.7776 24.4323 89.545 25.9879 89.545C27.5435 89.545 28.3779 90.7596 28.3779 92.5248C28.3779 94.2899 27.5673 95.4866 25.9879 95.4866Z"
+            fill="black" />
+          <path
+            d="M38.5635 90.3647L38.7542 88.0132C38.48 87.7798 38.0092 87.6362 37.431 87.6362C36.1317 87.6362 35.1483 88.5996 34.8086 89.6527V87.8875H32.2517V97.1441H34.8086V92.5667C34.8086 90.8853 35.7026 89.9638 37.0258 89.9638C37.6456 89.9638 38.0688 90.0895 38.5635 90.3647Z"
+            fill="black" />
+          <path
+            d="M45.3761 87.6364C43.6894 87.6364 42.5629 88.5399 42.1338 89.6708V83.9207H39.5769V97.1443H41.5378L42.0086 95.3612C42.4974 96.516 43.6953 97.3956 45.3344 97.3956C48.1475 97.3956 49.6197 95.2535 49.6197 92.525C49.6197 89.7965 48.1475 87.6364 45.3761 87.6364ZM44.5834 95.427C43.1351 95.427 42.1099 94.3978 42.1099 92.6985V92.3395C42.1099 90.6581 43.1351 89.611 44.5834 89.611C46.2045 89.611 47.033 90.7658 47.033 92.531C47.033 94.2961 46.1986 95.427 44.5834 95.427Z"
+            fill="black" />
+          <path
+            d="M57.886 93.913C57.5224 94.9601 56.7774 95.4866 55.5198 95.4866C54.1311 95.4866 53.0464 94.5233 52.9629 93.159H60.0197V92.2555C60.0197 89.7365 58.4402 87.6362 55.3708 87.6362C52.5576 87.6362 50.4478 89.7365 50.4478 92.6504C50.4478 95.5644 52.5398 97.3954 55.4364 97.3954C57.8442 97.3954 59.4654 96.1807 59.9601 94.1224L57.8919 93.913H57.886ZM55.347 89.4851C56.7774 89.4851 57.439 90.5143 57.5224 91.5854H52.9987C53.2311 90.4305 53.9404 89.4851 55.347 89.4851Z"
+            fill="black" />
+          <path
+            d="M66.1649 89.9699C66.7848 89.9699 67.2079 90.0956 67.7026 90.3708L67.8933 88.0193C67.6192 87.7859 67.1483 87.6423 66.5702 87.6423C65.2709 87.6423 64.2875 88.6057 63.9478 89.6588V87.8936H61.3909V97.1502H63.9478V92.5728C63.9478 90.8914 64.8418 89.9699 66.1649 89.9699Z"
+            fill="black" />
+          <path
+            d="M72.1303 94.2302V89.6528H74.6872V87.8876H72.1303V85.3267H70.5747L70.2767 86.5832C70.0621 87.4448 69.8058 87.9056 68.888 88.0552L68.2502 88.1629V89.6528H69.5913V94.7926C69.5913 96.7672 70.8071 97.3955 72.2554 97.3955C73.4057 97.3955 74.1746 97.1023 74.86 96.5997V94.9422C74.3057 95.1935 73.7693 95.385 73.2627 95.385C72.4938 95.385 72.1303 95.026 72.1303 94.2302Z"
+            fill="black" />
+          <path
+            d="M93.7541 83.9265L91.2986 93.6617H91.2151L88.5927 83.9265H86.1371L83.5385 93.6438H83.4551L80.9817 83.9265H78.3115L81.7922 97.1442H84.7127L87.2695 87.6184H87.353L89.892 97.1442H92.8363L96.311 83.9265H93.7541Z"
+            fill="black" />
+          <path d="M99.8033 83.9207H97.1809V86.3739H99.8033V83.9207Z" fill="black" />
+          <path d="M99.7854 87.8877H97.2285V97.1442H99.7854V87.8877Z" fill="black" />
+          <path
+            d="M105.978 87.6362C103.165 87.6362 101.055 89.7365 101.055 92.6504C101.055 95.5644 103.147 97.3954 106.044 97.3954C108.452 97.3954 110.073 96.1807 110.562 94.1224L108.493 93.913C108.13 94.9601 107.385 95.4866 106.127 95.4866C104.739 95.4866 103.654 94.5233 103.57 93.159H110.627V92.2555C110.627 89.7365 109.048 87.6362 105.978 87.6362ZM103.612 91.5854C103.845 90.4305 104.548 89.4851 105.96 89.4851C107.373 89.4851 108.052 90.5143 108.136 91.5854H103.618H103.612Z"
+            fill="black" />
+          <path
+            d="M114.555 92.1957C114.555 90.64 115.366 89.6347 116.665 89.6347C117.964 89.6347 118.501 90.4545 118.501 91.8786V97.1441H121.058V91.37C121.058 89.3116 120.14 87.6362 117.625 87.6362C116.218 87.6362 115.026 88.3483 114.555 89.4014V87.8875H111.998V97.1441H114.555V92.1897V92.1957Z"
+            fill="black" />
+          <path
+            d="M127.243 97.3954C129.651 97.3954 131.272 96.1807 131.767 94.1224L129.699 93.913C129.335 94.9601 128.59 95.4866 127.333 95.4866C125.95 95.4866 124.859 94.5233 124.776 93.159H131.833V92.2555C131.833 89.7365 130.253 87.6362 127.184 87.6362C124.371 87.6362 122.261 89.7365 122.261 92.6504C122.261 95.5644 124.353 97.3954 127.249 97.3954M127.16 89.4851C128.59 89.4851 129.252 90.5143 129.335 91.5854H124.812C125.044 90.4305 125.753 89.4851 127.16 89.4851Z"
+            fill="black" />
+          <path
+            d="M135.755 92.5728C135.755 90.8914 136.649 89.9699 137.972 89.9699C138.592 89.9699 139.015 90.0956 139.51 90.3708L139.701 88.0193C139.427 87.7859 138.956 87.6423 138.378 87.6423C137.078 87.6423 136.095 88.6057 135.755 89.6588V87.8936H133.198V97.1502H135.755V92.5728Z"
+            fill="black" />
         </svg>
       </a>
       <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Cerrar Menú">
@@ -155,23 +223,21 @@
       <nav class="sidebar-menu-nav">
         <ul class="sidebar-menu-list">
 
-          <!-- 1. Grupo: INICIO -->
-          <li class="sidebar-category-title">Inicio</li>
+          <!-- 1. INICIO -->
           <li class="sidebar-menu-item">
             <a href="#" class="sidebar-menu-link">
               <span class="sidebar-icon-box" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path
-                    d="M4.5 19.5V8.5L12 2.80775L19.5 8.5V19.5H13.5V13H10.5V19.5H4.5ZM6 18H9V11.5H15V18H18V9.25L12 4.75L6 9.25V18Z"
-                    fill="#5B6E80" />
+                    d="M6 19H9.34625V13.9615C9.34625 13.7055 9.43283 13.4908 9.606 13.3175C9.77933 13.1443 9.994 13.0578 10.25 13.0578H13.75C14.006 13.0578 14.2207 13.1443 14.394 13.3175C14.5672 13.4908 14.6538 13.7055 14.6538 13.9615V19H18V10.1538C18 10.1026 17.9888 10.0562 17.9663 10.0145C17.9439 9.97284 17.9135 9.93592 17.875 9.90376L12.1828 5.625C12.1314 5.58017 12.0705 5.55775 12 5.55775C11.9295 5.55775 11.8686 5.58017 11.8173 5.625L6.125 9.90376C6.0865 9.93592 6.05608 9.97284 6.03375 10.0145C6.01125 10.0562 6 10.1026 6 10.1538V19ZM4.5 19V10.1538C4.5 9.86759 4.564 9.59651 4.692 9.34051C4.82017 9.08434 4.99717 8.87342 5.223 8.70776L10.9155 4.41926C11.2313 4.17826 11.5923 4.05775 11.9985 4.05775C12.4047 4.05775 12.7667 4.17826 13.0845 4.41926L18.777 8.70776C19.0028 8.87342 19.1798 9.08434 19.308 9.34051C19.436 9.59651 19.5 9.86759 19.5 10.1538V19C19.5 19.409 19.3523 19.7613 19.0568 20.0568C18.7613 20.3523 18.409 20.5 18 20.5H14.0577C13.8016 20.5 13.5869 20.4133 13.4137 20.24C13.2404 20.0668 13.1538 19.8522 13.1538 19.596V14.5578H10.8463V19.596C10.8463 19.8522 10.7596 20.0668 10.5863 20.24C10.4131 20.4133 10.1984 20.5 9.94225 20.5H6C5.591 20.5 5.23875 20.3523 4.94325 20.0568C4.64775 19.7613 4.5 19.409 4.5 19Z"
+                    fill="#5B6E80"></path>
                 </svg>
               </span>
               <span class="text">Inicio</span>
             </a>
           </li>
 
-          <!-- 2. Grupo: MI PERFIL -->
-          <li class="sidebar-category-title">Mi Perfil</li>
+          <!-- 2. MI PERFIL -->
           <li class="sidebar-menu-item">
             <a href="#" class="sidebar-menu-link">
               <span class="sidebar-icon-box" aria-hidden="true">
@@ -262,31 +328,29 @@
   <!-- ==========================================================================
        3. LAYOUT PRINCIPAL Y DASHBOARD ADMIN (RRAA)
        ========================================================================== -->
-  <div class="main-content-layout notes-layout">
-    <main class="main-content notes-main-content">
-      <div class="notes-page-container">
+  <div class="main-content-layout asist-layout">
+    <main class="main-content asist-main-content">
+      <div class="asist-page-container">
 
         <!-- CABECERA DE PÁGINA INSTITUCIONAL -->
-        <header class="notes-header-flex">
-          <div class="notes-header-left">
-            <div class="notes-header-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-                <path d="M9 16l2 2 4-4"></path>
+        <header class="asist-header-flex">
+          <div class="asist-header-left">
+            <div class="asist-header-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#1f1f1f">
+                <path
+                  d="M10.95,15.82l3.68-3.68q0.22-0.22 0.54-0.23t0.55,0.23t0.23,0.54t-0.23,0.54l-4.13,4.13q-0.27,0.27-0.63,0.27t-0.63-0.27L8.29,15.32Q8.07,15.1 8.06,14.79t0.23-0.55t0.54-0.23t0.54,0.23l1.58,1.58ZM5.31,21.5q-0.76,0-1.28-0.52T3.5,19.69V6.31q0-0.76 0.52-1.28T5.31,4.5H6.69V3.15q0-0.33 0.22-0.55T7.46,2.38T8.01,2.6T8.23,3.15V4.5h7.58V3.13q0-0.32 0.22-0.53t0.53-0.22T17.09,2.6t0.22,0.53V4.5h1.38q0.76,0 1.28,0.52T20.5,6.31V19.69q0,0.76-0.52,1.28T18.69,21.5H5.31Zm0-1.5H18.69q0.12,0 0.21-0.1T19,19.69V10.31H5v9.38q0,0.12 0.1,0.21T5.31,20ZM5,8.81H19V6.31q0-0.12-0.1-0.21T18.69,6H5.31Q5.19,6 5.1,6.1T5,6.31v2.5Zm0,0V6.31Q5,6.19 5,6.1T5,6Q5,6 5,6.1T5,6.31v2.5Z" />
               </svg>
             </div>
-            <div class="notes-header-titles">
+            <div class="asist-header-titles">
               <h1>Regularización de Asistencia Docente</h1>
-              <p>Histórico, validación y control de solicitudes de regularización de marcaciones docentes por curso, sección y docente.</p>
+              <p>Histórico, validación y control de solicitudes de regularización de marcaciones docentes por curso,
+                sección y docente.</p>
             </div>
           </div>
-          <div class="notes-header-right"></div>
+          <div class="asist-header-right"></div>
         </header>
 
-        <hr class="notes-header-divider">
+        <hr class="asist-header-divider">
 
         <!-- ==========================================================================
              SUBNAVEGACIÓN SUPERIOR / TAPBAR (4 VISTAS INTEGRADAS)
@@ -323,7 +387,7 @@
         <div class="subnav-view-panel active" id="panelSolicitudes">
 
           <!-- TARJETA DE FILTROS DE BÚSQUEDA -->
-          <section class="notes-filters-card" aria-label="Filtros de Solicitudes">
+          <section class="asist-filters-card" aria-label="Filtros de Solicitudes">
             <div class="filters-card-header-flex">
               <span class="filters-card-title">Criterios de Búsqueda</span>
               <button type="button" class="btn-text-reset-filters" id="btnClearFilters"
@@ -336,96 +400,216 @@
               </button>
             </div>
 
-            <form class="notes-filters-form" id="asistenciaFiltersForm" onsubmit="return false;">
-              <div class="notes-filters-row-clean">
+            <form class="asist-filters-form" id="asistenciaFiltersForm" onsubmit="return false;">
+              <div class="asist-filters-row-clean">
                 <!-- Curso -->
-                <div class="notes-filter-item">
+                <div class="asist-filter-item">
                   <label for="filterCurso">Curso / Asignatura</label>
-                  <div class="notes-select-wrapper">
-                    <select id="filterCurso" class="notes-select">
-                      <option value="todos">Todos los cursos</option>
-                      <option value="Prácticas En Nutrición I">Prácticas En Nutrición I - ND4012</option>
-                      <option value="Nutrición Y Dietoterapia Del Niño">Nutrición Y Dietoterapia Del Niño - ND4054</option>
-                      <option value="Estructura Y Función">Estructura Y Función Complejo Orofacial - OD5033</option>
-                    </select>
-                    <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
+                  <div class="custom-select-container" data-filter="filterCurso" data-current-value="todos">
+                    <input type="hidden" id="filterCurso" value="todos">
+                    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="custom-select-label">Todos los cursos</span>
+                      <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <div class="custom-dropdown-menu" role="listbox">
+                      <div class="custom-option selected" data-value="todos">
+                        <span>Todos los cursos</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Prácticas En Nutrición I">
+                        <span>Prácticas En Nutrición I - ND4012</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Nutrición Y Dietoterapia Del Niño">
+                        <span>Nutrición Y Dietoterapia Del Niño - ND4054</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Estructura Y Función">
+                        <span>Estructura Y Función Complejo Orofacial - OD5033</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Sección -->
-                <div class="notes-filter-item">
+                <div class="asist-filter-item">
                   <label for="filterSeccion">Sección</label>
-                  <div class="notes-select-wrapper">
-                    <select id="filterSeccion" class="notes-select">
-                      <option value="todos">Todas las secciones</option>
-                      <option value="ND1M1">ND1M1</option>
-                      <option value="ND1M3">ND1M3</option>
-                      <option value="ND5N2">ND5N2</option>
-                      <option value="OD3N3">OD3N3</option>
-                    </select>
-                    <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
+                  <div class="custom-select-container" data-filter="filterSeccion" data-current-value="todos">
+                    <input type="hidden" id="filterSeccion" value="todos">
+                    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="custom-select-label">Todas las secciones</span>
+                      <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <div class="custom-dropdown-menu" role="listbox">
+                      <div class="custom-option selected" data-value="todos">
+                        <span>Todas las secciones</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="ND1M1">
+                        <span>ND1M1</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="ND1M3">
+                        <span>ND1M3</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="ND5N2">
+                        <span>ND5N2</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="OD3N3">
+                        <span>OD3N3</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Docente -->
-                <div class="notes-filter-item">
+                <div class="asist-filter-item">
                   <label for="filterDocente">Docente</label>
-                  <div class="notes-select-wrapper">
-                    <select id="filterDocente" class="notes-select">
-                      <option value="todos">Todos los docentes</option>
-                      <option value="Obregon Figueroa">Lic. Obregon Figueroa Ana Dorila</option>
-                      <option value="Silva Sánchez">Mg. Carlos Jesús Silva Sánchez</option>
-                      <option value="Paz Quispe">Dr. Rafael Paz Quispe</option>
-                    </select>
-                    <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
+                  <div class="custom-select-container" data-filter="filterDocente" data-current-value="todos">
+                    <input type="hidden" id="filterDocente" value="todos">
+                    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="custom-select-label">Todos los docentes</span>
+                      <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <div class="custom-dropdown-menu" role="listbox">
+                      <div class="custom-option selected" data-value="todos">
+                        <span>Todos los docentes</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Obregon Figueroa">
+                        <span>Lic. Obregon Figueroa Ana Dorila</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Silva Sánchez">
+                        <span>Mg. Carlos Jesús Silva Sánchez</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Paz Quispe">
+                        <span>Dr. Rafael Paz Quispe</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Periodo -->
-                <div class="notes-filter-item">
+                <div class="asist-filter-item">
                   <label for="filterPeriodo">Periodo</label>
-                  <div class="notes-select-wrapper">
-                    <select id="filterPeriodo" class="notes-select">
-                      <option value="todos">Todos los periodos</option>
-                      <option value="2025-II" selected>2025-II</option>
-                      <option value="2026-I">2026-I</option>
-                      <option value="2026-0">2026-0</option>
-                    </select>
-                    <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
+                  <div class="custom-select-container" data-filter="filterPeriodo" data-current-value="todos">
+                    <input type="hidden" id="filterPeriodo" value="todos">
+                    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="custom-select-label">2025-II</span>
+                      <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <div class="custom-dropdown-menu" role="listbox">
+                      <div class="custom-option" data-value="todos">
+                        <span>Todos los periodos</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option selected" data-value="2025-II">
+                        <span>2025-II</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="2026-I">
+                        <span>2026-I</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="2026-0">
+                        <span>2026-0</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Condición / Trámite -->
-                <div class="notes-filter-item">
+                <div class="asist-filter-item">
                   <label for="filterCondicion">Condición</label>
-                  <div class="notes-select-wrapper">
-                    <select id="filterCondicion" class="notes-select">
-                      <option value="todos" selected>Todas las condiciones</option>
-                      <option value="Solicitado">Solicitado</option>
-                      <option value="Aprobado">Aprobado</option>
-                      <option value="Rechazado">Rechazado</option>
-                    </select>
-                    <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
+                  <div class="custom-select-container" data-filter="filterCondicion" data-current-value="todos">
+                    <input type="hidden" id="filterCondicion" value="todos">
+                    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="custom-select-label">Todas las condiciones</span>
+                      <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <div class="custom-dropdown-menu" role="listbox">
+                      <div class="custom-option selected" data-value="todos">
+                        <span>Todas las condiciones</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Solicitado">
+                        <span>Solicitado</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Aprobado">
+                        <span>Aprobado</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Rechazado">
+                        <span>Rechazado</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -433,11 +617,11 @@
           </section>
 
           <!-- SUBBARRA DE CONTEO Y RESUMEN -->
-          <section class="rect-subbar">
-            <div class="rect-counter-text" id="tableRowsCount">
+          <section class="asist-subbar">
+            <div class="asist-counter-text" id="tableRowsCount">
               Mostrando <strong>3</strong> solicitudes registradas
             </div>
-            <div class="rect-summary-pills">
+            <div class="asist-summary-pills">
               <span class="summary-pill pill-warning" id="pillSolicitados">
                 <span class="pill-dot orange"></span>
                 <span id="countSolicitados">2 Solicitadas</span>
@@ -446,7 +630,8 @@
                 <span class="pill-dot green"></span>
                 <span id="countAprobados">1 Aprobada</span>
               </span>
-              <span class="summary-pill" id="pillRechazados" style="border-color: #FECACA; color: #DC2626; background-color: #FEF2F2;">
+              <span class="summary-pill" id="pillRechazados"
+                style="border-color: #FEE2E2; color: #DC2626; background-color: #FEF2F2;">
                 <span class="pill-dot" style="background-color: #DC2626;"></span>
                 <span id="countRechazados">0 Rechazadas</span>
               </span>
@@ -479,35 +664,29 @@
 
           <!-- TABLA EXACTA A LA IMAGEN 1 ADJUNTA -->
           <div class="asist-table-card">
-            <div class="asist-table-scroll-container" tabindex="0" role="region" aria-label="Tabla de solicitudes de regularización de asistencia">
-              <table class="table-regularizacion" id="solicitudesAsistenciaTable">
+            <div class="asist-table-scroll-container" tabindex="0" role="region"
+              aria-label="Tabla de solicitudes de regularización de asistencia">
+              <table class="table-regularizacion table-solicitudes-moderna" id="solicitudesAsistenciaTable">
                 <thead>
                   <tr>
                     <th rowspan="2" class="col-check">
                       <input type="checkbox" id="chkSelectAll" aria-label="Seleccionar todas las solicitudes">
                     </th>
                     <th rowspan="2" class="col-ticket">TICKET</th>
-                    <th rowspan="2" class="col-fecha">FECHA</th>
-                    <th rowspan="2" class="col-area">AREA / CARRERA</th>
-                    <th rowspan="2" class="col-curso">CURSO</th>
-                    <th rowspan="2" class="col-periodo">PERIODO</th>
-                    <th rowspan="2" class="col-seccion">SECCIÓN</th>
-                    <th rowspan="2" class="col-sesion">SESIÓN</th>
-                    <th colspan="2" class="col-horario-group">HORARIO</th>
-                    <th colspan="2" class="col-registro-group">REGISTRO</th>
-                    <th rowspan="2" class="col-tarda">TARDA.</th>
-                    <th rowspan="2" class="col-estado">ESTADO</th>
-                    <th rowspan="2" class="col-condicion">CONDICIÓN</th>
-                    <th rowspan="2" class="col-sustento">SUSTENTO</th>
-                    <th rowspan="2" class="col-fsolicitud">FECHA DE SOLICITUD</th>
-                    <th rowspan="2" class="col-obs">OBSERVACIÓN</th>
-                    <th rowspan="2" class="col-acciones">ACCIONES</th>
+                    <th rowspan="2" class="col-docente">DOCENTE</th>
+                    <th rowspan="2" class="col-curso">CURSO Y SECCIÓN</th>
+                    <th rowspan="2" class="col-fecha">FECHA SESIÓN</th>
+                    <th colspan="2" class="col-horario-group text-center">HORARIO</th>
+                    <th colspan="2" class="col-registro-group text-center">REGISTRO</th>
+                    <th rowspan="2" class="col-estado text-center">ESTADO</th>
+                    <th rowspan="2" class="col-condicion text-center">CONDICIÓN</th>
+                    <th rowspan="2" class="col-acciones col-acciones-header text-center">ACCIONES</th>
                   </tr>
-                  <tr class="subheaders-row">
-                    <th class="col-horario-sub">INICIO</th>
-                    <th class="col-horario-sub">FIN</th>
-                    <th class="col-registro-sub">INICIO</th>
-                    <th class="col-registro-sub">FIN</th>
+                  <tr class="table-subheaders-row">
+                    <th class="col-sub sub-horario-inicio text-center">INICIO</th>
+                    <th class="col-sub sub-horario-fin text-center">FIN</th>
+                    <th class="col-sub sub-registro-inicio text-center">INICIO</th>
+                    <th class="col-sub sub-registro-fin text-center">FIN</th>
                   </tr>
                 </thead>
                 <tbody id="solicitudesAsistenciaBody">
@@ -543,30 +722,35 @@
         <div class="subnav-view-panel" id="panelCronograma">
 
           <!-- ALERTA OFICIAL DE VALIDACIÓN AUTOMÁTICA -->
-          <div class="cronograma-alert-banner">
+          <!-- <div class="cronograma-alert-banner">
             <div class="cronograma-alert-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#F3970D">
+                <path
+                  d="M12.53,16.53q0.22-0.22 0.22-0.53V11.75q0-0.32-0.22-0.53T12,11t-0.53,0.22t-0.22,0.53V16q0,0.32 0.22,0.53T12,16.75t0.53-0.22Zm0.04-7.48q0.23-0.23 0.23-0.58T12.58,7.91T12,7.67T11.42,7.91T11.19,8.48t0.23,0.58T12,9.29t0.57-0.23ZM12,21.5q-1.97,0-3.71-0.75T5.28,18.72T3.25,15.71T2.5,12T3.25,8.3T5.28,5.28T8.29,3.25T12,2.5T15.7,3.25t3.02,2.03t2.03,3.02T21.5,12T20.75,15.7t-2.03,3.02t-3.02,2.03T12,21.5ZM12,20q3.35,0 5.68-2.32T20,12T17.68,6.32T12,4T6.33,6.32T4,12t2.33,5.68T12,20Zm0-8Z" />
               </svg>
             </div>
             <div>
               <strong>Validación Automática del Sistema (Corte RRAA):</strong>
               <p style="margin: 4px 0 0 0;">
-                A partir del día siguiente a la fecha máxima de solicitud (ej. 16/09), el sistema bloquea automáticamente en WienerNet el ingreso de nuevas solicitudes para el corte regular. Si un docente intenta registrar fuera de fecha, el sistema mostrará:
-                <em>“El periodo de solicitudes de regularización de asistencia ha finalizado. No se permiten nuevas solicitudes fuera del cronograma establecido.”</em> Las solicitudes posteriores deberán tramitarse exclusivamente vía <strong>Planilla Manual</strong>.
+                A partir del día siguiente a la fecha máxima de solicitud (ej. 16/09), el sistema bloquea
+                automáticamente en WienerNet el ingreso de nuevas solicitudes para el corte regular. Si un docente
+                intenta registrar fuera de fecha, el sistema mostrará:
+                <em>“El periodo de solicitudes de regularización de asistencia ha finalizado. No se permiten nuevas
+                  solicitudes fuera del cronograma establecido.”</em> Las solicitudes posteriores deberán tramitarse
+                exclusivamente vía <strong>Planilla Manual</strong>.
               </p>
             </div>
-          </div>
+          </div> -->
 
           <!-- TARJETA DE CONFIGURACIÓN DE FECHAS CLAVE -->
           <div class="cronograma-config-card">
             <div class="cronograma-card-header">
               <div class="cronograma-card-title">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2">
-                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-                </svg>
+                <!-- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2">
+                  <path
+                    d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+                  </path>
+                </svg> -->
                 <span>Configurar Periodo de Corte y Recepción de Solicitudes</span>
               </div>
               <span class="badge-status-pill badge-procesado">Módulo RRAA</span>
@@ -574,56 +758,168 @@
 
             <form id="formCronograma">
               <div class="cronograma-form-grid">
-                <div class="notes-filter-item">
+                <!-- Año Académico -->
+                <div class="asist-filter-item">
                   <label for="cronoAnio">Año Académico <span class="req">*</span></label>
-                  <div class="notes-select-wrapper">
-                    <select id="cronoAnio" class="notes-select">
-                      <option value="2025" selected>2025</option>
-                      <option value="2026">2026</option>
-                    </select>
-                    <svg class="notes-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  <div class="custom-select-container" data-filter="cronoAnio" data-current-value="2025">
+                    <input type="hidden" id="cronoAnio" value="2025">
+                    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="custom-select-label">2025</span>
+                      <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <div class="custom-dropdown-menu" role="listbox">
+                      <div class="custom-option selected" data-value="2025">
+                        <span>2025</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="2026">
+                        <span>2026</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="notes-filter-item">
+                <!-- Mes de Planilla -->
+                <div class="asist-filter-item">
                   <label for="cronoMes">Mes de Planilla <span class="req">*</span></label>
-                  <div class="notes-select-wrapper">
-                    <select id="cronoMes" class="notes-select">
-                      <option value="Enero">Enero</option>
-                      <option value="Febrero">Febrero</option>
-                      <option value="Marzo">Marzo</option>
-                      <option value="Abril">Abril</option>
-                      <option value="Mayo">Mayo</option>
-                      <option value="Junio">Junio</option>
-                      <option value="Julio">Julio</option>
-                      <option value="Agosto">Agosto</option>
-                      <option value="Setiembre">Setiembre</option>
-                      <option value="Octubre" selected>Octubre</option>
-                      <option value="Noviembre">Noviembre</option>
-                      <option value="Diciembre">Diciembre</option>
-                    </select>
-                    <svg class="notes-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  <div class="custom-select-container" data-filter="cronoMes" data-current-value="Octubre">
+                    <input type="hidden" id="cronoMes" value="Octubre">
+                    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="custom-select-label">Octubre</span>
+                      <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <div class="custom-dropdown-menu" role="listbox">
+                      <div class="custom-option" data-value="Enero"><span>Enero</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Febrero"><span>Febrero</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Marzo"><span>Marzo</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Abril"><span>Abril</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Mayo"><span>Mayo</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Junio"><span>Junio</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Julio"><span>Julio</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Agosto"><span>Agosto</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Setiembre"><span>Setiembre</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option selected" data-value="Octubre"><span>Octubre</span><svg
+                          class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Noviembre"><span>Noviembre</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                      <div class="custom-option" data-value="Diciembre"><span>Diciembre</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="notes-filter-item">
+                <!-- Corte Inicio -->
+                <div class="asist-filter-item">
                   <label for="cronoFechaCorteInicio">Corte Inicio (Oficial) <span class="req">*</span></label>
-                  <input type="text" id="cronoFechaCorteInicio" class="notes-select" value="12/09/2025" style="padding: 9px 12px;">
+                  <div class="custom-date-container" id="dateContainerCorteInicio">
+                    <div class="custom-date-trigger">
+                      <input type="text" id="cronoFechaCorteInicio" class="date-display-input" value="12/09/2025"
+                        readonly>
+                      <span class="date-calendar-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="custom-calendar-popup" id="calPopupCorteInicio"></div>
+                  </div>
                 </div>
 
-                <div class="notes-filter-item">
+                <!-- Corte Fin -->
+                <div class="asist-filter-item">
                   <label for="cronoFechaCorteFin">Corte Fin (Oficial) <span class="req">*</span></label>
-                  <input type="text" id="cronoFechaCorteFin" class="notes-select" value="11/10/2025" style="padding: 9px 12px;">
+                  <div class="custom-date-container" id="dateContainerCorteFin">
+                    <div class="custom-date-trigger">
+                      <input type="text" id="cronoFechaCorteFin" class="date-display-input" value="11/10/2025" readonly>
+                      <span class="date-calendar-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="custom-calendar-popup" id="calPopupCorteFin"></div>
+                  </div>
                 </div>
 
-                <div class="notes-filter-item">
+                <!-- Fecha Máxima Recepción -->
+                <div class="asist-filter-item">
                   <label for="cronoFechaLimite">Fecha Máx. Recepción <span class="req">*</span></label>
-                  <input type="text" id="cronoFechaLimite" class="notes-select" value="15/10/2025" style="padding: 9px 12px; font-weight: 700; color: #DC2626;">
+                  <div class="custom-date-container" id="dateContainerFechaLimite">
+                    <div class="custom-date-trigger">
+                      <input type="text" id="cronoFechaLimite" class="date-display-input" value="15/10/2025" readonly
+                        style="font-weight: 700; color: #DC2626;">
+                      <span class="date-calendar-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="custom-calendar-popup" id="calPopupFechaLimite"></div>
+                  </div>
                 </div>
 
-                <div class="notes-filter-item" style="grid-column: span 3; display: flex; align-items: flex-end;">
+                <div class="asist-filter-item" style="grid-column: span 3; display: flex; align-items: flex-end;">
                   <button type="submit" class="btn-import-planilla" style="padding: 11px 24px;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
                     <span>Guardar y Publicar Cronograma de Corte</span>
                   </button>
                 </div>
@@ -633,7 +929,8 @@
 
           <!-- TABLA DE CRONOGRAMAS CONFIGURADOS -->
           <div class="asist-table-card">
-            <div class="asist-table-scroll-container" tabindex="0" role="region" aria-label="Historial de Cronogramas de Corte">
+            <div class="asist-table-scroll-container" tabindex="0" role="region"
+              aria-label="Historial de Cronogramas de Corte">
               <table class="table-regularizacion" style="min-width: 900px;">
                 <thead>
                   <tr>
@@ -656,9 +953,7 @@
 
         </div>
 
-        <!-- ==========================================================================
-             VISTA 3: REPORTE DE SOLICITUDES (CONSOLIDADO EXPORTABLE)
-             ========================================================================== -->
+        <!-- VISTA REPORTE DE SOLICITUDES (CONSOLIDADO EXPORTABLE) -->
         <div class="subnav-view-panel" id="panelReportes">
 
           <!-- SELECTOR DE PESTAÑAS POR ESTADO -->
@@ -684,23 +979,76 @@
           <!-- BARRA DE ACCIONES Y EXPORTACIÓN -->
           <div class="report-actions-row">
             <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-              <div class="notes-select-wrapper" style="width: 240px;">
-                <select id="filterReportCurso" class="notes-select">
-                  <option value="todos">Todos los cursos</option>
-                  <option value="Prácticas En Nutrición I">Prácticas En Nutrición I</option>
-                  <option value="Nutrición Y Dietoterapia">Nutrición Y Dietoterapia</option>
-                  <option value="Estructura Y Función">Estructura Y Función</option>
-                </select>
-                <svg class="notes-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <div style="width: 260px;">
+                <div class="custom-select-container" data-filter="filterReportCurso" data-current-value="todos">
+                  <input type="hidden" id="filterReportCurso" value="todos">
+                  <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="custom-select-label">Todos los cursos</span>
+                    <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <div class="custom-dropdown-menu" role="listbox">
+                    <div class="custom-option selected" data-value="todos">
+                      <span>Todos los cursos</span>
+                      <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="custom-option" data-value="Prácticas En Nutrición I">
+                      <span>Prácticas En Nutrición I</span>
+                      <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="custom-option" data-value="Nutrición Y Dietoterapia">
+                      <span>Nutrición Y Dietoterapia</span>
+                      <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="custom-option" data-value="Estructura Y Función">
+                      <span>Estructura Y Función</span>
+                      <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div class="notes-select-wrapper" style="width: 240px;">
-                <select id="filterReportAprobador" class="notes-select">
-                  <option value="todos">Todos los aprobadores</option>
-                  <option value="Carlos Silva">RRAA - Lic. Carlos Silva</option>
-                  <option value="Brenda Vergara">EAP - Dra. Brenda Vergara</option>
-                </select>
-                <svg class="notes-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <div style="width: 250px;">
+                <div class="custom-select-container" data-filter="filterReportAprobador" data-current-value="todos">
+                  <input type="hidden" id="filterReportAprobador" value="todos">
+                  <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="custom-select-label">Todos los evaluadores</span>
+                    <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <div class="custom-dropdown-menu" role="listbox">
+                    <div class="custom-option selected" data-value="todos">
+                      <span>Todos los evaluadores</span>
+                      <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="custom-option" data-value="Carlos Silva">
+                      <span>RRAA - Lic. Carlos Silva</span>
+                      <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="custom-option" data-value="Brenda Vergara">
+                      <span>EAP - Dra. Brenda Vergara</span>
+                      <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -729,7 +1077,8 @@
 
           <!-- TABLA DE REPORTE CONSOLIDADO -->
           <div class="asist-table-card">
-            <div class="asist-table-scroll-container" tabindex="0" role="region" aria-label="Consolidado de Solicitudes">
+            <div class="asist-table-scroll-container" tabindex="0" role="region"
+              aria-label="Consolidado de Solicitudes">
               <table class="table-regularizacion" style="min-width: 1200px;">
                 <thead>
                   <tr>
@@ -762,10 +1111,14 @@
           <!-- BANNER NORMATIVO INSTITUCIONAL SEGÚN IMAGEN 2 -->
           <div class="planilla-normativa-box">
             <p>
-              <strong>"Si las solicitudes de regularización de marcaciones corresponden al periodo comprendido entre el 12 de un mes y el 11 del mes siguiente, deberán ser gestionadas según lo detallado en la lámina 3 (a través de la sección del perfil Docente 'Asistencia Docente')."</strong>
+              <strong>"Si las solicitudes de regularización de marcaciones corresponden al periodo comprendido entre el
+                12 de un mes y el 11 del mes siguiente, deberán ser gestionadas según lo detallado en la lámina 3 (a
+                través de la sección del perfil Docente 'Asistencia Docente')."</strong>
             </p>
             <p>
-              "En caso de que la solicitud sea ingresada después del cierre de planilla (posterior al día 11 de cada mes), esta deberá ser incluida en una planilla manual vigente, tal como se muestra a continuación, la cual debe consolidarse para ser descargada con la información solicitada en la planilla anterior."
+              "En caso de que la solicitud sea ingresada después del cierre de planilla (posterior al día 11 de cada
+              mes), esta deberá ser incluida en una planilla manual vigente, tal como se muestra a continuación, la cual
+              debe consolidarse para ser descargada con la información solicitada en la planilla anterior."
             </p>
           </div>
 
@@ -776,17 +1129,30 @@
             </div>
             <div style="display: flex; gap: 10px;">
               <button type="button" class="btn-download-empty" id="btnDescargarPlantillaVacia">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
                 <span>Descargar Formato Vacío (.csv)</span>
               </button>
 
               <button type="button" class="btn-import-planilla" id="btnAbrirModalImportar">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
                 <span>Cargar / Importar Planilla</span>
               </button>
 
               <button type="button" class="btn-export-excel" id="btnExportarConsolidadoPlanilla">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="8" y1="13" x2="16" y2="13"></line>
+                  <line x1="8" y1="17" x2="16" y2="17"></line>
+                </svg>
                 <span>Exportar Consolidado (.csv)</span>
               </button>
             </div>
@@ -794,7 +1160,8 @@
 
           <!-- TABLA DE 20 COLUMNAS EXACTAS DE IMAGEN 2 -->
           <div class="asist-table-card">
-            <div class="asist-table-scroll-container" tabindex="0" role="region" aria-label="Tabla de Planilla Manual Oficial">
+            <div class="asist-table-scroll-container" tabindex="0" role="region"
+              aria-label="Tabla de Planilla Manual Oficial">
               <table class="table-planilla-manual" id="tablaPlanillaManual">
                 <thead>
                   <tr>
@@ -830,7 +1197,7 @@
         </div>
 
         <!-- PIE DE PÁGINA -->
-        <footer class="notes-footer">
+        <footer class="asist-footer">
           <p>© 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
         </footer>
 
@@ -839,13 +1206,203 @@
   </div>
 
   <!-- ==========================================================================
+       MODAL: EVALUACIÓN Y RESOLUCIÓN INTEGRAL DE REGULARIZACIÓN (OPCIÓN A)
+       ========================================================================== -->
+  <div class="modal-overlay" id="modalEvaluacionBackdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modalEvaluacionTitle">
+    <div class="modal-content-card modal-evaluacion-card">
+      <div class="modal-header-teal">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="modal-icon-badge" style="display: flex; align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#fff">
+              <path
+                d="M10.95,15.82l3.68-3.68q0.22-0.22 0.54-0.23t0.55,0.23t0.23,0.54t-0.23,0.54l-4.13,4.13q-0.27,0.27-0.63,0.27t-0.63-0.27L8.29,15.32Q8.07,15.1 8.06,14.79t0.23-0.55t0.54-0.23t0.54,0.23l1.58,1.58ZM5.31,21.5q-0.76,0-1.28-0.52T3.5,19.69V6.31q0-0.76 0.52-1.28T5.31,4.5H6.69V3.15q0-0.33 0.22-0.55T7.46,2.38T8.01,2.6T8.23,3.15V4.5h7.58V3.13q0-0.32 0.22-0.53t0.53-0.22T17.09,2.6t0.22,0.53V4.5h1.38q0.76,0 1.28,0.52T20.5,6.31V19.69q0,0.76-0.52,1.28T18.69,21.5H5.31Zm0-1.5H18.69q0.12,0 0.21-0.1T19,19.69V10.31H5v9.38q0,0.12 0.1,0.21T5.31,20ZM5,8.81H19V6.31q0-0.12-0.1-0.21T18.69,6H5.31Q5.19,6 5.1,6.1T5,6.31v2.5Zm0,0V6.31Q5,6.19 5,6.1T5,6Q5,6 5,6.1T5,6.31v2.5Z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="modal-header-title" id="modalEvaluacionTitle" style="margin: 0; font-size: 16px;">
+              Evaluación de Regularización de Asistencia
+            </h3>
+            <span style="font-size: 12px; opacity: 0.9; color: #FFFFFF; font-weight: 500;" id="evalModalTicketBadge">
+              Ticket #1 • Solicitado
+            </span>
+          </div>
+        </div>
+        <button type="button" class="modal-btn-close-white" id="btnCloseModalEvaluacion" aria-label="Cerrar modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body-pad modal-evaluacion-body">
+        <!-- 1. Ficha del Docente y Clase -->
+        <div class="eval-section-card">
+          <div class="eval-section-header">
+            <span class="eval-section-title">1. Información del Docente y Asignatura</span>
+          </div>
+          <div class="eval-grid-info">
+            <div>
+              <div class="eval-label">Docente Solicitante:</div>
+              <div class="eval-val-strong" id="evalDocenteNombre">-</div>
+              <div class="eval-val-sub" id="evalDocenteCodigo">-</div>
+            </div>
+            <div>
+              <div class="eval-label">Asignatura / Curso:</div>
+              <div class="eval-val-strong" id="evalCursoNombre">-</div>
+              <div class="eval-val-sub" id="evalCarrera">-</div>
+            </div>
+            <div>
+              <div class="eval-label">Sección y Sesión:</div>
+              <div class="eval-val-strong" id="evalSeccionSesion">-</div>
+              <div class="eval-val-sub" id="evalPeriodo">Periodo: 2025-II</div>
+            </div>
+            <div>
+              <div class="eval-label">Fecha de Sesión / Envío:</div>
+              <div class="eval-val-strong" id="evalFechaSesion">-</div>
+              <div class="eval-val-sub" id="evalFechaSolicitud">-</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Comparativa de Marcación: Programado vs Real -->
+        <div class="eval-section-card">
+          <div class="eval-section-header">
+            <span class="eval-section-title">2. Comparativa de Marcación Biométrica vs. Horario Oficial</span>
+            <span class="badge-estado-incidencia" id="evalBadgeIncidencia">Observado</span>
+          </div>
+          <div class="eval-biometric-compare-grid">
+            <!-- Horario Oficial -->
+            <div class="compare-box compare-box-official">
+              <div class="compare-box-title">Horario Oficial de Clase</div>
+              <div class="compare-time-row">
+                <div>
+                  <span class="compare-sublabel">Inicio Oficial</span>
+                  <span class="compare-time-val" id="evalHorarioInicio">--:--</span>
+                </div>
+                <div class="compare-arrow">→</div>
+                <div>
+                  <span class="compare-sublabel">Fin Oficial</span>
+                  <span class="compare-time-val" id="evalHorarioFin">--:--</span>
+                </div>
+              </div>
+              <div class="compare-notes">Duración programada en sistema</div>
+            </div>
+
+            <!-- Marcación Biométrica en Sede -->
+            <div class="compare-box compare-box-recorded">
+              <div class="compare-box-title">Registro en marcación</div>
+              <div class="compare-time-row">
+                <div>
+                  <span class="compare-sublabel">Marcación Entrada</span>
+                  <span class="compare-time-val" id="evalRegistroInicio">--:--</span>
+                </div>
+                <div class="compare-arrow">→</div>
+                <div>
+                  <span class="compare-sublabel">Marcación Salida</span>
+                  <span class="compare-time-val" id="evalRegistroFin">--:--</span>
+                </div>
+              </div>
+              <div class="compare-notes" id="evalTardanzaObs">-</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Sustento y Justificación del Docente -->
+        <div class="eval-section-card">
+          <div class="eval-section-header">
+            <span class="eval-section-title">3. Justificación del Docente y Documento de Sustento</span>
+          </div>
+          <div class="eval-sustento-details-grid">
+            <div>
+              <div class="eval-label">Tipo de Regularización:</div>
+              <div class="eval-val-strong" id="evalTipoSustento" style="color: #0F848F;">-</div>
+            </div>
+            <div>
+              <div class="eval-label">Autoridad / Jefe Inmediato:</div>
+              <div class="eval-val-strong" id="evalJefeInmediato">Lic. Denssy López - Coordinadora Académica</div>
+            </div>
+          </div>
+
+          <div class="sustento-file-preview-box" style="margin-top: 10px;">
+            <div class="sustento-file-info">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#1f1f1f">
+                <path
+                  d="M9,17.75h6q0.32,0 0.53-0.22T15.75,17t-0.22-0.53T15,16.25H9q-0.32,0-0.53,0.22T8.25,17t0.22,0.53T9,17.75Zm0-4h6q0.32,0 0.53-0.22T15.75,13t-0.22-0.53T15,12.25H9q-0.32,0-0.53,0.22T8.25,13t0.22,0.53T9,13.75ZM6.31,21.5q-0.76,0-1.28-0.52T4.5,19.69V4.31q0-0.76 0.52-1.28T6.31,2.5H13.5q0.36,0 0.7,0.14t0.58,0.39l4.2,4.2q0.25,0.25 0.39,0.58T19.5,8.5V19.69q0,0.76-0.52,1.28T17.69,21.5H6.31ZM13.5,7.6V4H6.31Q6.19,4 6.1,4.1T6,4.31V19.69q0,0.12 0.1,0.21T6.31,20H17.69q0.12,0 0.21-0.1T18,19.69V8.5H14.4q-0.39,0-0.65-0.26T13.5,7.6ZM6,4V7.6Q6,7.98 6,8.24T6,8.5V4V7.6Q6,7.98 6,8.24T6,8.5V19.69q0,0.12 0,0.21T6,20q0,0 0-0.1t0-0.21V4.31Q6,4.19 6,4.1T6,4Z" />
+              </svg>
+              <div>
+                <div class="sustento-file-name" id="evalFileName">-</div>
+                <div class="sustento-file-size" id="evalFileSize">Documento oficial adjuntado por el docente • PDF</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="btn-import-planilla" id="btnDescargarSustentoDoc"
+                style="padding: 7px 14px; font-size: 12px;">
+                Descargar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Resolución de RRAA -->
+        <div class="eval-section-card eval-resolution-card" id="evalResolutionBox">
+          <div class="eval-section-header">
+            <span class="eval-section-title">4. Resolución de la Solicitud (Registros Académicos)</span>
+          </div>
+
+          <!-- Auditoría si ya fue procesada -->
+          <div id="evalAuditStatusBox" style="display: none; margin-bottom: 12px;"></div>
+
+          <!-- Formulario de decisión -->
+          <div id="evalDecisionFormArea">
+            <div class="form-field-item">
+              <label for="evalTxtObservacion"
+                style="font-weight: 700; color: #1E293B; margin-bottom: 6px; display: block;">
+                Observaciones o Justificación de Decisión:
+                <span id="evalObsMandatoryMarker" style="color: #DC2626; display: none;">* (Obligatorio en caso de
+                  rechazo)</span>
+              </label>
+              <textarea id="evalTxtObservacion" class="modal-textarea-mandatory" rows="3"
+                placeholder="Ingrese una observación técnica o el motivo formal del rechazo..."></textarea>
+              <span class="modal-field-error-text" id="evalErrorObservacion" style="display: none;">
+                El motivo es obligatorio para rechazar la solicitud.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer-pad" style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" class="btn-cancel-modal" id="btnCerrarModalEvaluacion">Cerrar</button>
+        <div style="display: flex; gap: 10px;" id="evalActionButtonsGroup">
+          <button type="button" class="btn-bulk-reject" id="btnModalEvalRechazar" style="padding: 10px 18px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span>Rechazar</span>
+          </button>
+          <button type="button" class="btn-bulk-approve" id="btnModalEvalAprobar" style="padding: 10px 20px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Aprobar Regularización</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
        MODAL 1: RECHAZO CON MOTIVO OBLIGATORIO
        ========================================================================== -->
-  <div class="modal-overlay" id="modalRechazoBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalRechazoTitle">
+  <div class="modal-overlay" id="modalRechazoBackdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modalRechazoTitle">
     <div class="modal-content-card">
       <div class="modal-header-danger">
         <h3 class="modal-header-title" id="modalRechazoTitle">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="15" y1="9" x2="9" y2="15"></line>
             <line x1="9" y1="9" x2="15" y2="15"></line>
@@ -853,7 +1410,7 @@
           <span>Rechazar Solicitud de Regularización</span>
         </h3>
         <button type="button" class="modal-btn-close-white" id="btnCloseModalRechazo" aria-label="Cerrar modal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -862,11 +1419,21 @@
 
       <div class="modal-body-pad">
         <div class="rejection-info-card" id="rejectionInfoText">
-          Está a punto de rechazar la solicitud. Esta acción requiere registrar un motivo formal.
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.2"
+            style="flex-shrink: 0; margin-top: 1px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div id="rejectionDetailText">
+            Está a punto de rechazar la solicitud de regularización. Este proceso requiere registrar un motivo o
+            justificación formal obligatoria.
+          </div>
         </div>
 
         <div class="form-field-item">
-          <label for="txtMotivoRechazo" style="font-weight: 700; color: #1E293B; margin-bottom: 6px; display: block;">
+          <label for="txtMotivoRechazo"
+            style="font-weight: 700; color: #1E293B; margin-bottom: 6px; display: block; font-size: 13.5px;">
             Motivo o Justificación del Rechazo <span class="req" style="color: #DC2626;">* (Obligatorio)</span>
           </label>
           <textarea id="txtMotivoRechazo" class="modal-textarea-mandatory" rows="4"
@@ -879,8 +1446,10 @@
 
       <div class="modal-footer-pad">
         <button type="button" class="btn-cancel-modal" id="btnCancelRechazo">Cancelar</button>
-        <button type="button" class="btn-bulk-reject" id="btnConfirmRechazo" style="padding: 10px 20px;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <button type="button" class="btn-bulk-reject" id="btnConfirmRechazo" style="padding: 9px 20px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
           <span>Confirmar Rechazo</span>
         </button>
       </div>
@@ -890,7 +1459,8 @@
   <!-- ==========================================================================
        MODAL 2: VISOR DE SUSTENTO ADJUNTO
        ========================================================================== -->
-  <div class="modal-overlay" id="modalSustentoBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalSustentoTitle">
+  <div class="modal-overlay" id="modalSustentoBackdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modalSustentoTitle">
     <div class="modal-content-card">
       <div class="modal-header-teal">
         <h3 class="modal-header-title" id="modalSustentoTitle">
@@ -944,7 +1514,8 @@
               <div class="sustento-file-size">PDF Documento Oficial • 1.4 MB</div>
             </div>
           </div>
-          <button type="button" class="btn-import-planilla" id="btnDescargarSustentoModal" style="padding: 7px 14px; font-size: 12px;">
+          <button type="button" class="btn-import-planilla" id="btnDescargarSustentoModal"
+            style="padding: 7px 14px; font-size: 12px;">
             Descargar
           </button>
         </div>
@@ -959,7 +1530,8 @@
   <!-- ==========================================================================
        MODAL 3: IMPORTAR PLANILLA MANUAL (.XLSX / .CSV)
        ========================================================================== -->
-  <div class="modal-overlay" id="modalImportarPlanillaBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalImportarTitle">
+  <div class="modal-overlay" id="modalImportarPlanillaBackdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modalImportarTitle">
     <div class="modal-content-card">
       <div class="modal-header-teal">
         <h3 class="modal-header-title" id="modalImportarTitle">
@@ -980,21 +1552,26 @@
 
       <div class="modal-body-pad">
         <p style="font-size: 13px; color: #64748B; margin-top: 0; margin-bottom: 14px;">
-          Seleccione el archivo consolidado de planilla manual en formato <strong>.xlsx</strong> o <strong>.csv</strong> con la estructura de 20 columnas aprobada por RRAA.
+          Seleccione el archivo consolidado de planilla manual en formato <strong>.xlsx</strong> o <strong>.csv</strong>
+          con la estructura de 20 columnas aprobada por RRAA.
         </p>
 
         <div class="dropzone-import-box" id="dropzonePlanilla">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2" style="margin-bottom: 8px;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2"
+            style="margin-bottom: 8px;">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="17 8 12 3 7 8"></polyline>
             <line x1="12" y1="3" x2="12" y2="15"></line>
           </svg>
-          <div style="font-weight: 700; color: #0F848F; font-size: 14px;">Haga clic aquí para subir o arrastre el archivo</div>
-          <div style="font-size: 12px; color: #64748B; margin-top: 4px;">Archivos admitidos: Excel (.xlsx), CSV (.csv) hasta 15MB</div>
+          <div style="font-weight: 700; color: #0F848F; font-size: 14px;">Haga clic aquí para subir o arrastre el
+            archivo</div>
+          <div style="font-size: 12px; color: #64748B; margin-top: 4px;">Archivos admitidos: Excel (.xlsx), CSV (.csv)
+            hasta 15MB</div>
           <input type="file" id="fileInputPlanilla" accept=".xlsx,.xls,.csv" style="display: none;">
         </div>
 
-        <div id="selectedFileNameText" style="margin-top: 10px; font-size: 12.5px; font-weight: 600; color: #0F848F; text-align: center;"></div>
+        <div id="selectedFileNameText"
+          style="margin-top: 10px; font-size: 12.5px; font-weight: 600; color: #0F848F; text-align: center;"></div>
       </div>
 
       <div class="modal-footer-pad">
@@ -1016,7 +1593,7 @@
     <div class="toast-body-text" id="toastText">Operación realizada con éxito</div>
   </div>
 
-  <script src="../Docente/navbar.js"></script>
+  <script src="navbar.js"></script>
   <script src="rectificacion-asistencia-docente.js"></script>
 </body>
 

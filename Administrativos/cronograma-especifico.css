@@ -453,19 +453,19 @@
 /* ==========================================================================
    ESTILOS SELECT PERSONALIZADOS EN MODALES (LOOK & FEEL UNIFICADO)
    ========================================================================== */
-.notes-select-wrapper {
+:is(.rect-select-wrapper, .notes-select-wrapper) {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-.notes-select-wrapper.is-open {
+:is(.rect-select-wrapper, .notes-select-wrapper).is-open {
   z-index: 100;
 }
 
-.notes-select-wrapper select,
-.notes-select-wrapper select.custom-select-hidden,
+:is(.rect-select-wrapper, .notes-select-wrapper) select,
+:is(.rect-select-wrapper, .notes-select-wrapper) select.custom-select-hidden,
 select.custom-select-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -509,7 +509,7 @@ select.custom-select-hidden {
 }
 
 .custom-select-trigger:focus,
-.notes-select-wrapper.is-open .custom-select-trigger {
+:is(.rect-select-wrapper, .notes-select-wrapper).is-open .custom-select-trigger {
   border-color: #0F848F;
   outline: none;
   box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.15);
@@ -524,7 +524,7 @@ select.custom-select-hidden {
   min-width: 0;
 }
 
-.notes-select-wrapper .notes-select-icon {
+:is(.rect-select-wrapper, .notes-select-wrapper) :is(.rect-select-icon, .notes-select-icon) {
   position: absolute;
   right: 10px;
   pointer-events: none;
@@ -533,12 +533,12 @@ select.custom-select-hidden {
   transform-origin: center center;
 }
 
-.notes-select-wrapper:hover .notes-select-icon {
+:is(.rect-select-wrapper, .notes-select-wrapper):hover :is(.rect-select-icon, .notes-select-icon) {
   color: #0F848F;
 }
 
-.notes-select-wrapper.is-open .notes-select-icon {
-  transform: rotate(180deg);
+:is(.rect-select-wrapper, .notes-select-wrapper).is-open :is(.rect-select-icon, .notes-select-icon) {
+  transform: translateY(-50%) rotate(180deg);
   color: #0F848F;
 }
 
@@ -558,7 +558,7 @@ select.custom-select-hidden {
   padding: 4px;
 }
 
-.notes-select-wrapper.is-open .custom-select-menu {
+:is(.rect-select-wrapper, .notes-select-wrapper).is-open .custom-select-menu {
   display: block;
 }
 
@@ -671,13 +671,13 @@ select.custom-select-hidden {
   position: relative;
 }
 
-.modal-grid-3col:has(.notes-select-wrapper.is-open),
-.modal-grid-2col:has(.notes-select-wrapper.is-open),
-.form-field-item:has(.notes-select-wrapper.is-open) {
+.modal-grid-3col:has(:is(.rect-select-wrapper, .notes-select-wrapper).is-open),
+.modal-grid-2col:has(:is(.rect-select-wrapper, .notes-select-wrapper).is-open),
+.form-field-item:has(:is(.rect-select-wrapper, .notes-select-wrapper).is-open) {
   z-index: 1000 !important;
 }
 
-.notes-select-wrapper {
+:is(.rect-select-wrapper, .notes-select-wrapper) {
   position: relative;
   display: flex;
   align-items: center;
@@ -685,7 +685,7 @@ select.custom-select-hidden {
   z-index: 1;
 }
 
-.notes-select-wrapper.is-open {
+:is(.rect-select-wrapper, .notes-select-wrapper).is-open {
   z-index: 1050 !important;
 }
 
@@ -706,12 +706,89 @@ select.custom-select-hidden {
 }
 
 /* Soporte para apertura flotante hacia arriba (dropup) cuando falta espacio abajo */
-.notes-select-wrapper.is-dropup .custom-select-menu {
+:is(.rect-select-wrapper, .notes-select-wrapper).is-dropup .custom-select-menu {
   top: auto;
   bottom: calc(100% + 4px);
   box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.16), 0 -4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.notes-select-wrapper.is-open .custom-select-menu {
+:is(.rect-select-wrapper, .notes-select-wrapper).is-open .custom-select-menu {
   display: block;
+}
+
+/* Prevencion de recorte de popups y datepickers en modales Wiener */
+.modal-cronograma-card,
+.modal-especifico-card {
+  overflow: visible !important;
+}
+.modal-cronograma-card .modal-body-rect,
+.modal-especifico-card .modal-body-rect {
+  overflow: visible !important;
+  position: relative;
+}
+.custom-calendar-popup {
+  z-index: 2500 !important;
+}
+
+.docente-search-single-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   ALINEACIÓN EXACTA DE FILTROS Y BOTÓN DE BÚSQUEDA (#222)
+   ========================================================================== */
+.modal-especifico-card .form-field-item {
+  margin-bottom: 0 !important;
+}
+
+.modal-especifico-card .form-field-item label {
+  height: 16px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.docente-search-single-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.docente-search-single-row .form-field-item {
+  margin-bottom: 0 !important;
+  flex: 1;
+}
+
+.docente-search-single-row .modal-text-input {
+  height: 40px;
+  margin-bottom: 0 !important;
+}
+
+.btn-search-docente {
+  height: 40px;
+  padding: 0 20px;
+  background-color: #222222 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin-bottom: 0 !important;
+}
+
+.btn-search-docente:hover {
+  background-color: #333333 !important;
+  border-color: #333333;
 }

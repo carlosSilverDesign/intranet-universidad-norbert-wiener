@@ -10,10 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../Docente/navbar.css">
-  <link rel="stylesheet" href="../Docente/styles.css">
-  <link rel="stylesheet" href="../Docente/notas.css">
-  <link rel="stylesheet" href="../Docente/rectificacion-nota.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="rectificacion-nota.css">
 </head>
 
@@ -354,21 +351,21 @@
   <!-- ==========================================================================
        3. LAYOUT PRINCIPAL Y DASHBOARD ADMIN (Copy & Paste exacto de Docente)
        ========================================================================== -->
-  <div class="main-content-layout notes-layout">
-    <main class="main-content notes-main-content">
-      <div class="notes-page-container">
+  <div class="main-content-layout rect-layout">
+    <main class="main-content rect-main-content">
+      <div class="rect-page-container">
 
         <!-- CABECERA DE PÁGINA INSTITUCIONAL -->
-        <header class="notes-header-flex">
-          <div class="notes-header-left">
-            <div class="notes-header-icon" aria-hidden="true">
+        <header class="rect-header-flex">
+          <div class="rect-header-left">
+            <div class="rect-header-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                 <path
                   d="M7.5 19.803H16.875V13.3268H7.5V19.803ZM7.5 11.0771H28.5V7.96163C28.5 7.82687 28.4568 7.71625 28.3703 7.62975C28.2838 7.54325 28.1731 7.5 28.0384 7.5H7.96163C7.82687 7.5 7.71625 7.54325 7.62975 7.62975C7.54325 7.71625 7.5 7.82687 7.5 7.96163V11.0771ZM21.0289 32.25C20.6424 32.25 20.3198 32.1206 20.061 31.8619C19.8025 31.6034 19.6733 31.2808 19.6733 30.894V29.4086C19.6733 29.0471 19.7472 28.6995 19.8952 28.3657C20.0433 28.0322 20.2404 27.7424 20.4866 27.4961L27.8164 20.1806C28.0029 19.9941 28.2048 19.8629 28.422 19.7869C28.6392 19.7111 28.8566 19.6733 29.0741 19.6733C29.3066 19.6733 29.534 19.7174 29.7563 19.8056C29.9783 19.8941 30.1778 20.0269 30.3548 20.2039L31.7423 21.6056C31.9038 21.7924 32.0288 21.9944 32.1173 22.2116C32.2058 22.4289 32.25 22.6461 32.25 22.8634C32.25 23.0806 32.2096 23.3018 32.1289 23.5268C32.0481 23.7518 31.9193 23.9575 31.7423 24.144L24.4268 31.4595C24.1808 31.7057 23.8909 31.899 23.5571 32.0393C23.2236 32.1798 22.876 32.25 22.5143 32.25H21.0289ZM7.96163 30.75C7.20387 30.75 6.5625 30.4875 6.0375 29.9625C5.5125 29.4375 5.25 28.7961 5.25 28.0384V7.96163C5.25 7.20387 5.5125 6.5625 6.0375 6.0375C6.5625 5.5125 7.20387 5.25 7.96163 5.25H28.0384C28.7961 5.25 29.4375 5.5125 29.9625 6.0375C30.4875 6.5625 30.75 7.20387 30.75 7.96163V15.9983C30.75 16.3175 30.6423 16.5848 30.4268 16.8C30.2115 17.0155 29.9443 17.1233 29.625 17.1233C29.3058 17.1233 29.0385 17.0155 28.8232 16.8C28.6077 16.5848 28.5 16.3175 28.5 15.9983V13.3268H19.125V19.803H22.5806C22.8924 19.803 23.1059 19.941 23.2211 20.217C23.3366 20.4928 23.2838 20.7413 23.0625 20.9625L18.0345 25.9759C17.8135 26.1971 17.565 26.25 17.289 26.1345C17.013 26.0193 16.875 25.8059 16.875 25.4944V22.053H7.5V28.0384C7.5 28.1731 7.54325 28.2838 7.62975 28.3703C7.71625 28.4568 7.82687 28.5 7.96163 28.5H15.75C16.0693 28.5 16.3366 28.6077 16.5521 28.8232C16.7674 29.0385 16.875 29.3058 16.875 29.625C16.875 29.9443 16.7674 30.2115 16.5521 30.4268C16.3366 30.6423 16.0693 30.75 15.75 30.75H7.96163ZM21.4616 30.4616H22.8866L27.7556 25.569L26.3681 24.153L21.4616 29.0366V30.4616ZM27.0664 24.8565L26.3681 24.153L27.7556 25.569L27.0664 24.8565Z"
                   fill="#1F1F1F" />
               </svg>
             </div>
-            <div class="notes-header-titles">
+            <div class="rect-header-titles">
               <h1>Rectificación de Notas y Nota Extemporánea</h1>
               <p>Genera y consulta las solicitudes de corrección de calificaciones o registros extemporáneos para su
                 evaluación por la Dirección de Escuela.</p>
@@ -376,10 +373,10 @@
           </div>
 
           <!-- Botones quitados (header-actions-group) según requerimiento de vista Admin -->
-          <div class="notes-header-right"></div>
+          <div class="rect-header-right"></div>
         </header>
 
-        <hr class="notes-header-divider">
+        <hr class="rect-header-divider">
 
         <!-- ==========================================================================
              SUBNAVEGACIÓN SUPERIOR (Look & Feel Oficial Intranet Wiener)
@@ -404,8 +401,26 @@
           </ul>
         </nav>
 
+        <!-- BANNER DE RECONSIDERACIÓN DE RECHAZO (15 MIN) -->
+        <aside class="undo-rejection-banner" id="undoBanner" style="display: none;" aria-live="polite">
+          <div class="undo-banner-left">
+            <div class="undo-pulse-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <div>
+              <div class="undo-banner-title">Solicitud <span id="undoTicketCode">SOL-2026</span> fue Rechazada</div>
+              <div class="undo-banner-subtitle">Puedes reconsiderar o revertir este dictamen en: <strong id="undoCountdownTimer">15:00</strong></div>
+            </div>
+          </div>
+          <button type="button" class="btn-undo-action" id="btnUndoRejection">Revertir Rechazo</button>
+        </aside>
+
         <!-- TARJETA DE FILTROS DOCENTE (Mismos filtros exactos) -->
-        <section class="notes-filters-card" aria-label="Filtros de Solicitudes">
+        <section class="rect-filters-card" aria-label="Filtros de Solicitudes">
           <div class="filters-card-header-flex">
             <span class="filters-card-title">Criterios de Búsqueda</span>
             <button type="button" class="btn-text-reset-filters" id="btnClearFilters"
@@ -418,19 +433,19 @@
             </button>
           </div>
 
-          <form class="notes-filters-form" id="rectificacionFiltersForm" onsubmit="return false;">
-            <div class="notes-filters-row-clean">
+          <form class="rect-filters-form" id="rectificacionFiltersForm" onsubmit="return false;">
+            <div class="rect-filters-row-clean">
               <!-- Periodo -->
-              <div class="notes-filter-item">
+              <div class="rect-filter-item">
                 <label for="filterPeriodo">Periodo</label>
-                <div class="notes-select-wrapper">
-                  <select id="filterPeriodo" class="notes-select">
+                <div class="rect-select-wrapper">
+                  <select id="filterPeriodo" class="rect-select">
                     <option value="todos">Todos los periodos</option>
                     <option value="2026-0">2026-0</option>
                     <option value="2026-I" selected>2026-I</option>
                     <option value="2026-II">2026-II</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -439,17 +454,17 @@
               </div>
 
               <!-- Carrera -->
-              <div class="notes-filter-item">
+              <div class="rect-filter-item">
                 <label for="filterCarrera">Prog. Académico</label>
-                <div class="notes-select-wrapper">
-                  <select id="filterCarrera" class="notes-select">
+                <div class="rect-select-wrapper">
+                  <select id="filterCarrera" class="rect-select">
                     <option value="todos">Todos los programas</option>
                     <option value="ODONTOLOGÍA" selected>ODONTOLOGÍA</option>
                     <option value="ENFERMERÍA">ENFERMERÍA</option>
                     <option value="MEDICINA HUMANA">MEDICINA HUMANA</option>
                     <option value="FARMACIA Y BIOQUÍMICA">FARMACIA Y BIOQUÍMICA</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -458,15 +473,15 @@
               </div>
 
               <!-- Tipo Solicitud -->
-              <div class="notes-filter-item">
+              <div class="rect-filter-item">
                 <label for="filterTipoSolicitud">Tipo de Solicitud</label>
-                <div class="notes-select-wrapper">
-                  <select id="filterTipoSolicitud" class="notes-select">
+                <div class="rect-select-wrapper">
+                  <select id="filterTipoSolicitud" class="rect-select">
                     <option value="todos" selected>Todos los tipos</option>
                     <option value="Rectificación">Rectificación</option>
                     <option value="Extemporánea">Extemporánea</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -475,16 +490,16 @@
               </div>
 
               <!-- Estado -->
-              <div class="notes-filter-item">
+              <div class="rect-filter-item">
                 <label for="filterEstado">Estado</label>
-                <div class="notes-select-wrapper">
-                  <select id="filterEstado" class="notes-select">
+                <div class="rect-select-wrapper">
+                  <select id="filterEstado" class="rect-select">
                     <option value="todos" selected>Todos los estados</option>
                     <option value="Solicitado">Solicitado</option>
                     <option value="Procesado">Procesado</option>
                     <option value="Rechazado">Rechazado</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -573,7 +588,7 @@
         </div>
 
         <!-- PIE DE PÁGINA -->
-        <footer class="notes-footer">
+        <footer class="rect-footer">
           <p>© 2026 Universidad Norbert Wiener, todos los derechos reservados.</p>
         </footer>
 
@@ -616,13 +631,13 @@
             <div class="modal-filters-grid-1">
               <div class="form-field-item">
                 <label for="modalRectPeriodo">Periodo <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalRectPeriodo" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalRectPeriodo" class="rect-select modal-select-input">
                     <option value="2026-0">2026-0</option>
                     <option value="2026-I" selected>2026-I</option>
                     <option value="2026-II">2026-II</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -632,15 +647,15 @@
 
               <div class="form-field-item">
                 <label for="modalRectMes">Mes <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalRectMes" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalRectMes" class="rect-select modal-select-input">
                     <option value="Marzo">Marzo</option>
                     <option value="Abril">Abril</option>
                     <option value="Mayo">Mayo</option>
                     <option value="Junio">Junio</option>
                     <option value="Julio" selected>Julio</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -650,15 +665,15 @@
 
               <div class="form-field-item">
                 <label for="modalRectCarrera">Programa Académico <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalRectCarrera" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalRectCarrera" class="rect-select modal-select-input">
                     <option value="ODONTOLOGÍA" selected>ODONTOLOGÍA</option>
                     <option value="ENFERMERÍA">ENFERMERÍA</option>
                     <option value="MEDICINA HUMANA">MEDICINA HUMANA</option>
                     <option value="FARMACIA Y BIOQUÍMICA">FARMACIA Y BIOQUÍMICA</option>
                     <option value="PSICOLOGÍA">PSICOLOGÍA</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -671,14 +686,14 @@
             <div class="modal-filters-grid-2">
               <div class="form-field-item">
                 <label for="modalRectSeccion">Sección <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalRectSeccion" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalRectSeccion" class="rect-select modal-select-input">
                     <option value="OD3N3" selected>OD3N3</option>
                     <option value="OD3N4">OD3N4</option>
                     <option value="EN4M1">EN4M1</option>
                     <option value="MH101">MH101</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -688,8 +703,8 @@
 
               <div class="form-field-item">
                 <label for="modalRectCurso">Curso <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalRectCurso" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalRectCurso" class="rect-select modal-select-input">
                     <option value="OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II" selected>OD5033 - ESTRUCTURA
                       Y
                       FUNCIÓN DEL COMPLEJO OROFACIAL II</option>
@@ -697,7 +712,7 @@
                     <option value="MH101 - INTRODUCCIÓN A LA MEDICINA">MH101 - INTRODUCCIÓN A LA MEDICINA</option>
                     <option value="FB301 - BIOQUÍMICA GENERAL">FB301 - BIOQUÍMICA GENERAL</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -710,14 +725,14 @@
             <div class="modal-filters-grid-3">
               <div class="form-field-item">
                 <label for="modalRectTipoSesion">Tipo Sesión <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalRectTipoSesion" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalRectTipoSesion" class="rect-select modal-select-input">
                     <option value="Práctica 3" selected>Práctica 3</option>
                     <option value="Teoría">Teoría</option>
                     <option value="Práctica 1">Práctica 1</option>
                     <option value="Laboratorio">Laboratorio</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -727,15 +742,15 @@
 
               <div class="form-field-item">
                 <label for="modalRectTipoEval">Tipo Evaluación <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalRectTipoEval" class="notes-select modal-select-input highlight-eval-select">
+                <div class="rect-select-wrapper">
+                  <select id="modalRectTipoEval" class="rect-select modal-select-input highlight-eval-select">
                     <option value="Eval. Permanente 1 (UD1)" selected>Eval. Permanente 1 (UD1) • ACTIVO</option>
                     <option value="Eval. Permanente 2 (UD2)">Eval. Permanente 2 (UD2)</option>
                     <option value="Examen Parcial (E1)">Examen Parcial (E1)</option>
                     <option value="Examen Final (E2)">Examen Final (E2)</option>
                     <option value="Examen Sustitutorio (E3)">Examen Sustitutorio (E3)</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -776,8 +791,8 @@
           <!-- Motivo y Justificación -->
           <div class="form-field-item" style="margin-top: 14px;">
             <label for="modalRectMotivoSelect">Motivo de Rectificación <span class="req">*</span></label>
-            <div class="notes-select-wrapper modal-select-dropup">
-              <select id="modalRectMotivoSelect" class="notes-select modal-select-input">
+            <div class="rect-select-wrapper modal-select-dropup">
+              <select id="modalRectMotivoSelect" class="rect-select modal-select-input">
                 <option value="Error en calculo de promedio" selected>Error en calculo de promedio</option>
                 <option value="Error de digitación">Error de digitación</option>
                 <option value="Evaluación omitida">Evaluación omitida</option>
@@ -788,7 +803,7 @@
                 <option value="Corresponde NP">Corresponde NP</option>
                 <option value="Otros">Otros</option>
               </select>
-              <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="6 9 12 15 18 9"></polyline>
@@ -851,13 +866,13 @@
             <div class="modal-filters-grid-1">
               <div class="form-field-item">
                 <label for="modalExtPeriodo">Periodo <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalExtPeriodo" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalExtPeriodo" class="rect-select modal-select-input">
                     <option value="2026-0">2026-0</option>
                     <option value="2026-I" selected>2026-I</option>
                     <option value="2026-II">2026-II</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -867,15 +882,15 @@
 
               <div class="form-field-item">
                 <label for="modalExtMes">Mes <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalExtMes" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalExtMes" class="rect-select modal-select-input">
                     <option value="Marzo">Marzo</option>
                     <option value="Abril">Abril</option>
                     <option value="Mayo">Mayo</option>
                     <option value="Junio">Junio</option>
                     <option value="Julio" selected>Julio</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -885,15 +900,15 @@
 
               <div class="form-field-item">
                 <label for="modalExtCarrera">Programa Académico <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalExtCarrera" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalExtCarrera" class="rect-select modal-select-input">
                     <option value="ODONTOLOGÍA" selected>ODONTOLOGÍA</option>
                     <option value="ENFERMERÍA">ENFERMERÍA</option>
                     <option value="MEDICINA HUMANA">MEDICINA HUMANA</option>
                     <option value="FARMACIA Y BIOQUÍMICA">FARMACIA Y BIOQUÍMICA</option>
                     <option value="PSICOLOGÍA">PSICOLOGÍA</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -906,14 +921,14 @@
             <div class="modal-filters-grid-2">
               <div class="form-field-item">
                 <label for="modalExtSeccion">Sección <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalExtSeccion" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalExtSeccion" class="rect-select modal-select-input">
                     <option value="OD3N3" selected>OD3N3</option>
                     <option value="OD3N4">OD3N4</option>
                     <option value="EN4M1">EN4M1</option>
                     <option value="MH101">MH101</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -923,8 +938,8 @@
 
               <div class="form-field-item">
                 <label for="modalExtCurso">Curso <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalExtCurso" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalExtCurso" class="rect-select modal-select-input">
                     <option value="OD5033 - ESTRUCTURA Y FUNCIÓN DEL COMPLEJO OROFACIAL II" selected>OD5033 - ESTRUCTURA
                       Y
                       FUNCIÓN DEL COMPLEJO OROFACIAL II</option>
@@ -932,7 +947,7 @@
                     <option value="MH101 - INTRODUCCIÓN A LA MEDICINA">MH101 - INTRODUCCIÓN A LA MEDICINA</option>
                     <option value="FB301 - BIOQUÍMICA GENERAL">FB301 - BIOQUÍMICA GENERAL</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -945,14 +960,14 @@
             <div class="modal-filters-grid-3">
               <div class="form-field-item">
                 <label for="modalExtTipoSesion">Tipo Sesión <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalExtTipoSesion" class="notes-select modal-select-input">
+                <div class="rect-select-wrapper">
+                  <select id="modalExtTipoSesion" class="rect-select modal-select-input">
                     <option value="Teoría" selected>Teoría</option>
                     <option value="Práctica 3">Práctica 3</option>
                     <option value="Práctica 1">Práctica 1</option>
                     <option value="Laboratorio">Laboratorio</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -962,14 +977,14 @@
 
               <div class="form-field-item">
                 <label for="modalExtTipoEval">Tipo Evaluación <span class="req">*</span></label>
-                <div class="notes-select-wrapper">
-                  <select id="modalExtTipoEval" class="notes-select modal-select-input highlight-eval-select">
+                <div class="rect-select-wrapper">
+                  <select id="modalExtTipoEval" class="rect-select modal-select-input highlight-eval-select">
                     <option value="Examen Sustitutorio (E3)" selected>Examen Sustitutorio (E3)</option>
                     <option value="Examen Final (E2)">Examen Final (E2)</option>
                     <option value="Eval. Permanente 4 (UD4)">Eval. Permanente 4 (UD4)</option>
                     <option value="Examen Parcial (E1)">Examen Parcial (E1)</option>
                   </select>
-                  <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -1005,8 +1020,8 @@
 
           <div class="form-field-item" style="margin-top: 14px;">
             <label for="modalExtMotivoSelect">Motivo Extemporáneo <span class="req">*</span></label>
-            <div class="notes-select-wrapper modal-select-dropup">
-              <select id="modalExtMotivoSelect" class="notes-select modal-select-input">
+            <div class="rect-select-wrapper modal-select-dropup">
+              <select id="modalExtMotivoSelect" class="rect-select modal-select-input">
                 <option value="Cambio de docente" selected>Cambio de docente</option>
                 <option value="Demora en notas de práctica">Demora en notas de práctica</option>
                 <option value="Demora en promediar notas">Demora en promediar notas</option>
@@ -1016,7 +1031,7 @@
                 <option value="Reprogramación de clase">Reprogramación de clase</option>
                 <option value="Otros">Otros</option>
               </select>
-              <svg class="notes-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              <svg class="rect-select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="6 9 12 15 18 9"></polyline>
@@ -1120,15 +1135,49 @@
           <p class="motivo-desc" id="resumenDocenteMotivoText"></p>
         </div>
 
+        <!-- Formulario de Sustento de Decisión (Obligatorio para Director/EAP) -->
+        <div class="decision-sustento-box" id="decisionSustentoBox" style="display: none;">
+          <label for="txtSustentoEap" class="sustento-label">
+            Sustento de la Decisión de Dirección de Escuela (EAP) <span class="req">*</span>
+          </label>
+          <textarea id="txtSustentoEap" class="modal-textarea-control" rows="2"
+            placeholder="Ingrese el fundamento institucional para procesar o rechazar la solicitud en SIGU..."></textarea>
+          <span class="sustento-hint">Este sustento quedará registrado en la auditoría académica del sistema SIGU.</span>
+        </div>
+
         <div class="resolution-history-box" id="resumenEapBox" style="display: none;">
           <div class="history-title">Dictamen de Dirección de Escuela (EAP):</div>
           <p class="history-meta-text" id="resumenEapDirectorFecha"></p>
           <p class="history-text" id="resumenEapText"></p>
+          <div id="reconsiderarContainer" style="display: none; margin-top: 10px;">
+            <button type="button" class="btn-reconsiderar-dictamen" id="btnReconsiderarDictamen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+              </svg>
+              <span>Reconsiderar Dictamen / Reabrir Evaluación (<span id="reconsiderCountdown">15:00</span>)</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div class="modal-footer-rect">
+      <div class="modal-footer-rect modal-footer-split">
         <button type="button" class="btn-cancel-modal" id="btnCerrarModalResumen">Cerrar</button>
+        <div class="modal-footer-actions-right" id="resumenActionButtonsGroup" style="display: none;">
+          <button type="button" class="btn-danger-reject" id="btnRejectRequest">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span>Rechazar Solicitud</span>
+          </button>
+          <button type="button" class="btn-success-approve" id="btnApproveRequest">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Procesar en SIGU</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1163,8 +1212,28 @@
     <div class="toast-body-text" id="toastText">Operación realizada con éxito</div>
   </div>
 
-  <script src="../Docente/navbar.js"></script>
-  <script src="../Docente/rectificacion-nota.js"></script>
+  <!-- MODAL DE CONFIRMACIÓN DE PROCESAMIENTO / RECHAZO (DIRECTOR) -->
+  <div class="modal-overlay" id="modalConfirmDirectorBackdrop">
+    <div class="modal-container modal-confirm-card" role="dialog" aria-modal="true">
+      <div class="confirm-modal-body">
+        <div class="confirm-icon-circle" id="confirmDirectorIconCircle">
+          <svg id="confirmDirectorIconSvg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h4 class="confirm-title" id="confirmDirectorTitle">¿Confirmar Procesamiento en SIGU?</h4>
+        <p class="confirm-desc" id="confirmDirectorDesc">
+          Estimado Director, recuerde que, una vez que usted apruebe esta solicitud, el cambio será procesado automáticamente en el sistema de notas. Por favor, revise los detalles antes de procesar la rectificación de nota.
+        </p>
+        <div class="confirm-buttons-group">
+          <button type="button" class="btn-cancel-modal" id="btnCancelConfirmDirector">Cancelar</button>
+          <button type="button" class="btn-confirm-proceed" id="btnProceedConfirmDirector">Sí, Procesar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="navbar.js"></script>
   <script src="rectificacion-nota.js"></script>
 </body>
 
