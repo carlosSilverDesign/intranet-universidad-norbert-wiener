@@ -334,8 +334,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (c.includes('retirado')) return 'retirado';
     if (c.includes('deshabilitado') || c.includes('inasistencia') || c.includes('dpi')) return 'deshabilitado';
     if (c.includes('no se presentó') || c.includes('no se presento') || c.includes('np')) return 'no-presento';
-    if (c.includes('aprobado')) return 'aprobado';
     if (c.includes('desaprobado')) return 'desaprobado';
+    if (c.includes('aprobado')) return 'aprobado';
     return 'pendiente';
   }
 

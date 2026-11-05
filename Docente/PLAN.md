@@ -12,8 +12,8 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
 - [x] **Paso 2: Dashboard Principal (Home) y Componente de Marcación**
   - Estado: Completado (2026-09-03)
   - Archivos: `Docente/index.html`, `Docente/styles.css`, `Docente/scripts.js`
-- [ ] **Paso 3: Mis Datos (Perfil Docente)**
-  - Estado: Pendiente
+- [x] **Paso 3: Mis Datos (Perfil Docente)**
+  - Estado: Completado (2026-11-03)
   - Archivos: `Docente/mis-datos.html`, `Docente/mis-datos.css`, `Docente/mis-datos.js`
 - [x] **Paso 4: Horario de Clases**
   - Estado: Completado (2026-10-13)
@@ -34,8 +34,8 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
   - Estado: Completado (2026-10-12)
   - Archivos: `Docente/asistencia-docente.html`, `Docente/asistencia-docente.css`, `Docente/asistencia-docente.js`
 - [ ] **Paso 8.1: Avance Académico y Reglamentos**
-  - Estado: Pendiente
-  - Archivos: `Docente/avance.html`, `Docente/reglamentos.html`
+  - Estado: En progreso (`Docente/reglamentos.html` completado)
+  - Archivos: `Docente/avance.html` (pendiente), `Docente/reglamentos.html` (completado)
 - [ ] **Paso 9: Gestión Docente (DGDD) y Evaluación (MIDE / ESD)**
   - Estado: Pendiente
   - Archivos: `Docente/dgdd.html`, `Docente/dgdd.css`, `Docente/dgdd.js`

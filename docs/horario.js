@@ -48,6 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalMatriculados = document.getElementById('modalMatriculados');
   const modalAlertConflict = document.getElementById('modalAlertConflict');
 
+  // Elementos de Curso Compartido y Distribución de Horas (HT vs HP)
+  const modalSharedBox = document.getElementById('modalSharedBox');
+  const modalSharedSections = document.getElementById('modalSharedSections');
+  const modalSharedDesc = document.getElementById('modalSharedDesc');
+  const modalHoursDistribution = document.getElementById('modalHoursDistribution');
+  const modalHorasTotal = document.getElementById('modalHorasTotal');
+  const modalHorasTeoria = document.getElementById('modalHorasTeoria');
+  const modalHorasTeoriaDesc = document.getElementById('modalHorasTeoriaDesc');
+  const modalHorasPractica = document.getElementById('modalHorasPractica');
+  const modalHorasPracticaDesc = document.getElementById('modalHorasPracticaDesc');
+  const modalBarTheory = document.getElementById('modalBarTheory');
+  const modalBarPractice = document.getElementById('modalBarPractice');
+
   const btnResolveConflictBanner = document.getElementById('btnResolveConflictBanner');
   const liveTimeIndicator = document.getElementById('liveTimeIndicator');
 
@@ -256,16 +269,22 @@ document.addEventListener('DOMContentLoaded', () => {
       // Crear tarjeta para vista Agenda
       const isDGDD = card.getAttribute('data-type') === 'capacitacion';
       const isConflict = card.hasAttribute('data-conflict');
+      const isShared = card.getAttribute('data-compartido') === 'true';
+      const modality = card.getAttribute('data-modalidad') || 'Presencial';
+      const isVirtual = modality.toLowerCase().includes('virtual');
+      const modalityColor = isDGDD ? '#7C3AED' : (isVirtual ? '#0EA5E9' : '#0F848F');
+
       const agendaItem = document.createElement('div');
-      agendaItem.className = `agenda-card-item ${isDGDD ? 'item-dgdd' : ''} ${isConflict ? 'item-conflict' : ''}`;
+      agendaItem.className = `agenda-card-item ${isDGDD ? 'item-dgdd' : ''} ${isConflict ? 'item-conflict' : ''} ${isShared ? 'item-shared' : ''}`;
       agendaItem.innerHTML = `
         <div class="agenda-card-time">${card.getAttribute('data-horario')}</div>
         <div class="agenda-card-title">${card.getAttribute('data-title')}</div>
         <div class="agenda-card-meta">${card.getAttribute('data-aula')} · ${card.getAttribute('data-sede')}</div>
-        <div style="display: flex; gap: 6px;">
+        <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+          ${isShared ? '<span class="pill-shared-course">Curso compartido</span>' : ''}
           <span class="pill-session-type">${card.getAttribute('data-sesion')}</span>
-          <span class="pill-modality-presencial" style="background-color: ${isDGDD ? '#7C3AED' : '#0F848F'};">
-            ${card.getAttribute('data-modalidad')}
+          <span class="pill-modality-presencial" style="background-color: ${modalityColor};">
+            ${modality}
           </span>
         </div>
       `;
@@ -319,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. APERTURA DE MODAL DE DETALLE
   // =========================================================================
   function triggerCardClick(card) {
+    const modality = card.getAttribute('data-modalidad') || 'Presencial';
     const cardData = {
       title: card.getAttribute('data-title'),
       subtitle: card.getAttribute('data-subtitle'),
@@ -326,13 +346,20 @@ document.addEventListener('DOMContentLoaded', () => {
       sede: card.getAttribute('data-sede'),
       horario: card.getAttribute('data-horario'),
       tipoSesion: card.getAttribute('data-sesion'),
-      modalidad: card.getAttribute('data-modalidad'),
+      modalidad: modality,
       matriculados: card.getAttribute('data-matriculados'),
       badgeText: card.getAttribute('data-badgetext'),
       badgeClass: card.getAttribute('data-badgeclass'),
       hasConflict: card.hasAttribute('data-conflict'),
-      isVirtual: card.getAttribute('data-modalidad') === 'Virtual En vivo',
-      isTraining: card.getAttribute('data-type') === 'capacitacion'
+      isVirtual: modality.toLowerCase().includes('virtual'),
+      isTraining: card.getAttribute('data-type') === 'capacitacion',
+      isShared: card.getAttribute('data-compartido') === 'true',
+      ht: card.getAttribute('data-ht'),
+      hp: card.getAttribute('data-hp'),
+      htDesc: card.getAttribute('data-ht-desc'),
+      hpDesc: card.getAttribute('data-hp-desc'),
+      secciones: card.getAttribute('data-secciones'),
+      distribucion: card.getAttribute('data-distribucion')
     };
     openCardDetails(cardData);
   }
@@ -355,6 +382,93 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (modalAlertConflict) {
       modalAlertConflict.style.display = cardData.hasConflict ? 'flex' : 'none';
+    }
+
+    // Gestionar bloque de Curso Compartido
+    if (modalSharedBox) {
+      if (cardData.isShared) {
+        modalSharedBox.style.display = 'flex';
+        if (modalSharedSections) {
+          modalSharedSections.textContent = cardData.secciones || 'SC01 + SC02';
+        }
+        if (modalSharedDesc) {
+          modalSharedDesc.textContent = cardData.distribucion ||
+            'Este bloque integra a estudiantes de dos o más secciones en una sola sesión lectiva continua.';
+        }
+      } else {
+        modalSharedBox.style.display = 'none';
+      }
+    }
+
+    // Gestionar distribución de Horas: Teoría (HT) vs Práctica (HP)
+    if (modalHoursDistribution) {
+      if (cardData.isTraining) {
+        modalHoursDistribution.style.display = 'flex';
+        if (modalHorasTotal) modalHorasTotal.textContent = '2 Horas Certificables';
+        if (modalHorasTeoria) modalHorasTeoria.textContent = '2 horas';
+        if (modalHorasTeoriaDesc) modalHorasTeoriaDesc.textContent = 'Taller y Capacitación Docente Continua';
+        if (modalHorasPractica) modalHorasPractica.textContent = '0 horas';
+        if (modalHorasPracticaDesc) modalHorasPracticaDesc.textContent = 'Sin laboratorio clínico';
+        if (modalBarTheory) {
+          modalBarTheory.style.width = '100%';
+          modalBarTheory.textContent = '100% Capacitación';
+          modalBarTheory.style.display = 'flex';
+        }
+        if (modalBarPractice) {
+          modalBarPractice.style.width = '0%';
+          modalBarPractice.textContent = '';
+          modalBarPractice.style.display = 'none';
+        }
+      } else {
+        modalHoursDistribution.style.display = 'flex';
+        let ht = (cardData.ht !== null && cardData.ht !== undefined && cardData.ht !== '') ? parseInt(cardData.ht, 10) : null;
+        let hp = (cardData.hp !== null && cardData.hp !== undefined && cardData.hp !== '') ? parseInt(cardData.hp, 10) : null;
+
+        if (ht === null || isNaN(ht)) {
+          const session = (cardData.tipoSesion || '').toLowerCase();
+          if (session.includes('teoría') || session.includes('teoria')) {
+            ht = 2;
+            hp = 0;
+          } else if (session.includes('práctica') || session.includes('practica') || session.includes('laboratorio') || session.includes('simulación')) {
+            ht = 0;
+            hp = 2;
+          } else {
+            ht = 2;
+            hp = 1;
+          }
+        }
+
+        const totalHours = (ht || 0) + (hp || 0) || 1;
+        const pctTheory = Math.round(((ht || 0) / totalHours) * 100);
+        const pctPractice = 100 - pctTheory;
+
+        if (modalHorasTotal) {
+          modalHorasTotal.textContent = `${totalHours} ${totalHours === 1 ? 'Hora Lectiva' : 'Horas Lectivas'}`;
+        }
+        if (modalHorasTeoria) {
+          modalHorasTeoria.textContent = `${ht || 0} ${ht === 1 ? 'hora' : 'horas'}`;
+        }
+        if (modalHorasTeoriaDesc) {
+          modalHorasTeoriaDesc.textContent = cardData.htDesc || (ht > 0 ? 'Cátedra magistral e instrucción conceptual' : 'Sin horas teóricas en este bloque');
+        }
+        if (modalHorasPractica) {
+          modalHorasPractica.textContent = `${hp || 0} ${hp === 1 ? 'hora' : 'horas'}`;
+        }
+        if (modalHorasPracticaDesc) {
+          modalHorasPracticaDesc.textContent = cardData.hpDesc || (hp > 0 ? 'Laboratorio práctico, casos y simulación' : 'Sin horas prácticas en este bloque');
+        }
+
+        if (modalBarTheory) {
+          modalBarTheory.style.width = `${pctTheory}%`;
+          modalBarTheory.textContent = pctTheory > 0 ? `${ht}h Teoría (${pctTheory}%)` : '';
+          modalBarTheory.style.display = pctTheory > 0 ? 'flex' : 'none';
+        }
+        if (modalBarPractice) {
+          modalBarPractice.style.width = `${pctPractice}%`;
+          modalBarPractice.textContent = pctPractice > 0 ? `${hp}h Práctica (${pctPractice}%)` : '';
+          modalBarPractice.style.display = pctPractice > 0 ? 'flex' : 'none';
+        }
+      }
     }
 
     if (btnModalAction) {
