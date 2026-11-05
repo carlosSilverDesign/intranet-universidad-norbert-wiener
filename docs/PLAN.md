@@ -34,8 +34,8 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
   - Estado: Completado (2026-10-12)
   - Archivos: `Docente/asistencia-docente.html`, `Docente/asistencia-docente.css`, `Docente/asistencia-docente.js`
 - [ ] **Paso 8.1: Avance Académico y Reglamentos**
-  - Estado: Pendiente
-  - Archivos: `Docente/avance.html`, `Docente/reglamentos.html`
+  - Estado: En progreso (`docs/reglamentos.html` completado)
+  - Archivos: `docs/avance.html` (pendiente), `docs/reglamentos.html` (completado)
 - [ ] **Paso 9: Gestión Docente (DGDD) y Evaluación (MIDE / ESD)**
   - Estado: Pendiente
   - Archivos: `Docente/dgdd.html`, `Docente/dgdd.css`, `Docente/dgdd.js`
