@@ -293,7 +293,15 @@ document.addEventListener('DOMContentLoaded', () => {
       tipoCentroSalud: 'Essalud',
       nombreArchivo: 'CITT_EsSalud_Ene2026_JonahAsensio.pdf',
       estado: 'Solicitado – Proceso de Validación',
-      motivoRechazo: ''
+      motivoRechazo: '',
+      reprogramacion: {
+        tipo: 'Recuperación normal',
+        docente: 'Jonah Miguel Asensio Peña (Docente Titular)',
+        fecha: '2026-01-20',
+        horaInicio: '18:30',
+        horaFin: '19:15',
+        motivo: 'Recuperación de sesión acordada con los estudiantes del curso.'
+      }
     }
   ];
 
@@ -373,6 +381,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const filePillAcademico = document.getElementById('filePillAcademico');
   const fileNameAcademico = document.getElementById('fileNameAcademico');
   const btnRemoveFileAcademico = document.getElementById('btnRemoveFileAcademico');
+
+  // Referencias DOM: Reprogramación de Clases (Directo en Modal)
+  const regTipoReprogramacion = document.getElementById('regTipoReprogramacion');
+  const regDocenteReprogramacion = document.getElementById('regDocenteReprogramacion');
+  const labelDocenteReprog = document.getElementById('labelDocenteReprog');
+  const badgeDocenteRole = document.getElementById('badgeDocenteRole');
+  const wrapperDocenteSelect = document.getElementById('wrapperDocenteSelect');
+  const helperDocenteReprog = document.getElementById('helperDocenteReprog');
+  const regFechaReprogramacion = document.getElementById('regFechaReprogramacion');
+  const regHoraInicioReprogramacion = document.getElementById('regHoraInicioReprogramacion');
+  const regHoraFinReprogramacion = document.getElementById('regHoraFinReprogramacion');
+  const regMotivoReprogramacion = document.getElementById('regMotivoReprogramacion');
+  const charCountMotivo = document.getElementById('charCountMotivo');
+  const errorMsgReprogramacion = document.getElementById('errorMsgReprogramacion');
+  const errorMsgReprogText = document.getElementById('errorMsgReprogText');
 
   // Variables de sesión en curso
   let currentSessionForRegularizacion = null;
@@ -633,6 +656,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (regFechaInicioDM) regFechaInicioDM.value = session.fechaIso;
     if (regFechaFinDM) regFechaFinDM.value = session.fechaIso;
 
+    // Pre-población de datos de Reprogramación a partir del estado de marcación de sistema
+    if (session.fechaIso && regFechaReprogramacion) {
+      try {
+        const parts = session.fechaIso.split('-');
+        const dateObj = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+        dateObj.setDate(dateObj.getDate() + 7);
+        const yyyy = dateObj.getFullYear();
+        const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+        const dd = String(dateObj.getDate()).padStart(2, '0');
+        regFechaReprogramacion.value = `${yyyy}-${mm}-${dd}`;
+      } catch (e) {
+        regFechaReprogramacion.value = session.fechaIso;
+      }
+    }
+
+    if (regHoraInicioReprogramacion) regHoraInicioReprogramacion.value = session.horarioInicio || '08:00';
+    if (regHoraFinReprogramacion) regHoraFinReprogramacion.value = session.horarioFin || '11:00';
+
+    // Si el estado de sistema es Inasistencia, sugerir 'Recuperación normal'
+    if (regTipoReprogramacion) {
+      regTipoReprogramacion.value = (session.estado === 'Inasistencia') ? 'Recuperación normal' : '';
+    }
+
     // Seleccionar Descanso Médico por defecto
     selectRegularizacionType('descanso');
 
@@ -818,9 +864,67 @@ document.addEventListener('DOMContentLoaded', () => {
     if (filePillAcademico) filePillAcademico.style.display = 'none';
 
     if (regMotivoAcademicoTexto) regMotivoAcademicoTexto.value = '';
+    
+    // Reset sección Reprogramación
+    if (regTipoReprogramacion) regTipoReprogramacion.value = '';
+    if (regDocenteReprogramacion) regDocenteReprogramacion.value = 'Jonah Miguel Asensio Peña (Docente Titular)';
+    if (labelDocenteReprog) labelDocenteReprog.textContent = 'Docente a cargo:';
+    if (badgeDocenteRole) {
+      badgeDocenteRole.textContent = 'Titular';
+      badgeDocenteRole.className = 'badge-role-tag role-titular';
+    }
+    if (wrapperDocenteSelect) wrapperDocenteSelect.classList.remove('highlight-reemplazo');
+    if (helperDocenteReprog) helperDocenteReprog.textContent = 'Docente que dictará la sesión reprogramada.';
+    if (regMotivoReprogramacion) regMotivoReprogramacion.value = '';
+    if (charCountMotivo) charCountMotivo.textContent = '0';
+    if (errorMsgReprogramacion) errorMsgReprogramacion.style.display = 'none';
   }
 
-  // ENVIAR SOLICITUD DE REGULARIZACIÓN (ABRE MODAL DE CONFIRMACIÓN)
+
+  // ==========================================
+  // EVENTOS: SECCIÓN REPROGRAMACIÓN DE CLASES
+  // ==========================================
+  // Cambio del Tipo de Reprogramación: Comportamiento reactivo para "Reemplazo" vs otros
+  if (regTipoReprogramacion) {
+    regTipoReprogramacion.addEventListener('change', () => {
+      const tipo = regTipoReprogramacion.value;
+      if (errorMsgReprogramacion) errorMsgReprogramacion.style.display = 'none';
+
+      if (tipo === 'Reemplazo') {
+        if (labelDocenteReprog) labelDocenteReprog.textContent = 'Nuevo Docente (Reemplazo):';
+        if (badgeDocenteRole) {
+          badgeDocenteRole.textContent = 'Reemplazo';
+          badgeDocenteRole.className = 'badge-role-tag role-reemplazo';
+        }
+        if (wrapperDocenteSelect) wrapperDocenteSelect.classList.add('highlight-reemplazo');
+        if (helperDocenteReprog) helperDocenteReprog.textContent = 'Seleccione al docente que asumirá el dictado de la clase en reemplazo.';
+        
+        // Si estaba seleccionado el titular, sugerir el primer docente sustituto referencial
+        if (regDocenteReprogramacion && regDocenteReprogramacion.value.includes('Titular')) {
+          regDocenteReprogramacion.value = 'Mg. Roberto Carlos Díaz - Docente Asignado';
+        }
+      } else {
+        if (labelDocenteReprog) labelDocenteReprog.textContent = 'Docente a cargo:';
+        if (badgeDocenteRole) {
+          badgeDocenteRole.textContent = 'Titular';
+          badgeDocenteRole.className = 'badge-role-tag role-titular';
+        }
+        if (wrapperDocenteSelect) wrapperDocenteSelect.classList.remove('highlight-reemplazo');
+        if (helperDocenteReprog) helperDocenteReprog.textContent = 'Docente titular asignado para el dictado de la clase reprogramada.';
+        if (regDocenteReprogramacion) regDocenteReprogramacion.value = 'Jonah Miguel Asensio Peña (Docente Titular)';
+      }
+    });
+  }
+
+  // Contador de caracteres de Motivo de Reprogramación
+  if (regMotivoReprogramacion && charCountMotivo) {
+    regMotivoReprogramacion.addEventListener('input', () => {
+      charCountMotivo.textContent = regMotivoReprogramacion.value.length;
+      if (errorMsgReprogramacion) errorMsgReprogramacion.style.display = 'none';
+    });
+  }
+
+    // ENVIAR SOLICITUD DE REGULARIZACIÓN (ABRE MODAL DE CONFIRMACIÓN)
   if (btnGuardarRegularizacion) {
     btnGuardarRegularizacion.addEventListener('click', () => {
       if (!currentSessionForRegularizacion) return;
@@ -878,6 +982,72 @@ document.addEventListener('DOMContentLoaded', () => {
         };
       }
 
+      // ==========================================
+      // Validaciones de la Sección Reprogramación de Clases
+      // ==========================================
+      const tipoReprog = regTipoReprogramacion ? regTipoReprogramacion.value : '';
+      const docenteReprog = regDocenteReprogramacion ? regDocenteReprogramacion.value : '';
+      const fechaReprog = regFechaReprogramacion ? regFechaReprogramacion.value : '';
+      const horaIniReprog = regHoraInicioReprogramacion ? regHoraInicioReprogramacion.value : '';
+      const horaFinReprog = regHoraFinReprogramacion ? regHoraFinReprogramacion.value : '';
+      const motivoReprog = regMotivoReprogramacion ? regMotivoReprogramacion.value.trim() : '';
+
+      const showErrorReprog = (msg) => {
+        if (errorMsgReprogramacion && errorMsgReprogText) {
+          errorMsgReprogText.textContent = msg;
+          errorMsgReprogramacion.style.display = 'flex';
+          errorMsgReprogramacion.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        showToast(msg);
+      };
+
+      if (!tipoReprog) {
+        showErrorReprog('Por favor, seleccione el Tipo de Reprogramación.');
+        if (regTipoReprogramacion) regTipoReprogramacion.focus();
+        return;
+      }
+
+      if (tipoReprog === 'Reemplazo' && docenteReprog.includes('Titular')) {
+        showErrorReprog('Para la modalidad de Reemplazo, debe seleccionar a un nuevo docente sustituto.');
+        if (regDocenteReprogramacion) regDocenteReprogramacion.focus();
+        return;
+      }
+
+      if (!fechaReprog) {
+        showErrorReprog('Por favor, ingrese la nueva fecha para la reprogramación.');
+        if (regFechaReprogramacion) regFechaReprogramacion.focus();
+        return;
+      }
+
+      if (!horaIniReprog || !horaFinReprog) {
+        showErrorReprog('Por favor, complete las horas de inicio y fin de la reprogramación.');
+        return;
+      }
+
+      if (horaIniReprog >= horaFinReprog) {
+        showErrorReprog('La hora fin de la clase debe ser posterior a la hora de inicio.');
+        if (regHoraFinReprogramacion) regHoraFinReprogramacion.focus();
+        return;
+      }
+
+      if (!motivoReprog) {
+        showErrorReprog('Por favor, ingrese el motivo de la reprogramación de clase.');
+        if (regMotivoReprogramacion) regMotivoReprogramacion.focus();
+        return;
+      }
+
+      if (errorMsgReprogramacion) errorMsgReprogramacion.style.display = 'none';
+
+      // Adjuntar datos de reprogramación a la solicitud
+      pendingSolicitudData.reprogramacion = {
+        tipo: tipoReprog,
+        docente: docenteReprog,
+        fecha: fechaReprog,
+        horaInicio: horaIniReprog,
+        horaFin: horaFinReprog,
+        motivo: motivoReprog
+      };
+
       // Abrir Modal de Confirmación
       if (modalConfirmacionRegularizacion) {
         modalConfirmacionRegularizacion.classList.add('active');
@@ -920,6 +1090,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
       solicitudesList.push(newSolicitud);
       currentSessionForRegularizacion.solicitudId = newSolId;
+
+      // Sincronizar automáticamente con el módulo Administrativo RRAA
+      try {
+        const STORAGE_KEY = 'wiener_rraa_asistencia_solicitudes_v1';
+        const raw = localStorage.getItem(STORAGE_KEY);
+        let adminList = raw ? JSON.parse(raw) : [];
+        const nextTicket = String(adminList.length + 1);
+        adminList.unshift({
+          ticket: nextTicket,
+          fecha: currentSessionForRegularizacion.fecha,
+          area: currentSessionForRegularizacion.area || 'P.E. INVESTIGACIÓN',
+          curso: currentSessionForRegularizacion.curso,
+          periodo: currentSessionForRegularizacion.periodo,
+          seccion: currentSessionForRegularizacion.seccion,
+          sesion: currentSessionForRegularizacion.sesion,
+          horarioInicio: currentSessionForRegularizacion.horarioInicio,
+          horarioFin: currentSessionForRegularizacion.horarioFin,
+          registroInicio: currentSessionForRegularizacion.registroInicio,
+          registroFin: currentSessionForRegularizacion.registroFin,
+          tardanza: currentSessionForRegularizacion.tarde !== '-' ? currentSessionForRegularizacion.tarde : '',
+          estado: currentSessionForRegularizacion.estado || 'Observado',
+          condicion: 'Solicitado',
+          sustento: (pendingSolicitudData && pendingSolicitudData.archivoSustentoNombre) ? pendingSolicitudData.archivoSustentoNombre : 'Sustento_Regularizacion_Docente.pdf',
+          tipoSustento: (pendingSolicitudData && pendingSolicitudData.tipoRegularizacion === 'descanso') ? 'Descanso Médico' : 'Motivo Académico',
+          fechaSolicitud: new Date().toLocaleDateString('es-PE'),
+          observacion: '-',
+          docente: 'Jonah Miguel Asensio Peña',
+          docenteCodigo: 'DOC-99214',
+          decisionTimestamp: null,
+          aprobador: null
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(adminList));
+      } catch (err) {
+        console.warn('Error sincronizando con bandeja administrativa:', err);
+      }
 
       // Cerrar modal de confirmación y modal de formulario
       if (modalConfirmacionRegularizacion) {
@@ -1012,6 +1217,40 @@ document.addEventListener('DOMContentLoaded', () => {
             ${solicitud.estado}
           </span>
         </div>
+        ${solicitud.reprogramacion ? `
+          <hr class="detail-section-divider">
+          <div class="detail-section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Propuesta de Reprogramación de Clase</span>
+          </div>
+          <div class="detail-row-flex">
+            <span class="detail-label-title">Tipo de Reprogramación</span>
+            <span class="detail-value-bold" style="color: #0F848F;">${solicitud.reprogramacion.tipo}</span>
+          </div>
+          <div class="detail-row-flex">
+            <span class="detail-label-title">Docente Asignado</span>
+            <span class="detail-value-bold">${solicitud.reprogramacion.docente}</span>
+          </div>
+          <div class="detail-row-flex">
+            <span class="detail-label-title">Nueva Fecha Programada</span>
+            <span class="detail-value-bold">${solicitud.reprogramacion.fecha}</span>
+          </div>
+          <div class="detail-row-flex">
+            <span class="detail-label-title">Nuevo Horario Propuesto</span>
+            <span class="detail-value-bold">${solicitud.reprogramacion.horaInicio} – ${solicitud.reprogramacion.horaFin}</span>
+          </div>
+          <div class="detail-row-flex" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+            <span class="detail-label-title">Motivo de Reprogramación:</span>
+            <p style="font-size: 12.5px; color: #334155; margin: 0; background: #F8FAFC; padding: 10px 12px; border-radius: 6px; width: 100%; box-sizing: border-box; border: 1px solid #E2E8F0;">
+              ${solicitud.reprogramacion.motivo}
+            </p>
+          </div>
+        ` : ''}
         <div class="detail-row-flex" style="flex-direction: column; align-items: flex-start; gap: 8px;">
           <span class="detail-label-title">Archivo Adjunto de Sustento:</span>
           <div class="file-preview-card" style="width: 100%;">
@@ -1109,7 +1348,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <td>${sol.fechaSesion}</td>
         <td class="td-sol-curso">${sol.curso}</td>
         <td>${sol.seccion}</td>
-        <td><span style="font-weight: 600;">${sol.tipo}</span></td>
+        <td>
+          <span style="font-weight: 600;">${sol.tipo}</span>
+          ${sol.reprogramacion ? `<br><span class="badge-reprog-pill">+ Reprogramación (${sol.reprogramacion.tipo})</span>` : ''}
+        </td>
         <td class="td-sol-estado" style="text-align: center;">
           <span class="btn-ver-solicitud-badge ${badgeClass}">${tagTexto}</span>
         </td>
