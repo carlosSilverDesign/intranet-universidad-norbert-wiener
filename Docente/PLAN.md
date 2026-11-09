@@ -39,6 +39,9 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
 - [ ] **Paso 9: Gestión Docente (DGDD) y Evaluación (MIDE / ESD)**
   - Estado: Pendiente
   - Archivos: `Docente/dgdd.html`, `Docente/dgdd.css`, `Docente/dgdd.js`
+- [x] **Paso 10: Servicios Adicionales - Manuales y Encuesta Delegado**
+  - Estado: Completado (2026-11-06)
+  - Archivos: `Docente/manuales.html` (`.css`, `.js`), `Docente/encuesta-delegado.html` (`.css`, `.js`), actualización transversal de navbar en todas las vistas de `Docente/`
 
 ---
 
@@ -81,6 +84,19 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
 
 ### Paso 9: Gestión Docente (DGDD) y Evaluación
 *Objetivo*: Vista de inducción, capacitaciones de formación continua, acompañamiento pedagógico, resultados MIDE y encuestas de satisfacción docente (ESD).
+
+### Paso 10: Servicios Adicionales - Manuales y Encuesta Delegado
+*Objetivo*: Central de guías/manuales institucionales para docentes y módulo de evaluación mensual del desempeño de delegados estudiantiles.
+- **Ajustes transversales al Navbar**:
+  - Eliminación de enlaces obsoletos en el dropdown 'Servicios Adicionales': *Internacionalización Wiener*, *Mesa de ayuda* y *Directorio Institucional*.
+  - Incorporación de los nuevos accesos: **Manuales** (`manuales.html`) y **Encuesta Delegado** (`encuesta-delegado.html`).
+- **`Docente/manuales.html`** (`.css`, `.js`):
+  - Catálogo de manuales con diseño UI moderno basado en tarjetas interactivas organizadas por categorías (*Sistemas Académicos*, *Gestión y Soporte*, *Herramientas Digitales*).
+  - Incluye badges semánticos (badge rojo `Nuevo`), buscador en tiempo real, filtro por categoría, visor modal de previsualización y simulación de descarga con notificaciones Toast.
+- **`Docente/encuesta-delegado.html`** (`.css`, `.js`):
+  - Formulario de filtros superiores (Periodo, Mes, Carrera, Sección, Curso y botón *Mostrar*).
+  - Tabla de 20 delegados de sección con cabecera teal, estados (`Pendiente`, `Evaluado`) y botón interactivo `Evaluar`.
+  - Modal emergente de evaluación con escala Likert de 5 niveles (1: Totalmente en desacuerdo a 5: Muy de acuerdo), barra de progreso dinámica, validación de completitud y modal de éxito, replicando fielmente la UI y diseño de encuestas del perfil Alumno.
 
 ---
 
@@ -132,4 +148,21 @@ Este documento sirve como el plan de ruta activo y el registro de control de cam
   - **Asignación de Delegado de Clase (`delegados.html` / `delegados.js` / `delegados.css`)**:
     - Se bloqueó la selección y el registro de **Sub-delegado** cuando no existe un **Delegado** seleccionado o registrado previamente.
     - Se incorporaron notificaciones Toast de advertencia e indicador visual en el resumen (*Requiere Delegado previo*) cuando el docente intenta asignar un Sub-delegado sin Delegado titular o cuando desmarca al Delegado titular.
+- **2026-11-06 (Actualización de Servicios Adicionales y Creación de Manuales y Encuesta Delegado)**:
+  - **Navbar Transversal (16 vistas Docente + 16 vistas docs)**:
+    - Depuración del submenú desplegable 'Servicios Adicionales': retiro de `Internacionalización Wiener`, `Mesa de ayuda` y `Directorio Institucional`.
+    - Integración de los nuevos módulos `Manuales` (`manuales.html`) y `Encuesta Delegado` (`encuesta-delegado.html`).
+    - Verificación y mantenimiento estricto de la consistencia visual de logos SVG de escritorio y móvil, buscador y pies de página.
+  - **Nueva Vista de Manuales (`manuales.html`, `manuales.css`, `manuales.js`)**:
+    - Catálogo institucional de los 6 manuales (Registro de Asistencia, Gestor de Contenidos, Buzón de Quejas y Reclamos, Cambio de Clave, Direcciones Útiles y Tutoriales Wiener Campus y Zoom).
+    - Grid de 6 tarjetas limpias con icono temático, botón directo para descarga de PDF y tag rojo `(Nuevo)` exclusivo para los manuales correspondientes, sin exceso de tags, filtros ni buscador.
+    - Icono de cabecera con trazo negro `#222222` de 36px y márgenes estandarizados con el resto de secciones.
+  - **Nueva Vista de Encuesta Delegado (`encuesta-delegado.html`, `encuesta-delegado.css`, `encuesta-delegado.js`)**:
+    - Cabecera estandarizada con icono en trazo negro `#222222` de 36px, márgenes y padding unificados.
+    - Selectores personalizados Wiener con rotación de flecha chevron a 180°, animación de apertura y smart flip (Periodo, Mes, Carrera, Sección y Curso).
+    - Tabla responsiva con los 20 delegados oficiales de la sección, estado (Pendiente / Evaluado) y botón interactivo `Evaluar`.
+    - Modal de evaluación con escala Likert de 5 niveles (4 preguntas), barra de progreso dinámica, botón institucional rojo `GRABAR` y modal de confirmación de registro completado según UI del perfil Alumno.
+  - **Unificación Estricta del Navbar**:
+    - Reemplazo y clonación idéntica del bloque canónico del Sidebar Navbar en `manuales.html` y `encuesta-delegado.html`, garantizando los mismos iconos SVG `#5B6E80`, la misma jerarquía de 12 enlaces principales, submenús y ausencia total de saltos visuales al navegar entre secciones.
+  - Sincronización íntegra con la carpeta de publicación `docs/`.
 

@@ -1,0 +1,317 @@
+/* ==========================================================================
+   ESTILOS DE LA SECCIÓN MANUALES - PERFIL DOCENTE
+   Universidad Norbert Wiener
+   Mismo contenedor, padding, márgenes e icono con trazo negro que las otras secciones
+   ========================================================================== */
+
+/* --- CONTENEDOR PRINCIPAL Y LAYOUT FLEX --- */
+.main-content-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+  min-height: calc(100dvh - 64px);
+}
+
+.main-content {
+  width: 100%;
+  max-width: 1082px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  gap: 20px;
+}
+
+/* --- CABECERA DE SECCIÓN (PAGE HEADER FLEX) --- */
+.page-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding-bottom: 0;
+  gap: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+.header-icon-svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+  stroke: #222222;
+}
+
+.header-titles h1 {
+  font-size: 24px;
+  margin-bottom: 4px;
+  font-family: 'Lato', sans-serif;
+  color: #222222;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.header-titles p {
+  color: #5B6E80;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.header-divider {
+  display: block;
+  height: 1px;
+  border: none;
+  background-color: #E2E8F0;
+  margin: 0;
+  width: 100%;
+}
+
+/* --- GRID DE CARDS DE MANUALES (6 CARDS) --- */
+.manuales-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* --- TARJETA DE MANUAL (CARDS LIMPIAS SIN EXCESO DE TAGS) --- */
+.manual-card {
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 12px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.manual-card:hover {
+  border-color: #0F848F;
+  box-shadow: 0 6px 16px rgba(15, 132, 143, 0.08);
+  transform: translateY(-2px);
+}
+
+.manual-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.manual-icon-container {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 10px;
+  background-color: #E6F3F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.manual-icon-container svg {
+  stroke: #0F848F;
+}
+
+.manual-content {
+  flex: 1;
+}
+
+.manual-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #1E293B;
+  line-height: 1.35;
+  margin: 0 0 6px 0;
+  display: inline-block;
+}
+
+/* Solo el tag Nuevo (en rojo como en la imagen de referencia) */
+.tag-nuevo {
+  color: #DC2626;
+  font-weight: 700;
+  font-size: 13.5px;
+  margin-left: 4px;
+  display: inline;
+}
+
+.manual-description {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #64748B;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* --- ACCIÓN DE DESCARGA --- */
+.manual-card-action {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 14px;
+}
+
+.btn-download-manual {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  background-color: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  color: #0F848F;
+  font-size: 13.5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.btn-download-manual:hover {
+  background-color: #0F848F;
+  border-color: #0F848F;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(15, 132, 143, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-download-manual svg {
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+/* --- TOAST DE NOTIFICACIÓN FLOTANTE (ESTÁNDAR WIENER) --- */
+.attendance-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #1E293B;
+  color: #FFFFFF;
+  padding: 14px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+  font-size: 13.5px;
+  font-family: 'Roboto', sans-serif;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.attendance-toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.attendance-toast-icon {
+  width: 20px;
+  height: 20px;
+  stroke: #07C8CC;
+  flex-shrink: 0;
+}
+
+/* --- FOOTER GENERAL --- */
+.main-footer {
+  background-color: #FFFFFF;
+  padding: 20px 24px;
+  border-top: 1px solid #E2E8F0;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.02);
+  margin-top: auto;
+}
+
+.main-footer p {
+  font-size: 13.5px;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 992px) {
+  .page-header-flex {
+    flex-direction: column;
+    align-items: stretch;
+    padding-bottom: 0;
+    gap: 12px;
+  }
+
+  .manuales-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .header-icon-svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-titles h1 {
+    font-size: 20px;
+  }
+
+  .header-titles p {
+    font-size: 13px;
+  }
+
+  .manual-card {
+    padding: 18px 18px;
+  }
+
+  .manual-card-top {
+    gap: 12px;
+  }
+
+  .manual-icon-container {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+  }
+
+  .manual-title {
+    font-size: 14.5px;
+  }
+}
