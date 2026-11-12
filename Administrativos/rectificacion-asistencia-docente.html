@@ -25,10 +25,10 @@
     <div class="top-bar-left-mobile">
       <button type="button" class="top-bar-burger-btn" id="topBarBurgerBtn" aria-label="Abrir Menú">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3.5" y1="12" x2="20.5" y2="12"></line>
+          <line x1="3.5" y1="6.5" x2="20.5" y2="6.5"></line>
+          <line x1="3.5" y1="17.5" x2="20.5" y2="17.5"></line>
         </svg>
       </button>
       <a href="rectificacion-asistencia-docente.html" class="sidebar-logo-link" aria-label="Ir a Inicio">
@@ -110,7 +110,7 @@
       </div>
       <button type="button" class="mobile-search-close-btn" id="mobileSearchCloseBtn" aria-label="Cerrar Búsqueda">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2">
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -211,7 +211,8 @@
         </svg>
       </a>
       <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Cerrar Menú">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -264,7 +265,8 @@
                 </svg>
               </span>
               <span class="text">Procesos Académicos</span>
-              <svg class="sidebar-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg class="sidebar-arrow-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </a>
@@ -304,18 +306,21 @@
     <!-- Perfil RRAA en footer del sidebar -->
     <div class="sidebar-footer">
       <div class="sidebar-user-profile">
-        <div class="user-avatar-initials"
+        <div class="user-avatar-initials" id="adminSidebarAvatar"
           style="width: 40px; height: 40px; border-radius: 50%; background: #0F848F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px;">
           CS</div>
         <div class="sidebar-user-info">
-          <p class="sidebar-user-role">RRAA</p>
-          <p class="sidebar-user-name" title="Lic. Carlos Jesús Silva Sánchez">Lic. Carlos Silva</p>
-          <p class="sidebar-user-code">Registros Académicos</p>
+          <p class="sidebar-user-role" id="adminSidebarRole">RRAA</p>
+          <p class="sidebar-user-name" id="adminSidebarName" title="Lic. Carlos Jesús Silva Sánchez">Lic. Carlos Silva</p>
+          <p class="sidebar-user-code" id="adminSidebarCode">Registros Académicos</p>
         </div>
       </div>
-      <a href="../Docente/asistencia-docente.html" class="sidebar-logout-btn" title="Ir a Vista Docente">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M16 17l5-5-5-5M21 12H9"></path>
+      <a href="../Docente/asistencia-docente-rc.html" class="sidebar-logout-btn" title="Ir a Portal Docente / Coordinador (Solicitar)">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
         </svg>
         <span class="text">Docente</span>
       </a>
@@ -326,7 +331,7 @@
   <div class="navbar-blur-overlay" id="navbarBlurOverlay"></div>
 
   <!-- ==========================================================================
-       3. LAYOUT PRINCIPAL Y DASHBOARD ADMIN (RRAA)
+       3. LAYOUT PRINCIPAL Y DASHBOARD ADMIN (RRAA / COORDINADOR / DIRECTOR)
        ========================================================================== -->
   <div class="main-content-layout asist-layout">
     <main class="main-content asist-main-content">
@@ -342,12 +347,59 @@
               </svg>
             </div>
             <div class="asist-header-titles">
-              <h1>Regularización de Asistencia Docente</h1>
-              <p>Histórico, validación y control de solicitudes de regularización de marcaciones docentes por curso,
-                sección y docente.</p>
+              <h1>Gestión de Asistencia y Reprogramación Docente</h1>
+              <p id="adminHeaderSubtitle">Bandeja unificada de aprobación cerrada: RRAA (Tardanzas / Observados),
+                Coordinación (Asignación de Reemplazo) y Dirección de Escuela (Inasistencias y Reprogramaciones).</p>
             </div>
           </div>
-          <div class="asist-header-right"></div>
+          <div class="asist-header-right">
+            <div class="inbox-role-switcher" role="radiogroup" aria-label="Bandeja de perfil aprobador">
+              <button type="button" class="inbox-role-btn active" data-inbox-role="RRAA" role="radio" aria-checked="true"
+                title="Bandeja RRAA: Rectificaciones de Tardanza y Observado">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="8" y="2.5" width="8" height="4" rx="1"></rect>
+                  <path d="M16 4.5h2a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2h2"></path>
+                  <path d="M9.5 14l2 2 4-4"></path>
+                </svg>
+                <span>RRAA</span>
+                <span class="inbox-badge" id="badgeInboxRRAA">1</span>
+              </button>
+              <button type="button" class="inbox-role-btn" data-inbox-role="COORDINADOR" role="radio" aria-checked="false"
+                title="Bandeja Coordinador: Asignación de Docente (A Programar) activo">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="9.5" cy="7.5" r="3.5"></circle>
+                  <path d="M3 19.5v-1a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5v1"></path>
+                  <line x1="19" y1="8.5" x2="19" y2="14.5"></line>
+                  <line x1="16" y1="11.5" x2="22" y2="11.5"></line>
+                </svg>
+                <span>Coordinador</span>
+                <span class="inbox-badge" id="badgeInboxCoord">1</span>
+              </button>
+              <button type="button" class="inbox-role-btn" data-inbox-role="DIRECTOR" role="radio" aria-checked="false"
+                title="Bandeja Director: Inasistencias y Reprogramaciones">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 21.5s7.5-3.6 7.5-9.5V5.5L12 3 4.5 5.5V12c0 5.9 7.5 9.5 7.5 9.5z"></path>
+                  <polyline points="9.5 12 11.3 13.8 14.8 10.2"></polyline>
+                </svg>
+                <span>Director</span>
+                <span class="inbox-badge" id="badgeInboxDirector">1</span>
+              </button>
+              <button type="button" class="inbox-role-btn" data-inbox-role="ALL" role="radio" aria-checked="false"
+                title="Ver todas las solicitudes sin filtro de bandeja">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 3 3 7.5 12 12 21 7.5 12 3"></polygon>
+                  <polyline points="3 12 12 16.5 21 12"></polyline>
+                  <polyline points="3 16.5 12 21 21 16.5"></polyline>
+                </svg>
+                <span>Todos</span>
+                <span class="inbox-badge" id="badgeInboxAll">4</span>
+              </button>
+            </div>
+          </div>
         </header>
 
         <hr class="asist-header-divider">
@@ -359,22 +411,47 @@
           <ul class="admin-subnav-list">
             <li class="admin-subnav-item">
               <button type="button" class="admin-subnav-link active" data-tab="solicitudes">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="21 13 16 13 14 16 10 16 8 13 3 13"></polyline>
+                  <path d="M5.4 5.5 3 13v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5l-2.4-7.5a2 2 0 0 0-1.8-1.5H7.2a2 2 0 0 0-1.8 1.5z"></path>
+                </svg>
                 <span>Solicitudes</span>
-                <span class="admin-subnav-badge" id="countTabSolicitudes">3</span>
+                <span class="admin-subnav-badge" id="countTabSolicitudes">4</span>
               </button>
             </li>
             <li class="admin-subnav-item">
               <button type="button" class="admin-subnav-link" data-tab="cronograma">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect>
+                  <line x1="16" y1="2.5" x2="16" y2="6.5"></line>
+                  <line x1="8" y1="2.5" x2="8" y2="6.5"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
                 <span>Cronograma de Corte</span>
               </button>
             </li>
             <li class="admin-subnav-item">
               <button type="button" class="admin-subnav-link" data-tab="reportes">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
                 <span>Reportes</span>
               </button>
             </li>
             <li class="admin-subnav-item">
               <button type="button" class="admin-subnav-link" data-tab="planilla">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8.5z"></path>
+                  <polyline points="14 2.5 14 8.5 19.5 8.5"></polyline>
+                  <line x1="8" y1="13" x2="16" y2="13"></line>
+                  <line x1="8" y1="17" x2="13" y2="17"></line>
+                </svg>
                 <span>Planilla Manual</span>
               </button>
             </li>
@@ -382,19 +459,26 @@
         </nav>
 
         <!-- ==========================================================================
-             VISTA 1: SOLICITUDES (TABLA FIEL A LA IMAGEN 1)
+             VISTA 1: SOLICITUDES (BANDEJAS POR PERFIL RRAA / COORDINADOR / DIRECTOR)
              ========================================================================== -->
         <div class="subnav-view-panel active" id="panelSolicitudes">
 
           <!-- TARJETA DE FILTROS DE BÚSQUEDA -->
           <section class="asist-filters-card" aria-label="Filtros de Solicitudes">
             <div class="filters-card-header-flex">
-              <span class="filters-card-title">Criterios de Búsqueda</span>
+              <span class="filters-card-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="22 4 2 4 10 13 10 19.5 14 21.5 14 13 22 4"></polygon>
+                </svg>
+                <span id="activeInboxBannerTitle">Bandeja activa: Registros Académicos (RRAA) — Tardanzas y Observados</span>
+              </span>
               <button type="button" class="btn-text-reset-filters" id="btnClearFilters"
                 title="Restablecer todos los filtros">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                  <path d="M3 3v5h5"></path>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3.5 12a8.5 8.5 0 1 0 8.5-8.5 9.2 9.2 0 0 0-6.2 2.4L3.5 8.2"></path>
+                  <path d="M3.5 3.5v4.7h4.7"></path>
                 </svg>
                 <span>Restablecer</span>
               </button>
@@ -421,20 +505,38 @@
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="Prácticas En Nutrición I">
-                        <span>Prácticas En Nutrición I - ND4012</span>
+                      <div class="custom-option" data-value="Estructura y Función Humana">
+                        <span>Estructura y Función Humana - EN2014</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="Nutrición Y Dietoterapia Del Niño">
-                        <span>Nutrición Y Dietoterapia Del Niño - ND4054</span>
+                      <div class="custom-option" data-value="Gestión del Cuidado">
+                        <span>Gestión del Cuidado en Enfermería - EN5011</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="Estructura Y Función">
-                        <span>Estructura Y Función Complejo Orofacial - OD5033</span>
+                      <div class="custom-option" data-value="Cuidado de Enfermería">
+                        <span>Cuidado de Enfermería en Salud Familiar - EN3022</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Validación de Instrumentos">
+                        <span>Validación de Instrumentos - PEIC004</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Farmacología Clínica">
+                        <span>Farmacología Clínica Aplicada - FC2M1</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Metodología de la Investigación">
+                        <span>Metodología de la Investigación - PEIC205</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
@@ -443,13 +545,13 @@
                   </div>
                 </div>
 
-                <!-- Sección -->
+                <!-- Trámite -->
                 <div class="asist-filter-item">
-                  <label for="filterSeccion">Sección</label>
+                  <label for="filterSeccion">Tipo de Trámite</label>
                   <div class="custom-select-container" data-filter="filterSeccion" data-current-value="todos">
                     <input type="hidden" id="filterSeccion" value="todos">
                     <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                      <span class="custom-select-label">Todas las secciones</span>
+                      <span class="custom-select-label">Todos los trámites</span>
                       <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
@@ -457,31 +559,19 @@
                     </button>
                     <div class="custom-dropdown-menu" role="listbox">
                       <div class="custom-option selected" data-value="todos">
-                        <span>Todas las secciones</span>
+                        <span>Todos los trámites</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="ND1M1">
-                        <span>ND1M1</span>
+                      <div class="custom-option" data-value="RECTIFICACION">
+                        <span>Rectificación de Asistencia</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="ND1M3">
-                        <span>ND1M3</span>
-                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      <div class="custom-option" data-value="ND5N2">
-                        <span>ND5N2</span>
-                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      <div class="custom-option" data-value="OD3N3">
-                        <span>OD3N3</span>
+                      <div class="custom-option" data-value="REPROGRAMACION">
+                        <span>Reprogramación de Clases</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
@@ -509,20 +599,26 @@
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="Obregon Figueroa">
-                        <span>Lic. Obregon Figueroa Ana Dorila</span>
+                      <div class="custom-option" data-value="Jonah Miguel">
+                        <span>Jonah Miguel Asensio Peña</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="Silva Sánchez">
-                        <span>Mg. Carlos Jesús Silva Sánchez</span>
+                      <div class="custom-option" data-value="Ventocilla">
+                        <span>Dayana Nicole Ventocilla Aguilar</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="Paz Quispe">
-                        <span>Dr. Rafael Paz Quispe</span>
+                      <div class="custom-option" data-value="Paredes Quispe">
+                        <span>Carlos Alberto Paredes Quispe</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Roldán Torres">
+                        <span>Mariela Sofía Roldán Torres</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
@@ -537,21 +633,21 @@
                   <div class="custom-select-container" data-filter="filterPeriodo" data-current-value="todos">
                     <input type="hidden" id="filterPeriodo" value="todos">
                     <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                      <span class="custom-select-label">2025-II</span>
+                      <span class="custom-select-label">Todos los periodos</span>
                       <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
                     </button>
                     <div class="custom-dropdown-menu" role="listbox">
-                      <div class="custom-option" data-value="todos">
+                      <div class="custom-option selected" data-value="todos">
                         <span>Todos los periodos</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option selected" data-value="2025-II">
-                        <span>2025-II</span>
+                      <div class="custom-option" data-value="2026-II">
+                        <span>2026-II</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
@@ -562,8 +658,8 @@
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="2026-0">
-                        <span>2026-0</span>
+                      <div class="custom-option" data-value="2025-II">
+                        <span>2025-II</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
@@ -572,9 +668,9 @@
                   </div>
                 </div>
 
-                <!-- Condición / Trámite -->
+                <!-- Condición / Etapa -->
                 <div class="asist-filter-item">
-                  <label for="filterCondicion">Condición</label>
+                  <label for="filterCondicion">Condición / Etapa</label>
                   <div class="custom-select-container" data-filter="filterCondicion" data-current-value="todos">
                     <input type="hidden" id="filterCondicion" value="todos">
                     <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
@@ -592,7 +688,19 @@
                         </svg>
                       </div>
                       <div class="custom-option" data-value="Solicitado">
-                        <span>Solicitado</span>
+                        <span>Solicitado (RRAA)</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Pendiente Coordinador">
+                        <span>Pendiente Coordinador</span>
+                        <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <div class="custom-option" data-value="Pendiente Director">
+                        <span>Pendiente Director</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
@@ -646,19 +754,28 @@
             </div>
             <div class="bulk-actions-right">
               <button type="button" class="btn-bulk-approve" id="btnBulkApprove">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
                 <span>Aprobar Seleccionadas</span>
               </button>
               <button type="button" class="btn-bulk-reject" id="btnBulkReject">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
                 <span>Rechazar Seleccionadas</span>
               </button>
-              <button type="button" class="btn-bulk-clear" id="btnBulkClear">Deseleccionar</button>
+              <button type="button" class="btn-bulk-clear" id="btnBulkClear">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9.5"></circle>
+                  <line x1="8.5" y1="12" x2="15.5" y2="12"></line>
+                </svg>
+                <span>Deseleccionar</span>
+              </button>
             </div>
           </div>
 
@@ -700,13 +817,15 @@
               <div class="pagination-info">Mostrando registros del 1 al 3 de 3</div>
               <div class="pagination-controls">
                 <button type="button" class="btn-page-nav" disabled aria-label="Página anterior">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <polyline points="15 18 9 12 15 6"></polyline>
                   </svg>
                 </button>
                 <span class="page-number active">1</span>
                 <button type="button" class="btn-page-nav" disabled aria-label="Página siguiente">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
                 </button>
@@ -761,23 +880,23 @@
                 <!-- Año Académico -->
                 <div class="asist-filter-item">
                   <label for="cronoAnio">Año Académico <span class="req">*</span></label>
-                  <div class="custom-select-container" data-filter="cronoAnio" data-current-value="2025">
-                    <input type="hidden" id="cronoAnio" value="2025">
+                  <div class="custom-select-container" data-filter="cronoAnio" data-current-value="2026">
+                    <input type="hidden" id="cronoAnio" value="2026">
                     <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                      <span class="custom-select-label">2025</span>
-                      <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
+                      <span class="custom-select-label">2026</span>
+                      <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
                     </button>
                     <div class="custom-dropdown-menu" role="listbox">
-                      <div class="custom-option selected" data-value="2025">
+                      <div class="custom-option" data-value="2025">
                         <span>2025</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <div class="custom-option" data-value="2026">
+                      <div class="custom-option selected" data-value="2026">
                         <span>2026</span>
                         <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
@@ -790,12 +909,12 @@
                 <!-- Mes de Planilla -->
                 <div class="asist-filter-item">
                   <label for="cronoMes">Mes de Planilla <span class="req">*</span></label>
-                  <div class="custom-select-container" data-filter="cronoMes" data-current-value="Octubre">
-                    <input type="hidden" id="cronoMes" value="Octubre">
+                  <div class="custom-select-container" data-filter="cronoMes" data-current-value="Noviembre">
+                    <input type="hidden" id="cronoMes" value="Noviembre">
                     <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                      <span class="custom-select-label">Octubre</span>
-                      <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
+                      <span class="custom-select-label">Noviembre</span>
+                      <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
                     </button>
@@ -836,11 +955,11 @@
                           viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg></div>
-                      <div class="custom-option selected" data-value="Octubre"><span>Octubre</span><svg
+                      <div class="custom-option" data-value="Octubre"><span>Octubre</span><svg
                           class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg></div>
-                      <div class="custom-option" data-value="Noviembre"><span>Noviembre</span><svg class="option-check"
+                      <div class="custom-option selected" data-value="Noviembre"><span>Noviembre</span><svg class="option-check"
                           viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg></div>
@@ -857,7 +976,7 @@
                   <label for="cronoFechaCorteInicio">Corte Inicio (Oficial) <span class="req">*</span></label>
                   <div class="custom-date-container" id="dateContainerCorteInicio">
                     <div class="custom-date-trigger">
-                      <input type="text" id="cronoFechaCorteInicio" class="date-display-input" value="12/09/2025"
+                      <input type="text" id="cronoFechaCorteInicio" class="date-display-input" value="12/10/2026"
                         readonly>
                       <span class="date-calendar-icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -878,7 +997,7 @@
                   <label for="cronoFechaCorteFin">Corte Fin (Oficial) <span class="req">*</span></label>
                   <div class="custom-date-container" id="dateContainerCorteFin">
                     <div class="custom-date-trigger">
-                      <input type="text" id="cronoFechaCorteFin" class="date-display-input" value="11/10/2025" readonly>
+                      <input type="text" id="cronoFechaCorteFin" class="date-display-input" value="11/11/2026" readonly>
                       <span class="date-calendar-icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -898,7 +1017,7 @@
                   <label for="cronoFechaLimite">Fecha Máx. Recepción <span class="req">*</span></label>
                   <div class="custom-date-container" id="dateContainerFechaLimite">
                     <div class="custom-date-trigger">
-                      <input type="text" id="cronoFechaLimite" class="date-display-input" value="15/10/2025" readonly
+                      <input type="text" id="cronoFechaLimite" class="date-display-input" value="11/11/2026" readonly
                         style="font-weight: 700; color: #DC2626;">
                       <span class="date-calendar-icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -917,7 +1036,7 @@
                 <div class="asist-filter-item" style="grid-column: span 3; display: flex; align-items: flex-end;">
                   <button type="submit" class="btn-import-planilla" style="padding: 11px 24px;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2.5">
+                      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                     <span>Guardar y Publicar Cronograma de Corte</span>
@@ -959,18 +1078,43 @@
           <!-- SELECTOR DE PESTAÑAS POR ESTADO -->
           <div class="report-state-tabs">
             <button type="button" class="report-state-btn active" data-state="todos">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="8" y1="6.5" x2="20" y2="6.5"></line>
+                <line x1="8" y1="12" x2="20" y2="12"></line>
+                <line x1="8" y1="17.5" x2="20" y2="17.5"></line>
+                <circle cx="4.2" cy="6.5" r="1"></circle>
+                <circle cx="4.2" cy="12" r="1"></circle>
+                <circle cx="4.2" cy="17.5" r="1"></circle>
+              </svg>
               <span>Todas las Solicitudes</span>
               <span class="count-badge" id="repBadgeAll">4</span>
             </button>
             <button type="button" class="report-state-btn" data-state="Aprobado">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9.2"></circle>
+                <polyline points="8.5 12.2 10.8 14.5 15.5 9.8"></polyline>
+              </svg>
               <span>Aprobadas</span>
               <span class="count-badge" id="repBadgeAprobadas">1</span>
             </button>
             <button type="button" class="report-state-btn" data-state="Rechazado">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9.2"></circle>
+                <line x1="14.8" y1="9.2" x2="9.2" y2="14.8"></line>
+                <line x1="9.2" y1="9.2" x2="14.8" y2="14.8"></line>
+              </svg>
               <span>Rechazadas</span>
               <span class="count-badge" id="repBadgeRechazadas">0</span>
             </button>
             <button type="button" class="report-state-btn" data-state="Solicitado">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9.2"></circle>
+                <polyline points="12 7.5 12 12 15 13.8"></polyline>
+              </svg>
               <span>En Proceso / Solicitadas</span>
               <span class="count-badge" id="repBadgeProceso">3</span>
             </button>
@@ -984,8 +1128,8 @@
                   <input type="hidden" id="filterReportCurso" value="todos">
                   <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                     <span class="custom-select-label">Todos los cursos</span>
-                    <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2">
+                    <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                   </button>
@@ -996,20 +1140,26 @@
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
-                    <div class="custom-option" data-value="Prácticas En Nutrición I">
-                      <span>Prácticas En Nutrición I</span>
+                    <div class="custom-option" data-value="Estructura y Función Humana">
+                      <span>Estructura y Función Humana - EN2014</span>
                       <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
-                    <div class="custom-option" data-value="Nutrición Y Dietoterapia">
-                      <span>Nutrición Y Dietoterapia</span>
+                    <div class="custom-option" data-value="Gestión del Cuidado">
+                      <span>Gestión del Cuidado en Enfermería</span>
                       <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
-                    <div class="custom-option" data-value="Estructura Y Función">
-                      <span>Estructura Y Función</span>
+                    <div class="custom-option" data-value="Validación de Instrumentos">
+                      <span>Validación de Instrumentos - PEIC004</span>
+                      <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="custom-option" data-value="Farmacología Clínica">
+                      <span>Farmacología Clínica Aplicada - FC2M1</span>
                       <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
@@ -1018,13 +1168,13 @@
                 </div>
               </div>
 
-              <div style="width: 250px;">
+              <div style="width: 260px;">
                 <div class="custom-select-container" data-filter="filterReportAprobador" data-current-value="todos">
                   <input type="hidden" id="filterReportAprobador" value="todos">
                   <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                     <span class="custom-select-label">Todos los evaluadores</span>
-                    <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2">
+                    <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                   </button>
@@ -1041,8 +1191,14 @@
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
-                    <div class="custom-option" data-value="Brenda Vergara">
-                      <span>EAP - Dra. Brenda Vergara</span>
+                    <div class="custom-option" data-value="Denssy López">
+                      <span>Coordinador - Lic. Denssy López</span>
+                      <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="custom-option" data-value="Juan Carlos Mendoza">
+                      <span>Director - Dr. Juan Carlos Mendoza</span>
                       <svg class="option-check" viewBox="0 0 24 24" width="16" height="16">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
@@ -1054,21 +1210,23 @@
 
             <div style="display: flex; gap: 10px;">
               <button type="button" class="btn-export-excel" id="btnExportExcel">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8.5z"></path>
+                  <polyline points="14 2.5 14 8.5 19.5 8.5"></polyline>
                   <line x1="8" y1="13" x2="16" y2="13"></line>
                   <line x1="8" y1="17" x2="16" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
+                  <line x1="8" y1="9" x2="10" y2="9"></line>
                 </svg>
                 <span>Exportar Excel (.xlsx)</span>
               </button>
 
               <button type="button" class="btn-export-pdf" id="btnExportPdf">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M6 9V2h12v7"></path>
-                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-                  <rect x="6" y="14" width="12" height="8"></rect>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6.5 9V3h11v6"></path>
+                  <path d="M6.5 18H4.5a2 2 0 0 1-2-2v-4.5a2 2 0 0 1 2-2h15a2 2 0 0 1 2 2V16a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6.5" y="14" width="11" height="7"></rect>
                 </svg>
                 <span>Descargar PDF</span>
               </button>
@@ -1129,27 +1287,30 @@
             </div>
             <div style="display: flex; gap: 10px;">
               <button type="button" class="btn-download-empty" id="btnDescargarPlantillaVacia">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20.5 15v3.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V15"></path>
+                  <polyline points="7.5 10.5 12 15 16.5 10.5"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3.5"></line>
                 </svg>
                 <span>Descargar Formato Vacío (.csv)</span>
               </button>
 
               <button type="button" class="btn-import-planilla" id="btnAbrirModalImportar">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="17 8 12 3 7 8"></polyline>
-                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20.5 15v3.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V15"></path>
+                  <polyline points="16.5 8 12 3.5 7.5 8"></polyline>
+                  <line x1="12" y1="3.5" x2="12" y2="15"></line>
                 </svg>
                 <span>Cargar / Importar Planilla</span>
               </button>
 
               <button type="button" class="btn-export-excel" id="btnExportarConsolidadoPlanilla">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8.5z"></path>
+                  <polyline points="14 2.5 14 8.5 19.5 8.5"></polyline>
                   <line x1="8" y1="13" x2="16" y2="13"></line>
                   <line x1="8" y1="17" x2="16" y2="17"></line>
                 </svg>
@@ -1223,13 +1384,19 @@
             <h3 class="modal-header-title" id="modalEvaluacionTitle" style="margin: 0; font-size: 16px;">
               Evaluación de Regularización de Asistencia
             </h3>
-            <span style="font-size: 12px; opacity: 0.9; color: #FFFFFF; font-weight: 500;" id="evalModalTicketBadge">
-              Ticket #1 • Solicitado
+            <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 12px; opacity: 0.92; color: #FFFFFF; font-weight: 600;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20.5 13.4 13.4 20.5a2 2 0 0 1-2.8 0L3.5 13.4V4.5h8.9z"></path>
+                <circle cx="8" cy="9" r="1.2"></circle>
+              </svg>
+              <span id="evalModalTicketBadge">Ticket #1 • Solicitado</span>
             </span>
           </div>
         </div>
         <button type="button" class="modal-btn-close-white" id="btnCloseModalEvaluacion" aria-label="Cerrar modal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -1240,7 +1407,14 @@
         <!-- 1. Ficha del Docente y Clase -->
         <div class="eval-section-card">
           <div class="eval-section-header">
-            <span class="eval-section-title">1. Información del Docente y Asignatura</span>
+            <span class="eval-section-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M5 20v-1.2a5.5 5.5 0 0 1 5.5-5.5h3A5.5 5.5 0 0 1 19 18.8V20"></path>
+              </svg>
+              <span>1. Información del Docente y Asignatura</span>
+            </span>
           </div>
           <div class="eval-grid-info">
             <div>
@@ -1266,22 +1440,48 @@
           </div>
         </div>
 
-        <!-- 2. Comparativa de Marcación: Programado vs Real -->
+        <!-- 2. Comparativa (Marcación Biométrica ó Reprogramación de Clases) -->
         <div class="eval-section-card">
           <div class="eval-section-header">
-            <span class="eval-section-title">2. Comparativa de Marcación Biométrica vs. Horario Oficial</span>
+            <span class="eval-section-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9.5"></circle>
+                <polyline points="12 7 12 12 15.5 14"></polyline>
+              </svg>
+              <span id="evalSection2Title">2. Comparativa de Marcación Biométrica vs. Horario Oficial</span>
+            </span>
             <span class="badge-estado-incidencia" id="evalBadgeIncidencia">Observado</span>
           </div>
-          <div class="eval-biometric-compare-grid">
+
+          <!-- Vista 2A: Rectificación Biométrica -->
+          <div class="eval-biometric-compare-grid" id="evalBiometricCompareGrid">
             <!-- Horario Oficial -->
             <div class="compare-box compare-box-official">
-              <div class="compare-box-title">Horario Oficial de Clase</div>
+              <div class="compare-box-title">
+                <span class="compare-title-lead">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect>
+                    <line x1="16" y1="2.5" x2="16" y2="6.5"></line>
+                    <line x1="8" y1="2.5" x2="8" y2="6.5"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span>Horario Oficial de Clase</span>
+                </span>
+              </div>
               <div class="compare-time-row">
                 <div>
                   <span class="compare-sublabel">Inicio Oficial</span>
                   <span class="compare-time-val" id="evalHorarioInicio">--:--</span>
                 </div>
-                <div class="compare-arrow">→</div>
+                <div class="compare-arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="13 6 19 12 13 18"></polyline>
+                  </svg>
+                </div>
                 <div>
                   <span class="compare-sublabel">Fin Oficial</span>
                   <span class="compare-time-val" id="evalHorarioFin">--:--</span>
@@ -1292,13 +1492,27 @@
 
             <!-- Marcación Biométrica en Sede -->
             <div class="compare-box compare-box-recorded">
-              <div class="compare-box-title">Registro en marcación</div>
+              <div class="compare-box-title">
+                <span class="compare-title-lead">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 12 17 12 14.5 19 9.5 5 7 12 4 12"></polyline>
+                  </svg>
+                  <span>Registro en marcación</span>
+                </span>
+              </div>
               <div class="compare-time-row">
                 <div>
                   <span class="compare-sublabel">Marcación Entrada</span>
                   <span class="compare-time-val" id="evalRegistroInicio">--:--</span>
                 </div>
-                <div class="compare-arrow">→</div>
+                <div class="compare-arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="13 6 19 12 13 18"></polyline>
+                  </svg>
+                </div>
                 <div>
                   <span class="compare-sublabel">Marcación Salida</span>
                   <span class="compare-time-val" id="evalRegistroFin">--:--</span>
@@ -1307,29 +1521,102 @@
               <div class="compare-notes" id="evalTardanzaObs">-</div>
             </div>
           </div>
+
+          <!-- Vista 2B: Reprogramación de Clases -->
+          <div id="evalReprogCompareContainer" style="display: none;">
+            <div class="eval-biometric-compare-grid">
+              <div class="compare-box compare-box-official">
+                <div class="compare-box-title">
+                  <span class="compare-title-lead">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="3.5" y="4.5" width="17" height="16" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2.5" x2="16" y2="6.5"></line>
+                      <line x1="8" y1="2.5" x2="8" y2="6.5"></line>
+                      <line x1="3.5" y1="10" x2="20.5" y2="10"></line>
+                    </svg>
+                    <span>Horario Original Programado</span>
+                  </span>
+                </div>
+                <div class="compare-time-row reprog-eval-row">
+                  <div class="reprog-eval-metric">
+                    <span class="compare-sublabel">Fecha / Aula</span>
+                    <span class="compare-time-val reprog-eval-val" id="evalReprogOrigFechaAula">-</span>
+                  </div>
+                  <div class="reprog-eval-metric">
+                    <span class="compare-sublabel">Horario</span>
+                    <span class="compare-time-val reprog-eval-val" id="evalReprogOrigHorario">--:--</span>
+                  </div>
+                </div>
+                <div class="compare-notes" id="evalReprogOrigDuracion">Duración: 45 min</div>
+              </div>
+
+              <div class="compare-box compare-box-proposed">
+                <div class="compare-box-title">
+                  <span class="compare-title-lead">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="3.5" y="4.5" width="17" height="16" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2.5" x2="16" y2="6.5"></line>
+                      <line x1="8" y1="2.5" x2="8" y2="6.5"></line>
+                      <line x1="3.5" y1="10" x2="20.5" y2="10"></line>
+                      <polyline points="9 15.5 11.2 17.7 15.5 13.5"></polyline>
+                    </svg>
+                    <span>Nueva Programación Propuesta</span>
+                  </span>
+                  <span id="evalReprogModalidadChip" class="eval-modalidad-chip">-</span>
+                </div>
+                <div class="compare-time-row reprog-eval-row">
+                  <div class="reprog-eval-metric">
+                    <span class="compare-sublabel">Día / Sede-Aula</span>
+                    <span class="compare-time-val reprog-eval-val" id="evalReprogPropFechaAula">-</span>
+                  </div>
+                  <div class="reprog-eval-metric">
+                    <span class="compare-sublabel">Nuevo Horario</span>
+                    <span class="compare-time-val reprog-eval-val is-teal" id="evalReprogPropHorario">--:--</span>
+                  </div>
+                </div>
+                <div class="compare-notes" id="evalReprogDocenteActual">-</div>
+              </div>
+            </div>
+            <div class="eval-planilla-banner" id="evalPlanillaBanner"></div>
+          </div>
         </div>
 
         <!-- 3. Sustento y Justificación del Docente -->
         <div class="eval-section-card">
           <div class="eval-section-header">
-            <span class="eval-section-title">3. Justificación del Docente y Documento de Sustento</span>
+            <span class="eval-section-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2.5 14 8 19.5 8"></polyline>
+                <line x1="8.5" y1="13" x2="15.5" y2="13"></line>
+                <line x1="8.5" y1="17" x2="13.5" y2="17"></line>
+              </svg>
+              <span id="evalSection3Title">3. Justificación del Docente y Documento de Sustento</span>
+            </span>
           </div>
           <div class="eval-sustento-details-grid">
             <div>
-              <div class="eval-label">Tipo de Regularización:</div>
+              <div class="eval-label">Tipo de Trámite / Sustento:</div>
               <div class="eval-val-strong" id="evalTipoSustento" style="color: #0F848F;">-</div>
             </div>
             <div>
-              <div class="eval-label">Autoridad / Jefe Inmediato:</div>
-              <div class="eval-val-strong" id="evalJefeInmediato">Lic. Denssy López - Coordinadora Académica</div>
+              <div class="eval-label">Bandeja / Evaluador Asignado:</div>
+              <div class="eval-val-strong" id="evalJefeInmediato">-</div>
             </div>
           </div>
 
-          <div class="sustento-file-preview-box" style="margin-top: 10px;">
+          <div class="eval-docente-motivo-box" id="evalDocenteMotivoBox">
+            <strong>Motivo registrado:</strong> <span id="evalDocenteMotivoTexto">-</span>
+          </div>
+
+          <div class="sustento-file-preview-box" id="evalSustentoFileBox" style="margin-top: 10px;">
             <div class="sustento-file-info">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#1f1f1f">
                 <path
-                  d="M9,17.75h6q0.32,0 0.53-0.22T15.75,17t-0.22-0.53T15,16.25H9q-0.32,0-0.53,0.22T8.25,17t0.22,0.53T9,17.75Zm0-4h6q0.32,0 0.53-0.22T15.75,13t-0.22-0.53T15,12.25H9q-0.32,0-0.53,0.22T8.25,13t0.22,0.53T9,13.75ZM6.31,21.5q-0.76,0-1.28-0.52T4.5,19.69V4.31q0-0.76 0.52-1.28T6.31,2.5H13.5q0.36,0 0.7,0.14t0.58,0.39l4.2,4.2q0.25,0.25 0.39,0.58T19.5,8.5V19.69q0,0.76-0.52,1.28T17.69,21.5H6.31ZM13.5,7.6V4H6.31Q6.19,4 6.1,4.1T6,4.31V19.69q0,0.12 0.1,0.21T6.31,20H17.69q0.12,0 0.21-0.1T18,19.69V8.5H14.4q-0.39,0-0.65-0.26T13.5,7.6ZM6,4V7.6Q6,7.98 6,8.24T6,8.5V4V7.6Q6,7.98 6,8.24T6,8.5V19.69q0,0.12 0,0.21T6,20q0,0 0-0.1t0-0.21V4.31Q6,4.19 6,4.1T6,4Z" />
+                  d="M9,17.75h6q0.32,0 0.53-0.22T15.75,17t-0.22-0.53T15,16.25H9q-0.32,0-0.53,0.22T8.25,17t0.22,0.53T9,17.75Zm0-4h6q0.32,0 0.53-0.22T15.75,13t-0.22-0.53T15,12.25H9q-0.32,0-0.53,0.22T8.25,13t0.22,0.53T9,13.75ZM6.31,21.5q-0.76,0-1.28-0.52T4.5,19.69V4.31q0-0.76 0.52-1.28T6.31,2.5H13.5q0.36,0 0.7,0.14t0.58,0.39l4.2,4.2q0.25,0.25 0.39,0.58T19.5,8.5V19.69q0,0.76-0.52,1.28T17.69,21.5H6.31ZM13.5,7.6V4H6.31Q6.19,4 6.1,4.1T6,4.31V19.69q0,0.12 0.1,0.21T6.31,20H17.69q0.12,0 0.21-0.1T18,19.69V8.5H14.4q-0.39,0-0.65-0.26T13.5,7.6Z" />
               </svg>
               <div>
                 <div class="sustento-file-name" id="evalFileName">-</div>
@@ -1345,14 +1632,85 @@
           </div>
         </div>
 
-        <!-- 4. Resolución de RRAA -->
+        <!-- 4. Resolución (Coordinador / Director / RRAA) -->
         <div class="eval-section-card eval-resolution-card" id="evalResolutionBox">
           <div class="eval-section-header">
-            <span class="eval-section-title">4. Resolución de la Solicitud (Registros Académicos)</span>
+            <span class="eval-section-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2.5l7.5 3.2v5.8c0 4.9-3.2 8.9-7.5 10-4.3-1.1-7.5-5.1-7.5-10V5.7L12 2.5z"></path>
+                <polyline points="9 12.2 11.2 14.4 15.2 10.2"></polyline>
+              </svg>
+              <span id="evalSection4Title">4. Resolución de la Solicitud</span>
+            </span>
           </div>
 
           <!-- Auditoría si ya fue procesada -->
           <div id="evalAuditStatusBox" style="display: none; margin-bottom: 12px;"></div>
+
+          <!-- Aviso si está en bandeja de otro rol -->
+          <div id="evalOtherInboxNotice" class="eval-other-inbox-box" style="display: none;">
+            <span style="display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9.5"></circle>
+                <line x1="12" y1="8.5" x2="12" y2="12.5"></line>
+                <line x1="12" y1="15.8" x2="12.01" y2="15.8"></line>
+              </svg>
+              <span id="evalOtherInboxText">Esta solicitud corresponde a otro perfil evaluador.</span>
+            </span>
+            <button type="button" class="btn-switch-inbox-inline" id="btnSwitchInboxFromModal">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="17 3 21 7 17 11"></polyline>
+                <path d="M3 12v-1a4 4 0 0 1 4-4h14"></path>
+                <polyline points="7 21 3 17 7 13"></polyline>
+                <path d="M21 12v1a4 4 0 0 1-4 4H3"></path>
+              </svg>
+              <span>Cambiar bandeja</span>
+            </button>
+          </div>
+
+          <!-- Área Especial de Coordinador: Asignar Docente (A Programar) activo -->
+          <div id="evalCoordAssignArea" style="display: none; margin-bottom: 14px;">
+            <div class="coord-assign-card">
+              <div class="coord-assign-header">
+                <strong style="display: inline-flex; align-items: center; gap: 7px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M16 20.5v-2a3.8 3.8 0 0 0-3.8-3.8H6.8A3.8 3.8 0 0 0 3 18.5v2"></path>
+                    <circle cx="9.5" cy="7.5" r="3.8"></circle>
+                    <line x1="19" y1="8" x2="19" y2="14"></line>
+                    <line x1="16" y1="11" x2="22" y2="11"></line>
+                  </svg>
+                  <span>Paso 1 – Asignación de Docente de Reemplazo (Coordinación Académica)</span>
+                </strong>
+                <span>Selecciona un Docente (A Programar) activo diferente al docente titular antes de derivar al Director.</span>
+              </div>
+              <div class="form-field-item">
+                <label for="evalSelectDocenteReemplazo" style="font-weight: 700; color: #1E293B; margin-bottom: 6px; display: block;">
+                  Nuevo Docente (A Programar) activo <span style="color: #DC2626;">*</span>
+                </label>
+                <div class="modal-select-wrapper-admin">
+                  <select id="evalSelectDocenteReemplazo" class="modal-select-docente-admin">
+                    <option value="">Seleccione Docente (A Programar) activo...</option>
+                    <option value="Jonah Miguel Asensio Peña">Jonah Miguel Asensio Peña (DOC-1042 - A Programar Activo)</option>
+                    <option value="Dayana Nicole Ventocilla Aguilar">Dayana Nicole Ventocilla Aguilar (DOC-1088 - A Programar Activo)</option>
+                    <option value="Carlos Alberto Paredes Quispe">Carlos Alberto Paredes Quispe (DOC-1095 - A Programar Activo)</option>
+                    <option value="Mariela Sofía Roldán Torres">Mariela Sofía Roldán Torres (DOC-1103 - A Programar Activo)</option>
+                    <option value="Fernando Morales Silva">Dr. Fernando Morales Silva (DOC-1120 - A Programar Activo)</option>
+                  </select>
+                  <svg class="modal-select-icon-admin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </div>
+                <div class="modal-field-error-text" id="evalErrorDocenteReemplazo" role="alert" style="display: none; margin-top: 6px;">
+                  No puedes asignar al mismo docente titular original en una reprogramación por reemplazo.
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Formulario de decisión -->
           <div id="evalDecisionFormArea">
@@ -1374,20 +1732,29 @@
       </div>
 
       <div class="modal-footer-pad" style="display: flex; justify-content: space-between; align-items: center;">
-        <button type="button" class="btn-cancel-modal" id="btnCerrarModalEvaluacion">Cerrar</button>
+        <button type="button" class="btn-cancel-modal" id="btnCerrarModalEvaluacion">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          <span>Cerrar</span>
+        </button>
         <div style="display: flex; gap: 10px;" id="evalActionButtonsGroup">
           <button type="button" class="btn-bulk-reject" id="btnModalEvalRechazar" style="padding: 10px 18px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
             <span>Rechazar</span>
           </button>
           <button type="button" class="btn-bulk-approve" id="btnModalEvalAprobar" style="padding: 10px 20px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Aprobar Regularización</span>
+            <span id="btnModalEvalAprobarText">Aprobar Regularización</span>
           </button>
         </div>
       </div>
@@ -1402,15 +1769,17 @@
     <div class="modal-content-card">
       <div class="modal-header-danger">
         <h3 class="modal-header-title" id="modalRechazoTitle">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="15" y1="9" x2="9" y2="15"></line>
-            <line x1="9" y1="9" x2="15" y2="15"></line>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9.2"></circle>
+            <line x1="14.8" y1="9.2" x2="9.2" y2="14.8"></line>
+            <line x1="9.2" y1="9.2" x2="14.8" y2="14.8"></line>
           </svg>
           <span>Rechazar Solicitud de Regularización</span>
         </h3>
         <button type="button" class="modal-btn-close-white" id="btnCloseModalRechazo" aria-label="Cerrar modal">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -1420,10 +1789,10 @@
       <div class="modal-body-pad">
         <div class="rejection-info-card" id="rejectionInfoText">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.2"
-            style="flex-shrink: 0; margin-top: 1px;">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="12"></line>
-            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;" aria-hidden="true">
+            <circle cx="12" cy="12" r="9.2"></circle>
+            <line x1="12" y1="8.2" x2="12" y2="12.2"></line>
+            <line x1="12" y1="15.8" x2="12.01" y2="15.8"></line>
           </svg>
           <div id="rejectionDetailText">
             Está a punto de rechazar la solicitud de regularización. Este proceso requiere registrar un motivo o
@@ -1445,9 +1814,17 @@
       </div>
 
       <div class="modal-footer-pad">
-        <button type="button" class="btn-cancel-modal" id="btnCancelRechazo">Cancelar</button>
+        <button type="button" class="btn-cancel-modal" id="btnCancelRechazo">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          <span>Cancelar</span>
+        </button>
         <button type="button" class="btn-bulk-reject" id="btnConfirmRechazo" style="padding: 9px 20px;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
           <span>Confirmar Rechazo</span>
@@ -1464,14 +1841,16 @@
     <div class="modal-content-card">
       <div class="modal-header-teal">
         <h3 class="modal-header-title" id="modalSustentoTitle">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8.5z"></path>
+            <polyline points="14 2.5 14 8.5 19.5 8.5"></polyline>
           </svg>
           <span>Sustento Adjunto de la Solicitud</span>
         </h3>
         <button type="button" class="modal-btn-close-white" id="btnCloseModalSustento" aria-label="Cerrar modal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -1504,9 +1883,10 @@
 
         <div class="sustento-file-preview-box">
           <div class="sustento-file-info">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8.5z"></path>
+              <polyline points="14 2.5 14 8.5 19.5 8.5"></polyline>
               <line x1="9" y1="15" x2="15" y2="15"></line>
             </svg>
             <div>
@@ -1516,13 +1896,26 @@
           </div>
           <button type="button" class="btn-import-planilla" id="btnDescargarSustentoModal"
             style="padding: 7px 14px; font-size: 12px;">
-            Descargar
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.5 15v3.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V15"></path>
+              <polyline points="7.5 10.5 12 15 16.5 10.5"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3.5"></line>
+            </svg>
+            <span>Descargar</span>
           </button>
         </div>
       </div>
 
       <div class="modal-footer-pad">
-        <button type="button" class="btn-cancel-modal" id="btnCerrarModalSustento">Cerrar</button>
+        <button type="button" class="btn-cancel-modal" id="btnCerrarModalSustento">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          <span>Cerrar</span>
+        </button>
       </div>
     </div>
   </div>
@@ -1535,15 +1928,17 @@
     <div class="modal-content-card">
       <div class="modal-header-teal">
         <h3 class="modal-header-title" id="modalImportarTitle">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.5 15v3.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V15"></path>
+            <polyline points="16.5 8 12 3.5 7.5 8"></polyline>
+            <line x1="12" y1="3.5" x2="12" y2="15"></line>
           </svg>
           <span>Cargar Planilla Manual Validada</span>
         </h3>
         <button type="button" class="modal-btn-close-white" id="btnCloseModalImportar" aria-label="Cerrar modal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -1558,10 +1953,10 @@
 
         <div class="dropzone-import-box" id="dropzonePlanilla">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2"
-            style="margin-bottom: 8px;">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 8px;">
+            <path d="M20.5 15v3.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V15"></path>
+            <polyline points="16.5 8 12 3.5 7.5 8"></polyline>
+            <line x1="12" y1="3.5" x2="12" y2="15"></line>
           </svg>
           <div style="font-weight: 700; color: #0F848F; font-size: 14px;">Haga clic aquí para subir o arrastre el
             archivo</div>
@@ -1575,8 +1970,21 @@
       </div>
 
       <div class="modal-footer-pad">
-        <button type="button" class="btn-cancel-modal" id="btnCancelarImportar">Cancelar</button>
+        <button type="button" class="btn-cancel-modal" id="btnCancelarImportar">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          <span>Cancelar</span>
+        </button>
         <button type="button" class="btn-import-planilla" id="btnConfirmarImportacion">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.5 15v3.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V15"></path>
+            <polyline points="16.5 8 12 3.5 7.5 8"></polyline>
+            <line x1="12" y1="3.5" x2="12" y2="15"></line>
+          </svg>
           <span>Importar Registros</span>
         </button>
       </div>
@@ -1586,8 +1994,9 @@
   <!-- TOAST NOTIFICATION -->
   <div class="toast-notification" id="toastMessage">
     <div class="toast-icon-circle">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3">
-        <polyline points="20 6 9 17 4 12"></polyline>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="19.5 6.5 9.5 16.5 4.5 11.5"></polyline>
       </svg>
     </div>
     <div class="toast-body-text" id="toastText">Operación realizada con éxito</div>
