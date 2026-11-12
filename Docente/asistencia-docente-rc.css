@@ -391,13 +391,33 @@
   background-color: #8E9EAE;
 }
 
-.asistencia-table thead th.th-num { width: 42px; }
-.asistencia-table thead th.th-fecha { width: 106px; }
-.asistencia-table thead th.th-prog { width: 112px; }
-.asistencia-table thead th.th-curso { min-width: 190px; }
-.asistencia-table thead th.th-periodo { width: 72px; }
-.asistencia-table thead th.th-seccion { width: 74px; }
-.asistencia-table thead th.th-sesion { width: 64px; }
+.asistencia-table thead th.th-num {
+  width: 42px;
+}
+
+.asistencia-table thead th.th-fecha {
+  width: 106px;
+}
+
+.asistencia-table thead th.th-prog {
+  width: 112px;
+}
+
+.asistencia-table thead th.th-curso {
+  min-width: 190px;
+}
+
+.asistencia-table thead th.th-periodo {
+  width: 72px;
+}
+
+.asistencia-table thead th.th-seccion {
+  width: 74px;
+}
+
+.asistencia-table thead th.th-sesion {
+  width: 64px;
+}
 
 /* Columna HORARIO PROGRAMADO */
 .asistencia-table thead th.th-group-horario {
@@ -1120,8 +1140,7 @@
   width: 100%;
 }
 
-.modal-select-wrapper,
-.notes-select-wrapper {
+.modal-select-wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -1129,9 +1148,7 @@
 }
 
 .modal-select-wrapper select,
-.modal-select-wrapper .modal-select-input,
-.notes-select-wrapper select,
-.notes-select-wrapper .notes-select {
+.modal-select-wrapper .modal-select-input {
   width: 100%;
   min-width: 0;
   height: 42px;
@@ -1155,25 +1172,20 @@
 }
 
 .modal-select-wrapper select:hover,
-.modal-select-wrapper .modal-select-input:hover,
-.notes-select-wrapper select:hover,
-.notes-select-wrapper .notes-select:hover {
+.modal-select-wrapper .modal-select-input:hover {
   border-color: #0F848F;
   background-color: #F8FCFD;
 }
 
 .modal-select-wrapper select:focus,
 .modal-select-wrapper .modal-select-input:focus,
-.modal-select-wrapper select:focus-visible,
-.notes-select-wrapper select:focus,
-.notes-select-wrapper .notes-select:focus {
+.modal-select-wrapper select:focus-visible {
   border-color: #0F848F;
   outline: none;
   box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.16);
 }
 
-.modal-select-wrapper .modal-select-icon,
-.notes-select-wrapper .notes-select-icon {
+.modal-select-wrapper .modal-select-icon {
   position: absolute;
   right: 13px;
   pointer-events: none;
@@ -1183,40 +1195,35 @@
   height: 16px;
 }
 
-.modal-select-wrapper:hover .modal-select-icon,
-.notes-select-wrapper:hover .notes-select-icon {
+.modal-select-wrapper:hover .modal-select-icon {
   color: #0F848F;
 }
 
-.modal-select-wrapper.is-open .modal-select-icon,
-.notes-select-wrapper.is-open .notes-select-icon {
+.modal-select-wrapper.is-open .modal-select-icon {
   transform: rotate(180deg);
   color: #0F848F;
 }
 
 /* Native Modern Select Animation & Branded Picker (Chrome / Edge 135+) */
 @supports (appearance: base-select) {
+
   .modal-select-wrapper select,
-  .modal-select-wrapper select.modal-select-input,
-  .notes-select-wrapper select.notes-select {
+  .modal-select-wrapper select.modal-select-input {
     appearance: base-select;
     -webkit-appearance: base-select;
     line-height: 40px;
   }
 
-  .modal-select-wrapper select::picker-icon,
-  .notes-select-wrapper select::picker-icon {
+  .modal-select-wrapper select::picker-icon {
     display: none;
   }
 
-  .modal-select-wrapper:has(select:open) .modal-select-icon,
-  .notes-select-wrapper:has(select:open) .notes-select-icon {
+  .modal-select-wrapper:has(select:open) .modal-select-icon {
     transform: rotate(180deg);
     color: #0F848F;
   }
 
-  .modal-select-wrapper select::picker(select),
-  .notes-select-wrapper select::picker(select) {
+  .modal-select-wrapper select::picker(select) {
     appearance: base-select;
     -webkit-appearance: base-select;
     background-color: #FFFFFF;
@@ -1237,22 +1244,19 @@
     transition-behavior: allow-discrete;
   }
 
-  .modal-select-wrapper select:open::picker(select),
-  .notes-select-wrapper select:open::picker(select) {
+  .modal-select-wrapper select:open::picker(select) {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 
   @starting-style {
-    .modal-select-wrapper select:open::picker(select),
-    .notes-select-wrapper select:open::picker(select) {
+    .modal-select-wrapper select:open::picker(select) {
       opacity: 0;
       transform: translateY(-6px) scale(0.98);
     }
   }
 
-  .modal-select-wrapper select option,
-  .notes-select-wrapper select option {
+  .modal-select-wrapper select option {
     padding: 9px 12px;
     border-radius: 7px;
     font-size: 13px;
@@ -1266,22 +1270,18 @@
   }
 
   .modal-select-wrapper select option:hover,
-  .modal-select-wrapper select option:focus,
-  .notes-select-wrapper select option:hover,
-  .notes-select-wrapper select option:focus {
+  .modal-select-wrapper select option:focus {
     background-color: #E6F3F4;
     color: #0D4B5E;
   }
 
-  .modal-select-wrapper select option:checked,
-  .notes-select-wrapper select option:checked {
+  .modal-select-wrapper select option:checked {
     background-color: #0F848F;
     color: #FFFFFF;
     font-weight: 700;
   }
 
-  .modal-select-wrapper select option::checkmark,
-  .notes-select-wrapper select option::checkmark {
+  .modal-select-wrapper select option::checkmark {
     color: currentColor;
     font-size: 12px;
   }
@@ -1334,7 +1334,8 @@
   flex: 1;
 }
 
-.custom-select-label.is-placeholder {
+.custom-select-label.is-placeholder,
+.custom-select-value.is-placeholder {
   color: #64748B;
   font-weight: 400;
 }
@@ -1396,6 +1397,7 @@
 }
 
 @starting-style {
+
   .custom-select-container.open .custom-dropdown-menu,
   .custom-dropdown-menu.open {
     opacity: 0;
@@ -3017,19 +3019,34 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 8px;
   flex-shrink: 0;
 }
 
-.reprog-mode-icon.icon-blue { background-color: #E0F2FE; color: #0284C7; }
-.reprog-mode-icon.icon-indigo { background-color: #EDE9FE; color: #5B21B6; }
-.reprog-mode-icon.icon-green { background-color: #DCFCE7; color: #15803D; }
-.reprog-mode-icon.icon-amber { background-color: #FEF3C7; color: #D97706; }
+.reprog-mode-icon.icon-blue {
+  background-color: #E0F2FE;
+  color: #0284C7;
+}
+
+.reprog-mode-icon.icon-indigo {
+  background-color: #EDE9FE;
+  color: #5B21B6;
+}
+
+.reprog-mode-icon.icon-green {
+  background-color: #DCFCE7;
+  color: #15803D;
+}
+
+.reprog-mode-icon.icon-amber {
+  background-color: #FEF3C7;
+  color: #D97706;
+}
 
 .reprog-mode-label {
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 700;
   color: #0D4B5E;
   line-height: 1.25;
@@ -3621,8 +3638,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .modal-select-wrapper select::picker(select),
-  .notes-select-wrapper select::picker(select),
   .custom-dropdown-menu,
   .custom-calendar-popup,
   .custom-time-popover,
@@ -3666,6 +3683,7 @@
 }
 
 @media (max-width: 540px) {
+
   .session-summary-grid,
   .vista-meta-grid,
   .vista-stepper {
