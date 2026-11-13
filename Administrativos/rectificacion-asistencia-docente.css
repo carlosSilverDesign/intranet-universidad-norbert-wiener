@@ -3169,3 +3169,190 @@
   align-items: center;
   gap: 5px;
 }
+
+
+/* ==========================================================================
+   AJUSTES GLOBALES DE ROLES Y PERMISOS ADMIN (DIRECTOR APROBADOR ÚNICO)
+   ========================================================================== */
+
+.btn-generar-reprogramacion {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(15, 132, 143, 0.2);
+  white-space: nowrap;
+}
+
+.btn-generar-reprogramacion:hover {
+  background-color: #0b6871;
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(15, 132, 143, 0.35);
+  transform: translateY(-1px);
+}
+
+.role-badge-permiso {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  margin-left: 2px;
+}
+
+.inbox-role-btn:not(.active) .role-badge-permiso.can-resolve {
+  background: #E6F4F5;
+  color: #0F848F;
+}
+
+.inbox-role-btn:not(.active) .role-badge-permiso.can-generate {
+  background: #F3E8FF;
+  color: #6B21A8;
+}
+
+.inbox-role-btn:not(.active) .role-badge-permiso.view-only {
+  background: #F1F5F9;
+  color: #64748B;
+}
+
+.inbox-role-btn.active .role-badge-permiso {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+/* AVISO MODO SOLO VISUALIZACIÓN EN MODAL DE EVALUACIÓN */
+.eval-readonly-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: 10px;
+}
+
+.eval-readonly-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FEF3C7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.eval-readonly-text strong {
+  display: block;
+  font-size: 13.5px;
+  color: #92400E;
+  margin-bottom: 3px;
+}
+
+.eval-readonly-text p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #78350F;
+  line-height: 1.45;
+}
+
+.footer-readonly-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F1F5F9;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   SEGUNDA LÍNEA DEL HEADER: CAMBIO DE ROLES DESAHOGADO
+   ========================================================================== */
+.asist-header-roles-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 0 6px 0;
+  flex-wrap: wrap;
+}
+
+.roles-row-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* ==========================================================================
+   PERSONALIZACIÓN DE CHECKBOXES INSTITUCIONALES (WIENER TEAL)
+   ========================================================================== */
+.col-check input[type="checkbox"],
+.chk-row,
+#chkSelectAll {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.8px solid #94A3B8;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  transition: all 0.18s ease-in-out;
+  vertical-align: middle;
+  position: relative;
+  outline: none;
+  margin: 0 auto;
+}
+
+.col-check input[type="checkbox"]:hover,
+.chk-row:hover,
+#chkSelectAll:hover {
+  border-color: #0F848F;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.15);
+}
+
+.col-check input[type="checkbox"]:focus-visible,
+.chk-row:focus-visible,
+#chkSelectAll:focus-visible {
+  border-color: #0F848F;
+  box-shadow: 0 0 0 3px rgba(15, 132, 143, 0.28);
+}
+
+.col-check input[type="checkbox"]:checked,
+.chk-row:checked,
+#chkSelectAll:checked {
+  background-color: #0F848F;
+  border-color: #0F848F;
+}
+
+.col-check input[type="checkbox"]:checked::after,
+.chk-row:checked::after,
+#chkSelectAll:checked::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: solid #FFFFFF;
+  border-width: 0 2.2px 2.2px 0;
+  transform: rotate(45deg);
+  margin-top: -2px;
+  display: block;
+}

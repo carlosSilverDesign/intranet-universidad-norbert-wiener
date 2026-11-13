@@ -265,8 +265,9 @@
                 </svg>
               </span>
               <span class="text">Procesos Académicos</span>
-              <svg class="sidebar-arrow-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg class="sidebar-arrow-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </a>
@@ -311,11 +312,13 @@
           CS</div>
         <div class="sidebar-user-info">
           <p class="sidebar-user-role" id="adminSidebarRole">RRAA</p>
-          <p class="sidebar-user-name" id="adminSidebarName" title="Lic. Carlos Jesús Silva Sánchez">Lic. Carlos Silva</p>
+          <p class="sidebar-user-name" id="adminSidebarName" title="Lic. Carlos Jesús Silva Sánchez">Lic. Carlos Silva
+          </p>
           <p class="sidebar-user-code" id="adminSidebarCode">Registros Académicos</p>
         </div>
       </div>
-      <a href="../Docente/asistencia-docente-rc.html" class="sidebar-logout-btn" title="Ir a Portal Docente / Coordinador (Solicitar)">
+      <a href="../Docente/asistencia-docente-rc.html" class="sidebar-logout-btn"
+        title="Ir a Portal Docente / Coordinador (Solicitar)">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
@@ -348,59 +351,80 @@
             </div>
             <div class="asist-header-titles">
               <h1>Gestión de Asistencia y Reprogramación Docente</h1>
-              <p id="adminHeaderSubtitle">Bandeja unificada de aprobación cerrada: RRAA (Tardanzas / Observados),
-                Coordinación (Asignación de Reemplazo) y Dirección de Escuela (Inasistencias y Reprogramaciones).</p>
+              <p id="adminHeaderSubtitle">Bandeja Administrativa: Aprobación y resolución exclusiva por Dirección de
+                Escuela. La Coordinación Académica puede generar Solicitudes de Reprogramación y visualizar; RRAA y
+                otros perfiles cuentan con permisos de solo visualización.</p>
             </div>
           </div>
           <div class="asist-header-right">
-            <div class="inbox-role-switcher" role="radiogroup" aria-label="Bandeja de perfil aprobador">
-              <button type="button" class="inbox-role-btn active" data-inbox-role="RRAA" role="radio" aria-checked="true"
-                title="Bandeja RRAA: Rectificaciones de Tardanza y Observado">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="8" y="2.5" width="8" height="4" rx="1"></rect>
-                  <path d="M16 4.5h2a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2h2"></path>
-                  <path d="M9.5 14l2 2 4-4"></path>
-                </svg>
-                <span>RRAA</span>
-                <span class="inbox-badge" id="badgeInboxRRAA">1</span>
-              </button>
-              <button type="button" class="inbox-role-btn" data-inbox-role="COORDINADOR" role="radio" aria-checked="false"
-                title="Bandeja Coordinador: Asignación de Docente (A Programar) activo">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="9.5" cy="7.5" r="3.5"></circle>
-                  <path d="M3 19.5v-1a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5v1"></path>
-                  <line x1="19" y1="8.5" x2="19" y2="14.5"></line>
-                  <line x1="16" y1="11.5" x2="22" y2="11.5"></line>
-                </svg>
-                <span>Coordinador</span>
-                <span class="inbox-badge" id="badgeInboxCoord">1</span>
-              </button>
-              <button type="button" class="inbox-role-btn" data-inbox-role="DIRECTOR" role="radio" aria-checked="false"
-                title="Bandeja Director: Inasistencias y Reprogramaciones">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 21.5s7.5-3.6 7.5-9.5V5.5L12 3 4.5 5.5V12c0 5.9 7.5 9.5 7.5 9.5z"></path>
-                  <polyline points="9.5 12 11.3 13.8 14.8 10.2"></polyline>
-                </svg>
-                <span>Director</span>
-                <span class="inbox-badge" id="badgeInboxDirector">1</span>
-              </button>
-              <button type="button" class="inbox-role-btn" data-inbox-role="ALL" role="radio" aria-checked="false"
-                title="Ver todas las solicitudes sin filtro de bandeja">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polygon points="12 3 3 7.5 12 12 21 7.5 12 3"></polygon>
-                  <polyline points="3 12 12 16.5 21 12"></polyline>
-                  <polyline points="3 16.5 12 21 21 16.5"></polyline>
-                </svg>
-                <span>Todos</span>
-                <span class="inbox-badge" id="badgeInboxAll">4</span>
-              </button>
-            </div>
+            <a href="../Docente/asistencia-docente-rc.html?role=coordinador&action=reprogramar"
+              class="btn-generar-reprogramacion" id="btnGenerarReprogHeader"
+              title="Generar Solicitud de Reprogramación de Clases en nombre de un docente">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Generar Solicitud de Reprogramación</span>
+            </a>
           </div>
         </header>
+
+        <!-- SEGUNDA LÍNEA DEL HEADER: BANDEJA SEGÚN PERFIL ACTIVO (ESPACIO DESAHOGADO) -->
+        <div class="asist-header-roles-row">
+          <span class="roles-row-label">Bandeja según perfil activo:</span>
+          <div class="inbox-role-switcher" role="radiogroup" aria-label="Bandeja de perfil aprobador">
+            <button type="button" class="inbox-role-btn active" data-inbox-role="DIRECTOR" role="radio"
+              aria-checked="true"
+              title="Director de Escuela: Único perfil facultado para aprobar o rechazar solicitudes">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21.5s7.5-3.6 7.5-9.5V5.5L12 3 4.5 5.5V12c0 5.9 7.5 9.5 7.5 9.5z"></path>
+                <polyline points="9.5 12 11.3 13.8 14.8 10.2"></polyline>
+              </svg>
+              <span>Director</span>
+              <span class="role-badge-permiso can-resolve">Aprueba / Rechaza</span>
+              <span class="inbox-badge" id="badgeInboxDirector">2</span>
+            </button>
+            <button type="button" class="inbox-role-btn" data-inbox-role="COORDINADOR" role="radio" aria-checked="false"
+              title="Coordinador Académico: Puede generar Solicitudes de Reprogramación y visualizar (sin permiso para aprobar o rechazar)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="9.5" cy="7.5" r="3.5"></circle>
+                <path d="M3 19.5v-1a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5v1"></path>
+                <line x1="19" y1="8.5" x2="19" y2="14.5"></line>
+                <line x1="16" y1="11.5" x2="22" y2="11.5"></line>
+              </svg>
+              <span>Coordinador</span>
+              <span class="role-badge-permiso can-generate">Genera Reprog. • Solo ver</span>
+              <span class="inbox-badge" id="badgeInboxCoord">1</span>
+            </button>
+            <button type="button" class="inbox-role-btn" data-inbox-role="RRAA" role="radio" aria-checked="false"
+              title="Registros Académicos (RRAA): Acceso de consulta, validación de asistencia y planilla (solo visualización)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="8" y="2.5" width="8" height="4" rx="1"></rect>
+                <path d="M16 4.5h2a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2h2"></path>
+                <path d="M9.5 14l2 2 4-4"></path>
+              </svg>
+              <span>RRAA</span>
+              <span class="role-badge-permiso view-only">Solo ver</span>
+              <span class="inbox-badge" id="badgeInboxRRAA">1</span>
+            </button>
+            <button type="button" class="inbox-role-btn" data-inbox-role="ALL" role="radio" aria-checked="false"
+              title="Vista global de solicitudes consolidadas (solo visualización)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 3 3 7.5 12 12 21 7.5 12 3"></polygon>
+                <polyline points="3 12 12 16.5 21 12"></polyline>
+                <polyline points="3 16.5 12 21 21 16.5"></polyline>
+              </svg>
+              <span>Todos</span>
+              <span class="role-badge-permiso view-only">Solo ver</span>
+              <span class="inbox-badge" id="badgeInboxAll">4</span>
+            </button>
+          </div>
+        </div>
 
         <hr class="asist-header-divider">
 
@@ -414,7 +438,9 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polyline points="21 13 16 13 14 16 10 16 8 13 3 13"></polyline>
-                  <path d="M5.4 5.5 3 13v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5l-2.4-7.5a2 2 0 0 0-1.8-1.5H7.2a2 2 0 0 0-1.8 1.5z"></path>
+                  <path
+                    d="M5.4 5.5 3 13v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5l-2.4-7.5a2 2 0 0 0-1.8-1.5H7.2a2 2 0 0 0-1.8 1.5z">
+                  </path>
                 </svg>
                 <span>Solicitudes</span>
                 <span class="admin-subnav-badge" id="countTabSolicitudes">4</span>
@@ -467,11 +493,12 @@
           <section class="asist-filters-card" aria-label="Filtros de Solicitudes">
             <div class="filters-card-header-flex">
               <span class="filters-card-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2"
+                <!-- <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polygon points="22 4 2 4 10 13 10 19.5 14 21.5 14 13 22 4"></polygon>
-                </svg>
-                <span id="activeInboxBannerTitle">Bandeja activa: Registros Académicos (RRAA) — Tardanzas y Observados</span>
+                </svg> -->
+                <span id="activeInboxBannerTitle">Bandeja activa: Registros Académicos (RRAA) — Tardanzas y
+                  Observados</span>
               </span>
               <button type="button" class="btn-text-reset-filters" id="btnClearFilters"
                 title="Restablecer todos los filtros">
@@ -884,8 +911,9 @@
                     <input type="hidden" id="cronoAnio" value="2026">
                     <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                       <span class="custom-select-label">2026</span>
-                      <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
                     </button>
@@ -913,8 +941,9 @@
                     <input type="hidden" id="cronoMes" value="Noviembre">
                     <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                       <span class="custom-select-label">Noviembre</span>
-                      <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
                     </button>
@@ -955,12 +984,12 @@
                           viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg></div>
-                      <div class="custom-option" data-value="Octubre"><span>Octubre</span><svg
-                          class="option-check" viewBox="0 0 24 24" width="16" height="16">
+                      <div class="custom-option" data-value="Octubre"><span>Octubre</span><svg class="option-check"
+                          viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg></div>
-                      <div class="custom-option selected" data-value="Noviembre"><span>Noviembre</span><svg class="option-check"
-                          viewBox="0 0 24 24" width="16" height="16">
+                      <div class="custom-option selected" data-value="Noviembre"><span>Noviembre</span><svg
+                          class="option-check" viewBox="0 0 24 24" width="16" height="16">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg></div>
                       <div class="custom-option" data-value="Diciembre"><span>Diciembre</span><svg class="option-check"
@@ -1035,8 +1064,8 @@
 
                 <div class="asist-filter-item" style="grid-column: span 3; display: flex; align-items: flex-end;">
                   <button type="submit" class="btn-import-planilla" style="padding: 11px 24px;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                     <span>Guardar y Publicar Cronograma de Corte</span>
@@ -1128,8 +1157,9 @@
                   <input type="hidden" id="filterReportCurso" value="todos">
                   <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                     <span class="custom-select-label">Todos los cursos</span>
-                    <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      aria-hidden="true">
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                   </button>
@@ -1173,8 +1203,9 @@
                   <input type="hidden" id="filterReportAprobador" value="todos">
                   <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                     <span class="custom-select-label">Todos los evaluadores</span>
-                    <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg class="custom-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      aria-hidden="true">
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                   </button>
@@ -1384,7 +1415,8 @@
             <h3 class="modal-header-title" id="modalEvaluacionTitle" style="margin: 0; font-size: 16px;">
               Evaluación de Regularización de Asistencia
             </h3>
-            <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 12px; opacity: 0.92; color: #FFFFFF; font-weight: 600;">
+            <span
+              style="display: inline-flex; align-items: center; gap: 5px; font-size: 12px; opacity: 0.92; color: #FFFFFF; font-weight: 600;">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M20.5 13.4 13.4 20.5a2 2 0 0 1-2.8 0L3.5 13.4V4.5h8.9z"></path>
@@ -1440,7 +1472,7 @@
           </div>
         </div>
 
-        <!-- 2. Comparativa (Marcación Biométrica ó Reprogramación de Clases) -->
+        <!-- 2. Comparativa (Marcación en Intranet ó Reprogramación de Clases) -->
         <div class="eval-section-card">
           <div class="eval-section-header">
             <span class="eval-section-title">
@@ -1449,12 +1481,12 @@
                 <circle cx="12" cy="12" r="9.5"></circle>
                 <polyline points="12 7 12 12 15.5 14"></polyline>
               </svg>
-              <span id="evalSection2Title">2. Comparativa de Marcación Biométrica vs. Horario Oficial</span>
+              <span id="evalSection2Title">2. Comparativa de Marcación en Intranet vs. Horario Oficial</span>
             </span>
             <span class="badge-estado-incidencia" id="evalBadgeIncidencia">Observado</span>
           </div>
 
-          <!-- Vista 2A: Rectificación Biométrica -->
+          <!-- Vista 2A: Rectificación en Intranet -->
           <div class="eval-biometric-compare-grid" id="evalBiometricCompareGrid">
             <!-- Horario Oficial -->
             <div class="compare-box compare-box-official">
@@ -1490,7 +1522,7 @@
               <div class="compare-notes">Duración programada en sistema</div>
             </div>
 
-            <!-- Marcación Biométrica en Sede -->
+            <!-- Marcación en Intranet -->
             <div class="compare-box compare-box-recorded">
               <div class="compare-box-title">
                 <span class="compare-title-lead">
@@ -1671,6 +1703,25 @@
             </button>
           </div>
 
+          <!-- Aviso Institucional de Solo Visualización para Perfiles no Resolutivos -->
+          <div id="evalReadOnlyNotice" class="eval-readonly-notice" style="display: none; margin-bottom: 14px;">
+            <div class="eval-readonly-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <div class="eval-readonly-text">
+              <strong id="evalReadOnlyTitle">Modo Solo Visualización (Perfil: Coordinador Académico)</strong>
+              <p id="evalReadOnlyMsg">De acuerdo a la directiva institucional vigente, <strong>únicamente el Director de
+                  Escuela</strong> cuenta con la facultad para dictaminar, aprobar o rechazar solicitudes de
+                regularización de asistencia y reprogramaciones de clases. Su perfil tiene acceso exclusivo de consulta
+                y seguimiento.</p>
+            </div>
+          </div>
+
           <!-- Área Especial de Coordinador: Asignar Docente (A Programar) activo -->
           <div id="evalCoordAssignArea" style="display: none; margin-bottom: 14px;">
             <div class="coord-assign-card">
@@ -1685,27 +1736,36 @@
                   </svg>
                   <span>Paso 1 – Asignación de Docente de Reemplazo (Coordinación Académica)</span>
                 </strong>
-                <span>Selecciona un Docente (A Programar) activo diferente al docente titular antes de derivar al Director.</span>
+                <span>Selecciona un Docente (A Programar) activo diferente al docente titular antes de derivar al
+                  Director.</span>
               </div>
               <div class="form-field-item">
-                <label for="evalSelectDocenteReemplazo" style="font-weight: 700; color: #1E293B; margin-bottom: 6px; display: block;">
+                <label for="evalSelectDocenteReemplazo"
+                  style="font-weight: 700; color: #1E293B; margin-bottom: 6px; display: block;">
                   Nuevo Docente (A Programar) activo <span style="color: #DC2626;">*</span>
                 </label>
                 <div class="modal-select-wrapper-admin">
                   <select id="evalSelectDocenteReemplazo" class="modal-select-docente-admin">
                     <option value="">Seleccione Docente (A Programar) activo...</option>
-                    <option value="Jonah Miguel Asensio Peña">Jonah Miguel Asensio Peña (DOC-1042 - A Programar Activo)</option>
-                    <option value="Dayana Nicole Ventocilla Aguilar">Dayana Nicole Ventocilla Aguilar (DOC-1088 - A Programar Activo)</option>
-                    <option value="Carlos Alberto Paredes Quispe">Carlos Alberto Paredes Quispe (DOC-1095 - A Programar Activo)</option>
-                    <option value="Mariela Sofía Roldán Torres">Mariela Sofía Roldán Torres (DOC-1103 - A Programar Activo)</option>
-                    <option value="Fernando Morales Silva">Dr. Fernando Morales Silva (DOC-1120 - A Programar Activo)</option>
+                    <option value="Jonah Miguel Asensio Peña">Jonah Miguel Asensio Peña (DOC-1042 - A Programar Activo)
+                    </option>
+                    <option value="Dayana Nicole Ventocilla Aguilar">Dayana Nicole Ventocilla Aguilar (DOC-1088 - A
+                      Programar Activo)</option>
+                    <option value="Carlos Alberto Paredes Quispe">Carlos Alberto Paredes Quispe (DOC-1095 - A Programar
+                      Activo)</option>
+                    <option value="Mariela Sofía Roldán Torres">Mariela Sofía Roldán Torres (DOC-1103 - A Programar
+                      Activo)</option>
+                    <option value="Fernando Morales Silva">Dr. Fernando Morales Silva (DOC-1120 - A Programar Activo)
+                    </option>
                   </select>
-                  <svg class="modal-select-icon-admin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg class="modal-select-icon-admin" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </div>
-                <div class="modal-field-error-text" id="evalErrorDocenteReemplazo" role="alert" style="display: none; margin-top: 6px;">
+                <div class="modal-field-error-text" id="evalErrorDocenteReemplazo" role="alert"
+                  style="display: none; margin-top: 6px;">
                   No puedes asignar al mismo docente titular original en una reprogramación por reemplazo.
                 </div>
               </div>
@@ -1732,14 +1792,24 @@
       </div>
 
       <div class="modal-footer-pad" style="display: flex; justify-content: space-between; align-items: center;">
-        <button type="button" class="btn-cancel-modal" id="btnCerrarModalEvaluacion">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-          <span>Cerrar</span>
-        </button>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button type="button" class="btn-cancel-modal" id="btnCerrarModalEvaluacion">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span>Cerrar</span>
+          </button>
+          <span class="footer-readonly-pill" id="footerReadOnlyPillAsist" style="display: none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span>Solo Visualización</span>
+          </span>
+        </div>
         <div style="display: flex; gap: 10px;" id="evalActionButtonsGroup">
           <button type="button" class="btn-bulk-reject" id="btnModalEvalRechazar" style="padding: 10px 18px;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"

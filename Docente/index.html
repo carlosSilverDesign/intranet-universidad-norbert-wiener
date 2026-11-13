@@ -1173,17 +1173,32 @@
 
 
   <!-- ==========================================================================
-       MODAL: COMPONENTE DE MARCACIÓN DOCENTE UNIVERSITARIO
-       - Regla de 15 minutos previos al inicio de clase
-       - Lógica de empalme para clases consecutivas
+       MODAL: COMPONENTE DE MARCACIÓN DOCENTE UNIVERSITARIO (WIENER)
+       - Tipos soportados: HOR (Presencial), HNL (No Lectivas), HOS (Hospital), VIR (Virtual)
+       - Regla de 15 minutos previos al inicio de clase / actividad
+       - Lógica de empalme para sesiones consecutivas
        - Detección de conflictos de superposición
-       - Simulador interactivo para pruebas
+       - Validación de Marcación Hospitalaria (HOS)
+       - Régimen de Personal No Fiscalizable (sf_personal_no_fiscalizable)
+       - Origen de red / Conexión (ps_ip / CONEXION_ABR)
+       - Simulador interactivo enriquecido para pruebas completas
        ========================================================================== -->
   <div class="marcacion-modal-backdrop" id="marcacionModalBackdrop">
     <div class="marcacion-modal-window">
       <!-- Cabecera del Modal -->
       <div class="marcacion-modal-header">
-        <h3>Marcación de Asistencia Docente</h3>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background-color: #E6F3F4; display: flex; align-items: center; justify-content: center; color: #0F848F;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 700; color: #222; margin: 0; line-height: 1.2;">Marcación de Asistencia Docente</h3>
+            <span style="font-size: 12px; color: #5B6E80;">Control de Jornada Académica · Periodo 2026-II</span>
+          </div>
+        </div>
         <button type="button" class="marcacion-modal-close-btn" id="btnMarcacionModalClose" aria-label="Cerrar Ventana">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2.2">
@@ -1195,54 +1210,122 @@
 
       <!-- Cuerpo del Modal -->
       <div class="marcacion-modal-body">
-        <div
-          style="display: flex; justify-content: space-between; align-items: center; background: #F8FAFC; padding: 12px 16px; border-radius: 8px; border: 1px solid #E2E8F0;">
-          <div>
-            <span style="font-size: 11.5px; color: #5B6E80; font-weight: 600; text-transform: uppercase;">Hora
-              evaluada</span>
-            <div style="font-family: 'Lato', sans-serif; font-size: 22px; font-weight: 700; color: #222;"
-              id="modalCurrentEvalTime">08:00 AM</div>
+        <!-- Bloque de Contexto: Hora Evaluada, Fecha y Conexión de Red -->
+        <div class="marcacion-context-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span style="font-size: 11px; color: #5B6E80; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Hora del Sistema</span>
+              <div style="font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 800; color: #222; line-height: 1.1;"
+                id="modalCurrentEvalTime">08:00 AM</div>
+              <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+                <span class="badge-network-chip" id="modalNetworkChip">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                  <span id="modalNetworkText">Acceso Externo (190.237.45.12)</span>
+                </span>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 11px; color: #5B6E80; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Fecha Evaluada</span>
+              <div style="font-size: 13.5px; font-weight: 700; color: #222;" id="modalCurrentEvalDate">Viernes, 13 de Noviembre de 2026</div>
+              <div style="margin-top: 4px;">
+                <span class="badge-regimen-chip" id="modalRegimenBadge">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  <span id="modalRegimenText">Régimen: Docente Regular</span>
+                </span>
+              </div>
+            </div>
           </div>
-          <div style="text-align: right;">
-            <span style="font-size: 11.5px; color: #5B6E80; font-weight: 600; text-transform: uppercase;">Fecha</span>
-            <div style="font-size: 14px; font-weight: 600; color: #222;" id="modalCurrentEvalDate">Lunes, 27 de Julio de
-              2026</div>
+        </div>
+
+        <!-- Banner Informativo: Personal No Fiscalizable (sf_personal_no_fiscalizable = 1) -->
+        <div class="marcacion-no-fiscalizable-alert" id="marcacionNoFiscalizableAlert" style="display: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <div>
+            <strong>Personal No Fiscalizable (Art. 43 D.Leg 728):</strong>
+            <span>Usted cuenta con condición de no fiscalización horaria inmediata. Sus registros tienen carácter referencial y académico conforme a las directivas de la Dirección de Gestión Docente.</span>
           </div>
         </div>
 
         <!-- Alerta de conflicto si se detecta superposición -->
         <div class="marcacion-conflict-alert" id="marcacionConflictAlert" style="display: none;">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#991B1B">
-            <path
-              d="M502.92-300.15q9.39-9.39 9.39-22.93T502.92-346q-9.38-9.38-22.92-9.38-13.54 0-22.92 9.38-9.39 9.38-9.39 22.92 0 13.54 9.39 22.93 9.38 9.38 22.92 9.38 13.54 0 22.92-9.38Zm-1.54-145.4q8.62-8.62 8.62-21.37v-180q0-12.75-8.63-21.38-8.63-8.62-21.38-8.62-12.76 0-21.37 8.62-8.62 8.63-8.62 21.38v180q0 12.75 8.63 21.37 8.63 8.63 21.38 8.63 12.76 0 21.37-8.63ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#991B1B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
           </svg>
           <span id="marcacionConflictText">Conflicto de horario detectado.</span>
         </div>
 
         <!-- Botón de Empalme Continuo (Aparece cuando hay clases consecutivas) -->
         <div id="marcacionEmpalmeContainer" style="display: none;">
-          <button type="button" class="btn btn-primary" id="btnEmpalmeContinuo"
-            style="width: 100%; background-color: #0F848F;">
-            ⚡ Empalme Continuo: Registrar Salida y Entrada consecutivas
+          <button type="button" id="btnEmpalmeContinuo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span id="btnEmpalmeContinuoText">Empalme Continuo: Registrar Salida y Entrada consecutivas</span>
           </button>
         </div>
 
-        <!-- Lista dinámica de clases a evaluar -->
+        <!-- Lista dinámica de clases / actividades a evaluar -->
         <div id="marcacionClasesList" style="display: flex; flex-direction: column; gap: 14px;">
           <!-- Generado dinámicamente por scripts.js -->
         </div>
 
-        <!-- Panel del Simulador Interactivo de Tiempo -->
+        <!-- Panel del Simulador Interactivo de Tiempo y Casuísticas -->
         <div class="marcacion-simulator-panel">
-          <span class="marcacion-simulator-title">Simulador de Horario para Pruebas:</span>
-          <div class="marcacion-simulator-buttons">
-            <button type="button" class="btn-sim" data-time="07:40">07:40 AM (Deshabilitado)</button>
-            <button type="button" class="btn-sim" data-time="07:50">07:50 AM (Habilita 10m antes)</button>
-            <button type="button" class="btn-sim" data-time="08:05">08:05 AM (En clase 1)</button>
-            <button type="button" class="btn-sim" data-time="09:50">09:50 AM (Empalme Consecutivo)</button>
-            <button type="button" class="btn-sim" data-time="10:15">10:15 AM (En clase 2)</button>
-            <button type="button" class="btn-sim" data-time="10:35">10:35 AM (Superposición)</button>
-            <button type="button" class="btn-sim" data-time="real">Hora Real</button>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;">
+            <span class="marcacion-simulator-title">Simulador de Horario para Pruebas:</span>
+            <span style="font-size: 11px; color: #5B6E80;">Haz clic en una hora para evaluar las transiciones en vivo</span>
+          </div>
+          <div class="marcacion-simulator-buttons" id="simulatorButtonsContainer">
+            <!-- Botonera de tiempos del día -->
+            <button type="button" class="btn-sim" data-time="06:40">06:40 AM (Deshabilitado)</button>
+            <button type="button" class="btn-sim" data-time="06:50">06:50 AM (Habilita Hospital - 10m antes)</button>
+            <button type="button" class="btn-sim" data-time="07:15">07:15 AM (En Hospital - Entrada Registrada)</button>
+            <button type="button" class="btn-sim" data-time="12:50">12:50 PM (Habilita No Lectivas HNL)</button>
+            <button type="button" class="btn-sim" data-time="13:15">01:15 PM (En Horas No Lectivas)</button>
+            <button type="button" class="btn-sim" data-time="13:40">01:40 PM (Empalme HNL ➔ Presencial)</button>
+            <button type="button" class="btn-sim" data-time="14:15">02:15 PM (En Clase Presencial WL611)</button>
+            <button type="button" class="btn-sim" data-time="16:50">04:50 PM (Habilita Clase Virtual VIR)</button>
+            <button type="button" class="btn-sim" data-time="17:45">05:45 PM (En Clase Virtual Activa)</button>
+            <button type="button" class="btn-sim" data-time="18:35">06:35 PM (Fin de Jornada)</button>
+            <button type="button" class="btn-sim" data-time="real">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align: -1px; margin-right: 3px;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>Hora Real
+            </button>
+          </div>
+
+          <!-- Controles de pruebas adicionales -->
+          <div class="marcacion-sim-toolbar">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase;">Casos Especiales:</span>
+              <button type="button" class="btn-sim-toggle" id="btnToggleFiscalizable" title="Alternar entre régimen regular y no fiscalizable">
+                Régimen: Docente Regular
+              </button>
+              <button type="button" class="btn-sim-toggle" id="btnToggleSuperposicion" title="Simular superposición de horarios a las 05:30 PM">
+                Superposición: Desactivada
+              </button>
+            </div>
+            <div>
+              <button type="button" class="btn-sim-reset" id="btnResetMarcaciones" title="Restablecer marcaciones al estado inicial de demo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align: -1px; margin-right: 3px;">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                </svg>Restablecer Marcaciones
+              </button>
+            </div>
           </div>
         </div>
       </div>

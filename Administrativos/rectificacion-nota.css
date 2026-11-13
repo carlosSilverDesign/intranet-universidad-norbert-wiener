@@ -313,12 +313,17 @@ html::-webkit-scrollbar-thumb:hover {
   height: 0 !important;
 }
 
-.header-actions-group {
+.notes-header-right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
-  flex-wrap: wrap;
+}
+
+.header-actions-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .btn-primary-action,
@@ -2400,5 +2405,193 @@ html::-webkit-scrollbar-thumb:hover {
 
 .btn-undo-action:hover {
   background-color: #DC2626;
+  color: #FFFFFF;
+}
+
+
+/* BANNER SOLO VISUALIZACIÓN EN MODAL */
+.modal-readonly-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: 10px;
+  margin-top: 16px;
+}
+
+.readonly-banner-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FEF3C7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.readonly-banner-text strong {
+  display: block;
+  font-size: 13.5px;
+  color: #92400E;
+  margin-bottom: 3px;
+}
+
+.readonly-banner-text p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #78350F;
+  line-height: 1.45;
+}
+
+.footer-readonly-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F1F5F9;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+
+
+
+  .director-action-buttons-group {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .director-action-buttons-group .btn-nueva-solicitud {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .demo-role-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inbox-role-switcher {
+    flex-wrap: wrap;
+  }
+
+  .inbox-role-btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   INTEGRIDAD DE ICONOS SVG (PREVENCIÓN DE RECORTES Y DISTORSIÓN)
+   ========================================================================== */
+.sidebar svg,
+.rect-page-container svg,
+.modal-overlay svg,
+.custom-calendar-popup svg,
+.custom-dropdown-menu svg,
+.toast-notification svg,
+.btn-row-action svg,
+.btn-primary-action svg,
+.btn-secondary-black svg {
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   SEGUNDA LÍNEA PROTOTIPO: SELECTOR DE ROL ADMINISTRATIVO
+   ========================================================================== */
+.demo-role-container-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 0 10px 0;
+  flex-wrap: wrap;
+}
+
+.demo-role-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.inbox-role-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.inbox-role-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  position: relative;
+}
+
+.inbox-role-btn:hover {
+  color: #0F172A;
+  background: #F1F5F9;
+}
+
+.inbox-role-btn.active {
+  background: #0F848F;
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(15, 132, 143, 0.25);
+}
+
+.role-avatar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.role-badge-permiso {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  margin-left: 2px;
+}
+
+.inbox-role-btn:not(.active) .role-badge-permiso.can-resolve {
+  background: #E6F4F5;
+  color: #0F848F;
+}
+
+.inbox-role-btn:not(.active) .role-badge-permiso.view-only {
+  background: #F1F5F9;
+  color: #64748B;
+}
+
+.inbox-role-btn.active .role-badge-permiso {
+  background: rgba(255, 255, 255, 0.25);
   color: #FFFFFF;
 }

@@ -294,14 +294,14 @@
 
     <!-- Perfil Directora de Escuela en footer del sidebar -->
     <div class="sidebar-footer">
-      <div class="sidebar-user-profile">
-        <div class="user-avatar-initials"
+      <div class="sidebar-user-profile" id="sidebarUserProfileCard">
+        <div class="user-avatar-initials" id="sidebarUserAvatarInitials"
           style="width: 40px; height: 40px; border-radius: 50%; background: #0F848F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px;">
           VB</div>
         <div class="sidebar-user-info">
-          <p class="sidebar-user-role">Director de Escuela</p>
-          <p class="sidebar-user-name" title="Vergara Pinto Brenda Roxana">Vergara Pinto Brenda</p>
-          <p class="sidebar-user-code">Super Admin EAP</p>
+          <p class="sidebar-user-role" id="sidebarUserRoleText">Director de Escuela</p>
+          <p class="sidebar-user-name" id="sidebarUserNameText" title="Vergara Pinto Brenda Roxana">Vergara Pinto Brenda</p>
+          <p class="sidebar-user-code" id="sidebarUserCodeText">Super Admin EAP (Aprobador Único)</p>
         </div>
       </div>
       <a href="../Docente/rectificacion-nota.html" class="sidebar-logout-btn" title="Ir a Vista Docente">
@@ -372,9 +372,44 @@
             </div>
           </div>
 
-          <!-- Botones quitados (header-actions-group) según requerimiento de vista Admin -->
-          <div class="rect-header-right"></div>
+          <div class="notes-header-right">
+            <div class="header-actions-group">
+              <button type="button" class="btn-primary-action" id="btnOpenModalRectificacion">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Rectificación de Nota</span>
+              </button>
+              <button type="button" class="btn-secondary-black" id="btnOpenModalExtemporanea">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Nota Extemporánea</span>
+              </button>
+            </div>
+          </div>
         </header>
+
+        <!-- SEGUNDA LÍNEA PROTOTIPO: SELECTOR DE ROL ADMINISTRATIVO -->
+        <div class="demo-role-container-row" id="demoRoleContainerRow">
+          <span class="demo-role-label">Perfil Demo Admin:</span>
+          <div class="inbox-role-switcher" id="notasRoleSwitcher" role="radiogroup" aria-label="Demo de rol administrativo">
+            <button type="button" class="inbox-role-btn active" data-role="DIRECTOR" role="radio" aria-checked="true"
+              title="Director de Escuela: Doble rol (Docente - Administrativo). Único que aprueba, rechaza y genera solicitudes desde Admin">
+              <span class="role-avatar-dot" style="background:#0F848F;"></span>
+              <span>Director</span>
+              <span class="role-badge-permiso can-resolve">Aprueba / Rechaza</span>
+            </button>
+            <button type="button" class="inbox-role-btn" data-role="RRAA" role="radio" aria-checked="false"
+              title="Registros Académicos (RRAA): Solo visualización de auditoría y actas">
+              <span class="role-avatar-dot" style="background:#0284C7;"></span>
+              <span>RRAA</span>
+              <span class="role-badge-permiso view-only">Solo ver</span>
+            </button>
+          </div>
+        </div>
 
         <hr class="rect-header-divider">
 
@@ -405,7 +440,7 @@
         <aside class="undo-rejection-banner" id="undoBanner" style="display: none;" aria-live="polite">
           <div class="undo-banner-left">
             <div class="undo-pulse-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="12" y1="8" x2="12" y2="12"></line>
                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
@@ -422,14 +457,14 @@
         <!-- TARJETA DE FILTROS DOCENTE (Mismos filtros exactos) -->
         <section class="rect-filters-card" aria-label="Filtros de Solicitudes">
           <div class="filters-card-header-flex">
-            <span class="filters-card-title">Criterios de Búsqueda</span>
+            <span class="filters-card-title">CRITERIOS DE BÚSQUEDA</span>
             <button type="button" class="btn-text-reset-filters" id="btnClearFilters"
               title="Restablecer todos los filtros">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
                 <path d="M3 3v5h5"></path>
               </svg>
-              <span>Restablecer</span>
+              <span>Restablecer filtros</span>
             </button>
           </div>
 
@@ -573,13 +608,13 @@
                 id="pagTotal">2</span></div>
             <div class="pagination-controls">
               <button type="button" class="btn-page-nav" disabled aria-label="Página anterior">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
               </button>
               <span class="page-number active">1</span>
               <button type="button" class="btn-page-nav" disabled aria-label="Página siguiente">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
               </button>
@@ -1159,10 +1194,34 @@
             </button>
           </div>
         </div>
+
+        <!-- Banner Institucional de Modo Solo Visualización para Perfiles no Resolutivos -->
+        <div class="modal-readonly-banner" id="modalReadOnlyBanner" style="display: none;">
+          <div class="readonly-banner-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="readonly-banner-text">
+            <strong id="modalReadOnlyTitle">Modo Solo Visualización (Perfil: Coordinador Académico)</strong>
+            <p id="modalReadOnlyMsg">De acuerdo a la directiva institucional, <strong>únicamente el Director de Escuela</strong> (quien posee doble rol docente-administrativo) cuenta con la atribución para dictaminar, procesar en SIGU o rechazar solicitudes de rectificación de notas y notas extemporáneas. Su perfil cuenta con acceso exclusivo de consulta.</p>
+          </div>
+        </div>
       </div>
 
       <div class="modal-footer-rect modal-footer-split">
-        <button type="button" class="btn-cancel-modal" id="btnCerrarModalResumen">Cerrar</button>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button type="button" class="btn-cancel-modal" id="btnCerrarModalResumen">Cerrar</button>
+          <span class="footer-readonly-pill" id="footerReadOnlyPill" style="display: none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span>Solo Visualización</span>
+          </span>
+        </div>
         <div class="modal-footer-actions-right" id="resumenActionButtonsGroup" style="display: none;">
           <button type="button" class="btn-danger-reject" id="btnRejectRequest">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">

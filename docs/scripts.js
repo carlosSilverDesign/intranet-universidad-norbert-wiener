@@ -157,59 +157,150 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ==========================================================================
-  // 3. MOTOR DE MARCACIÓN DOCENTE UNIVERSITARIO
-  // - Regla de habilitación 15 minutos antes del inicio de clase
-  // - Lógica de empalme para clases consecutivas (salida A + entrada B)
-  // - Detección y prevención de superposiciones o conflictos de horario
+  // 3. MOTOR DE MARCACIÓN DOCENTE UNIVERSITARIO (WIENER - PKG_MARCADOR)
+  // - Soporte de 4 Tipos Reales:
+  //     * HOR: Horario Lectivo Regular (Aulas / Labs en campus)
+  //     * HNL: Horas No Lectivas (Asesoría / Preparación / Investigación)
+  //     * HOS: Campo Clínico / Hospital (Sede Externa y Validación HOS)
+  //     * VIR: Clases Virtuales / Remotas (Aula sincrónica online)
+  // - Regla de habilitación de 15 minutos previos al inicio
+  // - Detección de Empalme Continuo para actividades consecutivas
+  // - Detección de Superposición / Conflicto de horarios
+  // - Soporte de Personal No Fiscalizable (sf_personal_no_fiscalizable)
+  // - Conexión de red / Origen IP (ps_ip / CONEXION_ABR)
   // ==========================================================================
 
-  // Datos de las materias asignadas al docente para el día de hoy
-  const sesionesDocente = [
+  // Estado de configuración y pruebas
+  let esDocenteNoFiscalizable = false;
+  let superposicionActiva = false;
+
+  // Catálogo base de sesiones representativas del docente para el día de hoy
+  const sesionesBase = [
     {
-      id: 'AD2N6',
-      codigo: 'AD2N6',
-      nombre: 'Estructura y Función del Cuerpo Humano',
-      tipo: 'Teoría',
-      aula: 'Aula T101, Piso 4 - Local 1',
-      modalidad: 'Presencial',
-      inicioMinutos: 8 * 60,       // 08:00 AM (480 min)
-      finMinutos: 10 * 60,         // 10:00 AM (600 min)
-      inicioStr: '08:00 AM',
-      finStr: '10:00 AM',
-      marcadoEntrada: null,
-      marcadoSalida: null
+      id: 'HOS-MH3083',
+      tipo: 'HOS',
+      tipoEtiqueta: 'CAMPO CLÍNICO · HOSPITAL',
+      carrera: 'MEDICINA HUMANA',
+      seccion: 'MD8M9',
+      cursoCodigo: 'MH3083',
+      nombre: 'Pediatría I',
+      sede: 'Sede Externa - Hospitales',
+      aula: 'Hospital Externo (Docente Madre Niño)',
+      modalidad: 'Hospitalaria',
+      inicioMinutos: 7 * 60,       // 07:00 AM (420 min)
+      finMinutos: 13 * 60,        // 01:00 PM (780 min)
+      inicioStr: '07:00 AM',
+      finStr: '01:00 PM',
+      bloqueInicio: '0700',
+      bloqueFin: '1300',
+      marcadoEntrada: '06:48 AM',  // Entrada real registrada según respuesta del SP
+      marcadoSalida: null,
+      fechaMarcacionHospital: '13/11/2026 06:48 AM', // Validación hospitalaria en nodo HOS
+      conexion: 'Acceso Externo',
+      institucion: '51'
     },
     {
-      id: 'AF1M3',
-      codigo: 'AF1M3',
-      nombre: 'Sistema Circulatorio',
-      tipo: 'Teoría',
-      aula: 'Aula S103, Piso 5 - Local 1',
-      modalidad: 'Presencial',
-      inicioMinutos: 10 * 60,      // 10:00 AM (600 min) -> ¡Empalme consecutivo exacto con AD2N6!
-      finMinutos: 12 * 60,         // 12:00 PM (720 min)
-      inicioStr: '10:00 AM',
-      finStr: '12:00 PM',
-      marcadoEntrada: null,
-      marcadoSalida: null
-    },
-    {
-      id: 'BM2P1',
-      codigo: 'BM2P1',
-      nombre: 'Bioquímica Médica (Sesión Especial Práctica)',
-      tipo: 'Práctica',
-      aula: 'Laboratorio L204, Piso 2 - Local 1',
-      modalidad: 'Presencial',
-      inicioMinutos: 10 * 60 + 30,  // 10:30 AM (630 min) -> ¡Conflicto de superposición con AF1M3!
-      finMinutos: 12 * 60 + 30,     // 12:30 PM (750 min)
-      inicioStr: '10:30 AM',
-      finStr: '12:30 PM',
+      id: 'HNL-B6',
+      tipo: 'HNL',
+      tipoEtiqueta: 'HORA NO LECTIVA (HNL)',
+      carrera: 'ENFERMERÍA',
+      seccion: 'HNL-01',
+      cursoCodigo: 'B6',
+      nombre: 'Preparación de Clases y Asesoría Académica',
+      sede: 'Local 1 - Sede Central',
+      aula: 'Sin Aula (Carga No Lectiva)',
+      modalidad: 'No Lectiva',
+      inicioMinutos: 13 * 60,       // 01:00 PM (780 min)
+      finMinutos: 13 * 60 + 45,    // 01:45 PM (825 min) -> Empalma con clase presencial WL611
+      inicioStr: '01:00 PM',
+      finStr: '01:45 PM',
+      bloqueInicio: '1300',
+      bloqueFin: '1345',
       marcadoEntrada: null,
       marcadoSalida: null,
-      esSuperposicion: true
+      fechaMarcacionHospital: null,
+      conexion: 'Red Campus Wiener',
+      institucion: '51'
+    },
+    {
+      id: 'HOR-EN7021',
+      tipo: 'HOR',
+      tipoEtiqueta: 'LECTIVA PRESENCIAL',
+      carrera: 'ENFERMERÍA',
+      seccion: 'EN2M5',
+      cursoCodigo: 'EN7021',
+      nombre: 'Sistema Musculoesquelético',
+      sede: 'Local 1 - Sede Central',
+      aula: 'Aula WL611, Piso 6',
+      modalidad: 'Presencial',
+      inicioMinutos: 13 * 60 + 45,  // 01:45 PM (825 min) -> Empalme exacto con HNL
+      finMinutos: 15 * 60 + 15,    // 03:15 PM (915 min)
+      inicioStr: '01:45 PM',
+      finStr: '03:15 PM',
+      bloqueInicio: '1345',
+      bloqueFin: '1515',
+      marcadoEntrada: null,
+      marcadoSalida: null,
+      fechaMarcacionHospital: null,
+      conexion: 'Red Campus Wiener',
+      institucion: '51'
+    },
+    {
+      id: 'VIR-MH2012',
+      tipo: 'VIR',
+      tipoEtiqueta: 'CLASE VIRTUAL / REMOTA',
+      carrera: 'MEDICINA HUMANA',
+      seccion: 'MD4V1',
+      cursoCodigo: 'MH2012',
+      nombre: 'Epidemiología Clínica y Salud Pública',
+      sede: 'Campus Virtual Wiener',
+      aula: 'Sala Sincrónica Blackboard / Teams',
+      modalidad: 'Virtual Sincrónica',
+      inicioMinutos: 17 * 60,      // 05:00 PM (1020 min)
+      finMinutos: 18 * 60 + 30,    // 06:30 PM (1110 min)
+      inicioStr: '05:00 PM',
+      finStr: '06:30 PM',
+      bloqueInicio: '1700',
+      bloqueFin: '1830',
+      marcadoEntrada: null,
+      marcadoSalida: null,
+      fechaMarcacionHospital: null,
+      conexion: 'Acceso Externo',
+      urlVirtual: 'https://campusvirtual.uwiener.edu.pe',
+      institucion: '51'
     }
   ];
 
+  // Sesión opcional para simular y validar superposición / conflicto de horario
+  const sesionConflicto = {
+    id: 'HOR-TALL033',
+    tipo: 'HOR',
+    tipoEtiqueta: 'LECTIVA PRESENCIAL (TALLER)',
+    carrera: 'TALLERES ARTÍSTICOS',
+    seccion: 'TALLT10',
+    cursoCodigo: 'TALL033',
+    nombre: 'Guitarra Acústica',
+    sede: 'Local 2 - Av. Arequipa',
+    aula: 'Aula WT1002, Piso 10',
+    modalidad: 'Presencial',
+    inicioMinutos: 17 * 60 + 30, // 05:30 PM (1050 min) -> Coincide con VIR-MH2012 (05:00 - 06:30 PM)
+    finMinutos: 19 * 60,         // 07:00 PM (1140 min)
+    inicioStr: '05:30 PM',
+    finStr: '07:00 PM',
+    bloqueInicio: '1730',
+    bloqueFin: '1900',
+    marcadoEntrada: null,
+    marcadoSalida: null,
+    fechaMarcacionHospital: null,
+    conexion: 'Red Campus Wiener',
+    institucion: '51',
+    esSuperposicion: true
+  };
+
+  // Arreglo reactivo en memoria
+  let sesionesDocente = JSON.parse(JSON.stringify(sesionesBase));
+
+  // Referencias a elementos del DOM
   const marcacionModalBackdrop = document.getElementById('marcacionModalBackdrop');
   const btnOpenMarcacionModal = document.getElementById('btnOpenMarcacionModal');
   const btnMarcacionModalClose = document.getElementById('btnMarcacionModalClose');
@@ -218,6 +309,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const marcacionConflictText = document.getElementById('marcacionConflictText');
   const marcacionEmpalmeContainer = document.getElementById('marcacionEmpalmeContainer');
   const btnEmpalmeContinuo = document.getElementById('btnEmpalmeContinuo');
+  const modalNetworkChip = document.getElementById('modalNetworkChip');
+  const modalNetworkText = document.getElementById('modalNetworkText');
+  const modalRegimenBadge = document.getElementById('modalRegimenBadge');
+  const marcacionNoFiscalizableAlert = document.getElementById('marcacionNoFiscalizableAlert');
+  const btnToggleFiscalizable = document.getElementById('btnToggleFiscalizable');
+  const btnToggleSuperposicion = document.getElementById('btnToggleSuperposicion');
+  const btnResetMarcaciones = document.getElementById('btnResetMarcaciones');
 
   function obtenerMinutosActuales() {
     if (modoSimulacionActivo) {
@@ -228,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formatearMinutosAHora(minutosTotales) {
-    const h = Math.floor(minutosTotales / 60);
+    const h = Math.floor(minutosTotales / 60) % 24;
     const m = minutosTotales % 60;
     const p = h >= 12 ? 'PM' : 'AM';
     const h12 = h % 12 || 12;
@@ -243,10 +341,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Regla de 15 minutos: habilitar si faltan 15 minutos o menos
     const habilitadoPorVentana15Min = minutosParaInicio <= 15;
 
-    // Detectar clase anterior consecutiva (ej: fin de clase A coincide con inicio de clase B)
+    // Detectar si hay una clase inmediatamente previa consecutiva
     const claseAnteriorConsecutiva = sesionesDocente.find(s => s.finMinutos === sesion.inicioMinutos && s.id !== sesion.id);
 
-    // Detectar superposición de horario con otra clase
+    // Detectar superposición de horario con otra clase simultánea
     const clasesSuperpuestas = sesionesDocente.filter(s => {
       if (s.id === sesion.id) return false;
       return Math.max(s.inicioMinutos, sesion.inicioMinutos) < Math.min(s.finMinutos, sesion.finMinutos);
@@ -271,6 +369,21 @@ document.addEventListener('DOMContentLoaded', () => {
       modalCurrentEvalTime.textContent = horaActualStr;
     }
 
+    // Actualizar estado de régimen no fiscalizable en UI
+    if (modalRegimenBadge) {
+      if (esDocenteNoFiscalizable) {
+        modalRegimenBadge.textContent = 'Régimen: No Fiscalizable';
+        modalRegimenBadge.className = 'badge-regimen-chip no-fiscalizable';
+      } else {
+        modalRegimenBadge.textContent = 'Régimen: Docente Regular';
+        modalRegimenBadge.className = 'badge-regimen-chip';
+      }
+    }
+
+    if (marcacionNoFiscalizableAlert) {
+      marcacionNoFiscalizableAlert.style.display = esDocenteNoFiscalizable ? 'flex' : 'none';
+    }
+
     if (!marcacionClasesList) return;
 
     marcacionClasesList.innerHTML = '';
@@ -280,6 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let hayClaseHabilitada = false;
     let claseHabilitadaCodigo = '';
+    let claseEnCursoCodigo = '';
 
     sesionesDocente.forEach(sesion => {
       const evalInfo = evaluarSesion(sesion, minutosActuales);
@@ -290,14 +404,15 @@ document.addEventListener('DOMContentLoaded', () => {
       let puedeMarcarEntrada = false;
       let puedeMarcarSalida = false;
 
-      // 1. Estado completado
+      // 1. Estado completado (Entrada y Salida registradas)
       if (sesion.marcadoEntrada && sesion.marcadoSalida) {
         estadoTexto = 'Asistencia Completada';
-        badgeColor = '#278B52';
-        badgeBg = '#E7F8EF';
+        badgeColor = '#166A74';
+        badgeBg = '#E6F3F4';
       }
-      // 2. Estado en dictado
+      // 2. Estado en dictado / en curso (Entrada registrada, salida pendiente)
       else if (sesion.marcadoEntrada && !sesion.marcadoSalida) {
+        claseEnCursoCodigo = sesion.cursoCodigo;
         if (evalInfo.yaFinalizo) {
           estadoTexto = 'Pendiente de Salida (Hora cumplida)';
           badgeColor = '#BA7517';
@@ -309,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         puedeMarcarSalida = true;
       }
-      // 3. Estado no marcado
+      // 3. Estado no marcado aún
       else {
         if (evalInfo.habilitadoPorVentana15Min && !evalInfo.yaFinalizo) {
           estadoTexto = evalInfo.yaInicio ? 'En Curso · Habilitado' : 'Habilitado (15 min antes)';
@@ -317,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
           badgeBg = '#E6F3F4';
           puedeMarcarEntrada = true;
           hayClaseHabilitada = true;
-          claseHabilitadaCodigo = sesion.codigo;
+          claseHabilitadaCodigo = sesion.cursoCodigo;
         } else if (!evalInfo.habilitadoPorVentana15Min) {
           estadoTexto = `Pendiente (Habilita a las ${formatearMinutosAHora(sesion.inicioMinutos - 15)})`;
           badgeColor = '#64748B';
@@ -329,7 +444,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Detectar empalme consecutivo
+      // Si es no fiscalizable, siempre puede registrar de forma referencial
+      if (esDocenteNoFiscalizable && !sesion.marcadoEntrada && !evalInfo.yaFinalizo) {
+        puedeMarcarEntrada = true;
+      }
+
+      // Detectar empalme consecutivo (ej. HNL termina a las 01:45 PM y HOR inicia a las 01:45 PM)
       if (evalInfo.claseAnteriorConsecutiva && !sesion.marcadoEntrada) {
         const claseAnt = evalInfo.claseAnteriorConsecutiva;
         if (claseAnt.marcadoEntrada && !claseAnt.marcadoSalida && evalInfo.habilitadoPorVentana15Min) {
@@ -337,67 +457,157 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Detectar superposición
+      // Detectar superposición conflictiva
       if (sesion.esSuperposicion && evalInfo.hayConflictoSuperposicion && (puedeMarcarEntrada || sesion.marcadoEntrada)) {
         haySuperposicionActiva = true;
-        textoConflicto = `Alerta de conflicto: La clase ${sesion.codigo} coincide en horario con ${evalInfo.clasesSuperpuestas.map(c => c.codigo).join(', ')}. El sistema bloquea duplicidad de horas.`;
+        textoConflicto = `Alerta de conflicto detectada: La sesión ${sesion.cursoCodigo} coincide en horario con ${evalInfo.clasesSuperpuestas.map(c => c.cursoCodigo).join(', ')}. El sistema institucional bloquea duplicidad de horas simultáneas.`;
       }
 
-      // Renderizar tarjeta de clase
+      // Etiquetas y estilos para badges según Tipo de Marcación
+      let badgeTipoClase = 'badge-tipo-hor';
+      let badgeTipoIcono = '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>';
+
+      if (sesion.tipo === 'HNL') {
+        badgeTipoClase = 'badge-tipo-hnl';
+        badgeTipoIcono = '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>';
+      } else if (sesion.tipo === 'HOS') {
+        badgeTipoClase = 'badge-tipo-hos';
+        badgeTipoIcono = '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
+      } else if (sesion.tipo === 'VIR') {
+        badgeTipoClase = 'badge-tipo-vir';
+        badgeTipoIcono = '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>';
+      }
+
+      // Textos dinámicos para los botones de acción según casuística
+      let labelBotonEntrada = 'Marcar Entrada';
+      let labelBotonSalida = 'Marcar Salida';
+
+      if (sesion.tipo === 'HOS') {
+        labelBotonEntrada = 'Marcar Entrada Hospital';
+        labelBotonSalida = 'Marcar Salida Hospital';
+      } else if (sesion.tipo === 'HNL') {
+        labelBotonEntrada = 'Marcar Inicio No Lectivas';
+        labelBotonSalida = 'Marcar Fin No Lectivas';
+      } else if (sesion.tipo === 'VIR') {
+        labelBotonEntrada = 'Marcar Entrada Virtual';
+        labelBotonSalida = 'Marcar Salida Virtual';
+      }
+
+      if (esDocenteNoFiscalizable && !evalInfo.habilitadoPorVentana15Min && !sesion.marcadoEntrada) {
+        labelBotonEntrada += ' (Referencial)';
+      }
+
+      // Texto explicativo de la ventana de marcación
+      let textoVentana = 'Ventana de marcación activa';
+      if (evalInfo.minutosParaInicio > 15) {
+        textoVentana = `Ventana habilitará 15 min antes (${formatearMinutosAHora(sesion.inicioMinutos - 15)})`;
+      } else if (evalInfo.yaFinalizo) {
+        textoVentana = 'Horario programado concluido';
+      }
+
+      // Renderizar tarjeta de sesión académica con clara jerarquía visual
       const classCard = document.createElement('div');
       classCard.className = 'marcacion-class-card';
+      classCard.id = `card-${sesion.id}`;
       classCard.innerHTML = `
+        <!-- Cabecera de la Tarjeta: Micro-Badges y Título -->
         <div class="marcacion-class-header">
-          <div>
-            <div style="font-size: 11px; font-weight: 700; color: #0F848F; text-transform: uppercase;">
-              ${sesion.codigo} · ${sesion.tipo} · ${sesion.modalidad}
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 4px;">
+              <span class="badge-tipo-marcacion ${badgeTipoClase}">
+                ${badgeTipoIcono}
+                ${sesion.tipoEtiqueta}
+              </span>
+              <span style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase;">
+                ${sesion.carrera}
+              </span>
+              <span style="font-size: 10px; font-weight: 600; color: #64748B; background: #F1F5F9; border: 1px solid #E2E8F0; padding: 1px 5px; border-radius: 4px;">
+                SECC. ${sesion.seccion}
+              </span>
             </div>
-            <h4 class="marcacion-class-title">${sesion.nombre}</h4>
-            <div class="marcacion-class-meta">${sesion.aula}</div>
+            
+            <h4 class="marcacion-class-title">${sesion.cursoCodigo} · ${sesion.nombre}</h4>
+            
+            <div class="marcacion-class-meta">
+              <span style="display: inline-flex; align-items: center; gap: 4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <strong>${sesion.sede}</strong> · ${sesion.aula}
+              </span>
+            </div>
+
+            ${sesion.fechaMarcacionHospital ? `
+              <div class="badge-hospital-validation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Validación Hospitalaria Registrada: ${sesion.fechaMarcacionHospital}</span>
+              </div>
+            ` : ''}
           </div>
-          <span style="display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; color: ${badgeColor}; background-color: ${badgeBg};">
+
+          <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 20px; font-size: 10.5px; font-weight: 600; color: ${badgeColor}; background-color: ${badgeBg}; white-space: nowrap;">
+            <span style="width: 5px; height: 5px; border-radius: 50%; background-color: ${badgeColor};"></span>
             ${estadoTexto}
           </span>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
+        <!-- Grilla de Horario, Entrada y Salida -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 14px;">
           <div>
-            <span style="font-size: 11px; color: #5B6E80; display: block;">Horario</span>
-            <strong style="font-size: 12.5px; color: #222;">${sesion.inicioStr} - ${sesion.finStr}</strong>
+            <span style="font-size: 10px; color: #64748B; font-weight: 700; display: block; text-transform: uppercase; letter-spacing: 0.4px;">Horario Prog.</span>
+            <strong style="font-size: 13px; color: #1E293B; font-weight: 700;">${sesion.inicioStr} - ${sesion.finStr}</strong>
           </div>
           <div>
-            <span style="font-size: 11px; color: #5B6E80; display: block;">Entrada</span>
-            <strong style="font-size: 12.5px; color: ${sesion.marcadoEntrada ? '#278B52' : '#94A3B8'};">
-              ${sesion.marcadoEntrada || 'Sin registrar'}
+            <span style="font-size: 10px; color: #64748B; font-weight: 700; display: block; text-transform: uppercase; letter-spacing: 0.4px;">Entrada Real</span>
+            <strong style="font-size: 13px; color: ${sesion.marcadoEntrada ? '#166A74' : '#94A3B8'}; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+              ${sesion.marcadoEntrada ? `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>${sesion.marcadoEntrada}` : 'Sin registrar'}
             </strong>
           </div>
           <div>
-            <span style="font-size: 11px; color: #5B6E80; display: block;">Salida</span>
-            <strong style="font-size: 12.5px; color: ${sesion.marcadoSalida ? '#278B52' : '#94A3B8'};">
-              ${sesion.marcadoSalida || 'Sin registrar'}
+            <span style="font-size: 10px; color: #64748B; font-weight: 700; display: block; text-transform: uppercase; letter-spacing: 0.4px;">Salida Real</span>
+            <strong style="font-size: 13px; color: ${sesion.marcadoSalida ? '#166A74' : '#94A3B8'}; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+              ${sesion.marcadoSalida ? `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>${sesion.marcadoSalida}` : 'Sin registrar'}
             </strong>
           </div>
         </div>
 
+        <!-- Pie de la Tarjeta: Red permitida y Botones de Acción (min-height: 44px) -->
         <div class="marcacion-class-footer">
-          <span style="font-size: 12px; color: #5B6E80;">
-            ${evalInfo.minutosParaInicio > 15 ? `Ventana habilitará 15 minutos antes (${formatearMinutosAHora(sesion.inicioMinutos - 15)})` : 'Ventana de marcación activa'}
-          </span>
-          <div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 11.5px; color: #5B6E80; font-weight: 500;">
+              ${textoVentana}
+            </span>
+            <span style="font-size: 11px; color: #64748B; display: inline-flex; align-items: center; gap: 4px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              Red permitida: <strong>${sesion.conexion}</strong>
+            </span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            ${sesion.tipo === 'VIR' ? `
+              <a href="${sesion.urlVirtual}" target="_blank" class="btn-punch-action outline-virtual" title="Abrir Blackboard / Teams">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                Aula Virtual
+              </a>
+            ` : ''}
+
             ${!sesion.marcadoEntrada ? `
-              <button type="button" class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" ${!puedeMarcarEntrada ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''} data-punch-action="entrada" data-punch-id="${sesion.id}">
-                Marcar Entrada
+              <button type="button" class="btn-punch-action primary" ${!puedeMarcarEntrada ? 'disabled' : ''} data-punch-action="entrada" data-punch-id="${sesion.id}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                ${labelBotonEntrada}
               </button>
             ` : ''}
 
             ${sesion.marcadoEntrada && !sesion.marcadoSalida ? `
-              <button type="button" class="btn btn-black" style="padding: 8px 16px; font-size: 13px;" data-punch-action="salida" data-punch-id="${sesion.id}">
-                Marcar Salida
+              <button type="button" class="btn-punch-action secondary-black" data-punch-action="salida" data-punch-id="${sesion.id}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                ${labelBotonSalida}
               </button>
             ` : ''}
 
             ${sesion.marcadoEntrada && sesion.marcadoSalida ? `
-              <span style="color: #278B52; font-weight: 700; font-size: 12px;">✔ Marcación Concluida</span>
+              <div class="btn-punch-concluded">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Marcación Concluida</span>
+              </div>
             ` : ''}
           </div>
         </div>
@@ -420,7 +630,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (marcacionEmpalmeContainer && btnEmpalmeContinuo) {
       if (empalmeActivo) {
         marcacionEmpalmeContainer.style.display = 'block';
-        btnEmpalmeContinuo.textContent = `⚡ Empalme Continuo: Salida de ${empalmeActivo.claseAnterior.codigo} y Entrada a ${empalmeActivo.claseSiguiente.codigo}`;
+        btnEmpalmeContinuo.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span>Empalme Continuo: Registrar Salida de ${empalmeActivo.claseAnterior.cursoCodigo} y Entrada a ${empalmeActivo.claseSiguiente.cursoCodigo}</span>
+        `;
         btnEmpalmeContinuo.onclick = () => {
           ejecutarEmpalme(empalmeActivo.claseAnterior, empalmeActivo.claseSiguiente);
         };
@@ -429,15 +644,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Actualizar indicador de la barra superior
+    // Actualizar indicador de la barra superior del dashboard
     if (livePunchStatus) {
-      const tieneClaseEnCurso = sesionesDocente.some(s => s.marcadoEntrada && !s.marcadoSalida);
+      const tieneEnCurso = sesionesDocente.some(s => s.marcadoEntrada && !s.marcadoSalida);
+      const todosCompletos = sesionesDocente.length > 0 && sesionesDocente.every(s => s.marcadoEntrada && s.marcadoSalida);
+
       if (hayClaseHabilitada) {
         livePunchStatus.className = 'punch-status-pill success';
         livePunchStatus.innerHTML = `<span class="punch-status-dot"></span> Habilitado (${claseHabilitadaCodigo})`;
-      } else if (tieneClaseEnCurso) {
+      } else if (tieneEnCurso) {
         livePunchStatus.className = 'punch-status-pill success';
-        livePunchStatus.innerHTML = `<span class="punch-status-dot"></span> Clase en curso`;
+        livePunchStatus.innerHTML = `<span class="punch-status-dot"></span> En curso (${claseEnCursoCodigo})`;
+      } else if (todosCompletos) {
+        livePunchStatus.className = 'punch-status-pill success';
+        livePunchStatus.innerHTML = `<span class="punch-status-dot"></span> Jornada completada`;
       } else {
         livePunchStatus.className = 'punch-status-pill';
         livePunchStatus.innerHTML = `<span class="punch-status-dot"></span> Sin marcar hoy`;
@@ -463,10 +683,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (accion === 'entrada') {
       sesion.marcadoEntrada = horaTexto;
-      mostrarToast(`Entrada registrada para ${sesion.codigo} a las ${horaTexto}`);
+
+      // Si es hospital, también registramos la fecha y hora de validación hospitalaria
+      if (sesion.tipo === 'HOS') {
+        sesion.fechaMarcacionHospital = `13/11/2026 ${horaTexto}`;
+        mostrarToast(`Entrada hospitalaria registrada para ${sesion.cursoCodigo} a las ${horaTexto} (Validación HOS activa).`);
+      } else if (sesion.tipo === 'HNL') {
+        mostrarToast(`Inicio de Horas No Lectivas registrado para ${sesion.cursoCodigo} a las ${horaTexto}.`);
+      } else if (sesion.tipo === 'VIR') {
+        mostrarToast(`Entrada a Clase Virtual registrada para ${sesion.cursoCodigo} a las ${horaTexto}.`);
+      } else {
+        mostrarToast(`Entrada presencial registrada para ${sesion.cursoCodigo} a las ${horaTexto}.`);
+      }
     } else if (accion === 'salida') {
       sesion.marcadoSalida = horaTexto;
-      mostrarToast(`Salida registrada para ${sesion.codigo} a las ${horaTexto}`);
+      mostrarToast(`Salida registrada para ${sesion.cursoCodigo} a las ${horaTexto}.`);
     }
 
     actualizarMotorMarcacion();
@@ -476,7 +707,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const horaTexto = formatearMinutosAHora(obtenerMinutosActuales());
     claseAnt.marcadoSalida = horaTexto;
     claseSig.marcadoEntrada = horaTexto;
-    mostrarToast(`Empalme continuo registrado: Salida de ${claseAnt.codigo} y Entrada a ${claseSig.codigo} a las ${horaTexto}`);
+    mostrarToast(`Empalme continuo registrado: Salida de ${claseAnt.cursoCodigo} y Entrada a ${claseSig.cursoCodigo} a las ${horaTexto}.`);
     actualizarMotorMarcacion();
   }
 
@@ -489,7 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
       toast.style.position = 'fixed';
       toast.style.bottom = '24px';
       toast.style.right = '24px';
-      toast.style.backgroundColor = '#222222';
+      toast.style.backgroundColor = '#1E293B';
       toast.style.color = '#FFFFFF';
       toast.style.padding = '12px 20px';
       toast.style.borderRadius = '8px';
@@ -506,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       toast.style.opacity = '0';
       toast.style.transform = 'translateY(10px)';
-    }, 4000);
+    }, 4500);
   }
 
   // Apertura y cierre del modal
@@ -541,13 +772,9 @@ document.addEventListener('DOMContentLoaded', () => {
   simulatorBtns.forEach(btn => {
     btn.addEventListener('click', function () {
       simulatorBtns.forEach(b => {
-        b.style.backgroundColor = '';
-        b.style.color = '';
-        b.style.borderColor = '';
+        b.classList.remove('active');
       });
-      this.style.backgroundColor = '#0F848F';
-      this.style.color = '#FFFFFF';
-      this.style.borderColor = '#0F848F';
+      this.classList.add('active');
 
       const timeVal = this.getAttribute('data-time');
 
@@ -566,6 +793,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Inicializar estado de marcación
+  // Control para alternar entre Régimen Docente Regular y Personal No Fiscalizable
+  if (btnToggleFiscalizable) {
+    btnToggleFiscalizable.addEventListener('click', () => {
+      esDocenteNoFiscalizable = !esDocenteNoFiscalizable;
+      btnToggleFiscalizable.textContent = esDocenteNoFiscalizable ? 'Régimen: No Fiscalizable (Activo)' : 'Régimen: Docente Regular';
+      btnToggleFiscalizable.classList.toggle('active', esDocenteNoFiscalizable);
+      mostrarToast(`Régimen cambiado a: ${esDocenteNoFiscalizable ? 'Personal No Fiscalizable (Art. 43 D.Leg 728)' : 'Docente Regular'}.`);
+      actualizarMotorMarcacion();
+    });
+  }
+
+  // Control para alternar el caso de Superposición de Horarios (Conflicto)
+  if (btnToggleSuperposicion) {
+    btnToggleSuperposicion.addEventListener('click', () => {
+      superposicionActiva = !superposicionActiva;
+      btnToggleSuperposicion.textContent = superposicionActiva ? 'Superposición: Activada (TALL033)' : 'Superposición: Desactivada';
+      btnToggleSuperposicion.classList.toggle('active', superposicionActiva);
+
+      if (superposicionActiva) {
+        const existe = sesionesDocente.some(s => s.id === sesionConflicto.id);
+        if (!existe) {
+          sesionesDocente.push(JSON.parse(JSON.stringify(sesionConflicto)));
+        }
+        mostrarToast('Caso Superposición activado: Se incorporó Guitarra Acústica (17:30 - 19:00) en conflicto con Clase Virtual.');
+      } else {
+        sesionesDocente = sesionesDocente.filter(s => s.id !== sesionConflicto.id);
+        mostrarToast('Caso Superposición desactivado.');
+      }
+      actualizarMotorMarcacion();
+    });
+  }
+
+  // Control para restablecer marcaciones al estado inicial de demo
+  if (btnResetMarcaciones) {
+    btnResetMarcaciones.addEventListener('click', () => {
+      sesionesDocente = JSON.parse(JSON.stringify(sesionesBase));
+      if (superposicionActiva) {
+        sesionesDocente.push(JSON.parse(JSON.stringify(sesionConflicto)));
+      }
+      mostrarToast('Marcaciones restablecidas al estado inicial de prueba.');
+      actualizarMotorMarcacion();
+    });
+  }
+
+  // Inicializar estado de marcación al cargar la página
   actualizarMotorMarcacion();
 });

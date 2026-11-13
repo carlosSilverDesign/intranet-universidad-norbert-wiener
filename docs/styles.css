@@ -2029,7 +2029,7 @@ i svg {
   background-color: #FFFFFF;
   border: 1px solid #C6CFD7;
   border-radius: 16px;
-  max-width: 640px;
+  max-width: 680px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
@@ -2078,20 +2078,91 @@ i svg {
 }
 
 .marcacion-modal-body {
-  padding: 16px;
+  padding: 18px 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+}
+
+/* Tarjeta de Contexto: Hora, Fecha y Red */
+.marcacion-context-card {
+  background-color: #F8FAFC;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+}
+
+.badge-network-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  background-color: #EDF2F7;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+  line-height: 1.2;
+}
+
+.network-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10B981;
+}
+
+.badge-regimen-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0F848F;
+  background-color: #E6F3F4;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(15, 132, 143, 0.25);
+  transition: all 0.2s;
+  line-height: 1.2;
+}
+
+.badge-regimen-chip.no-fiscalizable {
+  color: #1D4ED8;
+  background-color: #EFF6FF;
+  border-color: #BFDBFE;
+}
+
+/* Alerta No Fiscalizable */
+.marcacion-no-fiscalizable-alert {
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  color: #1E40AF;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.45;
 }
 
 .marcacion-class-card {
   border: 1px solid #E2E8F0;
   border-radius: 12px;
-  padding: 16px;
-  background-color: #F8FAFC;
+  padding: 16px 18px;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.marcacion-class-card:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
 }
 
 .marcacion-class-header {
@@ -2102,23 +2173,159 @@ i svg {
 }
 
 .marcacion-class-title {
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 700;
-  color: #222222;
-  margin: 0;
+  color: #1E293B;
+  margin: 5px 0 3px 0;
+  line-height: 1.3;
 }
 
 .marcacion-class-meta {
-  font-size: 13px;
-  color: #5B6E80;
+  font-size: 12px;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Micro-Badges de Jerarquía Secundaria para los 4 Tipos de Marcación */
+.badge-tipo-marcacion {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.badge-tipo-hor {
+  color: #0F848F;
+  background-color: #E6F3F4;
+  border: 1px solid rgba(15, 132, 143, 0.2);
+}
+
+.badge-tipo-hnl {
+  color: #6D28D9;
+  background-color: #F5F3FF;
+  border: 1px solid rgba(109, 40, 217, 0.2);
+}
+
+.badge-tipo-hos {
+  color: #047857;
+  background-color: #ECFDF5;
+  border: 1px solid rgba(4, 120, 87, 0.2);
+}
+
+.badge-tipo-vir {
+  color: #1D4ED8;
+  background-color: #EFF6FF;
+  border: 1px solid rgba(29, 78, 216, 0.2);
+}
+
+.badge-hospital-validation {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #F0FDF4;
+  color: #15803D;
+  border: 1px solid #BBF7D0;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+/* Botones de Marcación con Alto Mínimo de 44px */
+.btn-punch-action {
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 13.5px;
+  font-weight: 700;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  box-sizing: border-box;
+  border: none;
+}
+
+.btn-punch-action.primary {
+  background-color: #0F848F;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(15, 132, 143, 0.25);
+}
+
+.btn-punch-action.primary:hover:not(:disabled) {
+  background-color: #0B6770;
+  box-shadow: 0 4px 10px rgba(15, 132, 143, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-punch-action.primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-punch-action.secondary-black {
+  background-color: #222222;
+  color: #FFFFFF;
+}
+
+.btn-punch-action.secondary-black:hover {
+  background-color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-punch-action.outline-virtual {
+  background-color: #EFF6FF;
+  color: #1D4ED8;
+  border: 1.5px solid #BFDBFE;
+}
+
+.btn-punch-action.outline-virtual:hover {
+  background-color: #DBEAFE;
+  border-color: #93C5FD;
+  color: #1E40AF;
+  transform: translateY(-1px);
+}
+
+.btn-punch-concluded {
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #166A74;
+  background-color: #E6F3F4;
+  border: 1px solid rgba(15, 132, 143, 0.25);
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
 }
 
 .marcacion-class-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px solid #E2E8F0;
+  padding-top: 12px;
+  border-top: 1px solid #F1F5F9;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .marcacion-conflict-alert {
@@ -2131,24 +2338,51 @@ i svg {
   display: flex;
   align-items: center;
   gap: 8px;
+  line-height: 1.4;
+}
+
+#btnEmpalmeContinuo {
+  min-height: 44px;
+  width: 100%;
+  background-color: #0F848F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(15, 132, 143, 0.25);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+#btnEmpalmeContinuo:hover {
+  background-color: #0B6770;
+  box-shadow: 0 4px 12px rgba(15, 132, 143, 0.35);
+  transform: translateY(-1px);
 }
 
 /* Simulador de tiempo en el modal */
 .marcacion-simulator-panel {
-  background-color: #F1F5F9;
+  background-color: #F8FAFC;
   border: 1px dashed #CBD5E1;
-  border-radius: 8px;
-  padding: 12px 16px;
+  border-radius: 10px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .marcacion-simulator-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: #475569;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #334155;
   text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 .marcacion-simulator-buttons {
@@ -2160,8 +2394,8 @@ i svg {
 .btn-sim {
   background-color: #FFFFFF;
   border: 1px solid #CBD5E1;
-  border-radius: 4px;
-  padding: 4px 8px;
+  border-radius: 6px;
+  padding: 5px 9px;
   font-size: 11px;
   font-weight: 600;
   color: #334155;
@@ -2173,6 +2407,65 @@ i svg {
   background-color: #0F848F;
   color: #FFFFFF;
   border-color: #0F848F;
+}
+
+.btn-sim.active {
+  background-color: #0F848F !important;
+  color: #FFFFFF !important;
+  border-color: #0F848F !important;
+  box-shadow: 0 2px 4px rgba(15, 132, 143, 0.25);
+}
+
+.marcacion-sim-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px dashed #E2E8F0;
+}
+
+.btn-sim-toggle {
+  background-color: #FFFFFF;
+  border: 1px solid #94A3B8;
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-sim-toggle:hover {
+  background-color: #F1F5F9;
+  border-color: #64748B;
+}
+
+.btn-sim-toggle.active {
+  background-color: #1E293B;
+  color: #FFFFFF;
+  border-color: #1E293B;
+}
+
+.btn-sim-reset {
+  background-color: #FFFBEB;
+  border: 1px solid #FCD34D;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #B45309;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-sim-reset:hover {
+  background-color: #FEF3C7;
+  color: #92400E;
+  border-color: #F59E0B;
 }
 
 /* Responsive para el Dashboard Docente */

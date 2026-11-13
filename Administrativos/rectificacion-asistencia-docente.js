@@ -65,41 +65,47 @@ document.addEventListener('DOMContentLoaded', () => {
   // PERFILES / BANDEJAS DEL PORTAL ADMINISTRATIVO
   // ==========================================================================
   const ADMIN_ROLES = {
-    RRAA: {
-      key: 'RRAA',
-      initials: 'CS',
-      avatarBg: '#008F9B',
-      sidebarRole: 'RRAA',
-      sidebarName: 'Lic. Carlos Silva',
-      sidebarTitle: 'Lic. Carlos Jesús Silva Sánchez',
-      sidebarCode: 'Registros Académicos',
-      bannerTitle: 'Bandeja activa: Registros Académicos (RRAA) — Tardanzas y Observados',
-      approverString: 'RRAA - Lic. Carlos Silva',
-      resolverLabel: 'Lic. Carlos Silva (RRAA)'
+    DIRECTOR: {
+      key: 'DIRECTOR',
+      initials: 'JM',
+      avatarBg: '#0F848F',
+      sidebarRole: 'DIRECTOR DE ESCUELA',
+      sidebarName: 'Dr. Juan Carlos Mendoza',
+      sidebarTitle: 'Dr. Juan Carlos Mendoza Rojas',
+      sidebarCode: 'Dirección de Escuela (Aprobador Único)',
+      canApproveOrReject: true,
+      canGenerateReprogramacion: true,
+      bannerTitle: 'Bandeja activa: Director de Escuela — Aprobador Único Institucional (Rectificaciones y Reprogramaciones)',
+      approverString: 'Director de Escuela - Dr. Juan Carlos Mendoza',
+      resolverLabel: 'Dr. Juan Carlos Mendoza (Director)'
     },
     COORDINADOR: {
       key: 'COORDINADOR',
       initials: 'DL',
       avatarBg: '#6B21A8',
-      sidebarRole: 'COORDINADOR',
+      sidebarRole: 'COORDINADOR ACADÉMICO',
       sidebarName: 'Lic. Denssy López',
       sidebarTitle: 'Lic. Denssy López Mendoza',
-      sidebarCode: 'Coordinación Académica',
-      bannerTitle: 'Bandeja activa: Coordinador Académico — Asignación de Docente (A Programar)',
-      approverString: 'Coordinador - Lic. Denssy López',
-      resolverLabel: 'Lic. Denssy López (Coordinador)'
+      sidebarCode: 'Coordinación Académica (Genera Reprog. / Solo Ver)',
+      canApproveOrReject: false,
+      canGenerateReprogramacion: true,
+      bannerTitle: 'Bandeja activa: Coordinador Académico — Solo Visualización y Generación de Reprogramaciones',
+      approverString: 'Dirección de Escuela',
+      resolverLabel: 'Dirección de Escuela'
     },
-    DIRECTOR: {
-      key: 'DIRECTOR',
-      initials: 'JM',
-      avatarBg: '#C2410C',
-      sidebarRole: 'DIRECTOR',
-      sidebarName: 'Dr. Juan Carlos Mendoza',
-      sidebarTitle: 'Dr. Juan Carlos Mendoza Rojas',
-      sidebarCode: 'Dirección de Escuela',
-      bannerTitle: 'Bandeja activa: Director de Escuela — Inasistencias y Reprogramaciones',
-      approverString: 'Director de Escuela - Dr. Juan Carlos Mendoza',
-      resolverLabel: 'Dr. Juan Carlos Mendoza (Director)'
+    RRAA: {
+      key: 'RRAA',
+      initials: 'CS',
+      avatarBg: '#0284C7',
+      sidebarRole: 'REGISTROS ACADÉMICOS (RRAA)',
+      sidebarName: 'Lic. Carlos Silva',
+      sidebarTitle: 'Lic. Carlos Jesús Silva Sánchez',
+      sidebarCode: 'RRAA (Solo Visualización)',
+      canApproveOrReject: false,
+      canGenerateReprogramacion: false,
+      bannerTitle: 'Bandeja activa: Registros Académicos (RRAA) — Solo Visualización (Consulta, Planilla y Reportes)',
+      approverString: 'Dirección de Escuela',
+      resolverLabel: 'Dirección de Escuela'
     },
     ALL: {
       key: 'ALL',
@@ -108,10 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
       sidebarRole: 'ADMIN GLOBAL',
       sidebarName: 'Vista Consolidada',
       sidebarTitle: 'Administración Académica Global',
-      sidebarCode: 'Todas las bandejas',
-      bannerTitle: 'Bandeja activa: Vista Global — Todas las etapas (RRAA, Coordinador, Director e Históricos)',
-      approverString: 'Administración Académica',
-      resolverLabel: 'Administración Académica'
+      sidebarCode: 'Consulta General',
+      canApproveOrReject: false,
+      canGenerateReprogramacion: false,
+      bannerTitle: 'Bandeja activa: Vista Global — Solo Visualización (Atribución resolutiva exclusiva de Dirección)',
+      approverString: 'Dirección de Escuela',
+      resolverLabel: 'Dirección de Escuela'
     }
   };
 
@@ -123,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Fernando Morales Silva': 'DOC-1120'
   };
 
-  let currentAdminRole = 'RRAA';
+  let currentAdminRole = 'DIRECTOR';
 
   // ==========================================================================
   // DATOS SEMILLA CANÓNICOS V2 (SINCRONIZADOS CON PORTAL DOCENTE)
@@ -504,26 +512,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function isPendingForRole(item, role) {
     if (!isPendingCondition(item.condicion)) return false;
-    if (role === 'ALL') return true;
-    return item.etapaActual === role;
+    // En el perfil Administrativo, únicamente el Director aprueba o rechaza solicitudes
+    return role === 'DIRECTOR';
   }
 
   function belongsToInbox(item, role) {
     if (role === 'ALL') return true;
-    if (item.etapaActual === role) return true;
-    if (item.decisionActorRole === role) return true;
-    const aprobStr = item.aprobadorAsignado || '';
-    const resolStr = item.resolucionPor || '';
-    if (role === 'RRAA') {
-      return aprobStr.includes('RRAA') || resolStr.includes('RRAA');
+    if (role === 'DIRECTOR') {
+      // El Director cuenta con visibilidad integral de todas las solicitudes institucionales
+      return true;
     }
     if (role === 'COORDINADOR') {
-      return Boolean(item.requiereCoordinador) || aprobStr.includes('Coordinador') || resolStr.includes('Coordinador');
+      // El Coordinador consulta las reprogramaciones de clase y solicitudes de su coordinación
+      return item.tramite === 'REPROGRAMACION' || Boolean(item.requiereCoordinador) || item.solicitadoPorRol === 'Coordinador';
     }
-    if (role === 'DIRECTOR') {
-      return aprobStr.includes('Director') || resolStr.includes('Director') || item.tramite === 'REPROGRAMACION' || (item.tramite === 'RECTIFICACION' && item.estadoOriginal === 'Inasistencia');
+    if (role === 'RRAA') {
+      // RRAA consulta las rectificaciones de asistencia (tardanzas, observados) y reportes de planilla
+      return item.tramite === 'RECTIFICACION' || Boolean(item.aprobadorAsignado && item.aprobadorAsignado.includes('RRAA'));
     }
-    return false;
+    return true;
   }
 
   function getStageDisplayLabel(stage) {
@@ -683,6 +690,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnModalEvalRechazar = document.getElementById('btnModalEvalRechazar');
   const btnModalEvalAprobar = document.getElementById('btnModalEvalAprobar');
   const btnModalEvalAprobarText = document.getElementById('btnModalEvalAprobarText');
+  const evalReadOnlyNotice = document.getElementById('evalReadOnlyNotice');
+  const evalReadOnlyTitle = document.getElementById('evalReadOnlyTitle');
+  const evalReadOnlyMsg = document.getElementById('evalReadOnlyMsg');
+  const footerReadOnlyPillAsist = document.getElementById('footerReadOnlyPillAsist');
+  const btnGenerarReprogHeader = document.getElementById('btnGenerarReprogHeader');
 
   let currentEvaluatingId = null;
 
@@ -727,7 +739,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // CAMBIO DE BANDEJA / PERFIL EVALUADOR (RRAA | COORDINADOR | DIRECTOR | ALL)
   // ==========================================================================
   function syncRoleHeaderAndBadges(allList) {
-    const roleCfg = ADMIN_ROLES[currentAdminRole] || ADMIN_ROLES.RRAA;
+    const roleCfg = ADMIN_ROLES[currentAdminRole] || ADMIN_ROLES.DIRECTOR;
 
     if (adminSidebarAvatar) {
       adminSidebarAvatar.textContent = roleCfg.initials;
@@ -749,15 +761,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const list = allList || getSolicitudes();
-    const pendingRRAA = list.filter(s => s.etapaActual === 'RRAA' && s.condicion === 'Solicitado').length;
-    const pendingCoord = list.filter(s => s.etapaActual === 'COORDINADOR' && s.condicion === 'Pendiente Coordinador').length;
-    const pendingDirector = list.filter(s => s.etapaActual === 'DIRECTOR' && s.condicion === 'Pendiente Director').length;
+    const pendingDirector = list.filter(s => isPendingCondition(s.condicion)).length;
+    const pendingCoord = list.filter(s => s.tramite === 'REPROGRAMACION' && isPendingCondition(s.condicion)).length;
+    const pendingRRAA = list.filter(s => s.tramite === 'RECTIFICACION' && isPendingCondition(s.condicion)).length;
 
-    if (badgeInboxRRAA) badgeInboxRRAA.textContent = String(pendingRRAA);
-    if (badgeInboxCoord) badgeInboxCoord.textContent = String(pendingCoord);
     if (badgeInboxDirector) badgeInboxDirector.textContent = String(pendingDirector);
+    if (badgeInboxCoord) badgeInboxCoord.textContent = String(pendingCoord);
+    if (badgeInboxRRAA) badgeInboxRRAA.textContent = String(pendingRRAA);
     if (badgeInboxAll) badgeInboxAll.textContent = String(list.length);
-    if (notificationBadge) notificationBadge.textContent = String(pendingRRAA + pendingCoord + pendingDirector);
+    if (notificationBadge) notificationBadge.textContent = String(pendingDirector);
+    if (btnGenerarReprogHeader) btnGenerarReprogHeader.style.display = roleCfg.canGenerateReprogramacion ? 'inline-flex' : 'none';
   }
 
   function setAdminRole(roleKey) {
@@ -794,20 +807,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getAdminCondicionIconSvg(condicion) {
-    const base = 'width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+    const base = 'width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
     if (condicion === 'Aprobado') {
-      return `<svg ${base}><circle cx="12" cy="12" r="9.5"></circle><polyline points="8.5 12.2 11 14.7 16 9.5"></polyline></svg>`;
+      return `<svg ${base}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
     }
     if (condicion === 'Rechazado') {
-      return `<svg ${base}><circle cx="12" cy="12" r="9.5"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+      return `<svg ${base}><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
     }
     if (condicion === 'Pendiente Coordinador') {
-      return `<svg ${base}><circle cx="9.5" cy="7.5" r="3.2"></circle><path d="M3 19.5v-1a4 4 0 0 1 4-4h4.2a4 4 0 0 1 4 4v1"></path><line x1="19" y1="8.5" x2="19" y2="14"></line><line x1="16.2" y1="11.2" x2="21.8" y2="11.2"></line></svg>`;
+      return `<svg ${base}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8.5" x2="19" y2="14"></line><line x1="16" y1="11" x2="22" y2="11"></line></svg>`;
     }
     if (condicion === 'Pendiente Director') {
-      return `<svg ${base}><path d="M12 21s7-3.3 7-9V5.8L12 3.2 5 5.8V12c0 5.7 7 9 7 9z"></path></svg>`;
+      return `<svg ${base}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>`;
     }
-    return `<svg ${base}><circle cx="12" cy="12" r="9.5"></circle><polyline points="12 7 12 12 15.5 14"></polyline></svg>`;
+    return `<svg ${base}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
   }
 
   // ==========================================================================
@@ -886,13 +899,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (item.condicion === 'Aprobado') condicionBadgeClass = 'badge-condicion-aprobado';
       if (item.condicion === 'Rechazado') condicionBadgeClass = 'badge-condicion-rechazado';
 
+      const isDirector = currentAdminRole === 'DIRECTOR';
+      const isPending = isPendingCondition(item.condicion);
       const hasTimer = item.decisionTimestamp && (now - item.decisionTimestamp < CINCO_MINUTOS_MS);
-      const actionableHere = isPendingForRole(item, currentAdminRole);
-      const isPendingElsewhere = isPendingCondition(item.condicion) && !actionableHere;
 
       let accionesHtml = '';
 
-      if (hasTimer && (currentAdminRole === 'ALL' || !item.decisionActorRole || item.decisionActorRole === currentAdminRole)) {
+      if (hasTimer && isDirector) {
         const remainingSeconds = Math.max(0, Math.floor((CINCO_MINUTOS_MS - (now - item.decisionTimestamp)) / 1000));
         const mins = Math.floor(remainingSeconds / 60);
         const secs = String(remainingSeconds % 60).padStart(2, '0');
@@ -908,74 +921,46 @@ document.addEventListener('DOMContentLoaded', () => {
               <span>Rectificar (${mins}:${secs})</span>
             </button>
             <button type="button" class="btn-evaluar-solicitud btn-view-only" data-id="${escapeHtml(item.id)}" title="Ver ficha completa">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+        `;
+      } else if (isDirector && isPending) {
+        accionesHtml = `
+          <div class="row-actions-group-modern">
+            <button type="button" class="btn-evaluar-solicitud btn-evaluar-action-director" data-id="${escapeHtml(item.id)}" title="Evaluar y resolver solicitud como Director">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5-9.5-6.5-9.5-6.5z"></path>
-                <circle cx="12" cy="12" r="2.8"></circle>
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <span>Evaluar</span>
+            </button>
+            <button type="button" class="btn-row-approve-sm" data-id="${escapeHtml(item.id)}" title="Aprobar rápidamente como Director">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </button>
+            <button type="button" class="btn-row-reject-sm" data-id="${escapeHtml(item.id)}" title="Rechazar con motivo obligatorio como Director">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
           </div>
         `;
-      } else if (actionableHere) {
-        if (item.etapaActual === 'COORDINADOR') {
-          accionesHtml = `
-            <div class="row-actions-group-modern">
-              <button type="button" class="btn-evaluar-solicitud" data-id="${escapeHtml(item.id)}" title="Asignar Docente (A Programar) y derivar al Director">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="9.2" cy="7.5" r="3.4"></circle>
-                  <path d="M2.5 20v-1.2a4.5 4.5 0 0 1 4.5-4.5h4.4a4.5 4.5 0 0 1 4.5 4.5V20"></path>
-                  <line x1="19" y1="8.5" x2="19" y2="14.5"></line>
-                  <line x1="16" y1="11.5" x2="22" y2="11.5"></line>
-                </svg>
-                <span>Asignar</span>
-              </button>
-              <button type="button" class="btn-row-reject-sm" data-id="${escapeHtml(item.id)}" title="Rechazar solicitud">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-          `;
-        } else {
-          accionesHtml = `
-            <div class="row-actions-group-modern">
-              <button type="button" class="btn-evaluar-solicitud" data-id="${escapeHtml(item.id)}" title="Evaluar y resolver solicitud">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5-9.5-6.5-9.5-6.5z"></path>
-                  <circle cx="12" cy="12" r="2.8"></circle>
-                </svg>
-                <span>Evaluar</span>
-              </button>
-              <button type="button" class="btn-row-approve-sm" data-id="${escapeHtml(item.id)}" title="Aprobar rápidamente">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </button>
-              <button type="button" class="btn-row-reject-sm" data-id="${escapeHtml(item.id)}" title="Rechazar con motivo obligatorio">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-          `;
-        }
-      } else if (isPendingElsewhere) {
+      } else if (isPending) {
         accionesHtml = `
           <div class="row-actions-group-modern">
-            <button type="button" class="btn-evaluar-solicitud btn-view-only" data-id="${escapeHtml(item.id)}" title="En bandeja de ${escapeHtml(getStageDisplayLabel(item.etapaActual))}">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            <button type="button" class="btn-evaluar-solicitud btn-view-only" data-id="${escapeHtml(item.id)}" title="Ver detalle de la solicitud (Solo el Director aprueba o rechaza)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5-9.5-6.5-9.5-6.5z"></path>
-                <circle cx="12" cy="12" r="2.8"></circle>
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
               </svg>
-              <span>Ver (${escapeHtml(item.etapaActual)})</span>
+              <span>Ver Detalle</span>
             </button>
           </div>
         `;
@@ -983,13 +968,7 @@ document.addEventListener('DOMContentLoaded', () => {
         accionesHtml = `
           <div class="row-actions-group-modern">
             <button type="button" class="btn-evaluar-solicitud btn-view-only" data-id="${escapeHtml(item.id)}" title="Ver expediente resuelto">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3.5" y="4.5" width="17" height="16" rx="2"></rect>
-                <line x1="16" y1="2.5" x2="16" y2="6.5"></line>
-                <line x1="8" y1="2.5" x2="8" y2="6.5"></line>
-                <line x1="3.5" y1="10" x2="20.5" y2="10"></line>
-              </svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
               <span>Ver Ficha</span>
             </button>
           </div>
@@ -1054,7 +1033,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <td class="col-time ${item.horarioRegFin === '00:00' ? 'time-omitted-cell' : ''}">${escapeHtml(item.horarioRegFin || '—')}</td>
         <td class="col-estado">
           <span class="badge-estado-incidencia ${estadoBadgeClass}">
-            ${getAdminEstadoIconSvg(item.estadoOriginal)}
             <span>${escapeHtml(item.estadoOriginal)}</span>
           </span>
         </td>
@@ -1151,8 +1129,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   function updateBulkToolbar() {
     if (!bulkActionsBar) return;
+    const isDirector = currentAdminRole === 'DIRECTOR';
     const count = selectedIds.size;
-    if (count > 0) {
+    if (count > 0 && isDirector) {
       bulkActionsBar.classList.add('show');
       if (selectedCountText) {
         selectedCountText.textContent = `${count} solicitud${count !== 1 ? 'es' : ''} seleccionada${count !== 1 ? 's' : ''}`;
@@ -1198,23 +1177,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnBulkApprove) {
     btnBulkApprove.addEventListener('click', () => {
+      if (currentAdminRole !== 'DIRECTOR') {
+        showToast('Acción exclusiva del Director de Escuela. Su perfil cuenta con acceso de solo visualización.');
+        return;
+      }
       if (selectedIds.size === 0) return;
       const list = getSolicitudes();
       const chosen = list.filter(s => selectedIds.has(s.id));
-
-      const hasCoordStage = chosen.some(s => s.etapaActual === 'COORDINADOR' && s.condicion === 'Pendiente Coordinador');
-      if (hasCoordStage) {
-        showToast('Las solicitudes en etapa Coordinador requieren asignar un Docente (A Programar) individualmente desde "Asignar".');
-        return;
-      }
-
-      const eligible = chosen.filter(s => isPendingForRole(s, currentAdminRole) && s.etapaActual !== 'COORDINADOR');
+      const eligible = chosen.filter(s => isPendingCondition(s.condicion));
       if (eligible.length === 0) {
-        showToast('Ninguna solicitud seleccionada está pendiente de aprobación directa en esta bandeja.');
+        showToast('Ninguna solicitud seleccionada está pendiente de aprobación.');
         return;
       }
 
-      if (confirm(`¿Está seguro de aprobar las ${eligible.length} solicitudes pendientes seleccionadas?`)) {
+      if (confirm(`¿Está seguro de aprobar las ${eligible.length} solicitudes pendientes seleccionadas como Director de Escuela?`)) {
         aprobarSolicitudes(eligible.map(e => e.id));
         selectedIds.clear();
       }
@@ -1223,11 +1199,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnBulkReject) {
     btnBulkReject.addEventListener('click', () => {
+      if (currentAdminRole !== 'DIRECTOR') {
+        showToast('Acción exclusiva del Director de Escuela. Su perfil cuenta con acceso de solo visualización.');
+        return;
+      }
       if (selectedIds.size === 0) return;
       const list = getSolicitudes();
-      const eligible = list.filter(s => selectedIds.has(s.id) && isPendingForRole(s, currentAdminRole));
+      const eligible = list.filter(s => selectedIds.has(s.id) && isPendingCondition(s.condicion));
       if (eligible.length === 0) {
-        showToast('Las solicitudes seleccionadas ya están resueltas o pertenecen a otra bandeja.');
+        showToast('Las solicitudes seleccionadas ya están resueltas.');
         return;
       }
       abrirModalRechazo(eligible.map(e => e.id));
@@ -1252,21 +1232,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function resolveRoleForItem(item) {
-    if (currentAdminRole === 'ALL') {
-      return ADMIN_ROLES[item.etapaActual] || ADMIN_ROLES.RRAA;
-    }
-    return ADMIN_ROLES[currentAdminRole] || ADMIN_ROLES.RRAA;
+    return ADMIN_ROLES.DIRECTOR;
   }
 
   function aprobarSolicitudes(ids) {
+    if (currentAdminRole !== 'DIRECTOR') {
+      showToast('Acción exclusiva del Director de Escuela. Su perfil cuenta con acceso de solo visualización.');
+      return;
+    }
     const list = getSolicitudes();
     let approvedCount = 0;
 
     list.forEach(item => {
       if (!ids.includes(item.id)) return;
-      if (!isPendingForRole(item, currentAdminRole) || item.etapaActual === 'COORDINADOR') return;
+      if (!isPendingCondition(item.condicion)) return;
 
-      const roleCfg = resolveRoleForItem(item);
+      const roleCfg = ADMIN_ROLES.DIRECTOR;
       saveUndoSnapshot(item, roleCfg.key);
 
       item.etapaActual = 'COMPLETADO';
@@ -1276,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', () => {
       item.fechaResolucion = formatNowDisplay();
       item.comentarioEvaluador = item.tramite === 'REPROGRAMACION'
         ? `Reprogramación (${item.reprogTipoLabel || 'Clase'}) aprobada por Dirección de Escuela.`
-        : `Regularización aprobada por ${roleCfg.sidebarRole}.`;
+        : `Regularización de asistencia aprobada por Dirección de Escuela.`;
       approvedCount++;
     });
 
@@ -1285,29 +1266,27 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSolicitudesTable();
     renderReportesTable();
     checkAndRunTimerTicker();
-    showToast(`${approvedCount === 1 ? 'Solicitud aprobada' : `${approvedCount} solicitudes aprobadas`} con éxito. Puedes rectificar durante 5 minutos.`);
+    showToast(`${approvedCount === 1 ? 'Solicitud aprobada' : `${approvedCount} solicitudes aprobadas`} con éxito por Dirección. Puedes rectificar durante 5 minutos.`);
   }
 
   function rectificarDecision(ticketId) {
+    if (currentAdminRole !== 'DIRECTOR') {
+      showToast('Acción exclusiva del Director de Escuela.');
+      return;
+    }
     const list = getSolicitudes();
     const item = list.find(s => s.id === ticketId);
     if (!item) return;
 
-    const targetCond = item.decisionPrevCondicion
-      || (item.requiereCoordinador && !item.docenteReemplazo ? 'Pendiente Coordinador'
-        : (item.tramite === 'REPROGRAMACION' || item.estadoOriginal === 'Inasistencia' ? 'Pendiente Director' : 'Solicitado'));
+    const targetCond = item.decisionPrevCondicion || 'Solicitado';
 
     if (!confirm(`¿Deseas rectificar la decisión sobre ${ticketId}? Volverá a estado '${targetCond}'.`)) {
       return;
     }
 
-    item.etapaActual = item.decisionPrevEtapa || (targetCond === 'Pendiente Coordinador' ? 'COORDINADOR' : targetCond === 'Pendiente Director' ? 'DIRECTOR' : 'RRAA');
+    item.etapaActual = item.decisionPrevEtapa || 'DIRECTOR';
     item.condicion = targetCond;
-    item.aprobadorAsignado = item.decisionPrevAprobador || (
-      item.etapaActual === 'COORDINADOR' ? 'Coordinador - Lic. Denssy López'
-        : item.etapaActual === 'DIRECTOR' ? 'Director de Escuela - Dr. Juan Carlos Mendoza'
-          : 'RRAA - Lic. Carlos Silva'
-    );
+    item.aprobadorAsignado = item.decisionPrevAprobador || 'Director de Escuela - Dr. Juan Carlos Mendoza';
     item.comentarioEvaluador = item.decisionPrevComentario || '';
     item.motivoRechazo = item.decisionPrevRechazo || '';
     item.fechaResolucion = item.decisionPrevFechaResolucion || '';
@@ -1452,7 +1431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
     } else {
-      if (evalSection2Title) evalSection2Title.textContent = '2. Comparativa de Marcación Biométrica vs. Horario Oficial';
+      if (evalSection2Title) evalSection2Title.textContent = '2. Comparativa de Marcación en Intranet vs. Horario Oficial';
       if (evalBiometricCompareGrid) evalBiometricCompareGrid.style.display = 'grid';
       if (evalReprogCompareContainer) evalReprogCompareContainer.style.display = 'none';
 
@@ -1509,13 +1488,19 @@ document.addEventListener('DOMContentLoaded', () => {
     clearCoordValidation();
     if (evalOtherInboxNotice) evalOtherInboxNotice.style.display = 'none';
     if (evalCoordAssignArea) evalCoordAssignArea.style.display = 'none';
+    if (evalReadOnlyNotice) evalReadOnlyNotice.style.display = 'none';
+    if (footerReadOnlyPillAsist) footerReadOnlyPillAsist.style.display = 'none';
+
+    const isDirector = currentAdminRole === 'DIRECTOR';
     if (evalSection4Title) {
-      evalSection4Title.textContent = `4. Resolución de la Solicitud (${getStageDisplayLabel(item.etapaActual === 'COMPLETADO' ? currentAdminRole : item.etapaActual)})`;
+      evalSection4Title.textContent = isDirector
+        ? '4. Resolución de la Solicitud (Director de Escuela)'
+        : '4. Detalle y Estado de Resolución (Solo Visualización)';
     }
 
     const canUndoHere = item.decisionTimestamp
       && (Date.now() - item.decisionTimestamp < CINCO_MINUTOS_MS)
-      && (currentAdminRole === 'ALL' || !item.decisionActorRole || item.decisionActorRole === currentAdminRole);
+      && isDirector;
 
     if (item.condicion === 'Aprobado' || item.condicion === 'Rechazado') {
       const isAppr = item.condicion === 'Aprobado';
@@ -1527,7 +1512,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${getAdminCondicionIconSvg(item.condicion).replace('width="12" height="12"', 'width="16" height="16"')}
             <span>${isAppr ? 'Solicitud Aprobada' : 'Solicitud Rechazada'}</span>
           </div>
-          <div>Resuelto por: <strong>${escapeHtml(item.resolucionPor || item.aprobadorAsignado || 'Administración')}</strong>${item.fechaResolucion ? ` el ${escapeHtml(item.fechaResolucion)}` : ''}</div>
+          <div>Resuelto por: <strong>${escapeHtml(item.resolucionPor || item.aprobadorAsignado || 'Dirección de Escuela')}</strong>${item.fechaResolucion ? ` el ${escapeHtml(item.fechaResolucion)}` : ''}</div>
           <div style="margin-top: 4px; font-size: 12px;">${isAppr ? 'Observación' : 'Motivo formal de rechazo'}: <em>${escapeHtml(isAppr ? (item.comentarioEvaluador || 'Procedente') : (item.motivoRechazo || item.comentarioEvaluador || 'No acreditado'))}</em></div>
           ${canUndoHere ? `
             <div style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(15, 23, 42, 0.2); display: flex; justify-content: flex-end;">
@@ -1553,8 +1538,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (evalDecisionFormArea) evalDecisionFormArea.style.display = 'none';
       if (evalActionButtonsGroup) evalActionButtonsGroup.style.display = 'none';
-    } else if (!isPendingForRole(item, currentAdminRole)) {
-      // Pendiente en otra bandeja (e.g. Coordinador derivó a Director o usuario ve otra bandeja)
+      if (!isDirector && footerReadOnlyPillAsist) {
+        footerReadOnlyPillAsist.style.display = 'inline-flex';
+      }
+    } else if (!isDirector) {
+      // Perfil de solo visualización (Coordinador, RRAA, ALL)
       if (evalAuditStatusBox) {
         evalAuditStatusBox.style.display = 'block';
         evalAuditStatusBox.className = 'eval-audit-box';
@@ -1563,43 +1551,26 @@ document.addEventListener('DOMContentLoaded', () => {
             ${getAdminCondicionIconSvg(item.condicion).replace('width="12" height="12"', 'width="16" height="16"')}
             <span>Estado actual: ${escapeHtml(item.condicion)}</span>
           </div>
-          <div>Asignado a: <strong>${escapeHtml(item.aprobadorAsignado || getStageDisplayLabel(item.etapaActual))}</strong></div>
-          ${item.docenteReemplazo && item.cambioDocente ? `<div style="margin-top: 4px; font-size: 12px;">Docente reemplazo asignado: <strong>${escapeHtml(item.docenteReemplazo)}</strong></div>` : ''}
-          ${canUndoHere ? `
-            <div style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(15, 23, 42, 0.2); display: flex; justify-content: flex-end;">
-              <button type="button" class="btn-rectify-countdown" id="btnModalRectify" style="padding: 6px 12px; font-size: 12px;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="3 4.5 3 10 8.5 10"></polyline>
-                  <path d="M4 14.5a8.5 8.5 0 1 0 2-8.8L3 10"></path>
-                </svg>
-                <span>Rectificar Derivación (Deshacer)</span>
-              </button>
-            </div>
-          ` : ''}
+          <div>Asignado a: <strong>Director de Escuela - Dr. Juan Carlos Mendoza</strong></div>
+          ${item.docenteReemplazo && item.cambioDocente ? `<div style="margin-top: 4px; font-size: 12px;">Docente reemplazo propuesto: <strong>${escapeHtml(item.docenteReemplazo)}</strong></div>` : ''}
         `;
-        const btnModalRectify = document.getElementById('btnModalRectify');
-        if (btnModalRectify) {
-          btnModalRectify.addEventListener('click', () => {
-            const targetId = item.id;
-            cerrarModalEvaluacion();
-            rectificarDecision(targetId);
-          });
+      }
+      if (evalReadOnlyNotice) {
+        evalReadOnlyNotice.style.display = 'flex';
+        if (evalReadOnlyTitle) {
+          evalReadOnlyTitle.textContent = currentAdminRole === 'COORDINADOR'
+            ? 'Modo Solo Visualización (Perfil: Coordinador Académico)'
+            : (currentAdminRole === 'RRAA' ? 'Modo Solo Visualización (Perfil: Registros Académicos)' : 'Modo Solo Visualización (Bandeja Global)');
+        }
+        if (evalReadOnlyMsg) {
+          evalReadOnlyMsg.innerHTML = 'De acuerdo a la directiva institucional vigente, <strong>únicamente el Director de Escuela</strong> cuenta con la facultad para dictaminar, aprobar o rechazar solicitudes de regularización de asistencia y reprogramaciones de clases. Su perfil tiene acceso exclusivo de consulta y seguimiento.';
         }
       }
-      if (evalOtherInboxNotice) {
-        evalOtherInboxNotice.style.display = 'flex';
-        if (evalOtherInboxText) {
-          evalOtherInboxText.textContent = `Esta solicitud requiere acción en la bandeja de ${getStageDisplayLabel(item.etapaActual)}.`;
-        }
-        if (btnSwitchInboxFromModal) {
-          btnSwitchInboxFromModal.setAttribute('data-target-role', item.etapaActual);
-        }
-      }
+      if (footerReadOnlyPillAsist) footerReadOnlyPillAsist.style.display = 'inline-flex';
       if (evalDecisionFormArea) evalDecisionFormArea.style.display = 'none';
       if (evalActionButtonsGroup) evalActionButtonsGroup.style.display = 'none';
     } else {
-      // Accionable en esta bandeja (o en vista ALL)
+      // Director de Escuela (Aprobador Único)
       if (evalAuditStatusBox) evalAuditStatusBox.style.display = 'none';
       if (evalDecisionFormArea) evalDecisionFormArea.style.display = 'block';
       if (evalActionButtonsGroup) evalActionButtonsGroup.style.display = 'flex';
@@ -1613,25 +1584,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (evalObsMandatoryMarker) evalObsMandatoryMarker.style.display = 'none';
 
-      if (item.etapaActual === 'COORDINADOR') {
+      if (item.tramite === 'REPROGRAMACION' && item.cambioDocente) {
         if (evalCoordAssignArea) evalCoordAssignArea.style.display = 'block';
         if (evalSelectDocenteReemplazo) {
           evalSelectDocenteReemplazo.value = item.docenteReemplazo || '';
           syncAdminDocenteSelectUI();
         }
-        if (btnModalEvalAprobarText) {
-          btnModalEvalAprobarText.textContent = 'Asignar Docente y Derivar al Director';
-        }
-      } else if (item.etapaActual === 'DIRECTOR') {
-        if (btnModalEvalAprobarText) {
-          btnModalEvalAprobarText.textContent = item.tramite === 'REPROGRAMACION'
-            ? 'Aprobar Reprogramación (Director)'
-            : 'Aprobar Inasistencia (Director)';
-        }
-      } else {
-        if (btnModalEvalAprobarText) {
-          btnModalEvalAprobarText.textContent = 'Aprobar Regularización (RRAA)';
-        }
+      }
+
+      if (btnModalEvalAprobarText) {
+        btnModalEvalAprobarText.textContent = item.tramite === 'REPROGRAMACION'
+          ? 'Aprobar Reprogramación (Director)'
+          : 'Aprobar Regularización (Director)';
       }
     }
 
@@ -1687,47 +1651,31 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnModalEvalAprobar) {
     btnModalEvalAprobar.addEventListener('click', () => {
       if (!currentEvaluatingId) return;
+      if (currentAdminRole !== 'DIRECTOR') {
+        showToast('Acción exclusiva del Director de Escuela. Su perfil cuenta con acceso de solo visualización.');
+        return;
+      }
       const obs = evalTxtObservacion ? evalTxtObservacion.value.trim() : '';
       const list = getSolicitudes();
       const item = list.find(s => s.id === currentEvaluatingId);
       if (!item) return;
 
-      const roleCfg = resolveRoleForItem(item);
+      const roleCfg = ADMIN_ROLES.DIRECTOR;
 
-      // Paso Coordinador: exigir Docente (A Programar) activo distinto al titular y derivar a Director
-      if (item.etapaActual === 'COORDINADOR') {
+      // Si es reprogramación con cambio de docente, el Director puede confirmar/asignar docente de reemplazo si aplica
+      if (item.tramite === 'REPROGRAMACION' && item.cambioDocente) {
         const selectedDoc = evalSelectDocenteReemplazo ? evalSelectDocenteReemplazo.value.trim() : '';
-        if (!selectedDoc) {
-          showCoordValidationError('Debes seleccionar un Docente (A Programar) activo antes de derivar al Director.');
-          if (evalSelectDocenteReemplazo) evalSelectDocenteReemplazo.focus();
-          return;
+        if (selectedDoc) {
+          if (normalizeTextKey(selectedDoc) === normalizeTextKey(item.docente)) {
+            showCoordValidationError(`No puedes asignar al mismo docente titular original (${item.docente}) en un reemplazo.`);
+            if (evalSelectDocenteReemplazo) evalSelectDocenteReemplazo.focus();
+            return;
+          }
+          item.docenteReemplazo = selectedDoc;
+          item.docenteReemplazoCodigo = DOCENTE_CODE_CATALOG[selectedDoc] || 'DOC-PROG';
         }
-        if (normalizeTextKey(selectedDoc) === normalizeTextKey(item.docente)) {
-          showCoordValidationError(`No puedes asignar al mismo docente titular original (${item.docente}) en un reemplazo.`);
-          if (evalSelectDocenteReemplazo) evalSelectDocenteReemplazo.focus();
-          return;
-        }
-
-        saveUndoSnapshot(item, 'COORDINADOR');
-        item.docenteReemplazo = selectedDoc;
-        item.docenteReemplazoCodigo = DOCENTE_CODE_CATALOG[selectedDoc] || 'DOC-PROG';
-        item.etapaActual = 'DIRECTOR';
-        item.condicion = 'Pendiente Director';
-        item.aprobadorAsignado = 'Director de Escuela - Dr. Juan Carlos Mendoza';
-        item.observacionOriginal = `Reemplazo asignado: ${selectedDoc}`;
-        item.comentarioEvaluador = obs || `Docente de reemplazo (${selectedDoc}) asignado por Coordinación; pendiente aprobación del Director.`;
-
-        saveSolicitudes(list);
-        const ticketMoved = item.id;
-        cerrarModalEvaluacion();
-        renderSolicitudesTable();
-        renderReportesTable();
-        checkAndRunTimerTicker();
-        showToast(`Docente ${selectedDoc} asignado. ${ticketMoved} derivado a bandeja del Director.`);
-        return;
       }
 
-      // Aprobación final RRAA o Director
       saveUndoSnapshot(item, roleCfg.key);
       item.etapaActual = 'COMPLETADO';
       item.condicion = 'Aprobado';
@@ -1736,8 +1684,8 @@ document.addEventListener('DOMContentLoaded', () => {
       item.fechaResolucion = formatNowDisplay();
       item.comentarioEvaluador = obs || (
         item.tramite === 'REPROGRAMACION'
-          ? `Reprogramación (${item.reprogTipoLabel || 'Clase'}) aprobada por Dirección.`
-          : `Regularización aprobada por ${roleCfg.sidebarRole}.`
+          ? `Reprogramación (${item.reprogTipoLabel || 'Clase'}) aprobada por Dirección de Escuela.`
+          : `Regularización de asistencia aprobada por Dirección de Escuela.`
       );
 
       saveSolicitudes(list);
@@ -1746,7 +1694,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderSolicitudesTable();
       renderReportesTable();
       checkAndRunTimerTicker();
-      showToast(`Solicitud ${processedId} aprobada con éxito. Puedes rectificar durante 5 minutos.`);
+      showToast(`Solicitud ${processedId} aprobada con éxito por Dirección de Escuela. Puedes rectificar durante 5 minutos.`);
     });
   }
 
@@ -1754,6 +1702,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnModalEvalRechazar) {
     btnModalEvalRechazar.addEventListener('click', () => {
       if (!currentEvaluatingId) return;
+      if (currentAdminRole !== 'DIRECTOR') {
+        showToast('Acción exclusiva del Director de Escuela. Su perfil cuenta con acceso de solo visualización.');
+        return;
+      }
       const motivo = evalTxtObservacion ? evalTxtObservacion.value.trim() : '';
       if (!motivo) {
         if (evalTxtObservacion) evalTxtObservacion.classList.add('has-error');
@@ -1769,7 +1721,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const list = getSolicitudes();
       const item = list.find(s => s.id === currentEvaluatingId);
       if (item) {
-        const roleCfg = resolveRoleForItem(item);
+        const roleCfg = ADMIN_ROLES.DIRECTOR;
         saveUndoSnapshot(item, roleCfg.key);
         item.etapaActual = 'COMPLETADO';
         item.condicion = 'Rechazado';
@@ -1786,7 +1738,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderSolicitudesTable();
       renderReportesTable();
       checkAndRunTimerTicker();
-      showToast(`Solicitud ${rejectedId} rechazada. Motivo formal registrado.`);
+      showToast(`Solicitud ${rejectedId} rechazada por Dirección. Motivo formal registrado.`);
     });
   }
 
@@ -1842,6 +1794,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnConfirmRechazo) {
     btnConfirmRechazo.addEventListener('click', () => {
+      if (currentAdminRole !== 'DIRECTOR') {
+        showToast('Acción exclusiva del Director de Escuela.');
+        return;
+      }
       const motivo = txtMotivoRechazo ? txtMotivoRechazo.value.trim() : '';
       if (!motivo) {
         if (txtMotivoRechazo) txtMotivoRechazo.classList.add('has-error');
@@ -1855,7 +1811,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       list.forEach(item => {
         if (pendingRejectionIds.includes(item.id)) {
-          const roleCfg = resolveRoleForItem(item);
+          const roleCfg = ADMIN_ROLES.DIRECTOR;
           saveUndoSnapshot(item, roleCfg.key);
           item.etapaActual = 'COMPLETADO';
           item.condicion = 'Rechazado';
@@ -1874,7 +1830,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderSolicitudesTable();
       renderReportesTable();
       checkAndRunTimerTicker();
-      showToast(`Solicitud${count > 1 ? 'es' : ''} rechazada${count > 1 ? 's' : ''}. Motivo registrado en el expediente.`);
+      showToast(`Solicitud${count > 1 ? 'es' : ''} rechazada${count > 1 ? 's' : ''} por Dirección. Motivo registrado.`);
     });
   }
 

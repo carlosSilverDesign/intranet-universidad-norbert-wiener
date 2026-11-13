@@ -220,11 +220,106 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnConfirmDocenteCancelar = document.getElementById('btnConfirmDocenteCancelar');
   let pendingSubmission = null;
 
+  // Elementos de la Demo de Roles Admin y Header
+  const sidebarUserProfileCard = document.getElementById('sidebarUserProfileCard');
+  const sidebarUserAvatarInitials = document.getElementById('sidebarUserAvatarInitials');
+  const sidebarUserRoleText = document.getElementById('sidebarUserRoleText');
+  const sidebarUserNameText = document.getElementById('sidebarUserNameText');
+  const sidebarUserCodeText = document.getElementById('sidebarUserCodeText');
+
+  const notasRoleSwitcher = document.getElementById('notasRoleSwitcher');
+
+  const modalReadOnlyBanner = document.getElementById('modalReadOnlyBanner');
+  const modalReadOnlyTitle = document.getElementById('modalReadOnlyTitle');
+  const modalReadOnlyMsg = document.getElementById('modalReadOnlyMsg');
+  const footerReadOnlyPill = document.getElementById('footerReadOnlyPill');
+
+  const ADMIN_ROLES_NOTAS = {
+    DIRECTOR: {
+      key: 'DIRECTOR',
+      initials: 'VB',
+      avatarBg: '#0F848F',
+      roleText: 'Director de Escuela',
+      nameText: 'Vergara Pinto Brenda',
+      titleText: 'Vergara Pinto Brenda Roxana',
+      codeText: 'Super Admin EAP (Aprobador Único)',
+      canResolve: true,
+      canCreate: true,
+      noticeClass: 'is-director',
+      noticeTitle: 'Rol Activo: Director de Escuela (Doble Rol Docente - Administrativo)',
+      noticeDesc: 'Como Director de Escuela cuenta con doble rol: tiene la facultad exclusiva de evaluar, dictaminar, procesar en SIGU o rechazar solicitudes de rectificación y nota extemporánea, así como generar nuevas solicitudes desde el perfil administrativo.'
+    },
+    RRAA: {
+      key: 'RRAA',
+      initials: 'CS',
+      avatarBg: '#0284C7',
+      roleText: 'Registros Académicos (RRAA)',
+      nameText: 'Lic. Carlos Jesús Silva Sánchez',
+      titleText: 'Lic. Carlos Jesús Silva Sánchez',
+      codeText: 'RRAA (Solo Visualización)',
+      canResolve: false,
+      canCreate: false,
+      noticeClass: 'is-readonly',
+      noticeTitle: 'Rol Activo: Registros Académicos - RRAA (Solo Visualización)',
+      noticeDesc: 'Como Registros Académicos (RRAA) cuenta con acceso para consultar expedientes, actas de notas y auditoría de cambios. Las resoluciones competen exclusivamente a la Dirección de Escuela.'
+    }
+  };
+
+  let currentNotasRole = 'DIRECTOR';
+
+  function setNotasRole(roleKey) {
+    if (!ADMIN_ROLES_NOTAS[roleKey]) return;
+    currentNotasRole = roleKey;
+    const cfg = ADMIN_ROLES_NOTAS[roleKey];
+
+    // Actualizar sidebar footer
+    if (sidebarUserAvatarInitials) {
+      sidebarUserAvatarInitials.textContent = cfg.initials;
+      sidebarUserAvatarInitials.style.background = cfg.avatarBg;
+    }
+    if (sidebarUserRoleText) sidebarUserRoleText.textContent = cfg.roleText;
+    if (sidebarUserNameText) {
+      sidebarUserNameText.textContent = cfg.nameText;
+      sidebarUserNameText.setAttribute('title', cfg.titleText);
+    }
+    if (sidebarUserCodeText) sidebarUserCodeText.textContent = cfg.codeText;
+
+    // Actualizar disponibilidad de botones de creación en cabecera (exclusivo Director)
+    if (btnOpenModalRectificacion) {
+      btnOpenModalRectificacion.disabled = !cfg.canCreate;
+      btnOpenModalRectificacion.style.opacity = cfg.canCreate ? '1' : '0.55';
+      btnOpenModalRectificacion.style.cursor = cfg.canCreate ? 'pointer' : 'not-allowed';
+      btnOpenModalRectificacion.title = cfg.canCreate
+        ? 'Crear Solicitud de Rectificación de Calificaciones'
+        : 'Función exclusiva de Dirección de Escuela';
+    }
+    if (btnOpenModalExtemporanea) {
+      btnOpenModalExtemporanea.disabled = !cfg.canCreate;
+      btnOpenModalExtemporanea.style.opacity = cfg.canCreate ? '1' : '0.55';
+      btnOpenModalExtemporanea.style.cursor = cfg.canCreate ? 'pointer' : 'not-allowed';
+      btnOpenModalExtemporanea.title = cfg.canCreate
+        ? 'Crear Solicitud de Nota Extemporánea'
+        : 'Función exclusiva de Dirección de Escuela';
+    }
+
+    // Actualizar selector de roles
+    if (notasRoleSwitcher) {
+      notasRoleSwitcher.querySelectorAll('.inbox-role-btn').forEach(btn => {
+        const btnRole = btn.getAttribute('data-role');
+        const isActive = btnRole === currentNotasRole;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-checked', isActive ? 'true' : 'false');
+      });
+    }
+
+    renderSolicitudesTable();
+  }
+
   // Toast
   const toastMessage = document.getElementById('toastMessage');
   const toastText = document.getElementById('toastText');
 
-  const SEARCH_SVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  const SEARCH_SVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#008F9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="11" cy="11" r="8"></circle>
     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
   </svg>`;
@@ -304,6 +399,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ? 'Rectificación'
         : 'Extemporánea';
 
+      const isDirector = currentNotasRole === 'DIRECTOR';
+      const isSolicitado = item.estado === 'Solicitado';
+
       row.innerHTML = `
         <td class="col-td-num">${index + 1}</td>
         <td class="col-td-tipo"><strong>${tipoLabel}</strong></td>
@@ -332,8 +430,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pagCurrent) pagCurrent.textContent = String(filtered.length);
     if (pagTotal) pagTotal.textContent = String(filtered.length);
 
-    // Eventos Click en Botón Acción Fila (Evaluar o Ver Detalle)
-    tableBody.querySelectorAll('.btn-row-action, .btn-table-action-evaluar').forEach(btn => {
+    // Eventos Click en Botón Detalle (Lupa)
+    tableBody.querySelectorAll('.btn-row-action').forEach(btn => {
       btn.addEventListener('click', () => {
         const ticket = btn.getAttribute('data-ticket');
         openResumenModal(ticket);
@@ -469,16 +567,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!item || !modalResumenBackdrop) return;
 
     currentActiveTicket = ticket;
+    const isDirector = currentNotasRole === 'DIRECTOR';
     const isRect = item.tipoSolicitud === 'Rectificación' || item.tipoSolicitud === 'Rectificacion de Nota';
     const isSolicitado = item.estado === 'Solicitado';
     const isProcesado = item.estado === 'Procesado';
     const isRechazado = item.estado === 'Rechazado';
 
     if (modalResumenTitle) {
-      if (isSolicitado) {
+      if (isSolicitado && isDirector) {
         modalResumenTitle.textContent = isRect
-          ? 'Evaluación de Solicitud de Rectificación'
-          : 'Evaluación de Solicitud de Nota Extemporánea';
+          ? 'Evaluación de Solicitud de Rectificación (Director de Escuela)'
+          : 'Evaluación de Solicitud de Nota Extemporánea (Director de Escuela)';
       } else {
         modalResumenTitle.textContent = isRect
           ? 'Detalle de Solicitud de Rectificación'
@@ -486,13 +585,35 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    if (decisionSustentoBox) {
-      decisionSustentoBox.style.display = isSolicitado ? 'flex' : 'none';
-      if (txtSustentoEap) txtSustentoEap.value = '';
-    }
+    if (isDirector) {
+      if (modalReadOnlyBanner) modalReadOnlyBanner.style.display = 'none';
+      if (footerReadOnlyPill) footerReadOnlyPill.style.display = 'none';
 
-    if (resumenActionButtonsGroup) {
-      resumenActionButtonsGroup.style.display = isSolicitado ? 'flex' : 'none';
+      if (decisionSustentoBox) {
+        decisionSustentoBox.style.display = isSolicitado ? 'flex' : 'none';
+        if (txtSustentoEap) txtSustentoEap.value = '';
+      }
+
+      if (resumenActionButtonsGroup) {
+        resumenActionButtonsGroup.style.display = isSolicitado ? 'flex' : 'none';
+      }
+    } else {
+      // Perfil no Director: Solo visualización institucional
+      if (decisionSustentoBox) decisionSustentoBox.style.display = 'none';
+      if (resumenActionButtonsGroup) resumenActionButtonsGroup.style.display = 'none';
+      if (reconsiderarContainer) reconsiderarContainer.style.display = 'none';
+
+      if (modalReadOnlyBanner) {
+        modalReadOnlyBanner.style.display = 'flex';
+        const roleInfo = ADMIN_ROLES_NOTAS[currentNotasRole] || ADMIN_ROLES_NOTAS.RRAA;
+        if (modalReadOnlyTitle) {
+          modalReadOnlyTitle.textContent = `Modo Solo Visualización (Perfil: ${roleInfo.roleText})`;
+        }
+        if (modalReadOnlyMsg) {
+          modalReadOnlyMsg.innerHTML = `De acuerdo a la directiva institucional, <strong>únicamente el Director de Escuela</strong> (quien cuenta con doble rol docente-administrativo) posee atribución resolutiva para dictaminar, procesar en SIGU o rechazar solicitudes. Su perfil como <strong>${roleInfo.roleText}</strong> tiene acceso exclusivo de consulta y auditoría.`;
+        }
+      }
+      if (footerReadOnlyPill) footerReadOnlyPill.style.display = 'inline-flex';
     }
 
     if (resumenTicketBadge) resumenTicketBadge.textContent = `Ticket: ${item.ticket}`;
@@ -552,7 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resumenEapText) {
           resumenEapText.textContent = item.eap.sustento || 'Dictamen emitido.';
         }
-        if (isRechazado && item.rejectionTimestamp && (Date.now() - item.rejectionTimestamp < 15 * 60 * 1000)) {
+        if (isDirector && isRechazado && item.rejectionTimestamp && (Date.now() - item.rejectionTimestamp < 15 * 60 * 1000)) {
           if (reconsiderarContainer) reconsiderarContainer.style.display = 'block';
         } else {
           if (reconsiderarContainer) reconsiderarContainer.style.display = 'none';
@@ -930,6 +1051,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Apertura y Cierre de Modales
   if (btnOpenModalRectificacion) {
     btnOpenModalRectificacion.addEventListener('click', () => {
+      if (currentNotasRole !== 'DIRECTOR') {
+        showToast('Acción no permitida: únicamente el Director de Escuela puede generar solicitudes desde este perfil.');
+        return;
+      }
       updateMesesOptions(modalRectPeriodo, modalRectMes);
       updateEvaluacionesActivas();
       renderModalRectAlumnos();
@@ -943,6 +1068,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnOpenModalExtemporanea) {
     btnOpenModalExtemporanea.addEventListener('click', () => {
+      if (currentNotasRole !== 'DIRECTOR') {
+        showToast('Acción no permitida: únicamente el Director de Escuela puede generar solicitudes desde este perfil.');
+        return;
+      }
       updateMesesOptions(modalExtPeriodo, modalExtMes);
       renderModalExtAlumnos();
       initCustomSelects();
@@ -1249,6 +1378,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   if (btnApproveRequest) {
     btnApproveRequest.addEventListener('click', () => {
+      if (currentNotasRole !== 'DIRECTOR') {
+        showToast('Acción no permitida: únicamente el Director de Escuela puede procesar o aprobar solicitudes.');
+        return;
+      }
       const sustento = txtSustentoEap ? txtSustentoEap.value.trim() : '';
       if (!sustento) {
         showToast('Por favor ingrese el sustento antes de procesar');
@@ -1271,6 +1404,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnRejectRequest) {
     btnRejectRequest.addEventListener('click', () => {
+      if (currentNotasRole !== 'DIRECTOR') {
+        showToast('Acción no permitida: únicamente el Director de Escuela puede rechazar solicitudes.');
+        return;
+      }
       const sustento = txtSustentoEap ? txtSustentoEap.value.trim() : '';
       if (!sustento) {
         showToast('Por favor ingrese el motivo del rechazo en el sustento');
@@ -1300,6 +1437,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnProceedConfirmDirector) {
     btnProceedConfirmDirector.addEventListener('click', () => {
+      if (currentNotasRole !== 'DIRECTOR') {
+        showToast('Acción exclusiva del Director de Escuela.');
+        return;
+      }
       if (!currentActiveTicket || !pendingDirectorAction) return;
       const list = getSolicitudes();
       const idx = list.findIndex(s => s.ticket === currentActiveTicket);
@@ -1310,23 +1451,23 @@ document.addEventListener('DOMContentLoaded', () => {
       if (pendingDirectorAction === 'APPROVE') {
         list[idx].estado = 'Procesado';
         list[idx].eap = {
-          director: 'Lic. Carlos Silva',
+          director: 'Dra. Vergara Pinto Brenda Roxana (Directora de Escuela)',
           fecha: getCurrentFormattedDateTime(),
           sustento: sustento
         };
         saveSolicitudes(list);
-        showToast('Solicitud PROCESADA con éxito en SIGU');
+        showToast('Solicitud PROCESADA con éxito en SIGU por Dirección de Escuela');
         hideUndoBanner();
       } else if (pendingDirectorAction === 'REJECT') {
         list[idx].estado = 'Rechazado';
         list[idx].rejectionTimestamp = Date.now();
         list[idx].eap = {
-          director: 'Lic. Carlos Silva',
+          director: 'Dra. Vergara Pinto Brenda Roxana (Directora de Escuela)',
           fecha: getCurrentFormattedDateTime(),
           sustento: sustento
         };
         saveSolicitudes(list);
-        showToast('Solicitud RECHAZADA. Puedes reconsiderar durante 15 min');
+        showToast('Solicitud RECHAZADA por Dirección de Escuela. Puedes reconsiderar durante 15 min');
         startUndoTimer(list[idx]);
       }
 
@@ -1381,6 +1522,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function handleRevertRejection(ticket) {
+    if (currentNotasRole !== 'DIRECTOR') {
+      showToast('Acción no permitida: únicamente el Director de Escuela puede reconsiderar dictámenes.');
+      return;
+    }
     const list = getSolicitudes();
     const t = ticket || (undoTicketCode ? undoTicketCode.textContent.trim() : null);
     const idx = list.findIndex(s => s.ticket === t || (s.estado === 'Rechazado' && s.rejectionTimestamp));
@@ -1391,7 +1536,7 @@ document.addEventListener('DOMContentLoaded', () => {
       saveSolicitudes(list);
       hideUndoBanner();
       if (modalResumenBackdrop) modalResumenBackdrop.classList.remove('active');
-      showToast('Dictamen restablecido a estado SOLICITADO');
+      showToast('Dictamen restablecido a estado SOLICITADO por Dirección de Escuela');
       renderSolicitudesTable();
     }
   }
@@ -1405,6 +1550,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   checkRecentRejectionUndo();
+
+
+
+  if (notasRoleSwitcher) {
+    notasRoleSwitcher.querySelectorAll('.inbox-role-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const role = btn.getAttribute('data-role');
+        if (role && role !== currentNotasRole) {
+          setNotasRole(role);
+        }
+      });
+    });
+  }
+
+  // Inicializar estado del perfil Director
+  setNotasRole('DIRECTOR');
 
   // ==========================================================================
   // MANEJO DE ENLACES DE SUBNAVEGACIÓN SUPERIOR (Look & Feel Administrativo)

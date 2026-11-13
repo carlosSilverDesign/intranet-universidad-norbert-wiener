@@ -229,6 +229,28 @@ document.addEventListener('DOMContentLoaded', () => {
       observacion: 'Sin marcación de salida'
     },
     {
+      id: 115,
+      docenteCodigo: 'DOC-1042',
+      docente: 'Jonah Miguel Asensio Peña',
+      fecha: '21/10/2026',
+      fechaIso: '2026-10-21',
+      programa: 'ENFERMERÍA',
+      facultad: 'Facultad de Ciencias de la Salud',
+      curso: 'Estructura y Función Humana - EN2014',
+      periodo: '2026-II',
+      seccion: 'PEIC1D1',
+      sesion: 'Teor.',
+      aulaOriginal: 'A-101',
+      sedeOriginal: 'Sede Principal - Av. Arequipa',
+      progInicio: '18:30',
+      progFin: '19:15',
+      regInicio: '18:42',
+      regFin: '19:15',
+      tardanza: "12'",
+      estado: 'Tardanza',
+      observacion: 'Registro de ingreso tardío en Intranet'
+    },
+    {
       id: 104,
       docenteCodigo: 'DOC-1042',
       docente: 'Jonah Miguel Asensio Peña',
@@ -248,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
       regFin: '20:00',
       tardanza: "2'",
       estado: 'Tardanza',
-      observacion: 'Falla de red biométrico'
+      observacion: 'Falla de red en Intranet'
     },
     {
       id: 105,
@@ -271,6 +293,28 @@ document.addEventListener('DOMContentLoaded', () => {
       tardanza: '-',
       estado: 'Inasistencia',
       observacion: 'Bloque 3 h acad. (135 min)'
+    },
+    {
+      id: 116,
+      docenteCodigo: 'DOC-1042',
+      docente: 'Jonah Miguel Asensio Peña',
+      fecha: '30/10/2026',
+      fechaIso: '2026-10-30',
+      programa: 'ENFERMERÍA',
+      facultad: 'Facultad de Ciencias de la Salud',
+      curso: 'Cuidado de Enfermería en Salud Familiar - EN3022',
+      periodo: '2026-II',
+      seccion: 'EN4M2',
+      sesion: 'Práct.',
+      aulaOriginal: 'LAB-201',
+      sedeOriginal: 'Sede Salud - Petit Thouars',
+      progInicio: '19:15',
+      progFin: '20:00',
+      regInicio: '19:21',
+      regFin: '20:00',
+      tardanza: "6'",
+      estado: 'Tardanza',
+      observacion: 'Tráfico en vía de acceso'
     },
     {
       id: 106,
@@ -315,6 +359,28 @@ document.addEventListener('DOMContentLoaded', () => {
       tardanza: '-',
       estado: 'Inasistencia',
       observacion: 'Permiso institucional'
+    },
+    {
+      id: 117,
+      docenteCodigo: 'DOC-1042',
+      docente: 'Jonah Miguel Asensio Peña',
+      fecha: '06/11/2026',
+      fechaIso: '2026-11-06',
+      programa: 'ENFERMERÍA',
+      facultad: 'Facultad de Ciencias de la Salud',
+      curso: 'Metodología de la Investigación Científica - PEIC205',
+      periodo: '2026-II',
+      seccion: 'PEIC2A1',
+      sesion: 'Teor.',
+      aulaOriginal: 'B-302',
+      sedeOriginal: 'Campus Los Olivos (Norte)',
+      progInicio: '20:45',
+      progFin: '21:30',
+      regInicio: '00:00',
+      regFin: '00:00',
+      tardanza: '-',
+      estado: 'Inasistencia',
+      observacion: 'Corte vigente 12/10 - 11/11'
     },
     {
       id: 108,
@@ -3471,6 +3537,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4200);
   }
 
-  // Inicializar tabla
-  renderTable('todos');
+  // Inicializar tabla y detectar modo vía URL si viene desde Admin
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('role') === 'coordinador') {
+    setSubmitRoleMode('coordinador');
+    if (urlParams.get('action') === 'reprogramar') {
+      setTimeout(() => {
+        showToast('Modo Coordinador activo: Seleccione una sesión para generar la Solicitud de Reprogramación.');
+      }, 350);
+    }
+  } else {
+    renderTable('todos');
+  }
 });
