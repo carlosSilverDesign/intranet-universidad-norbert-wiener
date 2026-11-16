@@ -100,13 +100,37 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem(STORAGE_SOLICITUDES, JSON.stringify(list));
   }
 
+  const INITIAL_CRONOGRAMAS = [
+    { id: 1, periodo: '2026-I', tipoEval: 'Eval. Permanente 1 (UD1)', tipoCurso: 'REGULAR', fechaInicio: '14/09/2026', fechaFin: '18/09/2026', estado: 'ACTIVO' },
+    { id: 2, periodo: '2026-I', tipoEval: 'Eval. Permanente 1 (UD1)', tipoCurso: 'MODULO 1', fechaInicio: '16/03/2026', fechaFin: '18/04/2026', estado: 'INACTIVO' },
+    { id: 3, periodo: '2026-I', tipoEval: 'Eval. Permanente 1 (UD1)', tipoCurso: 'MODULO 2', fechaInicio: '01/06/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 4, periodo: '2026-I', tipoEval: 'Eval. Permanente 2 (UD2)', tipoCurso: 'REGULAR', fechaInicio: '06/04/2026', fechaFin: '16/07/2026', estado: 'ACTIVO' },
+    { id: 5, periodo: '2026-I', tipoEval: 'Eval. Permanente 2 (UD2)', tipoCurso: 'MODULO 1', fechaInicio: '06/04/2026', fechaFin: '09/05/2026', estado: 'INACTIVO' },
+    { id: 6, periodo: '2026-I', tipoEval: 'Eval. Permanente 2 (UD2)', tipoCurso: 'MODULO 2', fechaInicio: '08/06/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 7, periodo: '2026-I', tipoEval: 'Eval. Permanente 3 (UD3)', tipoCurso: 'REGULAR', fechaInicio: '04/05/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 8, periodo: '2026-I', tipoEval: 'Eval. Permanente 3 (UD3)', tipoCurso: 'MODULO 1', fechaInicio: '20/04/2026', fechaFin: '16/05/2026', estado: 'INACTIVO' },
+    { id: 9, periodo: '2026-I', tipoEval: 'Eval. Permanente 3 (UD3)', tipoCurso: 'MODULO 2', fechaInicio: '15/06/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 10, periodo: '2026-I', tipoEval: 'Eval. Permanente 4 (UD4)', tipoCurso: 'REGULAR', fechaInicio: '01/06/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 11, periodo: '2026-I', tipoEval: 'Eval. Permanente 4 (UD4)', tipoCurso: 'MODULO 1', fechaInicio: '18/05/2026', fechaFin: '13/06/2026', estado: 'INACTIVO' },
+    { id: 12, periodo: '2026-I', tipoEval: 'Eval. Permanente 4 (UD4)', tipoCurso: 'MODULO 2', fechaInicio: '22/06/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 13, periodo: '2026-I', tipoEval: 'Examen Parcial (E1)', tipoCurso: 'REGULAR', fechaInicio: '25/05/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 14, periodo: '2026-I', tipoEval: 'Examen Parcial (E1)', tipoCurso: 'MODULO 1', fechaInicio: '20/04/2026', fechaFin: '17/05/2026', estado: 'INACTIVO' },
+    { id: 15, periodo: '2026-I', tipoEval: 'Examen Parcial (E1)', tipoCurso: 'MODULO 2', fechaInicio: '15/06/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 16, periodo: '2026-I', tipoEval: 'Examen Final (E2)', tipoCurso: 'MODULO 2', fechaInicio: '13/07/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 17, periodo: '2026-I', tipoEval: 'Examen Final (E2)', tipoCurso: 'REGULAR', fechaInicio: '13/07/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 18, periodo: '2026-I', tipoEval: 'Examen Final (E2)', tipoCurso: 'MODULO 1', fechaInicio: '18/05/2026', fechaFin: '20/05/2026', estado: 'INACTIVO' },
+    { id: 19, periodo: '2026-I', tipoEval: 'Examen Sustitutorio (E3)', tipoCurso: 'REGULAR', fechaInicio: '16/07/2026', fechaFin: '16/07/2026', estado: 'INACTIVO' },
+    { id: 20, periodo: '2026-II', tipoEval: 'Eval. Permanente 1 (UD1)', tipoCurso: 'REGULAR', fechaInicio: '14/09/2026', fechaFin: '18/09/2026', estado: 'ACTIVO' }
+  ];
+
   function getCronogramas() {
     const data = localStorage.getItem(STORAGE_CRONOGRAMAS);
-    if (!data) return [];
+    if (!data) return INITIAL_CRONOGRAMAS;
     try {
-      return JSON.parse(data);
+      const parsed = JSON.parse(data);
+      return Array.isArray(parsed) && parsed.length > 0 ? parsed : INITIAL_CRONOGRAMAS;
     } catch (e) {
-      return [];
+      return INITIAL_CRONOGRAMAS;
     }
   }
 
@@ -202,10 +226,15 @@ document.addEventListener('DOMContentLoaded', () => {
     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
   </svg>`;
 
-  // Poblar Tipos de Evaluación Activos en Rectificación
+  // Poblar Tipos de Evaluación Activos en Rectificación sin opciones repetidas
   function updateEvaluacionesActivas() {
     const cronos = getCronogramas();
-    const activas = cronos.filter(c => c.estado === 'ACTIVO');
+    const currentPeriodo = modalRectPeriodo ? modalRectPeriodo.value : '2026-I';
+    let activas = cronos.filter(c => c.estado === 'ACTIVO' && (!c.periodo || c.periodo === currentPeriodo));
+
+    if (activas.length === 0) {
+      activas = cronos.filter(c => c.estado === 'ACTIVO');
+    }
 
     if (modalRectTipoEval) {
       modalRectTipoEval.innerHTML = '';
@@ -215,11 +244,21 @@ document.addEventListener('DOMContentLoaded', () => {
         opt.textContent = 'Eval. Permanente 1 (UD1) • ACTIVO';
         modalRectTipoEval.appendChild(opt);
       } else {
+        const seen = new Set();
+        let isFirst = true;
         activas.forEach(c => {
-          const opt = document.createElement('option');
-          opt.value = c.tipoEval;
-          opt.textContent = `${c.tipoEval} (${c.tipoCurso}) • ACTIVO`;
-          modalRectTipoEval.appendChild(opt);
+          const key = c.tipoEval;
+          if (!seen.has(key)) {
+            seen.add(key);
+            const opt = document.createElement('option');
+            opt.value = c.tipoEval;
+            opt.textContent = `${c.tipoEval} (${c.tipoCurso}) • ACTIVO`;
+            if (isFirst) {
+              opt.selected = true;
+              isFirst = false;
+            }
+            modalRectTipoEval.appendChild(opt);
+          }
         });
       }
       syncCustomSelect(modalRectTipoEval);
@@ -336,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td>${alumno.nombre} ${alumno.retirado ? '<span class="tag-retirado">Retirado</span>' : ''}</td>
         <td style="text-align: center; font-weight: 700;">${alumno.notaActual !== null ? alumno.notaActual : '-'}</td>
         <td style="text-align: center;">
-          <input type="number" min="0" max="20" class="input-calificacion-control input-rect-nota" data-index="${index}" placeholder="--" disabled>
+          <input type="text" class="input-calificacion-control input-rect-nota" data-index="${index}" placeholder="--" maxlength="2" disabled>
         </td>
       `;
 
@@ -355,9 +394,18 @@ document.addEventListener('DOMContentLoaded', () => {
             inputNota.focus();
           } else {
             inputNota.value = '';
+            inputNota.classList.remove('input-error');
           }
         }
         updateRectCounter();
+      });
+    });
+
+    // Eventos input para limpiar clase de error visual
+    const inputsNota = modalRectAlumnosList.querySelectorAll('.input-rect-nota');
+    inputsNota.forEach(input => {
+      input.addEventListener('input', () => {
+        input.classList.remove('input-error');
       });
     });
   }
@@ -379,7 +427,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const inputNota = modalRectAlumnosList.querySelector(`.input-rect-nota[data-index="${idx}"]`);
         if (inputNota) {
           inputNota.disabled = !e.target.checked;
-          if (!e.target.checked) inputNota.value = '';
+          if (!e.target.checked) {
+            inputNota.value = '';
+            inputNota.classList.remove('input-error');
+          }
         }
       });
       updateRectCounter();
@@ -593,25 +644,33 @@ document.addEventListener('DOMContentLoaded', () => {
       const alumnosAfectados = [];
       let hasInvalidNota = false;
 
+      // Limpiar errores visuales previos
+      modalRectAlumnosList.querySelectorAll('.input-rect-nota').forEach(inp => inp.classList.remove('input-error'));
+
       checkboxes.forEach(chk => {
         const idx = chk.getAttribute('data-index');
         const inputNota = modalRectAlumnosList.querySelector(`.input-rect-nota[data-index="${idx}"]`);
-        const valNota = inputNota ? inputNota.value.trim() : '';
+        const valNota = inputNota ? inputNota.value.trim().toUpperCase() : '';
 
-        if (valNota === '' || isNaN(valNota) || parseInt(valNota) < 0 || parseInt(valNota) > 20) {
+        const isNP = valNota === 'NP';
+        const isNum = /^(0?[0-9]|1[0-9]|20)$/.test(valNota);
+
+        if (valNota === '' || (!isNP && !isNum)) {
           hasInvalidNota = true;
+          if (inputNota) inputNota.classList.add('input-error');
         } else {
           const alData = ALUMNOS_DATA[idx];
+          const notaFormatted = isNP ? 'NP' : (valNota.length === 1 ? '0' + valNota : valNota);
           alumnosAfectados.push({
             alumno: `${alData.id} - ${alData.nombre}`,
             notaActual: alData.notaActual !== null ? alData.notaActual : '-',
-            notaNueva: parseInt(valNota, 10)
+            notaNueva: notaFormatted
           });
         }
       });
 
       if (hasInvalidNota) {
-        alert('Por favor ingrese notas válidas entre 00 y 20 para todos los alumnos seleccionados.');
+        alert("Por favor ingrese una calificación válida (número del 00 al 20 o 'NP') para todos los alumnos seleccionados.");
         return;
       }
 
@@ -822,6 +881,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (modalRectPeriodo) {
     modalRectPeriodo.addEventListener('change', () => {
       updateMesesOptions(modalRectPeriodo, modalRectMes);
+      updateEvaluacionesActivas();
       if (chkSelectAllRect) chkSelectAllRect.checked = false;
       renderModalRectAlumnos();
     });
@@ -1155,6 +1215,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateMesesOptions(modalRectPeriodo, modalRectMes);
   updateMesesOptions(modalExtPeriodo, modalExtMes);
+  updateEvaluacionesActivas();
   initCustomSelects();
   renderSolicitudesTable();
 });

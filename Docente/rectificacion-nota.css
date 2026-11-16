@@ -990,6 +990,7 @@ html::-webkit-scrollbar-thumb:hover {
   color: #1E293B;
   outline: none;
   background-color: #FFFFFF;
+  text-transform: uppercase;
 }
 
 .input-calificacion-control:focus {
