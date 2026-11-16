@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const INITIAL_SOLICITUDES = [
     {
       id: 1,
-      tipoSolicitud: 'Extemporánea',
+      tipoSolicitud: 'Nota Extemporánea',
       ticket: '2026.3736',
       carrera: 'ODONTOLOGÍA',
       periodo: '2026-I - Marzo',
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 2,
-      tipoSolicitud: 'Rectificación',
+      tipoSolicitud: 'Rectificación de Notas',
       ticket: '2026.3826',
       carrera: 'ODONTOLOGÍA',
       periodo: '2026-I - Marzo',
@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const parsed = JSON.parse(data);
       // Normalizar nombres de tipos si venían de versiones anteriores
       return parsed.map(s => {
-        if (s.tipoSolicitud === 'Nota Extemporanea') s.tipoSolicitud = 'Extemporánea';
-        if (s.tipoSolicitud === 'Rectificacion de Nota') s.tipoSolicitud = 'Rectificación';
+        if (s.tipoSolicitud === 'Nota Extemporanea' || s.tipoSolicitud === 'Extemporánea') s.tipoSolicitud = 'Nota Extemporánea';
+        if (s.tipoSolicitud === 'Rectificacion de Nota' || s.tipoSolicitud === 'Rectificación') s.tipoSolicitud = 'Rectificación de Notas';
         return s;
       });
     } catch (e) {
@@ -276,7 +276,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const filtered = list.filter(item => {
       const matchPeriodo = fPeriodo === 'todos' || item.periodo.toLowerCase().includes(fPeriodo.toLowerCase().replace(/\s+/g, ''));
       const matchCarrera = fCarrera === 'todos' || item.carrera.toLowerCase().includes(fCarrera.toLowerCase());
-      const matchTipo = fTipo === 'todos' || item.tipoSolicitud.toLowerCase() === fTipo.toLowerCase();
+      let matchTipo = true;
+      if (fTipo !== 'todos') {
+        const isFTipoRect = fTipo.toLowerCase().includes('rectifica');
+        const isItemRect = (item.tipoSolicitud || '').toLowerCase().includes('rectifica');
+        matchTipo = isFTipoRect ? isItemRect : !isItemRect;
+      }
       const matchEstado = fEstado === 'todos' || item.estado.toLowerCase() === fEstado.toLowerCase();
       return matchPeriodo && matchCarrera && matchTipo && matchEstado;
     });
@@ -311,10 +316,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (item.estado === 'Procesado') badgeClass = 'badge-procesado';
       if (item.estado === 'Rechazado') badgeClass = 'badge-rechazado';
 
-      // Una sola palabra limpia
-      const tipoLabel = item.tipoSolicitud === 'Rectificación' || item.tipoSolicitud === 'Rectificacion de Nota'
-        ? 'Rectificación'
-        : 'Extemporánea';
+      // Nombres en dos líneas para la columna de tabla
+      const isRect = !item.tipoSolicitud || item.tipoSolicitud.toLowerCase().includes('rectifica');
+      const tipoLabel = isRect
+        ? 'Rectificación<br>de Nota'
+        : 'Nota<br>Extemporánea';
 
       row.innerHTML = `
         <td class="col-td-num">${index + 1}</td>
@@ -492,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const item = list.find(s => s.ticket === ticket);
     if (!item || !modalResumenBackdrop) return;
 
-    const isRect = item.tipoSolicitud === 'Rectificación' || item.tipoSolicitud === 'Rectificacion de Nota';
+    const isRect = !item.tipoSolicitud || item.tipoSolicitud.toLowerCase().includes('rectifica');
 
     if (modalResumenTitle) {
       modalResumenTitle.textContent = isRect
@@ -702,7 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const data = {
-        tipoSolicitud: 'Rectificación',
+        tipoSolicitud: 'Rectificación de Notas',
         periodo: fullPeriodo,
         carrera: carreraVal,
         seccion: seccionVal,
@@ -797,7 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const data = {
-        tipoSolicitud: 'Extemporánea',
+        tipoSolicitud: 'Nota Extemporánea',
         periodo: fullPeriodo,
         carrera: carreraVal,
         seccion: seccionVal,

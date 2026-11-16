@@ -237,7 +237,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const fechaIniFormateada = inputFechaInicio.value || '14/09/2026';
     const fechaFinFormateada = inputFechaFin.value || '18/09/2026';
 
+    const cleanPeriodo = inputPeriodo.value.replace(/\s+/g, '').toUpperCase();
+    const cleanTipoEval = inputTipoEval.value.trim().toUpperCase();
+    const cleanTipoCurso = inputTipoCurso.value.trim().toUpperCase();
+
     if (id === -1) {
+      // Validar que en RRAA no se permita el mismo registro (duplicado)
+      const exists = list.some(x =>
+        x.periodo.replace(/\s+/g, '').toUpperCase() === cleanPeriodo &&
+        x.tipoEval.trim().toUpperCase() === cleanTipoEval &&
+        x.tipoCurso.trim().toUpperCase() === cleanTipoCurso
+      );
+
+      if (exists) {
+        alert('Error de registro, los datos ingresados ya existen. modifique el registro existente.');
+        return;
+      }
+
       // Crear nuevo
       const newId = list.length > 0 ? Math.max(...list.map(x => x.id)) + 1 : 1;
       const nuevo = {
@@ -253,6 +269,19 @@ document.addEventListener('DOMContentLoaded', () => {
       saveCronogramas(list);
       showToast('Cronograma agregado exitosamente');
     } else {
+      // Validar si al modificar colisiona con otro registro existente
+      const existsOther = list.some(x =>
+        x.id !== id &&
+        x.periodo.replace(/\s+/g, '').toUpperCase() === cleanPeriodo &&
+        x.tipoEval.trim().toUpperCase() === cleanTipoEval &&
+        x.tipoCurso.trim().toUpperCase() === cleanTipoCurso
+      );
+
+      if (existsOther) {
+        alert('Error de registro, los datos ingresados ya existen. modifique el registro existente.');
+        return;
+      }
+
       // Actualizar existente
       const idx = list.findIndex(x => x.id === id);
       if (idx !== -1) {

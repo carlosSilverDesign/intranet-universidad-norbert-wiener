@@ -847,7 +847,7 @@ document.addEventListener('DOMContentLoaded', () => {
       duracionOriginalMin: 45,
       horarioRegInicio: '19:21',
       horarioRegFin: '20:00',
-      estadoOriginal: 'Tardanza',
+      estadoOriginal: 'ASISTIÓ',
       tardanzaMin: "6'",
       observacionOriginal: 'Ingreso validado RRAA',
       tipoRegularizacion: 'Motivo Académico',
@@ -1288,7 +1288,10 @@ document.addEventListener('DOMContentLoaded', () => {
       'sin-estado': 0
     };
     baseRows.forEach(r => {
-      const slug = normalizeEstadoSlug(r.estado);
+      const rectSol = getLatestSolicitudForRow(r.id, 'RECTIFICACION');
+      const isApprovedRect = rectSol && rectSol.condicion === 'Aprobado';
+      const effEstado = isApprovedRect ? 'ASISTIÓ' : r.estado;
+      const slug = normalizeEstadoSlug(effEstado);
       if (counts[slug] !== undefined) counts[slug] += 1;
     });
 
@@ -1445,7 +1448,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const filteredRows = filterEstado === 'todos'
       ? baseRows
-      : baseRows.filter(row => normalizeEstadoSlug(row.estado) === filterEstado);
+      : baseRows.filter(row => {
+          const rectSol = getLatestSolicitudForRow(row.id, 'RECTIFICACION');
+          const isApprovedRect = rectSol && rectSol.condicion === 'Aprobado';
+          const effEstado = isApprovedRect ? 'ASISTIÓ' : row.estado;
+          return normalizeEstadoSlug(effEstado) === filterEstado;
+        });
 
     updateSummaryCounters(baseRows, filteredRows.length);
     asistenciaTableBody.innerHTML = '';
@@ -1464,7 +1472,9 @@ document.addEventListener('DOMContentLoaded', () => {
     filteredRows.forEach((row, index) => {
       const rectSol = getLatestSolicitudForRow(row.id, 'RECTIFICACION');
       const reprogSol = getLatestSolicitudForRow(row.id, 'REPROGRAMACION');
-      const estadoSlug = normalizeEstadoSlug(row.estado);
+      const isApprovedRect = rectSol && rectSol.condicion === 'Aprobado';
+      const displayEstado = isApprovedRect ? 'ASISTIÓ' : row.estado;
+      const estadoSlug = normalizeEstadoSlug(displayEstado);
       const isZeroInicio = row.regInicio === '00:00';
       const isZeroFin = row.regFin === '00:00';
       const durMin = (timeToMinutes(row.progFin) || 0) - (timeToMinutes(row.progInicio) || 0);
@@ -1491,7 +1501,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td class="td-time-reg ${isZeroFin ? 'is-zero' : ''}">${row.regFin}</td>
         <td class="${row.tardanza !== '-' ? 'td-tarda-val' : ''}">${row.tardanza}</td>
         <td>
-          <span class="badge-estado estado-${estadoSlug}">${row.estado}</span>
+          <span class="badge-estado estado-${estadoSlug}">${displayEstado}</span>
         </td>
         <td>
           ${renderActionCellRectificacion(row, rectSol, reprogSol)}
@@ -2203,6 +2213,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const origDur = getOriginalDurationMinutes();
       const newDur = endMin - startMin;
+
+      // Validación estricta: fecha dentro del corte de planilla vigente
+      const isFechaInCutoff = compareIsoDates(fechaProp, ACTIVE_CUTOFF_START) >= 0 && compareIsoDates(fechaProp, ACTIVE_CUTOFF_END) <= 0;
+      if (!isFechaInCutoff) {
+        showReprogError(`No se permite elegir fechas fuera del corte de planilla vigente (${ACTIVE_CUTOFF_LABEL}).`, reprogFecha);
+        return;
+      }
 
       // Validaciones de fecha y rango horario según modalidad
       if (mode === 'recuperacion_normal') {
@@ -2981,19 +2998,25 @@ document.addEventListener('DOMContentLoaded', () => {
           daysHtml += `<button type="button" class="cal-day-btn other-month" tabindex="-1" disabled>${dayNum}</button>`;
         }
 
+        const isReprogInput = hiddenId === 'reprogFecha';
+
         for (let d = 1; d <= daysInMonth; d++) {
           const iso = toIsoDate(viewYear, viewMonth, d);
           const inCutoff = compareIsoDates(iso, ACTIVE_CUTOFF_START) >= 0 && compareIsoDates(iso, ACTIVE_CUTOFF_END) <= 0;
           const isToday = iso === SYSTEM_TODAY_ISO;
           const isSelected = iso === selectedIso;
+          const isDisabled = isReprogInput && !inCutoff;
+
           const cls = [
             'cal-day-btn',
             inCutoff ? 'in-cutoff' : '',
             isToday ? 'is-today' : '',
-            isSelected ? 'selected' : ''
+            isSelected ? 'selected' : '',
+            isDisabled ? 'is-disabled' : ''
           ].filter(Boolean).join(' ');
 
-          daysHtml += `<button type="button" class="${cls}" data-cal-iso="${iso}" aria-pressed="${isSelected}">${d}</button>`;
+          const disabledAttr = isDisabled ? 'disabled aria-disabled="true"' : '';
+          daysHtml += `<button type="button" class="${cls}" data-cal-iso="${iso}" aria-pressed="${isSelected}" ${disabledAttr}>${d}</button>`;
         }
 
         const totalCells = startOffset + daysInMonth;
@@ -3516,7 +3539,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnExportarExcel) {
     btnExportarExcel.addEventListener('click', () => {
-      showToast('Generando reporte Excel de programación, rectificaciones y reprogramaciones...');
+      solicitudesList = loadSolicitudes();
+      const baseRows = getBaseFilteredRows();
+      const rowsToExport = currentActivePillFilter === 'todos'
+        ? baseRows
+        : baseRows.filter(row => {
+            const rectSol = getLatestSolicitudForRow(row.id, 'RECTIFICACION');
+            const isApprovedRect = rectSol && rectSol.condicion === 'Aprobado';
+            const effEstado = isApprovedRect ? 'ASISTIÓ' : row.estado;
+            return normalizeEstadoSlug(effEstado) === currentActivePillFilter;
+          });
+
+      if (rowsToExport.length === 0) {
+        showToast('No hay registros en la tabla para exportar.');
+        return;
+      }
+
+      let csv = '\uFEFFN°,FECHA,PROG. ACADÉMICO,CURSO,DOCENTE,PERIODO,SECCIÓN,SESIÓN,HORARIO PROGRAMADO INICIO,HORARIO PROGRAMADO FIN,HORARIO REGISTRADO INICIO,HORARIO REGISTRADO FIN,TARDANZA,ESTADO,SOLICITUD RECTIFICACIÓN,SOLICITUD REPROGRAMACIÓN,OBSERVACIÓN\n';
+
+      rowsToExport.forEach((row, idx) => {
+        const rectSol = getLatestSolicitudForRow(row.id, 'RECTIFICACION');
+        const reprogSol = getLatestSolicitudForRow(row.id, 'REPROGRAMACION');
+
+        const isApprovedRect = rectSol && rectSol.condicion === 'Aprobado';
+        const displayEstado = isApprovedRect ? 'ASISTIÓ' : row.estado;
+
+        let rectText = '-';
+        if (rectSol) {
+          rectText = `${rectSol.id} (${rectSol.condicion})`;
+        }
+        let reprogText = '-';
+        if (reprogSol) {
+          reprogText = `${reprogSol.id} (${reprogSol.condicion})`;
+        }
+
+        const escapeCsv = (val) => `"${String(val || '').replace(/"/g, '""')}"`;
+
+        const rowData = [
+          idx + 1,
+          escapeCsv(row.fecha),
+          escapeCsv(row.programa),
+          escapeCsv(row.curso),
+          escapeCsv(row.docente),
+          escapeCsv(row.periodo),
+          escapeCsv(row.seccion),
+          escapeCsv(row.sesion),
+          escapeCsv(row.progInicio),
+          escapeCsv(row.progFin),
+          escapeCsv(row.regInicio),
+          escapeCsv(row.regFin),
+          escapeCsv(row.tardanza),
+          escapeCsv(displayEstado),
+          escapeCsv(rectText),
+          escapeCsv(reprogText),
+          escapeCsv(row.observacion)
+        ];
+        csv += rowData.join(',') + '\n';
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', `Reporte_Asistencia_Docente_${SYSTEM_TODAY_ISO}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      showToast('Reporte de asistencia descargado exitosamente en formato Excel/CSV.');
     });
   }
 

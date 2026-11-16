@@ -400,6 +400,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const list = getCronogramasEspecificos();
+
+      const candidatePeriodo = (addPeriodo ? addPeriodo.value : '2026-I').trim().toUpperCase();
+      const candidateCarrera = (addCarrera ? addCarrera.value : 'NUTRICIÓN Y DIETÉTICA').trim().toUpperCase();
+      const candidateSeccion = (addSeccion ? addSeccion.value : 'ND2N5').trim().toUpperCase();
+      const candidateCurso = (addCurso ? addCurso.value : 'MECANISMOS DE AGRESIÓN Y DEFENSA I').trim().toUpperCase();
+      const candidateTipoEval = (addTipoEval ? addTipoEval.value : 'Examen Sustitutorio (E3)').trim().toUpperCase();
+      const candidateDocente = (currentSelectedDocente || 'DOCENTE DESIGNADO').trim().toUpperCase();
+
+      const exists = list.some(x =>
+        x.periodo.trim().toUpperCase() === candidatePeriodo &&
+        x.carrera.trim().toUpperCase() === candidateCarrera &&
+        x.seccion.trim().toUpperCase() === candidateSeccion &&
+        x.curso.trim().toUpperCase() === candidateCurso &&
+        x.tipoEval.trim().toUpperCase() === candidateTipoEval &&
+        x.docente.trim().toUpperCase() === candidateDocente
+      );
+
+      if (exists) {
+        alert('Error de registro, los datos ingresados ya existen. modifique el registro existente.');
+        return;
+      }
+
       const nextId = list.length > 0 ? Math.max(...list.map(x => x.id)) + 1 : 1;
 
       const newRecord = {

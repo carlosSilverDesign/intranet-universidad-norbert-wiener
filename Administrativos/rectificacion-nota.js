@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const INITIAL_SOLICITUDES = [
     {
       id: 1,
-      tipoSolicitud: 'Extemporánea',
+      tipoSolicitud: 'Nota Extemporánea',
       ticket: '2026.3736',
       carrera: 'ODONTOLOGÍA',
       periodo: '2026-I - Marzo',
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 2,
-      tipoSolicitud: 'Rectificación',
+      tipoSolicitud: 'Rectificación de Notas',
       ticket: '2026.3826',
       carrera: 'ODONTOLOGÍA',
       periodo: '2026-I - Marzo',
@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const parsed = JSON.parse(data);
       // Normalizar nombres de tipos si venían de versiones anteriores
       return parsed.map(s => {
-        if (s.tipoSolicitud === 'Nota Extemporanea') s.tipoSolicitud = 'Extemporánea';
-        if (s.tipoSolicitud === 'Rectificacion de Nota') s.tipoSolicitud = 'Rectificación';
+        if (s.tipoSolicitud === 'Nota Extemporanea' || s.tipoSolicitud === 'Extemporánea') s.tipoSolicitud = 'Nota Extemporánea';
+        if (s.tipoSolicitud === 'Rectificacion de Nota' || s.tipoSolicitud === 'Rectificación') s.tipoSolicitud = 'Rectificación de Notas';
         return s;
       });
     } catch (e) {
@@ -359,7 +359,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const filtered = list.filter(item => {
       const matchPeriodo = fPeriodo === 'todos' || item.periodo.toLowerCase().includes(fPeriodo.toLowerCase().replace(/\s+/g, ''));
       const matchCarrera = fCarrera === 'todos' || item.carrera.toLowerCase().includes(fCarrera.toLowerCase());
-      const matchTipo = fTipo === 'todos' || item.tipoSolicitud.toLowerCase() === fTipo.toLowerCase();
+      let matchTipo = true;
+      if (fTipo !== 'todos') {
+        const isFTipoRect = fTipo.toLowerCase().includes('rectifica');
+        const isItemRect = (item.tipoSolicitud || '').toLowerCase().includes('rectifica');
+        matchTipo = isFTipoRect ? isItemRect : !isItemRect;
+      }
       const matchEstado = fEstado === 'todos' || item.estado.toLowerCase() === fEstado.toLowerCase();
       return matchPeriodo && matchCarrera && matchTipo && matchEstado;
     });
@@ -394,10 +399,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (item.estado === 'Procesado') badgeClass = 'badge-procesado';
       if (item.estado === 'Rechazado') badgeClass = 'badge-rechazado';
 
-      // Una sola palabra limpia
-      const tipoLabel = item.tipoSolicitud === 'Rectificación' || item.tipoSolicitud === 'Rectificacion de Nota'
-        ? 'Rectificación'
-        : 'Extemporánea';
+      // Nombres en dos líneas para la columna de tabla
+      const isRect = !item.tipoSolicitud || item.tipoSolicitud.toLowerCase().includes('rectifica');
+      const tipoLabel = isRect
+        ? 'Rectificación<br>de Nota'
+        : 'Nota<br>Extemporánea';
 
       const isDirector = currentNotasRole === 'DIRECTOR';
       const isSolicitado = item.estado === 'Solicitado';
@@ -461,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td>${alumno.nombre} ${alumno.retirado ? '<span class="tag-retirado">Retirado</span>' : ''}</td>
         <td style="text-align: center; font-weight: 700;">${alumno.notaActual !== null ? alumno.notaActual : '-'}</td>
         <td style="text-align: center;">
-          <input type="number" min="0" max="20" class="input-calificacion-control input-rect-nota" data-index="${index}" placeholder="--" disabled>
+          <input type="text" class="input-calificacion-control input-rect-nota" data-index="${index}" placeholder="--" maxlength="2" disabled>
         </td>
       `;
 
@@ -480,9 +486,18 @@ document.addEventListener('DOMContentLoaded', () => {
             inputNota.focus();
           } else {
             inputNota.value = '';
+            inputNota.classList.remove('input-error');
           }
         }
         updateRectCounter();
+      });
+    });
+
+    // Eventos input para limpiar clase de error visual
+    const inputsNota = modalRectAlumnosList.querySelectorAll('.input-rect-nota');
+    inputsNota.forEach(input => {
+      input.addEventListener('input', () => {
+        input.classList.remove('input-error');
       });
     });
   }
@@ -504,7 +519,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const inputNota = modalRectAlumnosList.querySelector(`.input-rect-nota[data-index="${idx}"]`);
         if (inputNota) {
           inputNota.disabled = !e.target.checked;
-          if (!e.target.checked) inputNota.value = '';
+          if (!e.target.checked) {
+            inputNota.value = '';
+            inputNota.classList.remove('input-error');
+          }
         }
       });
       updateRectCounter();
@@ -568,7 +586,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentActiveTicket = ticket;
     const isDirector = currentNotasRole === 'DIRECTOR';
-    const isRect = item.tipoSolicitud === 'Rectificación' || item.tipoSolicitud === 'Rectificacion de Nota';
+    const isRect = !item.tipoSolicitud || item.tipoSolicitud.toLowerCase().includes('rectifica');
     const isSolicitado = item.estado === 'Solicitado';
     const isProcesado = item.estado === 'Procesado';
     const isRechazado = item.estado === 'Rechazado';
@@ -765,25 +783,33 @@ document.addEventListener('DOMContentLoaded', () => {
       const alumnosAfectados = [];
       let hasInvalidNota = false;
 
+      // Limpiar errores visuales previos
+      modalRectAlumnosList.querySelectorAll('.input-rect-nota').forEach(inp => inp.classList.remove('input-error'));
+
       checkboxes.forEach(chk => {
         const idx = chk.getAttribute('data-index');
         const inputNota = modalRectAlumnosList.querySelector(`.input-rect-nota[data-index="${idx}"]`);
-        const valNota = inputNota ? inputNota.value.trim() : '';
+        const valNota = inputNota ? inputNota.value.trim().toUpperCase() : '';
 
-        if (valNota === '' || isNaN(valNota) || parseInt(valNota) < 0 || parseInt(valNota) > 20) {
+        const isNP = valNota === 'NP';
+        const isNum = /^(0?[0-9]|1[0-9]|20)$/.test(valNota);
+
+        if (valNota === '' || (!isNP && !isNum)) {
           hasInvalidNota = true;
+          if (inputNota) inputNota.classList.add('input-error');
         } else {
           const alData = ALUMNOS_DATA[idx];
+          const notaFormatted = isNP ? 'NP' : (valNota.length === 1 ? '0' + valNota : valNota);
           alumnosAfectados.push({
             alumno: `${alData.id} - ${alData.nombre}`,
             notaActual: alData.notaActual !== null ? alData.notaActual : '-',
-            notaNueva: parseInt(valNota, 10)
+            notaNueva: notaFormatted
           });
         }
       });
 
       if (hasInvalidNota) {
-        alert('Por favor ingrese notas válidas entre 00 y 20 para todos los alumnos seleccionados.');
+        alert("Por favor ingrese una calificación válida (número del 00 al 20 o 'NP') para todos los alumnos seleccionados.");
         return;
       }
 
@@ -815,7 +841,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const data = {
-        tipoSolicitud: 'Rectificación',
+        tipoSolicitud: 'Rectificación de Notas',
         periodo: fullPeriodo,
         carrera: carreraVal,
         seccion: seccionVal,
@@ -910,7 +936,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const data = {
-        tipoSolicitud: 'Extemporánea',
+        tipoSolicitud: 'Nota Extemporánea',
         periodo: fullPeriodo,
         carrera: carreraVal,
         seccion: seccionVal,

@@ -686,8 +686,8 @@
 }
 
 .col-ticket {
-  width: 58px;
-  min-width: 55px;
+  width: 155px;
+  min-width: 145px;
   text-align: center !important;
   font-weight: 700;
   color: #1E293B;
@@ -840,6 +840,12 @@
   color: #FFFFFF;
 }
 
+.badge-incidencia-asistio {
+  background-color: #16A34A;
+  color: #FFFFFF;
+  border: 1px solid #15803D;
+}
+
 /* Condición del trámite */
 .badge-condicion-tramite {
   display: inline-flex;
@@ -855,7 +861,11 @@
 }
 
 .badge-condicion-solicitado {
-  color: #B91C1C;
+  background-color: #E0F2FE;
+  color: #0284C7;
+  border: 1px solid #BAE6FD;
+  padding: 4px 10px;
+  border-radius: 999px;
   font-weight: 700;
 }
 

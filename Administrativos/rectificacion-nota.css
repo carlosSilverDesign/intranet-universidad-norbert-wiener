@@ -631,6 +631,10 @@ html::-webkit-scrollbar-thumb:hover {
   white-space: nowrap;
 }
 
+.col-td-tipo {
+  line-height: 1.25;
+}
+
 .col-th-ticket,
 .col-td-ticket {
   width: 90px;

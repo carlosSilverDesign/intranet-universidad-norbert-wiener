@@ -3602,6 +3602,16 @@
   font-weight: 400;
 }
 
+.cal-day-btn:disabled,
+.cal-day-btn.is-disabled {
+  color: #CBD5E1 !important;
+  cursor: not-allowed !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  opacity: 0.38 !important;
+  pointer-events: none !important;
+}
+
 .cal-footer-bar {
   display: flex;
   align-items: center;

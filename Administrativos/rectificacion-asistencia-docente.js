@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
       duracionOriginalMin: 45,
       horarioRegInicio: '19:21',
       horarioRegFin: '20:00',
-      estadoOriginal: 'Tardanza',
+      estadoOriginal: 'ASISTIÓ',
       tardanzaMin: "6'",
       observacionOriginal: 'Ingreso validado RRAA',
       tipoRegularizacion: 'Motivo Académico',
@@ -467,6 +467,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (raw) {
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed) && parsed.length > 0 && parsed.every(item => item.schemaVersion === SCHEMA_VERSION)) {
+          let updatedCache = false;
+          parsed.forEach(s => {
+            if (s.tramite === 'RECTIFICACION' && s.condicion === 'Aprobado' && s.estadoOriginal !== 'ASISTIÓ') {
+              s.estadoOriginal = 'ASISTIÓ';
+              updatedCache = true;
+            }
+          });
+          if (updatedCache) localStorage.setItem(STORAGE_KEY_ASISTENCIA_SOLICITUDES, JSON.stringify(parsed));
           return parsed;
         }
       }
@@ -797,6 +805,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (estado === 'Inasistencia') {
       return `<svg ${base}><circle cx="12" cy="12" r="9.5"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
     }
+    if (estado === 'ASISTIÓ' || estado === 'Asistió') {
+      return `<svg ${base}><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+    }
     if (estado === 'Tardanza') {
       return `<svg ${base}><circle cx="12" cy="12" r="9.5"></circle><polyline points="12 7 12 12 15.5 14"></polyline></svg>`;
     }
@@ -819,6 +830,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (condicion === 'Pendiente Director') {
       return `<svg ${base}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>`;
+    }
+    if (condicion === 'Solicitado') {
+      return `<svg ${base}><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8.5z"></path><polyline points="14 2.5 14 8.5 19.5 8.5"></polyline></svg>`;
     }
     return `<svg ${base}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
   }
@@ -888,10 +902,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const isChecked = selectedIds.has(item.id);
       if (isChecked) row.classList.add('is-selected');
 
+      const isApprovedRect = item.tramite === 'RECTIFICACION' && item.condicion === 'Aprobado';
+      const displayEstado = isApprovedRect ? 'ASISTIÓ' : item.estadoOriginal;
+
       let estadoBadgeClass = 'badge-incidencia-observado';
-      if (item.estadoOriginal === 'Inasistencia') estadoBadgeClass = 'badge-incidencia-inasistencia';
-      if (item.estadoOriginal === 'Tardanza') estadoBadgeClass = 'badge-incidencia-tardanza';
-      if (item.estadoOriginal === 'Sin Estado') estadoBadgeClass = 'badge-incidencia-sin-estado';
+      if (displayEstado === 'Inasistencia') estadoBadgeClass = 'badge-incidencia-inasistencia';
+      if (displayEstado === 'Tardanza') estadoBadgeClass = 'badge-incidencia-tardanza';
+      if (displayEstado === 'Sin Estado') estadoBadgeClass = 'badge-incidencia-sin-estado';
+      if (displayEstado === 'ASISTIÓ' || displayEstado === 'Asistió') estadoBadgeClass = 'badge-incidencia-asistio';
 
       let condicionBadgeClass = 'badge-condicion-solicitado';
       if (item.condicion === 'Pendiente Coordinador') condicionBadgeClass = 'badge-condicion-coordinador';
@@ -936,19 +954,6 @@ document.addEventListener('DOMContentLoaded', () => {
               </svg>
               <span>Evaluar</span>
             </button>
-            <button type="button" class="btn-row-approve-sm" data-id="${escapeHtml(item.id)}" title="Aprobar rápidamente como Director">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </button>
-            <button type="button" class="btn-row-reject-sm" data-id="${escapeHtml(item.id)}" title="Rechazar con motivo obligatorio como Director">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
           </div>
         `;
       } else if (isPending) {
@@ -978,7 +983,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isReprog = item.tramite === 'REPROGRAMACION';
       const tramiteBadge = isReprog
         ? `<span class="tramite-mini-pill is-reprog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16.5 3.5 20 7 16.5 10.5"></polyline><path d="M4 11V9.5A2.5 2.5 0 0 1 6.5 7H20"></path><polyline points="7.5 20.5 4 17 7.5 13.5"></polyline><path d="M20 13v1.5a2.5 2.5 0 0 1-2.5 2.5H4"></path></svg><span>Reprog. · ${escapeHtml(item.reprogTipoLabel || 'Clase')}</span></span>`
-        : `<span class="tramite-mini-pill is-rectif"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8.5z"></path><polyline points="14 2.5 14 8.5 19.5 8.5"></polyline></svg><span>Rectificación</span></span>`;
+        : `<span class="tramite-mini-pill is-rectif"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8.5z"></path><polyline points="14 2.5 14 8.5 19.5 8.5"></polyline></svg><span>Rectificación Asistencia</span></span>`;
 
       const reemplazoSub = isReprog && item.cambioDocente
         ? `<div class="reprog-cell-sub">${item.docenteReemplazo ? `Reemplazo: ${escapeHtml(item.docenteReemplazo)}` : 'Reemplazo por asignar'}</div>`
@@ -1033,7 +1038,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td class="col-time ${item.horarioRegFin === '00:00' ? 'time-omitted-cell' : ''}">${escapeHtml(item.horarioRegFin || '—')}</td>
         <td class="col-estado">
           <span class="badge-estado-incidencia ${estadoBadgeClass}">
-            <span>${escapeHtml(item.estadoOriginal)}</span>
+            <span>${escapeHtml(displayEstado)}</span>
           </span>
         </td>
         <td class="col-condicion">
@@ -1220,6 +1225,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function saveUndoSnapshot(item, actingRole) {
     item.decisionPrevEtapa = item.etapaActual;
     item.decisionPrevCondicion = item.condicion;
+    item.decisionPrevEstadoOriginal = item.estadoOriginal;
     item.decisionPrevAprobador = item.aprobadorAsignado;
     item.decisionPrevComentario = item.comentarioEvaluador || '';
     item.decisionPrevRechazo = item.motivoRechazo || '';
@@ -1252,6 +1258,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       item.etapaActual = 'COMPLETADO';
       item.condicion = 'Aprobado';
+      if (item.tramite === 'RECTIFICACION') {
+        item.estadoOriginal = 'ASISTIÓ';
+      }
       item.aprobadorAsignado = roleCfg.approverString;
       item.resolucionPor = roleCfg.resolverLabel;
       item.fechaResolucion = formatNowDisplay();
@@ -1286,6 +1295,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     item.etapaActual = item.decisionPrevEtapa || 'DIRECTOR';
     item.condicion = targetCond;
+    if (item.decisionPrevEstadoOriginal) {
+      item.estadoOriginal = item.decisionPrevEstadoOriginal;
+    }
     item.aprobadorAsignado = item.decisionPrevAprobador || 'Director de Escuela - Dr. Juan Carlos Mendoza';
     item.comentarioEvaluador = item.decisionPrevComentario || '';
     item.motivoRechazo = item.decisionPrevRechazo || '';
@@ -1372,14 +1384,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (evalFechaSolicitud) evalFechaSolicitud.textContent = `Fecha de Solicitud: ${item.fechaSolicitud}`;
 
     // Badge incidencia
+    const isApprovedRect = item.tramite === 'RECTIFICACION' && item.condicion === 'Aprobado';
+    const displayEstado = isApprovedRect ? 'ASISTIÓ' : item.estadoOriginal;
+
     let estadoBadgeClass = 'badge-incidencia-observado';
-    if (item.estadoOriginal === 'Inasistencia') estadoBadgeClass = 'badge-incidencia-inasistencia';
-    if (item.estadoOriginal === 'Tardanza') estadoBadgeClass = 'badge-incidencia-tardanza';
-    if (item.estadoOriginal === 'Sin Estado') estadoBadgeClass = 'badge-incidencia-sin-estado';
+    if (displayEstado === 'Inasistencia') estadoBadgeClass = 'badge-incidencia-inasistencia';
+    if (displayEstado === 'Tardanza') estadoBadgeClass = 'badge-incidencia-tardanza';
+    if (displayEstado === 'Sin Estado') estadoBadgeClass = 'badge-incidencia-sin-estado';
+    if (displayEstado === 'ASISTIÓ' || displayEstado === 'Asistió') estadoBadgeClass = 'badge-incidencia-asistio';
 
     if (evalBadgeIncidencia) {
       evalBadgeIncidencia.className = `badge-estado-incidencia ${estadoBadgeClass}`;
-      evalBadgeIncidencia.innerHTML = `${getAdminEstadoIconSvg(item.estadoOriginal)}<span>${escapeHtml(item.estadoOriginal)}${item.tardanzaMin && item.tardanzaMin !== '-' ? ` (${escapeHtml(item.tardanzaMin)} tardanza)` : ''}</span>`;
+      evalBadgeIncidencia.innerHTML = `${getAdminEstadoIconSvg(displayEstado)}<span>${escapeHtml(displayEstado)}${item.tardanzaMin && item.tardanzaMin !== '-' && !isApprovedRect ? ` (${escapeHtml(item.tardanzaMin)} tardanza)` : ''}</span>`;
     }
 
     // Sección 2: Biometría vs Reprogramación
@@ -1679,6 +1695,9 @@ document.addEventListener('DOMContentLoaded', () => {
       saveUndoSnapshot(item, roleCfg.key);
       item.etapaActual = 'COMPLETADO';
       item.condicion = 'Aprobado';
+      if (item.tramite === 'RECTIFICACION') {
+        item.estadoOriginal = 'ASISTIÓ';
+      }
       item.aprobadorAsignado = roleCfg.approverString;
       item.resolucionPor = roleCfg.resolverLabel;
       item.fechaResolucion = formatNowDisplay();
@@ -1966,6 +1985,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const fLimite = cronoFechaLimite ? cronoFechaLimite.value : fFin;
 
       const list = getCronogramas();
+
+      const exists = list.some(c => String(c.anio) === String(anio) && c.mes.trim().toLowerCase() === mes.trim().toLowerCase());
+      if (exists) {
+        alert('Error de registro, los datos ingresados ya existen. modifique el registro existente.');
+        return;
+      }
+
       const newId = list.length > 0 ? Math.max(...list.map(c => c.id)) + 1 : 1;
 
       list.push({
