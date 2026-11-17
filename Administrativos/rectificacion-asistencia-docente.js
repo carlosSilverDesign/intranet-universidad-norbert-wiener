@@ -7,7 +7,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const SCHEMA_VERSION = 2;
+  const SCHEMA_VERSION = 3;
   const SYSTEM_TODAY_ISO = '2026-11-11';
   const CINCO_MINUTOS_MS = 5 * 60 * 1000;
 
@@ -362,6 +362,118 @@ document.addEventListener('DOMContentLoaded', () => {
       motivoRechazo: '',
       fechaResolucion: '17/10/2026 15:40',
       resolucionPor: 'Lic. Carlos Silva (RRAA)'
+    },
+    {
+      id: 'REPROG-2026-105',
+      schemaVersion: SCHEMA_VERSION,
+      asistenciaId: 305,
+      tramite: 'REPROGRAMACION',
+      docenteCodigo: 'DOC-1103',
+      docente: 'Mariela Sofía Roldán Torres',
+      solicitadoPorRol: 'Docente',
+      solicitadoPorNombre: 'Mariela Sofía Roldán Torres',
+      periodo: '2026-II',
+      programa: 'ENFERMERÍA',
+      facultad: 'Facultad de Ciencias de la Salud',
+      curso: 'Cuidado de Enfermería en Salud del Adulto - EN3012',
+      seccion: 'EN3T1',
+      sesion: 'Teor.',
+      aulaOriginal: 'B-102',
+      fechaOriginalIso: '2026-11-02',
+      fechaOriginal: '02/11/2026',
+      horarioProgInicio: '20:45',
+      horarioProgFin: '21:30',
+      duracionOriginalMin: 45,
+      horarioRegInicio: '00:00',
+      horarioRegFin: '00:00',
+      estadoOriginal: 'Inasistencia',
+      tardanzaMin: '-',
+      observacionOriginal: 'Permiso por congreso institucional',
+      tipoRegularizacion: null,
+      detalleSalud: '',
+      motivo: 'Recuperación adelantada acordada por participación en Congreso Internacional de Enfermería.',
+      archivoNombre: '',
+      reprogTipo: 'adelanto',
+      reprogTipoLabel: 'Recuperación adelantada',
+      cambioDocente: false,
+      docenteReemplazoCodigo: '',
+      docenteReemplazo: '',
+      sedeNueva: 'Sede Principal - Av. Arequipa',
+      aulaNueva: 'B-102',
+      fechaNuevaIso: '2026-11-07',
+      fechaNueva: '07/11/2026',
+      horaInicioNueva: '20:45',
+      horaFinNueva: '21:30',
+      duracionNuevaMin: 45,
+      cortePlanillaOriginal: '12/10/2026 – 11/11/2026',
+      cortePlanillaPago: '12/10/2026 – 11/11/2026',
+      notaPlanilla: 'Ejecutado dentro del corte vigente (12/10/2026 – 11/11/2026).',
+      requiereCoordinador: false,
+      etapaActual: 'COMPLETADO',
+      condicion: 'Aprobado',
+      aprobadorAsignado: 'Director de Escuela - Dr. Juan Carlos Mendoza',
+      fechaSolicitudIso: '2026-11-02',
+      fechaSolicitud: '02/11/2026 14:15',
+      comentarioEvaluador: 'Reprogramación autorizada por Dirección de Escuela.',
+      motivoRechazo: '',
+      fechaResolucion: '03/11/2026 11:30',
+      resolucionPor: 'Dr. Juan Carlos Mendoza (Director)'
+    },
+    {
+      id: 'REG-2026-106',
+      schemaVersion: SCHEMA_VERSION,
+      asistenciaId: 308,
+      tramite: 'RECTIFICACION',
+      docenteCodigo: 'DOC-1120',
+      docente: 'Fernando Morales Silva',
+      solicitadoPorRol: 'Docente',
+      solicitadoPorNombre: 'Fernando Morales Silva',
+      periodo: '2026-II',
+      programa: 'FARMACIA Y BIOQUÍMICA',
+      facultad: 'Facultad de Farmacia y Bioquímica',
+      curso: 'Farmacología Clínica Aplicada - FC2M1',
+      seccion: 'FC2M2',
+      sesion: 'Prác.',
+      aulaOriginal: 'Lab-3',
+      fechaOriginalIso: '2026-11-06',
+      fechaOriginal: '06/11/2026',
+      horarioProgInicio: '14:00',
+      horarioProgFin: '15:30',
+      duracionOriginalMin: 90,
+      horarioRegInicio: '14:00',
+      horarioRegFin: '00:00',
+      estadoOriginal: 'Observado',
+      tardanzaMin: '-',
+      observacionOriginal: 'Sin marcación de salida en biométrico',
+      tipoRegularizacion: 'Falla Biométrica',
+      detalleSalud: '',
+      motivo: 'El dispositivo biométrico del Laboratorio 3 presentó error de conexión al finalizar la sesión.',
+      archivoNombre: 'ticket_incidencia_biometrico.pdf',
+      reprogTipo: null,
+      reprogTipoLabel: '',
+      cambioDocente: false,
+      docenteReemplazoCodigo: '',
+      docenteReemplazo: '',
+      sedeNueva: '',
+      aulaNueva: '',
+      fechaNuevaIso: '',
+      fechaNueva: '',
+      horaInicioNueva: '',
+      horaFinNueva: '',
+      duracionNuevaMin: null,
+      cortePlanillaOriginal: '12/10/2026 – 11/11/2026',
+      cortePlanillaPago: '12/10/2026 – 11/11/2026',
+      notaPlanilla: 'Dentro del corte vigente (12/10/2026 – 11/11/2026).',
+      requiereCoordinador: false,
+      etapaActual: 'DIRECTOR',
+      condicion: 'Pendiente Director',
+      aprobadorAsignado: 'Director de Escuela - Dr. Juan Carlos Mendoza',
+      fechaSolicitudIso: '2026-11-07',
+      fechaSolicitud: '07/11/2026 08:30',
+      comentarioEvaluador: '',
+      motivoRechazo: '',
+      fechaResolucion: '',
+      resolucionPor: ''
     }
   ];
 
@@ -469,9 +581,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Array.isArray(parsed) && parsed.length > 0 && parsed.every(item => item.schemaVersion === SCHEMA_VERSION)) {
           let updatedCache = false;
           parsed.forEach(s => {
-            if (s.tramite === 'RECTIFICACION' && s.condicion === 'Aprobado' && s.estadoOriginal !== 'ASISTIÓ') {
-              s.estadoOriginal = 'ASISTIÓ';
-              updatedCache = true;
+            if (s.tramite === 'RECTIFICACION' && s.condicion === 'Aprobado') {
+              if (s.estadoOriginal !== 'ASISTIÓ') {
+                s.estadoOriginal = 'ASISTIÓ';
+                updatedCache = true;
+              }
+              if ((s.horarioRegFin === '00:00' || !s.horarioRegFin) && s.horarioProgFin) {
+                s.horarioRegFin = s.horarioProgFin;
+                updatedCache = true;
+              }
+              if ((s.horarioRegInicio === '00:00' || !s.horarioRegInicio) && s.horarioProgInicio) {
+                s.horarioRegInicio = s.horarioProgInicio;
+                updatedCache = true;
+              }
             }
           });
           if (updatedCache) localStorage.setItem(STORAGE_KEY_ASISTENCIA_SOLICITUDES, JSON.stringify(parsed));
@@ -825,11 +947,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (condicion === 'Rechazado') {
       return `<svg ${base}><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
     }
-    if (condicion === 'Pendiente Coordinador') {
-      return `<svg ${base}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8.5" x2="19" y2="14"></line><line x1="16" y1="11" x2="22" y2="11"></line></svg>`;
-    }
-    if (condicion === 'Pendiente Director') {
-      return `<svg ${base}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>`;
+    if (condicion === 'Pendiente Coordinador' || condicion === 'Pendiente Director') {
+      return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2" ry="2"></rect><line x1="16" y1="2.5" x2="16" y2="6.5"></line><line x1="8" y1="2.5" x2="8" y2="6.5"></line><line x1="3.5" y1="10" x2="20.5" y2="10"></line></svg>`;
     }
     if (condicion === 'Solicitado') {
       return `<svg ${base}><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8.5z"></path><polyline points="14 2.5 14 8.5 19.5 8.5"></polyline></svg>`;
@@ -904,6 +1023,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const isApprovedRect = item.tramite === 'RECTIFICACION' && item.condicion === 'Aprobado';
       const displayEstado = isApprovedRect ? 'ASISTIÓ' : item.estadoOriginal;
+
+      const displayRegInicio = (isApprovedRect && (item.horarioRegInicio === '00:00' || !item.horarioRegInicio))
+        ? (item.horarioProgInicio || item.horarioRegInicio)
+        : (item.horarioRegInicio || '—');
+
+      const displayRegFin = (isApprovedRect && (item.horarioRegFin === '00:00' || !item.horarioRegFin))
+        ? (item.horarioProgFin || item.horarioRegFin)
+        : (item.horarioRegFin || '—');
 
       let estadoBadgeClass = 'badge-incidencia-observado';
       if (displayEstado === 'Inasistencia') estadoBadgeClass = 'badge-incidencia-inasistencia';
@@ -1001,6 +1128,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ? `<span class="reprog-cell-sub">${escapeHtml(item.horaFinNueva)}</span>`
         : '';
 
+      let condicionLabel = item.condicion;
+      if (item.condicion === 'Pendiente Director') condicionLabel = 'Pend. Director';
+      if (item.condicion === 'Pendiente Coordinador') condicionLabel = 'Pend. Coordinador';
+
+      let condicionSubtext = item.aprobadorAsignado || '';
+      if (item.tramite === 'REPROGRAMACION' && item.reprogTipoLabel && isPending) {
+        condicionSubtext = item.reprogTipoLabel;
+      }
+
       row.innerHTML = `
         <td class="col-check">
           <input type="checkbox" class="chk-row" data-id="${escapeHtml(item.id)}" ${isChecked ? 'checked' : ''} aria-label="Seleccionar ${escapeHtml(item.id)}">
@@ -1034,8 +1170,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <div>${escapeHtml(item.horarioProgFin || '-')}</div>
           ${nuevaHoraFinSub}
         </td>
-        <td class="col-time ${item.horarioRegInicio === '00:00' ? 'time-omitted-cell' : ''}">${escapeHtml(item.horarioRegInicio || '—')}</td>
-        <td class="col-time ${item.horarioRegFin === '00:00' ? 'time-omitted-cell' : ''}">${escapeHtml(item.horarioRegFin || '—')}</td>
+        <td class="col-time ${displayRegInicio === '00:00' ? 'time-omitted-cell' : ''}">${escapeHtml(displayRegInicio)}</td>
+        <td class="col-time ${displayRegFin === '00:00' ? 'time-omitted-cell' : ''}">${escapeHtml(displayRegFin)}</td>
         <td class="col-estado">
           <span class="badge-estado-incidencia ${estadoBadgeClass}">
             <span>${escapeHtml(displayEstado)}</span>
@@ -1044,9 +1180,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <td class="col-condicion">
           <span class="badge-condicion-tramite ${condicionBadgeClass}">
             ${getAdminCondicionIconSvg(item.condicion)}
-            <span>${escapeHtml(item.condicion)}</span>
+            <span>${escapeHtml(condicionLabel)}</span>
           </span>
-          <span class="stage-owner-sub">${escapeHtml(item.aprobadorAsignado || '')}</span>
+          <span class="stage-owner-sub">${escapeHtml(condicionSubtext)}</span>
         </td>
         <td class="col-acciones">${accionesHtml}</td>
       `;
@@ -1226,6 +1362,8 @@ document.addEventListener('DOMContentLoaded', () => {
     item.decisionPrevEtapa = item.etapaActual;
     item.decisionPrevCondicion = item.condicion;
     item.decisionPrevEstadoOriginal = item.estadoOriginal;
+    item.decisionPrevRegInicio = item.horarioRegInicio;
+    item.decisionPrevRegFin = item.horarioRegFin;
     item.decisionPrevAprobador = item.aprobadorAsignado;
     item.decisionPrevComentario = item.comentarioEvaluador || '';
     item.decisionPrevRechazo = item.motivoRechazo || '';
@@ -1260,6 +1398,12 @@ document.addEventListener('DOMContentLoaded', () => {
       item.condicion = 'Aprobado';
       if (item.tramite === 'RECTIFICACION') {
         item.estadoOriginal = 'ASISTIÓ';
+        if (item.horarioRegFin === '00:00' || !item.horarioRegFin) {
+          item.horarioRegFin = item.horarioProgFin;
+        }
+        if (item.horarioRegInicio === '00:00' || !item.horarioRegInicio) {
+          item.horarioRegInicio = item.horarioProgInicio;
+        }
       }
       item.aprobadorAsignado = roleCfg.approverString;
       item.resolucionPor = roleCfg.resolverLabel;
@@ -1297,6 +1441,12 @@ document.addEventListener('DOMContentLoaded', () => {
     item.condicion = targetCond;
     if (item.decisionPrevEstadoOriginal) {
       item.estadoOriginal = item.decisionPrevEstadoOriginal;
+    }
+    if (item.decisionPrevRegInicio !== undefined) {
+      item.horarioRegInicio = item.decisionPrevRegInicio;
+    }
+    if (item.decisionPrevRegFin !== undefined) {
+      item.horarioRegFin = item.decisionPrevRegFin;
     }
     item.aprobadorAsignado = item.decisionPrevAprobador || 'Director de Escuela - Dr. Juan Carlos Mendoza';
     item.comentarioEvaluador = item.decisionPrevComentario || '';
@@ -1697,6 +1847,12 @@ document.addEventListener('DOMContentLoaded', () => {
       item.condicion = 'Aprobado';
       if (item.tramite === 'RECTIFICACION') {
         item.estadoOriginal = 'ASISTIÓ';
+        if (item.horarioRegFin === '00:00' || !item.horarioRegFin) {
+          item.horarioRegFin = item.horarioProgFin;
+        }
+        if (item.horarioRegInicio === '00:00' || !item.horarioRegInicio) {
+          item.horarioRegInicio = item.horarioProgInicio;
+        }
       }
       item.aprobadorAsignado = roleCfg.approverString;
       item.resolucionPor = roleCfg.resolverLabel;
@@ -2074,7 +2230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (filtered.length === 0) {
       reportesTableBody.innerHTML = `
         <tr>
-          <td colspan="10" style="text-align: center; padding: 36px; color: #64748B;">
+          <td colspan="11" style="text-align: center; padding: 36px; color: #64748B;">
             No se encontraron registros para el reporte con los filtros seleccionados.
           </td>
         </tr>
@@ -2084,12 +2240,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filtered.forEach((item, idx) => {
       const row = document.createElement('tr');
-      let condBadge = `<span class="badge-status-pill badge-solicitado">${escapeHtml(item.condicion)}</span>`;
-      if (item.condicion === 'Aprobado') condBadge = '<span class="badge-status-pill badge-procesado">Aprobado</span>';
-      if (item.condicion === 'Rechazado') condBadge = '<span class="badge-status-pill badge-rechazado">Rechazado</span>';
-
+      const isReprog = item.tramite === 'REPROGRAMACION';
       const obsTexto = item.comentarioEvaluador || item.motivoRechazo || item.motivo || '—';
-      const tramiteTxt = item.tramite === 'REPROGRAMACION' ? `Reprog. (${item.reprogTipoLabel})` : 'Rectificación';
+
+      const tipoSolicitudHtml = isReprog
+        ? `<div class="report-tramite-cell">
+             <span class="report-tramite-pill is-reprog">Reprogramación<br>de Clase</span>
+             ${item.reprogTipoLabel ? `<span class="report-tramite-sub">${escapeHtml(item.reprogTipoLabel)}</span>` : ''}
+           </div>`
+        : `<div class="report-tramite-cell">
+             <span class="report-tramite-pill is-rectif">Rectificación de<br>Asistencia</span>
+             ${item.tipoRegularizacion ? `<span class="report-tramite-sub">${escapeHtml(item.tipoRegularizacion)}</span>` : ''}
+           </div>`;
+
+      let condBadge = `<span class="badge-condicion-tramite badge-condicion-solicitado">${getAdminCondicionIconSvg('Solicitado')}<span>Solicitado</span></span>`;
+      if (item.condicion === 'Aprobado') {
+        condBadge = `<span class="badge-condicion-tramite badge-condicion-aprobado">${getAdminCondicionIconSvg('Aprobado')}<span>Aprobado</span></span>`;
+      } else if (item.condicion === 'Rechazado') {
+        condBadge = `<span class="badge-condicion-tramite badge-condicion-rechazado">${getAdminCondicionIconSvg('Rechazado')}<span>Rechazado</span></span>`;
+      } else if (item.condicion === 'Pendiente Director') {
+        condBadge = `<span class="badge-condicion-tramite badge-condicion-director">${getAdminCondicionIconSvg('Pendiente Director')}<span>Pend. Director</span></span>`;
+      } else if (item.condicion === 'Pendiente Coordinador') {
+        condBadge = `<span class="badge-condicion-tramite badge-condicion-coordinador">${getAdminCondicionIconSvg('Pendiente Coordinador')}<span>Pend. Coordinador</span></span>`;
+      }
 
       row.innerHTML = `
         <td style="text-align: center; font-weight: 700; color: #64748B;">${idx + 1}</td>
@@ -2099,7 +2272,8 @@ document.addEventListener('DOMContentLoaded', () => {
           ${item.docenteReemplazo && item.cambioDocente ? `<div style="font-size: 11px; color: #6B21A8;">Reemplazo: ${escapeHtml(item.docenteReemplazo)}</div>` : ''}
         </td>
         <td style="line-height: 1.3;">${escapeHtml(item.curso)}</td>
-        <td style="text-align: center;">${escapeHtml(item.seccion)} / ${escapeHtml(item.sesion)} · ${escapeHtml(tramiteTxt)}</td>
+        <td style="text-align: center; width: 105px;">${tipoSolicitudHtml}</td>
+        <td style="text-align: center;">${escapeHtml(item.seccion)} / ${escapeHtml(item.sesion)}</td>
         <td style="text-align: center;">${escapeHtml(item.fechaOriginal)}${item.fechaNueva ? `<div style="font-size: 11px; color: #0F848F;">-> ${escapeHtml(item.fechaNueva)}</div>` : ''}</td>
         <td style="text-align: center;">${escapeHtml(item.fechaSolicitud)}</td>
         <td style="text-align: center;">${condBadge}</td>

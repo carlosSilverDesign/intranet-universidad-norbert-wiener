@@ -12,6 +12,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="navbar.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="marcacion.css">
 </head>
 
 <body>
@@ -1187,16 +1188,16 @@
     <div class="marcacion-modal-window">
       <!-- Cabecera del Modal -->
       <div class="marcacion-modal-header">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div style="width: 36px; height: 36px; border-radius: 10px; background-color: #E6F3F4; display: flex; align-items: center; justify-content: center; color: #0F848F;">
+        <div class="marcacion-modal-title-group">
+          <div class="marcacion-modal-icon-badge">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
           </div>
           <div>
-            <h3 style="font-size: 17px; font-weight: 700; color: #222; margin: 0; line-height: 1.2;">Marcación de Asistencia Docente</h3>
-            <span style="font-size: 12px; color: #5B6E80;">Control de Jornada Académica · Periodo 2026-II</span>
+            <h3 class="marcacion-modal-title">Marcación de Asistencia Docente</h3>
+            <span class="marcacion-modal-subtitle">Control de Jornada Académica · Periodo 2026-II</span>
           </div>
         </div>
         <button type="button" class="marcacion-modal-close-btn" id="btnMarcacionModalClose" aria-label="Cerrar Ventana">
@@ -1212,12 +1213,11 @@
       <div class="marcacion-modal-body">
         <!-- Bloque de Contexto: Hora Evaluada, Fecha y Conexión de Red -->
         <div class="marcacion-context-card">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-            <div>
-              <span style="font-size: 11px; color: #5B6E80; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Hora del Sistema</span>
-              <div style="font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 800; color: #222; line-height: 1.1;"
-                id="modalCurrentEvalTime">08:00 AM</div>
-              <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+          <div class="marcacion-context-grid">
+            <div class="marcacion-context-col">
+              <span class="marcacion-context-label">Hora del Sistema</span>
+              <div class="marcacion-eval-time" id="modalCurrentEvalTime">08:00 AM</div>
+              <div class="marcacion-context-chip-row">
                 <span class="badge-network-chip" id="modalNetworkChip">
                   <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -1228,10 +1228,10 @@
                 </span>
               </div>
             </div>
-            <div style="text-align: right;">
-              <span style="font-size: 11px; color: #5B6E80; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Fecha Evaluada</span>
-              <div style="font-size: 13.5px; font-weight: 700; color: #222;" id="modalCurrentEvalDate">Viernes, 13 de Noviembre de 2026</div>
-              <div style="margin-top: 4px;">
+            <div class="marcacion-context-col marcacion-context-col-right">
+              <span class="marcacion-context-label">Fecha Evaluada</span>
+              <div class="marcacion-eval-date" id="modalCurrentEvalDate">Viernes, 13 de Noviembre de 2026</div>
+              <div class="marcacion-context-chip-row">
                 <span class="badge-regimen-chip" id="modalRegimenBadge">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -1246,7 +1246,7 @@
 
         <!-- Banner Informativo: Personal No Fiscalizable (sf_personal_no_fiscalizable = 1) -->
         <div class="marcacion-no-fiscalizable-alert" id="marcacionNoFiscalizableAlert" style="display: none;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="16" x2="12" y2="12"></line>
             <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -1259,7 +1259,7 @@
 
         <!-- Alerta de conflicto si se detecta superposición -->
         <div class="marcacion-conflict-alert" id="marcacionConflictAlert" style="display: none;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#991B1B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#991B1B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
             <line x1="12" y1="9" x2="12" y2="13"></line>
             <line x1="12" y1="17" x2="12.01" y2="17"></line>
@@ -1268,7 +1268,7 @@
         </div>
 
         <!-- Botón de Empalme Continuo (Aparece cuando hay clases consecutivas) -->
-        <div id="marcacionEmpalmeContainer" style="display: none;">
+        <div id="marcacionEmpalmeContainer" class="marcacion-empalme-container" style="display: none;">
           <button type="button" id="btnEmpalmeContinuo">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
@@ -1278,15 +1278,15 @@
         </div>
 
         <!-- Lista dinámica de clases / actividades a evaluar -->
-        <div id="marcacionClasesList" style="display: flex; flex-direction: column; gap: 14px;">
+        <div id="marcacionClasesList" class="marcacion-clases-list">
           <!-- Generado dinámicamente por scripts.js -->
         </div>
 
         <!-- Panel del Simulador Interactivo de Tiempo y Casuísticas -->
         <div class="marcacion-simulator-panel">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;">
+          <div class="marcacion-simulator-header">
             <span class="marcacion-simulator-title">Simulador de Horario para Pruebas:</span>
-            <span style="font-size: 11px; color: #5B6E80;">Haz clic en una hora para evaluar las transiciones en vivo</span>
+            <span class="marcacion-simulator-subtitle">Haz clic en una hora para evaluar las transiciones en vivo</span>
           </div>
           <div class="marcacion-simulator-buttons" id="simulatorButtonsContainer">
             <!-- Botonera de tiempos del día -->
@@ -1310,8 +1310,8 @@
 
           <!-- Controles de pruebas adicionales -->
           <div class="marcacion-sim-toolbar">
-            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-              <span style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase;">Casos Especiales:</span>
+            <div class="marcacion-sim-cases">
+              <span class="marcacion-sim-cases-label">Casos Especiales:</span>
               <button type="button" class="btn-sim-toggle" id="btnToggleFiscalizable" title="Alternar entre régimen regular y no fiscalizable">
                 Régimen: Docente Regular
               </button>

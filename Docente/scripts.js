@@ -197,7 +197,25 @@ document.addEventListener('DOMContentLoaded', () => {
       marcadoSalida: null,
       fechaMarcacionHospital: '13/11/2026 06:48 AM', // Validación hospitalaria en nodo HOS
       conexion: 'Acceso Externo',
-      institucion: '51'
+      institucion: '51',
+      // Listado de cursos llevados en hospital (caso especial campo clínico)
+      cursos: [
+        {
+          codigo: 'MH3083',
+          nombre: 'Pediatría I',
+          horario: '07:00 AM - 09:00 AM'
+        },
+        {
+          codigo: 'MH3084',
+          nombre: 'Neonatología Clínica',
+          horario: '09:00 AM - 11:00 AM'
+        },
+        {
+          codigo: 'MH3085',
+          nombre: 'Práctica Médica Pediátrica',
+          horario: '11:00 AM - 01:00 PM'
+        }
+      ]
     },
     {
       id: 'HNL-B6',
@@ -509,79 +527,125 @@ document.addEventListener('DOMContentLoaded', () => {
       const classCard = document.createElement('div');
       classCard.className = 'marcacion-class-card';
       classCard.id = `card-${sesion.id}`;
-      classCard.innerHTML = `
-        <!-- Cabecera de la Tarjeta: Micro-Badges y Título -->
-        <div class="marcacion-class-header">
-          <div style="flex: 1; min-width: 0;">
-            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 4px;">
-              <span class="badge-tipo-marcacion ${badgeTipoClase}">
-                ${badgeTipoIcono}
-                ${sesion.tipoEtiqueta}
-              </span>
-              <span style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase;">
-                ${sesion.carrera}
-              </span>
-              <span style="font-size: 10px; font-weight: 600; color: #64748B; background: #F1F5F9; border: 1px solid #E2E8F0; padding: 1px 5px; border-radius: 4px;">
-                SECC. ${sesion.seccion}
-              </span>
+
+      // Carrera y Sección: sin formato tag, separadas por guión
+      // Formato requerido: 'MEDICINA HUMANA - SEC. MD8M9'
+      const carreraSeccionTexto = `${sesion.carrera} - SEC. ${sesion.seccion}`;
+
+      // Estructura del cuerpo según si es Campo Clínico o Actividad Regular
+      let cardBodyHTML = '';
+
+      if (sesion.tipo === 'HOS' && sesion.cursos && sesion.cursos.length > 0) {
+        // Campo Clínico: listado de cursos (title + Horario separados por divisores),
+        // luego Sede y Validación hospitalaria en texto verde
+        const cursosHTML = sesion.cursos.map(c => `
+          <div class="marcacion-hospital-course-item">
+            <h4 class="marcacion-hospital-course-title">${c.codigo} · ${c.nombre}</h4>
+            <div class="marcacion-hospital-course-schedule">
+              <span class="marcacion-schedule-label">Horario:</span>
+              <strong class="marcacion-schedule-time">${c.horario}</strong>
             </div>
-            
-            <h4 class="marcacion-class-title">${sesion.cursoCodigo} · ${sesion.nombre}</h4>
-            
+          </div>
+        `).join('');
+
+        cardBodyHTML = `
+          <div class="marcacion-hospital-courses-list">
+            ${cursosHTML}
+          </div>
+
+          <div class="marcacion-hospital-meta-block">
             <div class="marcacion-class-meta">
-              <span style="display: inline-flex; align-items: center; gap: 4px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <strong>${sesion.sede}</strong> · ${sesion.aula}
-              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span><strong>${sesion.sede}</strong> · ${sesion.aula}</span>
             </div>
 
             ${sesion.fechaMarcacionHospital ? `
-              <div class="badge-hospital-validation">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <div class="marcacion-hospital-validation-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
                 <span>Validación Hospitalaria Registrada: ${sesion.fechaMarcacionHospital}</span>
               </div>
             ` : ''}
           </div>
+        `;
+      } else {
+        // Formato estándar para otras clases (HOR, HNL, VIR)
+        cardBodyHTML = `
+          <div class="marcacion-class-body">
+            <h4 class="marcacion-class-title">${sesion.cursoCodigo} · ${sesion.nombre}</h4>
+            
+            <div class="marcacion-class-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span><strong>${sesion.sede}</strong> · ${sesion.aula}</span>
+            </div>
+          </div>
+        `;
+      }
 
-          <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 20px; font-size: 10.5px; font-weight: 600; color: ${badgeColor}; background-color: ${badgeBg}; white-space: nowrap;">
-            <span style="width: 5px; height: 5px; border-radius: 50%; background-color: ${badgeColor};"></span>
-            ${estadoTexto}
-          </span>
+      classCard.innerHTML = `
+        <!-- Cabecera de la Tarjeta: Badge Tipo + Carrera - SEC. Sección, y Badge de Estado -->
+        <div class="marcacion-class-header">
+          <div class="marcacion-header-left">
+            <span class="badge-tipo-marcacion ${badgeTipoClase}">
+              ${badgeTipoIcono}
+              ${sesion.tipoEtiqueta}
+            </span>
+            <span class="marcacion-carrera-seccion">
+              ${carreraSeccionTexto}
+            </span>
+          </div>
+
+          <div class="marcacion-header-right">
+            <span class="marcacion-status-badge" style="color: ${badgeColor}; background-color: ${badgeBg};">
+              <span class="status-dot" style="background-color: ${badgeColor};"></span>
+              ${estadoTexto}
+            </span>
+          </div>
         </div>
+
+        <!-- Cuerpo de la Tarjeta (Listado para Campo Clínico o Información de Curso) -->
+        ${cardBodyHTML}
 
         <!-- Grilla de Horario, Entrada y Salida -->
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 14px;">
-          <div>
-            <span style="font-size: 10px; color: #64748B; font-weight: 700; display: block; text-transform: uppercase; letter-spacing: 0.4px;">Horario Prog.</span>
-            <strong style="font-size: 13px; color: #1E293B; font-weight: 700;">${sesion.inicioStr} - ${sesion.finStr}</strong>
+        <div class="marcacion-time-grid">
+          <div class="marcacion-time-col">
+            <span class="marcacion-time-label">Horario Prog.</span>
+            <strong class="marcacion-time-value">${sesion.inicioStr} - ${sesion.finStr}</strong>
           </div>
-          <div>
-            <span style="font-size: 10px; color: #64748B; font-weight: 700; display: block; text-transform: uppercase; letter-spacing: 0.4px;">Entrada Real</span>
-            <strong style="font-size: 13px; color: ${sesion.marcadoEntrada ? '#166A74' : '#94A3B8'}; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
-              ${sesion.marcadoEntrada ? `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>${sesion.marcadoEntrada}` : 'Sin registrar'}
+          <div class="marcacion-time-col">
+            <span class="marcacion-time-label">Entrada Real</span>
+            <strong class="marcacion-time-value ${sesion.marcadoEntrada ? 'recorded' : 'unrecorded'}">
+              ${sesion.marcadoEntrada ? `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>${sesion.marcadoEntrada}` : 'Sin registrar'}
             </strong>
           </div>
-          <div>
-            <span style="font-size: 10px; color: #64748B; font-weight: 700; display: block; text-transform: uppercase; letter-spacing: 0.4px;">Salida Real</span>
-            <strong style="font-size: 13px; color: ${sesion.marcadoSalida ? '#166A74' : '#94A3B8'}; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
-              ${sesion.marcadoSalida ? `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F848F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>${sesion.marcadoSalida}` : 'Sin registrar'}
+          <div class="marcacion-time-col">
+            <span class="marcacion-time-label">Salida Real</span>
+            <strong class="marcacion-time-value ${sesion.marcadoSalida ? 'recorded' : 'unrecorded'}">
+              ${sesion.marcadoSalida ? `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>${sesion.marcadoSalida}` : 'Sin registrar'}
             </strong>
           </div>
         </div>
 
-        <!-- Pie de la Tarjeta: Red permitida y Botones de Acción (min-height: 44px) -->
+        <!-- Pie de la Tarjeta: Red permitida y Botones de Acción -->
         <div class="marcacion-class-footer">
-          <div style="display: flex; flex-direction: column; gap: 2px;">
-            <span style="font-size: 11.5px; color: #5B6E80; font-weight: 500;">
+          <div class="marcacion-footer-info">
+            <span class="marcacion-window-status">
               ${textoVentana}
             </span>
-            <span style="font-size: 11px; color: #64748B; display: inline-flex; align-items: center; gap: 4px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span class="marcacion-network-info">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
               Red permitida: <strong>${sesion.conexion}</strong>
             </span>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <div class="marcacion-footer-actions">
             ${sesion.tipo === 'VIR' ? `
               <a href="${sesion.urlVirtual}" target="_blank" class="btn-punch-action outline-virtual" title="Abrir Blackboard / Teams">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -605,7 +669,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             ${sesion.marcadoEntrada && sesion.marcadoSalida ? `
               <div class="btn-punch-concluded">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Marcación Concluida</span>
               </div>
             ` : ''}
@@ -717,18 +781,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!toast) {
       toast = document.createElement('div');
       toast.id = 'docenteToastNotification';
-      toast.style.position = 'fixed';
-      toast.style.bottom = '24px';
-      toast.style.right = '24px';
-      toast.style.backgroundColor = '#1E293B';
-      toast.style.color = '#FFFFFF';
-      toast.style.padding = '12px 20px';
-      toast.style.borderRadius = '8px';
-      toast.style.boxShadow = '0 6px 16px rgba(0,0,0,0.2)';
-      toast.style.fontSize = '13.5px';
-      toast.style.fontWeight = '500';
-      toast.style.zIndex = '400';
-      toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
       document.body.appendChild(toast);
     }
     toast.textContent = mensaje;
