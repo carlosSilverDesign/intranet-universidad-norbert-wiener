@@ -8,7 +8,8 @@
 .main-content-layout.notes-layout {
   margin-left: 240px;
   margin-top: 64px;
-  padding: 24px !important; /* Margen lateral estricto 1.5rem / 24px */
+  padding: 24px !important;
+  /* Margen lateral estricto 1.5rem / 24px */
   min-height: calc(100vh - 64px);
   box-sizing: border-box;
   transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1779,6 +1780,7 @@ html::-webkit-scrollbar-thumb:hover {
    ADAPTACIONES RESPONSIVAS MOBILE
    ========================================================================== */
 @media (max-width: 768px) {
+
   .main-content-layout.rect-layout,
   .main-content-layout.notes-layout {
     margin-left: 0 !important;
@@ -1924,6 +1926,7 @@ html::-webkit-scrollbar-thumb:hover {
     opacity: 0;
     transform: translateY(-4px) scale(0.99);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -2467,30 +2470,30 @@ html::-webkit-scrollbar-thumb:hover {
 
 
 
-  .director-action-buttons-group {
-    width: 100%;
-    justify-content: stretch;
-  }
-
-  .director-action-buttons-group .btn-nueva-solicitud {
-    flex: 1;
-    justify-content: center;
-  }
-
-  .demo-role-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .inbox-role-switcher {
-    flex-wrap: wrap;
-  }
-
-  .inbox-role-btn {
-    flex: 1;
-    justify-content: center;
-  }
+.director-action-buttons-group {
+  width: 100%;
+  justify-content: stretch;
 }
+
+.director-action-buttons-group .btn-nueva-solicitud {
+  flex: 1;
+  justify-content: center;
+}
+
+.demo-role-container {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.inbox-role-switcher {
+  flex-wrap: wrap;
+}
+
+.inbox-role-btn {
+  flex: 1;
+  justify-content: center;
+}
+
 
 /* ==========================================================================
    INTEGRIDAD DE ICONOS SVG (PREVENCIÓN DE RECORTES Y DISTORSIÓN)

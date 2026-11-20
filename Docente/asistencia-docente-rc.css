@@ -3787,3 +3787,30 @@
   width: 13px;
   height: 13px;
 }
+
+/* ==========================================================================
+   V4: GARANTÍA DE APERTURA Y VISIBILIDAD DE MODALES DE SOLICITUD
+   ========================================================================== */
+#modalRegularizacion,
+#modalReprogramacion {
+  z-index: 2000;
+}
+
+#modalRegularizacion.active,
+#modalReprogramacion.active {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.btn-solicitud-ingresa,
+.btn-ver-solicitud-badge {
+  cursor: pointer;
+}
+
+.btn-solicitud-ingresa svg,
+.btn-solicitud-ingresa span,
+.btn-ver-solicitud-badge svg,
+.btn-ver-solicitud-badge span {
+  pointer-events: none;
+}

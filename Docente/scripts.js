@@ -195,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
       bloqueFin: '1300',
       marcadoEntrada: '06:48 AM',  // Entrada real registrada según respuesta del SP
       marcadoSalida: null,
+      marcadoSalidaCursos: null,   // Salida de los cursos de la rotación hospitalaria
       fechaMarcacionHospital: '13/11/2026 06:48 AM', // Validación hospitalaria en nodo HOS
       conexion: 'Acceso Externo',
       institucion: '51',
@@ -537,7 +538,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (sesion.tipo === 'HOS' && sesion.cursos && sesion.cursos.length > 0) {
         // Campo Clínico: listado de cursos (title + Horario separados por divisores),
-        // luego Sede y Validación hospitalaria en texto verde
+        // con su propio botón de "Marcar salida" para los cursos,
+        // seguido del bloque de Sede con mayor jerarquía y Validación hospitalaria
         const cursosHTML = sesion.cursos.map(c => `
           <div class="marcacion-hospital-course-item">
             <h4 class="marcacion-hospital-course-title">${c.codigo} · ${c.nombre}</h4>
@@ -548,18 +550,46 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `).join('');
 
+        const botonSalidaCursosHTML = !sesion.marcadoSalidaCursos ? `
+          <button type="button" class="btn-punch-action courses-salida" data-punch-action="salida-cursos" data-punch-id="${sesion.id}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            Marcar salida
+          </button>
+        ` : `
+          <div class="btn-punch-concluded mini">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Salida de cursos: ${sesion.marcadoSalidaCursos}</span>
+          </div>
+        `;
+
         cardBodyHTML = `
           <div class="marcacion-hospital-courses-list">
             ${cursosHTML}
+            <div class="marcacion-hospital-courses-footer">
+              ${botonSalidaCursosHTML}
+            </div>
           </div>
 
-          <div class="marcacion-hospital-meta-block">
-            <div class="marcacion-class-meta">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span><strong>${sesion.sede}</strong> · ${sesion.aula}</span>
+          <!-- Bloque de Sede Hospitalaria con Mayor Jerarquía Visual -->
+          <div class="marcacion-hospital-venue-card">
+            <span class="marcacion-venue-kicker">Sede Hospitalaria</span>
+            <div class="marcacion-venue-header">
+              <div class="marcacion-venue-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="marcacion-venue-info">
+                <h4 class="marcacion-venue-title">${sesion.sede}</h4>
+                <span class="marcacion-venue-subtitle">${sesion.aula}</span>
+              </div>
             </div>
 
             ${sesion.fechaMarcacionHospital ? `
@@ -759,9 +789,16 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         mostrarToast(`Entrada presencial registrada para ${sesion.cursoCodigo} a las ${horaTexto}.`);
       }
+    } else if (accion === 'salida-cursos') {
+      sesion.marcadoSalidaCursos = horaTexto;
+      mostrarToast(`Salida de cursos de Campo Clínico registrada a las ${horaTexto}.`);
     } else if (accion === 'salida') {
       sesion.marcadoSalida = horaTexto;
-      mostrarToast(`Salida registrada para ${sesion.cursoCodigo} a las ${horaTexto}.`);
+      if (sesion.tipo === 'HOS') {
+        mostrarToast(`Salida de Sede Hospitalaria registrada a las ${horaTexto}.`);
+      } else {
+        mostrarToast(`Salida registrada para ${sesion.cursoCodigo} a las ${horaTexto}.`);
+      }
     }
 
     actualizarMotorMarcacion();

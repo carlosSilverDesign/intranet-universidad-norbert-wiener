@@ -497,11 +497,118 @@
   color: #1E293B;
 }
 
-.marcacion-hospital-meta-block {
-  padding-top: 4px;
+/* Footer de los cursos con botón propio de "Marcar salida" */
+.marcacion-hospital-courses-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 0 6px 0;
+  flex-wrap: wrap;
+}
+
+.btn-punch-action.courses-salida {
+  min-height: 38px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  background-color: #0F848F;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px rgba(15, 132, 143, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-punch-action.courses-salida:hover {
+  background-color: #0B6770;
+  box-shadow: 0 4px 10px rgba(15, 132, 143, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-punch-concluded.mini {
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #047857;
+  background-color: #ECFDF5;
+  border: 1px solid rgba(4, 120, 87, 0.25);
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Bloque de Sede Hospitalaria con Mayor Jerarquía Visual */
+.marcacion-hospital-venue-card {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-left: 3.5px solid #0F848F;
+  border-radius: 8px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.marcacion-venue-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.marcacion-venue-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  background-color: #E6F3F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0F848F;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.marcacion-venue-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.marcacion-venue-kicker {
+  font-size: 10px;
+  font-weight: 800;
+  color: #0F848F;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  display: block;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.marcacion-venue-title {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.marcacion-venue-subtitle {
+  font-size: 12.5px;
+  color: #475569;
+  font-weight: 500;
+  display: block;
+  margin-top: 2px;
+  line-height: 1.35;
 }
 
 /* Validación Hospitalaria: Texto verde sin formato tag */
@@ -980,6 +1087,27 @@
   .btn-punch-concluded {
     width: 100%;
     justify-content: center;
+  }
+
+  .marcacion-hospital-courses-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .btn-punch-action.courses-salida,
+  .btn-punch-concluded.mini {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .marcacion-venue-title {
+    font-size: 14.5px;
+  }
+
+  .marcacion-venue-subtitle {
+    font-size: 12px;
   }
 
   /* Simulador en mobile */

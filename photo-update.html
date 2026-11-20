@@ -31,7 +31,7 @@
 
     <!-- Toolbar con botón desplegable -->
     <div class="photo-update-toolbar">
-      <button id="toggle-req-btn" type="button">
+      <button id="toggle-req-btn" type="button" aria-expanded="false" aria-controls="requirements-block">
         Ver requisitos
         <span class="dropdown-arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -45,36 +45,35 @@
 
     <!-- Bloque de requisitos (no flotante, empuja el contenido) -->
     <div class="requirements-block" id="requirements-block" style="display:none;">
-      <h4>Requisitos</h4>
-      <div>Para que tu foto sea válida, debe tener las siguientes especificaciones requeridas por SUNEDU:</div>
-      <ul>
-        <li>Formato de la foto: jpg.</li>
-        <li>Peso de la foto: 30 a 50 kb.</li>
-        <li>Altura: 288 pixeles.</li>
-        <li>Ancho: 240 pixeles.</li>
-        <li>Resolución: 300 dpi.</li>
-        <li>Fondo de color blanco e imagen sin filtros.</li>
-        <li>Posición del rostro y hombros centrados.</li>
-      </ul>
-      <h4>¿Cómo debo tomarme la foto?</h4>
-      <ul>
-        <li>Sin accesorios: bufanda, gorras, lentes, entre otros.</li>
-        <li>Tipo DNI: rostro centrado a partir de los hombros.</li>
-        <li>Vestimenta formal y sin prendas blancas
-          <ul>
-            <li>Mujer: blusa y sastre</li>
-            <li>Hombre: camisa, corbata y saco</li>
-          </ul>
-        </li>
-      </ul>
-      <h4>Consideraciones</h4>
-      <div>La foto registrada o actualizada sirve para el trámite de emisión de carné universitario, certificado de
-        estudios y fotocheck digital.</div>
-      <h4>Pasos a seguir:</h4>
+      <p>Tener una fotografía actualizada es importante, el cual es válido para realizar trámites, por ejemplo el carné universitario. Para el registro correcto de su foto seguir los siguientes pasos:</p>
+      
       <ol>
-        <li>Sube y validaremos automáticamente que tu foto cumpla con todas las especificaciones.</li>
-        <li>Recibe la conformidad u observaciones, una vez finalizada tu solicitud.</li>
+        <li>Conocer las características, formato y dimensiones de la foto.</li>
+        <li>Hacer clic en el botón "Examinar" y seleccionar una foto.</li>
+        <li>Hacer clic en el botón "Subir".</li>
       </ol>
+
+      <h4>Características:</h4>
+      <ul>
+        <li>Imagen a color con fondo blanco.</li>
+        <li>Tomada de frente, sin gorra y sin gafas o lentes de color oscuro (a excepción de los invidentes).</li>
+        <li>Sin sellos ni enmendaduras.</li>
+        <li>La imagen debe enfocarse en el rostro del estudiante a partir de los hombros. No mostrar medio cuerpo.</li>
+      </ul>
+
+      <h4>Formato:</h4>
+      <ul>
+        <li><strong>Formato:</strong> JPG</li>
+        <li><strong>Modo DPI:</strong> desde 300 hasta 30000 (Puntos por Pixeles).</li>
+        <li><strong>Resolución:</strong> desde 24 hasta 32 (Bits).</li>
+        <li><strong>Peso:</strong> desde 4 hasta 50 (Kilobytes).</li>
+      </ul>
+
+      <h4>Dimensiones en Pixeles:</h4>
+      <ul>
+        <li><strong>Alto:</strong> 288 (Pixeles).</li>
+        <li><strong>Ancho:</strong> 240 (Pixeles).</li>
+      </ul>
     </div>
   </div>
 
@@ -126,6 +125,7 @@
       block.style.display = open ? 'block' : 'none';
       btn.childNodes[0].nodeValue = open ? 'Ver menos' : 'Ver requisitos';
       btn.appendChild(arrow);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       if (open) {
         arrow.classList.add('rotated');
       } else {

@@ -157,52 +157,59 @@ span svg {
   border: 1px solid #cfd8dc;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  padding: 28px 32px 18px 32px;
-  margin-bottom: 28px;
+  padding: 24px 28px 18px 28px;
+  margin-bottom: 24px;
   margin-top: 0;
   width: 100%;
   box-sizing: border-box;
 }
 
+.requirements-block p {
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #334155;
+}
+
 .requirements-block h4 {
-  font-size: 1.08rem;
+  font-size: 1rem;
   font-weight: 700;
-  margin: 0 0 8px 0;
-  color: #222;
+  margin: 16px 0 8px 0;
+  color: #1e293b;
 }
 
 .requirements-block ul,
 .requirements-block ol {
-  margin: 0 0 12px 18px;
+  margin: 0 0 14px 20px;
   padding: 0;
 }
 
 .requirements-block li {
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   line-height: 1.5;
-  font-size: 1rem;
-  color: #222;
-}
-
-.requirements-block > div,
-.requirements-block > ol,
-.requirements-block > ul {
-  margin-bottom: 12px;
+  font-size: 0.92rem;
+  color: #334155;
 }
 
 .requirements-block strong {
-  font-weight: 700;
-}
-
-.requirements-block ul ul {
-  margin-left: 18px;
-  margin-bottom: 0;
+  font-weight: 600;
+  color: #1e293b;
 }
 
 @media (max-width: 800px) {
   .requirements-block {
-    padding: 18px 4vw 12px 4vw;
+    padding: 18px 16px 14px 16px;
     border-radius: 12px;
+  }
+
+  .photo-update-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .photo-update-info .right {
+    text-align: left;
   }
 }
 

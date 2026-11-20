@@ -2243,15 +2243,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isReprog = item.tramite === 'REPROGRAMACION';
       const obsTexto = item.comentarioEvaluador || item.motivoRechazo || item.motivo || '—';
 
-      const tipoSolicitudHtml = isReprog
-        ? `<div class="report-tramite-cell">
-             <span class="report-tramite-pill is-reprog">Reprogramación<br>de Clase</span>
-             ${item.reprogTipoLabel ? `<span class="report-tramite-sub">${escapeHtml(item.reprogTipoLabel)}</span>` : ''}
-           </div>`
-        : `<div class="report-tramite-cell">
-             <span class="report-tramite-pill is-rectif">Rectificación de<br>Asistencia</span>
-             ${item.tipoRegularizacion ? `<span class="report-tramite-sub">${escapeHtml(item.tipoRegularizacion)}</span>` : ''}
-           </div>`;
+      const tipoSolicitudTexto = isReprog ? 'Reprogramación<br>de Clase' : 'Rectificación de<br>Asistencia';
 
       let condBadge = `<span class="badge-condicion-tramite badge-condicion-solicitado">${getAdminCondicionIconSvg('Solicitado')}<span>Solicitado</span></span>`;
       if (item.condicion === 'Aprobado') {
@@ -2272,7 +2264,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${item.docenteReemplazo && item.cambioDocente ? `<div style="font-size: 11px; color: #6B21A8;">Reemplazo: ${escapeHtml(item.docenteReemplazo)}</div>` : ''}
         </td>
         <td style="line-height: 1.3;">${escapeHtml(item.curso)}</td>
-        <td style="text-align: center; width: 105px;">${tipoSolicitudHtml}</td>
+        <td style="text-align: center; font-size: 12px; font-weight: 600; color: #334155; line-height: 1.35; width: 105px;">${tipoSolicitudTexto}</td>
         <td style="text-align: center;">${escapeHtml(item.seccion)} / ${escapeHtml(item.sesion)}</td>
         <td style="text-align: center;">${escapeHtml(item.fechaOriginal)}${item.fechaNueva ? `<div style="font-size: 11px; color: #0F848F;">-> ${escapeHtml(item.fechaNueva)}</div>` : ''}</td>
         <td style="text-align: center;">${escapeHtml(item.fechaSolicitud)}</td>

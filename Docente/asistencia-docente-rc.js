@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const STORAGE_KEY = 'wiener_rraa_asistencia_solicitudes_v1';
-  const SCHEMA_VERSION = 2;
+  const SCHEMA_VERSION = 3;
   const SYSTEM_TODAY_ISO = '2026-11-11'; // Fecha actual del prototipo (día de cierre de planilla)
   const ACTIVE_CUTOFF_START = '2026-10-12';
   const ACTIVE_CUTOFF_END = '2026-11-11';
@@ -879,6 +879,118 @@ document.addEventListener('DOMContentLoaded', () => {
       motivoRechazo: '',
       fechaResolucion: '17/10/2026 15:40',
       resolucionPor: 'Lic. Carlos Silva (RRAA)'
+    },
+    {
+      id: 'REPROG-2026-105',
+      schemaVersion: SCHEMA_VERSION,
+      asistenciaId: 305,
+      tramite: 'REPROGRAMACION',
+      docenteCodigo: 'DOC-1103',
+      docente: 'Mariela Sofía Roldán Torres',
+      solicitadoPorRol: 'Docente',
+      solicitadoPorNombre: 'Mariela Sofía Roldán Torres',
+      periodo: '2026-II',
+      programa: 'ENFERMERÍA',
+      facultad: 'Facultad de Ciencias de la Salud',
+      curso: 'Cuidado de Enfermería en Salud del Adulto - EN3012',
+      seccion: 'EN3T1',
+      sesion: 'Teor.',
+      aulaOriginal: 'B-102',
+      fechaOriginalIso: '2026-11-02',
+      fechaOriginal: '02/11/2026',
+      horarioProgInicio: '20:45',
+      horarioProgFin: '21:30',
+      duracionOriginalMin: 45,
+      horarioRegInicio: '00:00',
+      horarioRegFin: '00:00',
+      estadoOriginal: 'Inasistencia',
+      tardanzaMin: '-',
+      observacionOriginal: 'Permiso por congreso institucional',
+      tipoRegularizacion: null,
+      detalleSalud: '',
+      motivo: 'Recuperación adelantada acordada por participación en Congreso Internacional de Enfermería.',
+      archivoNombre: '',
+      reprogTipo: 'adelanto',
+      reprogTipoLabel: 'Recuperación adelantada',
+      cambioDocente: false,
+      docenteReemplazoCodigo: '',
+      docenteReemplazo: '',
+      sedeNueva: 'Sede Principal - Av. Arequipa',
+      aulaNueva: 'B-102',
+      fechaNuevaIso: '2026-11-07',
+      fechaNueva: '07/11/2026',
+      horaInicioNueva: '20:45',
+      horaFinNueva: '21:30',
+      duracionNuevaMin: 45,
+      cortePlanillaOriginal: '12/10/2026 – 11/11/2026',
+      cortePlanillaPago: '12/10/2026 – 11/11/2026',
+      notaPlanilla: 'Ejecutado dentro del corte vigente (12/10/2026 – 11/11/2026).',
+      requiereCoordinador: false,
+      etapaActual: 'COMPLETADO',
+      condicion: 'Aprobado',
+      aprobadorAsignado: 'Director de Escuela - Dr. Juan Carlos Mendoza',
+      fechaSolicitudIso: '2026-11-02',
+      fechaSolicitud: '02/11/2026 14:15',
+      comentarioEvaluador: 'Reprogramación autorizada por Dirección de Escuela.',
+      motivoRechazo: '',
+      fechaResolucion: '03/11/2026 11:30',
+      resolucionPor: 'Dr. Juan Carlos Mendoza (Director)'
+    },
+    {
+      id: 'REG-2026-106',
+      schemaVersion: SCHEMA_VERSION,
+      asistenciaId: 308,
+      tramite: 'RECTIFICACION',
+      docenteCodigo: 'DOC-1120',
+      docente: 'Fernando Morales Silva',
+      solicitadoPorRol: 'Docente',
+      solicitadoPorNombre: 'Fernando Morales Silva',
+      periodo: '2026-II',
+      programa: 'FARMACIA Y BIOQUÍMICA',
+      facultad: 'Facultad de Farmacia y Bioquímica',
+      curso: 'Farmacología Clínica Aplicada - FC2M1',
+      seccion: 'FC2M2',
+      sesion: 'Prác.',
+      aulaOriginal: 'Lab-3',
+      fechaOriginalIso: '2026-11-06',
+      fechaOriginal: '06/11/2026',
+      horarioProgInicio: '14:00',
+      horarioProgFin: '15:30',
+      duracionOriginalMin: 90,
+      horarioRegInicio: '14:00',
+      horarioRegFin: '00:00',
+      estadoOriginal: 'Observado',
+      tardanzaMin: '-',
+      observacionOriginal: 'Sin marcación de salida en biométrico',
+      tipoRegularizacion: 'Falla Biométrica',
+      detalleSalud: '',
+      motivo: 'El dispositivo biométrico del Laboratorio 3 presentó error de conexión al finalizar la sesión.',
+      archivoNombre: 'ticket_incidencia_biometrico.pdf',
+      reprogTipo: null,
+      reprogTipoLabel: '',
+      cambioDocente: false,
+      docenteReemplazoCodigo: '',
+      docenteReemplazo: '',
+      sedeNueva: '',
+      aulaNueva: '',
+      fechaNuevaIso: '',
+      fechaNueva: '',
+      horaInicioNueva: '',
+      horaFinNueva: '',
+      duracionNuevaMin: null,
+      cortePlanillaOriginal: '12/10/2026 – 11/11/2026',
+      cortePlanillaPago: '12/10/2026 – 11/11/2026',
+      notaPlanilla: 'Dentro del corte vigente (12/10/2026 – 11/11/2026).',
+      requiereCoordinador: false,
+      etapaActual: 'DIRECTOR',
+      condicion: 'Pendiente Director',
+      aprobadorAsignado: 'Director de Escuela - Dr. Juan Carlos Mendoza',
+      fechaSolicitudIso: '2026-11-07',
+      fechaSolicitud: '07/11/2026 08:30',
+      comentarioEvaluador: '',
+      motivoRechazo: '',
+      fechaResolucion: '',
+      resolucionPor: ''
     }
   ];
 
@@ -887,7 +999,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed) && parsed.length > 0 && parsed.every(item => item.schemaVersion === SCHEMA_VERSION)) {
+        if (Array.isArray(parsed) && parsed.length > 0 && parsed.every(item => item.schemaVersion === 2 || item.schemaVersion === 3 || item.schemaVersion === SCHEMA_VERSION)) {
           return parsed;
         }
       }
@@ -1104,9 +1216,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!modalEl) return;
     closeAllFloatingPopups(false);
     lastFocusedElement = document.activeElement;
+    modalEl.style.display = 'flex';
+    modalEl.style.opacity = '1';
+    modalEl.style.visibility = 'visible';
     modalEl.classList.add('active');
     if (initialFocusEl) {
-      setTimeout(() => initialFocusEl.focus(), 30);
+      setTimeout(() => {
+        try { initialFocusEl.focus(); } catch (e) {}
+      }, 30);
     }
   }
 
@@ -1114,8 +1231,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!modalEl) return;
     closeAllFloatingPopups(false);
     modalEl.classList.remove('active');
+    modalEl.style.display = 'none';
     if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
-      lastFocusedElement.focus();
+      try { lastFocusedElement.focus(); } catch (e) {}
       lastFocusedElement = null;
     }
   }
@@ -1513,6 +1631,8 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       asistenciaTableBody.appendChild(tr);
     });
+
+    attachTableActionEvents();
   }
 
   filterPills.forEach(pill => {
@@ -1524,22 +1644,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Delegación de eventos sobre filas de la tabla principal
-  asistenciaTableBody.addEventListener('click', (e) => {
-    const actionEl = e.target.closest('[data-action]');
+  // Manejador centralizado y robusto de acciones sobre la tabla principal
+  function handleTableAction(actionEl) {
     if (!actionEl) return;
     const action = actionEl.getAttribute('data-action');
-    if (action === 'open-rectificacion') {
-      const rowId = Number(actionEl.getAttribute('data-row-id'));
-      const row = asistenciaData.find(r => r.id === rowId);
-      if (row) openRectificacionModal(row);
-    } else if (action === 'open-reprogramacion') {
-      const rowId = Number(actionEl.getAttribute('data-row-id'));
-      const row = asistenciaData.find(r => r.id === rowId);
-      if (row) openReprogramacionModal(row);
-    } else if (action === 'view-solicitud') {
-      const solId = actionEl.getAttribute('data-solicitud-id');
+    const rowIdAttr = actionEl.getAttribute('data-row-id');
+    const rowId = rowIdAttr ? Number(rowIdAttr) : null;
+    const solId = actionEl.getAttribute('data-solicitud-id') || actionEl.getAttribute('data-sol-id');
+
+    if (action === 'open-reprogramacion' || actionEl.classList.contains('btn-reprog-ingresa')) {
+      if (rowId !== null) openReprogramacionModal(rowId);
+    } else if (action === 'open-rectificacion' || actionEl.classList.contains('btn-solicitud-ingresa')) {
+      if (rowId !== null) openRectificacionModal(rowId);
+    } else if (action === 'view-solicitud' || actionEl.classList.contains('btn-ver-solicitud-badge')) {
       if (solId) openVistaSolicitudModal(solId);
+    }
+  }
+
+  function attachTableActionEvents() {
+    if (!asistenciaTableBody) return;
+    const actionElements = asistenciaTableBody.querySelectorAll('[data-action], .btn-solicitud-ingresa, .btn-reprog-ingresa, .btn-ver-solicitud-badge');
+    actionElements.forEach(el => {
+      el.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleTableAction(el);
+      };
+    });
+  }
+
+  // Delegación de eventos sobre filas de la tabla principal
+  asistenciaTableBody.addEventListener('click', (e) => {
+    const target = e.target instanceof Element ? e.target : e.target.parentElement;
+    if (!target) return;
+    const actionEl = target.closest('[data-action], .btn-solicitud-ingresa, .btn-reprog-ingresa, .btn-ver-solicitud-badge');
+    if (!actionEl) return;
+    e.preventDefault();
+    handleTableAction(actionEl);
+  });
+
+  document.addEventListener('click', (e) => {
+    const target = e.target instanceof Element ? e.target : e.target.parentElement;
+    if (!target) return;
+    const actionEl = target.closest && target.closest('#asistenciaTableBody [data-action], #asistenciaTableBody .btn-solicitud-ingresa, #asistenciaTableBody .btn-reprog-ingresa, #asistenciaTableBody .btn-ver-solicitud-badge');
+    if (actionEl) {
+      e.preventDefault();
+      handleTableAction(actionEl);
     }
   });
 
@@ -1569,7 +1719,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function openRectificacionModal(row) {
+  function openRectificacionModal(rowOrId) {
+    const row = typeof rowOrId === 'object' && rowOrId !== null
+      ? rowOrId
+      : asistenciaData.find(r => r.id === Number(rowOrId));
+    if (!row) return;
     currentSelectedRow = row;
     clearRectErrors();
 
@@ -2075,7 +2229,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setCustomDateValue(reprogFecha, targetIso, false);
   }
 
-  function openReprogramacionModal(row) {
+  function openReprogramacionModal(rowOrId) {
+    const row = typeof rowOrId === 'object' && rowOrId !== null
+      ? rowOrId
+      : asistenciaData.find(r => r.id === Number(rowOrId));
+    if (!row) return;
     currentSelectedRow = row;
     clearReprogErrors();
 
@@ -3626,6 +3784,13 @@ document.addEventListener('DOMContentLoaded', () => {
       toastMessage.classList.remove('active');
     }, 4200);
   }
+
+  // Exposición de funciones para máxima compatibilidad e invocación directa
+  window.openRectificacionModal = openRectificacionModal;
+  window.openReprogramacionModal = openReprogramacionModal;
+  window.openRegularizacionModal = openRectificacionModal;
+  window.openVistaSolicitudModal = openVistaSolicitudModal;
+  window.renderAsistenciaTable = renderTable;
 
   // Inicializar tabla y detectar modo vía URL si viene desde Admin
   const urlParams = new URLSearchParams(window.location.search);
